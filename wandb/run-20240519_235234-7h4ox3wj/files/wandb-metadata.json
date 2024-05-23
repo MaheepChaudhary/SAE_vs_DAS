@@ -1,0 +1,48 @@
+{
+    "os": "macOS-14.4.1-arm64-arm-64bit",
+    "python": "3.12.3",
+    "heartbeatAt": "2024-05-19T18:22:36.375672",
+    "startedAt": "2024-05-19T18:22:34.992017",
+    "docker": null,
+    "cuda": null,
+    "args": [],
+    "state": "running",
+    "program": "<python with no main file>",
+    "codePathLocal": null,
+    "git": {
+        "remote": "https://github.com/MaheepChaudhary/DAS_MAT.git",
+        "commit": "3d68a17e1f7899cd28eb1b5fddd942a14d7b9b0a"
+    },
+    "email": "chaudhary.maheep28@gmail.com",
+    "root": "/Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT",
+    "host": "Maheeps-MBP",
+    "username": "maheepchaudhary",
+    "executable": "/Users/maheepchaudhary/miniforge3/envs/nnsight/bin/python",
+    "cpu_count": 11,
+    "cpu_count_logical": 11,
+    "cpu_freq": {
+        "current": 4056,
+        "min": 696,
+        "max": 4056
+    },
+    "cpu_freq_per_core": [
+        {
+            "current": 4056,
+            "min": 696,
+            "max": 4056
+        }
+    ],
+    "disk": {
+        "/": {
+            "total": 460.4317207336426,
+            "used": 402.6404571533203
+        }
+    },
+    "gpuapple": {
+        "type": "Apple M3 Pro",
+        "vendor": "sppci_vendor_Apple"
+    },
+    "memory": {
+        "total": 18.0
+    }
+}

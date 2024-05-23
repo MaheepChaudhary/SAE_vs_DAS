@@ -1,0 +1,9 @@
+2024-05-20 11:39:26,797 INFO    StreamThr :28149 [internal.py:wandb_internal():85] W&B internal server running at pid: 28149, started at: 2024-05-20 11:39:26.795572
+2024-05-20 11:39:26,798 DEBUG   HandlerThread:28149 [handler.py:handle_request():158] handle_request: status
+2024-05-20 11:39:26,799 INFO    WriterThread:28149 [datastore.py:open_for_write():87] open: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240520_113918-b3jj9cuq/run-b3jj9cuq.wandb
+2024-05-20 11:39:26,800 DEBUG   SenderThread:28149 [sender.py:send():378] send: header
+2024-05-20 11:39:26,800 DEBUG   SenderThread:28149 [sender.py:send():378] send: run
+2024-05-20 11:39:27,538 INFO    SenderThread:28149 [dir_watcher.py:__init__():211] watching files in: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240520_113918-b3jj9cuq/files
+2024-05-20 11:39:27,538 INFO    SenderThread:28149 [sender.py:_start_run_threads():1123] run started: b3jj9cuq with start time 1716185365.965203
+2024-05-20 11:39:32,559 DEBUG   HandlerThread:28149 [handler.py:handle_request():158] handle_request: status_report
+2024-05-20 11:39:37,571 DEBUG   HandlerThread:28149 [handler.py:handle_request():158] handle_request: status_report

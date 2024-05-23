@@ -1,0 +1,41 @@
+  0%|          | 0/700 [00:00<?, ?it/s]/var/folders/_x/mkf1szd12yv28px5ztl_sjjr0000gn/T/ipykernel_23067/3948925039.py:37: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  embed_mask_sigmoid = t.sigmoid(self.embed_mask / t.tensor(self.temperature))
+/var/folders/_x/mkf1szd12yv28px5ztl_sjjr0000gn/T/ipykernel_23067/3948925039.py:38: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  l1_mask_sigmoid = t.sigmoid(self.l1_mask / t.tensor(self.temperature))
+/var/folders/_x/mkf1szd12yv28px5ztl_sjjr0000gn/T/ipykernel_23067/3948925039.py:39: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  l2_mask_sigmoid = t.sigmoid(self.l2_mask / t.tensor(self.temperature))
+/var/folders/_x/mkf1szd12yv28px5ztl_sjjr0000gn/T/ipykernel_23067/3948925039.py:40: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  l3_mask_sigmoid = t.sigmoid(self.l3_mask / t.tensor(self.temperature))
+/var/folders/_x/mkf1szd12yv28px5ztl_sjjr0000gn/T/ipykernel_23067/3948925039.py:41: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  l4_mask_sigmoid = t.sigmoid(self.l4_mask / t.tensor(self.temperature))
+You're using a GPTNeoXTokenizerFast tokenizer. Please note that with a fast tokenizer, using the `__call__` method is faster than using a method to encode the text followed by a call to the `pad` method to get a padded encoding.
+700
+<built-in method float of Tensor object at 0x34aebdae0>
+torch.Size([32, 159, 32768])
+torch.Size([32])
+<built-in method float of Tensor object at 0x34aebdae0>
+<built-in method float of Tensor object at 0x34aebe530>
+  0%|          | 1/700 [00:05<1:09:33,  5.97s/it]/var/folders/_x/mkf1szd12yv28px5ztl_sjjr0000gn/T/ipykernel_23067/3948925039.py:37: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  embed_mask_sigmoid = t.sigmoid(self.embed_mask / t.tensor(self.temperature))
+/var/folders/_x/mkf1szd12yv28px5ztl_sjjr0000gn/T/ipykernel_23067/3948925039.py:38: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  l1_mask_sigmoid = t.sigmoid(self.l1_mask / t.tensor(self.temperature))
+/var/folders/_x/mkf1szd12yv28px5ztl_sjjr0000gn/T/ipykernel_23067/3948925039.py:39: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  l2_mask_sigmoid = t.sigmoid(self.l2_mask / t.tensor(self.temperature))
+/var/folders/_x/mkf1szd12yv28px5ztl_sjjr0000gn/T/ipykernel_23067/3948925039.py:40: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  l3_mask_sigmoid = t.sigmoid(self.l3_mask / t.tensor(self.temperature))
+/var/folders/_x/mkf1szd12yv28px5ztl_sjjr0000gn/T/ipykernel_23067/3948925039.py:41: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  l4_mask_sigmoid = t.sigmoid(self.l4_mask / t.tensor(self.temperature))
+torch.Size([32, 212, 32768])
+torch.Size([32])
+<built-in method float of Tensor object at 0x34aebe530>
+  0%|          | 2/700 [00:16<1:38:52,  8.50s/it]/var/folders/_x/mkf1szd12yv28px5ztl_sjjr0000gn/T/ipykernel_23067/3948925039.py:37: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  embed_mask_sigmoid = t.sigmoid(self.embed_mask / t.tensor(self.temperature))
+/var/folders/_x/mkf1szd12yv28px5ztl_sjjr0000gn/T/ipykernel_23067/3948925039.py:38: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  l1_mask_sigmoid = t.sigmoid(self.l1_mask / t.tensor(self.temperature))
+/var/folders/_x/mkf1szd12yv28px5ztl_sjjr0000gn/T/ipykernel_23067/3948925039.py:39: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  l2_mask_sigmoid = t.sigmoid(self.l2_mask / t.tensor(self.temperature))
+/var/folders/_x/mkf1szd12yv28px5ztl_sjjr0000gn/T/ipykernel_23067/3948925039.py:40: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  l3_mask_sigmoid = t.sigmoid(self.l3_mask / t.tensor(self.temperature))
+/var/folders/_x/mkf1szd12yv28px5ztl_sjjr0000gn/T/ipykernel_23067/3948925039.py:41: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  l4_mask_sigmoid = t.sigmoid(self.l4_mask / t.tensor(self.temperature))
+<built-in method float of Tensor object at 0x34aebe670>
