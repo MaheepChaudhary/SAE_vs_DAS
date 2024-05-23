@@ -1,15 +1,13 @@
-from imports import *
+from imports import * 
 
-epochs = 4
-lr = 0.01
+class Probe(nn.Module):
+    def __init__(self, activation_dim):
+        super().__init__()
+        self.net = nn.Linear(activation_dim, 1, bias=True)
 
-batch_size_train = 64
-batch_size_test = 1
-momentum = 0.7
-log_interval = 10
+    def forward(self, x):
+        logits = self.net(x).squeeze(-1)
+        return logits
 
-device = 'cpu' 
-
-random_seed = 1
-torch.backends.cudnn.enabled = False
-torch.manual_seed(random_seed)
+with open("probe_shift.pkl", "rb") as f:
+    probe = pkl.load(f)
