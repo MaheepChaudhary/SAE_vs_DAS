@@ -29,5 +29,7 @@ python main.py -dict -dr "path" -btr 1 -bts 1 -d "cuda:0" -layer [3,15]
 ## File Information:
 
 `imports.py`: It contains the list of imported modules
+
 `config.py`: It contains the information about different hyperparameters.
+
 `main.py`: It contain the execution taking support from other `.py` files. 
