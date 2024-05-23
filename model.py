@@ -17,10 +17,10 @@ class my_model(nn.Module):
     def __init__(self, 
                 DEVICE,
                 probe,
-                dict_embed_path = "/Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/baulab.us/u/smarks/autoencoders/pythia-70m-deduped/embed",
-                attn_dict_path = "/Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/baulab.us/u/smarks/autoencoders/pythia-70m-deduped/attn_out_layer",
-                mlp_dict_path = "/Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/baulab.us/u/smarks/autoencoders/pythia-70m-deduped/mlp_out_layer",
-                resid_dict_path = "/Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/baulab.us/u/smarks/autoencoders/pythia-70m-deduped/resid_out_layer",
+                dict_embed_path,
+                attn_dict_path,
+                mlp_dict_path,
+                resid_dict_path,
                 activation_dim = 512,
                 expansion_factor=64):
         

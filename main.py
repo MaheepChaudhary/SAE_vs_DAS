@@ -8,7 +8,14 @@ def train(DEVICE,
         epochs, 
         lr,
         mini_batch,
-        evaluation):
+        evaluation,
+        batch_size_train,
+        residual_layer, 
+        expansion_factor, 
+        dict_embed_path,
+        attn_dict_path,
+        mlp_dict_path,
+        resid_dict_path):
 
     tokenizer = BertTokenizer.from_pretrained('bert-base-uncased')
 
@@ -16,11 +23,18 @@ def train(DEVICE,
     wandb.run.name = "gender_Lastlinear-mask_amb(false)_b1_e15_mini-batch-test1k"
     # wandb.run.name = "gender_Lastlinear-mask_probe_amb(false)_b1_e3"
 
-    new_model = my_model().to(DEVICE)
+    new_model = my_model(DEVICE,
+                        probe,
+                        dict_embed_path = dict_embed_path,
+                        attn_dict_path = "/Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/baulab.us/u/smarks/autoencoders/pythia-70m-deduped/attn_out_layer",
+                        mlp_dict_path = "/Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/baulab.us/u/smarks/autoencoders/pythia-70m-deduped/mlp_out_layer",
+                        resid_dict_path = "/Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/baulab.us/u/smarks/autoencoders/pythia-70m-deduped/resid_out_layer",
+                        activation_dim = 512,
+                        expansion_factor=64).to(DEVICE)
 
     optimizer = t.optim.Adam(new_model.parameters(), lr = lr)
     criterion = nn.BCEWithLogitsLoss().to(DEVICE)
-    batches = get_data(train = True, ambiguous = False) # by default the ambigous is True
+    batches = get_data(DEVICE, train = True, ambiguous = False, batch_size=batch_size_train) # by default the ambigous is True
     
     random.shuffle(batches)
     if mini_batch:
@@ -59,7 +73,95 @@ def train(DEVICE,
                 wandb.log({"Gender de-baising Losses": np.mean(losses)})
                 losses = []
                 
+def eval(DEVICE, saved_model_path):
 
+    wandb.init(project="sae_concept_eraser")
+    wandb.run.name = "[professional]-trained_on_test-amb(False)-data(false)"
+    new_model = my_model()
+
+    # Load the state dictionary
+    state_dict = t.load(saved_model_path)
+    new_model.load_state_dict(state_dict)
+    new_model = new_model.to(DEVICE)
+    new_model.eval()
+
+
+    batches = get_data(train = False, ambiguous=False) # by default the ambigous is True
+    label_idx = 0
+    len_batches = len(batches)
+    corrects = []
+    total = 0
+            
+    # subgroups = get_subgroups(train=False, ambiguous=False)
+    # for label_profile, batches in subgroups.items():
+    # for i in tqdm(range(len_batches)):
+        
+    #     text = batches[i][0]
+    #     labels = batches[i][label_idx+1] 
+        
+    with t.no_grad():
+
+        len_batches = len(batches)
+        for i in tqdm(range(len_batches)):
+            text = batches[i][0]
+            labels = batches[i][1] # true label, if [2] then spurious label. We will be training the model in hope that mask will learn which concepts to mask.
+            # acts = get_acts(text)
+            logits = new_model(text)
+            # preds = (logits > 0.0).long()
+            preds = (logits > 0.0).long()
+            corrects.append((preds == labels).float())
+        
+        accuracy = t.cat(corrects).mean().item()
+
+    wandb.log({"Accuracy": accuracy})
+
+def eval_on_subgroups(DEVICE, saved_model_path):
+    
+    # Here we will find the accuracy of the subgroups for both the vanilla model and the model with the mask.
+
+    wandb.init(project="sae_concept_eraser")
+
+    new_model = my_model()
+
+    # Load the state dictionary
+    state_dict = t.load(saved_model_path)
+    new_model.load_state_dict(state_dict)
+    new_model = new_model.to(DEVICE)
+    new_model.eval()
+
+    subgroups = get_subgroups(train=False, ambiguous=False)
+
+    with t.no_grad():
+        for label_profile, batches in subgroups.items():
+            corrects = []
+            total = 0
+            for i in tqdm(range(len(batches))):
+                text = batches[i][0]
+                labels = label_profile[0] # true label, if [2] then spurious label. We will be training the model in hope that mask will learn which concepts to mask.
+                logits = new_model(text)
+                preds = (logits > 0.0).long()
+                corrects.append((preds == labels).float())
+            
+            accuracy = t.cat(corrects).mean().item()
+            
+            if label_profile == (0, 0):
+                wandb.run.name = "Vanilla-acc-Male_Prof."
+                wandb.log({"Groups Accuracy": accuracy})
+                print(f"Accuracy for Male Professor is:", accuracy)
+            elif label_profile == (0, 1):
+                wandb.run.name = "Vanilla-acc-Female_Prof."
+                wandb.log({"Groups Accuracy": accuracy})
+                print(f"Accuracy for Female Professor is:", accuracy)
+            elif label_profile == (1, 0):
+                wandb.run.name = "vanilla-acc-Male_Nurse"
+                wandb.log({"Groups Accuracy": accuracy})
+                print(f"Accuracy for Male Nurse is:", accuracy)
+            elif label_profile == (1, 1):
+                wandb.run.name = "Vanilla-acc-Female_Nurse"
+                wandb.log({"Groups Accuracy": accuracy})
+                print(f"Accuracy for Female Nurse is:", accuracy)
+
+        # print(f'Accuracy for {label_profile}:', test_probe(oracle, get_acts, batches=batches, label_idx=0))
 
 if __name__ == "__main__":
 
@@ -68,18 +170,34 @@ if __name__ == "__main__":
     argparser.add_argument('-e','--epochs', default=15, type=int, help='number of epochs')
     argparser.add_argument('-lr','--lr', default=0.001, type=float, help='learning rate')
     argparser.add_argument('-btr','batch_size_train', type=int, help='batch size for training')
-    argparser.add_argument('-bts','batch_size_test', type=int, help='batch size for testing')
     argparser.add_argument("-d",'device', type=str, help='device to be used')
-    argparser.add_argument("-layer",'residual layer', type=str, help="residual layer to be used interevened in the model")
+    argparser.add_argument("-layer",'residual layer', type=str, help="residual layer to be used intervened in the model")
     argparser.add_argument("-activation_dim", type=int, help="activation dimension")
     argparser.add_argument("-ef", "--expansion_factor", default = 64, type=int, help="expansion factor")
-    argparser.add_argument("-dict_embed_path", type=str, help="dictionary embedding path")
-    argparser.add_argument("-attn_dict_path", type=str, help="attention dictionary path")
-    argparser.add_argument("-mlp_dict_path", type=str, help="mlp dictionary path")
-    argparser.add_argument("-resid_dict_path", type=str, help="residual dictionary path")
+    
+    argparser.add_argument("-dpath", "--dict_embed_path", 
+                           default="/Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/baulab.us/u/smarks/autoencoders/pythia-70m-deduped/embed",
+                           type=str, 
+                           help="dictionary embedding path")
+    
+    argparser.add_argument("-atpath", "--attn_dict_path", 
+                           default="/Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/baulab.us/u/smarks/autoencoders/pythia-70m-deduped/attn_out_layer",
+                           type=str, help="attention dictionary path")
+    
+    argparser.add_argument("-mpath", "--mlp_dict_path", 
+                           default="/Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/baulab.us/u/smarks/autoencoders/pythia-70m-deduped/mlp_out_layer",
+                           type=str, help="mlp dictionary path")
+    
+    argparser.add_argument("-rpath", "--resid_dict_path", 
+                           default="/Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/baulab.us/u/smarks/autoencoders/pythia-70m-deduped/resid_out_layer",
+                           type=str, help="residual dictionary path")
+    
     argparser.add_argument("-mb", "mini_batch", action='store_true', help="for just training on 1000 samples of training data, then yes!")
     argparser.add_argument("-eval", "evaluation", type=str, help="evaluation metric, either profession or gender")
     argparser.add_argument("-pp", "probe_path", type=str, help="path of probe to be used")
+    argparser.add_argument("-svd","--saved_model_path", default = None, type=str, help="path to save the model")
+    
+    argparser.add_argument("-task", "task", type=str, help="task to be performed, i.e. train, eval or eval_on_subgroups")
     
     
     args = argparser.parse_args()
@@ -89,7 +207,28 @@ if __name__ == "__main__":
     with open(args.probe_path, "rb") as f:
         probe = pkl.load(f)
     
-    train(args.device, args.epochs, args.lr, args.mini_batch, args.evaluation)
+    if argparser.task == "train":
+    
+        train(args.device, 
+            args.epochs, 
+            args.lr, 
+            args.mini_batch, 
+            args.evaluation, 
+            args.batch_size_train, 
+            args.residual_layer, 
+            args.expansion_factor, 
+            args.dict_embed_path,
+            args.attn_dict_path,
+            args.mlp_dict_path,
+            args.resid_dict_path)
+    
+    elif argparser.task == "eval":
+        eval(args.device, args.saved_model_path)
+    
+    elif argparser.task == "eval_on_subgroups":
+        eval_on_subgroups(args.device, args.saved_model_path)
+    
+    
 
 
 
