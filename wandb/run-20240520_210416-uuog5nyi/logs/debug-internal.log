@@ -1,0 +1,484 @@
+2024-05-20 21:04:16,530 INFO    StreamThr :21401 [internal.py:wandb_internal():85] W&B internal server running at pid: 21401, started at: 2024-05-20 21:04:16.529456
+2024-05-20 21:04:16,531 DEBUG   HandlerThread:21401 [handler.py:handle_request():158] handle_request: status
+2024-05-20 21:04:16,542 INFO    WriterThread:21401 [datastore.py:open_for_write():87] open: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240520_210416-uuog5nyi/run-uuog5nyi.wandb
+2024-05-20 21:04:16,543 DEBUG   SenderThread:21401 [sender.py:send():378] send: header
+2024-05-20 21:04:16,578 DEBUG   SenderThread:21401 [sender.py:send():378] send: run
+2024-05-20 21:04:17,301 INFO    SenderThread:21401 [dir_watcher.py:__init__():211] watching files in: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240520_210416-uuog5nyi/files
+2024-05-20 21:04:17,301 INFO    SenderThread:21401 [sender.py:_start_run_threads():1123] run started: uuog5nyi with start time 1716219256.530527
+2024-05-20 21:04:17,309 DEBUG   HandlerThread:21401 [handler.py:handle_request():158] handle_request: check_version
+2024-05-20 21:04:17,309 DEBUG   SenderThread:21401 [sender.py:send_request():405] send_request: check_version
+2024-05-20 21:04:17,426 DEBUG   HandlerThread:21401 [handler.py:handle_request():158] handle_request: run_start
+2024-05-20 21:04:17,435 DEBUG   HandlerThread:21401 [system_info.py:__init__():26] System info init
+2024-05-20 21:04:17,435 DEBUG   HandlerThread:21401 [system_info.py:__init__():41] System info init done
+2024-05-20 21:04:17,436 INFO    HandlerThread:21401 [system_monitor.py:start():194] Starting system monitor
+2024-05-20 21:04:17,436 INFO    SystemMonitor:21401 [system_monitor.py:_start():158] Starting system asset monitoring threads
+2024-05-20 21:04:17,436 INFO    HandlerThread:21401 [system_monitor.py:probe():214] Collecting system info
+2024-05-20 21:04:17,438 INFO    SystemMonitor:21401 [interfaces.py:start():188] Started cpu monitoring
+2024-05-20 21:04:17,439 INFO    SystemMonitor:21401 [interfaces.py:start():188] Started disk monitoring
+2024-05-20 21:04:17,443 INFO    SystemMonitor:21401 [interfaces.py:start():188] Started gpuapple monitoring
+2024-05-20 21:04:17,444 INFO    SystemMonitor:21401 [interfaces.py:start():188] Started memory monitoring
+2024-05-20 21:04:17,445 INFO    SystemMonitor:21401 [interfaces.py:start():188] Started network monitoring
+2024-05-20 21:04:17,994 DEBUG   HandlerThread:21401 [system_info.py:probe():150] Probing system
+2024-05-20 21:04:17,997 DEBUG   HandlerThread:21401 [system_info.py:_probe_git():135] Probing git
+2024-05-20 21:04:18,012 DEBUG   HandlerThread:21401 [system_info.py:_probe_git():143] Probing git done
+2024-05-20 21:04:18,012 DEBUG   HandlerThread:21401 [system_info.py:probe():198] Probing system done
+2024-05-20 21:04:18,012 DEBUG   HandlerThread:21401 [system_monitor.py:probe():223] {'os': 'macOS-14.4.1-arm64-arm-64bit', 'python': '3.12.3', 'heartbeatAt': '2024-05-20T15:34:17.994444', 'startedAt': '2024-05-20T15:34:16.521710', 'docker': None, 'cuda': None, 'args': (), 'state': 'running', 'program': '<python with no main file>', 'codePathLocal': None, 'git': {'remote': 'https://github.com/MaheepChaudhary/DAS_MAT.git', 'commit': 'e0f68f312a938d247b684365ab169e2936fa75a2'}, 'email': 'chaudhary.maheep28@gmail.com', 'root': '/Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT', 'host': 'Maheeps-MacBook-Pro.local', 'username': 'maheepchaudhary', 'executable': '/Users/maheepchaudhary/miniforge3/envs/nnsight/bin/python', 'cpu_count': 11, 'cpu_count_logical': 11, 'cpu_freq': {'current': 4056, 'min': 696, 'max': 4056}, 'cpu_freq_per_core': [{'current': 4056, 'min': 696, 'max': 4056}], 'disk': {'/': {'total': 460.4317207336426, 'used': 374.3646583557129}}, 'gpuapple': {'type': 'Apple M3 Pro', 'vendor': 'sppci_vendor_Apple'}, 'memory': {'total': 18.0}}
+2024-05-20 21:04:18,012 INFO    HandlerThread:21401 [system_monitor.py:probe():224] Finished collecting system info
+2024-05-20 21:04:18,012 INFO    HandlerThread:21401 [system_monitor.py:probe():227] Publishing system info
+2024-05-20 21:04:18,012 DEBUG   HandlerThread:21401 [system_info.py:_save_conda():207] Saving list of conda packages installed into the current environment
+2024-05-20 21:04:18,306 INFO    Thread-12 :21401 [dir_watcher.py:_on_file_created():271] file/dir created: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240520_210416-uuog5nyi/files/conda-environment.yaml
+2024-05-20 21:04:22,326 INFO    Thread-12 :21401 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240520_210416-uuog5nyi/files/conda-environment.yaml
+2024-05-20 21:04:22,401 DEBUG   HandlerThread:21401 [system_info.py:_save_conda():222] Saving conda packages done
+2024-05-20 21:04:22,401 INFO    HandlerThread:21401 [system_monitor.py:probe():229] Finished publishing system info
+2024-05-20 21:04:22,403 DEBUG   SenderThread:21401 [sender.py:send():378] send: files
+2024-05-20 21:04:22,403 INFO    SenderThread:21401 [sender.py:_save_file():1389] saving file wandb-metadata.json with policy now
+2024-05-20 21:04:22,404 DEBUG   HandlerThread:21401 [handler.py:handle_request():158] handle_request: status_report
+2024-05-20 21:04:22,459 DEBUG   HandlerThread:21401 [handler.py:handle_request():158] handle_request: python_packages
+2024-05-20 21:04:22,459 DEBUG   SenderThread:21401 [sender.py:send_request():405] send_request: python_packages
+2024-05-20 21:04:22,460 DEBUG   SenderThread:21401 [sender.py:send():378] send: telemetry
+2024-05-20 21:04:22,460 DEBUG   HandlerThread:21401 [handler.py:handle_request():158] handle_request: stop_status
+2024-05-20 21:04:22,460 DEBUG   SenderThread:21401 [sender.py:send_request():405] send_request: stop_status
+2024-05-20 21:04:22,888 DEBUG   SenderThread:21401 [sender.py:send():378] send: telemetry
+2024-05-20 21:04:22,888 DEBUG   SenderThread:21401 [sender.py:send():378] send: run
+2024-05-20 21:04:23,313 INFO    SenderThread:21401 [sender.py:send_run():996] updated run: uuog5nyi
+2024-05-20 21:04:23,332 INFO    Thread-12 :21401 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240520_210416-uuog5nyi/files/config.yaml
+2024-05-20 21:04:23,332 INFO    Thread-12 :21401 [dir_watcher.py:_on_file_created():271] file/dir created: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240520_210416-uuog5nyi/files/wandb-metadata.json
+2024-05-20 21:04:23,332 INFO    Thread-12 :21401 [dir_watcher.py:_on_file_created():271] file/dir created: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240520_210416-uuog5nyi/files/requirements.txt
+2024-05-20 21:04:23,685 INFO    wandb-upload_0:21401 [upload_job.py:push():130] Uploaded file /var/folders/_x/mkf1szd12yv28px5ztl_sjjr0000gn/T/tmp_g5gf4fiwandb/qbixli3r-wandb-metadata.json
+2024-05-20 21:04:27,789 DEBUG   HandlerThread:21401 [handler.py:handle_request():158] handle_request: status_report
+2024-05-20 21:04:28,352 INFO    Thread-12 :21401 [dir_watcher.py:_on_file_created():271] file/dir created: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240520_210416-uuog5nyi/files/output.log
+2024-05-20 21:04:30,362 INFO    Thread-12 :21401 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240520_210416-uuog5nyi/files/output.log
+2024-05-20 21:04:32,809 DEBUG   HandlerThread:21401 [handler.py:handle_request():158] handle_request: status_report
+2024-05-20 21:04:34,383 INFO    Thread-12 :21401 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240520_210416-uuog5nyi/files/output.log
+2024-05-20 21:04:36,393 INFO    Thread-12 :21401 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240520_210416-uuog5nyi/files/output.log
+2024-05-20 21:04:37,464 DEBUG   HandlerThread:21401 [handler.py:handle_request():158] handle_request: stop_status
+2024-05-20 21:04:37,465 DEBUG   SenderThread:21401 [sender.py:send_request():405] send_request: stop_status
+2024-05-20 21:04:37,823 DEBUG   HandlerThread:21401 [handler.py:handle_request():158] handle_request: status_report
+2024-05-20 21:04:38,402 INFO    Thread-12 :21401 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240520_210416-uuog5nyi/files/output.log
+2024-05-20 21:04:40,412 INFO    Thread-12 :21401 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240520_210416-uuog5nyi/files/output.log
+2024-05-20 21:04:42,422 INFO    Thread-12 :21401 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240520_210416-uuog5nyi/files/output.log
+2024-05-20 21:04:42,835 DEBUG   HandlerThread:21401 [handler.py:handle_request():158] handle_request: status_report
+2024-05-20 21:04:44,432 INFO    Thread-12 :21401 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240520_210416-uuog5nyi/files/output.log
+2024-05-20 21:04:46,437 INFO    Thread-12 :21401 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240520_210416-uuog5nyi/files/output.log
+2024-05-20 21:04:47,937 DEBUG   HandlerThread:21401 [handler.py:handle_request():158] handle_request: status_report
+2024-05-20 21:04:48,442 INFO    Thread-12 :21401 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240520_210416-uuog5nyi/files/config.yaml
+2024-05-20 21:04:48,442 INFO    Thread-12 :21401 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240520_210416-uuog5nyi/files/output.log
+2024-05-20 21:04:50,452 INFO    Thread-12 :21401 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240520_210416-uuog5nyi/files/output.log
+2024-05-20 21:04:52,462 INFO    Thread-12 :21401 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240520_210416-uuog5nyi/files/output.log
+2024-05-20 21:04:52,469 DEBUG   HandlerThread:21401 [handler.py:handle_request():158] handle_request: stop_status
+2024-05-20 21:04:52,469 DEBUG   SenderThread:21401 [sender.py:send_request():405] send_request: stop_status
+2024-05-20 21:04:53,455 DEBUG   HandlerThread:21401 [handler.py:handle_request():158] handle_request: status_report
+2024-05-20 21:04:54,473 INFO    Thread-12 :21401 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240520_210416-uuog5nyi/files/output.log
+2024-05-20 21:04:56,483 INFO    Thread-12 :21401 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240520_210416-uuog5nyi/files/output.log
+2024-05-20 21:04:58,493 INFO    Thread-12 :21401 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240520_210416-uuog5nyi/files/output.log
+2024-05-20 21:04:58,944 DEBUG   HandlerThread:21401 [handler.py:handle_request():158] handle_request: status_report
+2024-05-20 21:05:00,503 INFO    Thread-12 :21401 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240520_210416-uuog5nyi/files/output.log
+2024-05-20 21:05:02,513 INFO    Thread-12 :21401 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240520_210416-uuog5nyi/files/output.log
+2024-05-20 21:05:04,002 DEBUG   HandlerThread:21401 [handler.py:handle_request():158] handle_request: status_report
+2024-05-20 21:05:04,524 INFO    Thread-12 :21401 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240520_210416-uuog5nyi/files/output.log
+2024-05-20 21:05:06,534 INFO    Thread-12 :21401 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240520_210416-uuog5nyi/files/output.log
+2024-05-20 21:05:07,474 DEBUG   HandlerThread:21401 [handler.py:handle_request():158] handle_request: stop_status
+2024-05-20 21:05:07,475 DEBUG   SenderThread:21401 [sender.py:send_request():405] send_request: stop_status
+2024-05-20 21:05:08,544 INFO    Thread-12 :21401 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240520_210416-uuog5nyi/files/output.log
+2024-05-20 21:05:09,398 DEBUG   HandlerThread:21401 [handler.py:handle_request():158] handle_request: status_report
+2024-05-20 21:05:10,555 INFO    Thread-12 :21401 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240520_210416-uuog5nyi/files/output.log
+2024-05-20 21:05:12,565 INFO    Thread-12 :21401 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240520_210416-uuog5nyi/files/output.log
+2024-05-20 21:05:14,478 DEBUG   HandlerThread:21401 [handler.py:handle_request():158] handle_request: status_report
+2024-05-20 21:05:14,576 INFO    Thread-12 :21401 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240520_210416-uuog5nyi/files/output.log
+2024-05-20 21:05:16,577 INFO    Thread-12 :21401 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240520_210416-uuog5nyi/files/output.log
+2024-05-20 21:05:17,446 DEBUG   SystemMonitor:21401 [system_monitor.py:_start():172] Starting system metrics aggregation loop
+2024-05-20 21:05:17,447 DEBUG   SenderThread:21401 [sender.py:send():378] send: telemetry
+2024-05-20 21:05:17,447 DEBUG   SenderThread:21401 [sender.py:send():378] send: stats
+2024-05-20 21:05:18,587 INFO    Thread-12 :21401 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240520_210416-uuog5nyi/files/output.log
+2024-05-20 21:05:19,762 DEBUG   HandlerThread:21401 [handler.py:handle_request():158] handle_request: status_report
+2024-05-20 21:05:20,593 INFO    Thread-12 :21401 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240520_210416-uuog5nyi/files/config.yaml
+2024-05-20 21:05:20,594 INFO    Thread-12 :21401 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240520_210416-uuog5nyi/files/output.log
+2024-05-20 21:05:22,475 DEBUG   HandlerThread:21401 [handler.py:handle_request():158] handle_request: stop_status
+2024-05-20 21:05:22,476 DEBUG   SenderThread:21401 [sender.py:send_request():405] send_request: stop_status
+2024-05-20 21:05:22,604 INFO    Thread-12 :21401 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240520_210416-uuog5nyi/files/output.log
+2024-05-20 21:05:24,611 INFO    Thread-12 :21401 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240520_210416-uuog5nyi/files/output.log
+2024-05-20 21:05:25,221 DEBUG   HandlerThread:21401 [handler.py:handle_request():158] handle_request: status_report
+2024-05-20 21:05:26,616 INFO    Thread-12 :21401 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240520_210416-uuog5nyi/files/output.log
+2024-05-20 21:05:28,625 INFO    Thread-12 :21401 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240520_210416-uuog5nyi/files/output.log
+2024-05-20 21:05:30,280 DEBUG   HandlerThread:21401 [handler.py:handle_request():158] handle_request: status_report
+2024-05-20 21:05:30,632 INFO    Thread-12 :21401 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240520_210416-uuog5nyi/files/output.log
+2024-05-20 21:05:32,642 INFO    Thread-12 :21401 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240520_210416-uuog5nyi/files/output.log
+2024-05-20 21:05:34,653 INFO    Thread-12 :21401 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240520_210416-uuog5nyi/files/output.log
+2024-05-20 21:05:35,315 DEBUG   HandlerThread:21401 [handler.py:handle_request():158] handle_request: status_report
+2024-05-20 21:05:36,661 INFO    Thread-12 :21401 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240520_210416-uuog5nyi/files/output.log
+2024-05-20 21:05:37,481 DEBUG   HandlerThread:21401 [handler.py:handle_request():158] handle_request: stop_status
+2024-05-20 21:05:37,482 DEBUG   SenderThread:21401 [sender.py:send_request():405] send_request: stop_status
+2024-05-20 21:05:38,667 INFO    Thread-12 :21401 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240520_210416-uuog5nyi/files/output.log
+2024-05-20 21:05:40,677 INFO    Thread-12 :21401 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240520_210416-uuog5nyi/files/output.log
+2024-05-20 21:05:40,976 DEBUG   HandlerThread:21401 [handler.py:handle_request():158] handle_request: status_report
+2024-05-20 21:05:42,688 INFO    Thread-12 :21401 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240520_210416-uuog5nyi/files/output.log
+2024-05-20 21:05:44,698 INFO    Thread-12 :21401 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240520_210416-uuog5nyi/files/output.log
+2024-05-20 21:05:46,024 DEBUG   HandlerThread:21401 [handler.py:handle_request():158] handle_request: status_report
+2024-05-20 21:05:46,709 INFO    Thread-12 :21401 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240520_210416-uuog5nyi/files/output.log
+2024-05-20 21:05:47,453 DEBUG   SenderThread:21401 [sender.py:send():378] send: stats
+2024-05-20 21:05:48,718 INFO    Thread-12 :21401 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240520_210416-uuog5nyi/files/output.log
+2024-05-20 21:05:50,729 INFO    Thread-12 :21401 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240520_210416-uuog5nyi/files/output.log
+2024-05-20 21:05:51,129 DEBUG   HandlerThread:21401 [handler.py:handle_request():158] handle_request: status_report
+2024-05-20 21:05:52,482 DEBUG   HandlerThread:21401 [handler.py:handle_request():158] handle_request: stop_status
+2024-05-20 21:05:52,482 DEBUG   SenderThread:21401 [sender.py:send_request():405] send_request: stop_status
+2024-05-20 21:05:52,734 INFO    Thread-12 :21401 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240520_210416-uuog5nyi/files/output.log
+2024-05-20 21:05:54,744 INFO    Thread-12 :21401 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240520_210416-uuog5nyi/files/output.log
+2024-05-20 21:05:56,178 DEBUG   HandlerThread:21401 [handler.py:handle_request():158] handle_request: status_report
+2024-05-20 21:05:56,755 INFO    Thread-12 :21401 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240520_210416-uuog5nyi/files/output.log
+2024-05-20 21:05:58,762 INFO    Thread-12 :21401 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240520_210416-uuog5nyi/files/output.log
+2024-05-20 21:06:00,773 INFO    Thread-12 :21401 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240520_210416-uuog5nyi/files/output.log
+2024-05-20 21:06:01,208 DEBUG   HandlerThread:21401 [handler.py:handle_request():158] handle_request: status_report
+2024-05-20 21:06:02,779 INFO    Thread-12 :21401 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240520_210416-uuog5nyi/files/output.log
+2024-05-20 21:06:04,789 INFO    Thread-12 :21401 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240520_210416-uuog5nyi/files/output.log
+2024-05-20 21:06:06,255 DEBUG   HandlerThread:21401 [handler.py:handle_request():158] handle_request: status_report
+2024-05-20 21:06:06,800 INFO    Thread-12 :21401 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240520_210416-uuog5nyi/files/output.log
+2024-05-20 21:06:07,488 DEBUG   HandlerThread:21401 [handler.py:handle_request():158] handle_request: stop_status
+2024-05-20 21:06:07,489 DEBUG   SenderThread:21401 [sender.py:send_request():405] send_request: stop_status
+2024-05-20 21:06:08,810 INFO    Thread-12 :21401 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240520_210416-uuog5nyi/files/output.log
+2024-05-20 21:06:10,820 INFO    Thread-12 :21401 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240520_210416-uuog5nyi/files/output.log
+2024-05-20 21:06:11,289 DEBUG   HandlerThread:21401 [handler.py:handle_request():158] handle_request: status_report
+2024-05-20 21:06:12,831 INFO    Thread-12 :21401 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240520_210416-uuog5nyi/files/output.log
+2024-05-20 21:06:14,841 INFO    Thread-12 :21401 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240520_210416-uuog5nyi/files/output.log
+2024-05-20 21:06:16,352 DEBUG   HandlerThread:21401 [handler.py:handle_request():158] handle_request: status_report
+2024-05-20 21:06:16,851 INFO    Thread-12 :21401 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240520_210416-uuog5nyi/files/output.log
+2024-05-20 21:06:17,458 DEBUG   SenderThread:21401 [sender.py:send():378] send: stats
+2024-05-20 21:06:18,857 INFO    Thread-12 :21401 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240520_210416-uuog5nyi/files/output.log
+2024-05-20 21:06:20,867 INFO    Thread-12 :21401 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240520_210416-uuog5nyi/files/output.log
+2024-05-20 21:06:21,386 DEBUG   HandlerThread:21401 [handler.py:handle_request():158] handle_request: status_report
+2024-05-20 21:06:22,493 DEBUG   HandlerThread:21401 [handler.py:handle_request():158] handle_request: stop_status
+2024-05-20 21:06:22,493 DEBUG   SenderThread:21401 [sender.py:send_request():405] send_request: stop_status
+2024-05-20 21:06:22,878 INFO    Thread-12 :21401 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240520_210416-uuog5nyi/files/output.log
+2024-05-20 21:06:24,888 INFO    Thread-12 :21401 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240520_210416-uuog5nyi/files/output.log
+2024-05-20 21:06:26,390 DEBUG   HandlerThread:21401 [handler.py:handle_request():158] handle_request: status_report
+2024-05-20 21:06:26,898 INFO    Thread-12 :21401 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240520_210416-uuog5nyi/files/output.log
+2024-05-20 21:06:28,909 INFO    Thread-12 :21401 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240520_210416-uuog5nyi/files/output.log
+2024-05-20 21:06:30,919 INFO    Thread-12 :21401 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240520_210416-uuog5nyi/files/output.log
+2024-05-20 21:06:31,439 DEBUG   HandlerThread:21401 [handler.py:handle_request():158] handle_request: status_report
+2024-05-20 21:06:32,929 INFO    Thread-12 :21401 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240520_210416-uuog5nyi/files/output.log
+2024-05-20 21:06:34,939 INFO    Thread-12 :21401 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240520_210416-uuog5nyi/files/output.log
+2024-05-20 21:06:36,456 DEBUG   HandlerThread:21401 [handler.py:handle_request():158] handle_request: status_report
+2024-05-20 21:06:36,949 INFO    Thread-12 :21401 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240520_210416-uuog5nyi/files/output.log
+2024-05-20 21:06:37,497 DEBUG   HandlerThread:21401 [handler.py:handle_request():158] handle_request: stop_status
+2024-05-20 21:06:37,498 DEBUG   SenderThread:21401 [sender.py:send_request():405] send_request: stop_status
+2024-05-20 21:06:38,954 INFO    Thread-12 :21401 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240520_210416-uuog5nyi/files/output.log
+2024-05-20 21:06:40,964 INFO    Thread-12 :21401 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240520_210416-uuog5nyi/files/output.log
+2024-05-20 21:06:41,495 DEBUG   HandlerThread:21401 [handler.py:handle_request():158] handle_request: status_report
+2024-05-20 21:06:42,971 INFO    Thread-12 :21401 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240520_210416-uuog5nyi/files/output.log
+2024-05-20 21:06:44,981 INFO    Thread-12 :21401 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240520_210416-uuog5nyi/files/output.log
+2024-05-20 21:06:46,501 DEBUG   HandlerThread:21401 [handler.py:handle_request():158] handle_request: status_report
+2024-05-20 21:06:46,992 INFO    Thread-12 :21401 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240520_210416-uuog5nyi/files/output.log
+2024-05-20 21:06:47,460 DEBUG   SenderThread:21401 [sender.py:send():378] send: stats
+2024-05-20 21:06:48,998 INFO    Thread-12 :21401 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240520_210416-uuog5nyi/files/output.log
+2024-05-20 21:06:51,008 INFO    Thread-12 :21401 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240520_210416-uuog5nyi/files/output.log
+2024-05-20 21:06:51,561 DEBUG   HandlerThread:21401 [handler.py:handle_request():158] handle_request: status_report
+2024-05-20 21:06:52,504 DEBUG   HandlerThread:21401 [handler.py:handle_request():158] handle_request: stop_status
+2024-05-20 21:06:52,504 DEBUG   SenderThread:21401 [sender.py:send_request():405] send_request: stop_status
+2024-05-20 21:06:53,018 INFO    Thread-12 :21401 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240520_210416-uuog5nyi/files/output.log
+2024-05-20 21:06:55,029 INFO    Thread-12 :21401 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240520_210416-uuog5nyi/files/output.log
+2024-05-20 21:06:56,606 DEBUG   HandlerThread:21401 [handler.py:handle_request():158] handle_request: status_report
+2024-05-20 21:06:57,039 INFO    Thread-12 :21401 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240520_210416-uuog5nyi/files/output.log
+2024-05-20 21:06:59,047 INFO    Thread-12 :21401 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240520_210416-uuog5nyi/files/output.log
+2024-05-20 21:07:01,053 INFO    Thread-12 :21401 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240520_210416-uuog5nyi/files/output.log
+2024-05-20 21:07:02,251 DEBUG   HandlerThread:21401 [handler.py:handle_request():158] handle_request: status_report
+2024-05-20 21:07:03,063 INFO    Thread-12 :21401 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240520_210416-uuog5nyi/files/output.log
+2024-05-20 21:07:05,073 INFO    Thread-12 :21401 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240520_210416-uuog5nyi/files/output.log
+2024-05-20 21:07:06,839 DEBUG   HandlerThread:21401 [handler.py:handle_request():158] handle_request: partial_history
+2024-05-20 21:07:06,840 DEBUG   HandlerThread:21401 [handler.py:handle_request():158] handle_request: pause
+2024-05-20 21:07:06,840 DEBUG   SenderThread:21401 [sender.py:send():378] send: history
+2024-05-20 21:07:06,840 INFO    HandlerThread:21401 [handler.py:handle_request_pause():724] stopping system metrics thread
+2024-05-20 21:07:06,840 DEBUG   SenderThread:21401 [sender.py:send_request():405] send_request: summary_record
+2024-05-20 21:07:06,840 INFO    HandlerThread:21401 [system_monitor.py:finish():203] Stopping system monitor
+2024-05-20 21:07:06,840 DEBUG   SystemMonitor:21401 [system_monitor.py:_start():179] Finished system metrics aggregation loop
+2024-05-20 21:07:06,840 DEBUG   SystemMonitor:21401 [system_monitor.py:_start():183] Publishing last batch of metrics
+2024-05-20 21:07:06,841 INFO    HandlerThread:21401 [interfaces.py:finish():200] Joined cpu monitor
+2024-05-20 21:07:06,841 INFO    HandlerThread:21401 [interfaces.py:finish():200] Joined disk monitor
+2024-05-20 21:07:06,841 INFO    SenderThread:21401 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-05-20 21:07:06,841 INFO    HandlerThread:21401 [interfaces.py:finish():200] Joined gpuapple monitor
+2024-05-20 21:07:06,841 INFO    HandlerThread:21401 [interfaces.py:finish():200] Joined memory monitor
+2024-05-20 21:07:06,841 INFO    HandlerThread:21401 [interfaces.py:finish():200] Joined network monitor
+2024-05-20 21:07:06,841 DEBUG   SenderThread:21401 [sender.py:send():378] send: stats
+2024-05-20 21:07:07,082 INFO    Thread-12 :21401 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240520_210416-uuog5nyi/files/output.log
+2024-05-20 21:07:07,082 INFO    Thread-12 :21401 [dir_watcher.py:_on_file_created():271] file/dir created: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240520_210416-uuog5nyi/files/wandb-summary.json
+2024-05-20 21:07:07,510 DEBUG   HandlerThread:21401 [handler.py:handle_request():158] handle_request: stop_status
+2024-05-20 21:07:07,511 DEBUG   SenderThread:21401 [sender.py:send_request():405] send_request: stop_status
+2024-05-20 21:07:07,516 DEBUG   HandlerThread:21401 [handler.py:handle_request():158] handle_request: status_report
+2024-05-20 21:07:09,092 INFO    Thread-12 :21401 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240520_210416-uuog5nyi/files/output.log
+2024-05-20 21:07:12,936 DEBUG   HandlerThread:21401 [handler.py:handle_request():158] handle_request: status_report
+2024-05-20 21:07:18,859 DEBUG   HandlerThread:21401 [handler.py:handle_request():158] handle_request: status_report
+2024-05-20 21:07:23,033 DEBUG   HandlerThread:21401 [handler.py:handle_request():158] handle_request: stop_status
+2024-05-20 21:07:23,114 DEBUG   SenderThread:21401 [sender.py:send_request():405] send_request: stop_status
+2024-05-20 21:07:24,766 DEBUG   HandlerThread:21401 [handler.py:handle_request():158] handle_request: status_report
+2024-05-20 21:07:30,270 DEBUG   HandlerThread:21401 [handler.py:handle_request():158] handle_request: status_report
+2024-05-20 21:07:38,061 DEBUG   HandlerThread:21401 [handler.py:handle_request():158] handle_request: status_report
+2024-05-20 21:07:40,677 DEBUG   HandlerThread:21401 [handler.py:handle_request():158] handle_request: stop_status
+2024-05-20 21:07:40,679 DEBUG   SenderThread:21401 [sender.py:send_request():405] send_request: stop_status
+2024-05-20 21:07:42,186 DEBUG   HandlerThread:21401 [handler.py:handle_request():158] handle_request: status_report
+2024-05-20 21:07:47,202 DEBUG   HandlerThread:21401 [handler.py:handle_request():158] handle_request: status_report
+2024-05-20 21:07:52,213 DEBUG   HandlerThread:21401 [handler.py:handle_request():158] handle_request: status_report
+2024-05-20 21:07:53,049 DEBUG   HandlerThread:21401 [handler.py:handle_request():158] handle_request: stop_status
+2024-05-20 21:07:53,049 DEBUG   SenderThread:21401 [sender.py:send_request():405] send_request: stop_status
+2024-05-20 21:07:57,434 DEBUG   HandlerThread:21401 [handler.py:handle_request():158] handle_request: status_report
+2024-05-20 21:08:02,452 DEBUG   HandlerThread:21401 [handler.py:handle_request():158] handle_request: status_report
+2024-05-20 21:08:07,466 DEBUG   HandlerThread:21401 [handler.py:handle_request():158] handle_request: status_report
+2024-05-20 21:08:08,054 DEBUG   HandlerThread:21401 [handler.py:handle_request():158] handle_request: stop_status
+2024-05-20 21:08:08,055 DEBUG   SenderThread:21401 [sender.py:send_request():405] send_request: stop_status
+2024-05-20 21:08:13,460 DEBUG   HandlerThread:21401 [handler.py:handle_request():158] handle_request: status_report
+2024-05-20 21:08:18,476 DEBUG   HandlerThread:21401 [handler.py:handle_request():158] handle_request: status_report
+2024-05-20 21:08:23,054 DEBUG   HandlerThread:21401 [handler.py:handle_request():158] handle_request: stop_status
+2024-05-20 21:08:23,055 DEBUG   SenderThread:21401 [sender.py:send_request():405] send_request: stop_status
+2024-05-20 21:08:24,401 DEBUG   HandlerThread:21401 [handler.py:handle_request():158] handle_request: status_report
+2024-05-20 21:08:29,422 DEBUG   HandlerThread:21401 [handler.py:handle_request():158] handle_request: status_report
+2024-05-20 21:08:34,440 DEBUG   HandlerThread:21401 [handler.py:handle_request():158] handle_request: status_report
+2024-05-20 21:08:38,059 DEBUG   HandlerThread:21401 [handler.py:handle_request():158] handle_request: stop_status
+2024-05-20 21:08:38,060 DEBUG   SenderThread:21401 [sender.py:send_request():405] send_request: stop_status
+2024-05-20 21:08:40,364 DEBUG   HandlerThread:21401 [handler.py:handle_request():158] handle_request: status_report
+2024-05-20 21:08:45,377 DEBUG   HandlerThread:21401 [handler.py:handle_request():158] handle_request: status_report
+2024-05-20 21:08:50,394 DEBUG   HandlerThread:21401 [handler.py:handle_request():158] handle_request: status_report
+2024-05-20 21:08:53,062 DEBUG   HandlerThread:21401 [handler.py:handle_request():158] handle_request: stop_status
+2024-05-20 21:08:53,064 DEBUG   SenderThread:21401 [sender.py:send_request():405] send_request: stop_status
+2024-05-20 21:08:55,447 DEBUG   HandlerThread:21401 [handler.py:handle_request():158] handle_request: status_report
+2024-05-20 21:09:00,466 DEBUG   HandlerThread:21401 [handler.py:handle_request():158] handle_request: status_report
+2024-05-20 21:09:05,478 DEBUG   HandlerThread:21401 [handler.py:handle_request():158] handle_request: status_report
+2024-05-20 21:09:08,066 DEBUG   HandlerThread:21401 [handler.py:handle_request():158] handle_request: stop_status
+2024-05-20 21:09:08,067 DEBUG   SenderThread:21401 [sender.py:send_request():405] send_request: stop_status
+2024-05-20 21:09:11,390 DEBUG   HandlerThread:21401 [handler.py:handle_request():158] handle_request: status_report
+2024-05-20 21:09:16,402 DEBUG   HandlerThread:21401 [handler.py:handle_request():158] handle_request: status_report
+2024-05-20 21:09:21,413 DEBUG   HandlerThread:21401 [handler.py:handle_request():158] handle_request: status_report
+2024-05-20 21:09:23,066 DEBUG   HandlerThread:21401 [handler.py:handle_request():158] handle_request: stop_status
+2024-05-20 21:09:23,067 DEBUG   SenderThread:21401 [sender.py:send_request():405] send_request: stop_status
+2024-05-20 21:09:27,396 DEBUG   HandlerThread:21401 [handler.py:handle_request():158] handle_request: status_report
+2024-05-20 21:09:32,408 DEBUG   HandlerThread:21401 [handler.py:handle_request():158] handle_request: status_report
+2024-05-20 21:09:37,416 DEBUG   HandlerThread:21401 [handler.py:handle_request():158] handle_request: status_report
+2024-05-20 21:09:38,070 DEBUG   HandlerThread:21401 [handler.py:handle_request():158] handle_request: stop_status
+2024-05-20 21:09:38,071 DEBUG   SenderThread:21401 [sender.py:send_request():405] send_request: stop_status
+2024-05-20 21:09:43,405 DEBUG   HandlerThread:21401 [handler.py:handle_request():158] handle_request: status_report
+2024-05-20 21:09:48,417 DEBUG   HandlerThread:21401 [handler.py:handle_request():158] handle_request: status_report
+2024-05-20 21:09:53,075 DEBUG   HandlerThread:21401 [handler.py:handle_request():158] handle_request: stop_status
+2024-05-20 21:09:53,076 DEBUG   SenderThread:21401 [sender.py:send_request():405] send_request: stop_status
+2024-05-20 21:09:53,433 DEBUG   HandlerThread:21401 [handler.py:handle_request():158] handle_request: status_report
+2024-05-20 21:09:58,449 DEBUG   HandlerThread:21401 [handler.py:handle_request():158] handle_request: status_report
+2024-05-20 21:10:03,468 DEBUG   HandlerThread:21401 [handler.py:handle_request():158] handle_request: status_report
+2024-05-20 21:10:08,080 DEBUG   HandlerThread:21401 [handler.py:handle_request():158] handle_request: stop_status
+2024-05-20 21:10:08,081 DEBUG   SenderThread:21401 [sender.py:send_request():405] send_request: stop_status
+2024-05-20 21:10:08,488 DEBUG   HandlerThread:21401 [handler.py:handle_request():158] handle_request: status_report
+2024-05-20 21:10:13,496 DEBUG   HandlerThread:21401 [handler.py:handle_request():158] handle_request: status_report
+2024-05-20 21:10:18,512 DEBUG   HandlerThread:21401 [handler.py:handle_request():158] handle_request: status_report
+2024-05-20 21:10:23,082 DEBUG   HandlerThread:21401 [handler.py:handle_request():158] handle_request: stop_status
+2024-05-20 21:10:23,082 DEBUG   SenderThread:21401 [sender.py:send_request():405] send_request: stop_status
+2024-05-20 21:10:24,512 DEBUG   HandlerThread:21401 [handler.py:handle_request():158] handle_request: status_report
+2024-05-20 21:10:29,528 DEBUG   HandlerThread:21401 [handler.py:handle_request():158] handle_request: status_report
+2024-05-20 21:10:34,544 DEBUG   HandlerThread:21401 [handler.py:handle_request():158] handle_request: status_report
+2024-05-20 21:10:38,086 DEBUG   HandlerThread:21401 [handler.py:handle_request():158] handle_request: stop_status
+2024-05-20 21:10:38,088 DEBUG   SenderThread:21401 [sender.py:send_request():405] send_request: stop_status
+2024-05-20 21:10:40,458 DEBUG   HandlerThread:21401 [handler.py:handle_request():158] handle_request: status_report
+2024-05-20 21:10:45,473 DEBUG   HandlerThread:21401 [handler.py:handle_request():158] handle_request: status_report
+2024-05-20 21:10:50,487 DEBUG   HandlerThread:21401 [handler.py:handle_request():158] handle_request: status_report
+2024-05-20 21:10:53,087 DEBUG   HandlerThread:21401 [handler.py:handle_request():158] handle_request: stop_status
+2024-05-20 21:10:53,088 DEBUG   SenderThread:21401 [sender.py:send_request():405] send_request: stop_status
+2024-05-20 21:10:56,478 DEBUG   HandlerThread:21401 [handler.py:handle_request():158] handle_request: status_report
+2024-05-20 21:11:01,495 DEBUG   HandlerThread:21401 [handler.py:handle_request():158] handle_request: status_report
+2024-05-20 21:11:06,508 DEBUG   HandlerThread:21401 [handler.py:handle_request():158] handle_request: status_report
+2024-05-20 21:11:08,090 DEBUG   HandlerThread:21401 [handler.py:handle_request():158] handle_request: stop_status
+2024-05-20 21:11:08,091 DEBUG   SenderThread:21401 [sender.py:send_request():405] send_request: stop_status
+2024-05-20 21:11:12,439 DEBUG   HandlerThread:21401 [handler.py:handle_request():158] handle_request: status_report
+2024-05-20 21:11:17,457 DEBUG   HandlerThread:21401 [handler.py:handle_request():158] handle_request: status_report
+2024-05-20 21:11:22,470 DEBUG   HandlerThread:21401 [handler.py:handle_request():158] handle_request: status_report
+2024-05-20 21:11:23,091 DEBUG   HandlerThread:21401 [handler.py:handle_request():158] handle_request: stop_status
+2024-05-20 21:11:23,092 DEBUG   SenderThread:21401 [sender.py:send_request():405] send_request: stop_status
+2024-05-20 21:11:27,492 DEBUG   HandlerThread:21401 [handler.py:handle_request():158] handle_request: status_report
+2024-05-20 21:11:32,506 DEBUG   HandlerThread:21401 [handler.py:handle_request():158] handle_request: status_report
+2024-05-20 21:11:37,520 DEBUG   HandlerThread:21401 [handler.py:handle_request():158] handle_request: status_report
+2024-05-20 21:11:38,092 DEBUG   HandlerThread:21401 [handler.py:handle_request():158] handle_request: stop_status
+2024-05-20 21:11:38,093 DEBUG   SenderThread:21401 [sender.py:send_request():405] send_request: stop_status
+2024-05-20 21:11:42,569 DEBUG   HandlerThread:21401 [handler.py:handle_request():158] handle_request: status_report
+2024-05-20 21:11:47,581 DEBUG   HandlerThread:21401 [handler.py:handle_request():158] handle_request: status_report
+2024-05-20 21:11:52,599 DEBUG   HandlerThread:21401 [handler.py:handle_request():158] handle_request: status_report
+2024-05-20 21:11:53,103 DEBUG   HandlerThread:21401 [handler.py:handle_request():158] handle_request: stop_status
+2024-05-20 21:11:53,106 DEBUG   SenderThread:21401 [sender.py:send_request():405] send_request: stop_status
+2024-05-20 21:11:58,494 DEBUG   HandlerThread:21401 [handler.py:handle_request():158] handle_request: status_report
+2024-05-20 21:12:03,506 DEBUG   HandlerThread:21401 [handler.py:handle_request():158] handle_request: status_report
+2024-05-20 21:12:07,919 DEBUG   HandlerThread:21401 [handler.py:handle_request():158] handle_request: resume
+2024-05-20 21:12:07,919 INFO    HandlerThread:21401 [handler.py:handle_request_resume():715] starting system metrics thread
+2024-05-20 21:12:07,919 INFO    HandlerThread:21401 [system_monitor.py:start():194] Starting system monitor
+2024-05-20 21:12:07,920 INFO    SystemMonitor:21401 [system_monitor.py:_start():158] Starting system asset monitoring threads
+2024-05-20 21:12:07,921 INFO    SystemMonitor:21401 [interfaces.py:start():188] Started cpu monitoring
+2024-05-20 21:12:07,921 INFO    SystemMonitor:21401 [interfaces.py:start():188] Started disk monitoring
+2024-05-20 21:12:07,922 INFO    SystemMonitor:21401 [interfaces.py:start():188] Started gpuapple monitoring
+2024-05-20 21:12:07,924 INFO    SystemMonitor:21401 [interfaces.py:start():188] Started memory monitoring
+2024-05-20 21:12:07,925 INFO    SystemMonitor:21401 [interfaces.py:start():188] Started network monitoring
+2024-05-20 21:12:07,928 DEBUG   HandlerThread:21401 [handler.py:handle_request():158] handle_request: pause
+2024-05-20 21:12:07,928 INFO    HandlerThread:21401 [handler.py:handle_request_pause():724] stopping system metrics thread
+2024-05-20 21:12:07,928 INFO    HandlerThread:21401 [system_monitor.py:finish():203] Stopping system monitor
+2024-05-20 21:12:07,929 DEBUG   SystemMonitor:21401 [system_monitor.py:_start():172] Starting system metrics aggregation loop
+2024-05-20 21:12:07,929 INFO    HandlerThread:21401 [interfaces.py:finish():200] Joined cpu monitor
+2024-05-20 21:12:07,929 DEBUG   SystemMonitor:21401 [system_monitor.py:_start():179] Finished system metrics aggregation loop
+2024-05-20 21:12:07,929 INFO    HandlerThread:21401 [interfaces.py:finish():200] Joined disk monitor
+2024-05-20 21:12:07,930 DEBUG   SystemMonitor:21401 [system_monitor.py:_start():183] Publishing last batch of metrics
+2024-05-20 21:12:08,315 INFO    HandlerThread:21401 [interfaces.py:finish():200] Joined gpuapple monitor
+2024-05-20 21:12:08,315 INFO    HandlerThread:21401 [interfaces.py:finish():200] Joined memory monitor
+2024-05-20 21:12:08,315 INFO    HandlerThread:21401 [interfaces.py:finish():200] Joined network monitor
+2024-05-20 21:12:08,315 DEBUG   HandlerThread:21401 [handler.py:handle_request():158] handle_request: stop_status
+2024-05-20 21:12:08,315 DEBUG   SenderThread:21401 [sender.py:send():378] send: stats
+2024-05-20 21:12:08,315 DEBUG   SenderThread:21401 [sender.py:send_request():405] send_request: stop_status
+2024-05-20 21:12:08,663 DEBUG   HandlerThread:21401 [handler.py:handle_request():158] handle_request: status_report
+2024-05-20 21:12:13,680 DEBUG   HandlerThread:21401 [handler.py:handle_request():158] handle_request: status_report
+2024-05-20 21:12:18,700 DEBUG   HandlerThread:21401 [handler.py:handle_request():158] handle_request: status_report
+2024-05-20 21:12:23,108 DEBUG   HandlerThread:21401 [handler.py:handle_request():158] handle_request: stop_status
+2024-05-20 21:12:23,108 DEBUG   SenderThread:21401 [sender.py:send_request():405] send_request: stop_status
+2024-05-20 21:12:24,433 DEBUG   HandlerThread:21401 [handler.py:handle_request():158] handle_request: status_report
+2024-05-20 21:12:29,451 DEBUG   HandlerThread:21401 [handler.py:handle_request():158] handle_request: status_report
+2024-05-20 21:12:34,465 DEBUG   HandlerThread:21401 [handler.py:handle_request():158] handle_request: status_report
+2024-05-20 21:12:38,108 DEBUG   HandlerThread:21401 [handler.py:handle_request():158] handle_request: stop_status
+2024-05-20 21:12:38,109 DEBUG   SenderThread:21401 [sender.py:send_request():405] send_request: stop_status
+2024-05-20 21:12:40,428 DEBUG   HandlerThread:21401 [handler.py:handle_request():158] handle_request: status_report
+2024-05-20 21:12:45,450 DEBUG   HandlerThread:21401 [handler.py:handle_request():158] handle_request: status_report
+2024-05-20 21:12:45,557 DEBUG   HandlerThread:21401 [handler.py:handle_request():158] handle_request: resume
+2024-05-20 21:12:45,557 INFO    HandlerThread:21401 [handler.py:handle_request_resume():715] starting system metrics thread
+2024-05-20 21:12:45,557 INFO    HandlerThread:21401 [system_monitor.py:start():194] Starting system monitor
+2024-05-20 21:12:45,557 INFO    SystemMonitor:21401 [system_monitor.py:_start():158] Starting system asset monitoring threads
+2024-05-20 21:12:45,558 INFO    SystemMonitor:21401 [interfaces.py:start():188] Started cpu monitoring
+2024-05-20 21:12:45,558 INFO    SystemMonitor:21401 [interfaces.py:start():188] Started disk monitoring
+2024-05-20 21:12:45,558 INFO    SystemMonitor:21401 [interfaces.py:start():188] Started gpuapple monitoring
+2024-05-20 21:12:45,559 INFO    SystemMonitor:21401 [interfaces.py:start():188] Started memory monitoring
+2024-05-20 21:12:45,561 INFO    SystemMonitor:21401 [interfaces.py:start():188] Started network monitoring
+2024-05-20 21:12:45,573 DEBUG   SenderThread:21401 [sender.py:send():378] send: telemetry
+2024-05-20 21:12:45,578 DEBUG   SenderThread:21401 [sender.py:send():378] send: exit
+2024-05-20 21:12:45,578 INFO    SenderThread:21401 [sender.py:send_exit():585] handling exit code: 0
+2024-05-20 21:12:45,579 INFO    SenderThread:21401 [sender.py:send_exit():587] handling runtime: 169
+2024-05-20 21:12:45,580 INFO    SenderThread:21401 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-05-20 21:12:45,581 INFO    SenderThread:21401 [sender.py:send_exit():593] send defer
+2024-05-20 21:12:45,582 DEBUG   HandlerThread:21401 [handler.py:handle_request():158] handle_request: defer
+2024-05-20 21:12:45,582 INFO    HandlerThread:21401 [handler.py:handle_request_defer():184] handle defer: 0
+2024-05-20 21:12:45,583 DEBUG   SenderThread:21401 [sender.py:send_request():405] send_request: defer
+2024-05-20 21:12:45,583 INFO    SenderThread:21401 [sender.py:send_request_defer():609] handle sender defer: 0
+2024-05-20 21:12:45,584 INFO    SenderThread:21401 [sender.py:transition_state():613] send defer: 1
+2024-05-20 21:12:45,584 DEBUG   HandlerThread:21401 [handler.py:handle_request():158] handle_request: defer
+2024-05-20 21:12:45,584 INFO    HandlerThread:21401 [handler.py:handle_request_defer():184] handle defer: 1
+2024-05-20 21:12:45,584 DEBUG   SenderThread:21401 [sender.py:send_request():405] send_request: defer
+2024-05-20 21:12:45,584 INFO    SenderThread:21401 [sender.py:send_request_defer():609] handle sender defer: 1
+2024-05-20 21:12:45,584 INFO    SenderThread:21401 [sender.py:transition_state():613] send defer: 2
+2024-05-20 21:12:45,584 DEBUG   HandlerThread:21401 [handler.py:handle_request():158] handle_request: defer
+2024-05-20 21:12:45,584 INFO    HandlerThread:21401 [handler.py:handle_request_defer():184] handle defer: 2
+2024-05-20 21:12:45,584 INFO    HandlerThread:21401 [system_monitor.py:finish():203] Stopping system monitor
+2024-05-20 21:12:45,585 DEBUG   SystemMonitor:21401 [system_monitor.py:_start():172] Starting system metrics aggregation loop
+2024-05-20 21:12:45,585 INFO    HandlerThread:21401 [interfaces.py:finish():200] Joined cpu monitor
+2024-05-20 21:12:45,585 DEBUG   SystemMonitor:21401 [system_monitor.py:_start():179] Finished system metrics aggregation loop
+2024-05-20 21:12:45,585 INFO    HandlerThread:21401 [interfaces.py:finish():200] Joined disk monitor
+2024-05-20 21:12:45,585 DEBUG   SystemMonitor:21401 [system_monitor.py:_start():183] Publishing last batch of metrics
+2024-05-20 21:12:45,630 INFO    Thread-12 :21401 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240520_210416-uuog5nyi/files/wandb-summary.json
+2024-05-20 21:12:45,938 INFO    HandlerThread:21401 [interfaces.py:finish():200] Joined gpuapple monitor
+2024-05-20 21:12:45,938 INFO    HandlerThread:21401 [interfaces.py:finish():200] Joined memory monitor
+2024-05-20 21:12:45,938 INFO    HandlerThread:21401 [interfaces.py:finish():200] Joined network monitor
+2024-05-20 21:12:45,938 DEBUG   SenderThread:21401 [sender.py:send_request():405] send_request: defer
+2024-05-20 21:12:45,938 INFO    SenderThread:21401 [sender.py:send_request_defer():609] handle sender defer: 2
+2024-05-20 21:12:45,938 INFO    SenderThread:21401 [sender.py:transition_state():613] send defer: 3
+2024-05-20 21:12:45,938 DEBUG   SenderThread:21401 [sender.py:send():378] send: stats
+2024-05-20 21:12:45,939 DEBUG   HandlerThread:21401 [handler.py:handle_request():158] handle_request: defer
+2024-05-20 21:12:45,939 INFO    HandlerThread:21401 [handler.py:handle_request_defer():184] handle defer: 3
+2024-05-20 21:12:45,939 DEBUG   SenderThread:21401 [sender.py:send_request():405] send_request: defer
+2024-05-20 21:12:45,939 INFO    SenderThread:21401 [sender.py:send_request_defer():609] handle sender defer: 3
+2024-05-20 21:12:45,939 INFO    SenderThread:21401 [sender.py:transition_state():613] send defer: 4
+2024-05-20 21:12:45,939 DEBUG   HandlerThread:21401 [handler.py:handle_request():158] handle_request: defer
+2024-05-20 21:12:45,939 INFO    HandlerThread:21401 [handler.py:handle_request_defer():184] handle defer: 4
+2024-05-20 21:12:45,939 DEBUG   SenderThread:21401 [sender.py:send_request():405] send_request: defer
+2024-05-20 21:12:45,939 INFO    SenderThread:21401 [sender.py:send_request_defer():609] handle sender defer: 4
+2024-05-20 21:12:45,939 INFO    SenderThread:21401 [sender.py:transition_state():613] send defer: 5
+2024-05-20 21:12:45,939 DEBUG   HandlerThread:21401 [handler.py:handle_request():158] handle_request: defer
+2024-05-20 21:12:45,939 INFO    HandlerThread:21401 [handler.py:handle_request_defer():184] handle defer: 5
+2024-05-20 21:12:45,939 DEBUG   SenderThread:21401 [sender.py:send():378] send: summary
+2024-05-20 21:12:45,939 INFO    SenderThread:21401 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-05-20 21:12:45,939 DEBUG   SenderThread:21401 [sender.py:send_request():405] send_request: defer
+2024-05-20 21:12:45,939 INFO    SenderThread:21401 [sender.py:send_request_defer():609] handle sender defer: 5
+2024-05-20 21:12:45,940 INFO    SenderThread:21401 [sender.py:transition_state():613] send defer: 6
+2024-05-20 21:12:45,940 DEBUG   HandlerThread:21401 [handler.py:handle_request():158] handle_request: defer
+2024-05-20 21:12:45,940 INFO    HandlerThread:21401 [handler.py:handle_request_defer():184] handle defer: 6
+2024-05-20 21:12:45,940 DEBUG   SenderThread:21401 [sender.py:send_request():405] send_request: defer
+2024-05-20 21:12:45,940 INFO    SenderThread:21401 [sender.py:send_request_defer():609] handle sender defer: 6
+2024-05-20 21:12:45,941 DEBUG   HandlerThread:21401 [handler.py:handle_request():158] handle_request: status_report
+2024-05-20 21:12:46,239 INFO    SenderThread:21401 [sender.py:transition_state():613] send defer: 7
+2024-05-20 21:12:46,239 DEBUG   HandlerThread:21401 [handler.py:handle_request():158] handle_request: defer
+2024-05-20 21:12:46,239 INFO    HandlerThread:21401 [handler.py:handle_request_defer():184] handle defer: 7
+2024-05-20 21:12:46,239 DEBUG   SenderThread:21401 [sender.py:send_request():405] send_request: defer
+2024-05-20 21:12:46,239 INFO    SenderThread:21401 [sender.py:send_request_defer():609] handle sender defer: 7
+2024-05-20 21:12:46,580 DEBUG   HandlerThread:21401 [handler.py:handle_request():158] handle_request: poll_exit
+2024-05-20 21:12:46,635 INFO    Thread-12 :21401 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240520_210416-uuog5nyi/files/config.yaml
+2024-05-20 21:12:46,636 INFO    Thread-12 :21401 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240520_210416-uuog5nyi/files/wandb-summary.json
+2024-05-20 21:12:47,407 INFO    SenderThread:21401 [sender.py:transition_state():613] send defer: 8
+2024-05-20 21:12:47,408 DEBUG   SenderThread:21401 [sender.py:send_request():405] send_request: poll_exit
+2024-05-20 21:12:47,408 DEBUG   HandlerThread:21401 [handler.py:handle_request():158] handle_request: defer
+2024-05-20 21:12:47,409 INFO    HandlerThread:21401 [handler.py:handle_request_defer():184] handle defer: 8
+2024-05-20 21:12:47,409 DEBUG   SenderThread:21401 [sender.py:send_request():405] send_request: defer
+2024-05-20 21:12:47,409 INFO    SenderThread:21401 [sender.py:send_request_defer():609] handle sender defer: 8
+2024-05-20 21:12:47,410 INFO    SenderThread:21401 [job_builder.py:build():432] Attempting to build job artifact
+2024-05-20 21:12:47,411 INFO    SenderThread:21401 [job_builder.py:_get_source_type():565] is repo sourced job
+2024-05-20 21:12:47,412 INFO    SenderThread:21401 [job_builder.py:_get_program_relpath():583] run is notebook based run
+2024-05-20 21:12:47,412 WARNING SenderThread:21401 [job_builder.py:_log_if_verbose():267] Source type is set to 'repo' but some required information is missing from the environment. A job will not be created from this run. See https://docs.wandb.ai/guides/launch/create-job
+2024-05-20 21:12:47,412 INFO    SenderThread:21401 [sender.py:transition_state():613] send defer: 9
+2024-05-20 21:12:47,412 DEBUG   HandlerThread:21401 [handler.py:handle_request():158] handle_request: defer
+2024-05-20 21:12:47,412 INFO    HandlerThread:21401 [handler.py:handle_request_defer():184] handle defer: 9
+2024-05-20 21:12:47,412 DEBUG   SenderThread:21401 [sender.py:send_request():405] send_request: defer
+2024-05-20 21:12:47,412 INFO    SenderThread:21401 [sender.py:send_request_defer():609] handle sender defer: 9
+2024-05-20 21:12:47,412 INFO    SenderThread:21401 [dir_watcher.py:finish():358] shutting down directory watcher
+2024-05-20 21:12:47,585 DEBUG   HandlerThread:21401 [handler.py:handle_request():158] handle_request: poll_exit
+2024-05-20 21:12:47,641 INFO    Thread-12 :21401 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240520_210416-uuog5nyi/files/output.log
+2024-05-20 21:12:47,641 INFO    SenderThread:21401 [dir_watcher.py:finish():388] scan: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240520_210416-uuog5nyi/files
+2024-05-20 21:12:47,641 INFO    SenderThread:21401 [dir_watcher.py:finish():402] scan save: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240520_210416-uuog5nyi/files/requirements.txt requirements.txt
+2024-05-20 21:12:47,641 INFO    SenderThread:21401 [dir_watcher.py:finish():402] scan save: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240520_210416-uuog5nyi/files/output.log output.log
+2024-05-20 21:12:47,643 INFO    SenderThread:21401 [dir_watcher.py:finish():402] scan save: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240520_210416-uuog5nyi/files/config.yaml config.yaml
+2024-05-20 21:12:47,643 INFO    SenderThread:21401 [dir_watcher.py:finish():402] scan save: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240520_210416-uuog5nyi/files/wandb-summary.json wandb-summary.json
+2024-05-20 21:12:47,644 INFO    SenderThread:21401 [dir_watcher.py:finish():402] scan save: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240520_210416-uuog5nyi/files/conda-environment.yaml conda-environment.yaml
+2024-05-20 21:12:47,645 INFO    SenderThread:21401 [dir_watcher.py:finish():402] scan save: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240520_210416-uuog5nyi/files/wandb-metadata.json wandb-metadata.json
+2024-05-20 21:12:47,646 INFO    SenderThread:21401 [sender.py:transition_state():613] send defer: 10
+2024-05-20 21:12:47,646 DEBUG   SenderThread:21401 [sender.py:send_request():405] send_request: poll_exit
+2024-05-20 21:12:47,646 DEBUG   HandlerThread:21401 [handler.py:handle_request():158] handle_request: defer
+2024-05-20 21:12:47,646 INFO    HandlerThread:21401 [handler.py:handle_request_defer():184] handle defer: 10
+2024-05-20 21:12:47,646 DEBUG   SenderThread:21401 [sender.py:send_request():405] send_request: defer
+2024-05-20 21:12:47,646 INFO    SenderThread:21401 [sender.py:send_request_defer():609] handle sender defer: 10
+2024-05-20 21:12:47,646 INFO    SenderThread:21401 [file_pusher.py:finish():169] shutting down file pusher
+2024-05-20 21:12:48,507 INFO    wandb-upload_2:21401 [upload_job.py:push():130] Uploaded file /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240520_210416-uuog5nyi/files/config.yaml
+2024-05-20 21:12:48,507 INFO    wandb-upload_3:21401 [upload_job.py:push():130] Uploaded file /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240520_210416-uuog5nyi/files/wandb-summary.json
+2024-05-20 21:12:48,508 INFO    wandb-upload_0:21401 [upload_job.py:push():130] Uploaded file /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240520_210416-uuog5nyi/files/requirements.txt
+2024-05-20 21:12:48,520 INFO    wandb-upload_4:21401 [upload_job.py:push():130] Uploaded file /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240520_210416-uuog5nyi/files/conda-environment.yaml
+2024-05-20 21:12:48,570 INFO    wandb-upload_1:21401 [upload_job.py:push():130] Uploaded file /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240520_210416-uuog5nyi/files/output.log
+2024-05-20 21:12:48,591 DEBUG   HandlerThread:21401 [handler.py:handle_request():158] handle_request: poll_exit
+2024-05-20 21:12:48,592 DEBUG   SenderThread:21401 [sender.py:send_request():405] send_request: poll_exit
+2024-05-20 21:12:48,776 INFO    Thread-11 (_thread_body):21401 [sender.py:transition_state():613] send defer: 11
+2024-05-20 21:12:48,776 DEBUG   HandlerThread:21401 [handler.py:handle_request():158] handle_request: defer
+2024-05-20 21:12:48,776 INFO    HandlerThread:21401 [handler.py:handle_request_defer():184] handle defer: 11
+2024-05-20 21:12:48,776 DEBUG   SenderThread:21401 [sender.py:send_request():405] send_request: defer
+2024-05-20 21:12:48,776 INFO    SenderThread:21401 [sender.py:send_request_defer():609] handle sender defer: 11
+2024-05-20 21:12:48,776 INFO    SenderThread:21401 [file_pusher.py:join():175] waiting for file pusher
+2024-05-20 21:12:48,779 INFO    SenderThread:21401 [sender.py:transition_state():613] send defer: 12
+2024-05-20 21:12:48,779 DEBUG   HandlerThread:21401 [handler.py:handle_request():158] handle_request: defer
+2024-05-20 21:12:48,779 INFO    HandlerThread:21401 [handler.py:handle_request_defer():184] handle defer: 12
+2024-05-20 21:12:48,780 DEBUG   SenderThread:21401 [sender.py:send_request():405] send_request: defer
+2024-05-20 21:12:48,780 INFO    SenderThread:21401 [sender.py:send_request_defer():609] handle sender defer: 12
+2024-05-20 21:12:48,780 INFO    SenderThread:21401 [file_stream.py:finish():601] file stream finish called
+2024-05-20 21:12:49,597 DEBUG   HandlerThread:21401 [handler.py:handle_request():158] handle_request: poll_exit
+2024-05-20 21:12:49,836 INFO    SenderThread:21401 [file_stream.py:finish():605] file stream finish is done
+2024-05-20 21:12:49,837 INFO    SenderThread:21401 [sender.py:transition_state():613] send defer: 13
+2024-05-20 21:12:49,837 DEBUG   SenderThread:21401 [sender.py:send_request():405] send_request: poll_exit
+2024-05-20 21:12:49,837 DEBUG   HandlerThread:21401 [handler.py:handle_request():158] handle_request: defer
+2024-05-20 21:12:49,837 INFO    HandlerThread:21401 [handler.py:handle_request_defer():184] handle defer: 13
+2024-05-20 21:12:49,838 DEBUG   SenderThread:21401 [sender.py:send_request():405] send_request: defer
+2024-05-20 21:12:49,838 INFO    SenderThread:21401 [sender.py:send_request_defer():609] handle sender defer: 13
+2024-05-20 21:12:49,838 INFO    SenderThread:21401 [sender.py:transition_state():613] send defer: 14
+2024-05-20 21:12:49,838 DEBUG   HandlerThread:21401 [handler.py:handle_request():158] handle_request: defer
+2024-05-20 21:12:49,838 INFO    HandlerThread:21401 [handler.py:handle_request_defer():184] handle defer: 14
+2024-05-20 21:12:49,838 DEBUG   SenderThread:21401 [sender.py:send():378] send: final
+2024-05-20 21:12:49,838 DEBUG   SenderThread:21401 [sender.py:send():378] send: footer
+2024-05-20 21:12:49,838 DEBUG   SenderThread:21401 [sender.py:send_request():405] send_request: defer
+2024-05-20 21:12:49,838 INFO    SenderThread:21401 [sender.py:send_request_defer():609] handle sender defer: 14
+2024-05-20 21:12:49,839 DEBUG   HandlerThread:21401 [handler.py:handle_request():158] handle_request: poll_exit
+2024-05-20 21:12:49,839 DEBUG   SenderThread:21401 [sender.py:send_request():405] send_request: poll_exit
+2024-05-20 21:12:49,839 DEBUG   HandlerThread:21401 [handler.py:handle_request():158] handle_request: internal_messages
+2024-05-20 21:12:49,840 DEBUG   HandlerThread:21401 [handler.py:handle_request():158] handle_request: server_info
+2024-05-20 21:12:49,840 DEBUG   HandlerThread:21401 [handler.py:handle_request():158] handle_request: get_summary
+2024-05-20 21:12:49,840 DEBUG   HandlerThread:21401 [handler.py:handle_request():158] handle_request: sampled_history
+2024-05-20 21:12:49,841 DEBUG   SenderThread:21401 [sender.py:send_request():405] send_request: server_info
+2024-05-20 21:12:50,236 DEBUG   HandlerThread:21401 [handler.py:handle_request():158] handle_request: shutdown
+2024-05-20 21:12:50,236 INFO    HandlerThread:21401 [handler.py:finish():882] shutting down handler
+2024-05-20 21:12:50,845 INFO    WriterThread:21401 [datastore.py:close():296] close: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240520_210416-uuog5nyi/run-uuog5nyi.wandb
+2024-05-20 21:12:51,234 INFO    SenderThread:21401 [sender.py:finish():1545] shutting down sender
+2024-05-20 21:12:51,235 INFO    SenderThread:21401 [file_pusher.py:finish():169] shutting down file pusher
+2024-05-20 21:12:51,235 INFO    SenderThread:21401 [file_pusher.py:join():175] waiting for file pusher

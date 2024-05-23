@@ -1,0 +1,1092 @@
+2024-05-20 12:14:53,374 INFO    StreamThr :55838 [internal.py:wandb_internal():85] W&B internal server running at pid: 55838, started at: 2024-05-20 12:14:53.372131
+2024-05-20 12:14:53,375 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: status
+2024-05-20 12:14:53,380 INFO    WriterThread:55838 [datastore.py:open_for_write():87] open: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240520_121453-9rthrijp/run-9rthrijp.wandb
+2024-05-20 12:14:53,381 DEBUG   SenderThread:55838 [sender.py:send():378] send: header
+2024-05-20 12:14:53,420 DEBUG   SenderThread:55838 [sender.py:send():378] send: run
+2024-05-20 12:14:54,800 INFO    SenderThread:55838 [dir_watcher.py:__init__():211] watching files in: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240520_121453-9rthrijp/files
+2024-05-20 12:14:54,801 INFO    SenderThread:55838 [sender.py:_start_run_threads():1123] run started: 9rthrijp with start time 1716187493.372991
+2024-05-20 12:14:54,815 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: check_version
+2024-05-20 12:14:54,816 DEBUG   SenderThread:55838 [sender.py:send_request():405] send_request: check_version
+2024-05-20 12:14:54,964 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: run_start
+2024-05-20 12:14:55,088 DEBUG   HandlerThread:55838 [system_info.py:__init__():26] System info init
+2024-05-20 12:14:55,089 DEBUG   HandlerThread:55838 [system_info.py:__init__():41] System info init done
+2024-05-20 12:14:55,089 INFO    HandlerThread:55838 [system_monitor.py:start():194] Starting system monitor
+2024-05-20 12:14:55,089 INFO    SystemMonitor:55838 [system_monitor.py:_start():158] Starting system asset monitoring threads
+2024-05-20 12:14:55,090 INFO    HandlerThread:55838 [system_monitor.py:probe():214] Collecting system info
+2024-05-20 12:14:55,126 INFO    SystemMonitor:55838 [interfaces.py:start():188] Started cpu monitoring
+2024-05-20 12:14:55,318 INFO    SystemMonitor:55838 [interfaces.py:start():188] Started disk monitoring
+2024-05-20 12:14:55,433 INFO    SystemMonitor:55838 [interfaces.py:start():188] Started gpuapple monitoring
+2024-05-20 12:14:55,604 INFO    SystemMonitor:55838 [interfaces.py:start():188] Started memory monitoring
+2024-05-20 12:14:55,606 INFO    SystemMonitor:55838 [interfaces.py:start():188] Started network monitoring
+2024-05-20 12:14:57,907 DEBUG   HandlerThread:55838 [system_info.py:probe():150] Probing system
+2024-05-20 12:14:57,910 DEBUG   HandlerThread:55838 [system_info.py:_probe_git():135] Probing git
+2024-05-20 12:14:57,924 DEBUG   HandlerThread:55838 [system_info.py:_probe_git():143] Probing git done
+2024-05-20 12:14:57,924 DEBUG   HandlerThread:55838 [system_info.py:probe():198] Probing system done
+2024-05-20 12:14:57,924 DEBUG   HandlerThread:55838 [system_monitor.py:probe():223] {'os': 'macOS-14.4.1-arm64-arm-64bit', 'python': '3.12.3', 'heartbeatAt': '2024-05-20T06:44:57.907468', 'startedAt': '2024-05-20T06:44:53.360004', 'docker': None, 'cuda': None, 'args': (), 'state': 'running', 'program': '<python with no main file>', 'codePathLocal': None, 'git': {'remote': 'https://github.com/MaheepChaudhary/DAS_MAT.git', 'commit': '477f5f0170c5ac9ddbea26973488eb3d25fdb405'}, 'email': 'chaudhary.maheep28@gmail.com', 'root': '/Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT', 'host': 'Maheeps-MBP', 'username': 'maheepchaudhary', 'executable': '/Users/maheepchaudhary/miniforge3/envs/nnsight/bin/python', 'cpu_count': 11, 'cpu_count_logical': 11, 'cpu_freq': {'current': 4056, 'min': 696, 'max': 4056}, 'cpu_freq_per_core': [{'current': 4056, 'min': 696, 'max': 4056}], 'disk': {'/': {'total': 460.4317207336426, 'used': 434.67510986328125}}, 'gpuapple': {'type': 'Apple M3 Pro', 'vendor': 'sppci_vendor_Apple'}, 'memory': {'total': 18.0}}
+2024-05-20 12:14:57,924 INFO    HandlerThread:55838 [system_monitor.py:probe():224] Finished collecting system info
+2024-05-20 12:14:57,924 INFO    HandlerThread:55838 [system_monitor.py:probe():227] Publishing system info
+2024-05-20 12:14:57,924 DEBUG   HandlerThread:55838 [system_info.py:_save_conda():207] Saving list of conda packages installed into the current environment
+2024-05-20 12:14:58,816 INFO    Thread-12 :55838 [dir_watcher.py:_on_file_created():271] file/dir created: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240520_121453-9rthrijp/files/conda-environment.yaml
+2024-05-20 12:15:02,416 DEBUG   HandlerThread:55838 [system_info.py:_save_conda():222] Saving conda packages done
+2024-05-20 12:15:02,417 INFO    HandlerThread:55838 [system_monitor.py:probe():229] Finished publishing system info
+2024-05-20 12:15:02,419 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: status_report
+2024-05-20 12:15:02,419 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: keepalive
+2024-05-20 12:15:02,419 DEBUG   SenderThread:55838 [sender.py:send():378] send: files
+2024-05-20 12:15:02,419 INFO    SenderThread:55838 [sender.py:_save_file():1389] saving file wandb-metadata.json with policy now
+2024-05-20 12:15:02,476 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: python_packages
+2024-05-20 12:15:02,476 DEBUG   SenderThread:55838 [sender.py:send_request():405] send_request: python_packages
+2024-05-20 12:15:02,476 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: stop_status
+2024-05-20 12:15:02,476 DEBUG   SenderThread:55838 [sender.py:send_request():405] send_request: stop_status
+2024-05-20 12:15:02,836 INFO    Thread-12 :55838 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240520_121453-9rthrijp/files/conda-environment.yaml
+2024-05-20 12:15:02,836 INFO    Thread-12 :55838 [dir_watcher.py:_on_file_created():271] file/dir created: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240520_121453-9rthrijp/files/requirements.txt
+2024-05-20 12:15:02,836 INFO    Thread-12 :55838 [dir_watcher.py:_on_file_created():271] file/dir created: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240520_121453-9rthrijp/files/wandb-metadata.json
+2024-05-20 12:15:02,845 DEBUG   SenderThread:55838 [sender.py:send():378] send: telemetry
+2024-05-20 12:15:02,845 DEBUG   SenderThread:55838 [sender.py:send():378] send: telemetry
+2024-05-20 12:15:02,845 DEBUG   SenderThread:55838 [sender.py:send():378] send: run
+2024-05-20 12:15:03,121 INFO    SenderThread:55838 [sender.py:send_run():996] updated run: 9rthrijp
+2024-05-20 12:15:03,507 INFO    wandb-upload_0:55838 [upload_job.py:push():130] Uploaded file /var/folders/_x/mkf1szd12yv28px5ztl_sjjr0000gn/T/tmp_07ukck1wandb/mh52mfes-wandb-metadata.json
+2024-05-20 12:15:03,838 INFO    Thread-12 :55838 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240520_121453-9rthrijp/files/config.yaml
+2024-05-20 12:15:04,126 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: status_report
+2024-05-20 12:15:09,297 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: status_report
+2024-05-20 12:15:11,892 INFO    Thread-12 :55838 [dir_watcher.py:_on_file_created():271] file/dir created: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240520_121453-9rthrijp/files/output.log
+2024-05-20 12:15:13,899 INFO    Thread-12 :55838 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240520_121453-9rthrijp/files/output.log
+2024-05-20 12:15:15,216 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: status_report
+2024-05-20 12:15:17,482 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: stop_status
+2024-05-20 12:15:17,482 DEBUG   SenderThread:55838 [sender.py:send_request():405] send_request: stop_status
+2024-05-20 12:15:20,772 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: status_report
+2024-05-20 12:15:24,283 INFO    Thread-12 :55838 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240520_121453-9rthrijp/files/output.log
+2024-05-20 12:15:24,986 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: partial_history
+2024-05-20 12:15:25,024 DEBUG   SenderThread:55838 [sender.py:send():378] send: history
+2024-05-20 12:15:25,030 DEBUG   SenderThread:55838 [sender.py:send_request():405] send_request: summary_record
+2024-05-20 12:15:25,070 INFO    SenderThread:55838 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-05-20 12:15:25,286 INFO    Thread-12 :55838 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240520_121453-9rthrijp/files/output.log
+2024-05-20 12:15:25,286 INFO    Thread-12 :55838 [dir_watcher.py:_on_file_created():271] file/dir created: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240520_121453-9rthrijp/files/wandb-summary.json
+2024-05-20 12:15:26,061 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: status_report
+2024-05-20 12:15:27,413 INFO    Thread-12 :55838 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240520_121453-9rthrijp/files/config.yaml
+2024-05-20 12:15:27,425 INFO    Thread-12 :55838 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240520_121453-9rthrijp/files/output.log
+2024-05-20 12:15:27,969 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: partial_history
+2024-05-20 12:15:27,990 DEBUG   SenderThread:55838 [sender.py:send():378] send: history
+2024-05-20 12:15:27,996 DEBUG   SenderThread:55838 [sender.py:send_request():405] send_request: summary_record
+2024-05-20 12:15:28,040 INFO    SenderThread:55838 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-05-20 12:15:28,629 INFO    Thread-12 :55838 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240520_121453-9rthrijp/files/wandb-summary.json
+2024-05-20 12:15:29,713 INFO    Thread-12 :55838 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240520_121453-9rthrijp/files/output.log
+2024-05-20 12:15:31,352 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: partial_history
+2024-05-20 12:15:31,381 DEBUG   SenderThread:55838 [sender.py:send():378] send: history
+2024-05-20 12:15:31,394 DEBUG   SenderThread:55838 [sender.py:send_request():405] send_request: summary_record
+2024-05-20 12:15:31,456 INFO    SenderThread:55838 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-05-20 12:15:31,811 INFO    Thread-12 :55838 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240520_121453-9rthrijp/files/wandb-summary.json
+2024-05-20 12:15:31,812 INFO    Thread-12 :55838 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240520_121453-9rthrijp/files/output.log
+2024-05-20 12:15:32,050 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: status_report
+2024-05-20 12:15:32,483 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: stop_status
+2024-05-20 12:15:32,484 DEBUG   SenderThread:55838 [sender.py:send_request():405] send_request: stop_status
+2024-05-20 12:15:32,813 INFO    Thread-12 :55838 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240520_121453-9rthrijp/files/output.log
+2024-05-20 12:15:33,819 INFO    Thread-12 :55838 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240520_121453-9rthrijp/files/output.log
+2024-05-20 12:15:34,526 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: partial_history
+2024-05-20 12:15:34,526 DEBUG   SenderThread:55838 [sender.py:send():378] send: history
+2024-05-20 12:15:34,527 DEBUG   SenderThread:55838 [sender.py:send_request():405] send_request: summary_record
+2024-05-20 12:15:34,527 INFO    SenderThread:55838 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-05-20 12:15:34,822 INFO    Thread-12 :55838 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240520_121453-9rthrijp/files/wandb-summary.json
+2024-05-20 12:15:35,826 INFO    Thread-12 :55838 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240520_121453-9rthrijp/files/output.log
+2024-05-20 12:15:37,224 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: status_report
+2024-05-20 12:15:37,834 INFO    Thread-12 :55838 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240520_121453-9rthrijp/files/output.log
+2024-05-20 12:15:38,025 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: partial_history
+2024-05-20 12:15:38,026 DEBUG   SenderThread:55838 [sender.py:send():378] send: history
+2024-05-20 12:15:38,026 DEBUG   SenderThread:55838 [sender.py:send_request():405] send_request: summary_record
+2024-05-20 12:15:38,027 INFO    SenderThread:55838 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-05-20 12:15:38,835 INFO    Thread-12 :55838 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240520_121453-9rthrijp/files/wandb-summary.json
+2024-05-20 12:15:39,840 INFO    Thread-12 :55838 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240520_121453-9rthrijp/files/output.log
+2024-05-20 12:15:41,439 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: partial_history
+2024-05-20 12:15:41,439 DEBUG   SenderThread:55838 [sender.py:send():378] send: history
+2024-05-20 12:15:41,439 DEBUG   SenderThread:55838 [sender.py:send_request():405] send_request: summary_record
+2024-05-20 12:15:41,440 INFO    SenderThread:55838 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-05-20 12:15:41,850 INFO    Thread-12 :55838 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240520_121453-9rthrijp/files/wandb-summary.json
+2024-05-20 12:15:41,850 INFO    Thread-12 :55838 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240520_121453-9rthrijp/files/output.log
+2024-05-20 12:15:42,323 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: status_report
+2024-05-20 12:15:43,861 INFO    Thread-12 :55838 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240520_121453-9rthrijp/files/output.log
+2024-05-20 12:15:44,156 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: partial_history
+2024-05-20 12:15:44,156 DEBUG   SenderThread:55838 [sender.py:send():378] send: history
+2024-05-20 12:15:44,156 DEBUG   SenderThread:55838 [sender.py:send_request():405] send_request: summary_record
+2024-05-20 12:15:44,157 INFO    SenderThread:55838 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-05-20 12:15:44,865 INFO    Thread-12 :55838 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240520_121453-9rthrijp/files/wandb-summary.json
+2024-05-20 12:15:45,870 INFO    Thread-12 :55838 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240520_121453-9rthrijp/files/output.log
+2024-05-20 12:15:47,487 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: status_report
+2024-05-20 12:15:47,488 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: stop_status
+2024-05-20 12:15:47,488 DEBUG   SenderThread:55838 [sender.py:send_request():405] send_request: stop_status
+2024-05-20 12:15:47,874 INFO    Thread-12 :55838 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240520_121453-9rthrijp/files/output.log
+2024-05-20 12:15:48,310 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: partial_history
+2024-05-20 12:15:48,312 DEBUG   SenderThread:55838 [sender.py:send():378] send: history
+2024-05-20 12:15:48,312 DEBUG   SenderThread:55838 [sender.py:send_request():405] send_request: summary_record
+2024-05-20 12:15:48,315 INFO    SenderThread:55838 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-05-20 12:15:48,876 INFO    Thread-12 :55838 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240520_121453-9rthrijp/files/wandb-summary.json
+2024-05-20 12:15:49,879 INFO    Thread-12 :55838 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240520_121453-9rthrijp/files/output.log
+2024-05-20 12:15:51,889 INFO    Thread-12 :55838 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240520_121453-9rthrijp/files/output.log
+2024-05-20 12:15:52,426 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: partial_history
+2024-05-20 12:15:52,427 DEBUG   SenderThread:55838 [sender.py:send():378] send: history
+2024-05-20 12:15:52,427 DEBUG   SenderThread:55838 [sender.py:send_request():405] send_request: summary_record
+2024-05-20 12:15:52,428 INFO    SenderThread:55838 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-05-20 12:15:52,539 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: status_report
+2024-05-20 12:15:52,895 INFO    Thread-12 :55838 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240520_121453-9rthrijp/files/wandb-summary.json
+2024-05-20 12:15:53,900 INFO    Thread-12 :55838 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240520_121453-9rthrijp/files/output.log
+2024-05-20 12:15:55,610 DEBUG   SystemMonitor:55838 [system_monitor.py:_start():172] Starting system metrics aggregation loop
+2024-05-20 12:15:55,614 DEBUG   SenderThread:55838 [sender.py:send():378] send: telemetry
+2024-05-20 12:15:55,614 DEBUG   SenderThread:55838 [sender.py:send():378] send: stats
+2024-05-20 12:15:55,911 INFO    Thread-12 :55838 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240520_121453-9rthrijp/files/output.log
+2024-05-20 12:15:57,058 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: partial_history
+2024-05-20 12:15:57,059 DEBUG   SenderThread:55838 [sender.py:send():378] send: history
+2024-05-20 12:15:57,059 DEBUG   SenderThread:55838 [sender.py:send_request():405] send_request: summary_record
+2024-05-20 12:15:57,060 INFO    SenderThread:55838 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-05-20 12:15:57,921 INFO    Thread-12 :55838 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240520_121453-9rthrijp/files/wandb-summary.json
+2024-05-20 12:15:57,921 INFO    Thread-12 :55838 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240520_121453-9rthrijp/files/output.log
+2024-05-20 12:15:58,054 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: status_report
+2024-05-20 12:15:58,926 INFO    Thread-12 :55838 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240520_121453-9rthrijp/files/config.yaml
+2024-05-20 12:15:59,932 INFO    Thread-12 :55838 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240520_121453-9rthrijp/files/output.log
+2024-05-20 12:16:01,037 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: partial_history
+2024-05-20 12:16:01,037 DEBUG   SenderThread:55838 [sender.py:send():378] send: history
+2024-05-20 12:16:01,037 DEBUG   SenderThread:55838 [sender.py:send_request():405] send_request: summary_record
+2024-05-20 12:16:01,038 INFO    SenderThread:55838 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-05-20 12:16:01,943 INFO    Thread-12 :55838 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240520_121453-9rthrijp/files/wandb-summary.json
+2024-05-20 12:16:01,943 INFO    Thread-12 :55838 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240520_121453-9rthrijp/files/output.log
+2024-05-20 12:16:02,493 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: stop_status
+2024-05-20 12:16:02,493 DEBUG   SenderThread:55838 [sender.py:send_request():405] send_request: stop_status
+2024-05-20 12:16:03,284 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: partial_history
+2024-05-20 12:16:03,286 DEBUG   SenderThread:55838 [sender.py:send():378] send: history
+2024-05-20 12:16:03,286 DEBUG   SenderThread:55838 [sender.py:send_request():405] send_request: summary_record
+2024-05-20 12:16:03,286 INFO    SenderThread:55838 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-05-20 12:16:03,953 INFO    Thread-12 :55838 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240520_121453-9rthrijp/files/wandb-summary.json
+2024-05-20 12:16:03,953 INFO    Thread-12 :55838 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240520_121453-9rthrijp/files/output.log
+2024-05-20 12:16:04,075 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: status_report
+2024-05-20 12:16:05,963 INFO    Thread-12 :55838 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240520_121453-9rthrijp/files/output.log
+2024-05-20 12:16:07,375 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: partial_history
+2024-05-20 12:16:07,375 DEBUG   SenderThread:55838 [sender.py:send():378] send: history
+2024-05-20 12:16:07,375 DEBUG   SenderThread:55838 [sender.py:send_request():405] send_request: summary_record
+2024-05-20 12:16:07,376 INFO    SenderThread:55838 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-05-20 12:16:07,974 INFO    Thread-12 :55838 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240520_121453-9rthrijp/files/wandb-summary.json
+2024-05-20 12:16:07,974 INFO    Thread-12 :55838 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240520_121453-9rthrijp/files/output.log
+2024-05-20 12:16:09,024 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: partial_history
+2024-05-20 12:16:09,024 DEBUG   SenderThread:55838 [sender.py:send():378] send: history
+2024-05-20 12:16:09,025 DEBUG   SenderThread:55838 [sender.py:send_request():405] send_request: summary_record
+2024-05-20 12:16:09,025 INFO    SenderThread:55838 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-05-20 12:16:09,799 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: status_report
+2024-05-20 12:16:09,983 INFO    Thread-12 :55838 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240520_121453-9rthrijp/files/wandb-summary.json
+2024-05-20 12:16:09,985 INFO    Thread-12 :55838 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240520_121453-9rthrijp/files/output.log
+2024-05-20 12:16:11,994 INFO    Thread-12 :55838 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240520_121453-9rthrijp/files/output.log
+2024-05-20 12:16:12,781 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: partial_history
+2024-05-20 12:16:12,781 DEBUG   SenderThread:55838 [sender.py:send():378] send: history
+2024-05-20 12:16:12,782 DEBUG   SenderThread:55838 [sender.py:send_request():405] send_request: summary_record
+2024-05-20 12:16:12,782 INFO    SenderThread:55838 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-05-20 12:16:12,996 INFO    Thread-12 :55838 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240520_121453-9rthrijp/files/wandb-summary.json
+2024-05-20 12:16:14,001 INFO    Thread-12 :55838 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240520_121453-9rthrijp/files/output.log
+2024-05-20 12:16:14,844 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: status_report
+2024-05-20 12:16:15,611 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: partial_history
+2024-05-20 12:16:15,611 DEBUG   SenderThread:55838 [sender.py:send():378] send: history
+2024-05-20 12:16:15,612 DEBUG   SenderThread:55838 [sender.py:send_request():405] send_request: summary_record
+2024-05-20 12:16:15,612 INFO    SenderThread:55838 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-05-20 12:16:16,012 INFO    Thread-12 :55838 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240520_121453-9rthrijp/files/wandb-summary.json
+2024-05-20 12:16:16,012 INFO    Thread-12 :55838 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240520_121453-9rthrijp/files/output.log
+2024-05-20 12:16:17,496 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: stop_status
+2024-05-20 12:16:17,496 DEBUG   SenderThread:55838 [sender.py:send_request():405] send_request: stop_status
+2024-05-20 12:16:18,022 INFO    Thread-12 :55838 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240520_121453-9rthrijp/files/output.log
+2024-05-20 12:16:18,975 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: partial_history
+2024-05-20 12:16:18,975 DEBUG   SenderThread:55838 [sender.py:send():378] send: history
+2024-05-20 12:16:18,975 DEBUG   SenderThread:55838 [sender.py:send_request():405] send_request: summary_record
+2024-05-20 12:16:18,976 INFO    SenderThread:55838 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-05-20 12:16:19,027 INFO    Thread-12 :55838 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240520_121453-9rthrijp/files/wandb-summary.json
+2024-05-20 12:16:20,033 INFO    Thread-12 :55838 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240520_121453-9rthrijp/files/output.log
+2024-05-20 12:16:20,548 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: status_report
+2024-05-20 12:16:21,429 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: partial_history
+2024-05-20 12:16:21,430 DEBUG   SenderThread:55838 [sender.py:send():378] send: history
+2024-05-20 12:16:21,430 DEBUG   SenderThread:55838 [sender.py:send_request():405] send_request: summary_record
+2024-05-20 12:16:21,432 INFO    SenderThread:55838 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-05-20 12:16:22,043 INFO    Thread-12 :55838 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240520_121453-9rthrijp/files/wandb-summary.json
+2024-05-20 12:16:22,043 INFO    Thread-12 :55838 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240520_121453-9rthrijp/files/output.log
+2024-05-20 12:16:24,054 INFO    Thread-12 :55838 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240520_121453-9rthrijp/files/output.log
+2024-05-20 12:16:24,799 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: partial_history
+2024-05-20 12:16:24,800 DEBUG   SenderThread:55838 [sender.py:send():378] send: history
+2024-05-20 12:16:24,800 DEBUG   SenderThread:55838 [sender.py:send_request():405] send_request: summary_record
+2024-05-20 12:16:24,800 INFO    SenderThread:55838 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-05-20 12:16:25,054 INFO    Thread-12 :55838 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240520_121453-9rthrijp/files/wandb-summary.json
+2024-05-20 12:16:25,620 DEBUG   SenderThread:55838 [sender.py:send():378] send: stats
+2024-05-20 12:16:25,621 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: status_report
+2024-05-20 12:16:26,059 INFO    Thread-12 :55838 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240520_121453-9rthrijp/files/output.log
+2024-05-20 12:16:27,910 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: partial_history
+2024-05-20 12:16:27,911 DEBUG   SenderThread:55838 [sender.py:send():378] send: history
+2024-05-20 12:16:27,911 DEBUG   SenderThread:55838 [sender.py:send_request():405] send_request: summary_record
+2024-05-20 12:16:27,911 INFO    SenderThread:55838 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-05-20 12:16:28,069 INFO    Thread-12 :55838 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240520_121453-9rthrijp/files/wandb-summary.json
+2024-05-20 12:16:28,069 INFO    Thread-12 :55838 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240520_121453-9rthrijp/files/output.log
+2024-05-20 12:16:30,075 INFO    Thread-12 :55838 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240520_121453-9rthrijp/files/output.log
+2024-05-20 12:16:30,203 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: partial_history
+2024-05-20 12:16:30,203 DEBUG   SenderThread:55838 [sender.py:send():378] send: history
+2024-05-20 12:16:30,203 DEBUG   SenderThread:55838 [sender.py:send_request():405] send_request: summary_record
+2024-05-20 12:16:30,204 INFO    SenderThread:55838 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-05-20 12:16:31,081 INFO    Thread-12 :55838 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240520_121453-9rthrijp/files/wandb-summary.json
+2024-05-20 12:16:31,161 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: status_report
+2024-05-20 12:16:32,087 INFO    Thread-12 :55838 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240520_121453-9rthrijp/files/output.log
+2024-05-20 12:16:32,500 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: stop_status
+2024-05-20 12:16:32,500 DEBUG   SenderThread:55838 [sender.py:send_request():405] send_request: stop_status
+2024-05-20 12:16:33,507 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: partial_history
+2024-05-20 12:16:33,509 DEBUG   SenderThread:55838 [sender.py:send():378] send: history
+2024-05-20 12:16:33,509 DEBUG   SenderThread:55838 [sender.py:send_request():405] send_request: summary_record
+2024-05-20 12:16:33,510 INFO    SenderThread:55838 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-05-20 12:16:34,097 INFO    Thread-12 :55838 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240520_121453-9rthrijp/files/wandb-summary.json
+2024-05-20 12:16:34,097 INFO    Thread-12 :55838 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240520_121453-9rthrijp/files/output.log
+2024-05-20 12:16:35,395 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: partial_history
+2024-05-20 12:16:35,397 DEBUG   SenderThread:55838 [sender.py:send():378] send: history
+2024-05-20 12:16:35,397 DEBUG   SenderThread:55838 [sender.py:send_request():405] send_request: summary_record
+2024-05-20 12:16:35,398 INFO    SenderThread:55838 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-05-20 12:16:36,103 INFO    Thread-12 :55838 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240520_121453-9rthrijp/files/wandb-summary.json
+2024-05-20 12:16:36,103 INFO    Thread-12 :55838 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240520_121453-9rthrijp/files/output.log
+2024-05-20 12:16:36,597 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: status_report
+2024-05-20 12:16:37,753 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: partial_history
+2024-05-20 12:16:37,755 DEBUG   SenderThread:55838 [sender.py:send():378] send: history
+2024-05-20 12:16:37,755 DEBUG   SenderThread:55838 [sender.py:send_request():405] send_request: summary_record
+2024-05-20 12:16:37,756 INFO    SenderThread:55838 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-05-20 12:16:38,114 INFO    Thread-12 :55838 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240520_121453-9rthrijp/files/wandb-summary.json
+2024-05-20 12:16:38,114 INFO    Thread-12 :55838 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240520_121453-9rthrijp/files/output.log
+2024-05-20 12:16:38,889 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: partial_history
+2024-05-20 12:16:38,889 DEBUG   SenderThread:55838 [sender.py:send():378] send: history
+2024-05-20 12:16:38,890 DEBUG   SenderThread:55838 [sender.py:send_request():405] send_request: summary_record
+2024-05-20 12:16:38,890 INFO    SenderThread:55838 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-05-20 12:16:39,114 INFO    Thread-12 :55838 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240520_121453-9rthrijp/files/wandb-summary.json
+2024-05-20 12:16:40,119 INFO    Thread-12 :55838 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240520_121453-9rthrijp/files/output.log
+2024-05-20 12:16:40,602 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: partial_history
+2024-05-20 12:16:40,602 DEBUG   SenderThread:55838 [sender.py:send():378] send: history
+2024-05-20 12:16:40,602 DEBUG   SenderThread:55838 [sender.py:send_request():405] send_request: summary_record
+2024-05-20 12:16:40,603 INFO    SenderThread:55838 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-05-20 12:16:41,124 INFO    Thread-12 :55838 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240520_121453-9rthrijp/files/wandb-summary.json
+2024-05-20 12:16:41,672 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: status_report
+2024-05-20 12:16:41,672 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: partial_history
+2024-05-20 12:16:41,672 DEBUG   SenderThread:55838 [sender.py:send():378] send: history
+2024-05-20 12:16:41,672 DEBUG   SenderThread:55838 [sender.py:send_request():405] send_request: summary_record
+2024-05-20 12:16:41,673 INFO    SenderThread:55838 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-05-20 12:16:42,125 INFO    Thread-12 :55838 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240520_121453-9rthrijp/files/wandb-summary.json
+2024-05-20 12:16:42,125 INFO    Thread-12 :55838 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240520_121453-9rthrijp/files/output.log
+2024-05-20 12:16:43,114 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: partial_history
+2024-05-20 12:16:43,116 DEBUG   SenderThread:55838 [sender.py:send():378] send: history
+2024-05-20 12:16:43,117 DEBUG   SenderThread:55838 [sender.py:send_request():405] send_request: summary_record
+2024-05-20 12:16:43,117 INFO    SenderThread:55838 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-05-20 12:16:43,128 INFO    Thread-12 :55838 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240520_121453-9rthrijp/files/wandb-summary.json
+2024-05-20 12:16:44,134 INFO    Thread-12 :55838 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240520_121453-9rthrijp/files/output.log
+2024-05-20 12:16:45,105 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: partial_history
+2024-05-20 12:16:45,107 DEBUG   SenderThread:55838 [sender.py:send():378] send: history
+2024-05-20 12:16:45,107 DEBUG   SenderThread:55838 [sender.py:send_request():405] send_request: summary_record
+2024-05-20 12:16:45,107 INFO    SenderThread:55838 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-05-20 12:16:45,139 INFO    Thread-12 :55838 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240520_121453-9rthrijp/files/wandb-summary.json
+2024-05-20 12:16:46,140 INFO    Thread-12 :55838 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240520_121453-9rthrijp/files/output.log
+2024-05-20 12:16:46,242 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: partial_history
+2024-05-20 12:16:46,248 DEBUG   SenderThread:55838 [sender.py:send():378] send: history
+2024-05-20 12:16:46,248 DEBUG   SenderThread:55838 [sender.py:send_request():405] send_request: summary_record
+2024-05-20 12:16:46,249 INFO    SenderThread:55838 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-05-20 12:16:46,679 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: status_report
+2024-05-20 12:16:47,145 INFO    Thread-12 :55838 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240520_121453-9rthrijp/files/wandb-summary.json
+2024-05-20 12:16:47,329 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: partial_history
+2024-05-20 12:16:47,329 DEBUG   SenderThread:55838 [sender.py:send():378] send: history
+2024-05-20 12:16:47,329 DEBUG   SenderThread:55838 [sender.py:send_request():405] send_request: summary_record
+2024-05-20 12:16:47,330 INFO    SenderThread:55838 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-05-20 12:16:47,504 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: stop_status
+2024-05-20 12:16:47,504 DEBUG   SenderThread:55838 [sender.py:send_request():405] send_request: stop_status
+2024-05-20 12:16:48,147 INFO    Thread-12 :55838 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240520_121453-9rthrijp/files/wandb-summary.json
+2024-05-20 12:16:48,147 INFO    Thread-12 :55838 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240520_121453-9rthrijp/files/output.log
+2024-05-20 12:16:48,356 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: partial_history
+2024-05-20 12:16:48,357 DEBUG   SenderThread:55838 [sender.py:send():378] send: history
+2024-05-20 12:16:48,357 DEBUG   SenderThread:55838 [sender.py:send_request():405] send_request: summary_record
+2024-05-20 12:16:48,357 INFO    SenderThread:55838 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-05-20 12:16:49,152 INFO    Thread-12 :55838 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240520_121453-9rthrijp/files/wandb-summary.json
+2024-05-20 12:16:49,415 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: partial_history
+2024-05-20 12:16:49,416 DEBUG   SenderThread:55838 [sender.py:send():378] send: history
+2024-05-20 12:16:49,416 DEBUG   SenderThread:55838 [sender.py:send_request():405] send_request: summary_record
+2024-05-20 12:16:49,416 INFO    SenderThread:55838 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-05-20 12:16:50,154 INFO    Thread-12 :55838 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240520_121453-9rthrijp/files/wandb-summary.json
+2024-05-20 12:16:50,154 INFO    Thread-12 :55838 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240520_121453-9rthrijp/files/output.log
+2024-05-20 12:16:50,460 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: partial_history
+2024-05-20 12:16:50,460 DEBUG   SenderThread:55838 [sender.py:send():378] send: history
+2024-05-20 12:16:50,460 DEBUG   SenderThread:55838 [sender.py:send_request():405] send_request: summary_record
+2024-05-20 12:16:50,461 INFO    SenderThread:55838 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-05-20 12:16:51,159 INFO    Thread-12 :55838 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240520_121453-9rthrijp/files/wandb-summary.json
+2024-05-20 12:16:51,689 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: status_report
+2024-05-20 12:16:52,164 INFO    Thread-12 :55838 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240520_121453-9rthrijp/files/output.log
+2024-05-20 12:16:52,808 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: partial_history
+2024-05-20 12:16:52,809 DEBUG   SenderThread:55838 [sender.py:send():378] send: history
+2024-05-20 12:16:52,809 DEBUG   SenderThread:55838 [sender.py:send_request():405] send_request: summary_record
+2024-05-20 12:16:52,809 INFO    SenderThread:55838 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-05-20 12:16:53,170 INFO    Thread-12 :55838 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240520_121453-9rthrijp/files/wandb-summary.json
+2024-05-20 12:16:53,942 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: partial_history
+2024-05-20 12:16:53,945 DEBUG   SenderThread:55838 [sender.py:send():378] send: history
+2024-05-20 12:16:53,945 DEBUG   SenderThread:55838 [sender.py:send_request():405] send_request: summary_record
+2024-05-20 12:16:53,945 INFO    SenderThread:55838 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-05-20 12:16:54,171 INFO    Thread-12 :55838 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240520_121453-9rthrijp/files/wandb-summary.json
+2024-05-20 12:16:54,171 INFO    Thread-12 :55838 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240520_121453-9rthrijp/files/output.log
+2024-05-20 12:16:55,626 DEBUG   SenderThread:55838 [sender.py:send():378] send: stats
+2024-05-20 12:16:56,181 INFO    Thread-12 :55838 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240520_121453-9rthrijp/files/output.log
+2024-05-20 12:16:56,692 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: status_report
+2024-05-20 12:16:56,692 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: partial_history
+2024-05-20 12:16:56,692 DEBUG   SenderThread:55838 [sender.py:send():378] send: history
+2024-05-20 12:16:56,693 DEBUG   SenderThread:55838 [sender.py:send_request():405] send_request: summary_record
+2024-05-20 12:16:56,693 INFO    SenderThread:55838 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-05-20 12:16:57,187 INFO    Thread-12 :55838 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240520_121453-9rthrijp/files/wandb-summary.json
+2024-05-20 12:16:57,938 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: partial_history
+2024-05-20 12:16:57,939 DEBUG   SenderThread:55838 [sender.py:send():378] send: history
+2024-05-20 12:16:57,939 DEBUG   SenderThread:55838 [sender.py:send_request():405] send_request: summary_record
+2024-05-20 12:16:57,940 INFO    SenderThread:55838 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-05-20 12:16:58,190 INFO    Thread-12 :55838 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240520_121453-9rthrijp/files/wandb-summary.json
+2024-05-20 12:16:58,190 INFO    Thread-12 :55838 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240520_121453-9rthrijp/files/output.log
+2024-05-20 12:16:58,946 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: partial_history
+2024-05-20 12:16:58,946 DEBUG   SenderThread:55838 [sender.py:send():378] send: history
+2024-05-20 12:16:58,946 DEBUG   SenderThread:55838 [sender.py:send_request():405] send_request: summary_record
+2024-05-20 12:16:58,947 INFO    SenderThread:55838 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-05-20 12:16:59,195 INFO    Thread-12 :55838 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240520_121453-9rthrijp/files/wandb-summary.json
+2024-05-20 12:17:00,196 INFO    Thread-12 :55838 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240520_121453-9rthrijp/files/output.log
+2024-05-20 12:17:00,579 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: partial_history
+2024-05-20 12:17:00,579 DEBUG   SenderThread:55838 [sender.py:send():378] send: history
+2024-05-20 12:17:00,579 DEBUG   SenderThread:55838 [sender.py:send_request():405] send_request: summary_record
+2024-05-20 12:17:00,580 INFO    SenderThread:55838 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-05-20 12:17:01,201 INFO    Thread-12 :55838 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240520_121453-9rthrijp/files/wandb-summary.json
+2024-05-20 12:17:01,778 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: status_report
+2024-05-20 12:17:02,207 INFO    Thread-12 :55838 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240520_121453-9rthrijp/files/output.log
+2024-05-20 12:17:02,256 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: partial_history
+2024-05-20 12:17:02,256 DEBUG   SenderThread:55838 [sender.py:send():378] send: history
+2024-05-20 12:17:02,256 DEBUG   SenderThread:55838 [sender.py:send_request():405] send_request: summary_record
+2024-05-20 12:17:02,256 INFO    SenderThread:55838 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-05-20 12:17:02,512 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: stop_status
+2024-05-20 12:17:02,512 DEBUG   SenderThread:55838 [sender.py:send_request():405] send_request: stop_status
+2024-05-20 12:17:03,212 INFO    Thread-12 :55838 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240520_121453-9rthrijp/files/wandb-summary.json
+2024-05-20 12:17:04,217 INFO    Thread-12 :55838 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240520_121453-9rthrijp/files/output.log
+2024-05-20 12:17:06,228 INFO    Thread-12 :55838 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240520_121453-9rthrijp/files/output.log
+2024-05-20 12:17:06,316 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: partial_history
+2024-05-20 12:17:06,319 DEBUG   SenderThread:55838 [sender.py:send():378] send: history
+2024-05-20 12:17:06,320 DEBUG   SenderThread:55838 [sender.py:send_request():405] send_request: summary_record
+2024-05-20 12:17:06,320 INFO    SenderThread:55838 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-05-20 12:17:07,234 INFO    Thread-12 :55838 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240520_121453-9rthrijp/files/wandb-summary.json
+2024-05-20 12:17:07,360 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: status_report
+2024-05-20 12:17:08,239 INFO    Thread-12 :55838 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240520_121453-9rthrijp/files/output.log
+2024-05-20 12:17:08,625 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: partial_history
+2024-05-20 12:17:08,625 DEBUG   SenderThread:55838 [sender.py:send():378] send: history
+2024-05-20 12:17:08,625 DEBUG   SenderThread:55838 [sender.py:send_request():405] send_request: summary_record
+2024-05-20 12:17:08,625 INFO    SenderThread:55838 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-05-20 12:17:09,244 INFO    Thread-12 :55838 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240520_121453-9rthrijp/files/wandb-summary.json
+2024-05-20 12:17:10,249 INFO    Thread-12 :55838 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240520_121453-9rthrijp/files/output.log
+2024-05-20 12:17:11,098 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: partial_history
+2024-05-20 12:17:11,099 DEBUG   SenderThread:55838 [sender.py:send():378] send: history
+2024-05-20 12:17:11,099 DEBUG   SenderThread:55838 [sender.py:send_request():405] send_request: summary_record
+2024-05-20 12:17:11,100 INFO    SenderThread:55838 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-05-20 12:17:11,255 INFO    Thread-12 :55838 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240520_121453-9rthrijp/files/wandb-summary.json
+2024-05-20 12:17:12,255 INFO    Thread-12 :55838 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240520_121453-9rthrijp/files/output.log
+2024-05-20 12:17:12,420 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: status_report
+2024-05-20 12:17:13,455 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: partial_history
+2024-05-20 12:17:13,457 DEBUG   SenderThread:55838 [sender.py:send():378] send: history
+2024-05-20 12:17:13,457 DEBUG   SenderThread:55838 [sender.py:send_request():405] send_request: summary_record
+2024-05-20 12:17:13,459 INFO    SenderThread:55838 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-05-20 12:17:14,268 INFO    Thread-12 :55838 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240520_121453-9rthrijp/files/wandb-summary.json
+2024-05-20 12:17:14,269 INFO    Thread-12 :55838 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240520_121453-9rthrijp/files/output.log
+2024-05-20 12:17:14,717 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: partial_history
+2024-05-20 12:17:14,717 DEBUG   SenderThread:55838 [sender.py:send():378] send: history
+2024-05-20 12:17:14,717 DEBUG   SenderThread:55838 [sender.py:send_request():405] send_request: summary_record
+2024-05-20 12:17:14,718 INFO    SenderThread:55838 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-05-20 12:17:15,268 INFO    Thread-12 :55838 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240520_121453-9rthrijp/files/wandb-summary.json
+2024-05-20 12:17:15,743 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: partial_history
+2024-05-20 12:17:15,744 DEBUG   SenderThread:55838 [sender.py:send():378] send: history
+2024-05-20 12:17:15,744 DEBUG   SenderThread:55838 [sender.py:send_request():405] send_request: summary_record
+2024-05-20 12:17:15,745 INFO    SenderThread:55838 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-05-20 12:17:16,273 INFO    Thread-12 :55838 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240520_121453-9rthrijp/files/wandb-summary.json
+2024-05-20 12:17:16,273 INFO    Thread-12 :55838 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240520_121453-9rthrijp/files/output.log
+2024-05-20 12:17:16,829 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: partial_history
+2024-05-20 12:17:16,829 DEBUG   SenderThread:55838 [sender.py:send():378] send: history
+2024-05-20 12:17:16,829 DEBUG   SenderThread:55838 [sender.py:send_request():405] send_request: summary_record
+2024-05-20 12:17:16,830 INFO    SenderThread:55838 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-05-20 12:17:17,276 INFO    Thread-12 :55838 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240520_121453-9rthrijp/files/wandb-summary.json
+2024-05-20 12:17:17,511 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: status_report
+2024-05-20 12:17:17,515 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: stop_status
+2024-05-20 12:17:17,515 DEBUG   SenderThread:55838 [sender.py:send_request():405] send_request: stop_status
+2024-05-20 12:17:17,903 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: partial_history
+2024-05-20 12:17:17,903 DEBUG   SenderThread:55838 [sender.py:send():378] send: history
+2024-05-20 12:17:17,903 DEBUG   SenderThread:55838 [sender.py:send_request():405] send_request: summary_record
+2024-05-20 12:17:17,904 INFO    SenderThread:55838 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-05-20 12:17:18,280 INFO    Thread-12 :55838 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240520_121453-9rthrijp/files/wandb-summary.json
+2024-05-20 12:17:18,280 INFO    Thread-12 :55838 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240520_121453-9rthrijp/files/output.log
+2024-05-20 12:17:19,875 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: partial_history
+2024-05-20 12:17:19,876 DEBUG   SenderThread:55838 [sender.py:send():378] send: history
+2024-05-20 12:17:19,876 DEBUG   SenderThread:55838 [sender.py:send_request():405] send_request: summary_record
+2024-05-20 12:17:19,876 INFO    SenderThread:55838 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-05-20 12:17:20,290 INFO    Thread-12 :55838 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240520_121453-9rthrijp/files/wandb-summary.json
+2024-05-20 12:17:20,290 INFO    Thread-12 :55838 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240520_121453-9rthrijp/files/output.log
+2024-05-20 12:17:20,943 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: partial_history
+2024-05-20 12:17:20,944 DEBUG   SenderThread:55838 [sender.py:send():378] send: history
+2024-05-20 12:17:20,945 DEBUG   SenderThread:55838 [sender.py:send_request():405] send_request: summary_record
+2024-05-20 12:17:20,945 INFO    SenderThread:55838 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-05-20 12:17:21,295 INFO    Thread-12 :55838 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240520_121453-9rthrijp/files/wandb-summary.json
+2024-05-20 12:17:22,048 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: partial_history
+2024-05-20 12:17:22,049 DEBUG   SenderThread:55838 [sender.py:send():378] send: history
+2024-05-20 12:17:22,049 DEBUG   SenderThread:55838 [sender.py:send_request():405] send_request: summary_record
+2024-05-20 12:17:22,050 INFO    SenderThread:55838 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-05-20 12:17:22,301 INFO    Thread-12 :55838 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240520_121453-9rthrijp/files/wandb-summary.json
+2024-05-20 12:17:22,301 INFO    Thread-12 :55838 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240520_121453-9rthrijp/files/output.log
+2024-05-20 12:17:22,536 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: status_report
+2024-05-20 12:17:23,233 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: partial_history
+2024-05-20 12:17:23,235 DEBUG   SenderThread:55838 [sender.py:send():378] send: history
+2024-05-20 12:17:23,235 DEBUG   SenderThread:55838 [sender.py:send_request():405] send_request: summary_record
+2024-05-20 12:17:23,237 INFO    SenderThread:55838 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-05-20 12:17:23,306 INFO    Thread-12 :55838 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240520_121453-9rthrijp/files/wandb-summary.json
+2024-05-20 12:17:24,311 INFO    Thread-12 :55838 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240520_121453-9rthrijp/files/output.log
+2024-05-20 12:17:25,111 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: partial_history
+2024-05-20 12:17:25,113 DEBUG   SenderThread:55838 [sender.py:send():378] send: history
+2024-05-20 12:17:25,113 DEBUG   SenderThread:55838 [sender.py:send_request():405] send_request: summary_record
+2024-05-20 12:17:25,115 INFO    SenderThread:55838 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-05-20 12:17:25,312 INFO    Thread-12 :55838 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240520_121453-9rthrijp/files/wandb-summary.json
+2024-05-20 12:17:25,631 DEBUG   SenderThread:55838 [sender.py:send():378] send: stats
+2024-05-20 12:17:26,244 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: partial_history
+2024-05-20 12:17:26,250 DEBUG   SenderThread:55838 [sender.py:send():378] send: history
+2024-05-20 12:17:26,250 DEBUG   SenderThread:55838 [sender.py:send_request():405] send_request: summary_record
+2024-05-20 12:17:26,250 INFO    SenderThread:55838 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-05-20 12:17:26,319 INFO    Thread-12 :55838 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240520_121453-9rthrijp/files/wandb-summary.json
+2024-05-20 12:17:26,319 INFO    Thread-12 :55838 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240520_121453-9rthrijp/files/output.log
+2024-05-20 12:17:27,389 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: partial_history
+2024-05-20 12:17:27,389 DEBUG   SenderThread:55838 [sender.py:send():378] send: history
+2024-05-20 12:17:27,389 DEBUG   SenderThread:55838 [sender.py:send_request():405] send_request: summary_record
+2024-05-20 12:17:27,390 INFO    SenderThread:55838 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-05-20 12:17:27,639 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: status_report
+2024-05-20 12:17:28,329 INFO    Thread-12 :55838 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240520_121453-9rthrijp/files/wandb-summary.json
+2024-05-20 12:17:28,330 INFO    Thread-12 :55838 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240520_121453-9rthrijp/files/output.log
+2024-05-20 12:17:29,464 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: partial_history
+2024-05-20 12:17:29,465 DEBUG   SenderThread:55838 [sender.py:send():378] send: history
+2024-05-20 12:17:29,465 DEBUG   SenderThread:55838 [sender.py:send_request():405] send_request: summary_record
+2024-05-20 12:17:29,466 INFO    SenderThread:55838 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-05-20 12:17:30,340 INFO    Thread-12 :55838 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240520_121453-9rthrijp/files/wandb-summary.json
+2024-05-20 12:17:30,340 INFO    Thread-12 :55838 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240520_121453-9rthrijp/files/output.log
+2024-05-20 12:17:31,352 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: partial_history
+2024-05-20 12:17:31,352 DEBUG   SenderThread:55838 [sender.py:send():378] send: history
+2024-05-20 12:17:31,352 DEBUG   SenderThread:55838 [sender.py:send_request():405] send_request: summary_record
+2024-05-20 12:17:31,352 INFO    SenderThread:55838 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-05-20 12:17:32,345 INFO    Thread-12 :55838 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240520_121453-9rthrijp/files/wandb-summary.json
+2024-05-20 12:17:32,345 INFO    Thread-12 :55838 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240520_121453-9rthrijp/files/output.log
+2024-05-20 12:17:32,520 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: stop_status
+2024-05-20 12:17:32,520 DEBUG   SenderThread:55838 [sender.py:send_request():405] send_request: stop_status
+2024-05-20 12:17:32,816 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: status_report
+2024-05-20 12:17:33,247 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: partial_history
+2024-05-20 12:17:33,248 DEBUG   SenderThread:55838 [sender.py:send():378] send: history
+2024-05-20 12:17:33,248 DEBUG   SenderThread:55838 [sender.py:send_request():405] send_request: summary_record
+2024-05-20 12:17:33,248 INFO    SenderThread:55838 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-05-20 12:17:33,351 INFO    Thread-12 :55838 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240520_121453-9rthrijp/files/wandb-summary.json
+2024-05-20 12:17:34,351 INFO    Thread-12 :55838 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240520_121453-9rthrijp/files/output.log
+2024-05-20 12:17:35,061 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: partial_history
+2024-05-20 12:17:35,062 DEBUG   SenderThread:55838 [sender.py:send():378] send: history
+2024-05-20 12:17:35,062 DEBUG   SenderThread:55838 [sender.py:send_request():405] send_request: summary_record
+2024-05-20 12:17:35,063 INFO    SenderThread:55838 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-05-20 12:17:35,353 INFO    Thread-12 :55838 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240520_121453-9rthrijp/files/wandb-summary.json
+2024-05-20 12:17:36,353 INFO    Thread-12 :55838 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240520_121453-9rthrijp/files/output.log
+2024-05-20 12:17:37,385 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: partial_history
+2024-05-20 12:17:37,386 DEBUG   SenderThread:55838 [sender.py:send():378] send: history
+2024-05-20 12:17:37,386 DEBUG   SenderThread:55838 [sender.py:send_request():405] send_request: summary_record
+2024-05-20 12:17:37,386 INFO    SenderThread:55838 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-05-20 12:17:37,826 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: status_report
+2024-05-20 12:17:38,364 INFO    Thread-12 :55838 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240520_121453-9rthrijp/files/wandb-summary.json
+2024-05-20 12:17:38,367 INFO    Thread-12 :55838 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240520_121453-9rthrijp/files/output.log
+2024-05-20 12:17:38,495 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: partial_history
+2024-05-20 12:17:38,496 DEBUG   SenderThread:55838 [sender.py:send():378] send: history
+2024-05-20 12:17:38,496 DEBUG   SenderThread:55838 [sender.py:send_request():405] send_request: summary_record
+2024-05-20 12:17:38,496 INFO    SenderThread:55838 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-05-20 12:17:39,370 INFO    Thread-12 :55838 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240520_121453-9rthrijp/files/wandb-summary.json
+2024-05-20 12:17:39,596 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: partial_history
+2024-05-20 12:17:39,596 DEBUG   SenderThread:55838 [sender.py:send():378] send: history
+2024-05-20 12:17:39,597 DEBUG   SenderThread:55838 [sender.py:send_request():405] send_request: summary_record
+2024-05-20 12:17:39,597 INFO    SenderThread:55838 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-05-20 12:17:40,370 INFO    Thread-12 :55838 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240520_121453-9rthrijp/files/wandb-summary.json
+2024-05-20 12:17:40,371 INFO    Thread-12 :55838 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240520_121453-9rthrijp/files/output.log
+2024-05-20 12:17:41,882 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: partial_history
+2024-05-20 12:17:41,883 DEBUG   SenderThread:55838 [sender.py:send():378] send: history
+2024-05-20 12:17:41,883 DEBUG   SenderThread:55838 [sender.py:send_request():405] send_request: summary_record
+2024-05-20 12:17:41,885 INFO    SenderThread:55838 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-05-20 12:17:42,381 INFO    Thread-12 :55838 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240520_121453-9rthrijp/files/wandb-summary.json
+2024-05-20 12:17:42,381 INFO    Thread-12 :55838 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240520_121453-9rthrijp/files/output.log
+2024-05-20 12:17:43,229 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: status_report
+2024-05-20 12:17:43,791 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: partial_history
+2024-05-20 12:17:43,791 DEBUG   SenderThread:55838 [sender.py:send():378] send: history
+2024-05-20 12:17:43,791 DEBUG   SenderThread:55838 [sender.py:send_request():405] send_request: summary_record
+2024-05-20 12:17:43,792 INFO    SenderThread:55838 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-05-20 12:17:44,391 INFO    Thread-12 :55838 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240520_121453-9rthrijp/files/wandb-summary.json
+2024-05-20 12:17:44,392 INFO    Thread-12 :55838 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240520_121453-9rthrijp/files/output.log
+2024-05-20 12:17:45,747 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: partial_history
+2024-05-20 12:17:45,747 DEBUG   SenderThread:55838 [sender.py:send():378] send: history
+2024-05-20 12:17:45,747 DEBUG   SenderThread:55838 [sender.py:send_request():405] send_request: summary_record
+2024-05-20 12:17:45,748 INFO    SenderThread:55838 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-05-20 12:17:46,397 INFO    Thread-12 :55838 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240520_121453-9rthrijp/files/wandb-summary.json
+2024-05-20 12:17:46,397 INFO    Thread-12 :55838 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240520_121453-9rthrijp/files/output.log
+2024-05-20 12:17:47,164 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: partial_history
+2024-05-20 12:17:47,165 DEBUG   SenderThread:55838 [sender.py:send():378] send: history
+2024-05-20 12:17:47,165 DEBUG   SenderThread:55838 [sender.py:send_request():405] send_request: summary_record
+2024-05-20 12:17:47,165 INFO    SenderThread:55838 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-05-20 12:17:47,402 INFO    Thread-12 :55838 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240520_121453-9rthrijp/files/wandb-summary.json
+2024-05-20 12:17:47,525 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: stop_status
+2024-05-20 12:17:47,525 DEBUG   SenderThread:55838 [sender.py:send_request():405] send_request: stop_status
+2024-05-20 12:17:48,277 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: status_report
+2024-05-20 12:17:48,277 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: partial_history
+2024-05-20 12:17:48,277 DEBUG   SenderThread:55838 [sender.py:send():378] send: history
+2024-05-20 12:17:48,278 DEBUG   SenderThread:55838 [sender.py:send_request():405] send_request: summary_record
+2024-05-20 12:17:48,278 INFO    SenderThread:55838 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-05-20 12:17:48,407 INFO    Thread-12 :55838 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240520_121453-9rthrijp/files/wandb-summary.json
+2024-05-20 12:17:48,407 INFO    Thread-12 :55838 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240520_121453-9rthrijp/files/output.log
+2024-05-20 12:17:49,378 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: partial_history
+2024-05-20 12:17:49,379 DEBUG   SenderThread:55838 [sender.py:send():378] send: history
+2024-05-20 12:17:49,379 DEBUG   SenderThread:55838 [sender.py:send_request():405] send_request: summary_record
+2024-05-20 12:17:49,380 INFO    SenderThread:55838 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-05-20 12:17:49,412 INFO    Thread-12 :55838 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240520_121453-9rthrijp/files/wandb-summary.json
+2024-05-20 12:17:50,416 INFO    Thread-12 :55838 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240520_121453-9rthrijp/files/output.log
+2024-05-20 12:17:51,452 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: partial_history
+2024-05-20 12:17:51,455 DEBUG   SenderThread:55838 [sender.py:send():378] send: history
+2024-05-20 12:17:51,455 DEBUG   SenderThread:55838 [sender.py:send_request():405] send_request: summary_record
+2024-05-20 12:17:51,456 INFO    SenderThread:55838 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-05-20 12:17:52,426 INFO    Thread-12 :55838 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240520_121453-9rthrijp/files/wandb-summary.json
+2024-05-20 12:17:52,427 INFO    Thread-12 :55838 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240520_121453-9rthrijp/files/output.log
+2024-05-20 12:17:53,307 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: status_report
+2024-05-20 12:17:53,307 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: partial_history
+2024-05-20 12:17:53,307 DEBUG   SenderThread:55838 [sender.py:send():378] send: history
+2024-05-20 12:17:53,307 DEBUG   SenderThread:55838 [sender.py:send_request():405] send_request: summary_record
+2024-05-20 12:17:53,308 INFO    SenderThread:55838 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-05-20 12:17:53,431 INFO    Thread-12 :55838 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240520_121453-9rthrijp/files/wandb-summary.json
+2024-05-20 12:17:54,336 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: partial_history
+2024-05-20 12:17:54,336 DEBUG   SenderThread:55838 [sender.py:send():378] send: history
+2024-05-20 12:17:54,336 DEBUG   SenderThread:55838 [sender.py:send_request():405] send_request: summary_record
+2024-05-20 12:17:54,337 INFO    SenderThread:55838 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-05-20 12:17:54,437 INFO    Thread-12 :55838 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240520_121453-9rthrijp/files/wandb-summary.json
+2024-05-20 12:17:54,437 INFO    Thread-12 :55838 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240520_121453-9rthrijp/files/output.log
+2024-05-20 12:17:55,447 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: partial_history
+2024-05-20 12:17:55,451 DEBUG   SenderThread:55838 [sender.py:send():378] send: history
+2024-05-20 12:17:55,451 DEBUG   SenderThread:55838 [sender.py:send_request():405] send_request: summary_record
+2024-05-20 12:17:55,452 INFO    SenderThread:55838 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-05-20 12:17:55,636 DEBUG   SenderThread:55838 [sender.py:send():378] send: stats
+2024-05-20 12:17:56,447 INFO    Thread-12 :55838 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240520_121453-9rthrijp/files/wandb-summary.json
+2024-05-20 12:17:56,447 INFO    Thread-12 :55838 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240520_121453-9rthrijp/files/output.log
+2024-05-20 12:17:56,784 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: partial_history
+2024-05-20 12:17:56,786 DEBUG   SenderThread:55838 [sender.py:send():378] send: history
+2024-05-20 12:17:56,786 DEBUG   SenderThread:55838 [sender.py:send_request():405] send_request: summary_record
+2024-05-20 12:17:56,786 INFO    SenderThread:55838 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-05-20 12:17:57,452 INFO    Thread-12 :55838 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240520_121453-9rthrijp/files/wandb-summary.json
+2024-05-20 12:17:58,378 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: status_report
+2024-05-20 12:17:58,458 INFO    Thread-12 :55838 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240520_121453-9rthrijp/files/output.log
+2024-05-20 12:18:00,353 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: partial_history
+2024-05-20 12:18:00,357 DEBUG   SenderThread:55838 [sender.py:send():378] send: history
+2024-05-20 12:18:00,357 DEBUG   SenderThread:55838 [sender.py:send_request():405] send_request: summary_record
+2024-05-20 12:18:00,357 INFO    SenderThread:55838 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-05-20 12:18:00,467 INFO    Thread-12 :55838 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240520_121453-9rthrijp/files/wandb-summary.json
+2024-05-20 12:18:00,467 INFO    Thread-12 :55838 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240520_121453-9rthrijp/files/output.log
+2024-05-20 12:18:01,479 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: partial_history
+2024-05-20 12:18:01,480 DEBUG   SenderThread:55838 [sender.py:send():378] send: history
+2024-05-20 12:18:01,480 DEBUG   SenderThread:55838 [sender.py:send_request():405] send_request: summary_record
+2024-05-20 12:18:01,480 INFO    SenderThread:55838 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-05-20 12:18:02,477 INFO    Thread-12 :55838 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240520_121453-9rthrijp/files/wandb-summary.json
+2024-05-20 12:18:02,478 INFO    Thread-12 :55838 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240520_121453-9rthrijp/files/output.log
+2024-05-20 12:18:02,512 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: partial_history
+2024-05-20 12:18:02,512 DEBUG   SenderThread:55838 [sender.py:send():378] send: history
+2024-05-20 12:18:02,512 DEBUG   SenderThread:55838 [sender.py:send_request():405] send_request: summary_record
+2024-05-20 12:18:02,513 INFO    SenderThread:55838 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-05-20 12:18:02,532 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: stop_status
+2024-05-20 12:18:02,532 DEBUG   SenderThread:55838 [sender.py:send_request():405] send_request: stop_status
+2024-05-20 12:18:03,482 INFO    Thread-12 :55838 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240520_121453-9rthrijp/files/wandb-summary.json
+2024-05-20 12:18:03,578 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: status_report
+2024-05-20 12:18:03,578 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: partial_history
+2024-05-20 12:18:03,578 DEBUG   SenderThread:55838 [sender.py:send():378] send: history
+2024-05-20 12:18:03,578 DEBUG   SenderThread:55838 [sender.py:send_request():405] send_request: summary_record
+2024-05-20 12:18:03,579 INFO    SenderThread:55838 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-05-20 12:18:04,488 INFO    Thread-12 :55838 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240520_121453-9rthrijp/files/wandb-summary.json
+2024-05-20 12:18:04,488 INFO    Thread-12 :55838 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240520_121453-9rthrijp/files/output.log
+2024-05-20 12:18:05,571 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: partial_history
+2024-05-20 12:18:05,572 DEBUG   SenderThread:55838 [sender.py:send():378] send: history
+2024-05-20 12:18:05,572 DEBUG   SenderThread:55838 [sender.py:send_request():405] send_request: summary_record
+2024-05-20 12:18:05,572 INFO    SenderThread:55838 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-05-20 12:18:06,498 INFO    Thread-12 :55838 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240520_121453-9rthrijp/files/wandb-summary.json
+2024-05-20 12:18:06,498 INFO    Thread-12 :55838 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240520_121453-9rthrijp/files/output.log
+2024-05-20 12:18:06,694 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: partial_history
+2024-05-20 12:18:06,695 DEBUG   SenderThread:55838 [sender.py:send():378] send: history
+2024-05-20 12:18:06,695 DEBUG   SenderThread:55838 [sender.py:send_request():405] send_request: summary_record
+2024-05-20 12:18:06,696 INFO    SenderThread:55838 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-05-20 12:18:07,503 INFO    Thread-12 :55838 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240520_121453-9rthrijp/files/wandb-summary.json
+2024-05-20 12:18:08,141 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: partial_history
+2024-05-20 12:18:08,142 DEBUG   SenderThread:55838 [sender.py:send():378] send: history
+2024-05-20 12:18:08,142 DEBUG   SenderThread:55838 [sender.py:send_request():405] send_request: summary_record
+2024-05-20 12:18:08,142 INFO    SenderThread:55838 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-05-20 12:18:08,504 INFO    Thread-12 :55838 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240520_121453-9rthrijp/files/wandb-summary.json
+2024-05-20 12:18:08,505 INFO    Thread-12 :55838 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240520_121453-9rthrijp/files/output.log
+2024-05-20 12:18:08,616 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: status_report
+2024-05-20 12:18:09,283 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: partial_history
+2024-05-20 12:18:09,284 DEBUG   SenderThread:55838 [sender.py:send():378] send: history
+2024-05-20 12:18:09,284 DEBUG   SenderThread:55838 [sender.py:send_request():405] send_request: summary_record
+2024-05-20 12:18:09,286 INFO    SenderThread:55838 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-05-20 12:18:09,506 INFO    Thread-12 :55838 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240520_121453-9rthrijp/files/wandb-summary.json
+2024-05-20 12:18:10,511 INFO    Thread-12 :55838 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240520_121453-9rthrijp/files/output.log
+2024-05-20 12:18:11,401 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: partial_history
+2024-05-20 12:18:11,402 DEBUG   SenderThread:55838 [sender.py:send():378] send: history
+2024-05-20 12:18:11,402 DEBUG   SenderThread:55838 [sender.py:send_request():405] send_request: summary_record
+2024-05-20 12:18:11,403 INFO    SenderThread:55838 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-05-20 12:18:11,515 INFO    Thread-12 :55838 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240520_121453-9rthrijp/files/wandb-summary.json
+2024-05-20 12:18:12,520 INFO    Thread-12 :55838 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240520_121453-9rthrijp/files/output.log
+2024-05-20 12:18:13,832 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: status_report
+2024-05-20 12:18:14,219 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: partial_history
+2024-05-20 12:18:14,220 DEBUG   SenderThread:55838 [sender.py:send():378] send: history
+2024-05-20 12:18:14,220 DEBUG   SenderThread:55838 [sender.py:send_request():405] send_request: summary_record
+2024-05-20 12:18:14,221 INFO    SenderThread:55838 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-05-20 12:18:14,529 INFO    Thread-12 :55838 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240520_121453-9rthrijp/files/wandb-summary.json
+2024-05-20 12:18:14,529 INFO    Thread-12 :55838 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240520_121453-9rthrijp/files/output.log
+2024-05-20 12:18:15,412 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: partial_history
+2024-05-20 12:18:15,412 DEBUG   SenderThread:55838 [sender.py:send():378] send: history
+2024-05-20 12:18:15,412 DEBUG   SenderThread:55838 [sender.py:send_request():405] send_request: summary_record
+2024-05-20 12:18:15,413 INFO    SenderThread:55838 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-05-20 12:18:15,529 INFO    Thread-12 :55838 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240520_121453-9rthrijp/files/wandb-summary.json
+2024-05-20 12:18:16,535 INFO    Thread-12 :55838 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240520_121453-9rthrijp/files/output.log
+2024-05-20 12:18:17,536 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: stop_status
+2024-05-20 12:18:17,536 DEBUG   SenderThread:55838 [sender.py:send_request():405] send_request: stop_status
+2024-05-20 12:18:18,062 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: partial_history
+2024-05-20 12:18:18,063 DEBUG   SenderThread:55838 [sender.py:send():378] send: history
+2024-05-20 12:18:18,063 DEBUG   SenderThread:55838 [sender.py:send_request():405] send_request: summary_record
+2024-05-20 12:18:18,063 INFO    SenderThread:55838 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-05-20 12:18:18,543 INFO    Thread-12 :55838 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240520_121453-9rthrijp/files/wandb-summary.json
+2024-05-20 12:18:18,543 INFO    Thread-12 :55838 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240520_121453-9rthrijp/files/output.log
+2024-05-20 12:18:18,913 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: status_report
+2024-05-20 12:18:19,296 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: partial_history
+2024-05-20 12:18:19,297 DEBUG   SenderThread:55838 [sender.py:send():378] send: history
+2024-05-20 12:18:19,298 DEBUG   SenderThread:55838 [sender.py:send_request():405] send_request: summary_record
+2024-05-20 12:18:19,298 INFO    SenderThread:55838 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-05-20 12:18:19,548 INFO    Thread-12 :55838 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240520_121453-9rthrijp/files/wandb-summary.json
+2024-05-20 12:18:20,402 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: partial_history
+2024-05-20 12:18:20,403 DEBUG   SenderThread:55838 [sender.py:send():378] send: history
+2024-05-20 12:18:20,403 DEBUG   SenderThread:55838 [sender.py:send_request():405] send_request: summary_record
+2024-05-20 12:18:20,403 INFO    SenderThread:55838 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-05-20 12:18:20,553 INFO    Thread-12 :55838 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240520_121453-9rthrijp/files/wandb-summary.json
+2024-05-20 12:18:20,553 INFO    Thread-12 :55838 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240520_121453-9rthrijp/files/output.log
+2024-05-20 12:18:21,503 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: partial_history
+2024-05-20 12:18:21,503 DEBUG   SenderThread:55838 [sender.py:send():378] send: history
+2024-05-20 12:18:21,504 DEBUG   SenderThread:55838 [sender.py:send_request():405] send_request: summary_record
+2024-05-20 12:18:21,504 INFO    SenderThread:55838 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-05-20 12:18:21,558 INFO    Thread-12 :55838 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240520_121453-9rthrijp/files/wandb-summary.json
+2024-05-20 12:18:22,564 INFO    Thread-12 :55838 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240520_121453-9rthrijp/files/output.log
+2024-05-20 12:18:23,898 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: partial_history
+2024-05-20 12:18:23,898 DEBUG   SenderThread:55838 [sender.py:send():378] send: history
+2024-05-20 12:18:23,899 DEBUG   SenderThread:55838 [sender.py:send_request():405] send_request: summary_record
+2024-05-20 12:18:23,899 INFO    SenderThread:55838 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-05-20 12:18:24,006 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: status_report
+2024-05-20 12:18:24,573 INFO    Thread-12 :55838 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240520_121453-9rthrijp/files/wandb-summary.json
+2024-05-20 12:18:24,573 INFO    Thread-12 :55838 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240520_121453-9rthrijp/files/output.log
+2024-05-20 12:18:24,988 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: partial_history
+2024-05-20 12:18:24,989 DEBUG   SenderThread:55838 [sender.py:send():378] send: history
+2024-05-20 12:18:24,989 DEBUG   SenderThread:55838 [sender.py:send_request():405] send_request: summary_record
+2024-05-20 12:18:24,990 INFO    SenderThread:55838 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-05-20 12:18:25,579 INFO    Thread-12 :55838 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240520_121453-9rthrijp/files/wandb-summary.json
+2024-05-20 12:18:25,642 DEBUG   SenderThread:55838 [sender.py:send():378] send: stats
+2024-05-20 12:18:26,071 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: partial_history
+2024-05-20 12:18:26,072 DEBUG   SenderThread:55838 [sender.py:send():378] send: history
+2024-05-20 12:18:26,072 DEBUG   SenderThread:55838 [sender.py:send_request():405] send_request: summary_record
+2024-05-20 12:18:26,073 INFO    SenderThread:55838 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-05-20 12:18:26,584 INFO    Thread-12 :55838 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240520_121453-9rthrijp/files/wandb-summary.json
+2024-05-20 12:18:26,584 INFO    Thread-12 :55838 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240520_121453-9rthrijp/files/output.log
+2024-05-20 12:18:27,204 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: partial_history
+2024-05-20 12:18:27,205 DEBUG   SenderThread:55838 [sender.py:send():378] send: history
+2024-05-20 12:18:27,205 DEBUG   SenderThread:55838 [sender.py:send_request():405] send_request: summary_record
+2024-05-20 12:18:27,207 INFO    SenderThread:55838 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-05-20 12:18:27,589 INFO    Thread-12 :55838 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240520_121453-9rthrijp/files/wandb-summary.json
+2024-05-20 12:18:28,590 INFO    Thread-12 :55838 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240520_121453-9rthrijp/files/output.log
+2024-05-20 12:18:29,009 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: status_report
+2024-05-20 12:18:29,697 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: partial_history
+2024-05-20 12:18:29,698 DEBUG   SenderThread:55838 [sender.py:send():378] send: history
+2024-05-20 12:18:29,698 DEBUG   SenderThread:55838 [sender.py:send_request():405] send_request: summary_record
+2024-05-20 12:18:29,698 INFO    SenderThread:55838 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-05-20 12:18:30,600 INFO    Thread-12 :55838 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240520_121453-9rthrijp/files/wandb-summary.json
+2024-05-20 12:18:30,601 INFO    Thread-12 :55838 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240520_121453-9rthrijp/files/output.log
+2024-05-20 12:18:30,787 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: partial_history
+2024-05-20 12:18:30,787 DEBUG   SenderThread:55838 [sender.py:send():378] send: history
+2024-05-20 12:18:30,788 DEBUG   SenderThread:55838 [sender.py:send_request():405] send_request: summary_record
+2024-05-20 12:18:30,788 INFO    SenderThread:55838 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-05-20 12:18:31,605 INFO    Thread-12 :55838 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240520_121453-9rthrijp/files/wandb-summary.json
+2024-05-20 12:18:31,878 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: partial_history
+2024-05-20 12:18:31,879 DEBUG   SenderThread:55838 [sender.py:send():378] send: history
+2024-05-20 12:18:31,879 DEBUG   SenderThread:55838 [sender.py:send_request():405] send_request: summary_record
+2024-05-20 12:18:31,879 INFO    SenderThread:55838 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-05-20 12:18:32,540 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: stop_status
+2024-05-20 12:18:32,541 DEBUG   SenderThread:55838 [sender.py:send_request():405] send_request: stop_status
+2024-05-20 12:18:32,611 INFO    Thread-12 :55838 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240520_121453-9rthrijp/files/wandb-summary.json
+2024-05-20 12:18:32,611 INFO    Thread-12 :55838 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240520_121453-9rthrijp/files/output.log
+2024-05-20 12:18:32,969 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: partial_history
+2024-05-20 12:18:33,243 DEBUG   SenderThread:55838 [sender.py:send():378] send: history
+2024-05-20 12:18:33,243 DEBUG   SenderThread:55838 [sender.py:send_request():405] send_request: summary_record
+2024-05-20 12:18:33,244 INFO    SenderThread:55838 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-05-20 12:18:33,616 INFO    Thread-12 :55838 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240520_121453-9rthrijp/files/wandb-summary.json
+2024-05-20 12:18:34,012 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: partial_history
+2024-05-20 12:18:34,012 DEBUG   SenderThread:55838 [sender.py:send():378] send: history
+2024-05-20 12:18:34,012 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: status_report
+2024-05-20 12:18:34,012 DEBUG   SenderThread:55838 [sender.py:send_request():405] send_request: summary_record
+2024-05-20 12:18:34,013 INFO    SenderThread:55838 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-05-20 12:18:34,621 INFO    Thread-12 :55838 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240520_121453-9rthrijp/files/wandb-summary.json
+2024-05-20 12:18:34,621 INFO    Thread-12 :55838 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240520_121453-9rthrijp/files/output.log
+2024-05-20 12:18:36,318 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: partial_history
+2024-05-20 12:18:36,320 DEBUG   SenderThread:55838 [sender.py:send():378] send: history
+2024-05-20 12:18:36,320 DEBUG   SenderThread:55838 [sender.py:send_request():405] send_request: summary_record
+2024-05-20 12:18:36,320 INFO    SenderThread:55838 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-05-20 12:18:36,627 INFO    Thread-12 :55838 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240520_121453-9rthrijp/files/wandb-summary.json
+2024-05-20 12:18:36,628 INFO    Thread-12 :55838 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240520_121453-9rthrijp/files/output.log
+2024-05-20 12:18:37,652 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: partial_history
+2024-05-20 12:18:37,653 DEBUG   SenderThread:55838 [sender.py:send():378] send: history
+2024-05-20 12:18:37,653 DEBUG   SenderThread:55838 [sender.py:send_request():405] send_request: summary_record
+2024-05-20 12:18:37,653 INFO    SenderThread:55838 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-05-20 12:18:38,638 INFO    Thread-12 :55838 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240520_121453-9rthrijp/files/wandb-summary.json
+2024-05-20 12:18:38,638 INFO    Thread-12 :55838 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240520_121453-9rthrijp/files/output.log
+2024-05-20 12:18:38,765 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: partial_history
+2024-05-20 12:18:38,765 DEBUG   SenderThread:55838 [sender.py:send():378] send: history
+2024-05-20 12:18:38,765 DEBUG   SenderThread:55838 [sender.py:send_request():405] send_request: summary_record
+2024-05-20 12:18:38,766 INFO    SenderThread:55838 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-05-20 12:18:39,178 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: status_report
+2024-05-20 12:18:39,643 INFO    Thread-12 :55838 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240520_121453-9rthrijp/files/wandb-summary.json
+2024-05-20 12:18:39,951 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: partial_history
+2024-05-20 12:18:39,951 DEBUG   SenderThread:55838 [sender.py:send():378] send: history
+2024-05-20 12:18:39,951 DEBUG   SenderThread:55838 [sender.py:send_request():405] send_request: summary_record
+2024-05-20 12:18:39,952 INFO    SenderThread:55838 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-05-20 12:18:40,648 INFO    Thread-12 :55838 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240520_121453-9rthrijp/files/wandb-summary.json
+2024-05-20 12:18:40,648 INFO    Thread-12 :55838 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240520_121453-9rthrijp/files/output.log
+2024-05-20 12:18:41,039 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: partial_history
+2024-05-20 12:18:41,040 DEBUG   SenderThread:55838 [sender.py:send():378] send: history
+2024-05-20 12:18:41,040 DEBUG   SenderThread:55838 [sender.py:send_request():405] send_request: summary_record
+2024-05-20 12:18:41,041 INFO    SenderThread:55838 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-05-20 12:18:41,651 INFO    Thread-12 :55838 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240520_121453-9rthrijp/files/wandb-summary.json
+2024-05-20 12:18:42,065 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: partial_history
+2024-05-20 12:18:42,065 DEBUG   SenderThread:55838 [sender.py:send():378] send: history
+2024-05-20 12:18:42,065 DEBUG   SenderThread:55838 [sender.py:send_request():405] send_request: summary_record
+2024-05-20 12:18:42,066 INFO    SenderThread:55838 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-05-20 12:18:42,651 INFO    Thread-12 :55838 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240520_121453-9rthrijp/files/wandb-summary.json
+2024-05-20 12:18:42,651 INFO    Thread-12 :55838 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240520_121453-9rthrijp/files/output.log
+2024-05-20 12:18:43,194 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: partial_history
+2024-05-20 12:18:43,194 DEBUG   SenderThread:55838 [sender.py:send():378] send: history
+2024-05-20 12:18:43,194 DEBUG   SenderThread:55838 [sender.py:send_request():405] send_request: summary_record
+2024-05-20 12:18:43,195 INFO    SenderThread:55838 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-05-20 12:18:43,652 INFO    Thread-12 :55838 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240520_121453-9rthrijp/files/wandb-summary.json
+2024-05-20 12:18:44,245 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: status_report
+2024-05-20 12:18:44,245 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: partial_history
+2024-05-20 12:18:44,245 DEBUG   SenderThread:55838 [sender.py:send():378] send: history
+2024-05-20 12:18:44,245 DEBUG   SenderThread:55838 [sender.py:send_request():405] send_request: summary_record
+2024-05-20 12:18:44,245 INFO    SenderThread:55838 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-05-20 12:18:44,658 INFO    Thread-12 :55838 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240520_121453-9rthrijp/files/wandb-summary.json
+2024-05-20 12:18:44,658 INFO    Thread-12 :55838 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240520_121453-9rthrijp/files/output.log
+2024-05-20 12:18:45,299 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: partial_history
+2024-05-20 12:18:45,299 DEBUG   SenderThread:55838 [sender.py:send():378] send: history
+2024-05-20 12:18:45,299 DEBUG   SenderThread:55838 [sender.py:send_request():405] send_request: summary_record
+2024-05-20 12:18:45,299 INFO    SenderThread:55838 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-05-20 12:18:45,662 INFO    Thread-12 :55838 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240520_121453-9rthrijp/files/wandb-summary.json
+2024-05-20 12:18:46,343 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: partial_history
+2024-05-20 12:18:46,344 DEBUG   SenderThread:55838 [sender.py:send():378] send: history
+2024-05-20 12:18:46,344 DEBUG   SenderThread:55838 [sender.py:send_request():405] send_request: summary_record
+2024-05-20 12:18:46,344 INFO    SenderThread:55838 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-05-20 12:18:46,667 INFO    Thread-12 :55838 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240520_121453-9rthrijp/files/wandb-summary.json
+2024-05-20 12:18:46,667 INFO    Thread-12 :55838 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240520_121453-9rthrijp/files/output.log
+2024-05-20 12:18:47,422 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: partial_history
+2024-05-20 12:18:47,422 DEBUG   SenderThread:55838 [sender.py:send():378] send: history
+2024-05-20 12:18:47,423 DEBUG   SenderThread:55838 [sender.py:send_request():405] send_request: summary_record
+2024-05-20 12:18:47,423 INFO    SenderThread:55838 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-05-20 12:18:47,547 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: stop_status
+2024-05-20 12:18:47,547 DEBUG   SenderThread:55838 [sender.py:send_request():405] send_request: stop_status
+2024-05-20 12:18:47,672 INFO    Thread-12 :55838 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240520_121453-9rthrijp/files/wandb-summary.json
+2024-05-20 12:18:48,678 INFO    Thread-12 :55838 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240520_121453-9rthrijp/files/output.log
+2024-05-20 12:18:49,547 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: partial_history
+2024-05-20 12:18:50,344 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: partial_history
+2024-05-20 12:18:51,146 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: partial_history
+2024-05-20 12:18:52,512 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: partial_history
+2024-05-20 12:18:52,572 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: keepalive
+2024-05-20 12:18:53,696 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: partial_history
+2024-05-20 12:18:54,585 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: partial_history
+2024-05-20 12:18:55,407 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: partial_history
+2024-05-20 12:18:56,177 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: partial_history
+2024-05-20 12:18:56,952 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: partial_history
+2024-05-20 12:18:57,596 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: keepalive
+2024-05-20 12:18:59,086 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: partial_history
+2024-05-20 12:19:00,203 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: partial_history
+2024-05-20 12:19:01,144 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: partial_history
+2024-05-20 12:19:02,102 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: pause
+2024-05-20 12:19:02,102 INFO    HandlerThread:55838 [handler.py:handle_request_pause():724] stopping system metrics thread
+2024-05-20 12:19:02,102 INFO    HandlerThread:55838 [system_monitor.py:finish():203] Stopping system monitor
+2024-05-20 12:19:02,102 DEBUG   SystemMonitor:55838 [system_monitor.py:_start():179] Finished system metrics aggregation loop
+2024-05-20 12:19:02,103 DEBUG   SystemMonitor:55838 [system_monitor.py:_start():183] Publishing last batch of metrics
+2024-05-20 12:19:02,103 INFO    HandlerThread:55838 [interfaces.py:finish():200] Joined cpu monitor
+2024-05-20 12:19:02,103 INFO    HandlerThread:55838 [interfaces.py:finish():200] Joined disk monitor
+2024-05-20 12:19:02,103 INFO    HandlerThread:55838 [interfaces.py:finish():200] Joined gpuapple monitor
+2024-05-20 12:19:02,103 INFO    HandlerThread:55838 [interfaces.py:finish():200] Joined memory monitor
+2024-05-20 12:19:02,103 INFO    HandlerThread:55838 [interfaces.py:finish():200] Joined network monitor
+2024-05-20 12:19:07,629 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: keepalive
+2024-05-20 12:19:09,042 DEBUG   SenderThread:55838 [sender.py:send():378] send: history
+2024-05-20 12:19:09,043 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: status_report
+2024-05-20 12:19:09,043 DEBUG   SenderThread:55838 [sender.py:send_request():405] send_request: summary_record
+2024-05-20 12:19:09,047 INFO    SenderThread:55838 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-05-20 12:19:09,049 DEBUG   SenderThread:55838 [sender.py:send():378] send: history
+2024-05-20 12:19:09,049 DEBUG   SenderThread:55838 [sender.py:send_request():405] send_request: summary_record
+2024-05-20 12:19:09,050 INFO    SenderThread:55838 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-05-20 12:19:09,051 DEBUG   SenderThread:55838 [sender.py:send():378] send: history
+2024-05-20 12:19:09,051 DEBUG   SenderThread:55838 [sender.py:send_request():405] send_request: summary_record
+2024-05-20 12:19:09,052 INFO    SenderThread:55838 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-05-20 12:19:09,052 DEBUG   SenderThread:55838 [sender.py:send():378] send: history
+2024-05-20 12:19:09,053 DEBUG   SenderThread:55838 [sender.py:send_request():405] send_request: summary_record
+2024-05-20 12:19:09,053 INFO    SenderThread:55838 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-05-20 12:19:09,054 DEBUG   SenderThread:55838 [sender.py:send():378] send: history
+2024-05-20 12:19:09,054 DEBUG   SenderThread:55838 [sender.py:send_request():405] send_request: summary_record
+2024-05-20 12:19:09,055 INFO    SenderThread:55838 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-05-20 12:19:09,056 DEBUG   SenderThread:55838 [sender.py:send():378] send: history
+2024-05-20 12:19:09,056 DEBUG   SenderThread:55838 [sender.py:send_request():405] send_request: summary_record
+2024-05-20 12:19:09,057 INFO    SenderThread:55838 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-05-20 12:19:09,057 DEBUG   SenderThread:55838 [sender.py:send():378] send: history
+2024-05-20 12:19:09,057 DEBUG   SenderThread:55838 [sender.py:send_request():405] send_request: summary_record
+2024-05-20 12:19:09,058 INFO    SenderThread:55838 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-05-20 12:19:09,058 DEBUG   SenderThread:55838 [sender.py:send():378] send: stats
+2024-05-20 12:19:09,059 DEBUG   SenderThread:55838 [sender.py:send():378] send: history
+2024-05-20 12:19:09,059 DEBUG   SenderThread:55838 [sender.py:send_request():405] send_request: summary_record
+2024-05-20 12:19:09,060 INFO    SenderThread:55838 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-05-20 12:19:09,060 DEBUG   SenderThread:55838 [sender.py:send():378] send: history
+2024-05-20 12:19:09,060 DEBUG   SenderThread:55838 [sender.py:send_request():405] send_request: summary_record
+2024-05-20 12:19:09,061 INFO    SenderThread:55838 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-05-20 12:19:09,061 DEBUG   SenderThread:55838 [sender.py:send():378] send: history
+2024-05-20 12:19:09,061 DEBUG   SenderThread:55838 [sender.py:send_request():405] send_request: summary_record
+2024-05-20 12:19:09,062 INFO    SenderThread:55838 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-05-20 12:19:09,062 DEBUG   SenderThread:55838 [sender.py:send():378] send: history
+2024-05-20 12:19:09,063 DEBUG   SenderThread:55838 [sender.py:send_request():405] send_request: summary_record
+2024-05-20 12:19:09,063 INFO    SenderThread:55838 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-05-20 12:19:09,064 DEBUG   SenderThread:55838 [sender.py:send():378] send: history
+2024-05-20 12:19:09,064 DEBUG   SenderThread:55838 [sender.py:send_request():405] send_request: summary_record
+2024-05-20 12:19:09,064 INFO    SenderThread:55838 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-05-20 12:19:09,065 DEBUG   SenderThread:55838 [sender.py:send():378] send: stats
+2024-05-20 12:19:09,774 INFO    Thread-12 :55838 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240520_121453-9rthrijp/files/wandb-summary.json
+2024-05-20 12:19:10,778 INFO    Thread-12 :55838 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240520_121453-9rthrijp/files/output.log
+2024-05-20 12:19:12,644 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: keepalive
+2024-05-20 12:19:14,082 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: status_report
+2024-05-20 12:19:17,651 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: keepalive
+2024-05-20 12:19:18,483 WARNING FileStreamThread:55838 [file_stream.py:request_with_retry():674] requests_with_retry encountered retryable exception: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response')). func: functools.partial(<bound method Session.post of <requests.sessions.Session object at 0x106250c20>>, timeout=180.0), args: ('https://api.wandb.ai/files/counterfactuals/sae_concept_eraser/9rthrijp/file_stream',), kwargs: {'json': {'files': {'wandb-summary.json': {'offset': 0, 'content': ['{"Gender de-baising Losses": 1.6848028757711284, "_timestamp": 1716187727.422642, "_runtime": 234.04965090751648, "_step": 108}']}, 'wandb-history.jsonl': {'offset': 103, 'content': ['{"Gender de-baising Losses": 0.21075483343224732, "_timestamp": 1716187722.0649862, "_runtime": 228.69199514389038, "_step": 103}', '{"Gender de-baising Losses": 0.57477401344172, "_timestamp": 1716187723.194141, "_runtime": 229.8211498260498, "_step": 104}', '{"Gender de-baising Losses": 1.9127051234188912, "_timestamp": 1716187724.244988, "_runtime": 230.87199687957764, "_step": 105}', '{"Gender de-baising Losses": 2.08175687934272, "_timestamp": 1716187725.299061, "_runtime": 231.9260699748993, "_step": 106}', '{"Gender de-baising Losses": 1.864079427579054, "_timestamp": 1716187726.343791, "_runtime": 232.97079992294312, "_step": 107}', '{"Gender de-baising Losses": 1.6848028757711284, "_timestamp": 1716187727.422642, "_runtime": 234.04965090751648, "_step": 108}']}, 'output.log': {'offset': 105, 'content': ['2024-05-20T06:48:42.515998 Epoch: 0, Loss: 2.663611340522766\n', '2024-05-20T06:48:44.521672 Epoch: 0, Loss: 0.21075483343224732\n', '2024-05-20T06:48:44.521672 Epoch: 0, Loss: 0.57477401344172\n', '2024-05-20T06:48:46.526253 Epoch: 0, Loss: 1.9127051234188912\n', '2024-05-20T06:48:46.526253 Epoch: 0, Loss: 2.08175687934272\n', '2024-05-20T06:48:48.531696 Epoch: 0, Loss: 1.864079427579054\n', '2024-05-20T06:48:48.531696 Epoch: 0, Loss: 1.6848028757711284\n']}}, 'dropped': 0}}
+2024-05-20 12:19:19,100 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: status_report
+2024-05-20 12:19:22,673 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: keepalive
+2024-05-20 12:19:24,117 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: status_report
+2024-05-20 12:19:27,685 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: keepalive
+2024-05-20 12:19:29,129 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: status_report
+2024-05-20 12:19:32,698 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: keepalive
+2024-05-20 12:19:34,138 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: status_report
+2024-05-20 12:19:37,707 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: keepalive
+2024-05-20 12:19:39,153 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: status_report
+2024-05-20 12:19:42,722 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: keepalive
+2024-05-20 12:19:44,175 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: status_report
+2024-05-20 12:19:47,739 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: keepalive
+2024-05-20 12:19:49,189 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: status_report
+2024-05-20 12:19:52,763 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: keepalive
+2024-05-20 12:19:54,207 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: status_report
+2024-05-20 12:19:57,787 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: keepalive
+2024-05-20 12:19:59,224 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: status_report
+2024-05-20 12:20:02,800 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: keepalive
+2024-05-20 12:20:04,238 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: status_report
+2024-05-20 12:20:07,817 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: keepalive
+2024-05-20 12:20:09,256 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: status_report
+2024-05-20 12:20:12,832 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: keepalive
+2024-05-20 12:20:14,272 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: status_report
+2024-05-20 12:20:17,851 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: keepalive
+2024-05-20 12:20:19,289 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: status_report
+2024-05-20 12:20:22,871 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: keepalive
+2024-05-20 12:20:24,302 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: status_report
+2024-05-20 12:20:27,887 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: keepalive
+2024-05-20 12:20:29,315 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: status_report
+2024-05-20 12:20:32,906 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: keepalive
+2024-05-20 12:20:34,330 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: status_report
+2024-05-20 12:20:37,923 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: keepalive
+2024-05-20 12:20:39,341 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: status_report
+2024-05-20 12:20:42,933 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: keepalive
+2024-05-20 12:20:44,362 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: status_report
+2024-05-20 12:20:47,947 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: keepalive
+2024-05-20 12:20:49,387 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: status_report
+2024-05-20 12:20:52,958 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: keepalive
+2024-05-20 12:20:54,406 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: status_report
+2024-05-20 12:20:57,976 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: keepalive
+2024-05-20 12:20:59,428 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: status_report
+2024-05-20 12:21:02,997 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: keepalive
+2024-05-20 12:21:04,440 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: status_report
+2024-05-20 12:21:08,020 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: keepalive
+2024-05-20 12:21:09,459 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: status_report
+2024-05-20 12:21:13,032 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: keepalive
+2024-05-20 12:21:14,469 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: status_report
+2024-05-20 12:21:18,048 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: keepalive
+2024-05-20 12:21:19,484 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: status_report
+2024-05-20 12:21:23,065 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: keepalive
+2024-05-20 12:21:24,495 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: status_report
+2024-05-20 12:21:28,079 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: keepalive
+2024-05-20 12:21:29,509 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: status_report
+2024-05-20 12:21:33,106 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: keepalive
+2024-05-20 12:21:34,522 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: status_report
+2024-05-20 12:21:38,118 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: keepalive
+2024-05-20 12:21:39,536 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: status_report
+2024-05-20 12:21:43,130 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: keepalive
+2024-05-20 12:21:44,547 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: status_report
+2024-05-20 12:21:48,143 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: keepalive
+2024-05-20 12:21:49,571 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: status_report
+2024-05-20 12:21:53,162 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: keepalive
+2024-05-20 12:21:54,579 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: status_report
+2024-05-20 12:21:58,173 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: keepalive
+2024-05-20 12:21:59,591 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: status_report
+2024-05-20 12:22:03,186 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: keepalive
+2024-05-20 12:22:04,601 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: status_report
+2024-05-20 12:22:08,201 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: keepalive
+2024-05-20 12:22:09,620 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: status_report
+2024-05-20 12:22:13,217 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: keepalive
+2024-05-20 12:22:14,631 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: status_report
+2024-05-20 12:22:18,228 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: keepalive
+2024-05-20 12:22:19,651 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: status_report
+2024-05-20 12:22:23,240 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: keepalive
+2024-05-20 12:22:24,668 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: status_report
+2024-05-20 12:22:28,256 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: keepalive
+2024-05-20 12:22:29,687 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: status_report
+2024-05-20 12:22:33,268 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: keepalive
+2024-05-20 12:22:34,705 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: status_report
+2024-05-20 12:22:38,287 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: keepalive
+2024-05-20 12:22:39,717 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: status_report
+2024-05-20 12:22:43,301 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: keepalive
+2024-05-20 12:22:44,729 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: status_report
+2024-05-20 12:22:48,316 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: keepalive
+2024-05-20 12:22:49,750 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: status_report
+2024-05-20 12:22:53,331 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: keepalive
+2024-05-20 12:22:54,770 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: status_report
+2024-05-20 12:22:58,348 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: keepalive
+2024-05-20 12:22:59,780 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: status_report
+2024-05-20 12:23:03,361 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: keepalive
+2024-05-20 12:23:04,792 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: status_report
+2024-05-20 12:23:08,376 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: keepalive
+2024-05-20 12:23:09,807 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: status_report
+2024-05-20 12:23:13,396 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: keepalive
+2024-05-20 12:23:14,824 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: status_report
+2024-05-20 12:23:18,408 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: keepalive
+2024-05-20 12:23:19,839 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: status_report
+2024-05-20 12:23:23,426 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: keepalive
+2024-05-20 12:23:24,856 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: status_report
+2024-05-20 12:23:28,445 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: keepalive
+2024-05-20 12:23:29,871 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: status_report
+2024-05-20 12:23:33,454 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: keepalive
+2024-05-20 12:23:34,879 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: status_report
+2024-05-20 12:23:38,464 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: keepalive
+2024-05-20 12:23:39,897 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: status_report
+2024-05-20 12:23:43,486 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: keepalive
+2024-05-20 12:23:44,910 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: status_report
+2024-05-20 12:23:48,499 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: keepalive
+2024-05-20 12:23:49,927 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: status_report
+2024-05-20 12:23:53,513 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: keepalive
+2024-05-20 12:23:54,938 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: status_report
+2024-05-20 12:23:58,529 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: keepalive
+2024-05-20 12:23:59,955 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: status_report
+2024-05-20 12:24:03,543 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: keepalive
+2024-05-20 12:24:04,975 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: status_report
+2024-05-20 12:24:08,571 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: keepalive
+2024-05-20 12:24:10,005 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: status_report
+2024-05-20 12:24:13,604 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: keepalive
+2024-05-20 12:24:15,037 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: status_report
+2024-05-20 12:24:18,622 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: keepalive
+2024-05-20 12:24:20,055 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: status_report
+2024-05-20 12:24:23,646 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: keepalive
+2024-05-20 12:24:25,081 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: status_report
+2024-05-20 12:24:28,680 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: keepalive
+2024-05-20 12:24:30,117 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: status_report
+2024-05-20 12:24:33,706 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: keepalive
+2024-05-20 12:24:35,149 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: status_report
+2024-05-20 12:24:38,730 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: keepalive
+2024-05-20 12:24:40,169 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: status_report
+2024-05-20 12:24:43,754 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: keepalive
+2024-05-20 12:24:45,189 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: status_report
+2024-05-20 12:24:48,775 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: keepalive
+2024-05-20 12:24:50,197 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: status_report
+2024-05-20 12:24:53,797 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: keepalive
+2024-05-20 12:24:55,211 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: status_report
+2024-05-20 12:24:58,818 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: keepalive
+2024-05-20 12:25:00,233 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: status_report
+2024-05-20 12:25:03,832 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: keepalive
+2024-05-20 12:25:05,249 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: status_report
+2024-05-20 12:25:08,852 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: keepalive
+2024-05-20 12:25:10,265 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: status_report
+2024-05-20 12:25:13,865 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: keepalive
+2024-05-20 12:25:15,280 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: status_report
+2024-05-20 12:25:18,887 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: keepalive
+2024-05-20 12:25:20,297 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: status_report
+2024-05-20 12:25:23,900 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: keepalive
+2024-05-20 12:25:25,316 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: status_report
+2024-05-20 12:25:28,927 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: keepalive
+2024-05-20 12:25:30,335 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: status_report
+2024-05-20 12:25:31,179 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: resume
+2024-05-20 12:25:31,179 INFO    HandlerThread:55838 [handler.py:handle_request_resume():715] starting system metrics thread
+2024-05-20 12:25:31,179 INFO    HandlerThread:55838 [system_monitor.py:start():194] Starting system monitor
+2024-05-20 12:25:31,179 INFO    SystemMonitor:55838 [system_monitor.py:_start():158] Starting system asset monitoring threads
+2024-05-20 12:25:31,180 INFO    SystemMonitor:55838 [interfaces.py:start():188] Started cpu monitoring
+2024-05-20 12:25:31,181 INFO    SystemMonitor:55838 [interfaces.py:start():188] Started disk monitoring
+2024-05-20 12:25:31,181 INFO    SystemMonitor:55838 [interfaces.py:start():188] Started gpuapple monitoring
+2024-05-20 12:25:31,181 INFO    SystemMonitor:55838 [interfaces.py:start():188] Started memory monitoring
+2024-05-20 12:25:31,183 INFO    SystemMonitor:55838 [interfaces.py:start():188] Started network monitoring
+2024-05-20 12:25:31,191 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: pause
+2024-05-20 12:25:31,191 INFO    HandlerThread:55838 [handler.py:handle_request_pause():724] stopping system metrics thread
+2024-05-20 12:25:31,191 INFO    HandlerThread:55838 [system_monitor.py:finish():203] Stopping system monitor
+2024-05-20 12:25:31,191 DEBUG   SystemMonitor:55838 [system_monitor.py:_start():172] Starting system metrics aggregation loop
+2024-05-20 12:25:31,191 DEBUG   SystemMonitor:55838 [system_monitor.py:_start():179] Finished system metrics aggregation loop
+2024-05-20 12:25:31,192 DEBUG   SystemMonitor:55838 [system_monitor.py:_start():183] Publishing last batch of metrics
+2024-05-20 12:25:31,193 INFO    HandlerThread:55838 [interfaces.py:finish():200] Joined cpu monitor
+2024-05-20 12:25:31,193 INFO    HandlerThread:55838 [interfaces.py:finish():200] Joined disk monitor
+2024-05-20 12:25:31,635 INFO    HandlerThread:55838 [interfaces.py:finish():200] Joined gpuapple monitor
+2024-05-20 12:25:31,635 INFO    HandlerThread:55838 [interfaces.py:finish():200] Joined memory monitor
+2024-05-20 12:25:31,635 INFO    HandlerThread:55838 [interfaces.py:finish():200] Joined network monitor
+2024-05-20 12:25:31,635 DEBUG   SenderThread:55838 [sender.py:send():378] send: stats
+2024-05-20 12:25:33,631 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: resume
+2024-05-20 12:25:33,631 INFO    HandlerThread:55838 [handler.py:handle_request_resume():715] starting system metrics thread
+2024-05-20 12:25:33,631 INFO    HandlerThread:55838 [system_monitor.py:start():194] Starting system monitor
+2024-05-20 12:25:33,631 INFO    SystemMonitor:55838 [system_monitor.py:_start():158] Starting system asset monitoring threads
+2024-05-20 12:25:33,631 INFO    SystemMonitor:55838 [interfaces.py:start():188] Started cpu monitoring
+2024-05-20 12:25:33,631 INFO    SystemMonitor:55838 [interfaces.py:start():188] Started disk monitoring
+2024-05-20 12:25:33,632 INFO    SystemMonitor:55838 [interfaces.py:start():188] Started gpuapple monitoring
+2024-05-20 12:25:33,633 INFO    SystemMonitor:55838 [interfaces.py:start():188] Started memory monitoring
+2024-05-20 12:25:33,634 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: pause
+2024-05-20 12:25:33,634 INFO    HandlerThread:55838 [handler.py:handle_request_pause():724] stopping system metrics thread
+2024-05-20 12:25:33,634 INFO    HandlerThread:55838 [system_monitor.py:finish():203] Stopping system monitor
+2024-05-20 12:25:33,635 INFO    HandlerThread:55838 [interfaces.py:finish():200] Joined cpu monitor
+2024-05-20 12:25:33,635 INFO    HandlerThread:55838 [interfaces.py:finish():200] Joined disk monitor
+2024-05-20 12:25:33,635 INFO    SystemMonitor:55838 [interfaces.py:start():188] Started network monitoring
+2024-05-20 12:25:33,635 DEBUG   SystemMonitor:55838 [system_monitor.py:_start():172] Starting system metrics aggregation loop
+2024-05-20 12:25:33,635 DEBUG   SystemMonitor:55838 [system_monitor.py:_start():179] Finished system metrics aggregation loop
+2024-05-20 12:25:33,635 DEBUG   SystemMonitor:55838 [system_monitor.py:_start():183] Publishing last batch of metrics
+2024-05-20 12:25:33,884 INFO    HandlerThread:55838 [interfaces.py:finish():200] Joined gpuapple monitor
+2024-05-20 12:25:33,885 INFO    HandlerThread:55838 [interfaces.py:finish():200] Joined memory monitor
+2024-05-20 12:25:33,885 INFO    HandlerThread:55838 [interfaces.py:finish():200] Joined network monitor
+2024-05-20 12:25:33,885 DEBUG   SenderThread:55838 [sender.py:send():378] send: stats
+2024-05-20 12:25:33,936 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: keepalive
+2024-05-20 12:25:35,526 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: resume
+2024-05-20 12:25:35,526 INFO    HandlerThread:55838 [handler.py:handle_request_resume():715] starting system metrics thread
+2024-05-20 12:25:35,526 INFO    HandlerThread:55838 [system_monitor.py:start():194] Starting system monitor
+2024-05-20 12:25:35,526 INFO    SystemMonitor:55838 [system_monitor.py:_start():158] Starting system asset monitoring threads
+2024-05-20 12:25:35,527 INFO    SystemMonitor:55838 [interfaces.py:start():188] Started cpu monitoring
+2024-05-20 12:25:35,527 INFO    SystemMonitor:55838 [interfaces.py:start():188] Started disk monitoring
+2024-05-20 12:25:35,528 INFO    SystemMonitor:55838 [interfaces.py:start():188] Started gpuapple monitoring
+2024-05-20 12:25:35,531 INFO    SystemMonitor:55838 [interfaces.py:start():188] Started memory monitoring
+2024-05-20 12:25:35,531 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: pause
+2024-05-20 12:25:35,532 INFO    HandlerThread:55838 [handler.py:handle_request_pause():724] stopping system metrics thread
+2024-05-20 12:25:35,532 INFO    SystemMonitor:55838 [interfaces.py:start():188] Started network monitoring
+2024-05-20 12:25:35,532 INFO    HandlerThread:55838 [system_monitor.py:finish():203] Stopping system monitor
+2024-05-20 12:25:35,532 DEBUG   SystemMonitor:55838 [system_monitor.py:_start():172] Starting system metrics aggregation loop
+2024-05-20 12:25:35,532 INFO    HandlerThread:55838 [interfaces.py:finish():200] Joined cpu monitor
+2024-05-20 12:25:35,532 DEBUG   SystemMonitor:55838 [system_monitor.py:_start():179] Finished system metrics aggregation loop
+2024-05-20 12:25:35,533 INFO    HandlerThread:55838 [interfaces.py:finish():200] Joined disk monitor
+2024-05-20 12:25:35,533 DEBUG   SystemMonitor:55838 [system_monitor.py:_start():183] Publishing last batch of metrics
+2024-05-20 12:25:35,808 INFO    HandlerThread:55838 [interfaces.py:finish():200] Joined gpuapple monitor
+2024-05-20 12:25:35,808 INFO    HandlerThread:55838 [interfaces.py:finish():200] Joined memory monitor
+2024-05-20 12:25:35,808 INFO    HandlerThread:55838 [interfaces.py:finish():200] Joined network monitor
+2024-05-20 12:25:35,808 DEBUG   SenderThread:55838 [sender.py:send():378] send: stats
+2024-05-20 12:25:35,809 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: status_report
+2024-05-20 12:25:38,282 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: resume
+2024-05-20 12:25:38,282 INFO    HandlerThread:55838 [handler.py:handle_request_resume():715] starting system metrics thread
+2024-05-20 12:25:38,282 INFO    HandlerThread:55838 [system_monitor.py:start():194] Starting system monitor
+2024-05-20 12:25:38,282 INFO    SystemMonitor:55838 [system_monitor.py:_start():158] Starting system asset monitoring threads
+2024-05-20 12:25:38,282 INFO    SystemMonitor:55838 [interfaces.py:start():188] Started cpu monitoring
+2024-05-20 12:25:38,282 INFO    SystemMonitor:55838 [interfaces.py:start():188] Started disk monitoring
+2024-05-20 12:25:38,283 INFO    SystemMonitor:55838 [interfaces.py:start():188] Started gpuapple monitoring
+2024-05-20 12:25:38,284 INFO    SystemMonitor:55838 [interfaces.py:start():188] Started memory monitoring
+2024-05-20 12:25:38,285 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: pause
+2024-05-20 12:25:38,285 INFO    HandlerThread:55838 [handler.py:handle_request_pause():724] stopping system metrics thread
+2024-05-20 12:25:38,285 INFO    HandlerThread:55838 [system_monitor.py:finish():203] Stopping system monitor
+2024-05-20 12:25:38,286 INFO    HandlerThread:55838 [interfaces.py:finish():200] Joined cpu monitor
+2024-05-20 12:25:38,286 INFO    HandlerThread:55838 [interfaces.py:finish():200] Joined disk monitor
+2024-05-20 12:25:38,286 INFO    SystemMonitor:55838 [interfaces.py:start():188] Started network monitoring
+2024-05-20 12:25:38,286 DEBUG   SystemMonitor:55838 [system_monitor.py:_start():172] Starting system metrics aggregation loop
+2024-05-20 12:25:38,286 DEBUG   SystemMonitor:55838 [system_monitor.py:_start():179] Finished system metrics aggregation loop
+2024-05-20 12:25:38,286 DEBUG   SystemMonitor:55838 [system_monitor.py:_start():183] Publishing last batch of metrics
+2024-05-20 12:25:38,571 INFO    HandlerThread:55838 [interfaces.py:finish():200] Joined gpuapple monitor
+2024-05-20 12:25:38,571 INFO    HandlerThread:55838 [interfaces.py:finish():200] Joined memory monitor
+2024-05-20 12:25:38,571 INFO    HandlerThread:55838 [interfaces.py:finish():200] Joined network monitor
+2024-05-20 12:25:38,571 DEBUG   SenderThread:55838 [sender.py:send():378] send: stats
+2024-05-20 12:25:38,956 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: keepalive
+2024-05-20 12:25:41,587 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: status_report
+2024-05-20 12:25:43,980 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: keepalive
+2024-05-20 12:25:46,608 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: status_report
+2024-05-20 12:25:49,004 DEBUG   HandlerThread:55838 [handler.py:handle_request():158] handle_request: keepalive
