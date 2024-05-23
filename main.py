@@ -10,6 +10,7 @@ def train(DEVICE,
         mini_batch,
         evaluation,
         batch_size_train,
+        activation_dim,
         residual_layer, 
         expansion_factor, 
         dict_embed_path,
@@ -20,7 +21,7 @@ def train(DEVICE,
     tokenizer = BertTokenizer.from_pretrained('bert-base-uncased')
 
     wandb.init(project="sae_concept_eraser")
-    wandb.run.name = "gender_Lastlinear-mask_amb(false)_b1_e15_mini-batch-test1k"
+    wandb.run.name = f"gender_Lastlinear-mask_amb(false)_b1_e{epochs}"
     # wandb.run.name = "gender_Lastlinear-mask_probe_amb(false)_b1_e3"
 
     new_model = my_model(DEVICE,
@@ -29,7 +30,7 @@ def train(DEVICE,
                         attn_dict_path = "/Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/baulab.us/u/smarks/autoencoders/pythia-70m-deduped/attn_out_layer",
                         mlp_dict_path = "/Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/baulab.us/u/smarks/autoencoders/pythia-70m-deduped/mlp_out_layer",
                         resid_dict_path = "/Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/baulab.us/u/smarks/autoencoders/pythia-70m-deduped/resid_out_layer",
-                        activation_dim = 512,
+                        activation_dim = activation_dim,
                         expansion_factor=64).to(DEVICE)
 
     optimizer = t.optim.Adam(new_model.parameters(), lr = lr)
@@ -73,7 +74,7 @@ def train(DEVICE,
                 wandb.log({"Gender de-baising Losses": np.mean(losses)})
                 losses = []
                 
-def eval(DEVICE, saved_model_path):
+def eval(DEVICE, saved_model_path, evaluation):
 
     wandb.init(project="sae_concept_eraser")
     wandb.run.name = "[professional]-trained_on_test-amb(False)-data(false)"
@@ -104,7 +105,12 @@ def eval(DEVICE, saved_model_path):
         len_batches = len(batches)
         for i in tqdm(range(len_batches)):
             text = batches[i][0]
-            labels = batches[i][1] # true label, if [2] then spurious label. We will be training the model in hope that mask will learn which concepts to mask.
+            
+            if evaluation == "profession":
+                labels = batches[i][1] # true label, if [2] then spurious label. We will be training the model in hope that mask will learn which concepts to mask. 
+            elif evaluation == "gender":
+                labels = batches[i][2]
+            
             # acts = get_acts(text)
             logits = new_model(text)
             # preds = (logits > 0.0).long()
@@ -166,14 +172,14 @@ def eval_on_subgroups(DEVICE, saved_model_path):
 if __name__ == "__main__":
 
     argparser = argparse.ArgumentParser()
-    argparser.add_argument('data_dir', type=str, help='directory to save the data')
-    argparser.add_argument('-e','--epochs', default=15, type=int, help='number of epochs')
-    argparser.add_argument('-lr','--lr', default=0.001, type=float, help='learning rate')
-    argparser.add_argument('-btr','batch_size_train', type=int, help='batch size for training')
-    argparser.add_argument("-d",'device', type=str, help='device to be used')
-    argparser.add_argument("-layer",'residual layer', type=str, help="residual layer to be used intervened in the model")
-    argparser.add_argument("-activation_dim", type=int, help="activation dimension")
-    argparser.add_argument("-ef", "--expansion_factor", default = 64, type=int, help="expansion factor")
+    
+    argparser.add_argument('-e', '--epochs', default=15, type=int, help='number of epochs')
+    argparser.add_argument('-lr', '--learning_rate', default=0.001, type=float, help='learning rate')
+    argparser.add_argument('-btr', '--batch_size_train', type=int, required=True, help='batch size for training')
+    argparser.add_argument('-d', '--device', type=str, required=True, help='device to be used')
+    argparser.add_argument('-layer', '--residual_layer', type=list, required=True, help='residual layer to be used intervened in the model')
+    argparser.add_argument('-ad', '--activation_dim', default=512, type=int, help="activation dimension")
+    argparser.add_argument('-ef', '--expansion_factor', default=64, type=int, help="expansion factor")
     
     argparser.add_argument("-dpath", "--dict_embed_path", 
                            default="/Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/baulab.us/u/smarks/autoencoders/pythia-70m-deduped/embed",
@@ -192,12 +198,12 @@ if __name__ == "__main__":
                            default="/Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/baulab.us/u/smarks/autoencoders/pythia-70m-deduped/resid_out_layer",
                            type=str, help="residual dictionary path")
     
-    argparser.add_argument("-mb", "mini_batch", action='store_true', help="for just training on 1000 samples of training data, then yes!")
-    argparser.add_argument("-eval", "evaluation", type=str, help="evaluation metric, either profession or gender")
-    argparser.add_argument("-pp", "probe_path", type=str, help="path of probe to be used")
-    argparser.add_argument("-svd","--saved_model_path", default = None, type=str, help="path to save the model")
+    argparser.add_argument("-mb", "--mini_batch", required=True, action='store_true', help="for just training on 1000 samples of training data, then yes!")
+    argparser.add_argument("-eval", "--evaluation", required=True, type=str, help="evaluation metric, either profession or gender")
+    argparser.add_argument("-pp", "--probe_path", required=True, type=str, help="path of probe model to be used")
+    argparser.add_argument("-svd","--saved_model_path", default = "new_model.pth", type=str, help="path to save the model")
     
-    argparser.add_argument("-task", "task", type=str, help="task to be performed, i.e. train, eval or eval_on_subgroups")
+    argparser.add_argument("-task", "--task", required=True, type=str, help="task to be performed, i.e. train, eval or eval_on_subgroups")
     
     
     args = argparser.parse_args()
@@ -207,23 +213,24 @@ if __name__ == "__main__":
     with open(args.probe_path, "rb") as f:
         probe = pkl.load(f)
     
-    if argparser.task == "train":
+    if args.task == "train":
     
-        train(args.device, 
-            args.epochs, 
-            args.lr, 
-            args.mini_batch, 
-            args.evaluation, 
-            args.batch_size_train, 
-            args.residual_layer, 
-            args.expansion_factor, 
+        train(args.device,
+            args.epochs,
+            args.learning_rate,
+            args.mini_batch,
+            args.evaluation,
+            args.batch_size_train,
+            args.activation_dim,
+            args.residual_layer,
+            args.expansion_factor,
             args.dict_embed_path,
             args.attn_dict_path,
             args.mlp_dict_path,
             args.resid_dict_path)
     
     elif argparser.task == "eval":
-        eval(args.device, args.saved_model_path)
+        eval(args.device, args.saved_model_path, args.evaluation)
     
     elif argparser.task == "eval_on_subgroups":
         eval_on_subgroups(args.device, args.saved_model_path)
