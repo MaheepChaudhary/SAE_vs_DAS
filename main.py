@@ -11,12 +11,13 @@ def train(DEVICE,
         evaluation,
         batch_size_train,
         activation_dim,
-        residual_layer, 
-        expansion_factor, 
+        residual_layer,  
         dict_embed_path,
+        method,
         attn_dict_path,
         mlp_dict_path,
-        resid_dict_path):
+        resid_dict_path,
+        expansion_factor):
 
     tokenizer = BertTokenizer.from_pretrained('bert-base-uncased')
 
@@ -27,11 +28,13 @@ def train(DEVICE,
     new_model = my_model(DEVICE,
                         probe,
                         dict_embed_path = dict_embed_path,
-                        attn_dict_path = "/Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/baulab.us/u/smarks/autoencoders/pythia-70m-deduped/attn_out_layer",
-                        mlp_dict_path = "/Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/baulab.us/u/smarks/autoencoders/pythia-70m-deduped/mlp_out_layer",
-                        resid_dict_path = "/Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/baulab.us/u/smarks/autoencoders/pythia-70m-deduped/resid_out_layer",
+                        attn_dict_path = attn_dict_path,
+                        mlp_dict_path = mlp_dict_path,
+                        resid_dict_path = resid_dict_path,
+                        resid_layers=residual_layer,
+                        method = method,
                         activation_dim = activation_dim,
-                        expansion_factor=64).to(DEVICE)
+                        expansion_factor=expansion_factor).to(DEVICE)
 
     optimizer = t.optim.Adam(new_model.parameters(), lr = lr)
     criterion = nn.BCEWithLogitsLoss().to(DEVICE)
@@ -177,7 +180,7 @@ if __name__ == "__main__":
     argparser.add_argument('-lr', '--learning_rate', default=0.001, type=float, help='learning rate')
     argparser.add_argument('-btr', '--batch_size_train', type=int, required=True, help='batch size for training')
     argparser.add_argument('-d', '--device', type=str, required=True, help='device to be used')
-    argparser.add_argument('-layer', '--residual_layer', type=list, required=True, help='residual layer to be used intervened in the model')
+    argparser.add_argument('-layer', '--residual_layer', type=list, required=True, help='residual layer to be used intervened in the model w/ range 0->4')
     argparser.add_argument('-ad', '--activation_dim', default=512, type=int, help="activation dimension")
     argparser.add_argument('-ef', '--expansion_factor', default=64, type=int, help="expansion factor")
     
@@ -204,6 +207,7 @@ if __name__ == "__main__":
     argparser.add_argument("-svd","--saved_model_path", default = "new_model.pth", type=str, help="path to save the model")
     
     argparser.add_argument("-task", "--task", required=True, type=str, help="task to be performed, i.e. train, eval or eval_on_subgroups")
+    argparser.add_argument("-nds", "--method", required=True, type=str, help="method to be used, i.e. neuron masking, sae masking or das masking")
     
     
     args = argparser.parse_args()
@@ -223,11 +227,12 @@ if __name__ == "__main__":
             args.batch_size_train,
             args.activation_dim,
             args.residual_layer,
-            args.expansion_factor,
+            args.nds,
             args.dict_embed_path,
             args.attn_dict_path,
             args.mlp_dict_path,
-            args.resid_dict_path)
+            args.resid_dict_path,
+            args.expansion_factor)
     
     elif argparser.task == "eval":
         eval(args.device, args.saved_model_path, args.evaluation)
