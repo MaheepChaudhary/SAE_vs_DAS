@@ -1,0 +1,26 @@
+
+passed dict emned path /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/baulab.us/u/smarks/autoencoders/pythia-70m-deduped/embed
+/Users/maheepchaudhary/miniforge3/envs/nnsight/lib/python3.12/site-packages/huggingface_hub/file_download.py:1132: FutureWarning: `resume_download` is deprecated and will be removed in version 1.0.0. Downloads always resume when possible. If you want to force a new download, use `force_download=True`.
+  warnings.warn(
+Special tokens have been added in the vocabulary, make sure the associated word embeddings are fine-tuned or trained.
+  0%|                                                                                                                                        | 0/1000 [00:00<?, ?it/s]
+Traceback (most recent call last):
+  File "/Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/main.py", line 256, in <module>
+    train(DEVICE=args.device,
+  File "/Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/main.py", line 81, in train
+    logits = new_model(text[0], temperature=temprature)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/maheepchaudhary/miniforge3/envs/nnsight/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1532, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/maheepchaudhary/miniforge3/envs/nnsight/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1541, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/model.py", line 122, in forward
+    with self.model.trace(text) as tracer:
+  File "/Users/maheepchaudhary/miniforge3/envs/nnsight/lib/python3.12/site-packages/nnsight/contexts/Runner.py", line 41, in __exit__
+    raise exc_val
+  File "/Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/model.py", line 154, in forward
+    self.rotate_layer = self.das_layers[layer]
+                        ~~~~~~~~~~~~~~~^^^^^^^
+IndexError: list index out of range

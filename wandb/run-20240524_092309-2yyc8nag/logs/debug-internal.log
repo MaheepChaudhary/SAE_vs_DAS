@@ -1,0 +1,200 @@
+2024-05-24 09:23:09,164 INFO    StreamThr :69576 [internal.py:wandb_internal():85] W&B internal server running at pid: 69576, started at: 2024-05-24 09:23:09.163743
+2024-05-24 09:23:09,165 DEBUG   HandlerThread:69576 [handler.py:handle_request():158] handle_request: status
+2024-05-24 09:23:09,168 INFO    WriterThread:69576 [datastore.py:open_for_write():87] open: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/wandb/run-20240524_092309-2yyc8nag/run-2yyc8nag.wandb
+2024-05-24 09:23:09,168 DEBUG   SenderThread:69576 [sender.py:send():378] send: header
+2024-05-24 09:23:09,185 DEBUG   SenderThread:69576 [sender.py:send():378] send: run
+2024-05-24 09:23:09,965 INFO    SenderThread:69576 [dir_watcher.py:__init__():211] watching files in: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/wandb/run-20240524_092309-2yyc8nag/files
+2024-05-24 09:23:09,965 INFO    SenderThread:69576 [sender.py:_start_run_threads():1123] run started: 2yyc8nag with start time 1716522789.164711
+2024-05-24 09:23:09,978 DEBUG   HandlerThread:69576 [handler.py:handle_request():158] handle_request: check_version
+2024-05-24 09:23:09,978 DEBUG   SenderThread:69576 [sender.py:send_request():405] send_request: check_version
+2024-05-24 09:23:10,066 DEBUG   HandlerThread:69576 [handler.py:handle_request():158] handle_request: run_start
+2024-05-24 09:23:10,074 DEBUG   HandlerThread:69576 [system_info.py:__init__():26] System info init
+2024-05-24 09:23:10,074 DEBUG   HandlerThread:69576 [system_info.py:__init__():41] System info init done
+2024-05-24 09:23:10,074 INFO    HandlerThread:69576 [system_monitor.py:start():194] Starting system monitor
+2024-05-24 09:23:10,075 INFO    SystemMonitor:69576 [system_monitor.py:_start():158] Starting system asset monitoring threads
+2024-05-24 09:23:10,075 INFO    HandlerThread:69576 [system_monitor.py:probe():214] Collecting system info
+2024-05-24 09:23:10,075 INFO    SystemMonitor:69576 [interfaces.py:start():188] Started cpu monitoring
+2024-05-24 09:23:10,080 INFO    SystemMonitor:69576 [interfaces.py:start():188] Started disk monitoring
+2024-05-24 09:23:10,082 INFO    SystemMonitor:69576 [interfaces.py:start():188] Started gpuapple monitoring
+2024-05-24 09:23:10,083 INFO    SystemMonitor:69576 [interfaces.py:start():188] Started memory monitoring
+2024-05-24 09:23:10,083 INFO    SystemMonitor:69576 [interfaces.py:start():188] Started network monitoring
+2024-05-24 09:23:10,343 DEBUG   HandlerThread:69576 [system_info.py:probe():150] Probing system
+2024-05-24 09:23:10,345 DEBUG   HandlerThread:69576 [system_info.py:_probe_git():135] Probing git
+2024-05-24 09:23:10,358 DEBUG   HandlerThread:69576 [system_info.py:_probe_git():143] Probing git done
+2024-05-24 09:23:10,358 DEBUG   HandlerThread:69576 [system_info.py:probe():198] Probing system done
+2024-05-24 09:23:10,358 DEBUG   HandlerThread:69576 [system_monitor.py:probe():223] {'os': 'macOS-14.5-arm64-arm-64bit', 'python': '3.12.3', 'heartbeatAt': '2024-05-24T03:53:10.343500', 'startedAt': '2024-05-24T03:53:09.156249', 'docker': None, 'cuda': None, 'args': ('-e', '2', '-btr', '1', '-d', 'mps', '-layer', '4', '-mb', '-pp', 'probe_shift.pkl', '-task', 'train', '-eval', 'profession', '-nds', 'neuron masking'), 'state': 'running', 'program': '/Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/main.py', 'codePathLocal': 'main.py', 'codePath': 'main.py', 'git': {'remote': 'https://github.com/MaheepChaudhary/SAE_vs_DAS.git', 'commit': 'f2e10eebc37a1a5722a88c12f8e381bd943a76d5'}, 'email': 'my email address used on my git repo', 'root': '/Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS', 'host': 'Maheeps-MBP', 'username': 'maheepchaudhary', 'executable': '/Users/maheepchaudhary/miniforge3/envs/nnsight/bin/python', 'cpu_count': 11, 'cpu_count_logical': 11, 'cpu_freq': {'current': 4056, 'min': 696, 'max': 4056}, 'cpu_freq_per_core': [{'current': 4056, 'min': 696, 'max': 4056}], 'disk': {'/': {'total': 460.4317207336426, 'used': 375.42564392089844}}, 'gpuapple': {'type': 'Apple M3 Pro', 'vendor': 'sppci_vendor_Apple'}, 'memory': {'total': 18.0}}
+2024-05-24 09:23:10,358 INFO    HandlerThread:69576 [system_monitor.py:probe():224] Finished collecting system info
+2024-05-24 09:23:10,358 INFO    HandlerThread:69576 [system_monitor.py:probe():227] Publishing system info
+2024-05-24 09:23:10,358 DEBUG   HandlerThread:69576 [system_info.py:_save_conda():207] Saving list of conda packages installed into the current environment
+2024-05-24 09:23:10,970 INFO    Thread-12 :69576 [dir_watcher.py:_on_file_created():271] file/dir created: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/wandb/run-20240524_092309-2yyc8nag/files/conda-environment.yaml
+2024-05-24 09:23:15,222 DEBUG   HandlerThread:69576 [system_info.py:_save_conda():222] Saving conda packages done
+2024-05-24 09:23:15,223 INFO    HandlerThread:69576 [system_monitor.py:probe():229] Finished publishing system info
+2024-05-24 09:23:15,225 DEBUG   HandlerThread:69576 [handler.py:handle_request():158] handle_request: keepalive
+2024-05-24 09:23:15,225 DEBUG   HandlerThread:69576 [handler.py:handle_request():158] handle_request: status_report
+2024-05-24 09:23:15,225 DEBUG   SenderThread:69576 [sender.py:send():378] send: files
+2024-05-24 09:23:15,225 INFO    SenderThread:69576 [sender.py:_save_file():1389] saving file wandb-metadata.json with policy now
+2024-05-24 09:23:15,271 DEBUG   HandlerThread:69576 [handler.py:handle_request():158] handle_request: python_packages
+2024-05-24 09:23:15,271 DEBUG   SenderThread:69576 [sender.py:send_request():405] send_request: python_packages
+2024-05-24 09:23:15,272 DEBUG   SenderThread:69576 [sender.py:send():378] send: telemetry
+2024-05-24 09:23:15,272 DEBUG   HandlerThread:69576 [handler.py:handle_request():158] handle_request: stop_status
+2024-05-24 09:23:15,272 DEBUG   SenderThread:69576 [sender.py:send_request():405] send_request: stop_status
+2024-05-24 09:23:15,673 DEBUG   SenderThread:69576 [sender.py:send():378] send: telemetry
+2024-05-24 09:23:15,673 DEBUG   SenderThread:69576 [sender.py:send():378] send: run
+2024-05-24 09:23:15,958 INFO    SenderThread:69576 [sender.py:send_run():996] updated run: 2yyc8nag
+2024-05-24 09:23:15,992 INFO    Thread-12 :69576 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/wandb/run-20240524_092309-2yyc8nag/files/config.yaml
+2024-05-24 09:23:15,992 INFO    Thread-12 :69576 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/wandb/run-20240524_092309-2yyc8nag/files/conda-environment.yaml
+2024-05-24 09:23:15,992 INFO    Thread-12 :69576 [dir_watcher.py:_on_file_created():271] file/dir created: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/wandb/run-20240524_092309-2yyc8nag/files/output.log
+2024-05-24 09:23:15,992 INFO    Thread-12 :69576 [dir_watcher.py:_on_file_created():271] file/dir created: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/wandb/run-20240524_092309-2yyc8nag/files/wandb-metadata.json
+2024-05-24 09:23:15,992 INFO    Thread-12 :69576 [dir_watcher.py:_on_file_created():271] file/dir created: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/wandb/run-20240524_092309-2yyc8nag/files/requirements.txt
+2024-05-24 09:23:16,348 INFO    wandb-upload_0:69576 [upload_job.py:push():130] Uploaded file /var/folders/_x/mkf1szd12yv28px5ztl_sjjr0000gn/T/tmpqy74uv1ywandb/afabhu94-wandb-metadata.json
+2024-05-24 09:23:18,002 INFO    Thread-12 :69576 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/wandb/run-20240524_092309-2yyc8nag/files/output.log
+2024-05-24 09:23:20,982 DEBUG   HandlerThread:69576 [handler.py:handle_request():158] handle_request: status_report
+2024-05-24 09:23:26,001 DEBUG   HandlerThread:69576 [handler.py:handle_request():158] handle_request: status_report
+2024-05-24 09:23:30,426 DEBUG   HandlerThread:69576 [handler.py:handle_request():158] handle_request: stop_status
+2024-05-24 09:23:30,426 DEBUG   SenderThread:69576 [sender.py:send_request():405] send_request: stop_status
+2024-05-24 09:23:31,795 DEBUG   HandlerThread:69576 [handler.py:handle_request():158] handle_request: status_report
+2024-05-24 09:23:34,006 DEBUG   SenderThread:69576 [sender.py:send():378] send: exit
+2024-05-24 09:23:34,006 INFO    SenderThread:69576 [sender.py:send_exit():585] handling exit code: 1
+2024-05-24 09:23:34,007 INFO    SenderThread:69576 [sender.py:send_exit():587] handling runtime: 23
+2024-05-24 09:23:34,007 INFO    SenderThread:69576 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-05-24 09:23:34,007 INFO    SenderThread:69576 [sender.py:send_exit():593] send defer
+2024-05-24 09:23:34,007 DEBUG   HandlerThread:69576 [handler.py:handle_request():158] handle_request: defer
+2024-05-24 09:23:34,008 INFO    HandlerThread:69576 [handler.py:handle_request_defer():184] handle defer: 0
+2024-05-24 09:23:34,008 DEBUG   SenderThread:69576 [sender.py:send_request():405] send_request: defer
+2024-05-24 09:23:34,008 INFO    SenderThread:69576 [sender.py:send_request_defer():609] handle sender defer: 0
+2024-05-24 09:23:34,008 INFO    SenderThread:69576 [sender.py:transition_state():613] send defer: 1
+2024-05-24 09:23:34,008 DEBUG   HandlerThread:69576 [handler.py:handle_request():158] handle_request: defer
+2024-05-24 09:23:34,008 INFO    HandlerThread:69576 [handler.py:handle_request_defer():184] handle defer: 1
+2024-05-24 09:23:34,008 DEBUG   SenderThread:69576 [sender.py:send_request():405] send_request: defer
+2024-05-24 09:23:34,008 INFO    SenderThread:69576 [sender.py:send_request_defer():609] handle sender defer: 1
+2024-05-24 09:23:34,008 INFO    SenderThread:69576 [sender.py:transition_state():613] send defer: 2
+2024-05-24 09:23:34,008 DEBUG   HandlerThread:69576 [handler.py:handle_request():158] handle_request: defer
+2024-05-24 09:23:34,008 INFO    HandlerThread:69576 [handler.py:handle_request_defer():184] handle defer: 2
+2024-05-24 09:23:34,008 INFO    HandlerThread:69576 [system_monitor.py:finish():203] Stopping system monitor
+2024-05-24 09:23:34,008 DEBUG   SystemMonitor:69576 [system_monitor.py:_start():172] Starting system metrics aggregation loop
+2024-05-24 09:23:34,008 DEBUG   SystemMonitor:69576 [system_monitor.py:_start():179] Finished system metrics aggregation loop
+2024-05-24 09:23:34,008 INFO    HandlerThread:69576 [interfaces.py:finish():200] Joined cpu monitor
+2024-05-24 09:23:34,008 DEBUG   SystemMonitor:69576 [system_monitor.py:_start():183] Publishing last batch of metrics
+2024-05-24 09:23:34,008 INFO    HandlerThread:69576 [interfaces.py:finish():200] Joined disk monitor
+2024-05-24 09:23:34,009 INFO    HandlerThread:69576 [interfaces.py:finish():200] Joined gpuapple monitor
+2024-05-24 09:23:34,009 INFO    HandlerThread:69576 [interfaces.py:finish():200] Joined memory monitor
+2024-05-24 09:23:34,009 INFO    HandlerThread:69576 [interfaces.py:finish():200] Joined network monitor
+2024-05-24 09:23:34,009 DEBUG   SenderThread:69576 [sender.py:send_request():405] send_request: defer
+2024-05-24 09:23:34,009 INFO    SenderThread:69576 [sender.py:send_request_defer():609] handle sender defer: 2
+2024-05-24 09:23:34,009 INFO    SenderThread:69576 [sender.py:transition_state():613] send defer: 3
+2024-05-24 09:23:34,009 DEBUG   SenderThread:69576 [sender.py:send():378] send: telemetry
+2024-05-24 09:23:34,009 DEBUG   HandlerThread:69576 [handler.py:handle_request():158] handle_request: defer
+2024-05-24 09:23:34,009 DEBUG   SenderThread:69576 [sender.py:send():378] send: stats
+2024-05-24 09:23:34,009 INFO    HandlerThread:69576 [handler.py:handle_request_defer():184] handle defer: 3
+2024-05-24 09:23:34,009 DEBUG   SenderThread:69576 [sender.py:send_request():405] send_request: defer
+2024-05-24 09:23:34,009 INFO    SenderThread:69576 [sender.py:send_request_defer():609] handle sender defer: 3
+2024-05-24 09:23:34,009 INFO    SenderThread:69576 [sender.py:transition_state():613] send defer: 4
+2024-05-24 09:23:34,009 DEBUG   HandlerThread:69576 [handler.py:handle_request():158] handle_request: defer
+2024-05-24 09:23:34,009 INFO    HandlerThread:69576 [handler.py:handle_request_defer():184] handle defer: 4
+2024-05-24 09:23:34,009 DEBUG   SenderThread:69576 [sender.py:send_request():405] send_request: defer
+2024-05-24 09:23:34,009 INFO    SenderThread:69576 [sender.py:send_request_defer():609] handle sender defer: 4
+2024-05-24 09:23:34,009 INFO    SenderThread:69576 [sender.py:transition_state():613] send defer: 5
+2024-05-24 09:23:34,009 DEBUG   HandlerThread:69576 [handler.py:handle_request():158] handle_request: defer
+2024-05-24 09:23:34,009 INFO    HandlerThread:69576 [handler.py:handle_request_defer():184] handle defer: 5
+2024-05-24 09:23:34,009 DEBUG   SenderThread:69576 [sender.py:send():378] send: summary
+2024-05-24 09:23:34,009 INFO    SenderThread:69576 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-05-24 09:23:34,009 DEBUG   SenderThread:69576 [sender.py:send_request():405] send_request: defer
+2024-05-24 09:23:34,009 INFO    SenderThread:69576 [sender.py:send_request_defer():609] handle sender defer: 5
+2024-05-24 09:23:34,009 INFO    SenderThread:69576 [sender.py:transition_state():613] send defer: 6
+2024-05-24 09:23:34,009 DEBUG   HandlerThread:69576 [handler.py:handle_request():158] handle_request: defer
+2024-05-24 09:23:34,009 INFO    HandlerThread:69576 [handler.py:handle_request_defer():184] handle defer: 6
+2024-05-24 09:23:34,009 DEBUG   SenderThread:69576 [sender.py:send_request():405] send_request: defer
+2024-05-24 09:23:34,009 INFO    SenderThread:69576 [sender.py:send_request_defer():609] handle sender defer: 6
+2024-05-24 09:23:34,011 DEBUG   HandlerThread:69576 [handler.py:handle_request():158] handle_request: status_report
+2024-05-24 09:23:34,075 INFO    Thread-12 :69576 [dir_watcher.py:_on_file_created():271] file/dir created: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/wandb/run-20240524_092309-2yyc8nag/files/wandb-summary.json
+2024-05-24 09:23:34,307 INFO    SenderThread:69576 [sender.py:transition_state():613] send defer: 7
+2024-05-24 09:23:34,307 DEBUG   HandlerThread:69576 [handler.py:handle_request():158] handle_request: defer
+2024-05-24 09:23:34,307 INFO    HandlerThread:69576 [handler.py:handle_request_defer():184] handle defer: 7
+2024-05-24 09:23:34,308 DEBUG   SenderThread:69576 [sender.py:send_request():405] send_request: defer
+2024-05-24 09:23:34,308 INFO    SenderThread:69576 [sender.py:send_request_defer():609] handle sender defer: 7
+2024-05-24 09:23:35,012 DEBUG   HandlerThread:69576 [handler.py:handle_request():158] handle_request: poll_exit
+2024-05-24 09:23:35,081 INFO    Thread-12 :69576 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/wandb/run-20240524_092309-2yyc8nag/files/config.yaml
+2024-05-24 09:23:36,087 INFO    Thread-12 :69576 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/wandb/run-20240524_092309-2yyc8nag/files/output.log
+2024-05-24 09:23:38,022 INFO    SenderThread:69576 [sender.py:transition_state():613] send defer: 8
+2024-05-24 09:23:38,023 DEBUG   SenderThread:69576 [sender.py:send_request():405] send_request: poll_exit
+2024-05-24 09:23:38,023 DEBUG   HandlerThread:69576 [handler.py:handle_request():158] handle_request: defer
+2024-05-24 09:23:38,024 INFO    HandlerThread:69576 [handler.py:handle_request_defer():184] handle defer: 8
+2024-05-24 09:23:38,024 DEBUG   SenderThread:69576 [sender.py:send_request():405] send_request: defer
+2024-05-24 09:23:38,025 INFO    SenderThread:69576 [sender.py:send_request_defer():609] handle sender defer: 8
+2024-05-24 09:23:38,025 INFO    SenderThread:69576 [job_builder.py:build():432] Attempting to build job artifact
+2024-05-24 09:23:38,026 INFO    SenderThread:69576 [job_builder.py:_get_source_type():565] is repo sourced job
+2024-05-24 09:23:38,066 INFO    SenderThread:69576 [job_builder.py:build():541] adding wandb-job metadata file
+2024-05-24 09:23:38,068 INFO    SenderThread:69576 [sender.py:transition_state():613] send defer: 9
+2024-05-24 09:23:38,068 DEBUG   HandlerThread:69576 [handler.py:handle_request():158] handle_request: defer
+2024-05-24 09:23:38,069 DEBUG   SenderThread:69576 [sender.py:send():378] send: artifact
+2024-05-24 09:23:38,069 INFO    HandlerThread:69576 [handler.py:handle_request_defer():184] handle defer: 9
+2024-05-24 09:23:38,098 INFO    Thread-12 :69576 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/wandb/run-20240524_092309-2yyc8nag/files/output.log
+2024-05-24 09:23:39,030 DEBUG   HandlerThread:69576 [handler.py:handle_request():158] handle_request: poll_exit
+2024-05-24 09:23:39,699 INFO    SenderThread:69576 [sender.py:send_artifact():1467] sent artifact job-https___github.com_MaheepChaudhary_SAE_vs_DAS.git_main.py - {'id': 'QXJ0aWZhY3Q6ODQ4MDY5NDIy', 'state': 'COMMITTED', 'artifactSequence': {'id': 'QXJ0aWZhY3RDb2xsZWN0aW9uOjE3ODM4MjIxOA==', 'latestArtifact': {'id': 'QXJ0aWZhY3Q6ODQ4MTQyNTY2', 'versionIndex': 2}}}
+2024-05-24 09:23:39,700 DEBUG   SenderThread:69576 [sender.py:send_request():405] send_request: defer
+2024-05-24 09:23:39,700 INFO    SenderThread:69576 [sender.py:send_request_defer():609] handle sender defer: 9
+2024-05-24 09:23:39,700 INFO    SenderThread:69576 [dir_watcher.py:finish():358] shutting down directory watcher
+2024-05-24 09:23:40,108 INFO    SenderThread:69576 [dir_watcher.py:finish():388] scan: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/wandb/run-20240524_092309-2yyc8nag/files
+2024-05-24 09:23:40,109 INFO    SenderThread:69576 [dir_watcher.py:finish():402] scan save: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/wandb/run-20240524_092309-2yyc8nag/files/requirements.txt requirements.txt
+2024-05-24 09:23:40,110 INFO    SenderThread:69576 [dir_watcher.py:finish():402] scan save: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/wandb/run-20240524_092309-2yyc8nag/files/output.log output.log
+2024-05-24 09:23:40,114 INFO    SenderThread:69576 [dir_watcher.py:finish():402] scan save: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/wandb/run-20240524_092309-2yyc8nag/files/config.yaml config.yaml
+2024-05-24 09:23:40,118 INFO    SenderThread:69576 [dir_watcher.py:finish():402] scan save: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/wandb/run-20240524_092309-2yyc8nag/files/wandb-summary.json wandb-summary.json
+2024-05-24 09:23:40,122 INFO    SenderThread:69576 [dir_watcher.py:finish():402] scan save: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/wandb/run-20240524_092309-2yyc8nag/files/conda-environment.yaml conda-environment.yaml
+2024-05-24 09:23:40,125 INFO    SenderThread:69576 [dir_watcher.py:finish():402] scan save: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/wandb/run-20240524_092309-2yyc8nag/files/wandb-metadata.json wandb-metadata.json
+2024-05-24 09:23:40,126 INFO    SenderThread:69576 [sender.py:transition_state():613] send defer: 10
+2024-05-24 09:23:40,126 DEBUG   SenderThread:69576 [sender.py:send_request():405] send_request: poll_exit
+2024-05-24 09:23:40,126 DEBUG   HandlerThread:69576 [handler.py:handle_request():158] handle_request: defer
+2024-05-24 09:23:40,128 INFO    HandlerThread:69576 [handler.py:handle_request_defer():184] handle defer: 10
+2024-05-24 09:23:40,129 DEBUG   SenderThread:69576 [sender.py:send_request():405] send_request: defer
+2024-05-24 09:23:40,129 INFO    SenderThread:69576 [sender.py:send_request_defer():609] handle sender defer: 10
+2024-05-24 09:23:40,129 INFO    SenderThread:69576 [file_pusher.py:finish():169] shutting down file pusher
+2024-05-24 09:23:40,817 INFO    wandb-upload_0:69576 [upload_job.py:push():130] Uploaded file /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/wandb/run-20240524_092309-2yyc8nag/files/requirements.txt
+2024-05-24 09:23:40,971 INFO    wandb-upload_1:69576 [upload_job.py:push():130] Uploaded file /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/wandb/run-20240524_092309-2yyc8nag/files/output.log
+2024-05-24 09:23:41,003 INFO    wandb-upload_2:69576 [upload_job.py:push():130] Uploaded file /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/wandb/run-20240524_092309-2yyc8nag/files/config.yaml
+2024-05-24 09:23:41,004 INFO    wandb-upload_4:69576 [upload_job.py:push():130] Uploaded file /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/wandb/run-20240524_092309-2yyc8nag/files/conda-environment.yaml
+2024-05-24 09:23:41,040 INFO    wandb-upload_3:69576 [upload_job.py:push():130] Uploaded file /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/wandb/run-20240524_092309-2yyc8nag/files/wandb-summary.json
+2024-05-24 09:23:41,042 DEBUG   HandlerThread:69576 [handler.py:handle_request():158] handle_request: poll_exit
+2024-05-24 09:23:41,043 DEBUG   SenderThread:69576 [sender.py:send_request():405] send_request: poll_exit
+2024-05-24 09:23:41,242 INFO    Thread-11 (_thread_body):69576 [sender.py:transition_state():613] send defer: 11
+2024-05-24 09:23:41,243 DEBUG   HandlerThread:69576 [handler.py:handle_request():158] handle_request: defer
+2024-05-24 09:23:41,243 INFO    HandlerThread:69576 [handler.py:handle_request_defer():184] handle defer: 11
+2024-05-24 09:23:41,244 DEBUG   SenderThread:69576 [sender.py:send_request():405] send_request: defer
+2024-05-24 09:23:41,244 INFO    SenderThread:69576 [sender.py:send_request_defer():609] handle sender defer: 11
+2024-05-24 09:23:41,244 INFO    SenderThread:69576 [file_pusher.py:join():175] waiting for file pusher
+2024-05-24 09:23:41,246 INFO    SenderThread:69576 [sender.py:transition_state():613] send defer: 12
+2024-05-24 09:23:41,246 DEBUG   HandlerThread:69576 [handler.py:handle_request():158] handle_request: defer
+2024-05-24 09:23:41,246 INFO    HandlerThread:69576 [handler.py:handle_request_defer():184] handle defer: 12
+2024-05-24 09:23:41,246 DEBUG   SenderThread:69576 [sender.py:send_request():405] send_request: defer
+2024-05-24 09:23:41,246 INFO    SenderThread:69576 [sender.py:send_request_defer():609] handle sender defer: 12
+2024-05-24 09:23:41,247 INFO    SenderThread:69576 [file_stream.py:finish():601] file stream finish called
+2024-05-24 09:23:41,544 INFO    SenderThread:69576 [file_stream.py:finish():605] file stream finish is done
+2024-05-24 09:23:41,545 INFO    SenderThread:69576 [sender.py:transition_state():613] send defer: 13
+2024-05-24 09:23:41,545 DEBUG   HandlerThread:69576 [handler.py:handle_request():158] handle_request: defer
+2024-05-24 09:23:41,545 INFO    HandlerThread:69576 [handler.py:handle_request_defer():184] handle defer: 13
+2024-05-24 09:23:41,546 DEBUG   SenderThread:69576 [sender.py:send_request():405] send_request: defer
+2024-05-24 09:23:41,546 INFO    SenderThread:69576 [sender.py:send_request_defer():609] handle sender defer: 13
+2024-05-24 09:23:41,546 INFO    SenderThread:69576 [sender.py:transition_state():613] send defer: 14
+2024-05-24 09:23:41,547 DEBUG   HandlerThread:69576 [handler.py:handle_request():158] handle_request: defer
+2024-05-24 09:23:41,547 DEBUG   SenderThread:69576 [sender.py:send():378] send: final
+2024-05-24 09:23:41,547 INFO    HandlerThread:69576 [handler.py:handle_request_defer():184] handle defer: 14
+2024-05-24 09:23:41,547 DEBUG   SenderThread:69576 [sender.py:send():378] send: footer
+2024-05-24 09:23:41,547 DEBUG   SenderThread:69576 [sender.py:send_request():405] send_request: defer
+2024-05-24 09:23:41,548 INFO    SenderThread:69576 [sender.py:send_request_defer():609] handle sender defer: 14
+2024-05-24 09:23:41,548 DEBUG   HandlerThread:69576 [handler.py:handle_request():158] handle_request: poll_exit
+2024-05-24 09:23:41,549 DEBUG   SenderThread:69576 [sender.py:send_request():405] send_request: poll_exit
+2024-05-24 09:23:41,550 DEBUG   HandlerThread:69576 [handler.py:handle_request():158] handle_request: poll_exit
+2024-05-24 09:23:41,550 DEBUG   HandlerThread:69576 [handler.py:handle_request():158] handle_request: server_info
+2024-05-24 09:23:41,551 DEBUG   HandlerThread:69576 [handler.py:handle_request():158] handle_request: get_summary
+2024-05-24 09:23:41,551 DEBUG   SenderThread:69576 [sender.py:send_request():405] send_request: poll_exit
+2024-05-24 09:23:41,552 DEBUG   SenderThread:69576 [sender.py:send_request():405] send_request: server_info
+2024-05-24 09:23:41,552 DEBUG   HandlerThread:69576 [handler.py:handle_request():158] handle_request: sampled_history
+2024-05-24 09:23:41,555 DEBUG   HandlerThread:69576 [handler.py:handle_request():158] handle_request: internal_messages
+2024-05-24 09:23:41,830 INFO    MainThread:69576 [wandb_run.py:_footer_history_summary_info():3994] rendering history
+2024-05-24 09:23:41,831 INFO    MainThread:69576 [wandb_run.py:_footer_history_summary_info():4026] rendering summary
+2024-05-24 09:23:41,831 INFO    MainThread:69576 [wandb_run.py:_footer_sync_info():3953] logging synced files
+2024-05-24 09:23:41,832 DEBUG   HandlerThread:69576 [handler.py:handle_request():158] handle_request: shutdown
+2024-05-24 09:23:41,833 INFO    HandlerThread:69576 [handler.py:finish():882] shutting down handler
+2024-05-24 09:23:42,556 INFO    WriterThread:69576 [datastore.py:close():296] close: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/wandb/run-20240524_092309-2yyc8nag/run-2yyc8nag.wandb
+2024-05-24 09:23:42,831 INFO    SenderThread:69576 [sender.py:finish():1545] shutting down sender
+2024-05-24 09:23:42,831 INFO    SenderThread:69576 [file_pusher.py:finish():169] shutting down file pusher
+2024-05-24 09:23:42,832 INFO    SenderThread:69576 [file_pusher.py:join():175] waiting for file pusher
