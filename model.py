@@ -105,33 +105,31 @@ class my_model(nn.Module):
         
         self.module_not_tuple = []
         
-        dummy_text = """The quick brown fox jumps over the lazy dog"""
+        # dummy_text = """The quick brown fox jumps over the lazy dog"""
         
-        with self.model.trace(dummy_text):
-            for module in self.submodules:
-                if type(module.output.shape) != tuple: # if tuple is true then we are reffering to the residual layer.
-                    self.module_not_tuple.append(module)
+        # with self.model.trace(dummy_text):
+        #     for module in self.submodules:
+        #         if type(module.output.shape) != tuple: # if tuple is true then we are reffering to the residual layer.
+        #             self.module_not_tuple.append(module)
         
         # self.probe = Probe
         
-        #TODO: Wandb Name
 
-    def forward(self,text, temprature):
+    def forward(self,text, temperature):
         
-        l4_mask_sigmoid = t.sigmoid(self.l4_mask / temprature)
+        l4_mask_sigmoid = t.sigmoid(self.l4_mask / temperature)
         
-        with self.model.trace(text):
-            
+        with self.model.trace(text) as tracer:
             if self.method == "sae masking":
             
                 for layer in self.resid_layers:
                 
                     dictionary = self.dictionaries[self.submodules[self.resid_arr[layer]]]    
-                    acts = self.submodules[self.resid_arr[layer]].output.save()
+                    acts = self.submodules[self.resid_arr[layer]].output[0][:].save()
                     acts = dictionary.encode(acts).save()
                     acts = l4_mask_sigmoid * acts
                     acts = dictionary.decode(acts)
-                    self.submodules[self.resid_arr[layer]].output = acts
+                    self.submodules[self.resid_arr[layer]].output[0][:] = acts
                     final_acts = self.submodules[-1].output[0][:].save()
                 
                 
@@ -140,34 +138,29 @@ class my_model(nn.Module):
                 for layer in self.resid_layers:
                 
                     dictionary = self.dictionaries[self.submodules[self.resid_arr[layer]]]
-                    acts = self.submodules[self.resid_arr[layer]].output.save()
+                    acts = self.submodules[self.resid_arr[layer]].output[0][:].save()
+                    # print(f"Shape of l4_mask_sigmoid: {l4_mask_sigmoid.shape}")
+                    # print(f"Shape of acts: {acts.shape}")
                     acts = l4_mask_sigmoid * acts
-                    self.submodules[self.resid_arr[layer]].output = acts
+                    self.submodules[self.resid_arr[layer]].output[0][:] = acts
                     final_acts = self.submodules[-1].output[0][:].save()
                 
-            elif self.method == "DAS masking":
+            elif self.method == "das masking":
+                
+                k = 0
                 
                 for layer in self.resid_layers:
                     
-                    dictionary = self.dictionaries[self.module_not_tuple[4]]
-                    acts = self.module_not_tuple[4].output.save()
-                    self.rotate_layer = self.das_layers[layer]
+                    dictionary = self.dictionaries[self.submodules[self.resid_arr[layer]]]
+                    acts = self.submodules[self.resid_arr[layer]].output[0][:].save()
+                    self.rotate_layer = self.das_layers[k]
                     acts = self.rotate_layer(acts)
                     # acts = self.rotate_layer_1(acts)
                     acts = l4_mask_sigmoid * acts
                     acts = t.matmul(acts, self.rotate_layer.weight.T)
-                    self.submodules[self.resid_arr[layer]].output = acts
+                    self.submodules[self.resid_arr[layer]].output[0][:] = acts
                     final_acts = self.submodules[-1].output[0][:].save()
-                
-                
-            # dictionary = self.dictionaries[self.module_not_tuple[self.resid_arr[self.resid_layers]]]
-            # acts = self.module_not_tuple[4].output.save()
-            # acts = dictionary.encode(acts).save()
-            # acts = l4_mask_sigmoid * acts
-            # acts = dictionary.decode(acts)
-            # self.module_not_tuple[4].output = acts
-            # final_acts = self.submodules[-1].output[0][:].save()
-
+                    k+=1
             
         new_acts = final_acts.sum(1)
         acts = self.probe.net(new_acts).squeeze(-1)

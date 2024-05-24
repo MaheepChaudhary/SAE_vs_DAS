@@ -22,11 +22,13 @@ def train(DEVICE,
     tokenizer = BertTokenizer.from_pretrained('bert-base-uncased')
 
     wandb.init(project="sae_concept_eraser")
-    wandb.run.name = f"{evaluation}-{residual_layer}-{method}_b{batch_size_train}_e{epochs}"
+    wandb.run.name = f"[{evaluation}]-{residual_layer}-{method}_b{batch_size_train}_e{epochs}"
     # wandb.run.name = "gender_Lastlinear-mask_probe_amb(false)_b1_e3"
 
-    new_model = my_model(DEVICE,
-                        probe,
+    print("passed dict emned path", dict_embed_path)
+
+    new_model = my_model(DEVICE = DEVICE,
+                        probe = probe,
                         dict_embed_path = dict_embed_path,
                         attn_dict_path = attn_dict_path,
                         mlp_dict_path = mlp_dict_path,
@@ -36,6 +38,7 @@ def train(DEVICE,
                         activation_dim = activation_dim,
                         expansion_factor=expansion_factor,
                         epochs = epochs).to(DEVICE)
+    
 
     optimizer = t.optim.Adam(new_model.parameters(), lr = lr)
     criterion = nn.BCEWithLogitsLoss().to(DEVICE)
@@ -65,6 +68,7 @@ def train(DEVICE,
         losses = []
         len_batches = len(train_batches)
         for i in tqdm(range(len_batches)):
+
             text = train_batches[i][0]
             
             if evaluation == "profession":
@@ -73,8 +77,8 @@ def train(DEVICE,
                 labels = train_batches[i][2]
             
             temprature = temperature_schedule[temp_idx]
-            # print(labels.float)
-            logits = new_model(text, temprature)
+
+            logits = new_model(text[0], temperature=temprature)
             # print(logits.shape)
             # print(labels.float)
             loss = criterion(logits, labels.float())
@@ -90,8 +94,14 @@ def train(DEVICE,
                 print(f"Epoch: {epoch}, Loss: {np.mean(losses)}")
                 wandb.log({"Gender de-baising Losses": np.mean(losses)})
                 losses = []
+        
+            if DEVICE == "cuda:0":
+                t.cuda.empty_cache()
+            
+            elif DEVICE == "mps":
+                t.mps.empty_cache()
                 
-    t.save(new_model, f"saved_models/{evaluation}-{residual_layer}-{method}_b{batch_size_train}_e{epochs}.pth")
+    t.save(new_model.state_dict(), f"saved_models/{evaluation}-{residual_layer}-{method}_b{batch_size_train}_e{epochs}.pth")
                 
 def eval(DEVICE, saved_model_path, evaluation):
 
@@ -194,7 +204,7 @@ if __name__ == "__main__":
 
     argparser = argparse.ArgumentParser()
     
-    argparser.add_argument('-e', '--epochs', default=15, type=int, help='number of epochs')
+    argparser.add_argument('-e', '--epochs', default=50, type=int, help='number of epochs')
     argparser.add_argument('-lr', '--learning_rate', default=0.001, type=float, help='learning rate')
     argparser.add_argument('-btr', '--batch_size_train', type=int, required=True, help='batch size for training')
     argparser.add_argument('-d', '--device', type=str, required=True, help='device to be used')
@@ -229,35 +239,38 @@ if __name__ == "__main__":
     
     
     args = argparser.parse_args()
+    args.residual_layer = [int(i) for i in args.residual_layer]
     
     
     # with open("probe_shift.pkl", "rb") as f:
     with open(args.probe_path, "rb") as f:
         probe = pkl.load(f)
+
     
     if args.task == "train":
+        
     
-        train(args.device,
-            args.epochs,
-            args.learning_rate,
-            args.mini_batch,
-            args.evaluation,
-            args.batch_size_train,
-            args.activation_dim,
-            args.residual_layer,
-            args.nds,
-            args.dict_embed_path,
-            args.attn_dict_path,
-            args.mlp_dict_path,
-            args.resid_dict_path,
-            args.expansion_factor,
-            args.epochs)
+        train(DEVICE=args.device,
+            epochs=args.epochs,
+            lr = args.learning_rate,
+            mini_batch=args.mini_batch,
+            evaluation=args.evaluation,
+            batch_size_train=args.batch_size_train,
+            activation_dim=args.activation_dim,
+            residual_layer=args.residual_layer,
+            method=args.method,
+            dict_embed_path=args.dict_embed_path,
+            attn_dict_path=args.attn_dict_path,
+            mlp_dict_path=args.mlp_dict_path,
+            resid_dict_path=args.resid_dict_path,
+            expansion_factor=args.expansion_factor)
+        
     
     elif argparser.task == "eval":
         eval(args.device, args.saved_model_path, args.evaluation)
     
     elif argparser.task == "eval_on_subgroups":
-        eval_on_subgroups(args.device, args.saved_model_path)
+        eval_on_subgroups(args.device, args.saved_model_path, args.evalutation)
     
     
 
