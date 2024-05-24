@@ -103,21 +103,45 @@ def train(DEVICE,
                 
     t.save(new_model.state_dict(), f"saved_models/{evaluation}-{residual_layer}-{method}_b{batch_size_train}_e{epochs}.pth")
                 
-def eval(DEVICE, saved_model_path, evaluation):
+def eval(DEVICE, 
+        saved_model_path,
+        epochs,
+        lr,
+        mini_batch,
+        evaluation,
+        batch_size_train,
+        activation_dim,
+        residual_layer,
+        method,
+        dict_embed_path,
+        attn_dict_path,
+        mlp_dict_path,
+        resid_dict_path,
+        expansion_factor):
 
     wandb.init(project="sae_concept_eraser")
     wandb.run.name = f"{evaluation}-{saved_model_path}-b1"
     
-    new_model = my_model()
+    new_model = my_model(DEVICE = DEVICE,
+                    probe = probe,
+                    dict_embed_path = dict_embed_path,
+                    attn_dict_path = attn_dict_path,
+                    mlp_dict_path = mlp_dict_path,
+                    resid_dict_path = resid_dict_path,
+                    resid_layers=residual_layer,
+                    method = method,
+                    activation_dim = activation_dim,
+                    expansion_factor=expansion_factor,
+                    epochs = epochs).to(DEVICE)
 
     # Load the state dictionary
-    state_dict = t.load(saved_model_path)
-    new_model.load_state_dict(state_dict)
+
+    new_model.load_state_dict(t.load(saved_model_path))
     new_model = new_model.to(DEVICE)
     new_model.eval()
 
 
-    batches = get_data(train = False, ambiguous=False) # by default the ambigous is True
+    batches = get_data(DEVICE, train = False, ambiguous=False) # by default the ambigous is True
     label_idx = 0
     len_batches = len(batches)
     corrects = []
@@ -142,7 +166,7 @@ def eval(DEVICE, saved_model_path, evaluation):
                 labels = batches[i][2]
             
             # acts = get_acts(text)
-            logits = new_model(text)
+            logits = new_model(text, temperature=0.1)
             # preds = (logits > 0.0).long()
             preds = (logits > 0.0).long()
             corrects.append((preds == labels).float())
@@ -152,21 +176,44 @@ def eval(DEVICE, saved_model_path, evaluation):
     wandb.log({"Accuracy": accuracy})
     
 
-def eval_on_subgroups(DEVICE, saved_model_path):
+def eval_on_subgroups(DEVICE, 
+        saved_model_path,
+        epochs,
+        lr,
+        mini_batch,
+        evaluation,
+        batch_size_train,
+        activation_dim,
+        residual_layer,
+        method,
+        dict_embed_path,
+        attn_dict_path,
+        mlp_dict_path,
+        resid_dict_path,
+        expansion_factor):
     
     # Here we will find the accuracy of the subgroups for both the vanilla model and the model with the mask.
 
     wandb.init(project="sae_concept_eraser")
 
-    new_model = my_model()
+    new_model = my_model(DEVICE = DEVICE,
+                        probe = probe,
+                        dict_embed_path = dict_embed_path,
+                        attn_dict_path = attn_dict_path,
+                        mlp_dict_path = mlp_dict_path,
+                        resid_dict_path = resid_dict_path,
+                        resid_layers=residual_layer,
+                        method = method,
+                        activation_dim = activation_dim,
+                        expansion_factor=expansion_factor,
+                        epochs = epochs).to(DEVICE)
 
     # Load the state dictionary
-    state_dict = t.load(saved_model_path)
-    new_model.load_state_dict(state_dict)
+    new_model.load_state_dict(t.load(saved_model_path))
     new_model = new_model.to(DEVICE)
     new_model.eval()
 
-    subgroups = get_subgroups(train=False, ambiguous=False)
+    subgroups = get_subgroups(DEVICE, train=False, ambiguous=False)
 
     with t.no_grad():
         for label_profile, batches in subgroups.items():
@@ -175,7 +222,7 @@ def eval_on_subgroups(DEVICE, saved_model_path):
             for i in tqdm(range(len(batches))):
                 text = batches[i][0]
                 labels = label_profile[0] # true label, if [2] then spurious label. We will be training the model in hope that mask will learn which concepts to mask.
-                logits = new_model(text)
+                logits = new_model(text, temperature = 0.1)
                 preds = (logits > 0.0).long()
                 corrects.append((preds == labels).float())
             
@@ -266,11 +313,39 @@ if __name__ == "__main__":
             expansion_factor=args.expansion_factor)
         
     
-    elif argparser.task == "eval":
-        eval(args.device, args.saved_model_path, args.evaluation)
+    elif args.task == "eval":
+        eval(args.device, 
+            args.saved_model_path,
+            epochs=args.epochs,
+            lr = args.learning_rate,
+            mini_batch=args.mini_batch,
+            evaluation=args.evaluation,
+            batch_size_train=args.batch_size_train,
+            activation_dim=args.activation_dim,
+            residual_layer=args.residual_layer,
+            method=args.method,
+            dict_embed_path=args.dict_embed_path,
+            attn_dict_path=args.attn_dict_path,
+            mlp_dict_path=args.mlp_dict_path,
+            resid_dict_path=args.resid_dict_path,
+            expansion_factor=args.expansion_factor)
     
-    elif argparser.task == "eval_on_subgroups":
-        eval_on_subgroups(args.device, args.saved_model_path, args.evalutation)
+    elif args.task == "eval_on_subgroups":
+        eval_on_subgroups(args.device, 
+            args.saved_model_path,
+            epochs=args.epochs,
+            lr = args.learning_rate,
+            mini_batch=args.mini_batch,
+            evaluation=args.evaluation,
+            batch_size_train=args.batch_size_train,
+            activation_dim=args.activation_dim,
+            residual_layer=args.residual_layer,
+            method=args.method,
+            dict_embed_path=args.dict_embed_path,
+            attn_dict_path=args.attn_dict_path,
+            mlp_dict_path=args.mlp_dict_path,
+            resid_dict_path=args.resid_dict_path,
+            expansion_factor=args.expansion_factor)
     
     
 
