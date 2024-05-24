@@ -375,3 +375,423 @@
 2024-05-24 09:44:01,474 DEBUG   SenderThread:82355 [sender.py:send():378] send: history
 2024-05-24 09:44:01,474 DEBUG   SenderThread:82355 [sender.py:send_request():405] send_request: summary_record
 2024-05-24 09:44:01,474 INFO    SenderThread:82355 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-05-24 09:44:01,992 INFO    Thread-12 :82355 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/wandb/run-20240524_094224-aag58mme/files/output.log
+2024-05-24 09:44:01,992 INFO    Thread-12 :82355 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/wandb/run-20240524_094224-aag58mme/files/wandb-summary.json
+2024-05-24 09:44:02,111 DEBUG   HandlerThread:82355 [handler.py:handle_request():158] handle_request: status_report
+2024-05-24 09:44:02,361 DEBUG   HandlerThread:82355 [handler.py:handle_request():158] handle_request: partial_history
+2024-05-24 09:44:02,362 DEBUG   SenderThread:82355 [sender.py:send():378] send: history
+2024-05-24 09:44:02,362 DEBUG   SenderThread:82355 [sender.py:send_request():405] send_request: summary_record
+2024-05-24 09:44:02,362 INFO    SenderThread:82355 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-05-24 09:44:02,997 INFO    Thread-12 :82355 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/wandb/run-20240524_094224-aag58mme/files/wandb-summary.json
+2024-05-24 09:44:03,347 DEBUG   HandlerThread:82355 [handler.py:handle_request():158] handle_request: partial_history
+2024-05-24 09:44:03,348 DEBUG   SenderThread:82355 [sender.py:send():378] send: history
+2024-05-24 09:44:03,348 DEBUG   SenderThread:82355 [sender.py:send_request():405] send_request: summary_record
+2024-05-24 09:44:03,348 INFO    SenderThread:82355 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-05-24 09:44:04,003 INFO    Thread-12 :82355 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/wandb/run-20240524_094224-aag58mme/files/output.log
+2024-05-24 09:44:04,003 INFO    Thread-12 :82355 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/wandb/run-20240524_094224-aag58mme/files/wandb-summary.json
+2024-05-24 09:44:04,222 DEBUG   HandlerThread:82355 [handler.py:handle_request():158] handle_request: partial_history
+2024-05-24 09:44:04,223 DEBUG   SenderThread:82355 [sender.py:send():378] send: history
+2024-05-24 09:44:04,223 DEBUG   SenderThread:82355 [sender.py:send_request():405] send_request: summary_record
+2024-05-24 09:44:04,223 INFO    SenderThread:82355 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-05-24 09:44:05,008 INFO    Thread-12 :82355 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/wandb/run-20240524_094224-aag58mme/files/wandb-summary.json
+2024-05-24 09:44:05,078 DEBUG   HandlerThread:82355 [handler.py:handle_request():158] handle_request: partial_history
+2024-05-24 09:44:05,079 DEBUG   SenderThread:82355 [sender.py:send():378] send: history
+2024-05-24 09:44:05,079 DEBUG   SenderThread:82355 [sender.py:send_request():405] send_request: summary_record
+2024-05-24 09:44:05,079 INFO    SenderThread:82355 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-05-24 09:44:05,888 DEBUG   HandlerThread:82355 [handler.py:handle_request():158] handle_request: partial_history
+2024-05-24 09:44:05,889 DEBUG   SenderThread:82355 [sender.py:send():378] send: history
+2024-05-24 09:44:05,889 DEBUG   SenderThread:82355 [sender.py:send_request():405] send_request: summary_record
+2024-05-24 09:44:05,889 INFO    SenderThread:82355 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-05-24 09:44:06,011 INFO    Thread-12 :82355 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/wandb/run-20240524_094224-aag58mme/files/output.log
+2024-05-24 09:44:06,011 INFO    Thread-12 :82355 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/wandb/run-20240524_094224-aag58mme/files/wandb-summary.json
+2024-05-24 09:44:06,831 DEBUG   HandlerThread:82355 [handler.py:handle_request():158] handle_request: partial_history
+2024-05-24 09:44:06,831 DEBUG   SenderThread:82355 [sender.py:send():378] send: history
+2024-05-24 09:44:06,832 DEBUG   SenderThread:82355 [sender.py:send_request():405] send_request: summary_record
+2024-05-24 09:44:06,832 INFO    SenderThread:82355 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-05-24 09:44:07,015 INFO    Thread-12 :82355 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/wandb/run-20240524_094224-aag58mme/files/wandb-summary.json
+2024-05-24 09:44:07,187 DEBUG   HandlerThread:82355 [handler.py:handle_request():158] handle_request: status_report
+2024-05-24 09:44:07,901 DEBUG   HandlerThread:82355 [handler.py:handle_request():158] handle_request: partial_history
+2024-05-24 09:44:07,903 DEBUG   SenderThread:82355 [sender.py:send():378] send: history
+2024-05-24 09:44:07,903 DEBUG   SenderThread:82355 [sender.py:send_request():405] send_request: summary_record
+2024-05-24 09:44:07,903 INFO    SenderThread:82355 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-05-24 09:44:08,020 INFO    Thread-12 :82355 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/wandb/run-20240524_094224-aag58mme/files/output.log
+2024-05-24 09:44:08,020 INFO    Thread-12 :82355 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/wandb/run-20240524_094224-aag58mme/files/wandb-summary.json
+2024-05-24 09:44:08,795 DEBUG   HandlerThread:82355 [handler.py:handle_request():158] handle_request: partial_history
+2024-05-24 09:44:08,795 DEBUG   SenderThread:82355 [sender.py:send():378] send: history
+2024-05-24 09:44:08,795 DEBUG   SenderThread:82355 [sender.py:send_request():405] send_request: summary_record
+2024-05-24 09:44:08,796 INFO    SenderThread:82355 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-05-24 09:44:09,025 INFO    Thread-12 :82355 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/wandb/run-20240524_094224-aag58mme/files/wandb-summary.json
+2024-05-24 09:44:09,735 DEBUG   HandlerThread:82355 [handler.py:handle_request():158] handle_request: partial_history
+2024-05-24 09:44:09,736 DEBUG   SenderThread:82355 [sender.py:send():378] send: history
+2024-05-24 09:44:09,736 DEBUG   SenderThread:82355 [sender.py:send_request():405] send_request: summary_record
+2024-05-24 09:44:09,736 INFO    SenderThread:82355 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-05-24 09:44:10,030 INFO    Thread-12 :82355 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/wandb/run-20240524_094224-aag58mme/files/output.log
+2024-05-24 09:44:10,030 INFO    Thread-12 :82355 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/wandb/run-20240524_094224-aag58mme/files/wandb-summary.json
+2024-05-24 09:44:10,589 DEBUG   HandlerThread:82355 [handler.py:handle_request():158] handle_request: partial_history
+2024-05-24 09:44:10,589 DEBUG   SenderThread:82355 [sender.py:send():378] send: history
+2024-05-24 09:44:10,589 DEBUG   SenderThread:82355 [sender.py:send_request():405] send_request: summary_record
+2024-05-24 09:44:10,589 INFO    SenderThread:82355 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-05-24 09:44:11,032 INFO    Thread-12 :82355 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/wandb/run-20240524_094224-aag58mme/files/wandb-summary.json
+2024-05-24 09:44:11,458 DEBUG   HandlerThread:82355 [handler.py:handle_request():158] handle_request: partial_history
+2024-05-24 09:44:11,458 DEBUG   SenderThread:82355 [sender.py:send():378] send: history
+2024-05-24 09:44:11,458 DEBUG   SenderThread:82355 [sender.py:send_request():405] send_request: summary_record
+2024-05-24 09:44:11,458 INFO    SenderThread:82355 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-05-24 09:44:12,034 INFO    Thread-12 :82355 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/wandb/run-20240524_094224-aag58mme/files/output.log
+2024-05-24 09:44:12,034 INFO    Thread-12 :82355 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/wandb/run-20240524_094224-aag58mme/files/wandb-summary.json
+2024-05-24 09:44:12,320 DEBUG   HandlerThread:82355 [handler.py:handle_request():158] handle_request: status_report
+2024-05-24 09:44:12,597 DEBUG   HandlerThread:82355 [handler.py:handle_request():158] handle_request: partial_history
+2024-05-24 09:44:12,819 DEBUG   SenderThread:82355 [sender.py:send():378] send: history
+2024-05-24 09:44:12,822 DEBUG   SenderThread:82355 [sender.py:send_request():405] send_request: summary_record
+2024-05-24 09:44:12,823 INFO    SenderThread:82355 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-05-24 09:44:13,038 INFO    Thread-12 :82355 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/wandb/run-20240524_094224-aag58mme/files/wandb-summary.json
+2024-05-24 09:44:13,944 DEBUG   HandlerThread:82355 [handler.py:handle_request():158] handle_request: partial_history
+2024-05-24 09:44:13,945 DEBUG   SenderThread:82355 [sender.py:send():378] send: history
+2024-05-24 09:44:13,945 DEBUG   SenderThread:82355 [sender.py:send_request():405] send_request: summary_record
+2024-05-24 09:44:13,946 INFO    SenderThread:82355 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-05-24 09:44:14,039 INFO    Thread-12 :82355 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/wandb/run-20240524_094224-aag58mme/files/output.log
+2024-05-24 09:44:14,039 INFO    Thread-12 :82355 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/wandb/run-20240524_094224-aag58mme/files/wandb-summary.json
+2024-05-24 09:44:15,288 DEBUG   HandlerThread:82355 [handler.py:handle_request():158] handle_request: partial_history
+2024-05-24 09:44:15,289 DEBUG   SenderThread:82355 [sender.py:send():378] send: history
+2024-05-24 09:44:15,289 DEBUG   SenderThread:82355 [sender.py:send_request():405] send_request: summary_record
+2024-05-24 09:44:15,290 INFO    SenderThread:82355 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-05-24 09:44:15,594 DEBUG   HandlerThread:82355 [handler.py:handle_request():158] handle_request: stop_status
+2024-05-24 09:44:15,594 DEBUG   SenderThread:82355 [sender.py:send_request():405] send_request: stop_status
+2024-05-24 09:44:16,046 INFO    Thread-12 :82355 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/wandb/run-20240524_094224-aag58mme/files/output.log
+2024-05-24 09:44:16,046 INFO    Thread-12 :82355 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/wandb/run-20240524_094224-aag58mme/files/wandb-summary.json
+2024-05-24 09:44:16,306 DEBUG   HandlerThread:82355 [handler.py:handle_request():158] handle_request: partial_history
+2024-05-24 09:44:16,307 DEBUG   SenderThread:82355 [sender.py:send():378] send: history
+2024-05-24 09:44:16,307 DEBUG   SenderThread:82355 [sender.py:send_request():405] send_request: summary_record
+2024-05-24 09:44:16,307 INFO    SenderThread:82355 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-05-24 09:44:17,049 INFO    Thread-12 :82355 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/wandb/run-20240524_094224-aag58mme/files/wandb-summary.json
+2024-05-24 09:44:18,055 INFO    Thread-12 :82355 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/wandb/run-20240524_094224-aag58mme/files/output.log
+2024-05-24 09:44:18,258 DEBUG   HandlerThread:82355 [handler.py:handle_request():158] handle_request: status_report
+2024-05-24 09:44:18,561 DEBUG   HandlerThread:82355 [handler.py:handle_request():158] handle_request: partial_history
+2024-05-24 09:44:18,562 DEBUG   SenderThread:82355 [sender.py:send():378] send: history
+2024-05-24 09:44:18,562 DEBUG   SenderThread:82355 [sender.py:send_request():405] send_request: summary_record
+2024-05-24 09:44:18,562 INFO    SenderThread:82355 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-05-24 09:44:19,057 INFO    Thread-12 :82355 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/wandb/run-20240524_094224-aag58mme/files/wandb-summary.json
+2024-05-24 09:44:20,061 INFO    Thread-12 :82355 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/wandb/run-20240524_094224-aag58mme/files/output.log
+2024-05-24 09:44:20,214 DEBUG   HandlerThread:82355 [handler.py:handle_request():158] handle_request: partial_history
+2024-05-24 09:44:20,475 DEBUG   SenderThread:82355 [sender.py:send():378] send: history
+2024-05-24 09:44:20,478 DEBUG   SenderThread:82355 [sender.py:send_request():405] send_request: summary_record
+2024-05-24 09:44:20,484 INFO    SenderThread:82355 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-05-24 09:44:21,064 INFO    Thread-12 :82355 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/wandb/run-20240524_094224-aag58mme/files/wandb-summary.json
+2024-05-24 09:44:22,306 INFO    Thread-12 :82355 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/wandb/run-20240524_094224-aag58mme/files/output.log
+2024-05-24 09:44:23,324 DEBUG   HandlerThread:82355 [handler.py:handle_request():158] handle_request: status_report
+2024-05-24 09:44:24,412 INFO    Thread-12 :82355 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/wandb/run-20240524_094224-aag58mme/files/output.log
+2024-05-24 09:44:27,834 DEBUG   SenderThread:82355 [sender.py:send():378] send: stats
+2024-05-24 09:44:29,761 DEBUG   HandlerThread:82355 [handler.py:handle_request():158] handle_request: status_report
+2024-05-24 09:44:31,194 DEBUG   HandlerThread:82355 [handler.py:handle_request():158] handle_request: stop_status
+2024-05-24 09:44:31,203 DEBUG   SenderThread:82355 [sender.py:send_request():405] send_request: stop_status
+2024-05-24 09:44:35,427 DEBUG   HandlerThread:82355 [handler.py:handle_request():158] handle_request: status_report
+2024-05-24 09:44:40,628 DEBUG   HandlerThread:82355 [handler.py:handle_request():158] handle_request: status_report
+2024-05-24 09:44:45,736 DEBUG   HandlerThread:82355 [handler.py:handle_request():158] handle_request: stop_status
+2024-05-24 09:44:45,934 DEBUG   SenderThread:82355 [sender.py:send_request():405] send_request: stop_status
+2024-05-24 09:44:46,570 DEBUG   HandlerThread:82355 [handler.py:handle_request():158] handle_request: status_report
+2024-05-24 09:44:48,086 INFO    Thread-12 :82355 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/wandb/run-20240524_094224-aag58mme/files/output.log
+2024-05-24 09:44:52,619 DEBUG   HandlerThread:82355 [handler.py:handle_request():158] handle_request: status_report
+2024-05-24 09:44:57,286 DEBUG   SenderThread:82355 [sender.py:send():378] send: stats
+2024-05-24 09:44:58,368 DEBUG   HandlerThread:82355 [handler.py:handle_request():158] handle_request: status_report
+2024-05-24 09:45:01,273 DEBUG   HandlerThread:82355 [handler.py:handle_request():158] handle_request: stop_status
+2024-05-24 09:45:01,277 DEBUG   SenderThread:82355 [sender.py:send_request():405] send_request: stop_status
+2024-05-24 09:45:03,491 DEBUG   HandlerThread:82355 [handler.py:handle_request():158] handle_request: status_report
+2024-05-24 09:45:06,874 INFO    Thread-12 :82355 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/wandb/run-20240524_094224-aag58mme/files/output.log
+2024-05-24 09:45:07,253 DEBUG   HandlerThread:82355 [handler.py:handle_request():158] handle_request: partial_history
+2024-05-24 09:45:07,253 DEBUG   SenderThread:82355 [sender.py:send():378] send: history
+2024-05-24 09:45:07,253 DEBUG   SenderThread:82355 [sender.py:send_request():405] send_request: summary_record
+2024-05-24 09:45:07,254 INFO    SenderThread:82355 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-05-24 09:45:07,867 INFO    Thread-12 :82355 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/wandb/run-20240524_094224-aag58mme/files/wandb-summary.json
+2024-05-24 09:45:08,438 DEBUG   HandlerThread:82355 [handler.py:handle_request():158] handle_request: partial_history
+2024-05-24 09:45:08,438 DEBUG   SenderThread:82355 [sender.py:send():378] send: history
+2024-05-24 09:45:08,439 DEBUG   SenderThread:82355 [sender.py:send_request():405] send_request: summary_record
+2024-05-24 09:45:08,439 INFO    SenderThread:82355 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-05-24 09:45:08,567 DEBUG   HandlerThread:82355 [handler.py:handle_request():158] handle_request: status_report
+2024-05-24 09:45:08,870 INFO    Thread-12 :82355 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/wandb/run-20240524_094224-aag58mme/files/output.log
+2024-05-24 09:45:08,871 INFO    Thread-12 :82355 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/wandb/run-20240524_094224-aag58mme/files/wandb-summary.json
+2024-05-24 09:45:09,596 DEBUG   HandlerThread:82355 [handler.py:handle_request():158] handle_request: partial_history
+2024-05-24 09:45:09,597 DEBUG   SenderThread:82355 [sender.py:send():378] send: history
+2024-05-24 09:45:09,597 DEBUG   SenderThread:82355 [sender.py:send_request():405] send_request: summary_record
+2024-05-24 09:45:09,597 INFO    SenderThread:82355 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-05-24 09:45:09,872 INFO    Thread-12 :82355 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/wandb/run-20240524_094224-aag58mme/files/wandb-summary.json
+2024-05-24 09:45:10,655 DEBUG   HandlerThread:82355 [handler.py:handle_request():158] handle_request: partial_history
+2024-05-24 09:45:10,655 DEBUG   SenderThread:82355 [sender.py:send():378] send: history
+2024-05-24 09:45:10,655 DEBUG   SenderThread:82355 [sender.py:send_request():405] send_request: summary_record
+2024-05-24 09:45:10,655 INFO    SenderThread:82355 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-05-24 09:45:10,877 INFO    Thread-12 :82355 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/wandb/run-20240524_094224-aag58mme/files/output.log
+2024-05-24 09:45:10,877 INFO    Thread-12 :82355 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/wandb/run-20240524_094224-aag58mme/files/wandb-summary.json
+2024-05-24 09:45:11,976 DEBUG   HandlerThread:82355 [handler.py:handle_request():158] handle_request: partial_history
+2024-05-24 09:45:11,976 DEBUG   SenderThread:82355 [sender.py:send():378] send: history
+2024-05-24 09:45:11,976 DEBUG   SenderThread:82355 [sender.py:send_request():405] send_request: summary_record
+2024-05-24 09:45:11,977 INFO    SenderThread:82355 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-05-24 09:45:12,858 DEBUG   HandlerThread:82355 [handler.py:handle_request():158] handle_request: partial_history
+2024-05-24 09:45:12,858 DEBUG   SenderThread:82355 [sender.py:send():378] send: history
+2024-05-24 09:45:12,858 DEBUG   SenderThread:82355 [sender.py:send_request():405] send_request: summary_record
+2024-05-24 09:45:12,859 INFO    SenderThread:82355 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-05-24 09:45:12,887 INFO    Thread-12 :82355 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/wandb/run-20240524_094224-aag58mme/files/output.log
+2024-05-24 09:45:12,887 INFO    Thread-12 :82355 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/wandb/run-20240524_094224-aag58mme/files/wandb-summary.json
+2024-05-24 09:45:13,577 DEBUG   HandlerThread:82355 [handler.py:handle_request():158] handle_request: status_report
+2024-05-24 09:45:13,653 DEBUG   HandlerThread:82355 [handler.py:handle_request():158] handle_request: partial_history
+2024-05-24 09:45:13,653 DEBUG   SenderThread:82355 [sender.py:send():378] send: history
+2024-05-24 09:45:13,653 DEBUG   SenderThread:82355 [sender.py:send_request():405] send_request: summary_record
+2024-05-24 09:45:13,654 INFO    SenderThread:82355 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-05-24 09:45:13,888 INFO    Thread-12 :82355 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/wandb/run-20240524_094224-aag58mme/files/wandb-summary.json
+2024-05-24 09:45:14,891 INFO    Thread-12 :82355 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/wandb/run-20240524_094224-aag58mme/files/output.log
+2024-05-24 09:45:15,198 DEBUG   HandlerThread:82355 [handler.py:handle_request():158] handle_request: partial_history
+2024-05-24 09:45:15,198 DEBUG   SenderThread:82355 [sender.py:send():378] send: history
+2024-05-24 09:45:15,198 DEBUG   SenderThread:82355 [sender.py:send_request():405] send_request: summary_record
+2024-05-24 09:45:15,199 INFO    SenderThread:82355 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-05-24 09:45:15,632 DEBUG   HandlerThread:82355 [handler.py:handle_request():158] handle_request: stop_status
+2024-05-24 09:45:15,632 DEBUG   SenderThread:82355 [sender.py:send_request():405] send_request: stop_status
+2024-05-24 09:45:15,893 INFO    Thread-12 :82355 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/wandb/run-20240524_094224-aag58mme/files/wandb-summary.json
+2024-05-24 09:45:16,125 DEBUG   HandlerThread:82355 [handler.py:handle_request():158] handle_request: partial_history
+2024-05-24 09:45:16,125 DEBUG   SenderThread:82355 [sender.py:send():378] send: history
+2024-05-24 09:45:16,125 DEBUG   SenderThread:82355 [sender.py:send_request():405] send_request: summary_record
+2024-05-24 09:45:16,126 INFO    SenderThread:82355 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-05-24 09:45:16,898 INFO    Thread-12 :82355 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/wandb/run-20240524_094224-aag58mme/files/output.log
+2024-05-24 09:45:16,899 INFO    Thread-12 :82355 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/wandb/run-20240524_094224-aag58mme/files/wandb-summary.json
+2024-05-24 09:45:17,046 DEBUG   HandlerThread:82355 [handler.py:handle_request():158] handle_request: partial_history
+2024-05-24 09:45:17,046 DEBUG   SenderThread:82355 [sender.py:send():378] send: history
+2024-05-24 09:45:17,046 DEBUG   SenderThread:82355 [sender.py:send_request():405] send_request: summary_record
+2024-05-24 09:45:17,046 INFO    SenderThread:82355 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-05-24 09:45:17,905 INFO    Thread-12 :82355 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/wandb/run-20240524_094224-aag58mme/files/wandb-summary.json
+2024-05-24 09:45:18,015 DEBUG   HandlerThread:82355 [handler.py:handle_request():158] handle_request: partial_history
+2024-05-24 09:45:18,016 DEBUG   SenderThread:82355 [sender.py:send():378] send: history
+2024-05-24 09:45:18,016 DEBUG   SenderThread:82355 [sender.py:send_request():405] send_request: summary_record
+2024-05-24 09:45:18,017 INFO    SenderThread:82355 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-05-24 09:45:18,595 DEBUG   HandlerThread:82355 [handler.py:handle_request():158] handle_request: status_report
+2024-05-24 09:45:18,889 DEBUG   HandlerThread:82355 [handler.py:handle_request():158] handle_request: partial_history
+2024-05-24 09:45:18,890 DEBUG   SenderThread:82355 [sender.py:send():378] send: history
+2024-05-24 09:45:18,890 DEBUG   SenderThread:82355 [sender.py:send_request():405] send_request: summary_record
+2024-05-24 09:45:18,890 INFO    SenderThread:82355 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-05-24 09:45:18,909 INFO    Thread-12 :82355 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/wandb/run-20240524_094224-aag58mme/files/output.log
+2024-05-24 09:45:18,909 INFO    Thread-12 :82355 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/wandb/run-20240524_094224-aag58mme/files/wandb-summary.json
+2024-05-24 09:45:19,741 DEBUG   HandlerThread:82355 [handler.py:handle_request():158] handle_request: partial_history
+2024-05-24 09:45:19,742 DEBUG   SenderThread:82355 [sender.py:send():378] send: history
+2024-05-24 09:45:19,743 DEBUG   SenderThread:82355 [sender.py:send_request():405] send_request: summary_record
+2024-05-24 09:45:19,743 INFO    SenderThread:82355 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-05-24 09:45:19,914 INFO    Thread-12 :82355 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/wandb/run-20240524_094224-aag58mme/files/wandb-summary.json
+2024-05-24 09:45:20,566 DEBUG   HandlerThread:82355 [handler.py:handle_request():158] handle_request: partial_history
+2024-05-24 09:45:20,567 DEBUG   SenderThread:82355 [sender.py:send():378] send: history
+2024-05-24 09:45:20,567 DEBUG   SenderThread:82355 [sender.py:send_request():405] send_request: summary_record
+2024-05-24 09:45:20,567 INFO    SenderThread:82355 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-05-24 09:45:20,921 INFO    Thread-12 :82355 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/wandb/run-20240524_094224-aag58mme/files/output.log
+2024-05-24 09:45:20,921 INFO    Thread-12 :82355 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/wandb/run-20240524_094224-aag58mme/files/wandb-summary.json
+2024-05-24 09:45:21,450 DEBUG   HandlerThread:82355 [handler.py:handle_request():158] handle_request: partial_history
+2024-05-24 09:45:21,451 DEBUG   SenderThread:82355 [sender.py:send():378] send: history
+2024-05-24 09:45:21,451 DEBUG   SenderThread:82355 [sender.py:send_request():405] send_request: summary_record
+2024-05-24 09:45:21,451 INFO    SenderThread:82355 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-05-24 09:45:21,926 INFO    Thread-12 :82355 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/wandb/run-20240524_094224-aag58mme/files/wandb-summary.json
+2024-05-24 09:45:22,229 DEBUG   HandlerThread:82355 [handler.py:handle_request():158] handle_request: partial_history
+2024-05-24 09:45:22,229 DEBUG   SenderThread:82355 [sender.py:send():378] send: history
+2024-05-24 09:45:22,229 DEBUG   SenderThread:82355 [sender.py:send_request():405] send_request: summary_record
+2024-05-24 09:45:22,230 INFO    SenderThread:82355 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-05-24 09:45:22,932 INFO    Thread-12 :82355 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/wandb/run-20240524_094224-aag58mme/files/output.log
+2024-05-24 09:45:22,932 INFO    Thread-12 :82355 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/wandb/run-20240524_094224-aag58mme/files/wandb-summary.json
+2024-05-24 09:45:22,985 DEBUG   HandlerThread:82355 [handler.py:handle_request():158] handle_request: partial_history
+2024-05-24 09:45:22,985 DEBUG   SenderThread:82355 [sender.py:send():378] send: history
+2024-05-24 09:45:22,985 DEBUG   SenderThread:82355 [sender.py:send_request():405] send_request: summary_record
+2024-05-24 09:45:22,986 INFO    SenderThread:82355 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-05-24 09:45:23,661 DEBUG   HandlerThread:82355 [handler.py:handle_request():158] handle_request: status_report
+2024-05-24 09:45:23,937 INFO    Thread-12 :82355 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/wandb/run-20240524_094224-aag58mme/files/wandb-summary.json
+2024-05-24 09:45:24,197 DEBUG   HandlerThread:82355 [handler.py:handle_request():158] handle_request: partial_history
+2024-05-24 09:45:24,198 DEBUG   SenderThread:82355 [sender.py:send():378] send: history
+2024-05-24 09:45:24,198 DEBUG   SenderThread:82355 [sender.py:send_request():405] send_request: summary_record
+2024-05-24 09:45:24,199 INFO    SenderThread:82355 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-05-24 09:45:24,943 INFO    Thread-12 :82355 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/wandb/run-20240524_094224-aag58mme/files/output.log
+2024-05-24 09:45:24,943 INFO    Thread-12 :82355 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/wandb/run-20240524_094224-aag58mme/files/wandb-summary.json
+2024-05-24 09:45:25,351 DEBUG   HandlerThread:82355 [handler.py:handle_request():158] handle_request: partial_history
+2024-05-24 09:45:25,351 DEBUG   SenderThread:82355 [sender.py:send():378] send: history
+2024-05-24 09:45:25,352 DEBUG   SenderThread:82355 [sender.py:send_request():405] send_request: summary_record
+2024-05-24 09:45:25,352 INFO    SenderThread:82355 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-05-24 09:45:25,947 INFO    Thread-12 :82355 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/wandb/run-20240524_094224-aag58mme/files/wandb-summary.json
+2024-05-24 09:45:26,953 INFO    Thread-12 :82355 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/wandb/run-20240524_094224-aag58mme/files/output.log
+2024-05-24 09:45:27,301 DEBUG   SenderThread:82355 [sender.py:send():378] send: stats
+2024-05-24 09:45:28,046 DEBUG   HandlerThread:82355 [handler.py:handle_request():158] handle_request: partial_history
+2024-05-24 09:45:28,046 DEBUG   SenderThread:82355 [sender.py:send():378] send: history
+2024-05-24 09:45:28,046 DEBUG   SenderThread:82355 [sender.py:send_request():405] send_request: summary_record
+2024-05-24 09:45:28,047 INFO    SenderThread:82355 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-05-24 09:45:28,747 DEBUG   HandlerThread:82355 [handler.py:handle_request():158] handle_request: status_report
+2024-05-24 09:45:28,837 DEBUG   HandlerThread:82355 [handler.py:handle_request():158] handle_request: partial_history
+2024-05-24 09:45:28,837 DEBUG   SenderThread:82355 [sender.py:send():378] send: history
+2024-05-24 09:45:28,837 DEBUG   SenderThread:82355 [sender.py:send_request():405] send_request: summary_record
+2024-05-24 09:45:28,838 INFO    SenderThread:82355 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-05-24 09:45:28,964 INFO    Thread-12 :82355 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/wandb/run-20240524_094224-aag58mme/files/output.log
+2024-05-24 09:45:28,964 INFO    Thread-12 :82355 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/wandb/run-20240524_094224-aag58mme/files/wandb-summary.json
+2024-05-24 09:45:29,749 DEBUG   HandlerThread:82355 [handler.py:handle_request():158] handle_request: partial_history
+2024-05-24 09:45:29,751 DEBUG   SenderThread:82355 [sender.py:send():378] send: history
+2024-05-24 09:45:29,752 DEBUG   SenderThread:82355 [sender.py:send_request():405] send_request: summary_record
+2024-05-24 09:45:29,753 INFO    SenderThread:82355 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-05-24 09:45:29,967 INFO    Thread-12 :82355 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/wandb/run-20240524_094224-aag58mme/files/wandb-summary.json
+2024-05-24 09:45:30,646 DEBUG   HandlerThread:82355 [handler.py:handle_request():158] handle_request: stop_status
+2024-05-24 09:45:30,647 DEBUG   SenderThread:82355 [sender.py:send_request():405] send_request: stop_status
+2024-05-24 09:45:30,669 DEBUG   HandlerThread:82355 [handler.py:handle_request():158] handle_request: partial_history
+2024-05-24 09:45:30,973 INFO    Thread-12 :82355 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/wandb/run-20240524_094224-aag58mme/files/output.log
+2024-05-24 09:45:31,019 DEBUG   SenderThread:82355 [sender.py:send():378] send: history
+2024-05-24 09:45:31,019 DEBUG   SenderThread:82355 [sender.py:send_request():405] send_request: summary_record
+2024-05-24 09:45:31,020 INFO    SenderThread:82355 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-05-24 09:45:31,438 DEBUG   HandlerThread:82355 [handler.py:handle_request():158] handle_request: partial_history
+2024-05-24 09:45:31,438 DEBUG   SenderThread:82355 [sender.py:send():378] send: history
+2024-05-24 09:45:31,438 DEBUG   SenderThread:82355 [sender.py:send_request():405] send_request: summary_record
+2024-05-24 09:45:31,439 INFO    SenderThread:82355 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-05-24 09:45:31,978 INFO    Thread-12 :82355 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/wandb/run-20240524_094224-aag58mme/files/wandb-summary.json
+2024-05-24 09:45:32,203 DEBUG   HandlerThread:82355 [handler.py:handle_request():158] handle_request: partial_history
+2024-05-24 09:45:32,203 DEBUG   SenderThread:82355 [sender.py:send():378] send: history
+2024-05-24 09:45:32,203 DEBUG   SenderThread:82355 [sender.py:send_request():405] send_request: summary_record
+2024-05-24 09:45:32,204 INFO    SenderThread:82355 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-05-24 09:45:32,984 INFO    Thread-12 :82355 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/wandb/run-20240524_094224-aag58mme/files/output.log
+2024-05-24 09:45:32,984 INFO    Thread-12 :82355 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/wandb/run-20240524_094224-aag58mme/files/wandb-summary.json
+2024-05-24 09:45:32,994 DEBUG   HandlerThread:82355 [handler.py:handle_request():158] handle_request: partial_history
+2024-05-24 09:45:32,995 DEBUG   SenderThread:82355 [sender.py:send():378] send: history
+2024-05-24 09:45:32,995 DEBUG   SenderThread:82355 [sender.py:send_request():405] send_request: summary_record
+2024-05-24 09:45:32,995 INFO    SenderThread:82355 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-05-24 09:45:33,793 DEBUG   HandlerThread:82355 [handler.py:handle_request():158] handle_request: status_report
+2024-05-24 09:45:33,925 DEBUG   HandlerThread:82355 [handler.py:handle_request():158] handle_request: partial_history
+2024-05-24 09:45:33,925 DEBUG   SenderThread:82355 [sender.py:send():378] send: history
+2024-05-24 09:45:33,925 DEBUG   SenderThread:82355 [sender.py:send_request():405] send_request: summary_record
+2024-05-24 09:45:33,925 INFO    SenderThread:82355 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-05-24 09:45:33,988 INFO    Thread-12 :82355 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/wandb/run-20240524_094224-aag58mme/files/wandb-summary.json
+2024-05-24 09:45:34,426 DEBUG   SenderThread:82355 [sender.py:send():378] send: exit
+2024-05-24 09:45:34,462 INFO    SenderThread:82355 [sender.py:send_exit():585] handling exit code: 0
+2024-05-24 09:45:34,477 INFO    SenderThread:82355 [sender.py:send_exit():587] handling runtime: 189
+2024-05-24 09:45:34,478 INFO    SenderThread:82355 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-05-24 09:45:34,478 INFO    SenderThread:82355 [sender.py:send_exit():593] send defer
+2024-05-24 09:45:34,478 DEBUG   HandlerThread:82355 [handler.py:handle_request():158] handle_request: defer
+2024-05-24 09:45:34,478 INFO    HandlerThread:82355 [handler.py:handle_request_defer():184] handle defer: 0
+2024-05-24 09:45:34,478 DEBUG   SenderThread:82355 [sender.py:send_request():405] send_request: defer
+2024-05-24 09:45:34,479 INFO    SenderThread:82355 [sender.py:send_request_defer():609] handle sender defer: 0
+2024-05-24 09:45:34,479 INFO    SenderThread:82355 [sender.py:transition_state():613] send defer: 1
+2024-05-24 09:45:34,479 DEBUG   HandlerThread:82355 [handler.py:handle_request():158] handle_request: defer
+2024-05-24 09:45:34,479 INFO    HandlerThread:82355 [handler.py:handle_request_defer():184] handle defer: 1
+2024-05-24 09:45:34,479 DEBUG   SenderThread:82355 [sender.py:send_request():405] send_request: defer
+2024-05-24 09:45:34,479 INFO    SenderThread:82355 [sender.py:send_request_defer():609] handle sender defer: 1
+2024-05-24 09:45:34,479 INFO    SenderThread:82355 [sender.py:transition_state():613] send defer: 2
+2024-05-24 09:45:34,479 DEBUG   HandlerThread:82355 [handler.py:handle_request():158] handle_request: defer
+2024-05-24 09:45:34,479 INFO    HandlerThread:82355 [handler.py:handle_request_defer():184] handle defer: 2
+2024-05-24 09:45:34,479 INFO    HandlerThread:82355 [system_monitor.py:finish():203] Stopping system monitor
+2024-05-24 09:45:34,480 DEBUG   SystemMonitor:82355 [system_monitor.py:_start():179] Finished system metrics aggregation loop
+2024-05-24 09:45:34,480 DEBUG   SystemMonitor:82355 [system_monitor.py:_start():183] Publishing last batch of metrics
+2024-05-24 09:45:34,480 INFO    HandlerThread:82355 [interfaces.py:finish():200] Joined cpu monitor
+2024-05-24 09:45:34,481 INFO    HandlerThread:82355 [interfaces.py:finish():200] Joined disk monitor
+2024-05-24 09:45:34,481 INFO    HandlerThread:82355 [interfaces.py:finish():200] Joined gpuapple monitor
+2024-05-24 09:45:34,481 INFO    HandlerThread:82355 [interfaces.py:finish():200] Joined memory monitor
+2024-05-24 09:45:34,481 INFO    HandlerThread:82355 [interfaces.py:finish():200] Joined network monitor
+2024-05-24 09:45:34,481 DEBUG   SenderThread:82355 [sender.py:send_request():405] send_request: defer
+2024-05-24 09:45:34,481 INFO    SenderThread:82355 [sender.py:send_request_defer():609] handle sender defer: 2
+2024-05-24 09:45:34,481 INFO    SenderThread:82355 [sender.py:transition_state():613] send defer: 3
+2024-05-24 09:45:34,481 DEBUG   SenderThread:82355 [sender.py:send():378] send: stats
+2024-05-24 09:45:34,481 DEBUG   HandlerThread:82355 [handler.py:handle_request():158] handle_request: defer
+2024-05-24 09:45:34,481 INFO    HandlerThread:82355 [handler.py:handle_request_defer():184] handle defer: 3
+2024-05-24 09:45:34,481 DEBUG   SenderThread:82355 [sender.py:send_request():405] send_request: defer
+2024-05-24 09:45:34,481 INFO    SenderThread:82355 [sender.py:send_request_defer():609] handle sender defer: 3
+2024-05-24 09:45:34,481 INFO    SenderThread:82355 [sender.py:transition_state():613] send defer: 4
+2024-05-24 09:45:34,482 DEBUG   HandlerThread:82355 [handler.py:handle_request():158] handle_request: defer
+2024-05-24 09:45:34,482 INFO    HandlerThread:82355 [handler.py:handle_request_defer():184] handle defer: 4
+2024-05-24 09:45:34,482 DEBUG   SenderThread:82355 [sender.py:send_request():405] send_request: defer
+2024-05-24 09:45:34,482 INFO    SenderThread:82355 [sender.py:send_request_defer():609] handle sender defer: 4
+2024-05-24 09:45:34,482 INFO    SenderThread:82355 [sender.py:transition_state():613] send defer: 5
+2024-05-24 09:45:34,482 DEBUG   HandlerThread:82355 [handler.py:handle_request():158] handle_request: defer
+2024-05-24 09:45:34,482 INFO    HandlerThread:82355 [handler.py:handle_request_defer():184] handle defer: 5
+2024-05-24 09:45:34,482 DEBUG   SenderThread:82355 [sender.py:send():378] send: summary
+2024-05-24 09:45:34,482 INFO    SenderThread:82355 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-05-24 09:45:34,482 DEBUG   SenderThread:82355 [sender.py:send_request():405] send_request: defer
+2024-05-24 09:45:34,482 INFO    SenderThread:82355 [sender.py:send_request_defer():609] handle sender defer: 5
+2024-05-24 09:45:34,482 INFO    SenderThread:82355 [sender.py:transition_state():613] send defer: 6
+2024-05-24 09:45:34,482 DEBUG   HandlerThread:82355 [handler.py:handle_request():158] handle_request: defer
+2024-05-24 09:45:34,482 INFO    HandlerThread:82355 [handler.py:handle_request_defer():184] handle defer: 6
+2024-05-24 09:45:34,482 DEBUG   SenderThread:82355 [sender.py:send_request():405] send_request: defer
+2024-05-24 09:45:34,482 INFO    SenderThread:82355 [sender.py:send_request_defer():609] handle sender defer: 6
+2024-05-24 09:45:34,483 INFO    SenderThread:82355 [sender.py:transition_state():613] send defer: 7
+2024-05-24 09:45:34,483 DEBUG   HandlerThread:82355 [handler.py:handle_request():158] handle_request: status_report
+2024-05-24 09:45:34,483 DEBUG   HandlerThread:82355 [handler.py:handle_request():158] handle_request: defer
+2024-05-24 09:45:34,483 INFO    HandlerThread:82355 [handler.py:handle_request_defer():184] handle defer: 7
+2024-05-24 09:45:34,483 DEBUG   SenderThread:82355 [sender.py:send_request():405] send_request: defer
+2024-05-24 09:45:34,483 INFO    SenderThread:82355 [sender.py:send_request_defer():609] handle sender defer: 7
+2024-05-24 09:45:34,994 INFO    Thread-12 :82355 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/wandb/run-20240524_094224-aag58mme/files/output.log
+2024-05-24 09:45:34,995 INFO    Thread-12 :82355 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/wandb/run-20240524_094224-aag58mme/files/wandb-summary.json
+2024-05-24 09:45:35,428 DEBUG   HandlerThread:82355 [handler.py:handle_request():158] handle_request: poll_exit
+2024-05-24 09:45:36,476 INFO    SenderThread:82355 [sender.py:transition_state():613] send defer: 8
+2024-05-24 09:45:36,476 DEBUG   SenderThread:82355 [sender.py:send_request():405] send_request: poll_exit
+2024-05-24 09:45:36,483 DEBUG   HandlerThread:82355 [handler.py:handle_request():158] handle_request: defer
+2024-05-24 09:45:36,483 INFO    HandlerThread:82355 [handler.py:handle_request_defer():184] handle defer: 8
+2024-05-24 09:45:36,483 DEBUG   SenderThread:82355 [sender.py:send_request():405] send_request: defer
+2024-05-24 09:45:36,483 INFO    SenderThread:82355 [sender.py:send_request_defer():609] handle sender defer: 8
+2024-05-24 09:45:36,484 INFO    SenderThread:82355 [job_builder.py:build():432] Attempting to build job artifact
+2024-05-24 09:45:36,494 INFO    SenderThread:82355 [job_builder.py:_get_source_type():565] is repo sourced job
+2024-05-24 09:45:36,589 INFO    SenderThread:82355 [job_builder.py:build():541] adding wandb-job metadata file
+2024-05-24 09:45:36,595 INFO    SenderThread:82355 [sender.py:transition_state():613] send defer: 9
+2024-05-24 09:45:36,596 DEBUG   HandlerThread:82355 [handler.py:handle_request():158] handle_request: defer
+2024-05-24 09:45:36,596 DEBUG   SenderThread:82355 [sender.py:send():378] send: artifact
+2024-05-24 09:45:36,596 INFO    HandlerThread:82355 [handler.py:handle_request_defer():184] handle defer: 9
+2024-05-24 09:45:37,002 INFO    Thread-12 :82355 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/wandb/run-20240524_094224-aag58mme/files/output.log
+2024-05-24 09:45:37,448 DEBUG   HandlerThread:82355 [handler.py:handle_request():158] handle_request: poll_exit
+2024-05-24 09:45:38,086 INFO    SenderThread:82355 [sender.py:send_artifact():1467] sent artifact job-https___github.com_MaheepChaudhary_SAE_vs_DAS.git_main.py - {'id': 'QXJ0aWZhY3Q6ODQ4MTQyNTY2', 'state': 'COMMITTED', 'artifactSequence': {'id': 'QXJ0aWZhY3RDb2xsZWN0aW9uOjE3ODM4MjIxOA==', 'latestArtifact': {'id': 'QXJ0aWZhY3Q6ODQ4MTQyNTY2', 'versionIndex': 2}}}
+2024-05-24 09:45:38,086 DEBUG   SenderThread:82355 [sender.py:send_request():405] send_request: defer
+2024-05-24 09:45:38,086 INFO    SenderThread:82355 [sender.py:send_request_defer():609] handle sender defer: 9
+2024-05-24 09:45:38,086 INFO    SenderThread:82355 [dir_watcher.py:finish():358] shutting down directory watcher
+2024-05-24 09:45:39,010 INFO    SenderThread:82355 [dir_watcher.py:finish():388] scan: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/wandb/run-20240524_094224-aag58mme/files
+2024-05-24 09:45:39,745 INFO    SenderThread:82355 [dir_watcher.py:finish():402] scan save: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/wandb/run-20240524_094224-aag58mme/files/requirements.txt requirements.txt
+2024-05-24 09:45:39,770 INFO    SenderThread:82355 [dir_watcher.py:finish():402] scan save: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/wandb/run-20240524_094224-aag58mme/files/output.log output.log
+2024-05-24 09:45:39,770 INFO    SenderThread:82355 [dir_watcher.py:finish():402] scan save: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/wandb/run-20240524_094224-aag58mme/files/config.yaml config.yaml
+2024-05-24 09:45:39,788 INFO    SenderThread:82355 [dir_watcher.py:finish():402] scan save: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/wandb/run-20240524_094224-aag58mme/files/wandb-summary.json wandb-summary.json
+2024-05-24 09:45:39,792 INFO    SenderThread:82355 [dir_watcher.py:finish():402] scan save: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/wandb/run-20240524_094224-aag58mme/files/conda-environment.yaml conda-environment.yaml
+2024-05-24 09:45:39,794 INFO    SenderThread:82355 [dir_watcher.py:finish():402] scan save: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/wandb/run-20240524_094224-aag58mme/files/wandb-metadata.json wandb-metadata.json
+2024-05-24 09:45:39,795 INFO    SenderThread:82355 [sender.py:transition_state():613] send defer: 10
+2024-05-24 09:45:39,796 DEBUG   SenderThread:82355 [sender.py:send_request():405] send_request: poll_exit
+2024-05-24 09:45:39,796 DEBUG   HandlerThread:82355 [handler.py:handle_request():158] handle_request: defer
+2024-05-24 09:45:39,796 INFO    HandlerThread:82355 [handler.py:handle_request_defer():184] handle defer: 10
+2024-05-24 09:45:39,796 DEBUG   HandlerThread:82355 [handler.py:handle_request():158] handle_request: status_report
+2024-05-24 09:45:39,797 DEBUG   SenderThread:82355 [sender.py:send_request():405] send_request: defer
+2024-05-24 09:45:39,797 INFO    SenderThread:82355 [sender.py:send_request_defer():609] handle sender defer: 10
+2024-05-24 09:45:39,797 INFO    SenderThread:82355 [file_pusher.py:finish():169] shutting down file pusher
+2024-05-24 09:45:40,459 DEBUG   HandlerThread:82355 [handler.py:handle_request():158] handle_request: poll_exit
+2024-05-24 09:45:40,459 DEBUG   SenderThread:82355 [sender.py:send_request():405] send_request: poll_exit
+2024-05-24 09:45:40,470 INFO    wandb-upload_1:82355 [upload_job.py:push():130] Uploaded file /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/wandb/run-20240524_094224-aag58mme/files/requirements.txt
+2024-05-24 09:45:40,747 INFO    wandb-upload_3:82355 [upload_job.py:push():130] Uploaded file /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/wandb/run-20240524_094224-aag58mme/files/wandb-summary.json
+2024-05-24 09:45:40,757 INFO    wandb-upload_2:82355 [upload_job.py:push():130] Uploaded file /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/wandb/run-20240524_094224-aag58mme/files/config.yaml
+2024-05-24 09:45:40,872 INFO    wandb-upload_0:82355 [upload_job.py:push():130] Uploaded file /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/wandb/run-20240524_094224-aag58mme/files/output.log
+2024-05-24 09:45:40,967 INFO    wandb-upload_4:82355 [upload_job.py:push():130] Uploaded file /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/wandb/run-20240524_094224-aag58mme/files/conda-environment.yaml
+2024-05-24 09:45:41,173 INFO    Thread-11 (_thread_body):82355 [sender.py:transition_state():613] send defer: 11
+2024-05-24 09:45:41,173 DEBUG   HandlerThread:82355 [handler.py:handle_request():158] handle_request: defer
+2024-05-24 09:45:41,173 INFO    HandlerThread:82355 [handler.py:handle_request_defer():184] handle defer: 11
+2024-05-24 09:45:41,173 DEBUG   SenderThread:82355 [sender.py:send_request():405] send_request: defer
+2024-05-24 09:45:41,173 INFO    SenderThread:82355 [sender.py:send_request_defer():609] handle sender defer: 11
+2024-05-24 09:45:41,173 INFO    SenderThread:82355 [file_pusher.py:join():175] waiting for file pusher
+2024-05-24 09:45:41,177 INFO    SenderThread:82355 [sender.py:transition_state():613] send defer: 12
+2024-05-24 09:45:41,177 DEBUG   HandlerThread:82355 [handler.py:handle_request():158] handle_request: defer
+2024-05-24 09:45:41,177 INFO    HandlerThread:82355 [handler.py:handle_request_defer():184] handle defer: 12
+2024-05-24 09:45:41,178 DEBUG   SenderThread:82355 [sender.py:send_request():405] send_request: defer
+2024-05-24 09:45:41,178 INFO    SenderThread:82355 [sender.py:send_request_defer():609] handle sender defer: 12
+2024-05-24 09:45:41,178 INFO    SenderThread:82355 [file_stream.py:finish():601] file stream finish called
+2024-05-24 09:45:41,462 DEBUG   HandlerThread:82355 [handler.py:handle_request():158] handle_request: poll_exit
+2024-05-24 09:45:41,651 INFO    SenderThread:82355 [file_stream.py:finish():605] file stream finish is done
+2024-05-24 09:45:41,651 INFO    SenderThread:82355 [sender.py:transition_state():613] send defer: 13
+2024-05-24 09:45:41,651 DEBUG   SenderThread:82355 [sender.py:send_request():405] send_request: poll_exit
+2024-05-24 09:45:41,651 DEBUG   HandlerThread:82355 [handler.py:handle_request():158] handle_request: defer
+2024-05-24 09:45:41,651 INFO    HandlerThread:82355 [handler.py:handle_request_defer():184] handle defer: 13
+2024-05-24 09:45:41,651 DEBUG   SenderThread:82355 [sender.py:send_request():405] send_request: defer
+2024-05-24 09:45:41,651 INFO    SenderThread:82355 [sender.py:send_request_defer():609] handle sender defer: 13
+2024-05-24 09:45:41,651 INFO    SenderThread:82355 [sender.py:transition_state():613] send defer: 14
+2024-05-24 09:45:41,652 DEBUG   HandlerThread:82355 [handler.py:handle_request():158] handle_request: defer
+2024-05-24 09:45:41,652 DEBUG   SenderThread:82355 [sender.py:send():378] send: final
+2024-05-24 09:45:41,652 INFO    HandlerThread:82355 [handler.py:handle_request_defer():184] handle defer: 14
+2024-05-24 09:45:41,652 DEBUG   SenderThread:82355 [sender.py:send():378] send: footer
+2024-05-24 09:45:41,652 DEBUG   SenderThread:82355 [sender.py:send_request():405] send_request: defer
+2024-05-24 09:45:41,652 INFO    SenderThread:82355 [sender.py:send_request_defer():609] handle sender defer: 14
+2024-05-24 09:45:41,652 DEBUG   HandlerThread:82355 [handler.py:handle_request():158] handle_request: poll_exit
+2024-05-24 09:45:41,653 DEBUG   SenderThread:82355 [sender.py:send_request():405] send_request: poll_exit
+2024-05-24 09:45:41,653 DEBUG   HandlerThread:82355 [handler.py:handle_request():158] handle_request: poll_exit
+2024-05-24 09:45:41,653 DEBUG   SenderThread:82355 [sender.py:send_request():405] send_request: poll_exit
+2024-05-24 09:45:41,653 DEBUG   HandlerThread:82355 [handler.py:handle_request():158] handle_request: server_info
+2024-05-24 09:45:41,653 DEBUG   HandlerThread:82355 [handler.py:handle_request():158] handle_request: get_summary
+2024-05-24 09:45:41,653 DEBUG   SenderThread:82355 [sender.py:send_request():405] send_request: server_info
+2024-05-24 09:45:41,654 DEBUG   HandlerThread:82355 [handler.py:handle_request():158] handle_request: sampled_history
+2024-05-24 09:45:41,654 DEBUG   HandlerThread:82355 [handler.py:handle_request():158] handle_request: internal_messages
+2024-05-24 09:45:41,920 INFO    MainThread:82355 [wandb_run.py:_footer_history_summary_info():3994] rendering history
+2024-05-24 09:45:41,920 INFO    MainThread:82355 [wandb_run.py:_footer_history_summary_info():4026] rendering summary
+2024-05-24 09:45:41,921 INFO    MainThread:82355 [wandb_run.py:_footer_sync_info():3953] logging synced files
+2024-05-24 09:45:41,922 DEBUG   HandlerThread:82355 [handler.py:handle_request():158] handle_request: shutdown
+2024-05-24 09:45:41,922 INFO    HandlerThread:82355 [handler.py:finish():882] shutting down handler
+2024-05-24 09:45:42,658 INFO    WriterThread:82355 [datastore.py:close():296] close: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/wandb/run-20240524_094224-aag58mme/run-aag58mme.wandb
+2024-05-24 09:45:42,925 INFO    SenderThread:82355 [sender.py:finish():1545] shutting down sender
+2024-05-24 09:45:42,925 INFO    SenderThread:82355 [file_pusher.py:finish():169] shutting down file pusher
+2024-05-24 09:45:42,925 INFO    SenderThread:82355 [file_pusher.py:join():175] waiting for file pusher
