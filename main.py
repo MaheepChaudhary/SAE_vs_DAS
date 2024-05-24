@@ -22,7 +22,7 @@ def train(DEVICE,
     tokenizer = BertTokenizer.from_pretrained('bert-base-uncased')
 
     wandb.init(project="sae_concept_eraser")
-    wandb.run.name = f"gender_Lastlinear-mask_amb(false)_b1_e{epochs}"
+    wandb.run.name = f"{evaluation}-{residual_layer}-{method}_b{batch_size_train}_e{epochs}"
     # wandb.run.name = "gender_Lastlinear-mask_probe_amb(false)_b1_e3"
 
     new_model = my_model(DEVICE,
@@ -34,7 +34,8 @@ def train(DEVICE,
                         resid_layers=residual_layer,
                         method = method,
                         activation_dim = activation_dim,
-                        expansion_factor=expansion_factor).to(DEVICE)
+                        expansion_factor=expansion_factor,
+                        epochs = epochs).to(DEVICE)
 
     optimizer = t.optim.Adam(new_model.parameters(), lr = lr)
     criterion = nn.BCEWithLogitsLoss().to(DEVICE)
@@ -46,9 +47,20 @@ def train(DEVICE,
     else:
         train_batches = batches
 
+    total_step = 0
+    target_total_step = len(train_batches) * epochs
+    temperature_start = 50.0
+    temperature_end = 0.1
+    temperature_schedule = (
+        t.linspace(temperature_start, temperature_end, target_total_step)
+        .to(t.bfloat16)
+        .to(DEVICE)
+    )
+    
+
     label_idx = 0
     # print(len(batches))
-
+    temp_idx = 0
     for epoch in range(epochs):
         losses = []
         len_batches = len(train_batches)
@@ -59,9 +71,10 @@ def train(DEVICE,
                 labels = train_batches[i][1] # true label, if [2] then spurious label. We will be training the model in hope that mask will learn which concepts to mask. 
             elif evaluation == "gender":
                 labels = train_batches[i][2]
-                
+            
+            temprature = temperature_schedule[temp_idx]
             # print(labels.float)
-            logits = new_model(text)
+            logits = new_model(text, temprature)
             # print(logits.shape)
             # print(labels.float)
             loss = criterion(logits, labels.float())
@@ -72,15 +85,19 @@ def train(DEVICE,
                 pass
             optimizer.step()
             losses.append(loss.item())
+            temp_idx += 1
             if len(losses) % 10 == 0:
                 print(f"Epoch: {epoch}, Loss: {np.mean(losses)}")
                 wandb.log({"Gender de-baising Losses": np.mean(losses)})
                 losses = []
                 
+    t.save(new_model, f"saved_models/{evaluation}-{residual_layer}-{method}_b{batch_size_train}_e{epochs}.pth")
+                
 def eval(DEVICE, saved_model_path, evaluation):
 
     wandb.init(project="sae_concept_eraser")
-    wandb.run.name = "[professional]-trained_on_test-amb(False)-data(false)"
+    wandb.run.name = f"{evaluation}-{saved_model_path}-b1"
+    
     new_model = my_model()
 
     # Load the state dictionary
@@ -123,6 +140,7 @@ def eval(DEVICE, saved_model_path, evaluation):
         accuracy = t.cat(corrects).mean().item()
 
     wandb.log({"Accuracy": accuracy})
+    
 
 def eval_on_subgroups(DEVICE, saved_model_path):
     
@@ -232,7 +250,8 @@ if __name__ == "__main__":
             args.attn_dict_path,
             args.mlp_dict_path,
             args.resid_dict_path,
-            args.expansion_factor)
+            args.expansion_factor,
+            args.epochs)
     
     elif argparser.task == "eval":
         eval(args.device, args.saved_model_path, args.evaluation)

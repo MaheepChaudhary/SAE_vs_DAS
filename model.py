@@ -1,4 +1,5 @@
 from imports import *
+from dataprocessing import *
 
 
 class Probe(nn.Module):
@@ -37,14 +38,15 @@ class my_model(nn.Module):
                 resid_layers,
                 method,
                 activation_dim,
-                expansion_factor):
+                expansion_factor,
+                epochs):
         
         super(my_model, self).__init__()
         
         # We have intergrated the sigmoid_mask from pyvene (https://github.com/stanfordnlp/pyvene/blob/main/pyvene/models/interventions.py) 
         
         
-        self.temperature = t.nn.Parameter(t.tensor(0.01))
+        # self.temperature = t.nn.Parameter(t.tensor(0.01))
         dict_id = 10
         dictionary_size = expansion_factor * activation_dim
         layer = 4
@@ -112,12 +114,11 @@ class my_model(nn.Module):
         
         # self.probe = Probe
         
-        #TODO: Temprature annealing
         #TODO: Wandb Name
 
-    def forward(self,text):
+    def forward(self,text, temprature):
         
-        l4_mask_sigmoid = t.sigmoid(self.l4_mask / self.temperature.clone().detach().requires_grad_(True))
+        l4_mask_sigmoid = t.sigmoid(self.l4_mask / temprature)
         
         with self.model.trace(text):
             
