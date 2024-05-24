@@ -220,26 +220,43 @@ Before running the code, these are the following this to be downloaded:
 These are the arguments that needs to be passed while running the `main.py` file. 
 
 ```
-argparser.add_argument('data_dir', type=str, help='directory to save the data')
-argparser.add_argument('-e','--epochs', default=15, type=int, help='number of epochs')
-argparser.add_argument('-lr','--lr', default=0.001, type=float, help='learning rate')
-argparser.add_argument('-btr','batch_size_train', type=int, help='batch size for training')
-argparser.add_argument('-bts','batch_size_test', type=int, help='batch size for testing')
-argparser.add_argument("-d",'device', type=str, help='device to be used')
-argparser.add_argument("-layer",'residual layer', type=str, help="residual layer to be used interevened in the model")
-argparser.add_argument("-activation_dim", type=int, help="activation dimension")
-argparser.add_argument("-ef", "--expansion_factor", default = 64, type=int, help="expansion factor")
-argparser.add_argument("-dict_embed_path", type=str, help="dictionary embedding path")
-argparser.add_argument("-attn_dict_path", type=str, help="attention dictionary path")
-argparser.add_argument("-mlp_dict_path", type=str, help="mlp dictionary path")
-argparser.add_argument("-resid_dict_path", type=str, help="residual dictionary path")
-argparser.add_argument("-mb", "mini_batch", action='store_true', help="for just training on 1000 samples of training data, then yes!")
-argparser.add_argument("-eval", "evaluation", type=str, help="evaluation metric, either profession or gender")
-argparser.add_argument("-pp", "probe_path", type=str, help="path of probe to be used")
+    argparser.add_argument('-e', '--epochs', default=50, type=int, help='number of epochs')
+    argparser.add_argument('-lr', '--learning_rate', default=0.001, type=float, help='learning rate')
+    argparser.add_argument('-btr', '--batch_size_train', type=int, required=True, help='batch size for training')
+    argparser.add_argument('-d', '--device', type=str, required=True, help='device to be used')
+    argparser.add_argument('-layer', '--residual_layer', type=list, required=True, help='residual layer to be used intervened in the model w/ range 0->4')
+    argparser.add_argument('-ad', '--activation_dim', default=512, type=int, help="activation dimension")
+    argparser.add_argument('-ef', '--expansion_factor', default=64, type=int, help="expansion factor")
+    
+    argparser.add_argument("-dpath", "--dict_embed_path", 
+                           default="/Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/baulab.us/u/smarks/autoencoders/pythia-70m-deduped/embed",
+                           type=str, 
+                           help="dictionary embedding path")
+    
+    argparser.add_argument("-atpath", "--attn_dict_path", 
+                           default="/Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/baulab.us/u/smarks/autoencoders/pythia-70m-deduped/attn_out_layer",
+                           type=str, help="attention dictionary path")
+    
+    argparser.add_argument("-mpath", "--mlp_dict_path", 
+                           default="/Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/baulab.us/u/smarks/autoencoders/pythia-70m-deduped/mlp_out_layer",
+                           type=str, help="mlp dictionary path")
+    
+    argparser.add_argument("-rpath", "--resid_dict_path", 
+                           default="/Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/baulab.us/u/smarks/autoencoders/pythia-70m-deduped/resid_out_layer",
+                           type=str, help="residual dictionary path")
+    
+    argparser.add_argument("-mb", "--mini_batch", required=True, action='store_true', help="for just training on 1000 samples of training data, then yes!")
+    argparser.add_argument("-eval", "--evaluation", required=True, type=str, help="evaluation metric, either profession or gender")
+    argparser.add_argument("-pp", "--probe_path", required=True, type=str, help="path of probe model to be used")
+    argparser.add_argument("-svd","--saved_model_path", default = "new_model.pth", type=str, help="path to save the model")
+    
+    argparser.add_argument("-task", "--task", required=True, type=str, help="task to be performed, i.e. train, eval or eval_on_subgroups")
+    argparser.add_argument("-nds", "--method", required=True, type=str, help="method to be used, i.e. neuron masking, sae masking or das masking")
+    
 ```
 
 ```
 pip install requirements.txt
-python main.py -dict -dr "path" -btr 1 -bts 1 -d "cuda:0" -layer [3,15]
+python main.py -e 1 -btr 1 -d mps -layer "4" -mb -pp probe_shift.pkl -task train -eval profession -nds "neuron masking" 
 ```
 
