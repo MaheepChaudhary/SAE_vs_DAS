@@ -166,3 +166,4 @@ class my_model(nn.Module):
         acts = self.probe.net(new_acts).squeeze(-1)
             
         return acts
+    
