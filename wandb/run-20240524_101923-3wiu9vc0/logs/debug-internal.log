@@ -183,3 +183,182 @@
 2024-05-24 10:22:29,199 DEBUG   SenderThread:5668 [sender.py:send_request():405] send_request: stop_status
 2024-05-24 10:22:29,213 INFO    Thread-12 :5668 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/wandb/run-20240524_101923-3wiu9vc0/files/output.log
 2024-05-24 10:22:29,592 DEBUG   HandlerThread:5668 [handler.py:handle_request():158] handle_request: status_report
+2024-05-24 10:22:31,224 INFO    Thread-12 :5668 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/wandb/run-20240524_101923-3wiu9vc0/files/output.log
+2024-05-24 10:22:33,234 INFO    Thread-12 :5668 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/wandb/run-20240524_101923-3wiu9vc0/files/output.log
+2024-05-24 10:22:34,612 DEBUG   HandlerThread:5668 [handler.py:handle_request():158] handle_request: status_report
+2024-05-24 10:22:35,244 INFO    Thread-12 :5668 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/wandb/run-20240524_101923-3wiu9vc0/files/output.log
+2024-05-24 10:22:37,255 INFO    Thread-12 :5668 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/wandb/run-20240524_101923-3wiu9vc0/files/output.log
+2024-05-24 10:22:39,265 INFO    Thread-12 :5668 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/wandb/run-20240524_101923-3wiu9vc0/files/output.log
+2024-05-24 10:22:39,727 DEBUG   HandlerThread:5668 [handler.py:handle_request():158] handle_request: status_report
+2024-05-24 10:22:41,271 INFO    Thread-12 :5668 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/wandb/run-20240524_101923-3wiu9vc0/files/output.log
+2024-05-24 10:22:43,276 INFO    Thread-12 :5668 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/wandb/run-20240524_101923-3wiu9vc0/files/output.log
+2024-05-24 10:22:44,205 DEBUG   HandlerThread:5668 [handler.py:handle_request():158] handle_request: stop_status
+2024-05-24 10:22:44,205 DEBUG   SenderThread:5668 [sender.py:send_request():405] send_request: stop_status
+2024-05-24 10:22:44,855 DEBUG   HandlerThread:5668 [handler.py:handle_request():158] handle_request: status_report
+2024-05-24 10:22:45,287 INFO    Thread-12 :5668 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/wandb/run-20240524_101923-3wiu9vc0/files/output.log
+2024-05-24 10:22:47,297 INFO    Thread-12 :5668 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/wandb/run-20240524_101923-3wiu9vc0/files/output.log
+2024-05-24 10:22:49,306 INFO    Thread-12 :5668 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/wandb/run-20240524_101923-3wiu9vc0/files/output.log
+2024-05-24 10:22:49,981 DEBUG   HandlerThread:5668 [handler.py:handle_request():158] handle_request: status_report
+2024-05-24 10:22:51,312 INFO    Thread-12 :5668 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/wandb/run-20240524_101923-3wiu9vc0/files/output.log
+2024-05-24 10:22:53,328 INFO    Thread-12 :5668 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/wandb/run-20240524_101923-3wiu9vc0/files/output.log
+2024-05-24 10:22:54,535 DEBUG   SenderThread:5668 [sender.py:send():378] send: stats
+2024-05-24 10:22:55,000 DEBUG   HandlerThread:5668 [handler.py:handle_request():158] handle_request: status_report
+2024-05-24 10:22:55,343 INFO    Thread-12 :5668 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/wandb/run-20240524_101923-3wiu9vc0/files/output.log
+2024-05-24 10:22:57,356 INFO    Thread-12 :5668 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/wandb/run-20240524_101923-3wiu9vc0/files/output.log
+2024-05-24 10:22:59,227 DEBUG   HandlerThread:5668 [handler.py:handle_request():158] handle_request: stop_status
+2024-05-24 10:22:59,227 DEBUG   SenderThread:5668 [sender.py:send_request():405] send_request: stop_status
+2024-05-24 10:22:59,368 INFO    Thread-12 :5668 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/wandb/run-20240524_101923-3wiu9vc0/files/output.log
+2024-05-24 10:23:00,027 DEBUG   HandlerThread:5668 [handler.py:handle_request():158] handle_request: status_report
+2024-05-24 10:23:01,378 INFO    Thread-12 :5668 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/wandb/run-20240524_101923-3wiu9vc0/files/output.log
+2024-05-24 10:23:03,391 INFO    Thread-12 :5668 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/wandb/run-20240524_101923-3wiu9vc0/files/output.log
+2024-05-24 10:23:05,106 DEBUG   HandlerThread:5668 [handler.py:handle_request():158] handle_request: status_report
+2024-05-24 10:23:05,404 INFO    Thread-12 :5668 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/wandb/run-20240524_101923-3wiu9vc0/files/output.log
+2024-05-24 10:23:07,416 INFO    Thread-12 :5668 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/wandb/run-20240524_101923-3wiu9vc0/files/output.log
+2024-05-24 10:23:09,428 INFO    Thread-12 :5668 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/wandb/run-20240524_101923-3wiu9vc0/files/output.log
+2024-05-24 10:23:10,254 DEBUG   HandlerThread:5668 [handler.py:handle_request():158] handle_request: status_report
+2024-05-24 10:23:11,440 INFO    Thread-12 :5668 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/wandb/run-20240524_101923-3wiu9vc0/files/output.log
+2024-05-24 10:23:13,452 INFO    Thread-12 :5668 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/wandb/run-20240524_101923-3wiu9vc0/files/output.log
+2024-05-24 10:23:14,249 DEBUG   HandlerThread:5668 [handler.py:handle_request():158] handle_request: stop_status
+2024-05-24 10:23:14,249 DEBUG   SenderThread:5668 [sender.py:send_request():405] send_request: stop_status
+2024-05-24 10:23:15,387 DEBUG   HandlerThread:5668 [handler.py:handle_request():158] handle_request: status_report
+2024-05-24 10:23:15,464 INFO    Thread-12 :5668 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/wandb/run-20240524_101923-3wiu9vc0/files/output.log
+2024-05-24 10:23:17,476 INFO    Thread-12 :5668 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/wandb/run-20240524_101923-3wiu9vc0/files/output.log
+2024-05-24 10:23:19,487 INFO    Thread-12 :5668 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/wandb/run-20240524_101923-3wiu9vc0/files/output.log
+2024-05-24 10:23:20,452 DEBUG   HandlerThread:5668 [handler.py:handle_request():158] handle_request: status_report
+2024-05-24 10:23:21,498 INFO    Thread-12 :5668 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/wandb/run-20240524_101923-3wiu9vc0/files/output.log
+2024-05-24 10:23:23,509 INFO    Thread-12 :5668 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/wandb/run-20240524_101923-3wiu9vc0/files/output.log
+2024-05-24 10:23:24,515 INFO    Thread-12 :5668 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/wandb/run-20240524_101923-3wiu9vc0/files/output.log
+2024-05-24 10:23:24,572 DEBUG   SenderThread:5668 [sender.py:send():378] send: stats
+2024-05-24 10:23:25,466 DEBUG   HandlerThread:5668 [handler.py:handle_request():158] handle_request: status_report
+2024-05-24 10:23:26,526 INFO    Thread-12 :5668 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/wandb/run-20240524_101923-3wiu9vc0/files/output.log
+2024-05-24 10:23:28,537 INFO    Thread-12 :5668 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/wandb/run-20240524_101923-3wiu9vc0/files/output.log
+2024-05-24 10:23:29,259 DEBUG   HandlerThread:5668 [handler.py:handle_request():158] handle_request: stop_status
+2024-05-24 10:23:29,260 DEBUG   SenderThread:5668 [sender.py:send_request():405] send_request: stop_status
+2024-05-24 10:23:30,547 INFO    Thread-12 :5668 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/wandb/run-20240524_101923-3wiu9vc0/files/output.log
+2024-05-24 10:23:30,601 DEBUG   HandlerThread:5668 [handler.py:handle_request():158] handle_request: status_report
+2024-05-24 10:23:32,558 INFO    Thread-12 :5668 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/wandb/run-20240524_101923-3wiu9vc0/files/output.log
+2024-05-24 10:23:34,569 INFO    Thread-12 :5668 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/wandb/run-20240524_101923-3wiu9vc0/files/output.log
+2024-05-24 10:23:35,728 DEBUG   HandlerThread:5668 [handler.py:handle_request():158] handle_request: status_report
+2024-05-24 10:23:36,579 INFO    Thread-12 :5668 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/wandb/run-20240524_101923-3wiu9vc0/files/output.log
+2024-05-24 10:23:38,586 INFO    Thread-12 :5668 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/wandb/run-20240524_101923-3wiu9vc0/files/output.log
+2024-05-24 10:23:40,596 INFO    Thread-12 :5668 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/wandb/run-20240524_101923-3wiu9vc0/files/output.log
+2024-05-24 10:23:40,733 DEBUG   HandlerThread:5668 [handler.py:handle_request():158] handle_request: status_report
+2024-05-24 10:23:42,606 INFO    Thread-12 :5668 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/wandb/run-20240524_101923-3wiu9vc0/files/output.log
+2024-05-24 10:23:44,268 DEBUG   HandlerThread:5668 [handler.py:handle_request():158] handle_request: stop_status
+2024-05-24 10:23:44,268 DEBUG   SenderThread:5668 [sender.py:send_request():405] send_request: stop_status
+2024-05-24 10:23:44,616 INFO    Thread-12 :5668 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/wandb/run-20240524_101923-3wiu9vc0/files/output.log
+2024-05-24 10:23:46,136 DEBUG   HandlerThread:5668 [handler.py:handle_request():158] handle_request: status_report
+2024-05-24 10:23:46,685 INFO    Thread-12 :5668 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/wandb/run-20240524_101923-3wiu9vc0/files/output.log
+2024-05-24 10:23:51,217 DEBUG   HandlerThread:5668 [handler.py:handle_request():158] handle_request: status_report
+2024-05-24 10:23:54,639 DEBUG   SenderThread:5668 [sender.py:send():378] send: stats
+2024-05-24 10:23:57,087 DEBUG   HandlerThread:5668 [handler.py:handle_request():158] handle_request: status_report
+2024-05-24 10:23:57,218 INFO    Thread-12 :5668 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/wandb/run-20240524_101923-3wiu9vc0/files/output.log
+2024-05-24 10:23:59,274 DEBUG   HandlerThread:5668 [handler.py:handle_request():158] handle_request: stop_status
+2024-05-24 10:23:59,274 DEBUG   SenderThread:5668 [sender.py:send_request():405] send_request: stop_status
+2024-05-24 10:24:01,541 INFO    Thread-12 :5668 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/wandb/run-20240524_101923-3wiu9vc0/files/output.log
+2024-05-24 10:24:02,882 DEBUG   HandlerThread:5668 [handler.py:handle_request():158] handle_request: status_report
+2024-05-24 10:24:05,626 INFO    Thread-12 :5668 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/wandb/run-20240524_101923-3wiu9vc0/files/output.log
+2024-05-24 10:24:08,026 DEBUG   HandlerThread:5668 [handler.py:handle_request():158] handle_request: status_report
+2024-05-24 10:24:09,677 INFO    Thread-12 :5668 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/wandb/run-20240524_101923-3wiu9vc0/files/output.log
+2024-05-24 10:24:11,688 INFO    Thread-12 :5668 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/wandb/run-20240524_101923-3wiu9vc0/files/output.log
+2024-05-24 10:24:13,135 DEBUG   HandlerThread:5668 [handler.py:handle_request():158] handle_request: status_report
+2024-05-24 10:24:13,698 INFO    Thread-12 :5668 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/wandb/run-20240524_101923-3wiu9vc0/files/output.log
+2024-05-24 10:24:14,277 DEBUG   HandlerThread:5668 [handler.py:handle_request():158] handle_request: stop_status
+2024-05-24 10:24:14,277 DEBUG   SenderThread:5668 [sender.py:send_request():405] send_request: stop_status
+2024-05-24 10:24:15,705 INFO    Thread-12 :5668 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/wandb/run-20240524_101923-3wiu9vc0/files/output.log
+2024-05-24 10:24:17,715 INFO    Thread-12 :5668 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/wandb/run-20240524_101923-3wiu9vc0/files/output.log
+2024-05-24 10:24:18,216 DEBUG   HandlerThread:5668 [handler.py:handle_request():158] handle_request: status_report
+2024-05-24 10:24:19,725 INFO    Thread-12 :5668 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/wandb/run-20240524_101923-3wiu9vc0/files/output.log
+2024-05-24 10:24:21,736 INFO    Thread-12 :5668 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/wandb/run-20240524_101923-3wiu9vc0/files/output.log
+2024-05-24 10:24:23,467 DEBUG   HandlerThread:5668 [handler.py:handle_request():158] handle_request: status_report
+2024-05-24 10:24:23,745 INFO    Thread-12 :5668 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/wandb/run-20240524_101923-3wiu9vc0/files/output.log
+2024-05-24 10:24:24,598 DEBUG   SenderThread:5668 [sender.py:send():378] send: stats
+2024-05-24 10:24:25,752 INFO    Thread-12 :5668 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/wandb/run-20240524_101923-3wiu9vc0/files/output.log
+2024-05-24 10:24:27,762 INFO    Thread-12 :5668 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/wandb/run-20240524_101923-3wiu9vc0/files/output.log
+2024-05-24 10:24:28,526 DEBUG   HandlerThread:5668 [handler.py:handle_request():158] handle_request: status_report
+2024-05-24 10:24:29,283 DEBUG   HandlerThread:5668 [handler.py:handle_request():158] handle_request: stop_status
+2024-05-24 10:24:29,283 DEBUG   SenderThread:5668 [sender.py:send_request():405] send_request: stop_status
+2024-05-24 10:24:29,773 INFO    Thread-12 :5668 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/wandb/run-20240524_101923-3wiu9vc0/files/output.log
+2024-05-24 10:24:31,783 INFO    Thread-12 :5668 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/wandb/run-20240524_101923-3wiu9vc0/files/output.log
+2024-05-24 10:24:33,618 DEBUG   HandlerThread:5668 [handler.py:handle_request():158] handle_request: status_report
+2024-05-24 10:24:33,789 INFO    Thread-12 :5668 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/wandb/run-20240524_101923-3wiu9vc0/files/output.log
+2024-05-24 10:24:35,799 INFO    Thread-12 :5668 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/wandb/run-20240524_101923-3wiu9vc0/files/output.log
+2024-05-24 10:24:37,810 INFO    Thread-12 :5668 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/wandb/run-20240524_101923-3wiu9vc0/files/output.log
+2024-05-24 10:24:38,780 DEBUG   HandlerThread:5668 [handler.py:handle_request():158] handle_request: status_report
+2024-05-24 10:24:39,818 INFO    Thread-12 :5668 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/wandb/run-20240524_101923-3wiu9vc0/files/output.log
+2024-05-24 10:24:41,825 INFO    Thread-12 :5668 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/wandb/run-20240524_101923-3wiu9vc0/files/output.log
+2024-05-24 10:24:43,831 INFO    Thread-12 :5668 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/wandb/run-20240524_101923-3wiu9vc0/files/output.log
+2024-05-24 10:24:43,931 DEBUG   HandlerThread:5668 [handler.py:handle_request():158] handle_request: status_report
+2024-05-24 10:24:44,289 DEBUG   HandlerThread:5668 [handler.py:handle_request():158] handle_request: stop_status
+2024-05-24 10:24:44,289 DEBUG   SenderThread:5668 [sender.py:send_request():405] send_request: stop_status
+2024-05-24 10:24:45,841 INFO    Thread-12 :5668 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/wandb/run-20240524_101923-3wiu9vc0/files/output.log
+2024-05-24 10:24:47,852 INFO    Thread-12 :5668 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/wandb/run-20240524_101923-3wiu9vc0/files/output.log
+2024-05-24 10:24:49,046 DEBUG   HandlerThread:5668 [handler.py:handle_request():158] handle_request: status_report
+2024-05-24 10:24:49,858 INFO    Thread-12 :5668 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/wandb/run-20240524_101923-3wiu9vc0/files/output.log
+2024-05-24 10:24:51,868 INFO    Thread-12 :5668 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/wandb/run-20240524_101923-3wiu9vc0/files/output.log
+2024-05-24 10:24:53,878 INFO    Thread-12 :5668 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/wandb/run-20240524_101923-3wiu9vc0/files/output.log
+2024-05-24 10:24:54,106 DEBUG   HandlerThread:5668 [handler.py:handle_request():158] handle_request: status_report
+2024-05-24 10:24:54,603 DEBUG   SenderThread:5668 [sender.py:send():378] send: stats
+2024-05-24 10:24:55,888 INFO    Thread-12 :5668 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/wandb/run-20240524_101923-3wiu9vc0/files/output.log
+2024-05-24 10:24:57,899 INFO    Thread-12 :5668 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/wandb/run-20240524_101923-3wiu9vc0/files/output.log
+2024-05-24 10:24:59,172 DEBUG   HandlerThread:5668 [handler.py:handle_request():158] handle_request: status_report
+2024-05-24 10:24:59,294 DEBUG   HandlerThread:5668 [handler.py:handle_request():158] handle_request: stop_status
+2024-05-24 10:24:59,294 DEBUG   SenderThread:5668 [sender.py:send_request():405] send_request: stop_status
+2024-05-24 10:24:59,905 INFO    Thread-12 :5668 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/wandb/run-20240524_101923-3wiu9vc0/files/output.log
+2024-05-24 10:25:01,914 INFO    Thread-12 :5668 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/wandb/run-20240524_101923-3wiu9vc0/files/output.log
+2024-05-24 10:25:03,924 INFO    Thread-12 :5668 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/wandb/run-20240524_101923-3wiu9vc0/files/output.log
+2024-05-24 10:25:04,302 DEBUG   HandlerThread:5668 [handler.py:handle_request():158] handle_request: status_report
+2024-05-24 10:25:05,934 INFO    Thread-12 :5668 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/wandb/run-20240524_101923-3wiu9vc0/files/output.log
+2024-05-24 10:25:07,944 INFO    Thread-12 :5668 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/wandb/run-20240524_101923-3wiu9vc0/files/output.log
+2024-05-24 10:25:09,357 DEBUG   HandlerThread:5668 [handler.py:handle_request():158] handle_request: status_report
+2024-05-24 10:25:09,954 INFO    Thread-12 :5668 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/wandb/run-20240524_101923-3wiu9vc0/files/output.log
+2024-05-24 10:25:11,965 INFO    Thread-12 :5668 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/wandb/run-20240524_101923-3wiu9vc0/files/output.log
+2024-05-24 10:25:13,972 INFO    Thread-12 :5668 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/wandb/run-20240524_101923-3wiu9vc0/files/output.log
+2024-05-24 10:25:14,298 DEBUG   HandlerThread:5668 [handler.py:handle_request():158] handle_request: stop_status
+2024-05-24 10:25:14,298 DEBUG   SenderThread:5668 [sender.py:send_request():405] send_request: stop_status
+2024-05-24 10:25:14,668 DEBUG   HandlerThread:5668 [handler.py:handle_request():158] handle_request: status_report
+2024-05-24 10:25:15,980 INFO    Thread-12 :5668 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/wandb/run-20240524_101923-3wiu9vc0/files/output.log
+2024-05-24 10:25:17,985 INFO    Thread-12 :5668 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/wandb/run-20240524_101923-3wiu9vc0/files/output.log
+2024-05-24 10:25:19,738 DEBUG   HandlerThread:5668 [handler.py:handle_request():158] handle_request: status_report
+2024-05-24 10:25:19,995 INFO    Thread-12 :5668 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/wandb/run-20240524_101923-3wiu9vc0/files/output.log
+2024-05-24 10:25:22,006 INFO    Thread-12 :5668 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/wandb/run-20240524_101923-3wiu9vc0/files/output.log
+2024-05-24 10:25:24,013 INFO    Thread-12 :5668 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/wandb/run-20240524_101923-3wiu9vc0/files/output.log
+2024-05-24 10:25:24,608 DEBUG   SenderThread:5668 [sender.py:send():378] send: stats
+2024-05-24 10:25:24,751 DEBUG   HandlerThread:5668 [handler.py:handle_request():158] handle_request: status_report
+2024-05-24 10:25:26,018 INFO    Thread-12 :5668 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/wandb/run-20240524_101923-3wiu9vc0/files/output.log
+2024-05-24 10:25:28,029 INFO    Thread-12 :5668 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/wandb/run-20240524_101923-3wiu9vc0/files/output.log
+2024-05-24 10:25:29,304 DEBUG   HandlerThread:5668 [handler.py:handle_request():158] handle_request: stop_status
+2024-05-24 10:25:29,304 DEBUG   SenderThread:5668 [sender.py:send_request():405] send_request: stop_status
+2024-05-24 10:25:29,760 DEBUG   HandlerThread:5668 [handler.py:handle_request():158] handle_request: status_report
+2024-05-24 10:25:30,039 INFO    Thread-12 :5668 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/wandb/run-20240524_101923-3wiu9vc0/files/output.log
+2024-05-24 10:25:32,049 INFO    Thread-12 :5668 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/wandb/run-20240524_101923-3wiu9vc0/files/output.log
+2024-05-24 10:25:34,060 INFO    Thread-12 :5668 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/wandb/run-20240524_101923-3wiu9vc0/files/output.log
+2024-05-24 10:25:34,889 DEBUG   HandlerThread:5668 [handler.py:handle_request():158] handle_request: status_report
+2024-05-24 10:25:36,070 INFO    Thread-12 :5668 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/wandb/run-20240524_101923-3wiu9vc0/files/output.log
+2024-05-24 10:25:38,081 INFO    Thread-12 :5668 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/wandb/run-20240524_101923-3wiu9vc0/files/output.log
+2024-05-24 10:25:39,999 DEBUG   HandlerThread:5668 [handler.py:handle_request():158] handle_request: status_report
+2024-05-24 10:25:40,091 INFO    Thread-12 :5668 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/wandb/run-20240524_101923-3wiu9vc0/files/output.log
+2024-05-24 10:25:42,101 INFO    Thread-12 :5668 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/wandb/run-20240524_101923-3wiu9vc0/files/output.log
+2024-05-24 10:25:44,109 INFO    Thread-12 :5668 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/wandb/run-20240524_101923-3wiu9vc0/files/output.log
+2024-05-24 10:25:44,309 DEBUG   HandlerThread:5668 [handler.py:handle_request():158] handle_request: stop_status
+2024-05-24 10:25:44,310 DEBUG   SenderThread:5668 [sender.py:send_request():405] send_request: stop_status
+2024-05-24 10:25:45,053 DEBUG   HandlerThread:5668 [handler.py:handle_request():158] handle_request: status_report
+2024-05-24 10:25:46,119 INFO    Thread-12 :5668 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/wandb/run-20240524_101923-3wiu9vc0/files/output.log
+2024-05-24 10:25:48,130 INFO    Thread-12 :5668 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/wandb/run-20240524_101923-3wiu9vc0/files/output.log
+2024-05-24 10:25:50,121 DEBUG   HandlerThread:5668 [handler.py:handle_request():158] handle_request: status_report
+2024-05-24 10:25:50,140 INFO    Thread-12 :5668 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/wandb/run-20240524_101923-3wiu9vc0/files/output.log
+2024-05-24 10:25:52,151 INFO    Thread-12 :5668 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/wandb/run-20240524_101923-3wiu9vc0/files/output.log
+2024-05-24 10:25:54,159 INFO    Thread-12 :5668 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/wandb/run-20240524_101923-3wiu9vc0/files/output.log
+2024-05-24 10:25:54,610 DEBUG   SenderThread:5668 [sender.py:send():378] send: stats
+2024-05-24 10:25:55,188 DEBUG   HandlerThread:5668 [handler.py:handle_request():158] handle_request: status_report
+2024-05-24 10:25:56,169 INFO    Thread-12 :5668 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/wandb/run-20240524_101923-3wiu9vc0/files/output.log
+2024-05-24 10:25:58,179 INFO    Thread-12 :5668 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/wandb/run-20240524_101923-3wiu9vc0/files/output.log
+2024-05-24 10:25:59,313 DEBUG   HandlerThread:5668 [handler.py:handle_request():158] handle_request: stop_status
+2024-05-24 10:25:59,313 DEBUG   SenderThread:5668 [sender.py:send_request():405] send_request: stop_status
+2024-05-24 10:26:00,189 INFO    Thread-12 :5668 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/wandb/run-20240524_101923-3wiu9vc0/files/output.log
+2024-05-24 10:26:00,212 DEBUG   HandlerThread:5668 [handler.py:handle_request():158] handle_request: status_report
+2024-05-24 10:26:02,200 INFO    Thread-12 :5668 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/wandb/run-20240524_101923-3wiu9vc0/files/output.log
+2024-05-24 10:26:04,210 INFO    Thread-12 :5668 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/wandb/run-20240524_101923-3wiu9vc0/files/output.log
+2024-05-24 10:26:05,330 DEBUG   HandlerThread:5668 [handler.py:handle_request():158] handle_request: status_report
+2024-05-24 10:26:06,221 INFO    Thread-12 :5668 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/wandb/run-20240524_101923-3wiu9vc0/files/output.log
+2024-05-24 10:26:08,228 INFO    Thread-12 :5668 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/wandb/run-20240524_101923-3wiu9vc0/files/output.log
