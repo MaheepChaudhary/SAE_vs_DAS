@@ -12,7 +12,12 @@ The information about the project experimentation with task can be found here: h
 
 `config.py`: It contains the information about different hyperparameters.
 
-`main.py`: It contain the execution taking support from other `.py` files. 
+`main.py`: It contain the execution taking support from other `.py` files with functions for training, evaluation and evaluation on sub-groups. 
+
+`model.py`: Contains the structure of the whole model.
+
+`dataprocessing.py`: Contains the functions for loading the dataset for subgroup data and normal data for both training and testing. 
+
 
 
 **NOTE**: If it asks for wandb api key then please give "b32f3adb2a2777987a27a6622e4226d85ef8c521".
