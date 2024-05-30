@@ -20,7 +20,7 @@ def country_prompt(data, cities):
 
     for city in cities:
         label = data[city]["Country"]
-        country_data.append([f"Toronto is in Canada. {city} is in,", label])
+        country_data.append([f"Toronto is in Canada. {city} is in", label])
 
     return country_data
 
@@ -31,7 +31,7 @@ def continent_prompt(data, cities):
 
     for city in cities:
         label = data[city]["Continent"]
-        continent_data.append([f"{city} is a city in the continent of,", label])
+        continent_data.append([f"{city} is a city in the continent of", label])
 
     return continent_data
 
@@ -64,11 +64,11 @@ if __name__ == "__main__":
     continent_data = continent_prompt(data, cities)
     language_data = language_prompt(data, cities)
 
-    with open('country_data.json', 'w') as file:
+    with open('ravel/processed_data/country_data.json', 'w') as file:
         json.dump(country_data, file)
     
-    with open('continent_data.json', 'w') as file:
+    with open('ravel/processed_data/continent_data.json', 'w') as file:
         json.dump(continent_data, file)
     
-    with open('language_data.json', 'w') as file:
+    with open('ravel/processed_data/language_data.json', 'w') as file:
         json.dump(language_data, file)
