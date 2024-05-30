@@ -1,6 +1,6 @@
 from imports import *
 
-def eval_on_vanilla_gpt(DEVICE, model, model_name, dataset, attribute, tokenizer):
+def eval_on_vanilla_gpt(DEVICE, model, model_name, dataset, attribute, tokenizer, type_acc):
     
     correct = 0
     total = 0
@@ -13,20 +13,65 @@ def eval_on_vanilla_gpt(DEVICE, model, model_name, dataset, attribute, tokenizer
         probabilities = torch.softmax(logits[:, -1, :], dim=-1)
 
         # Get the most likely next token ID
-        next_token_id = torch.argmax(probabilities, dim=-1).item()
+        # next_token_id = torch.argmax(probabilities, dim=-1).item()
+        
+        # Get the top 5 token IDs
+        
+        if type_acc == "top1":
+            next_token_id = torch.argmax(probabilities, dim=-1).item()
+            next_token = tokenizer.decode(next_token_id)
+            
+            if next_token == label:
+                correct+=1
+                total+=1
+                
+            elif next_token != label:
+                total+=1
+        
+        elif type_acc == "top5":
+            
+            top5_probabilities, top5_token_ids = torch.topk(probabilities, 5, dim=-1)
+            # Decode the top 5 token IDs to strings
+            top5_tokens = [tokenizer.decode(token_id.item()) for token_id in top5_token_ids[0]]
+            
+            if label in top5_tokens:
+                correct+=1
+                total+=1
+            
+            elif label not in top5_tokens:
+                total+=1
+        
+        elif type_acc == "top10":
+            
+            top10_probabilities, top10_token_ids = torch.topk(probabilities, 10, dim=-1)
+            # Decode the top 10 token IDs to strings
+            top10_tokens = [tokenizer.decode(token_id.item()) for token_id in top10_token_ids[0]]
+            
+            if label in top10_tokens:
+                correct+=1
+                total+=1
+            
+            elif label not in top10_tokens:
+                total+=1
+
 
         # Decode the token ID to a string
-        next_token = tokenizer.decode(next_token_id)
+        # next_token = tokenizer.decode(next_token_id)
+
         
-        if next_token == label:
-            correct+=1
-            total+=1
-            # print("Correct Answer: ", label)
-            # print("Predicted Answer: ", next_token)
-            # print("Correct!")
+        # if next_token == label:
+        #     correct+=1
+        #     total+=1
+        #     print("Correct Answer: ", label)
+        #     print("Predicted Answer: ", next_token)
+        #     print("Correct!")
         
-        elif next_token != label:
-            total+=1
+        # elif next_token != label:
+        #     print("Correct Answer: ", label)
+        #     print("Predicted Answer: ", next_token)
+        #     total+=1
+
+        
     
     accuracy = (correct/total)*100
     print(f"The accuracy of the model on  evaluation for {attribute} is {(correct/total)*100}")
