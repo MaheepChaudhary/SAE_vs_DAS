@@ -127,7 +127,6 @@ def eval(DEVICE,
     wandb.run.name = f"{evaluation}-{saved_model_path}-b1"
     
     new_model = my_model(DEVICE = DEVICE,
-                    probe = probe,
                     dict_embed_path = dict_embed_path,
                     attn_dict_path = attn_dict_path,
                     mlp_dict_path = mlp_dict_path,
@@ -201,7 +200,6 @@ def eval_on_subgroups(DEVICE,
     wandb.init(project="sae_concept_eraser")
 
     new_model = my_model(DEVICE = DEVICE,
-                        probe = probe,
                         dict_embed_path = dict_embed_path,
                         attn_dict_path = attn_dict_path,
                         mlp_dict_path = mlp_dict_path,
