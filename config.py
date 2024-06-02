@@ -9,6 +9,10 @@ momentum = 0.7
 log_interval = 10
 
 device = 'cpu' 
+gender_dataset = "LabHC/bias_in_bios"
+profession_dict = {'professor' : 21, 'nurse' : 13}
+male_prof = 'professor'
+female_prof = 'nurse'
 
 random_seed = 1
 torch.backends.cudnn.enabled = False

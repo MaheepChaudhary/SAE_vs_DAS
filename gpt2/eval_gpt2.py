@@ -20,6 +20,7 @@ def eval_on_vanilla_gpt(DEVICE, model, model_name, dataset, attribute, tokenizer
         if type_acc == "top1":
             next_token_id = torch.argmax(probabilities, dim=-1).item()
             next_token = tokenizer.decode(next_token_id)
+            next_token = str(next_token).strip()
             
             if next_token == label:
                 correct+=1
@@ -27,25 +28,37 @@ def eval_on_vanilla_gpt(DEVICE, model, model_name, dataset, attribute, tokenizer
                 
             elif next_token != label:
                 total+=1
+
+            print(correct)
         
         elif type_acc == "top5":
             
             top5_probabilities, top5_token_ids = torch.topk(probabilities, 5, dim=-1)
             # Decode the top 5 token IDs to strings
             top5_tokens = [tokenizer.decode(token_id.item()) for token_id in top5_token_ids[0]]
+            top5_tokens = [str(token).strip() for token in top5_tokens]
             
             if label in top5_tokens:
                 correct+=1
                 total+=1
+                # print("Correct Answer: ", label)
+                # print("Predicted Answer: ", top5_tokens)
             
             elif label not in top5_tokens:
                 total+=1
+                # print(f"Correct Answer: {label}")
+                # print(f"Predicted Answer: {top5_tokens}")
+                # print("Incorrect!")
+                # print()
+            
+            print(correct)
         
         elif type_acc == "top10":
             
             top10_probabilities, top10_token_ids = torch.topk(probabilities, 10, dim=-1)
             # Decode the top 10 token IDs to strings
             top10_tokens = [tokenizer.decode(token_id.item()) for token_id in top10_token_ids[0]]
+            top10_tokens = [str(token).strip() for token in top10_tokens]
             
             if label in top10_tokens:
                 correct+=1
@@ -53,6 +66,8 @@ def eval_on_vanilla_gpt(DEVICE, model, model_name, dataset, attribute, tokenizer
             
             elif label not in top10_tokens:
                 total+=1
+            
+            print(correct)
 
 
         # Decode the token ID to a string
