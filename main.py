@@ -23,7 +23,6 @@ def train(DEVICE,
 
     wandb.init(project="sae_concept_eraser")
     wandb.run.name = f"[{evaluation}]-{residual_layer}-{method}_b{batch_size_train}_e{epochs}"
-    # wandb.run.name = "gender_Lastlinear-mask_probe_amb(false)_b1_e3"
 
     print("passed dict emned path", dict_embed_path)
 
@@ -44,14 +43,16 @@ def train(DEVICE,
     criterion = nn.BCEWithLogitsLoss().to(DEVICE)
     batches = get_data(DEVICE, train = True, ambiguous = False, batch_size=batch_size_train) # by default the ambigous is True
     
+    # print(len(batches))
+    
     random.shuffle(batches)
-    if mini_batch:
-        train_batches = batches[0:1000]
-    else:
-        train_batches = batches
+    # if mini_batch == 0:
+    #     train_batches = batches[0:1000]
+    # elif mini_batch == 1:
+    # train_batches = batches
 
     total_step = 0
-    target_total_step = len(train_batches) * epochs
+    target_total_step = len(batches) * epochs
     temperature_start = 50.0
     temperature_end = 0.1
     temperature_schedule = (
@@ -66,19 +67,20 @@ def train(DEVICE,
     temp_idx = 0
     for epoch in range(epochs):
         losses = []
-        len_batches = len(train_batches)
+        len_batches = len(batches)
         for i in tqdm(range(len_batches)):
 
-            text = train_batches[i][0]
+            text = batches[i][0]
             
             if evaluation == "profession":
-                labels = train_batches[i][1] # true label, if [2] then spurious label. We will be training the model in hope that mask will learn which concepts to mask. 
+                labels = batches[i][1] # true label, if [2] then spurious label. We will be training the model in hope that mask will learn which concepts to mask. 
             elif evaluation == "gender":
-                labels = train_batches[i][2]
+                labels = batches[i][2]
             
             temprature = temperature_schedule[temp_idx]
 
-            logits = new_model(text[0], temperature=temprature)
+
+            logits = new_model(text, temperature=temprature)
             # print(logits.shape)
             # print(labels.float)
             loss = criterion(logits, labels.float())
@@ -90,18 +92,21 @@ def train(DEVICE,
             optimizer.step()
             losses.append(loss.item())
             temp_idx += 1
-            if len(losses) % 10 == 0:
-                print(f"Epoch: {epoch}, Loss: {np.mean(losses)}")
-                wandb.log({"Gender de-baising Losses": np.mean(losses)})
-                losses = []
-        
-            if DEVICE == "cuda:0":
+            # if len(losses) % 10 == 0:
+                # print(f"Epoch: {epoch}, Loss: {np.mean(losses)}")
+            
+            if DEVICE == "cuda:1":
                 t.cuda.empty_cache()
             
             elif DEVICE == "mps":
                 t.mps.empty_cache()
+        
+        wandb.log({"Full Data Gender de-baising Losses": np.mean(losses)})
+            
+        
+        
                 
-    t.save(new_model.state_dict(), f"saved_models/{evaluation}-{residual_layer}-{method}_b{batch_size_train}_e{epochs}.pth")
+    # t.save(new_model.state_dict(), f"saved_models/{evaluation}-{residual_layer}-{method}_b{batch_size_train}_e{epochs}.pth")
                 
 def eval(DEVICE, 
         saved_model_path,
@@ -276,7 +281,7 @@ if __name__ == "__main__":
                            default="/Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/baulab.us/u/smarks/autoencoders/pythia-70m-deduped/resid_out_layer",
                            type=str, help="residual dictionary path")
     
-    argparser.add_argument("-mb", "--mini_batch", required=True, action='store_true', help="for just training on 1000 samples of training data, then yes!")
+    argparser.add_argument("-mb", "--mini_batch", required=True, default = 0, help="0 if you want mini batch and 1 if you want full batch")
     argparser.add_argument("-eval", "--evaluation", required=True, type=str, help="evaluation metric, either profession or gender")
     argparser.add_argument("-pp", "--probe_path", required=True, type=str, help="path of probe model to be used")
     argparser.add_argument("-svd","--saved_model_path", default = "new_model.pth", type=str, help="path to save the model")
