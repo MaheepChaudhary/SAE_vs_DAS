@@ -1,40 +1,34 @@
-import torch
-import torch.nn as nn
-import torch.optim as optim
-import torch.nn.functional as F
-import numpy as np
+import sys
+import os
+import wandb
+import pickle as pkl
 import argparse
-from torch.utils.data import DataLoader
-import torchvision
-from torchvision import datasets, transforms
-from torchtyping import TensorType
+from transformers import BertTokenizer
+import numpy as np
+import random
 
+parent_dir = os.path.abspath('..')
+sys.path.append(parent_dir)
+
+from datasets import load_dataset
+import random
+from nnsight import LanguageModel 
+import torch 
 import torch as t
-from jaxtyping import Float, Int
-from torch import nn, Tensor
-import einops
-from dataclasses import dataclass
-
-import transformer_lens.utils as utils
-from collections import Counter
-
-import plotly.graph_objects as go
-import plotly.express as px
-import csv
+from torch import nn
+# from attribution import patching_effect
+from dictionary_learning import AutoEncoder, ActivationBuffer
+# from dictionary_learning.dictionary import IdentityDict
+# from dictionary_learning.interp import examine_dimension
+# from dictionary_learning.utils import hf_dataset_to_generator
 from tqdm import tqdm
+import gc
 
-import time
+DEBUGGING = False
 
-# seconds passed since epoch
-seconds = time.time()
+if DEBUGGING:
+    tracer_kwargs = dict(scan=True, validate=True)
+else:
+    tracer_kwargs = dict(scan=False, validate=False)
 
-# convert the time in seconds since the epoch to a readable format
-local_time = time.ctime(seconds)
-
-local_time_arr = local_time.split()[2:-1]
-first_element = local_time_arr[0]
-second_element = "".join(local_time_arr[-1].split(":")[0:-1])
-
-
-name = "_".join([first_element, second_element])
-
+# model hyperparameters
