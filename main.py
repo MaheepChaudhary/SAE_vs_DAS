@@ -27,7 +27,6 @@ def train(DEVICE,
     print("passed dict emned path", dict_embed_path)
 
     new_model = my_model(DEVICE = DEVICE,
-                        probe = probe,
                         dict_embed_path = dict_embed_path,
                         attn_dict_path = attn_dict_path,
                         mlp_dict_path = mlp_dict_path,
@@ -295,8 +294,8 @@ if __name__ == "__main__":
     
     
     # with open("probe_shift.pkl", "rb") as f:
-    with open(args.probe_path, "rb") as f:
-        probe = pkl.load(f)
+    # with open(args.probe_path, "rb") as f:
+    #     probe = pkl.load(f)
 
     
     if args.task == "train":
@@ -357,3 +356,4 @@ if __name__ == "__main__":
 
 
 
+# python main.py -e 10 -btr 16 -d cuda:1 -layer "4" -pp probe_shift.pkl -task train -eval profession -nds "neuron masking" -dpath ./dictionary_learning/dictionaries/pythia-70m-deduped/embed -atpath ./dictionary_learning/dictionaries/pythia-70m-deduped/attn_out_layer -mpath ./dictionary_learning/dictionaries/pythia-70m-deduped/mlp_out_layer -rpath ./dictionary_learning/dictionaries/pythia-70m-deduped/resid_out_layer -mb 1
