@@ -30,7 +30,6 @@ class RotateLayer(t.nn.Module):
 class my_model(nn.Module):
     def __init__(self, 
                 DEVICE,
-                probe,
                 dict_embed_path,
                 attn_dict_path,
                 mlp_dict_path,
@@ -94,7 +93,13 @@ class my_model(nn.Module):
                 device=DEVICE
             )
 
-        self.probe = probe.requires_grad_(False)
+        # self.probe = probe.requires_grad_(False)
+        self.probe = Probe(512)
+        self.probe.load_state_dict(t.load('cpu_probe.pth'))
+        self.probe = self.probe.to(DEVICE)
+        
+        for param in self.probe.parameters():
+            param.requires_grad = False
         
         self.das_layers = []
         
