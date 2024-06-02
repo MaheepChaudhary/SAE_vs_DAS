@@ -1,0 +1,68 @@
+{
+    "os": "macOS-14.5-arm64-arm-64bit",
+    "python": "3.12.3",
+    "heartbeatAt": "2024-06-02T15:43:44.467526",
+    "startedAt": "2024-06-02T15:43:42.548144",
+    "docker": null,
+    "cuda": null,
+    "args": [
+        "-t",
+        "train",
+        "-btr",
+        "16",
+        "-mb",
+        "1",
+        "-d",
+        "cpu",
+        "-layer",
+        "4",
+        "-eval",
+        "profession",
+        "-nds",
+        "das masking",
+        "-pp",
+        "cpu_probe.pth",
+        "-e",
+        "10"
+    ],
+    "state": "running",
+    "program": "/Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/main.py",
+    "codePathLocal": "main.py",
+    "codePath": "main.py",
+    "git": {
+        "remote": "https://github.com/MaheepChaudhary/SAE_vs_DAS.git",
+        "commit": "0c3d0f727fd35fccb7d627e52232377bd7d52767"
+    },
+    "email": "my email address used on my git repo",
+    "root": "/Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS",
+    "host": "Maheeps-MacBook-Pro.local",
+    "username": "maheepchaudhary",
+    "executable": "/Users/maheepchaudhary/miniforge3/envs/nnsight/bin/python",
+    "cpu_count": 11,
+    "cpu_count_logical": 11,
+    "cpu_freq": {
+        "current": 4056,
+        "min": 696,
+        "max": 4056
+    },
+    "cpu_freq_per_core": [
+        {
+            "current": 4056,
+            "min": 696,
+            "max": 4056
+        }
+    ],
+    "disk": {
+        "/": {
+            "total": 460.4317207336426,
+            "used": 432.1778984069824
+        }
+    },
+    "gpuapple": {
+        "type": "Apple M3 Pro",
+        "vendor": "sppci_vendor_Apple"
+    },
+    "memory": {
+        "total": 18.0
+    }
+}

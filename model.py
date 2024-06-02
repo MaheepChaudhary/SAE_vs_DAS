@@ -30,7 +30,6 @@ class RotateLayer(t.nn.Module):
 class my_model(nn.Module):
     def __init__(self, 
                 DEVICE,
-                probe,
                 dict_embed_path,
                 attn_dict_path,
                 mlp_dict_path,
@@ -94,14 +93,23 @@ class my_model(nn.Module):
                 device=DEVICE
             )
 
-        self.probe = probe.requires_grad_(False)
+        # self.probe = probe.requires_grad_(False)
+        self.probe = Probe(512)
+        self.probe.load_state_dict(t.load('cpu_probe.pth'))
+        self.probe = self.probe.to(DEVICE)
+        
+        for param in self.probe.parameters():
+            param.requires_grad = False
         
         self.das_layers = []
         
-        for layer in self.resid_layers:
-            rotate_layer = RotateLayer(512)
-            self.rotate_layer = t.nn.utils.parametrizations.orthogonal(rotate_layer)
-            self.das_layers.append(self.rotate_layer)
+        # for layer in self.resid_layers:
+        #     rotate_layer = RotateLayer(512)
+        #     self.rotate_layer = t.nn.utils.parametrizations.orthogonal(rotate_layer)
+        #     self.das_layers.append(self.rotate_layer)
+        
+        rotate_layer = RotateLayer(512)
+        self.rotate_layer = t.nn.utils.parametrizations.orthogonal(rotate_layer)
         
         self.module_not_tuple = []
         
@@ -125,11 +133,11 @@ class my_model(nn.Module):
                 for layer in self.resid_layers:
                 
                     dictionary = self.dictionaries[self.submodules[self.resid_arr[layer]]]    
-                    acts = self.submodules[self.resid_arr[layer]].output[0][:].save()
+                    acts = self.submodules[self.resid_arr[layer]].output[0][:].clone().save()
                     acts = dictionary.encode(acts).save()
                     acts = l4_mask_sigmoid * acts
                     acts = dictionary.decode(acts)
-                    self.submodules[self.resid_arr[layer]].output[0][:] = acts
+                    self.submodules[self.resid_arr[layer]].output[0][:] = acts.clone()
                     final_acts = self.submodules[-1].output[0][:].save()
                 
                 
@@ -138,11 +146,11 @@ class my_model(nn.Module):
                 for layer in self.resid_layers:
                 
                     dictionary = self.dictionaries[self.submodules[self.resid_arr[layer]]]
-                    acts = self.submodules[self.resid_arr[layer]].output[0][:].save()
+                    acts = self.submodules[self.resid_arr[layer]].output[0][:].clone().save()
                     # print(f"Shape of l4_mask_sigmoid: {l4_mask_sigmoid.shape}")
                     # print(f"Shape of acts: {acts.shape}")
                     acts = l4_mask_sigmoid * acts
-                    self.submodules[self.resid_arr[layer]].output[0][:] = acts
+                    self.submodules[self.resid_arr[layer]].output[0][:] = acts.clone()
                     final_acts = self.submodules[-1].output[0][:].save()
                 
             elif self.method == "das masking":
@@ -152,13 +160,13 @@ class my_model(nn.Module):
                 for layer in self.resid_layers:
                     
                     dictionary = self.dictionaries[self.submodules[self.resid_arr[layer]]]
-                    acts = self.submodules[self.resid_arr[layer]].output[0][:].save()
-                    self.rotate_layer = self.das_layers[k]
+                    acts = self.submodules[self.resid_arr[layer]].output[0][:].clone().save()
+                    # self.rotate_layer = self.das_layers[k]
                     acts = self.rotate_layer(acts)
                     # acts = self.rotate_layer_1(acts)
                     acts = l4_mask_sigmoid * acts
                     acts = t.matmul(acts, self.rotate_layer.weight.T)
-                    self.submodules[self.resid_arr[layer]].output[0][:] = acts
+                    self.submodules[self.resid_arr[layer]].output[0][:] = acts.clone()
                     final_acts = self.submodules[-1].output[0][:].save()
                     k+=1
             
