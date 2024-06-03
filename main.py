@@ -174,7 +174,7 @@ def eval(DEVICE,
         
         accuracy = t.cat(corrects).mean().item()
 
-    wandb.log({"Accuracy": accuracy})
+    wandb.log({"Full Data Accuracy": accuracy})
     
 
 def eval_on_subgroups(DEVICE, 
