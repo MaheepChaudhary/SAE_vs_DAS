@@ -288,7 +288,7 @@ if __name__ == "__main__":
     
     
     args = argparser.parse_args()
-    args.residual_layer = [int(i) for i in args.residual_layer]
+    # args.residual_layer = [int(i) for i in args.residual_layer]
     
     
     # with open("probe_shift.pkl", "rb") as f:
