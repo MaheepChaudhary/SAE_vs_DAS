@@ -1607,3 +1607,102 @@ NoneType: None
 2024-06-02 23:32:56,773 DEBUG   HandlerThread:39317 [handler.py:handle_request():158] handle_request: status_report
 2024-06-02 23:33:01,775 DEBUG   HandlerThread:39317 [handler.py:handle_request():158] handle_request: status_report
 2024-06-02 23:33:06,777 DEBUG   HandlerThread:39317 [handler.py:handle_request():158] handle_request: status_report
+2024-06-02 23:33:11,779 DEBUG   HandlerThread:39317 [handler.py:handle_request():158] handle_request: status_report
+2024-06-02 23:33:16,780 DEBUG   HandlerThread:39317 [handler.py:handle_request():158] handle_request: status_report
+2024-06-02 23:33:19,770 DEBUG   SenderThread:39317 [sender.py:send():378] send: stats
+2024-06-02 23:33:19,843 ERROR   FileStreamThread:39317 [file_stream.py:_handle_response():510] dropped chunk 404 Client Error: Not Found for url: https://api.wandb.ai/files/counterfactuals/sae_concept_eraser/7vczsrbp/file_stream
+NoneType: None
+2024-06-02 23:33:22,772 DEBUG   HandlerThread:39317 [handler.py:handle_request():158] handle_request: status_report
+2024-06-02 23:33:27,774 DEBUG   HandlerThread:39317 [handler.py:handle_request():158] handle_request: status_report
+2024-06-02 23:33:32,775 DEBUG   HandlerThread:39317 [handler.py:handle_request():158] handle_request: status_report
+2024-06-02 23:33:37,776 DEBUG   HandlerThread:39317 [handler.py:handle_request():158] handle_request: status_report
+2024-06-02 23:33:42,777 DEBUG   HandlerThread:39317 [handler.py:handle_request():158] handle_request: status_report
+2024-06-02 23:33:47,778 DEBUG   HandlerThread:39317 [handler.py:handle_request():158] handle_request: status_report
+2024-06-02 23:33:49,772 DEBUG   SenderThread:39317 [sender.py:send():378] send: stats
+2024-06-02 23:33:49,851 ERROR   FileStreamThread:39317 [file_stream.py:_handle_response():510] dropped chunk 404 Client Error: Not Found for url: https://api.wandb.ai/files/counterfactuals/sae_concept_eraser/7vczsrbp/file_stream
+NoneType: None
+2024-06-02 23:33:53,774 DEBUG   HandlerThread:39317 [handler.py:handle_request():158] handle_request: status_report
+2024-06-02 23:33:58,775 DEBUG   HandlerThread:39317 [handler.py:handle_request():158] handle_request: status_report
+2024-06-02 23:34:03,777 DEBUG   HandlerThread:39317 [handler.py:handle_request():158] handle_request: status_report
+2024-06-02 23:34:08,778 DEBUG   HandlerThread:39317 [handler.py:handle_request():158] handle_request: status_report
+2024-06-02 23:34:13,779 DEBUG   HandlerThread:39317 [handler.py:handle_request():158] handle_request: status_report
+2024-06-02 23:34:18,781 DEBUG   HandlerThread:39317 [handler.py:handle_request():158] handle_request: status_report
+2024-06-02 23:34:19,772 DEBUG   SenderThread:39317 [sender.py:send():378] send: stats
+2024-06-02 23:34:19,858 ERROR   FileStreamThread:39317 [file_stream.py:_handle_response():510] dropped chunk 404 Client Error: Not Found for url: https://api.wandb.ai/files/counterfactuals/sae_concept_eraser/7vczsrbp/file_stream
+NoneType: None
+2024-06-02 23:34:24,774 DEBUG   HandlerThread:39317 [handler.py:handle_request():158] handle_request: status_report
+2024-06-02 23:34:29,775 DEBUG   HandlerThread:39317 [handler.py:handle_request():158] handle_request: status_report
+2024-06-02 23:34:34,777 DEBUG   HandlerThread:39317 [handler.py:handle_request():158] handle_request: status_report
+2024-06-02 23:34:39,778 DEBUG   HandlerThread:39317 [handler.py:handle_request():158] handle_request: status_report
+2024-06-02 23:34:44,779 DEBUG   HandlerThread:39317 [handler.py:handle_request():158] handle_request: status_report
+2024-06-02 23:34:49,773 DEBUG   SenderThread:39317 [sender.py:send():378] send: stats
+2024-06-02 23:34:49,854 ERROR   FileStreamThread:39317 [file_stream.py:_handle_response():510] dropped chunk 404 Client Error: Not Found for url: https://api.wandb.ai/files/counterfactuals/sae_concept_eraser/7vczsrbp/file_stream
+NoneType: None
+2024-06-02 23:34:50,774 DEBUG   HandlerThread:39317 [handler.py:handle_request():158] handle_request: status_report
+2024-06-02 23:34:55,777 DEBUG   HandlerThread:39317 [handler.py:handle_request():158] handle_request: status_report
+2024-06-02 23:35:00,778 DEBUG   HandlerThread:39317 [handler.py:handle_request():158] handle_request: status_report
+2024-06-02 23:35:05,779 DEBUG   HandlerThread:39317 [handler.py:handle_request():158] handle_request: status_report
+2024-06-02 23:35:10,781 DEBUG   HandlerThread:39317 [handler.py:handle_request():158] handle_request: status_report
+2024-06-02 23:35:15,781 DEBUG   HandlerThread:39317 [handler.py:handle_request():158] handle_request: status_report
+2024-06-02 23:35:19,775 DEBUG   SenderThread:39317 [sender.py:send():378] send: stats
+2024-06-02 23:35:19,848 ERROR   FileStreamThread:39317 [file_stream.py:_handle_response():510] dropped chunk 404 Client Error: Not Found for url: https://api.wandb.ai/files/counterfactuals/sae_concept_eraser/7vczsrbp/file_stream
+NoneType: None
+2024-06-02 23:35:21,775 DEBUG   HandlerThread:39317 [handler.py:handle_request():158] handle_request: status_report
+2024-06-02 23:35:26,777 DEBUG   HandlerThread:39317 [handler.py:handle_request():158] handle_request: status_report
+2024-06-02 23:35:31,779 DEBUG   HandlerThread:39317 [handler.py:handle_request():158] handle_request: status_report
+2024-06-02 23:35:36,780 DEBUG   HandlerThread:39317 [handler.py:handle_request():158] handle_request: status_report
+2024-06-02 23:35:41,782 DEBUG   HandlerThread:39317 [handler.py:handle_request():158] handle_request: status_report
+2024-06-02 23:35:46,783 DEBUG   HandlerThread:39317 [handler.py:handle_request():158] handle_request: status_report
+2024-06-02 23:35:49,776 DEBUG   SenderThread:39317 [sender.py:send():378] send: stats
+2024-06-02 23:35:49,848 ERROR   FileStreamThread:39317 [file_stream.py:_handle_response():510] dropped chunk 404 Client Error: Not Found for url: https://api.wandb.ai/files/counterfactuals/sae_concept_eraser/7vczsrbp/file_stream
+NoneType: None
+2024-06-02 23:35:52,778 DEBUG   HandlerThread:39317 [handler.py:handle_request():158] handle_request: status_report
+2024-06-02 23:35:57,779 DEBUG   HandlerThread:39317 [handler.py:handle_request():158] handle_request: status_report
+2024-06-02 23:36:02,781 DEBUG   HandlerThread:39317 [handler.py:handle_request():158] handle_request: status_report
+2024-06-02 23:36:07,782 DEBUG   HandlerThread:39317 [handler.py:handle_request():158] handle_request: status_report
+2024-06-02 23:36:12,783 DEBUG   HandlerThread:39317 [handler.py:handle_request():158] handle_request: status_report
+2024-06-02 23:36:17,785 DEBUG   HandlerThread:39317 [handler.py:handle_request():158] handle_request: status_report
+2024-06-02 23:36:19,777 DEBUG   SenderThread:39317 [sender.py:send():378] send: stats
+2024-06-02 23:36:19,861 ERROR   FileStreamThread:39317 [file_stream.py:_handle_response():510] dropped chunk 404 Client Error: Not Found for url: https://api.wandb.ai/files/counterfactuals/sae_concept_eraser/7vczsrbp/file_stream
+NoneType: None
+2024-06-02 23:36:23,778 DEBUG   HandlerThread:39317 [handler.py:handle_request():158] handle_request: status_report
+2024-06-02 23:36:28,780 DEBUG   HandlerThread:39317 [handler.py:handle_request():158] handle_request: status_report
+2024-06-02 23:36:33,781 DEBUG   HandlerThread:39317 [handler.py:handle_request():158] handle_request: status_report
+2024-06-02 23:36:38,782 DEBUG   HandlerThread:39317 [handler.py:handle_request():158] handle_request: status_report
+2024-06-02 23:36:43,783 DEBUG   HandlerThread:39317 [handler.py:handle_request():158] handle_request: status_report
+2024-06-02 23:36:48,784 DEBUG   HandlerThread:39317 [handler.py:handle_request():158] handle_request: status_report
+2024-06-02 23:36:49,778 DEBUG   SenderThread:39317 [sender.py:send():378] send: stats
+2024-06-02 23:36:49,850 ERROR   FileStreamThread:39317 [file_stream.py:_handle_response():510] dropped chunk 404 Client Error: Not Found for url: https://api.wandb.ai/files/counterfactuals/sae_concept_eraser/7vczsrbp/file_stream
+NoneType: None
+2024-06-02 23:36:54,779 DEBUG   HandlerThread:39317 [handler.py:handle_request():158] handle_request: status_report
+2024-06-02 23:36:59,780 DEBUG   HandlerThread:39317 [handler.py:handle_request():158] handle_request: status_report
+2024-06-02 23:37:04,781 DEBUG   HandlerThread:39317 [handler.py:handle_request():158] handle_request: status_report
+2024-06-02 23:37:09,783 DEBUG   HandlerThread:39317 [handler.py:handle_request():158] handle_request: status_report
+2024-06-02 23:37:14,785 DEBUG   HandlerThread:39317 [handler.py:handle_request():158] handle_request: status_report
+2024-06-02 23:37:19,779 DEBUG   SenderThread:39317 [sender.py:send():378] send: stats
+2024-06-02 23:37:19,855 ERROR   FileStreamThread:39317 [file_stream.py:_handle_response():510] dropped chunk 404 Client Error: Not Found for url: https://api.wandb.ai/files/counterfactuals/sae_concept_eraser/7vczsrbp/file_stream
+NoneType: None
+2024-06-02 23:37:20,779 DEBUG   HandlerThread:39317 [handler.py:handle_request():158] handle_request: status_report
+2024-06-02 23:37:25,781 DEBUG   HandlerThread:39317 [handler.py:handle_request():158] handle_request: status_report
+2024-06-02 23:37:30,782 DEBUG   HandlerThread:39317 [handler.py:handle_request():158] handle_request: status_report
+2024-06-02 23:37:35,783 DEBUG   HandlerThread:39317 [handler.py:handle_request():158] handle_request: status_report
+2024-06-02 23:37:40,785 DEBUG   HandlerThread:39317 [handler.py:handle_request():158] handle_request: status_report
+2024-06-02 23:37:45,786 DEBUG   HandlerThread:39317 [handler.py:handle_request():158] handle_request: status_report
+2024-06-02 23:37:49,779 DEBUG   SenderThread:39317 [sender.py:send():378] send: stats
+2024-06-02 23:37:49,895 ERROR   FileStreamThread:39317 [file_stream.py:_handle_response():510] dropped chunk 404 Client Error: Not Found for url: https://api.wandb.ai/files/counterfactuals/sae_concept_eraser/7vczsrbp/file_stream
+NoneType: None
+2024-06-02 23:37:51,781 DEBUG   HandlerThread:39317 [handler.py:handle_request():158] handle_request: status_report
+2024-06-02 23:37:56,782 DEBUG   HandlerThread:39317 [handler.py:handle_request():158] handle_request: status_report
+2024-06-02 23:38:01,783 DEBUG   HandlerThread:39317 [handler.py:handle_request():158] handle_request: status_report
+2024-06-02 23:38:06,784 DEBUG   HandlerThread:39317 [handler.py:handle_request():158] handle_request: status_report
+2024-06-02 23:38:11,785 DEBUG   HandlerThread:39317 [handler.py:handle_request():158] handle_request: status_report
+2024-06-02 23:38:16,786 DEBUG   HandlerThread:39317 [handler.py:handle_request():158] handle_request: status_report
+2024-06-02 23:38:19,780 DEBUG   SenderThread:39317 [sender.py:send():378] send: stats
+2024-06-02 23:38:19,952 ERROR   FileStreamThread:39317 [file_stream.py:_handle_response():510] dropped chunk 404 Client Error: Not Found for url: https://api.wandb.ai/files/counterfactuals/sae_concept_eraser/7vczsrbp/file_stream
+NoneType: None
+2024-06-02 23:38:22,725 INFO    cpu       :39317 [interfaces.py:monitor():138] Process cpu has exited.
+2024-06-02 23:38:22,726 DEBUG   SystemMonitor:39317 [system_monitor.py:_start():179] Finished system metrics aggregation loop
+2024-06-02 23:38:22,726 DEBUG   SystemMonitor:39317 [system_monitor.py:_start():183] Publishing last batch of metrics
+2024-06-02 23:38:22,727 DEBUG   SenderThread:39317 [sender.py:send():378] send: stats
+2024-06-02 23:38:22,727 DEBUG   HandlerThread:39317 [handler.py:handle_request():158] handle_request: status_report
+2024-06-02 23:38:25,183 INFO    MainThread:39317 [internal.py:handle_exit():75] Internal process exited
