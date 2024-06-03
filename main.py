@@ -257,7 +257,7 @@ if __name__ == "__main__":
     argparser.add_argument('-lr', '--learning_rate', default=0.001, type=float, help='learning rate')
     argparser.add_argument('-btr', '--batch_size_train', type=int, required=True, help='batch size for training')
     argparser.add_argument('-d', '--device', type=str, required=True, help='device to be used')
-    argparser.add_argument('-layer', '--residual_layer', type=list, required=True, help='residual layer to be used intervened in the model w/ range 0->4')
+    argparser.add_argument('-layer', '--residual_layer', type=int, required=True, help='residual layer to be used intervened in the model w/ range 0->4')
     argparser.add_argument('-ad', '--activation_dim', default=512, type=int, help="activation dimension")
     argparser.add_argument('-ef', '--expansion_factor', default=64, type=int, help="expansion factor")
     
@@ -280,7 +280,7 @@ if __name__ == "__main__":
     
     argparser.add_argument("-mb", "--mini_batch", required=True, default = 0, help="0 if you want mini batch and 1 if you want full batch")
     argparser.add_argument("-eval", "--evaluation", required=True, type=str, help="evaluation metric, either profession or gender")
-    argparser.add_argument("-pp", "--probe_path", required=True, type=str, help="path of probe model to be used")
+   # argparser.add_argument("-pp", "--probe_path", required=True, type=str, help="path of probe model to be used")
     argparser.add_argument("-svd","--saved_model_path", default = "new_model.pth", type=str, help="path to save the model")
     
     argparser.add_argument("-task", "--task", required=True, type=str, help="task to be performed, i.e. train, eval or eval_on_subgroups")
