@@ -101,11 +101,9 @@ def train(DEVICE,
                 t.mps.empty_cache()
         
         wandb.log({"Full Data Gender de-baising Losses": np.mean(losses)})
-            
-        
-        
+                    
                 
-    # t.save(new_model.state_dict(), f"saved_models/{evaluation}-{residual_layer}-{method}_b{batch_size_train}_e{epochs}.pth")
+    t.save(new_model.state_dict(), f"saved_models/{evaluation}-{residual_layer}-{method}_b{batch_size_train}_e{epochs}.pth")
                 
 def eval(DEVICE, 
         saved_model_path,
