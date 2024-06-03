@@ -229,19 +229,19 @@ def eval_on_subgroups(DEVICE,
             accuracy = t.cat(corrects).mean().item()
             
             if label_profile == (0, 0):
-                wandb.run.name = "Vanilla-acc-Male_Prof.-{saved_model_path}-b16"
+                wandb.run.name = f"Vanilla-acc-Male_Prof.-{saved_model_path}-b16"
                 wandb.log({"Groups Accuracy": accuracy})
                 print(f"Accuracy for Male Professor is:", accuracy)
             elif label_profile == (0, 1):
-                wandb.run.name = "Vanilla-acc-Female_Prof.-{saved_model_path}-b16"
+                wandb.run.name = f"Vanilla-acc-Female_Prof.-{saved_model_path}-b16"
                 wandb.log({"Groups Accuracy": accuracy})
                 print(f"Accuracy for Female Professor is:", accuracy)
             elif label_profile == (1, 0):
-                wandb.run.name = "vanilla-acc-Male_Nurse-{saved_model_path}-b16"
+                wandb.run.name = f"vanilla-acc-Male_Nurse-{saved_model_path}-b16"
                 wandb.log({"Groups Accuracy": accuracy})
                 print(f"Accuracy for Male Nurse is:", accuracy)
             elif label_profile == (1, 1):
-                wandb.run.name = "Vanilla-acc-Female_Nurse-{saved_model_path}-b16"
+                wandb.run.name = f"Vanilla-acc-Female_Nurse-{saved_model_path}-b16"
                 wandb.log({"Groups Accuracy": accuracy})
                 print(f"Accuracy for Female Nurse is:", accuracy)
 
