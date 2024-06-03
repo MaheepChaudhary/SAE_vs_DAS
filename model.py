@@ -60,7 +60,7 @@ class my_model(nn.Module):
         elif method == "das masking":
             das_dim = (1,1,512)
             self.l4_mask = t.nn.Parameter(t.zeros(das_dim), requires_grad=True)
-        elif method == "sae das masking":
+        elif method == "das sae masking":
             das_dim = (1,1,dictionary_size)
             self.l4_mask = t.nn.Parameter(t.zeros(das_dim), requires_grad=True)
         
