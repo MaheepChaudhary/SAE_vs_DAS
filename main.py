@@ -101,9 +101,11 @@ def train(DEVICE,
                 t.mps.empty_cache()
         
         wandb.log({"Full Data Gender de-baising Losses": np.mean(losses)})
-                    
+            
+        
+        
                 
-    t.save(new_model.state_dict(), f"saved_models/{evaluation}-{residual_layer}-{method}_b{batch_size_train}_e{epochs}.pth")
+    # t.save(new_model.state_dict(), f"saved_models/{evaluation}-{residual_layer}-{method}_b{batch_size_train}_e{epochs}.pth")
                 
 def eval(DEVICE, 
         saved_model_path,
@@ -359,3 +361,4 @@ if __name__ == "__main__":
 # Toronto is in the country Canada. Beijing is in the country China. Miami is in the country United States. Santiago is in the country Chile. London is in the country England. <city> is in the country
 # Figure out the set of cities that GPT-2 knows the country and continent for
 
+# python main.py -e 10 -btr 16 -d cuda:1 -layer "4" -pp probe_shift.pkl -task train -eval profession -nds "neuron masking" -dpath ./dictionary_learning/dictionaries/pythia-70m-deduped/embed -atpath ./dictionary_learning/dictionaries/pythia-70m-deduped/attn_out_layer -mpath ./dictionary_learning/dictionaries/pythia-70m-deduped/mlp_out_layer -rpath ./dictionary_learning/dictionaries/pythia-70m-deduped/resid_out_layer -mb 1
