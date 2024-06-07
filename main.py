@@ -22,7 +22,7 @@ def train(DEVICE,
     tokenizer = BertTokenizer.from_pretrained('bert-base-uncased')
 
     wandb.init(project="sae_concept_eraser")
-    wandb.run.name = f"[{evaluation}]-{residual_layer}-{method}_b{batch_size_train}_e{epochs}"
+    wandb.run.name = f"[{evaluation}]-{residual_layer}-{method}_b{batch_size_train}_e{epochs}_w/sparsity"
 
     print("passed dict emned path", dict_embed_path)
 
@@ -85,10 +85,10 @@ def train(DEVICE,
             loss = criterion(logits, labels.float())
             total_loss = loss + l1_loss
             optimizer.zero_grad()
-            if method == "neuron masking":
-                total_loss.backward()
-            else:
-                loss.backward()
+            # if method == "neuron masking":
+            total_loss.backward()
+            # else:
+            #     loss.backward()
             optimizer.step()
             losses.append(loss.item())
             temp_idx += 1
