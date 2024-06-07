@@ -78,7 +78,6 @@ def train(DEVICE,
             
             temprature = temperature_schedule[temp_idx]
             logits, l4_mask_sigmoid = new_model(text, temperature=temprature)
-            
             l1_lambda = 0.1  # Weight for L1 loss
             l1_loss = l1_lambda * t.norm(l4_mask_sigmoid, p=1)
             
