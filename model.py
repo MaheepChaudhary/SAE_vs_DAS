@@ -60,8 +60,11 @@ class my_model(nn.Module):
         elif method == "das masking":
             das_dim = (1,1,512)
             self.l4_mask = t.nn.Parameter(t.zeros(das_dim), requires_grad=True)
+        elif method == "das sae masking":
+            das_dim = (1,1,dictionary_size)
+            self.l4_mask = t.nn.Parameter(t.zeros(das_dim), requires_grad=True)
         
-        self.resid_layers = resid_layers
+        self.resid_layer = resid_layers
         self.method = method
         
         
@@ -111,6 +114,9 @@ class my_model(nn.Module):
         rotate_layer = RotateLayer(512)
         self.rotate_layer = t.nn.utils.parametrizations.orthogonal(rotate_layer)
         
+        sae_rotate_layer = RotateLayer(expansion_factor * activation_dim)
+        self.sae_rotate_layer = t.nn.utils.parametrizations.orthogonal(sae_rotate_layer)
+        
         self.module_not_tuple = []
         
         # dummy_text = """The quick brown fox jumps over the lazy dog"""
@@ -128,48 +134,103 @@ class my_model(nn.Module):
         l4_mask_sigmoid = t.sigmoid(self.l4_mask / temperature)
         
         with self.model.trace(text) as tracer:
+            
+            assert self.resid_layer == 4
+            assert self.resid_arr[self.resid_layer] == 15
+                
             if self.method == "sae masking":
             
-                for layer in self.resid_layers:
+                # for layer in self.resid_layers:
+                # dictionary = self.dictionaries[self.submodules[self.resid_arr[layer]]]    
+                dictionary = self.dictionaries[self.submodules[self.resid_arr[self.resid_layer]]]
+                # acts = self.submodules[self.resid_arr[layer]].output[0][:].clone().save()
+                acts = self.submodules[self.resid_arr[self.resid_layer]].output[0][:].clone().save()
+                cond = type(self.submodules[self.resid_arr[self.resid_layer]].output.shape) == tuple
+                acts = dictionary.encode(acts).save()
+                acts = l4_mask_sigmoid * acts
+                acts = dictionary.decode(acts)
+                # self.submodules[self.resid_arr[layer]].output[0][:] = acts.clone()
+                self.submodules[self.resid_arr[self.resid_layer]].output[0][:] = acts.clone()
+                final_acts = self.submodules[-1].output[0][:].save()
+            
                 
-                    dictionary = self.dictionaries[self.submodules[self.resid_arr[layer]]]    
-                    acts = self.submodules[self.resid_arr[layer]].output[0][:].clone().save()
-                    acts = dictionary.encode(acts).save()
-                    acts = l4_mask_sigmoid * acts
-                    acts = dictionary.decode(acts)
-                    self.submodules[self.resid_arr[layer]].output[0][:] = acts.clone()
-                    final_acts = self.submodules[-1].output[0][:].save()
                 
                 
             elif self.method == "neuron masking":
                 
-                for layer in self.resid_layers:
+                # for layer in self.resid_layers:
                 
-                    dictionary = self.dictionaries[self.submodules[self.resid_arr[layer]]]
-                    acts = self.submodules[self.resid_arr[layer]].output[0][:].clone().save()
-                    # print(f"Shape of l4_mask_sigmoid: {l4_mask_sigmoid.shape}")
-                    # print(f"Shape of acts: {acts.shape}")
-                    acts = l4_mask_sigmoid * acts
-                    self.submodules[self.resid_arr[layer]].output[0][:] = acts.clone()
-                    final_acts = self.submodules[-1].output[0][:].save()
+                # dictionary = self.dictionaries[self.submodules[self.resid_arr[layer]]]
+                dictionary = self.dictionaries[self.submodules[self.resid_arr[self.resid_layer]]]
+                # acts = self.submodules[self.resid_arr[layer]].output[0][:].clone().save()
+                acts = self.submodules[self.resid_arr[self.resid_layer]].output[0][:].clone().save()
+                cond = type(self.submodules[self.resid_arr[self.resid_layer]].output.shape) == tuple
+                # print(f"Shape of l4_mask_sigmoid: {l4_mask_sigmoid.shape}")
+                # print(f"Shape of acts: {acts.shape}")
+                acts = l4_mask_sigmoid * acts
+                # self.submodules[self.resid_arr[layer]].output[0][:] = acts.clone()
+                self.submodules[self.resid_arr[self.resid_layer]].output[0][:] = acts.clone()
+                final_acts = self.submodules[-1].output[0][:].save()
                 
             elif self.method == "das masking":
                 
                 k = 0
                 
-                for layer in self.resid_layers:
+                # for layer in self.resid_layers:
                     
-                    dictionary = self.dictionaries[self.submodules[self.resid_arr[layer]]]
-                    acts = self.submodules[self.resid_arr[layer]].output[0][:].clone().save()
-                    # self.rotate_layer = self.das_layers[k]
-                    acts = self.rotate_layer(acts)
-                    # acts = self.rotate_layer_1(acts)
-                    acts = l4_mask_sigmoid * acts
-                    acts = t.matmul(acts, self.rotate_layer.weight.T)
-                    self.submodules[self.resid_arr[layer]].output[0][:] = acts.clone()
-                    final_acts = self.submodules[-1].output[0][:].save()
-                    k+=1
+                    # dictionary = self.dictionaries[self.submodules[self.resid_arr[layer]]]
+                dictionary = self.dictionaries[self.submodules[self.resid_arr[self.resid_layer]]]
+                # acts = self.submodules[self.resid_arr[layer]].output[0][:].clone().save()
+                acts = self.submodules[self.resid_arr[self.resid_layer]].output[0][:].clone().save()
+                cond = type(self.submodules[self.resid_arr[self.resid_layer]].output.shape) == tuple
+                # self.rotate_layer = self.das_layers[k]
+                acts = self.rotate_layer(acts)
+                # acts = self.rotate_layer_1(acts)
+                acts = l4_mask_sigmoid * acts
+                acts = t.matmul(acts, self.rotate_layer.weight.T)
+                # self.submodules[self.resid_arr[layer]].output[0][:] = acts.clone()
+                self.submodules[self.resid_arr[self.resid_layer]].output[0][:] = acts.clone()
+                final_acts = self.submodules[-1].output[0][:].save()
+                k+=1
             
+            elif self.method == "das sae masking":
+                
+                k = 0
+                
+                # for layer in self.resid_layers:
+                    
+                    # dictionary = self.dictionaries[self.submodules[self.resid_arr[layer]]]
+                dictionary = self.dictionaries[self.submodules[self.resid_arr[self.resid_layer]]]
+                # acts = self.submodules[self.resid_arr[layer]].output[0][:].clone().save()
+                acts = self.submodules[self.resid_arr[self.resid_layer]].output[0][:].clone().save()
+                cond = type(self.submodules[self.resid_arr[self.resid_layer]].output.shape) == tuple
+                acts = dictionary.encode(acts).save()
+                acts = self.sae_rotate_layer(acts)
+                acts = l4_mask_sigmoid * acts
+                acts = dictionary.decode(acts)
+                acts_ = t.matmul(acts, self.rotate_layer.weight.T)
+                # self.submodules[self.resid_arr[layer]].output[0][:] = acts.clone()
+                self.submodules[self.resid_arr[self.resid_layer]].output[0][:] = acts_.clone()
+                final_acts = self.submodules[-1].output[0][:].save()
+                k+=1
+            
+            elif self.method == "sae masking":
+
+                k = 0
+                dictionary = self.dictionaries[self.submodules[self.resid_arr[self.resid_layer]]]
+                acts = self.submodules[self.resid_arr[self.resid_layer]].output[0][:].clone().save()
+                cond = type(self.submodules[self.resid_arr[self.resid_layer]].output.shape) == tuple
+                acts = dictionary.encode(acts).save()
+                # acts = self.sae_rotate_layer(acts)
+                acts = l4_mask_sigmoid * acts
+                acts = dictionary.decode(acts)
+                acts_ = t.matmul(acts, self.rotate_layer.weight.T)
+                self.submodules[self.resid_arr[self.resid_layer]].output[0][:] = acts_.clone()
+                final_acts = self.submodules[-1].output[0][:].save()
+                k+=1
+        
+        assert cond == True
+        
         new_acts = final_acts.sum(1)
         acts = self.probe.net(new_acts).squeeze(-1)
             
