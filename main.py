@@ -101,9 +101,13 @@ def train(DEVICE,
                 t.mps.empty_cache()
         
         wandb.log({"Full Data Gender de-baising Losses": np.mean(losses)})
+<<<<<<< HEAD
+                    
+=======
             
         
         
+>>>>>>> server
                 
     # t.save(new_model.state_dict(), f"saved_models/{evaluation}-{residual_layer}-{method}_b{batch_size_train}_e{epochs}.pth")
                 
@@ -124,7 +128,7 @@ def eval(DEVICE,
         expansion_factor):
 
     wandb.init(project="sae_concept_eraser")
-    wandb.run.name = f"{evaluation}-{saved_model_path}-b1"
+    wandb.run.name = f"{evaluation}-{saved_model_path}-b16"
     
     new_model = my_model(DEVICE = DEVICE,
                     dict_embed_path = dict_embed_path,
@@ -176,7 +180,7 @@ def eval(DEVICE,
         
         accuracy = t.cat(corrects).mean().item()
 
-    wandb.log({"Accuracy": accuracy})
+    wandb.log({"Full Data Accuracy": accuracy})
     
 
 def eval_on_subgroups(DEVICE, 
@@ -231,19 +235,19 @@ def eval_on_subgroups(DEVICE,
             accuracy = t.cat(corrects).mean().item()
             
             if label_profile == (0, 0):
-                wandb.run.name = "Vanilla-acc-Male_Prof."
+                wandb.run.name = f"Vanilla-acc-Male_Prof.-{saved_model_path}-b16"
                 wandb.log({"Groups Accuracy": accuracy})
                 print(f"Accuracy for Male Professor is:", accuracy)
             elif label_profile == (0, 1):
-                wandb.run.name = "Vanilla-acc-Female_Prof."
+                wandb.run.name = f"Vanilla-acc-Female_Prof.-{saved_model_path}-b16"
                 wandb.log({"Groups Accuracy": accuracy})
                 print(f"Accuracy for Female Professor is:", accuracy)
             elif label_profile == (1, 0):
-                wandb.run.name = "vanilla-acc-Male_Nurse"
+                wandb.run.name = f"vanilla-acc-Male_Nurse-{saved_model_path}-b16"
                 wandb.log({"Groups Accuracy": accuracy})
                 print(f"Accuracy for Male Nurse is:", accuracy)
             elif label_profile == (1, 1):
-                wandb.run.name = "Vanilla-acc-Female_Nurse"
+                wandb.run.name = f"Vanilla-acc-Female_Nurse-{saved_model_path}-b16"
                 wandb.log({"Groups Accuracy": accuracy})
                 print(f"Accuracy for Female Nurse is:", accuracy)
 
@@ -257,7 +261,7 @@ if __name__ == "__main__":
     argparser.add_argument('-lr', '--learning_rate', default=0.001, type=float, help='learning rate')
     argparser.add_argument('-btr', '--batch_size_train', type=int, required=True, help='batch size for training')
     argparser.add_argument('-d', '--device', type=str, required=True, help='device to be used')
-    argparser.add_argument('-layer', '--residual_layer', type=list, required=True, help='residual layer to be used intervened in the model w/ range 0->4')
+    argparser.add_argument('-layer', '--residual_layer', type=int, required=True, help='residual layer to be used intervened in the model w/ range 0->4')
     argparser.add_argument('-ad', '--activation_dim', default=512, type=int, help="activation dimension")
     argparser.add_argument('-ef', '--expansion_factor', default=64, type=int, help="expansion factor")
     
@@ -280,15 +284,15 @@ if __name__ == "__main__":
     
     argparser.add_argument("-mb", "--mini_batch", required=True, default = 0, help="0 if you want mini batch and 1 if you want full batch")
     argparser.add_argument("-eval", "--evaluation", required=True, type=str, help="evaluation metric, either profession or gender")
-    argparser.add_argument("-pp", "--probe_path", required=True, type=str, help="path of probe model to be used")
+   # argparser.add_argument("-pp", "--probe_path", required=True, type=str, help="path of probe model to be used")
     argparser.add_argument("-svd","--saved_model_path", default = "new_model.pth", type=str, help="path to save the model")
     
     argparser.add_argument("-task", "--task", required=True, type=str, help="task to be performed, i.e. train, eval or eval_on_subgroups")
-    argparser.add_argument("-nds", "--method", required=True, type=str, help="method to be used, i.e. neuron masking, sae masking or das masking")
+    argparser.add_argument("-nds", "--method", required=True, type=str, help="method to be used, i.e. neuron masking, sae masking or das masking or das sae masking")
     
     
     args = argparser.parse_args()
-    args.residual_layer = [int(i) for i in args.residual_layer]
+    # args.residual_layer = [int(i) for i in args.residual_layer]
     
     
     # with open("probe_shift.pkl", "rb") as f:
@@ -348,10 +352,17 @@ if __name__ == "__main__":
             mlp_dict_path=args.mlp_dict_path,
             resid_dict_path=args.resid_dict_path,
             expansion_factor=args.expansion_factor)
-    
-    
 
 
 
+
+# python main.py -e 10 -btr 16 -d cuda:1 -layer "4" -pp probe_shift.pkl -task train -eval profession -nds "neuron masking" -dpath ./dictionary_learning/dictionaries/pythia-70m-deduped/embed -atpath ./dictionary_learning/dictionaries/pythia-70m-deduped/attn_out_layer -mpath ./dictionary_learning/dictionaries/pythia-70m-deduped/mlp_out_layer -rpath ./dictionary_learning/dictionaries/pythia-70m-deduped/resid_out_layer -mb 1
+
+
+# Implement the l1 loss for learning the masks
+# Use five shot prompting gpt-2 for country and continent info:
+
+# Toronto is in the country Canada. Beijing is in the country China. Miami is in the country United States. Santiago is in the country Chile. London is in the country England. <city> is in the country
+# Figure out the set of cities that GPT-2 knows the country and continent for
 
 # python main.py -e 10 -btr 16 -d cuda:1 -layer "4" -pp probe_shift.pkl -task train -eval profession -nds "neuron masking" -dpath ./dictionary_learning/dictionaries/pythia-70m-deduped/embed -atpath ./dictionary_learning/dictionaries/pythia-70m-deduped/attn_out_layer -mpath ./dictionary_learning/dictionaries/pythia-70m-deduped/mlp_out_layer -rpath ./dictionary_learning/dictionaries/pythia-70m-deduped/resid_out_layer -mb 1
