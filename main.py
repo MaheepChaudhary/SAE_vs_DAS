@@ -22,7 +22,7 @@ def train(DEVICE,
     tokenizer = BertTokenizer.from_pretrained('bert-base-uncased')
 
     wandb.init(project="sae_concept_eraser")
-    wandb.run.name = f"[{evaluation}]-{residual_layer}-{method}_b{batch_size_train}_e{epochs}_w/sparsity"
+    wandb.run.name = f"[{evaluation}]-{residual_layer}-{method}_b{batch_size_train}_e{epochs}_w/0.1sparsity"
 
     print("passed dict emned path", dict_embed_path)
 
@@ -79,7 +79,7 @@ def train(DEVICE,
             temprature = temperature_schedule[temp_idx]
             logits, l4_mask_sigmoid = new_model(text, temperature=temprature)
             
-            l1_lambda = 0.01  # Weight for L1 loss
+            l1_lambda = 0.1  # Weight for L1 loss
             l1_loss = l1_lambda * t.norm(l4_mask_sigmoid, p=1)
             
             loss = criterion(logits, labels.float())
