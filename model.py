@@ -214,14 +214,14 @@ class my_model(nn.Module):
                 final_acts = self.submodules[-1].output[0][:].save()
                 k+=1
             
-            elif self.method == "das sae masking":
+            elif self.method == "sae masking":
 
                 k = 0
                 dictionary = self.dictionaries[self.submodules[self.resid_arr[self.resid_layer]]]
                 acts = self.submodules[self.resid_arr[self.resid_layer]].output[0][:].clone().save()
                 cond = type(self.submodules[self.resid_arr[self.resid_layer]].output.shape) == tuple
                 acts = dictionary.encode(acts).save()
-                acts = self.sae_rotate_layer(acts)
+                # acts = self.sae_rotate_layer(acts)
                 acts = l4_mask_sigmoid * acts
                 acts = dictionary.decode(acts)
                 acts_ = t.matmul(acts, self.rotate_layer.weight.T)

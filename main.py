@@ -282,7 +282,7 @@ if __name__ == "__main__":
     argparser.add_argument("-svd","--saved_model_path", default = "new_model.pth", type=str, help="path to save the model")
     
     argparser.add_argument("-task", "--task", required=True, type=str, help="task to be performed, i.e. train, eval or eval_on_subgroups")
-    argparser.add_argument("-nds", "--method", required=True, type=str, help="method to be used, i.e. neuron masking, sae masking or das masking")
+    argparser.add_argument("-nds", "--method", required=True, type=str, help="method to be used, i.e. neuron masking, sae masking or das masking or das sae masking")
     
     
     args = argparser.parse_args()
@@ -346,10 +346,16 @@ if __name__ == "__main__":
             mlp_dict_path=args.mlp_dict_path,
             resid_dict_path=args.resid_dict_path,
             expansion_factor=args.expansion_factor)
-    
-    
 
 
 
 
 # python main.py -e 10 -btr 16 -d cuda:1 -layer "4" -pp probe_shift.pkl -task train -eval profession -nds "neuron masking" -dpath ./dictionary_learning/dictionaries/pythia-70m-deduped/embed -atpath ./dictionary_learning/dictionaries/pythia-70m-deduped/attn_out_layer -mpath ./dictionary_learning/dictionaries/pythia-70m-deduped/mlp_out_layer -rpath ./dictionary_learning/dictionaries/pythia-70m-deduped/resid_out_layer -mb 1
+
+
+# Implement the l1 loss for learning the masks
+# Use five shot prompting gpt-2 for country and continent info:
+
+# Toronto is in the country Canada. Beijing is in the country China. Miami is in the country United States. Santiago is in the country Chile. London is in the country England. <city> is in the country
+# Figure out the set of cities that GPT-2 knows the country and continent for
+
