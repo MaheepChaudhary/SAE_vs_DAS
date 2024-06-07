@@ -1,0 +1,17 @@
+.DS_Store
+.conda/
+__pycache__/
+baulab.us/
+dictionary_learning/
+gpt2/
+image.png
+mnist/
+model.pth
+new_model.pth
+probe_shift.pkl
+saved_models/profession-[4]-das masking_b1_e1.pth
+saved_models/profession-[4]-neuron masking_b1_e1.pth
+saved_models/profession-[4]-sae masking_b1_e1.pth
+sparse_autoencoder/
+state_dict.pkl
+saved_models/*
