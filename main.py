@@ -79,15 +79,23 @@ def train(DEVICE,
             temprature = temperature_schedule[temp_idx]
             logits, l4_mask_sigmoid = new_model(text, temperature=temprature)
             l1_lambda = 0.1  # Weight for L1 loss
-            l1_loss = l1_lambda * t.norm(l4_mask_sigmoid, p=1)
+            l1_loss = t.norm(l4_mask_sigmoid, p=1)
             
             loss = criterion(logits, labels.float())
-            total_loss = loss + l1_loss
+            
+            # normalization of losses
+            if loss.item() > l1_loss.item():
+                max_loss = loss.item().clone()
+            elif l1_loss.item() > loss.item():
+                max_loss = l1_loss.item().clone()
+            
+            loss = loss/max_loss
+            l1_loss = l1_loss/max_loss
+            
+            total_loss = loss + l1_lambda * l1_loss
             optimizer.zero_grad()
             # if method == "neuron masking":
             total_loss.backward()
-            # else:
-            #     loss.backward()
             optimizer.step()
             losses.append(loss.item())
             temp_idx += 1
