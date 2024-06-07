@@ -77,17 +77,18 @@ def train(DEVICE,
                 labels = batches[i][2]
             
             temprature = temperature_schedule[temp_idx]
-
-
-            logits = new_model(text, temperature=temprature)
-            # print(logits.shape)
-            # print(labels.float)
+            logits, l4_mask_sigmoid = new_model(text, temperature=temprature)
+            
+            l1_lambda = 0.01  # Weight for L1 loss
+            l1_loss = l1_lambda * t.norm(l4_mask_sigmoid, p=1)
+            
             loss = criterion(logits, labels.float())
+            total_loss = loss + l1_loss
             optimizer.zero_grad()
-            try:
+            if method == "neuron masking":
+                total_loss.backward()
+            else:
                 loss.backward()
-            except:
-                pass
             optimizer.step()
             losses.append(loss.item())
             temp_idx += 1
@@ -101,13 +102,7 @@ def train(DEVICE,
                 t.mps.empty_cache()
         
         wandb.log({"Full Data Gender de-baising Losses": np.mean(losses)})
-<<<<<<< HEAD
                     
-=======
-            
-        
-        
->>>>>>> server
                 
     # t.save(new_model.state_dict(), f"saved_models/{evaluation}-{residual_layer}-{method}_b{batch_size_train}_e{epochs}.pth")
                 
