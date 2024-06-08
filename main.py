@@ -22,7 +22,7 @@ def train(DEVICE,
     tokenizer = BertTokenizer.from_pretrained('bert-base-uncased')
 
     wandb.init(project="sae_concept_eraser")
-    wandb.run.name = f"[{evaluation}]-{residual_layer}-{method}_b{batch_size_train}_e{epochs}_lr{lr}_w/0.1sparsity"
+    wandb.run.name = f"[{evaluation}]-{residual_layer}-{method}_b{batch_size_train}_e{epochs}_lr{lr}"
 
     print("passed dict emned path", dict_embed_path)
 
@@ -79,25 +79,26 @@ def train(DEVICE,
             temprature = temperature_schedule[temp_idx]
             logits, l4_mask_sigmoid = new_model(text, temperature=temprature)
             l1_lambda = 0.1  # Weight for L1 loss
-            l1_loss = t.norm(l4_mask_sigmoid, p=1)
+            l1_loss =l1_lambda * t.norm(l4_mask_sigmoid, p=1)
             
             loss = criterion(logits, labels.float())
-            
+            losses.append(loss.item())
             # normalization of losses
-            if loss.item() > l1_loss.item():
-                max_loss = loss.item().clone()
-            elif l1_loss.item() > loss.item():
-                max_loss = l1_loss.item().clone()
+            #if loss.item() > l1_loss.item():
+             #   max_loss = loss.clone()
+            #elif l1_loss.item() > loss.item():
+             #   max_loss = l1_loss.clone()
             
-            loss = loss/max_loss
-            l1_loss = l1_loss/max_loss
+            #loss = loss/max_loss.item()
+            #l1_loss = l1_loss/max_loss.item()
+
             
-            total_loss = loss + l1_lambda * l1_loss
+            total_loss = loss + l1_loss
             optimizer.zero_grad()
             # if method == "neuron masking":
-            total_loss.backward()
+#            total_loss.backward()
+            loss.backward()
             optimizer.step()
-            losses.append(loss.item())
             temp_idx += 1
             # if len(losses) % 10 == 0:
                 # print(f"Epoch: {epoch}, Loss: {np.mean(losses)}")
