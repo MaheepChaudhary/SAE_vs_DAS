@@ -24,7 +24,7 @@ def train(DEVICE,
 
     wandb.init(project="sae_concept_eraser")
     # Through extensive experimentation we can say that the best value for the temperature is 0.1 -> 0.001
-    wandb.run.name = f"[{evaluation}]-{residual_layer}-{method}_b{batch_size_train}_e{epochs}_lr{lr}_temp({10},{0.1})"
+    wandb.run.name = f"[{evaluation}]-{residual_layer}-{method}_b{batch_size_train}_e{epochs}_lr{lr}_temp({0.1},{0.001})"
 
     print("passed dict emned path", dict_embed_path)
 
@@ -101,48 +101,49 @@ def train(DEVICE,
         # evaluation for each group
         batches_test = get_data(DEVICE, train = False, ambiguous=False)
         corrects = []
-        
-        with t.no_grad():
 
-            batch_size_test = 128
-
-            for i in tqdm(range(0, len(batches_test), batch_size_test)):
-                batch_texts = []
-                batch_labels = []
-
-                # Collect the batch of texts and labels
-                for j in range(i, min(i + batch_size_test, len(batches))):
-                    text = batches[j][0]
-
-                    if evaluation == "profession":
-                        labels = batches[j][1]
-                    elif evaluation == "gender":
-                        labels = batches[j][2]
-
-                    batch_texts.append(text)
-                    batch_labels.append(labels)
-
-                # Assuming the model can handle batch processing of texts
-                logits, _ = new_model(batch_texts, temperature=0.001)
-
-                # Convert logits to predictions
+        with t.no_grad():       
+            len_batches = len(batches)
+            for i in tqdm(range(len_batches)):
+                text = batches[i][0]
+                
+                # if evaluation == "profession":
+                #     labels = batches[i][1] # true label, if [2] then spurious label. We will be training the model in hope that mask will learn which concepts to mask. 
+                # elif evaluation == "gender":
+                labels = batches[i][2]
+                
+                # acts = get_acts(text)
+                logits, _ = new_model(text, temperature=temprature)
+                # preds = (logits > 0.0).long()
                 preds = (logits > 0.0).long()
-
-                # Convert batch_labels to tensor
-                batch_labels_tensor = t.stack(batch_labels)
-
-                # Calculate correct predictions
-                corrects.append((preds == batch_labels_tensor).float())
-
-            # Calculate the overall accuracy
+                corrects.append((preds == labels).float())
+            
             accuracy = t.cat(corrects).mean().item()
-            print(f'Accuracy: {accuracy:.4f}')
 
 
-            wandb.log({"Test_during_train_acc": accuracy})
+            wandb.log({f"{method} Gender Test (during_train) Accuracy": accuracy})
+            
+            for i in tqdm(range(len_batches)):
+                text = batches[i][0]
+                
+                # if evaluation == "profession":
+                #     labels = batches[i][1] # true label, if [2] then spurious label. We will be training the model in hope that mask will learn which concepts to mask. 
+                # elif evaluation == "gender":
+                labels = batches[i][1]
+                
+                # acts = get_acts(text)
+                logits, _ = new_model(text, temperature=temprature)
+                # preds = (logits > 0.0).long()
+                preds = (logits > 0.0).long()
+                corrects.append((preds == labels).float())
+            
+            accuracy = t.cat(corrects).mean().item()
+
+
+            wandb.log({f"{method} Professional Test (during_train) Accuracy": accuracy})
                     
                 
-    t.save(new_model.state_dict(), f"saved_models/{evaluation}-{residual_layer}-{method}_b{batch_size_train}_e{epochs}_temp({0.1},{0.001}).pth")
+    # t.save(new_model.state_dict(), f"saved_models/{evaluation}-{residual_layer}-{method}_b{batch_size_train}_e{epochs}_temp({0.1},{0.001}).pth")
                 
 def eval(DEVICE, 
         saved_model_path,
