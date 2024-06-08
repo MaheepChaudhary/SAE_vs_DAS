@@ -1,0 +1,40 @@
+/Users/maheepchaudhary/miniforge3/envs/nnsight/lib/python3.12/site-packages/huggingface_hub/file_download.py:1132: FutureWarning: `resume_download` is deprecated and will be removed in version 1.0.0. Downloads always resume when possible. If you want to force a new download, use `force_download=True`.
+  warnings.warn(
+Special tokens have been added in the vocabulary, make sure the associated word embeddings are fine-tuned or trained.
+Traceback (most recent call last):
+  File "/Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/main.py", line 296, in <module>
+    train(DEVICE=args.device,
+  File "/Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/main.py", line 31, in train
+    new_model = my_model(DEVICE = DEVICE,
+                ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/model.py", line 73, in __init__
+    self.model = LanguageModel('EleutherAI/pythia-70m-deduped', device_map=DEVICE, dispatch=True)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/maheepchaudhary/miniforge3/envs/nnsight/lib/python3.12/site-packages/nnsight/models/LanguageModel.py", line 145, in __init__
+    super().__init__(model_key, *args, **kwargs)
+  File "/Users/maheepchaudhary/miniforge3/envs/nnsight/lib/python3.12/site-packages/nnsight/models/NNsightModel.py", line 78, in __init__
+    self.dispatch_model()
+  File "/Users/maheepchaudhary/miniforge3/envs/nnsight/lib/python3.12/site-packages/nnsight/models/NNsightModel.py", line 269, in dispatch_model
+    self._model = self._load(
+                  ^^^^^^^^^^^
+  File "/Users/maheepchaudhary/miniforge3/envs/nnsight/lib/python3.12/site-packages/nnsight/models/LanguageModel.py", line 166, in _load
+    model = self.automodel.from_pretrained(repo_id, config=config, **kwargs)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/maheepchaudhary/miniforge3/envs/nnsight/lib/python3.12/site-packages/transformers/models/auto/auto_factory.py", line 563, in from_pretrained
+    return model_class.from_pretrained(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/maheepchaudhary/miniforge3/envs/nnsight/lib/python3.12/site-packages/transformers/modeling_utils.py", line 3677, in from_pretrained
+    ) = cls._load_pretrained_model(
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/maheepchaudhary/miniforge3/envs/nnsight/lib/python3.12/site-packages/transformers/modeling_utils.py", line 4104, in _load_pretrained_model
+    new_error_msgs, offload_index, state_dict_index = _load_state_dict_into_meta_model(
+                                                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/maheepchaudhary/miniforge3/envs/nnsight/lib/python3.12/site-packages/transformers/modeling_utils.py", line 886, in _load_state_dict_into_meta_model
+    set_module_tensor_to_device(model, param_name, param_device, **set_module_kwargs)
+  File "/Users/maheepchaudhary/miniforge3/envs/nnsight/lib/python3.12/site-packages/accelerate/utils/modeling.py", line 400, in set_module_tensor_to_device
+    new_value = value.to(device)
+                ^^^^^^^^^^^^^^^^
+  File "/Users/maheepchaudhary/miniforge3/envs/nnsight/lib/python3.12/site-packages/torch/cuda/__init__.py", line 284, in _lazy_init
+    raise AssertionError("Torch not compiled with CUDA enabled")
+AssertionError: Torch not compiled with CUDA enabled
+passed dict emned path /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/baulab.us/u/smarks/autoencoders/pythia-70m-deduped/embed

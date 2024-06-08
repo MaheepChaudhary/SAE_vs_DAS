@@ -357,3 +357,5 @@ if __name__ == "__main__":
 # Figure out the set of cities that GPT-2 knows the country and continent for
 
 # python main.py -e 10 -btr 16 -d cuda:1 -layer "4" -pp probe_shift.pkl -task train -eval profession -nds "neuron masking" -dpath ./dictionary_learning/dictionaries/pythia-70m-deduped/embed -atpath ./dictionary_learning/dictionaries/pythia-70m-deduped/attn_out_layer -mpath ./dictionary_learning/dictionaries/pythia-70m-deduped/mlp_out_layer -rpath ./dictionary_learning/dictionaries/pythia-70m-deduped/resid_out_layer -mb 1
+
+# python main.py -d cuda:1 -layer "4" -dpath ./dictionary_learning/dictionaries/pythia-70m-deduped/embed -atpath ./dictionary_learning/dictionaries/pythia-70m-deduped/attn_out_layer -mpath ./dictionary_learning/dictionaries/pythia-70m-deduped/mlp_out_layer -rpath ./dictionary_learning/dictionaries/pythia-70m-deduped/resid_out_layer -mb 1 -e 25 -btr 16 -task train -eval profession -nds "neuron masking" -temp "[0.1,0.001]"
