@@ -6,6 +6,7 @@ from dataprocessing import *
 
 def train(DEVICE, 
         epochs, 
+        temp,
         lr,
         mini_batch,
         evaluation,
@@ -22,7 +23,8 @@ def train(DEVICE,
     tokenizer = BertTokenizer.from_pretrained('bert-base-uncased')
 
     wandb.init(project="sae_concept_eraser")
-    wandb.run.name = f"[{evaluation}]-{residual_layer}-{method}_b{batch_size_train}_e{epochs}_lr{lr}_temp(0.001-0.0000001)"
+    # Through extensive experimentation we can say that the best value for the temperature is 0.1 -> 0.001
+    wandb.run.name = f"[{evaluation}]-{residual_layer}-{method}_b{batch_size_train}_e{epochs}_lr{lr}_temp({temp[0]},{temp[1]})"
 
     print("passed dict emned path", dict_embed_path)
 
@@ -52,8 +54,8 @@ def train(DEVICE,
 
     total_step = 0
     target_total_step = len(batches) * epochs
-    temperature_start = 0.001
-    temperature_end = 0.0000001
+    temperature_start = temp[0]
+    temperature_end = temp[1]
     temperature_schedule = (
         t.linspace(temperature_start, temperature_end, target_total_step)
         .to(t.bfloat16)
@@ -78,25 +80,10 @@ def train(DEVICE,
             
             temprature = temperature_schedule[temp_idx]
             logits, l4_mask_sigmoid = new_model(text, temperature=temprature)
-            l1_lambda = 0.1  # Weight for L1 loss
-            l1_loss =l1_lambda * t.norm(l4_mask_sigmoid, p=1)
             
             loss = criterion(logits, labels.float())
             losses.append(loss.item())
-            # normalization of losses
-            #if loss.item() > l1_loss.item():
-             #   max_loss = loss.clone()
-            #elif l1_loss.item() > loss.item():
-             #   max_loss = l1_loss.clone()
-            
-            #loss = loss/max_loss.item()
-            #l1_loss = l1_loss/max_loss.item()
-
-            
-            total_loss = loss + l1_loss
             optimizer.zero_grad()
-            # if method == "neuron masking":
-#            total_loss.backward()
             loss.backward()
             optimizer.step()
             temp_idx += 1
@@ -112,7 +99,7 @@ def train(DEVICE,
         wandb.log({"Full Data Gender de-baising Losses": np.mean(losses)})
                     
                 
-    # t.save(new_model.state_dict(), f"saved_models/{evaluation}-{residual_layer}-{method}_b{batch_size_train}_e{epochs}.pth")
+    t.save(new_model.state_dict(), f"saved_models/{evaluation}-{residual_layer}-{method}_b{batch_size_train}_e{epochs}_temp({temp[0]},{temp[1]}).pth")
                 
 def eval(DEVICE, 
         saved_model_path,
@@ -292,7 +279,7 @@ if __name__ == "__main__":
     
     argparser.add_argument("-task", "--task", required=True, type=str, help="task to be performed, i.e. train, eval or eval_on_subgroups")
     argparser.add_argument("-nds", "--method", required=True, type=str, help="method to be used, i.e. neuron masking, sae masking or das masking or das sae masking")
-    
+    argparser.add_argument("-temp", "--temperature", required=True, type=list, help="temperature for the model [initial_value, end_value]")
     
     args = argparser.parse_args()
     # args.residual_layer = [int(i) for i in args.residual_layer]
@@ -307,6 +294,7 @@ if __name__ == "__main__":
         
     
         train(DEVICE=args.device,
+            temp = args.temperature,
             epochs=args.epochs,
             lr = args.learning_rate,
             mini_batch=args.mini_batch,
