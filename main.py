@@ -100,7 +100,8 @@ def train(DEVICE,
 
         # evaluation for each group
         batches_test = get_data(DEVICE, train = False, ambiguous=False)
-        corrects = []
+        corrects_gender = []
+        corrects_profession = []
 
         with t.no_grad():       
             len_batches = len(batches)
@@ -110,15 +111,15 @@ def train(DEVICE,
                 # if evaluation == "profession":
                 #     labels = batches[i][1] # true label, if [2] then spurious label. We will be training the model in hope that mask will learn which concepts to mask. 
                 # elif evaluation == "gender":
-                labels = batches[i][2]
+                labels_gender = batches[i][2]
                 
                 # acts = get_acts(text)
                 logits, _ = new_model(text, temperature=temprature)
                 # preds = (logits > 0.0).long()
-                preds = (logits > 0.0).long()
-                corrects.append((preds == labels).float())
+                preds_gender = (logits > 0.0).long()
+                corrects_gender.append((preds_gender == labels_gender).float())
             
-            accuracy = t.cat(corrects).mean().item()
+            accuracy = t.cat(corrects_gender).mean().item()
 
 
             wandb.log({f"{method} Gender Test (during_train) Accuracy": accuracy})
@@ -129,15 +130,15 @@ def train(DEVICE,
                 # if evaluation == "profession":
                 #     labels = batches[i][1] # true label, if [2] then spurious label. We will be training the model in hope that mask will learn which concepts to mask. 
                 # elif evaluation == "gender":
-                labels = batches[i][1]
+                labels_profession = batches[i][1]
                 
                 # acts = get_acts(text)
                 logits, _ = new_model(text, temperature=temprature)
                 # preds = (logits > 0.0).long()
-                preds = (logits > 0.0).long()
-                corrects.append((preds == labels).float())
+                preds_profession = (logits > 0.0).long()
+                corrects_profession.append((preds_profession == labels_profession).float())
             
-            accuracy = t.cat(corrects).mean().item()
+            accuracy = t.cat(corrects_profession).mean().item()
 
 
             wandb.log({f"{method} Professional Test (during_train) Accuracy": accuracy})
