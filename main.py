@@ -24,7 +24,7 @@ def train(DEVICE,
 
     wandb.init(project="sae_concept_eraser")
     # Through extensive experimentation we can say that the best value for the temperature is 0.1 -> 0.001
-    wandb.run.name = f"[{evaluation}]-{residual_layer}-{method}_b{batch_size_train}_e{epochs}_lr{lr}_temp({0.1},{0.001})"
+    wandb.run.name = f"[{evaluation}]-{residual_layer}-{method}_b{batch_size_train}_e{epochs}_lr{lr}_temp({10},{0.1})"
 
     print("passed dict emned path", dict_embed_path)
 
@@ -54,8 +54,8 @@ def train(DEVICE,
 
     total_step = 0
     target_total_step = len(batches) * epochs
-    temperature_start = 0.1
-    temperature_end = 0.001
+    temperature_start = 10
+    temperature_end = 0.1
     temperature_schedule = (
         t.linspace(temperature_start, temperature_end, target_total_step)
         .to(t.bfloat16)
@@ -163,7 +163,7 @@ def eval(DEVICE,
                 labels = batches[i][2]
             
             # acts = get_acts(text)
-            logits = new_model(text, temperature=0.1)
+            logits, _ = new_model(text, temperature=0.001)
             # preds = (logits > 0.0).long()
             preds = (logits > 0.0).long()
             corrects.append((preds == labels).float())
@@ -218,7 +218,7 @@ def eval_on_subgroups(DEVICE,
             for i in tqdm(range(len(batches))):
                 text = batches[i][0]
                 labels = label_profile[0] # true label, if [2] then spurious label. We will be training the model in hope that mask will learn which concepts to mask.
-                logits = new_model(text, temperature = 0.1)
+                logits = new_model(text, temperature = 0.001)
                 preds = (logits > 0.0).long()
                 corrects.append((preds == labels).float())
             

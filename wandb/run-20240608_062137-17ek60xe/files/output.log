@@ -1,0 +1,27 @@
+
+passed dict emned path ./dictionary_learning/dictionaries/pythia-70m-deduped/embed
+Special tokens have been added in the vocabulary, make sure the associated word embeddings are fine-tuned or trained.
+Traceback (most recent call last):
+  File "/home/atticus/maheep/SAE_vs_DAS/main.py", line 296, in <module>
+    train(DEVICE=args.device,
+  File "/home/atticus/maheep/SAE_vs_DAS/main.py", line 31, in train
+    new_model = my_model(DEVICE = DEVICE,
+  File "/home/atticus/maheep/SAE_vs_DAS/model.py", line 117, in __init__
+    sae_rotate_layer = RotateLayer(expansion_factor * activation_dim)
+  File "/home/atticus/maheep/SAE_vs_DAS/model.py", line 22, in __init__
+    t.nn.init.orthogonal_(weight)
+  File "/home/atticus/.local/lib/python3.10/site-packages/torch/nn/init.py", line 543, in orthogonal_
+    q, r = torch.linalg.qr(flattened)
+KeyboardInterrupt
+Traceback (most recent call last):
+  File "/home/atticus/maheep/SAE_vs_DAS/main.py", line 296, in <module>
+    train(DEVICE=args.device,
+  File "/home/atticus/maheep/SAE_vs_DAS/main.py", line 31, in train
+    new_model = my_model(DEVICE = DEVICE,
+  File "/home/atticus/maheep/SAE_vs_DAS/model.py", line 117, in __init__
+    sae_rotate_layer = RotateLayer(expansion_factor * activation_dim)
+  File "/home/atticus/maheep/SAE_vs_DAS/model.py", line 22, in __init__
+    t.nn.init.orthogonal_(weight)
+  File "/home/atticus/.local/lib/python3.10/site-packages/torch/nn/init.py", line 543, in orthogonal_
+    q, r = torch.linalg.qr(flattened)
+KeyboardInterrupt
