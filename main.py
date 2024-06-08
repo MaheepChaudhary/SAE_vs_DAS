@@ -54,8 +54,8 @@ def train(DEVICE,
 
     total_step = 0
     target_total_step = len(batches) * epochs
-    temperature_start = 10
-    temperature_end = 0.1
+    temperature_start = 0.1
+    temperature_end = 0.001
     temperature_schedule = (
         t.linspace(temperature_start, temperature_end, target_total_step)
         .to(t.bfloat16)
@@ -97,6 +97,49 @@ def train(DEVICE,
                 t.mps.empty_cache()
         
         wandb.log({"Full Data Gender de-baising Losses": np.mean(losses)})
+
+        # evaluation for each group
+        batches_test = get_data(DEVICE, train = False, ambiguous=False)
+        corrects = []
+        
+        with t.no_grad():
+
+            batch_size_test = 128
+
+            for i in tqdm(range(0, len(batches_test), batch_size_test)):
+                batch_texts = []
+                batch_labels = []
+
+                # Collect the batch of texts and labels
+                for j in range(i, min(i + batch_size_test, len(batches))):
+                    text = batches[j][0]
+
+                    if evaluation == "profession":
+                        labels = batches[j][1]
+                    elif evaluation == "gender":
+                        labels = batches[j][2]
+
+                    batch_texts.append(text)
+                    batch_labels.append(labels)
+
+                # Assuming the model can handle batch processing of texts
+                logits, _ = new_model(batch_texts, temperature=0.001)
+
+                # Convert logits to predictions
+                preds = (logits > 0.0).long()
+
+                # Convert batch_labels to tensor
+                batch_labels_tensor = t.stack(batch_labels)
+
+                # Calculate correct predictions
+                corrects.append((preds == batch_labels_tensor).float())
+
+            # Calculate the overall accuracy
+            accuracy = t.cat(corrects).mean().item()
+            print(f'Accuracy: {accuracy:.4f}')
+
+
+            wandb.log({"Test_during_train_acc": accuracy})
                     
                 
     t.save(new_model.state_dict(), f"saved_models/{evaluation}-{residual_layer}-{method}_b{batch_size_train}_e{epochs}_temp({0.1},{0.001}).pth")
