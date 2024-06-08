@@ -22,7 +22,7 @@ def train(DEVICE,
     tokenizer = BertTokenizer.from_pretrained('bert-base-uncased')
 
     wandb.init(project="sae_concept_eraser")
-    wandb.run.name = f"[{evaluation}]-{residual_layer}-{method}_b{batch_size_train}_e{epochs}_lr{lr}"
+    wandb.run.name = f"[{evaluation}]-{residual_layer}-{method}_b{batch_size_train}_e{epochs}_lr{lr}_temp(0.001-0.0000001)"
 
     print("passed dict emned path", dict_embed_path)
 
@@ -52,8 +52,8 @@ def train(DEVICE,
 
     total_step = 0
     target_total_step = len(batches) * epochs
-    temperature_start = 50.0
-    temperature_end = 0.1
+    temperature_start = 0.001
+    temperature_end = 0.0000001
     temperature_schedule = (
         t.linspace(temperature_start, temperature_end, target_total_step)
         .to(t.bfloat16)
