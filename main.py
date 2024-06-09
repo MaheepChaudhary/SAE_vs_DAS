@@ -104,14 +104,14 @@ def train(DEVICE,
         corrects_profession = []
 
         with t.no_grad():       
-            len_batches = len(batches)
+            len_batches = len(batches_test)
             for i in tqdm(range(len_batches)):
-                text = batches[i][0]
+                text = batches_test[i][0]
                 
                 # if evaluation == "profession":
                 #     labels = batches[i][1] # true label, if [2] then spurious label. We will be training the model in hope that mask will learn which concepts to mask. 
                 # elif evaluation == "gender":
-                labels_gender = batches[i][2]
+                labels_gender = batches_test[i][2]
                 
                 # acts = get_acts(text)
                 logits, _ = new_model(text, temperature=temprature)
@@ -125,12 +125,12 @@ def train(DEVICE,
             wandb.log({f"{method} Gender Test (during_train) Accuracy": accuracy})
             
             for i in tqdm(range(len_batches)):
-                text = batches[i][0]
+                text = batches_test[i][0]
                 
                 # if evaluation == "profession":
                 #     labels = batches[i][1] # true label, if [2] then spurious label. We will be training the model in hope that mask will learn which concepts to mask. 
                 # elif evaluation == "gender":
-                labels_profession = batches[i][1]
+                labels_profession = batches_test[i][1]
                 
                 # acts = get_acts(text)
                 logits, _ = new_model(text, temperature=temprature)
