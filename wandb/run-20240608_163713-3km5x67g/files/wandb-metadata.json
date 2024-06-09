@@ -1,0 +1,225 @@
+{
+    "os": "Linux-6.5.0-28-generic-x86_64-with-glibc2.35",
+    "python": "3.10.12",
+    "heartbeatAt": "2024-06-08T23:37:14.186329",
+    "startedAt": "2024-06-08T23:37:13.640230",
+    "docker": null,
+    "cuda": null,
+    "args": [
+        "-d",
+        "cuda:1",
+        "-layer",
+        "4",
+        "-dpath",
+        "./dictionary_learning/dictionaries/pythia-70m-deduped/embed",
+        "-atpath",
+        "./dictionary_learning/dictionaries/pythia-70m-deduped/attn_out_layer",
+        "-mpath",
+        "./dictionary_learning/dictionaries/pythia-70m-deduped/mlp_out_layer",
+        "-rpath",
+        "./dictionary_learning/dictionaries/pythia-70m-deduped/resid_out_layer",
+        "-mb",
+        "1",
+        "-e",
+        "25",
+        "-btr",
+        "16",
+        "-task",
+        "train",
+        "-eval",
+        "profession",
+        "-nds",
+        "das masking"
+    ],
+    "state": "running",
+    "program": "/home/atticus/maheep/SAE_vs_DAS/main.py",
+    "codePathLocal": "main.py",
+    "codePath": "main.py",
+    "git": {
+        "remote": "https://github.com/MaheepChaudhary/SAE_vs_DAS.git",
+        "commit": "22572268920ec2b1c51bdfa67abb08c0c3975097"
+    },
+    "email": "chaudhary.maheep28@gmail.com",
+    "root": "/home/atticus/maheep/SAE_vs_DAS",
+    "host": "AtticusDeepLearner",
+    "username": "atticus",
+    "executable": "/usr/bin/python",
+    "cpu_count": 16,
+    "cpu_count_logical": 32,
+    "cpu_freq": {
+        "current": 3.1382812499999986,
+        "min": 1800.0,
+        "max": 4000.0
+    },
+    "cpu_freq_per_core": [
+        {
+            "current": 4.541,
+            "min": 1800.0,
+            "max": 4000.0
+        },
+        {
+            "current": 3.695,
+            "min": 1800.0,
+            "max": 4000.0
+        },
+        {
+            "current": 4.364,
+            "min": 1800.0,
+            "max": 4000.0
+        },
+        {
+            "current": 3.689,
+            "min": 1800.0,
+            "max": 4000.0
+        },
+        {
+            "current": 3.633,
+            "min": 1800.0,
+            "max": 4000.0
+        },
+        {
+            "current": 1.8,
+            "min": 1800.0,
+            "max": 4000.0
+        },
+        {
+            "current": 2.9,
+            "min": 1800.0,
+            "max": 4000.0
+        },
+        {
+            "current": 4.331,
+            "min": 1800.0,
+            "max": 4000.0
+        },
+        {
+            "current": 4.0,
+            "min": 1800.0,
+            "max": 4000.0
+        },
+        {
+            "current": 3.63,
+            "min": 1800.0,
+            "max": 4000.0
+        },
+        {
+            "current": 2.9,
+            "min": 1800.0,
+            "max": 4000.0
+        },
+        {
+            "current": 3.632,
+            "min": 1800.0,
+            "max": 4000.0
+        },
+        {
+            "current": 3.631,
+            "min": 1800.0,
+            "max": 4000.0
+        },
+        {
+            "current": 1.8,
+            "min": 1800.0,
+            "max": 4000.0
+        },
+        {
+            "current": 3.624,
+            "min": 1800.0,
+            "max": 4000.0
+        },
+        {
+            "current": 4.542,
+            "min": 1800.0,
+            "max": 4000.0
+        },
+        {
+            "current": 4.542,
+            "min": 1800.0,
+            "max": 4000.0
+        },
+        {
+            "current": 3.632,
+            "min": 1800.0,
+            "max": 4000.0
+        },
+        {
+            "current": 1.8,
+            "min": 1800.0,
+            "max": 4000.0
+        },
+        {
+            "current": 1.8,
+            "min": 1800.0,
+            "max": 4000.0
+        },
+        {
+            "current": 1.8,
+            "min": 1800.0,
+            "max": 4000.0
+        },
+        {
+            "current": 3.633,
+            "min": 1800.0,
+            "max": 4000.0
+        },
+        {
+            "current": 4.0,
+            "min": 1800.0,
+            "max": 4000.0
+        },
+        {
+            "current": 1.8,
+            "min": 1800.0,
+            "max": 4000.0
+        },
+        {
+            "current": 4.403,
+            "min": 1800.0,
+            "max": 4000.0
+        },
+        {
+            "current": 1.8,
+            "min": 1800.0,
+            "max": 4000.0
+        },
+        {
+            "current": 4.538,
+            "min": 1800.0,
+            "max": 4000.0
+        },
+        {
+            "current": 1.8,
+            "min": 1800.0,
+            "max": 4000.0
+        },
+        {
+            "current": 1.8,
+            "min": 1800.0,
+            "max": 4000.0
+        },
+        {
+            "current": 3.628,
+            "min": 1800.0,
+            "max": 4000.0
+        },
+        {
+            "current": 3.628,
+            "min": 1800.0,
+            "max": 4000.0
+        },
+        {
+            "current": 4.538,
+            "min": 1800.0,
+            "max": 4000.0
+        }
+    ],
+    "disk": {
+        "/": {
+            "total": 3519.256721496582,
+            "used": 150.74188232421875
+        }
+    },
+    "memory": {
+        "total": 251.53791046142578
+    }
+}
