@@ -33,10 +33,22 @@ if __name__ == "__main__":
     # eval_file_path  = f"/content/{args.attribute}_data.json"
     eval_file_path = args.eval_file_path
     
-    with open(eval_file_path, 'r') as file:
+    # with open(eval_file_path, 'r') as file:
+    #     data = json.load(file)
+
+    '''
+    Now I will have to make the code for taking the accuracy on the prepared selected dataset of ravel
+    '''
+    
+    with open(eval_file_path, "r") as file:
         data = json.load(file)
     
-    accuracy = eval_on_vanilla_gpt(DEVICE, model, args.model, data, args.attribute, tokenizer, args.accuracy)
+    print(data["sentences"][:][0])
+    # accuracy, correct_arr = eval_on_vanilla_gpt(DEVICE, model, args.model, data, args.attribute, tokenizer, args.accuracy)
+    # sentences_json = json.dumps({"sentences": correct_arr}, indent=4)
+    
+    # with open(f"gpt2_comfy_{args.accuracy}_{args.attribute}.json", "w") as file:
+    #     file.write(sentences_json)
     # wandb.log({"Evaluation Accuracy": accuracy})
 
     # with model.trace() as runner:
