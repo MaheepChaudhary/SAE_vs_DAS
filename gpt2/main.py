@@ -35,7 +35,7 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     
     parser.add_argument("-p", "--path_json", default = "ravel/data/ravel_city_entity_attributes.json", help='Prompting for Ravel Data')
-    parser.add_argument("-d", "--device", default = "mps", help='Device to run the model on')
+    parser.add_argument("-d", "--device", default = "cuda:1", help='Device to run the model on')
     parser.add_argument("-efp", "--eval_file_path", required = True, help = "file path which you would like to evaluate" )
     parser.add_argument("-m", "--model", default = "gpt2", help= "the model which you would like to evaluate on the ravel dataset")
     parser.add_argument("-a", "--attribute", required = True, help = "name of the attribute on which evaluation is being performned")
@@ -61,8 +61,8 @@ if __name__ == "__main__":
     # eval_file_path  = f"/content/{args.attribute}_data.json"
     eval_file_path = args.eval_file_path
     
-    # with open(eval_file_path, 'r') as file:
-    #     data = json.load(file)
+    with open(eval_file_path, 'r') as file:
+        data = json.load(file)
 
     '''
     Now I will have to make the code for taking the accuracy on the prepared selected dataset of ravel
@@ -77,6 +77,7 @@ if __name__ == "__main__":
     # intervention_dataset(country_data, "country")
     # intervention_dataset(continent_data,"continent")
     
+    '''
     
     with open("continent_intervention_dataset.json", "r") as file:
         continent_intervention_data = json.load(file)
@@ -86,67 +87,116 @@ if __name__ == "__main__":
     
     '''
     
-    for sample_no, sample in enumerate(continent_intervention_data):
+<<<<<<< HEAD
+    tokenizer.pad_token = tokenizer.eos_token
+    
+    for sample_no in tqdm(range(0,len(continent_intervention_data), 20)):
         
+        sample = continent_intervention_data[sample_no:sample_no+20]
+        base = [element[0][0] for element in sample]
+        source = [element[1][0] for element in sample]
+        base_label = [element[0][1] for element in sample]
+        source_label = [element[1][1] for element in sample]
+        # base_city = sample[:][0][0].split(".")[-1].split()[0]
+=======
+    for sample_no in tqdm(range(len(continent_intervention_data))):
+        
+        sample = continent_intervention_data[sample_no]
         base = sample[0][0]
         base_label = sample[0][1]
         base_city = sample[0][0].split(".")[-1].split()[0]
+>>>>>>> origin/init_exp
         
-        source_text = sample[1][0]
-        source_label = sample[1][1]
+        # pprint(base)
+        # base_label = sample[:][0][1]
+        # base_city = sample[:][0][0].split(".")[-1].split()[0]
+        
+        # source_text = sample[:][1][0]
+        # source_label = sample[:][1][1]
 
-        base_ids = tokenizer.encode(base, return_tensors='pt')
-        base_tokens = tokenizer.tokenize(base)
-        source_ids = tokenizer.encode(source_text, return_tensors='pt')
-        source_tokens = tokenizer.tokenize(source_text)
+        base_ids = []
+        source_ids = []
         
-        intervened_token_idx = -9
+<<<<<<< HEAD
+        base_ids = [tokenizer.encode(sent, return_tensors='pt') for sent in base]
+        source_ids = [tokenizer.encode(sent, return_tensors='pt') for sent in source]
+
+        # Pad the sequences manually
+        def pad_sequences(sequences, pad_token_id):
+            max_length = max(seq.size(1) for seq in sequences)
+            padded_sequences = [torch.cat([seq, torch.tensor([[pad_token_id] * (max_length - seq.size(1))])], dim=1) for seq in sequences]
+            return torch.cat(padded_sequences, dim=0)
+
+        base_ids = pad_sequences(base_ids, tokenizer.pad_token_id)
+        source_ids = pad_sequences(source_ids, tokenizer.pad_token_id)
         
-        print(f"The base_token intervened word is {base_tokens[intervened_token_idx]}")
-        print(f"The source_token intervened word is {source_tokens[intervened_token_idx]}")
+        base_ids = base_ids.to(DEVICE)
+        source_ids = source_ids.to(DEVICE)
+
+        base_ids = base_ids.type(torch.LongTensor)
+        source_ids = source_ids.type(torch.LongTensor)
+
+        print(f"The shape of the base_ids is {base_ids.shape}")
+        print(f"The shape of the source_ids is {source_ids.shape}")
+        
+        
+        # base_tokens = tokenizer.tokenize(base)
+        # source_ids = tokenizer.encode(source, return_tensors='pt')
+        # source_tokens = tokenizer.tokenize(source)
+        
+        intervened_token_idx = -9 # -9 is the index of the last word of the city and -10 is the index of the first word of the city
+        
+=======
+        intervened_token_idx = -9 # -9 is the index of the last word of the city and -10 is the index of the first word of the city
+        
+>>>>>>> origin/init_exp
+        # print(f"The base_token intervened word is {base_tokens[intervened_token_idx]}")
+        # print(f"The source_token intervened word is {source_tokens[intervened_token_idx]}")
         
 
         for i in range(1,11):
         
-            correct = 0
-            total = 0
+            correct = {}
         
             with model.trace() as tracer:
             
-                with tracer.invoke(source_ids) as runner:
+                with tracer.invoke(torch.tensor(source_ids)) as runner:
 
                     vector_source = model.transformer.h[i].output
 
-                with tracer.invoke(base_ids) as runner_:
+                with tracer.invoke(torch.tensor(base_ids)) as runner_:
                     
                     model.transformer.h[i].output[0][:,intervened_token_idx,:] = vector_source[0][:,intervened_token_idx,:]
                     intervened_base_output = model.lm_head.output.save()
                 
             predicted_text = tokenizer.decode(intervened_base_output.argmax(dim = -1)[0][-2])
             
-            print(f"For Layer {i} we are intervening on the base label '{base_label}' with the source label '{source_label}' and I get the output '{predicted_text}'")
+            # print(f"For Layer {i} we are intervening on the base label '{base_label}' with the source label '{source_label}' and I get the output '{predicted_text}'")
             
-            total+=1
             
             if predicted_text == source_label:
-                correct+=1
+                correct[i]+=1
             
-        print()
-        
-        if sample_no == 10:
-            break
-            
+    total = len(continent_intervention_data)
+
+    for i in range(1,11):
+        print(f"The accuracy of layer {i} is {correct[i]/total} for token position {i}")
+
+<<<<<<< HEAD
+    '''
+=======
+>>>>>>> origin/init_exp
     
     # overlap_measure(country_data=country_data, continent_data=continent_data)
     
     
 
-    # accuracy, correct_arr = eval_on_vanilla_gpt(DEVICE, model, args.model, data["sentences"], args.attribute, tokenizer, args.accuracy)
-    # sentences_json = json.dumps({"sentences": correct_arr}, indent=4)
+    accuracy, correct_arr = eval_on_vanilla_gpt(DEVICE, model, args.model, data, args.attribute, tokenizer, args.accuracy)
+    sentences_json = json.dumps({"sentences": correct_arr}, indent=4)
     
-    # with open(f"gpt2_comfy_{args.accuracy}_{args.attribute}.json", "w") as file:
-    #     file.write(sentences_json)
-    # wandb.log({"Evaluation Accuracy": accuracy})
+    with open(f"gpt2_comfy_{args.accuracy}_{args.attribute}.json", "w") as file:
+        file.write(sentences_json)
+    wandb.log({"Evaluation Accuracy": accuracy})
 
     # with model.trace() as runner:
     #     with runner.invoke("Aalborg is a city in the continent of") as invoker:
