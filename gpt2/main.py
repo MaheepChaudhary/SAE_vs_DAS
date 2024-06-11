@@ -87,7 +87,6 @@ if __name__ == "__main__":
     
     '''
     
-<<<<<<< HEAD
     tokenizer.pad_token = tokenizer.eos_token
     
     for sample_no in tqdm(range(0,len(continent_intervention_data), 20)):
@@ -98,14 +97,6 @@ if __name__ == "__main__":
         base_label = [element[0][1] for element in sample]
         source_label = [element[1][1] for element in sample]
         # base_city = sample[:][0][0].split(".")[-1].split()[0]
-=======
-    for sample_no in tqdm(range(len(continent_intervention_data))):
-        
-        sample = continent_intervention_data[sample_no]
-        base = sample[0][0]
-        base_label = sample[0][1]
-        base_city = sample[0][0].split(".")[-1].split()[0]
->>>>>>> origin/init_exp
         
         # pprint(base)
         # base_label = sample[:][0][1]
@@ -117,7 +108,6 @@ if __name__ == "__main__":
         base_ids = []
         source_ids = []
         
-<<<<<<< HEAD
         base_ids = [tokenizer.encode(sent, return_tensors='pt') for sent in base]
         source_ids = [tokenizer.encode(sent, return_tensors='pt') for sent in source]
 
@@ -146,10 +136,6 @@ if __name__ == "__main__":
         
         intervened_token_idx = -9 # -9 is the index of the last word of the city and -10 is the index of the first word of the city
         
-=======
-        intervened_token_idx = -9 # -9 is the index of the last word of the city and -10 is the index of the first word of the city
-        
->>>>>>> origin/init_exp
         # print(f"The base_token intervened word is {base_tokens[intervened_token_idx]}")
         # print(f"The source_token intervened word is {source_tokens[intervened_token_idx]}")
         
@@ -182,10 +168,7 @@ if __name__ == "__main__":
     for i in range(1,11):
         print(f"The accuracy of layer {i} is {correct[i]/total} for token position {i}")
 
-<<<<<<< HEAD
     '''
-=======
->>>>>>> origin/init_exp
     
     # overlap_measure(country_data=country_data, continent_data=continent_data)
     
