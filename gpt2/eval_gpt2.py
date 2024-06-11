@@ -24,9 +24,9 @@ def eval_on_vanilla_gpt(DEVICE, model, model_name, dataset, attribute, tokenizer
         if type_acc == "top1":
             # next_token_id = torch.argmax(probabilities, dim=-1).item()
             next_token = tokenizer.decode(logits[0][-2], skip_special_tokens=True).strip()
-            print(f"The next token is {next_token}")
-            print(f"The correct token is {label}")
-            print()
+            # print(f"The next token is {next_token}")
+            # print(f"The correct token is {label}")
+            # print()
                 
     
             if next_token == label:
