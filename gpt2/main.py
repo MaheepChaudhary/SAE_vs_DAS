@@ -68,14 +68,14 @@ if __name__ == "__main__":
     Now I will have to make the code for taking the accuracy on the prepared selected dataset of ravel
     '''
     
-    # with open("gpt2_comfy_top1_country.json", "r") as file:
-    #     country_data = json.load(file)
+    with open("gpt2_comfy_top1_country.json", "r") as file:
+        country_data = json.load(file)
         
-    # with open("gpt2_comfy_top1_continent.json", "r") as file:
-    #     continent_data = json.load(file)
+    with open("gpt2_comfy_top1_continent.json", "r") as file:
+        continent_data = json.load(file)
     
-    # intervention_dataset(country_data, "country")
-    # intervention_dataset(continent_data,"continent")
+    intervention_dataset(country_data, "country")
+    intervention_dataset(continent_data,"continent")
     
     '''
     
@@ -173,12 +173,12 @@ if __name__ == "__main__":
     # overlap_measure(country_data=country_data, continent_data=continent_data)
     
     
-    accuracy, correct_arr = eval_on_vanilla_gpt(DEVICE, model, args.model, data, args.attribute, tokenizer, args.accuracy)
-    sentences_json = json.dumps({"sentences": correct_arr}, indent=4)
+    # accuracy, correct_arr = eval_on_vanilla_gpt(DEVICE, model, args.model, data, args.attribute, tokenizer, args.accuracy)
+    # sentences_json = json.dumps({"sentences": correct_arr}, indent=4)
     
-    with open(f"gpt2_comfy_{args.accuracy}_{args.attribute}.json", "w") as file:
-        file.write(sentences_json)
-    wandb.log({"Evaluation Accuracy": accuracy})
+    # with open(f"gpt2_comfy_{args.accuracy}_{args.attribute}.json", "w") as file:
+    #     file.write(sentences_json)
+    # wandb.log({"Evaluation Accuracy": accuracy})
 
     # with model.trace() as runner:
     #     with runner.invoke("Aalborg is a city in the continent of") as invoker:
