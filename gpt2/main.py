@@ -68,16 +68,16 @@ if __name__ == "__main__":
     Now I will have to make the code for taking the accuracy on the prepared selected dataset of ravel
     '''
     
-    with open("gpt2_comfy_top1_country.json", "r") as file:
-        country_data = json.load(file)
+    # with open("gpt2_comfy_top1_country.json", "r") as file:
+    #     country_data = json.load(file)
         
-    with open("gpt2_comfy_top1_continent.json", "r") as file:
-        continent_data = json.load(file)
+    # with open("gpt2_comfy_top1_continent.json", "r") as file:
+    #     continent_data = json.load(file)
     
-    intervention_dataset(country_data, "country")
-    intervention_dataset(continent_data,"continent")
+    # intervention_dataset(country_data, "country")
+    # intervention_dataset(continent_data,"continent")
     
-    '''
+    
     
     with open("continent_intervention_dataset.json", "r") as file:
         continent_intervention_data = json.load(file)
@@ -89,9 +89,9 @@ if __name__ == "__main__":
     
     tokenizer.pad_token = tokenizer.eos_token
     
-    for sample_no in tqdm(range(0,len(continent_intervention_data), 20)):
+    for sample_no in tqdm(range(0,len(continent_intervention_data), 200)):
         
-        sample = continent_intervention_data[sample_no:sample_no+20]
+        sample = continent_intervention_data[sample_no:sample_no+200]
         base = [element[0][0] for element in sample]
         source = [element[1][0] for element in sample]
         base_label = [element[0][1] for element in sample]
@@ -168,7 +168,7 @@ if __name__ == "__main__":
     for i in range(1,11):
         print(f"The accuracy of layer {i} is {correct[i]/total} for token position {i}")
 
-    '''
+    
     
     # overlap_measure(country_data=country_data, continent_data=continent_data)
     
