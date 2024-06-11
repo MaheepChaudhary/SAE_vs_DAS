@@ -22,7 +22,8 @@ def intervention_dataset(data, attribute):
     for i in data["sentences"]:
         for j in data["sentences"]:
             if i != j:
-                new_data.append([i,j])
+                if i[1] != j[1]:
+                    new_data.append([i,j])
             elif i == j:
                 pass
     
@@ -67,63 +68,74 @@ if __name__ == "__main__":
     Now I will have to make the code for taking the accuracy on the prepared selected dataset of ravel
     '''
     
-    with open("gpt2_comfy_top1_country.json", "r") as file:
-        country_data = json.load(file)
+    # with open("gpt2_comfy_top1_country.json", "r") as file:
+    #     country_data = json.load(file)
         
-    with open("gpt2_comfy_top1_continent.json", "r") as file:
-        continent_data = json.load(file)
+    # with open("gpt2_comfy_top1_continent.json", "r") as file:
+    #     continent_data = json.load(file)
     
     # intervention_dataset(country_data, "country")
     # intervention_dataset(continent_data,"continent")
     
+    
     with open("continent_intervention_dataset.json", "r") as file:
         continent_intervention_data = json.load(file)
     
-    # pprint(len(continent_intervention_data))
-    
     '''
-    Now, I will have to make the code for intervention of the data in the first layer of GPT2
+    # Now, I will have to make the code for intervention of the data in the first layer of GPT2
     
     '''
     
-    text = [['Toronto is a city in the continent of North America. Beijing is a city in '
-            'the continent of Asia. Miami is a city in the continent of North America. '
-            'Santiago is a city in the continent of South America. London is a city in '
-            'the continent of Europe. Anyang is a city in the continent of ',
-            'Asia'],
-            ['Toronto is a city in the continent of North America. Beijing is a city in '
-            'the continent of Asia. Miami is a city in the continent of North America. '
-            'Santiago is a city in the continent of South America. London is a city in '
-            'the continent of Europe. Makamba is a city in the continent of ',
-            'Africa']]
-    
-    base = text[0][0]
-    base_label = text[0][1]
-    base_city = text[0][0].split(".")[-1].split()[0]
-    
-    source_text = text[1][0]
-    source_label = text[1][1]
-
-    input_ids = tokenizer.encode(base, return_tensors='pt')
-
-    # Identify the position of the word in the input sequence
-    # tokens = tokenizer.convert_ids_to_tokens(input_ids[0])
-    # word_position = tokens.index(base_city)
-
-    print(model)
-    
-    print(f"the lenght of the text is {len(base)}")
-    with model.trace(input_ids):
-        vector = model.transformer.h[0].mlp.output.save()
-
-        # model.transformer.h[0].ln_1.output[:,word_position,:] = torch.zeros(vector.shape)
+    for sample_no, sample in enumerate(continent_intervention_data):
         
-        logits = model.lm_head.output.save()
+        base = sample[0][0]
+        base_label = sample[0][1]
+        base_city = sample[0][0].split(".")[-1].split()[0]
         
-    print(f"The shape of the vector is {vector.shape}")
-    predicted_text = model.tokenizer.decode(logits.argmax(dim = -1)[0][-2])
-    print(predicted_text)
-    print(source_label)
+        source_text = sample[1][0]
+        source_label = sample[1][1]
+
+        base_ids = tokenizer.encode(base, return_tensors='pt')
+        base_tokens = tokenizer.tokenize(base)
+        source_ids = tokenizer.encode(source_text, return_tensors='pt')
+        source_tokens = tokenizer.tokenize(source_text)
+        
+        intervened_token_idx = -9
+        
+        print(f"The base_token intervened word is {base_tokens[intervened_token_idx]}")
+        print(f"The source_token intervened word is {source_tokens[intervened_token_idx]}")
+        
+
+        for i in range(1,11):
+        
+            correct = 0
+            total = 0
+        
+            with model.trace() as tracer:
+            
+                with tracer.invoke(source_ids) as runner:
+
+                    vector_source = model.transformer.h[i].output
+
+                with tracer.invoke(base_ids) as runner_:
+                    
+                    model.transformer.h[i].output[0][:,intervened_token_idx,:] = vector_source[0][:,intervened_token_idx,:]
+                    intervened_base_output = model.lm_head.output.save()
+                
+            predicted_text = tokenizer.decode(intervened_base_output.argmax(dim = -1)[0][-2])
+            
+            print(f"For Layer {i} we are intervening on the base label '{base_label}' with the source label '{source_label}' and I get the output '{predicted_text}'")
+            
+            total+=1
+            
+            if predicted_text == source_label:
+                correct+=1
+            
+        print()
+        
+        if sample_no == 10:
+            break
+            
     
     # overlap_measure(country_data=country_data, continent_data=continent_data)
     
