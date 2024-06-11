@@ -173,7 +173,6 @@ if __name__ == "__main__":
     # overlap_measure(country_data=country_data, continent_data=continent_data)
     
     
-
     accuracy, correct_arr = eval_on_vanilla_gpt(DEVICE, model, args.model, data, args.attribute, tokenizer, args.accuracy)
     sentences_json = json.dumps({"sentences": correct_arr}, indent=4)
     

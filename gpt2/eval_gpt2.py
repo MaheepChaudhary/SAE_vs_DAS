@@ -8,6 +8,7 @@ def eval_on_vanilla_gpt(DEVICE, model, model_name, dataset, attribute, tokenizer
     for i in tqdm(range(len(dataset))):
         data, label = dataset[i]
         inputs = tokenizer.encode(data, return_tensors='pt').to(DEVICE)
+        inputs.to(DEVICE)
         with model.trace(inputs):
             logits = model.lm_head.output.argmax(dim = -1).save()
 
