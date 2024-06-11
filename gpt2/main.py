@@ -162,6 +162,8 @@ if __name__ == "__main__":
             
             if predicted_text == source_label:
                 correct[i]+=1
+        
+        print(f"Accuracy: {correct[1]/200}")
             
     total = len(continent_intervention_data)
 
