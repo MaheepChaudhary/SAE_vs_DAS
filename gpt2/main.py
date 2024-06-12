@@ -111,8 +111,10 @@ if __name__ == "__main__":
         source_ids = []
         
         base_ids = [tokenizer.encode(sent, return_tensors='pt') for sent in base]
+        base_tokens = [tokenizer.tokenize(sent) for sent in base]
         source_ids = [tokenizer.encode(sent, return_tensors='pt') for sent in source]
-
+        source_tokens = [tokenizer.tokenize(sent) for sent in source]
+        
         # Pad the sequences manually
         def pad_sequences(sequences, pad_token_id):
             max_length = max(seq.size(1) for seq in sequences)
@@ -136,37 +138,49 @@ if __name__ == "__main__":
         # source_ids = tokenizer.encode(source, return_tensors='pt')
         # source_tokens = tokenizer.tokenize(source)
         
+        print(source_tokens)
+        
+        # if base_ids.shape[-1] == 63:
+        #     base_intervention_idx = -9
+        
+        # if source_ids.shape[-1] == 64:
+        #     source_intervention_idx = -9
+        
         intervened_token_idx = -9 # -9 is the index of the last word of the city and -10 is the index of the first word of the city
         
         # print(f"The base_token intervened word is {base_tokens[intervened_token_idx]}")
         # print(f"The source_token intervened word is {source_tokens[intervened_token_idx]}")
         
 
-        for i in range(1,11):
+        # for i in range(1,11):
         
             
+        i = 1
         
-            with model.trace() as tracer:
-            
-                with tracer.invoke(source_ids) as runner:
+        with model.trace() as tracer:
+        
+            with tracer.invoke(source_ids) as runner:
 
-                    vector_source = model.transformer.h[i].output
+                vector_source = model.transformer.h[i].output
 
-                with tracer.invoke(base_ids) as runner_:
-                    
-                    model.transformer.h[i].output[0][:,50:60,:] = vector_source[0][:,50:60,:]
-                    intervened_base_output = model.lm_head.output.save()
-            
-            predicted_text = [tokenizer.decode(output[-2]) for output in intervened_base_output.argmax(dim = -1)]
-            predicted_text = [i.split()[0] for i in predicted_text]
-            # print(f"For Layer {i} we are intervening on the base label '{base_label}' with the source label '{source_label}' and I get the output '{predicted_text}'")
-            
-            print(predicted_text)
-            print(source_label)
-            
-            matches = sum(1 for a, b in zip(predicted_text, source_label) if a == b)
-            print(matches)
-            print()
+            with tracer.invoke(base_ids) as runner_:
+                
+                model.transformer.h[i].output[0][:,intervened_token_idx,:] = vector_source[0][:,intervened_token_idx,:]
+                intervened_base_output = model.lm_head.output.save()
+        
+        predicted_text = [tokenizer.decode(output[-2]) for output in intervened_base_output.argmax(dim = -1)]
+        predicted_text = [i.split()[0] for i in predicted_text]
+        # print(f"For Layer {i} we are intervening on the base label '{base_label}' with the source label '{source_label}' and I get the output '{predicted_text}'")
+        
+        print()
+        pprint(f"Base Label: {base_label}")
+        pprint(f"Predicted text: {predicted_text}")
+        pprint(f"Source Label: {source_label}")
+        print()
+        
+        matches = sum(1 for a, b in zip(predicted_text, source_label) if a == b)
+        print(matches)
+        print()
         
         # print(f"Accuracy: {correct[1]/200}")
         
