@@ -79,7 +79,7 @@ if __name__ == "__main__":
     
     
     
-    with open("continent_intervention_dataset.json", "r") as file:
+    with open("country_intervention_dataset.json", "r") as file:
         continent_intervention_data = json.load(file)
     
     '''
@@ -102,9 +102,17 @@ if __name__ == "__main__":
             10:[0],
             11:[0]}
     
-    for sample_no in tqdm(range(0,len(continent_intervention_data),225)):
+
+    def safe_split(word):
+        try:
+            a = word.split()[0]
+            return a 
+        except:
+            return " "
+
+    for sample_no in tqdm(range(0,len(continent_intervention_data),200)):
         
-        sample = continent_intervention_data[sample_no:sample_no+225]
+        sample = continent_intervention_data[sample_no:sample_no+200]
         base = [element[0][0] for element in sample]
         source = [element[1][0] for element in sample]
         base_label = [element[0][1] for element in sample]
@@ -163,7 +171,7 @@ if __name__ == "__main__":
         # print(f"The source_token intervened word is {source_tokens[intervened_token_idx]}")
         
 
-        for i in range(0,12):
+        for i in range(0,9):
             
             with model.trace() as tracer:
             
@@ -177,7 +185,7 @@ if __name__ == "__main__":
                     intervened_base_output = model.lm_head.output.save()
             
             predicted_text = [tokenizer.decode(output[-2]) for output in intervened_base_output.argmax(dim = -1)]
-            predicted_text = [i.split()[0] for i in predicted_text]
+            predicted_text = [safe_split(i) for i in predicted_text]
             # print(f"For Layer {i} we are intervening on the base label '{base_label}' with the source label '{source_label}' and I get the output '{predicted_text}'")
             
             # print()
@@ -194,13 +202,13 @@ if __name__ == "__main__":
             
             correct[i].append(matches)
     
-        if sample_no == 100:
-            break
+        #if sample_no == 100:
+           # break
         
-    # total = len(continent_intervention_data)
-    total = 100
+    total = len(continent_intervention_data)
+    #total = 100
 
-    for i in range(0,12):
+    for i in range(0,9):
         print(sum(correct[i]))
         print(f"The accuracy of layer {i} is {sum(correct[i])/total} for token position {i}")
 
