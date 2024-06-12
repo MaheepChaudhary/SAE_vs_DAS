@@ -89,9 +89,11 @@ if __name__ == "__main__":
     
     tokenizer.pad_token = tokenizer.eos_token
     
-    for sample_no in tqdm(range(0,len(continent_intervention_data), 200)):
+    correct = {}
+    
+    for sample_no in tqdm(range(0,len(continent_intervention_data), 4)):
         
-        sample = continent_intervention_data[sample_no:sample_no+200]
+        sample = continent_intervention_data[sample_no:sample_no+4]
         base = [element[0][0] for element in sample]
         source = [element[1][0] for element in sample]
         base_label = [element[0][1] for element in sample]
@@ -142,29 +144,34 @@ if __name__ == "__main__":
 
         for i in range(1,11):
         
-            correct = {}
+            
         
             with model.trace() as tracer:
             
-                with tracer.invoke(torch.tensor(source_ids)) as runner:
+                with tracer.invoke(source_ids) as runner:
 
                     vector_source = model.transformer.h[i].output
 
-                with tracer.invoke(torch.tensor(base_ids)) as runner_:
+                with tracer.invoke(base_ids) as runner_:
                     
-                    model.transformer.h[i].output[0][:,intervened_token_idx,:] = vector_source[0][:,intervened_token_idx,:]
+                    model.transformer.h[i].output[0][:,50:60,:] = vector_source[0][:,50:60,:]
                     intervened_base_output = model.lm_head.output.save()
-                
-            predicted_text = tokenizer.decode(intervened_base_output.argmax(dim = -1)[0][-2])
             
+            predicted_text = [tokenizer.decode(output[-2]) for output in intervened_base_output.argmax(dim = -1)]
+            predicted_text = [i.split()[0] for i in predicted_text]
             # print(f"For Layer {i} we are intervening on the base label '{base_label}' with the source label '{source_label}' and I get the output '{predicted_text}'")
             
+            print(predicted_text)
+            print(source_label)
             
-            if predicted_text == source_label:
-                correct[i]+=1
+            matches = sum(1 for a, b in zip(predicted_text, source_label) if a == b)
+            print(matches)
+            print()
         
-        print(f"Accuracy: {correct[1]/200}")
-            
+        # print(f"Accuracy: {correct[1]/200}")
+        
+
+    
     total = len(continent_intervention_data)
 
     for i in range(1,11):
