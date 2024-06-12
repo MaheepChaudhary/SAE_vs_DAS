@@ -89,11 +89,22 @@ if __name__ == "__main__":
     
     tokenizer.pad_token = tokenizer.eos_token
     
-    correct = {}
+    correct = {0:[0],
+            1:[0],
+            2:[0],
+            3:[0],
+            4:[0],
+            5:[0],
+            6:[0],
+            7:[0],
+            8:[0],
+            9:[0],
+            10:[0],
+            11:[0]}
     
-    for sample_no in tqdm(range(0,len(continent_intervention_data), 4)):
+    for sample_no in tqdm(range(0,len(continent_intervention_data),225)):
         
-        sample = continent_intervention_data[sample_no:sample_no+4]
+        sample = continent_intervention_data[sample_no:sample_no+225]
         base = [element[0][0] for element in sample]
         source = [element[1][0] for element in sample]
         base_label = [element[0][1] for element in sample]
@@ -130,15 +141,15 @@ if __name__ == "__main__":
         base_ids = base_ids.type(torch.LongTensor)
         source_ids = source_ids.type(torch.LongTensor)
 
-        print(f"The shape of the base_ids is {base_ids.shape}")
-        print(f"The shape of the source_ids is {source_ids.shape}")
+        # print(f"The shape of the base_ids is {base_ids.shape}")
+        # print(f"The shape of the source_ids is {source_ids.shape}")
         
         
         # base_tokens = tokenizer.tokenize(base)
         # source_ids = tokenizer.encode(source, return_tensors='pt')
         # source_tokens = tokenizer.tokenize(source)
         
-        print(source_tokens)
+        # print(source_tokens)
         
         # if base_ids.shape[-1] == 63:
         #     base_intervention_idx = -9
@@ -146,50 +157,52 @@ if __name__ == "__main__":
         # if source_ids.shape[-1] == 64:
         #     source_intervention_idx = -9
         
-        intervened_token_idx = -9 # -9 is the index of the last word of the city and -10 is the index of the first word of the city
+        intervened_token_idx = -10 # -9 is the index of the last word of the city and -10 is the index of the first word of the city
         
         # print(f"The base_token intervened word is {base_tokens[intervened_token_idx]}")
         # print(f"The source_token intervened word is {source_tokens[intervened_token_idx]}")
         
 
-        # for i in range(1,11):
-        
+        for i in range(0,12):
             
-        i = 1
-        
-        with model.trace() as tracer:
-        
-            with tracer.invoke(source_ids) as runner:
+            with model.trace() as tracer:
+            
+                with tracer.invoke(source_ids) as runner:
 
-                vector_source = model.transformer.h[i].output
+                    vector_source = model.transformer.h[i].output
 
-            with tracer.invoke(base_ids) as runner_:
-                
-                model.transformer.h[i].output[0][:,intervened_token_idx,:] = vector_source[0][:,intervened_token_idx,:]
-                intervened_base_output = model.lm_head.output.save()
-        
-        predicted_text = [tokenizer.decode(output[-2]) for output in intervened_base_output.argmax(dim = -1)]
-        predicted_text = [i.split()[0] for i in predicted_text]
-        # print(f"For Layer {i} we are intervening on the base label '{base_label}' with the source label '{source_label}' and I get the output '{predicted_text}'")
-        
-        print()
-        pprint(f"Base Label: {base_label}")
-        pprint(f"Predicted text: {predicted_text}")
-        pprint(f"Source Label: {source_label}")
-        print()
-        
-        matches = sum(1 for a, b in zip(predicted_text, source_label) if a == b)
-        print(matches)
-        print()
-        
-        # print(f"Accuracy: {correct[1]/200}")
-        
-
+                with tracer.invoke(base_ids) as runner_:
+                    
+                    model.transformer.h[i].output[0][:,intervened_token_idx,:] = vector_source[0][:,intervened_token_idx,:]
+                    intervened_base_output = model.lm_head.output.save()
+            
+            predicted_text = [tokenizer.decode(output[-2]) for output in intervened_base_output.argmax(dim = -1)]
+            predicted_text = [i.split()[0] for i in predicted_text]
+            # print(f"For Layer {i} we are intervening on the base label '{base_label}' with the source label '{source_label}' and I get the output '{predicted_text}'")
+            
+            # print()
+            # pprint(f"Base Label: {base_label}")
+            # pprint(f"Predicted text: {predicted_text}")
+            # pprint(f"Source Label: {source_label}")
+            # print()
+            
+            matches = sum(1 for a, b in zip(predicted_text, source_label) if a == b)
+            # print(matches)
+            # print()
+            
+            # print(f"Accuracy: {correct[1]/200}")
+            
+            correct[i].append(matches)
     
-    total = len(continent_intervention_data)
+        if sample_no == 100:
+            break
+        
+    # total = len(continent_intervention_data)
+    total = 100
 
-    for i in range(1,11):
-        print(f"The accuracy of layer {i} is {correct[i]/total} for token position {i}")
+    for i in range(0,12):
+        print(sum(correct[i]))
+        print(f"The accuracy of layer {i} is {sum(correct[i])/total} for token position {i}")
 
     
     
