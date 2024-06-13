@@ -51,10 +51,10 @@ def model_eval(model, eval_file_path, attribute):
 
 def intervention_dataset(overlapping_cities):
     
-    with open("gpt2_comfy_top1_country.json", "r") as file:
+    with open("comfy_country_top1.json", "r") as file:
         country_data = json.load(file)
     
-    with open("gpt2_comfy_top1_continent.json", "r") as file:
+    with open("comfy_continent_top1.json", "r") as file:
         continent_data = json.load(file)
     
     
@@ -62,17 +62,15 @@ def intervention_dataset(overlapping_cities):
         
         new_data = []
         
-        for i in data["sentences"]:
+        for i in data:
         
             city_name = i[0].split(".")[-1].split()[0]
-            print(city_name)
             if city_name in overlapping_cities:
-                print(i[1])
                 pass
             else:
                 continue
         
-            for j in data["sentences"]:
+            for j in data:
                 
                 indented_city_name = j[0].split(".")[-1].split()[0]
                 if indented_city_name in overlapping_cities:
@@ -132,13 +130,13 @@ if __name__ == "__main__":
 
     '''
     
-    model_eval(eval_file_path=args.eval_file_path, model = model, attribute=args.attribute)
+    # model_eval(eval_file_path=args.eval_file_path, model = model, attribute=args.attribute)
     # overlapping_cities = overlap_measure()
     
-    # # creating the intervention dataset of overlapping cities. 
+    # creating the intervention dataset of overlapping cities. 
     # intervention_dataset(overlapping_cities=overlapping_cities)
     
-    '''
+
     with open("continent_intervention_dataset.json", "r") as file:
         continent_intervention_data = json.load(file)
     
@@ -169,6 +167,9 @@ if __name__ == "__main__":
         except:
             return " "
 
+    i = 1
+    total_samples_processed = 0
+    
     for sample_no in tqdm(range(len(continent_intervention_data))):
         
         sample = continent_intervention_data[sample_no]
@@ -193,46 +194,30 @@ if __name__ == "__main__":
         source_ids = tokenizer.encode(source, return_tensors='pt')
         source_tokens = tokenizer.tokenize(source) 
         
-        # Pad the sequences manually
-        # def pad_sequences(sequences, pad_token_id):
-        #     max_length = max(seq.size(1) for seq in sequences)
-        #     padded_sequences = [torch.cat([seq, torch.tensor([[pad_token_id] * (max_length - seq.size(1))])], dim=1) for seq in sequences]
-        #     return torch.cat(padded_sequences, dim=0)
-
-        # base_ids = pad_sequences(base_ids, tokenizer.pad_token_id)
-        # source_ids = pad_sequences(source_ids, tokenizer.pad_token_id)
-        
         base_ids = base_ids.to(DEVICE)
         source_ids = source_ids.to(DEVICE)
 
         base_ids = base_ids.type(torch.LongTensor)
         source_ids = source_ids.type(torch.LongTensor)
-
-        # print(f"The shape of the base_ids is {base_ids.shape}")
-        # print(f"The shape of the source_ids is {source_ids.shape}")
+        
+        # print(source_tokens)
+        
+        intervened_token_idx = -1 # -8 for continent and -9 for country
         
         
-        # base_tokens = tokenizer.tokenize(base)
-        # source_ids = tokenizer.encode(source, return_tensors='pt')
-        # source_tokens = tokenizer.tokenize(source)
-        
-        print(source_tokens)
-        
-        # if base_ids.shape[-1] == 63:
-        #     base_intervention_idx = -9
-        
-        # if source_ids.shape[-1] == 64:
-        #     source_intervention_idx = -9
-        
-        intervened_token_idx = -9 # -9 is the index of the last word of the city and -10 is the index of the first word of the city
-        
-        # print(f"The base_token intervened word is {base_tokens[intervened_token_idx]}")
-        # print(f"The source_token intervened word is {source_tokens[intervened_token_idx]}")
-        
-
         # for i in range(0,9):
         
+        if source_ids.shape != base_ids.shape:
+            continue
+    
+        print()
+        print(base_tokens)
+        print(source_tokens)
+        print(f"Source token -9 : {source_tokens[-9]}, and Base token -9: {base_tokens[-9]}")
         
+        print(f"The len of source ids is {source_ids.shape} and the base ids is {base_ids.shape}")
+        print()
+
         with model.trace() as tracer:
         
             with tracer.invoke(source_ids) as runner:
@@ -242,13 +227,12 @@ if __name__ == "__main__":
             with tracer.invoke(base_ids) as runner_:
                 
                 print(vector_source.shape)
-                model.transformer.h[i].output[0][:,-9,:] = vector_source[0][:,-9,:]
-                intervened_base_output = model.lm_head.output.save()
+                model.transformer.h[i].output[0][:,-9:] = vector_source[0][:,-9,:]
+                intervened_base_output = model.lm_head.output.argmax(dim = -1).save()
         
         # intervened_base_output.argamx(dim = -1)[:]
         
-        predicted_text = [tokenizer.decode(output[-2]) for output in intervened_base_output.argmax(dim = -1)]
-        predicted_text = [safe_split(i) for i in predicted_text]
+        predicted_text = model.tokenizer.decode(intervened_base_output[0][-1])
         # print(f"For Layer {i} we are intervening on the base label '{base_label}' with the source label '{source_label}' and I get the output '{predicted_text}'")
         
         print()
@@ -258,24 +242,22 @@ if __name__ == "__main__":
         print()
         
         matches = sum(1 for a, b in zip(predicted_text, source_label) if a == b)
-        # print(matches)
-        # print()
-        
-        # print(f"Accuracy: {correct[1]/200}")
-        
         correct[i].append(matches)
-    
-        #if sample_no == 100:
-           # break
+        total_samples_processed+=1
         
-    total = len(country_intervention_data)
+    
+        if sample_no%100 == 0:
+            print(correct[i])
+            print(sum(correct[i])/total_samples_processed)
+        
+    total = len(continent_intervention_data)
     #total = 100
 
     # for i in range(0,9):
     print(sum(correct[i]))
     print(f"The accuracy of layer {i} is {sum(correct[i])/total}")
 
-    '''
+
     
     # overlap_measure(country_data=country_data, continent_data=continent_data)
     
