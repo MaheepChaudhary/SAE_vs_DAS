@@ -213,7 +213,7 @@ if __name__ == "__main__":
         print()
         print(base_tokens)
         print(source_tokens)
-        print(f"Source token -9 : {source_tokens[-9]}, and Base token -9: {base_tokens[-9]}")
+        print(f"Source token {intervened_token_idx} : {source_tokens[intervened_token_idx]}, and Base token {intervened_token_idx}: {base_tokens[intervened_token_idx]}")
         
         print(f"The len of source ids is {source_ids.shape} and the base ids is {base_ids.shape}")
         print()
@@ -227,7 +227,7 @@ if __name__ == "__main__":
             with tracer.invoke(base_ids) as runner_:
                 
                 print(vector_source.shape)
-                model.transformer.h[i].output[0][:,-9:] = vector_source[0][:,-9,:]
+                model.transformer.h[i].output[0][:,intervened_token_idx,:] = vector_source[0][:,intervened_token_idx,:]
                 intervened_base_output = model.lm_head.output.argmax(dim = -1).save()
         
         # intervened_base_output.argamx(dim = -1)[:]
