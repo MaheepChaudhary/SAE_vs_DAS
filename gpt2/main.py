@@ -12,12 +12,10 @@ def overlap_measure():
     
     country_cities = []
     for i in country_data["sentences"]:
-        print(i)
         country_cities.append(i[0].split(".")[-1].split()[0])
     
     continent_cities = []
     for i in continent_data["sentences"]:
-        print(i)
         continent_cities.append(i[0].split(".")[-1].split()[0])
     
     overlap = list(set(country_cities) & set(continent_cities))
@@ -27,11 +25,12 @@ def overlap_measure():
     return overlap
 
 
-def model_eval(model, eval_file_path):
+def model_eval(model, eval_file_path, attribute):
     
     with open(eval_file_path, 'r') as file:
         data = json.load(file)
 
+    comfy_data = []
     correct = 0
     for sample, label in data:
         with model.trace(sample):
@@ -40,22 +39,62 @@ def model_eval(model, eval_file_path):
         prediction = model.tokenizer.decode(output[0][-1])
         if prediction.split()[0] == label.split()[0]:
             correct+=1
-            
+
+            comfy_data.append([sample, label])
+        
+    with open(f"comfy_{attribute}_top1.json", "w") as file:
+        json.dump(comfy_data, file)
+    
+
     print(f"the accuracy for {args.attribute} is {correct/len(data)}")
     
 
-def intervention_dataset(data, attribute):
-    new_data = []
-    for i in data["sentences"]:
-        for j in data["sentences"]:
-            if i != j:
-                if i[1] != j[1]:
-                    new_data.append([i,j])
-            elif i == j:
-                pass
+def intervention_dataset(overlapping_cities):
     
-    with open(f"{attribute}_intervention_dataset.json", "w") as file:
-        json.dump(new_data, file)
+    with open("gpt2_comfy_top1_country.json", "r") as file:
+        country_data = json.load(file)
+    
+    with open("gpt2_comfy_top1_continent.json", "r") as file:
+        continent_data = json.load(file)
+    
+    
+    def dataset(data, attribute):
+        
+        new_data = []
+        
+        for i in data["sentences"]:
+        
+            city_name = i[0].split(".")[-1].split()[0]
+            print(city_name)
+            if city_name in overlapping_cities:
+                print(i[1])
+                pass
+            else:
+                continue
+        
+            for j in data["sentences"]:
+                
+                indented_city_name = j[0].split(".")[-1].split()[0]
+                if indented_city_name in overlapping_cities:
+                    pass
+                else:
+                    continue
+        
+                if i != j:
+                    if i[1] != j[1]:
+                        new_data.append([i,j])
+                elif i == j:
+                    pass
+        
+        print(f"The total number of sample pairs in {attribute} are {len(new_data)}")
+        
+        with open(f"{attribute}_intervention_dataset.json", "w") as file:
+            json.dump(new_data, file)
+
+    dataset(country_data, "country")
+    dataset(continent_data, "continent")
+    
+
 
 if __name__ == "__main__":
     
@@ -93,11 +132,11 @@ if __name__ == "__main__":
 
     '''
     
-    # model_eval(eval_file_path=args.eval_file_path, model = model)
-    overlapping_cities = overlap_measure()
+    model_eval(eval_file_path=args.eval_file_path, model = model, attribute=args.attribute)
+    # overlapping_cities = overlap_measure()
     
-    # intervention_dataset(country_data, "country")
-    # intervention_dataset(continent_data,"continent")
+    # # creating the intervention dataset of overlapping cities. 
+    # intervention_dataset(overlapping_cities=overlapping_cities)
     
     '''
     with open("continent_intervention_dataset.json", "r") as file:
