@@ -202,10 +202,10 @@ if __name__ == "__main__":
         
         # print(source_tokens)
         
-        if len(base_tokens) == 61:
-            pass
-        else:
-            continue
+        # if len(base_tokens) == 61:
+        #     pass
+        # else:
+        #     continue
         
         if len(base_tokens) == 61:
             intervened_token_idx = -8 # -8 for continent and -9 for country
@@ -239,7 +239,7 @@ if __name__ == "__main__":
             with tracer.invoke(base_ids) as runner_:
                 
                 print(vector_source.shape)
-                model.transformer.h[i].output[0][:,intervened_token_idx,:] = vector_source[0][:,intervened_token_idx,:]
+                model.transformer.h[i].output[0][:,:,:] = vector_source[0][:,:,:]
                 intervened_base_output = model.lm_head.output.argmax(dim = -1).save()
         
         # intervened_base_output.argamx(dim = -1)[:]
