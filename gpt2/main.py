@@ -202,8 +202,17 @@ if __name__ == "__main__":
         
         # print(source_tokens)
         
-        intervened_token_idx = -1 # -8 for continent and -9 for country
+        if len(base_tokens) == 61:
+            pass
+        else:
+            continue
         
+        if len(base_tokens) == 61:
+            intervened_token_idx = -8 # -8 for continent and -9 for country
+        elif len(base_tokens) == 62:
+            intervened_token_idx = slice(-9, -8)
+        elif len(base_tokens) == 63:
+            intervened_token_idx = slice(-10 ,-8)
         
         # for i in range(0,9):
         
@@ -216,8 +225,10 @@ if __name__ == "__main__":
         print(source_tokens)
         print(f"Source token {intervened_token_idx} : {source_tokens[intervened_token_idx]}, and Base token {intervened_token_idx}: {base_tokens[intervened_token_idx]}")
         
-        print(f"The len of source ids is {source_ids.shape} and the base ids is {base_ids.shape}")
+        print(f"Shape: {len(base_tokens)}")
         print()
+        
+
 
         with model.trace() as tracer:
         
