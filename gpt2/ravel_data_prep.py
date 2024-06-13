@@ -21,7 +21,7 @@ def country_prompt(data, cities):
     for city in cities:
         label = data[city]["Country"]
         # country_data.append([f"Toronto is in Canada. {city} is in", label])
-        country_data.append([f"Toronto is a city in the country of Canada. Beijing is a city in the country of China. Miami is a city in the country of United States. Santiago is a city in the country of Chile. London is a city in the country of England. {city} is in the country of ", label])
+        country_data.append([f"Toronto is a city in the country of Canada. Beijing is a city in the country of China. Miami is a city in the country of United States. Santiago is a city in the country of Chile. London is a city in the country of England. {city} is in the country of", label])
     return country_data
 
 
@@ -32,7 +32,7 @@ def continent_prompt(data, cities):
     for city in cities:
         label = data[city]["Continent"]
         # continent_data.append([f"{city} is a city in the continent of", label])
-        continent_data.append([f"Toronto is a city in the continent of North America. Beijing is a city in the continent of Asia. Miami is a city in the continent of North America. Santiago is a city in the continent of South America. London is a city in the continent of Europe. {city} is a city in the continent of ", label])
+        continent_data.append([f"Toronto is a city in the continent of North America. Beijing is a city in the continent of Asia. Miami is a city in the continent of North America. Santiago is a city in the continent of South America. London is a city in the continent of Europe. {city} is a city in the continent of", label])
 
     return continent_data
 

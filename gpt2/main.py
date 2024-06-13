@@ -64,9 +64,23 @@ if __name__ == "__main__":
     with open(eval_file_path, 'r') as file:
         data = json.load(file)
 
+    correct = 0
+    for sample, label in data:
+        with model.trace(sample):
+            output = model.lm_head.output.argmax(dim = -1).save()
+    
+        prediction = model.tokenizer.decode(output[0][-1])
+        # print(f"Output: {label} and Prediction: {prediction}")
+        
+        if prediction.split()[0] == label.split()[0]:
+            correct+=1
+    
+        # print(correct)
+    print(f"the accuracy for {args.attribute} is {correct/len(data)}")
+
     '''
-    Now I will have to make the code for taking the accuracy on the prepared selected dataset of ravel
-    '''
+    #Now I will have to make the code for taking the accuracy on the prepared selected dataset of ravel
+    
     
     # with open("gpt2_comfy_top1_country.json", "r") as file:
     #     country_data = json.load(file)
@@ -79,15 +93,15 @@ if __name__ == "__main__":
     
     
     
-    with open("country_intervention_dataset.json", "r") as file:
-        country_intervention_data = json.load(file)
+    with open("continent_intervention_dataset.json", "r") as file:
+        continent_intervention_data = json.load(file)
     
     '''
     # Now, I will have to make the code for intervention of the data in the first layer of GPT2
     
     '''
     
-    tokenizer.pad_token = tokenizer.eos_token
+    # tokenizer.pad_token = tokenizer.eos_token
     
     correct = {0:[0],
             1:[0],
@@ -110,13 +124,13 @@ if __name__ == "__main__":
         except:
             return " "
 
-    for sample_no in tqdm(range(0,len(country_intervention_data),200)):
+    for sample_no in tqdm(range(len(continent_intervention_data))):
         
-        sample = country_intervention_data[sample_no:sample_no+200]
-        base = [element[0][0] for element in sample]
-        source = [element[1][0] for element in sample]
-        base_label = [element[0][1] for element in sample]
-        source_label = [element[1][1] for element in sample]
+        sample = continent_intervention_data[sample_no]
+        base = sample[0][0]
+        source = sample[1][0]
+        base_label = sample[0][1]
+        source_label = sample[1][1]
         # base_city = sample[:][0][0].split(".")[-1].split()[0]
         
         # pprint(base)
@@ -129,19 +143,19 @@ if __name__ == "__main__":
         base_ids = []
         source_ids = []
         
-        base_ids = [tokenizer.encode(sent, return_tensors='pt') for sent in base]
-        base_tokens = [tokenizer.tokenize(sent) for sent in base]
-        source_ids = [tokenizer.encode(sent, return_tensors='pt') for sent in source]
-        source_tokens = [tokenizer.tokenize(sent) for sent in source]
+        base_ids = tokenizer.encode(base, return_tensors='pt') 
+        base_tokens = tokenizer.tokenize(base)
+        source_ids = tokenizer.encode(source, return_tensors='pt')
+        source_tokens = tokenizer.tokenize(source) 
         
         # Pad the sequences manually
-        def pad_sequences(sequences, pad_token_id):
-            max_length = max(seq.size(1) for seq in sequences)
-            padded_sequences = [torch.cat([seq, torch.tensor([[pad_token_id] * (max_length - seq.size(1))])], dim=1) for seq in sequences]
-            return torch.cat(padded_sequences, dim=0)
+        # def pad_sequences(sequences, pad_token_id):
+        #     max_length = max(seq.size(1) for seq in sequences)
+        #     padded_sequences = [torch.cat([seq, torch.tensor([[pad_token_id] * (max_length - seq.size(1))])], dim=1) for seq in sequences]
+        #     return torch.cat(padded_sequences, dim=0)
 
-        base_ids = pad_sequences(base_ids, tokenizer.pad_token_id)
-        source_ids = pad_sequences(source_ids, tokenizer.pad_token_id)
+        # base_ids = pad_sequences(base_ids, tokenizer.pad_token_id)
+        # source_ids = pad_sequences(source_ids, tokenizer.pad_token_id)
         
         base_ids = base_ids.to(DEVICE)
         source_ids = source_ids.to(DEVICE)
@@ -157,7 +171,7 @@ if __name__ == "__main__":
         # source_ids = tokenizer.encode(source, return_tensors='pt')
         # source_tokens = tokenizer.tokenize(source)
         
-        # print(source_tokens)
+        print(source_tokens)
         
         # if base_ids.shape[-1] == 63:
         #     base_intervention_idx = -9
@@ -165,7 +179,7 @@ if __name__ == "__main__":
         # if source_ids.shape[-1] == 64:
         #     source_intervention_idx = -9
         
-        intervened_token_idx = -10 # -9 is the index of the last word of the city and -10 is the index of the first word of the city
+        intervened_token_idx = -9 # -9 is the index of the last word of the city and -10 is the index of the first word of the city
         
         # print(f"The base_token intervened word is {base_tokens[intervened_token_idx]}")
         # print(f"The source_token intervened word is {source_tokens[intervened_token_idx]}")
@@ -173,7 +187,6 @@ if __name__ == "__main__":
 
         # for i in range(0,9):
         
-        i = 0
         
         with model.trace() as tracer:
         
@@ -183,18 +196,21 @@ if __name__ == "__main__":
 
             with tracer.invoke(base_ids) as runner_:
                 
-                model.transformer.h[i].output[0][:,intervened_token_idx,:] = vector_source[0][:,intervened_token_idx,:]
+                print(vector_source.shape)
+                model.transformer.h[i].output[0][:,-9,:] = vector_source[0][:,-9,:]
                 intervened_base_output = model.lm_head.output.save()
+        
+        # intervened_base_output.argamx(dim = -1)[:]
         
         predicted_text = [tokenizer.decode(output[-2]) for output in intervened_base_output.argmax(dim = -1)]
         predicted_text = [safe_split(i) for i in predicted_text]
         # print(f"For Layer {i} we are intervening on the base label '{base_label}' with the source label '{source_label}' and I get the output '{predicted_text}'")
         
-        # print()
-        # pprint(f"Base Label: {base_label}")
-        # pprint(f"Predicted text: {predicted_text}")
-        # pprint(f"Source Label: {source_label}")
-        # print()
+        print()
+        pprint(f"Base Label: {base_label}")
+        pprint(f"Predicted text: {predicted_text}")
+        pprint(f"Source Label: {source_label}")
+        print()
         
         matches = sum(1 for a, b in zip(predicted_text, source_label) if a == b)
         # print(matches)
@@ -210,11 +226,11 @@ if __name__ == "__main__":
     total = len(country_intervention_data)
     #total = 100
 
-    for i in range(0,9):
-        print(sum(correct[i]))
-        print(f"The accuracy of layer {i} is {sum(correct[i])/total}")
+    # for i in range(0,9):
+    print(sum(correct[i]))
+    print(f"The accuracy of layer {i} is {sum(correct[i])/total}")
 
-    
+    '''
     
     # overlap_measure(country_data=country_data, continent_data=continent_data)
     
