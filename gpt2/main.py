@@ -131,11 +131,11 @@ if __name__ == "__main__":
 
     '''
     
-    model_eval(eval_file_path=args.eval_file_path, model = model, attribute=args.attribute)
-    # overlapping_cities = overlap_measure()
+    # model_eval(eval_file_path=args.eval_file_path, model = model, attribute=args.attribute)
+    overlapping_cities = overlap_measure()
     
     # creating the intervention dataset of overlapping cities. 
-    # intervention_dataset(overlapping_cities=overlapping_cities)
+    intervention_dataset(overlapping_cities=overlapping_cities)
     
     '''
     with open(args.eval_file_path, "r") as file:
