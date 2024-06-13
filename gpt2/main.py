@@ -23,6 +23,8 @@ def overlap_measure():
     overlap = list(set(country_cities) & set(continent_cities))
     print(overlap)
     print(f"The total number of overlapping words are {len(overlap)}")
+    
+    return overlap
 
 
 def model_eval(model, eval_file_path):
@@ -92,7 +94,7 @@ if __name__ == "__main__":
     '''
     
     # model_eval(eval_file_path=args.eval_file_path, model = model)
-    overlap_measure()
+    overlapping_cities = overlap_measure()
     
     # intervention_dataset(country_data, "country")
     # intervention_dataset(continent_data,"continent")
