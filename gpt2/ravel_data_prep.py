@@ -21,7 +21,7 @@ def country_prompt(data, cities):
     for city in cities:
         label = data[city]["Country"]
         # country_data.append([f"Toronto is in Canada. {city} is in", label])
-        country_data.append([f"Toronto is a city in the country of Canada. Beijing is a city in the country of China. Miami is a city in the country of United States. Santiago is a city in the country of Chile. London is a city in the country of England. {city} is in the country of", label])
+        country_data.append([f"Toronto is a city in the country of Canada. Beijing is a city in the country of China. Miami is a city in the country of United States. Santiago is a city in the country of Chile. London is a city in the country of England. {city} is a city in the country of", label])
     return country_data
 
 
