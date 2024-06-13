@@ -2,7 +2,14 @@ from imports import *
 from ravel_data_prep import *
 from eval_gpt2 import *
 
-def overlap_measure(country_data, continent_data):
+def overlap_measure():
+    
+    with open("gpt2_comfy_top1_country.json", "r") as file:
+        country_data = json.load(file)
+    
+    with open("gpt2_comfy_top1_continent.json", "r") as file:
+        continent_data = json.load(file)
+    
     country_cities = []
     for i in country_data["sentences"]:
         print(i)
@@ -15,7 +22,25 @@ def overlap_measure(country_data, continent_data):
     
     overlap = list(set(country_cities) & set(continent_cities))
     print(overlap)
-    print(len(overlap))
+    print(f"The total number of overlapping words are {len(overlap)}")
+
+
+def model_eval(model, eval_file_path):
+    
+    with open(eval_file_path, 'r') as file:
+        data = json.load(file)
+
+    correct = 0
+    for sample, label in data:
+        with model.trace(sample):
+            output = model.lm_head.output.argmax(dim = -1).save()
+    
+        prediction = model.tokenizer.decode(output[0][-1])
+        if prediction.split()[0] == label.split()[0]:
+            correct+=1
+            
+    print(f"the accuracy for {args.attribute} is {correct/len(data)}")
+    
 
 def intervention_dataset(data, attribute):
     new_data = []
@@ -59,46 +84,25 @@ if __name__ == "__main__":
             tokenizer.add_special_tokens({'pad_token': '[PAD]'}) 
 
     # eval_file_path  = f"/content/{args.attribute}_data.json"
-    eval_file_path = args.eval_file_path
     
-    with open(eval_file_path, 'r') as file:
-        data = json.load(file)
-
-    correct = 0
-    for sample, label in data:
-        with model.trace(sample):
-            output = model.lm_head.output.argmax(dim = -1).save()
-    
-        prediction = model.tokenizer.decode(output[0][-1])
-        # print(f"Output: {label} and Prediction: {prediction}")
-        
-        if prediction.split()[0] == label.split()[0]:
-            correct+=1
-    
-        # print(correct)
-    print(f"the accuracy for {args.attribute} is {correct/len(data)}")
 
     '''
     #Now I will have to make the code for taking the accuracy on the prepared selected dataset of ravel
+
+    '''
     
-    
-    # with open("gpt2_comfy_top1_country.json", "r") as file:
-    #     country_data = json.load(file)
-        
-    # with open("gpt2_comfy_top1_continent.json", "r") as file:
-    #     continent_data = json.load(file)
+    # model_eval(eval_file_path=args.eval_file_path, model = model)
+    overlap_measure()
     
     # intervention_dataset(country_data, "country")
     # intervention_dataset(continent_data,"continent")
     
-    
-    
+    '''
     with open("continent_intervention_dataset.json", "r") as file:
         continent_intervention_data = json.load(file)
     
     '''
     # Now, I will have to make the code for intervention of the data in the first layer of GPT2
-    
     '''
     
     # tokenizer.pad_token = tokenizer.eos_token
