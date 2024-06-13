@@ -94,6 +94,7 @@ def intervention_dataset(overlapping_cities):
     
 
 
+
 if __name__ == "__main__":
     
     parser = argparse.ArgumentParser()
@@ -130,15 +131,15 @@ if __name__ == "__main__":
 
     '''
     
-    # model_eval(eval_file_path=args.eval_file_path, model = model, attribute=args.attribute)
+    model_eval(eval_file_path=args.eval_file_path, model = model, attribute=args.attribute)
     # overlapping_cities = overlap_measure()
     
     # creating the intervention dataset of overlapping cities. 
     # intervention_dataset(overlapping_cities=overlapping_cities)
     
-
-    with open("continent_intervention_dataset.json", "r") as file:
-        continent_intervention_data = json.load(file)
+    '''
+    with open(args.eval_file_path, "r") as file:
+        data = json.load(file)
     
     '''
     # Now, I will have to make the code for intervention of the data in the first layer of GPT2
@@ -169,10 +170,14 @@ if __name__ == "__main__":
 
     i = 1
     total_samples_processed = 0
+    len_correct = {61:0, 62:0, 63:0, 64:0}
+    len_correct_total = {61:0, 62:0, 63:0, 64:0}
     
-    for sample_no in tqdm(range(len(continent_intervention_data))):
+    
+    
+    for sample_no in tqdm(range(len(data))):
         
-        sample = continent_intervention_data[sample_no]
+        sample = data[sample_no]
         base = sample[0][0]
         source = sample[1][0]
         base_label = sample[0][1]
@@ -207,28 +212,32 @@ if __name__ == "__main__":
         # else:
         #     continue
         
-        if len(base_tokens) == 61:
-            intervened_token_idx = -8 # -8 for continent and -9 for country
-        elif len(base_tokens) == 62:
-            intervened_token_idx = slice(-9, -8)
-        elif len(base_tokens) == 63:
-            intervened_token_idx = slice(-10 ,-8)
+        
+        # if len(base_tokens) == 61:
+        #     intervened_token_idx = -8 # -8 for continent and -9 for country
+        # elif len(base_tokens) == 62:
+        #     intervened_token_idx = slice(-9, -8)
+        # elif len(base_tokens) == 63:
+        #     intervened_token_idx = slice(-10 ,-8)
+        
+        
+        intervened_token_idx = -8
         
         # for i in range(0,9):
         
         # only intervening for same shapes as intervening on different shapes misleads the results, giving 0 acc for intervention (done only for initial experimentation)
-        if source_ids.shape != base_ids.shape:
-            continue
+        # if source_ids.shape != base_ids.shape:
+        #     continue
     
-        print()
-        print(base_tokens)
-        print(source_tokens)
-        print(f"Source token {intervened_token_idx} : {source_tokens[intervened_token_idx]}, and Base token {intervened_token_idx}: {base_tokens[intervened_token_idx]}")
+        # print()
+        # print(base_tokens)
+        # print(source_tokens)
+        # print(f"Source token {intervened_token_idx} : {source_tokens[intervened_token_idx]}, and Base token {intervened_token_idx}: {base_tokens[intervened_token_idx]}")
         
-        print(f"Shape: {len(base_tokens)}")
-        print()
+        # print(f"Shape: {len(base_tokens)}")
+        # print()
         
-
+        token_length = len(base_tokens)
 
         with model.trace() as tracer:
         
@@ -238,23 +247,25 @@ if __name__ == "__main__":
 
             with tracer.invoke(base_ids) as runner_:
                 
-                print(vector_source.shape)
-                model.transformer.h[i].output[0][:,:,:] = vector_source[0][:,:,:]
+                # print(vector_source.shape)
+                model.transformer.h[i].output[0][:,intervened_token_idx,:] = vector_source[0][:,intervened_token_idx,:]
                 intervened_base_output = model.lm_head.output.argmax(dim = -1).save()
         
-        # intervened_base_output.argamx(dim = -1)[:]
-        
         predicted_text = model.tokenizer.decode(intervened_base_output[0][-1])
-        # print(f"For Layer {i} we are intervening on the base label '{base_label}' with the source label '{source_label}' and I get the output '{predicted_text}'")
         
-        print()
-        pprint(f"Base Label: {base_label}")
-        pprint(f"Predicted text: {predicted_text}")
-        pprint(f"Source Label: {source_label}")
-        print()
+        # print()
+        # pprint(f"Base Label: {base_label}")
+        # pprint(f"Predicted text: {predicted_text}")
+        # pprint(f"Source Label: {source_label}")
         
         matches = sum(1 for a, b in zip(predicted_text, source_label) if a == b)
+        # print(matches)
+        # print()
         correct[i].append(matches)
+        
+        len_correct_total[token_length]+=1
+        len_correct[token_length]+=matches
+        
         total_samples_processed+=1
         
     
@@ -262,45 +273,17 @@ if __name__ == "__main__":
             print(correct[i])
             print(sum(correct[i])/total_samples_processed)
         
-    total = len(continent_intervention_data)
+    total = len(data)
     #total = 100
 
     # for i in range(0,9):
     print(sum(correct[i]))
-    print(f"The accuracy of layer {i} is {sum(correct[i])/total}")
+    print(f"The accuracy of {args.attribute} layer {i} is {sum(correct[i])/total}")
+    print(f"Accuracy of Length 61: {len_correct[61]/len_correct_total[61]}")
+    print(f"Accuracy of Length 62: {len_correct[62]/len_correct_total[62]}")
+    print(f"Accuracy of Length 63: {len_correct[63]/len_correct_total[63]}")
+    print(f"Accuracy of Length 64: {len_correct[64]/len_correct_total[64]}")
 
 
-    
-    # overlap_measure(country_data=country_data, continent_data=continent_data)
-    
-    
-    # accuracy, correct_arr = eval_on_vanilla_gpt(DEVICE, model, args.model, data, args.attribute, tokenizer, args.accuracy)
-    # sentences_json = json.dumps({"sentences": correct_arr}, indent=4)
-    
-    # with open(f"gpt2_comfy_{args.accuracy}_{args.attribute}.json", "w") as file:
-    #     file.write(sentences_json)
-    # wandb.log({"Evaluation Accuracy": accuracy})
-
-    # with model.trace() as runner:
-    #     with runner.invoke("Aalborg is a city in the continent of") as invoker:
-    #         logits = model.lm_head.output.save()
-
-    # probabilities = torch.softmax(logits[:, -1, :], dim=-1)
-
-    # # Get the most likely next token ID
-    # next_token_id = torch.argmax(probabilities, dim=-1).item()
-
-    # # Decode the token ID to a string
-    # next_token = tokenizer.decode(next_token_id)
-    
-    # # if next_token == label:
-    # #     print("Correct!")
-    
-    # # elif next_token != label:
-    # #     print("Correct Answer: ", label)
-    # print("Predicted Answer: ", next_token)
-    # #     print("Incorrect!")
-
-            
-
+    '''
     
