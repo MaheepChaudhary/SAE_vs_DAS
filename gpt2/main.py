@@ -207,6 +207,7 @@ if __name__ == "__main__":
         
         # for i in range(0,9):
         
+        # only intervening for same shapes as intervening on different shapes misleads the results, giving 0 acc for intervention (done only for initial experimentation)
         if source_ids.shape != base_ids.shape:
             continue
     
