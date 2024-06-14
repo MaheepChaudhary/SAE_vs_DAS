@@ -251,7 +251,7 @@ if __name__ == "__main__":
         assert len(base_tokens) == len(source_tokens)
         token_length = len(base_tokens)
 
-        print(source_tokens)
+        # print(source_tokens)
 
         with model.trace() as tracer:
         
@@ -267,12 +267,12 @@ if __name__ == "__main__":
         
         predicted_text = model.tokenizer.decode(intervened_base_output[0][-1])
         
-        print()
-        pprint(f"Base Label: {base_label}")
-        pprint(f"Predicted text: {predicted_text}")
-        pprint(f"Source Label: {source_label}")
-        print(token_length)
-        print()
+        # print()
+        # pprint(f"Base Label: {base_label}")
+        # pprint(f"Predicted text: {predicted_text}")
+        # pprint(f"Source Label: {source_label}")
+        # print(token_length)
+        # print()
         
         matches = 1 if predicted_text.split()[0] == source_label.split()[0] else 0
         # print(matches)
@@ -297,13 +297,11 @@ if __name__ == "__main__":
     if args.attribute == "continent":
         print(f"Accuracy of Length 61: {len_correct[61]/len_correct_total[61]}")
         print(f"Accuracy of Length 62: {len_correct[62]/len_correct_total[62]}")
-        print(f"Accuracy of Length 63: {len_correct[63]/len_correct_total[63]}")
-        print(f"Accuracy of Length 64: {len_correct[64]/len_correct_total[64]}")   
+        print(f"Accuracy of Length 63: {len_correct[63]/len_correct_total[63]}")  
     elif args.attribute == "country":
         print(f"Accuracy of Length 59: {len_correct[59]/len_correct_total[59]}")
         print(f"Accuracy of Length 60: {len_correct[60]/len_correct_total[60]}")
-        print(f"Accuracy of Length 61: {len_correct[61]/len_correct_total[61]}")
-        print(f"Accuracy of Length 62: {len_correct[62]/len_correct_total[62]}")   
+        print(f"Accuracy of Length 61: {len_correct[61]/len_correct_total[61]}")   
     print()
     print("Len correct dictionary")
     print(len_correct)
