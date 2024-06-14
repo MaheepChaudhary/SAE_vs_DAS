@@ -168,7 +168,7 @@ if __name__ == "__main__":
         except:
             return " "
 
-    i = 1
+    i = 3
     total_samples_processed = 0
     
     if args.attribute == "continent":
