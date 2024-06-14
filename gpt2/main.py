@@ -168,16 +168,16 @@ if __name__ == "__main__":
         except:
             return " "
 
-    i = 1
+    i = 0
     total_samples_processed = 0
     
     if args.attribute == "continent":
-        len_correct = {61:0, 62:0, 63:0, 64:0}
-        len_correct_total = {61:0, 62:0, 63:0, 64:0}
+        len_correct = {61:0, 62:0, 63:0}
+        len_correct_total = {61:0, 62:0, 63:0}
     
     elif args.attribute == "country":
-        len_correct = {59:0, 60:0, 61:0, 62:0}
-        len_correct_total = {59:0, 60:0, 61:0, 62:0}
+        len_correct = {59:0, 60:0, 61:0}
+        len_correct_total = {59:0, 60:0, 61:0}
         
     
     
@@ -253,6 +253,7 @@ if __name__ == "__main__":
 
         # print(source_tokens)
 
+
         with model.trace() as tracer:
         
             with tracer.invoke(source_ids) as runner:
@@ -266,27 +267,34 @@ if __name__ == "__main__":
                 intervened_base_output = model.lm_head.output.argmax(dim = -1).save()
         
         predicted_text = model.tokenizer.decode(intervened_base_output[0][-1])
+
         
+        # print()
+        # print("Base Token:", base_tokens)
+        # print()
+        # print("Source Token:", source_tokens)
         # print()
         # pprint(f"Base Label: {base_label}")
         # pprint(f"Predicted text: {predicted_text}")
         # pprint(f"Source Label: {source_label}")
         # print(token_length)
         # print()
-        
+
         matches = 1 if predicted_text.split()[0] == source_label.split()[0] else 0
         # print(matches)
         correct[i].append(matches)
         
         len_correct_total[token_length]+=1
         len_correct[token_length]+=matches
-        
+
+        len_correct_total[token_length]+=1
         total_samples_processed+=1
         
-    
+
         if sample_no%100 == 0:
             print(correct[i])
             print(sum(correct[i])/total_samples_processed)
+
         
     total = len(data)
     #total = 100
@@ -298,10 +306,10 @@ if __name__ == "__main__":
         print(f"Accuracy of Length 61: {len_correct[61]/len_correct_total[61]}")
         print(f"Accuracy of Length 62: {len_correct[62]/len_correct_total[62]}")
         print(f"Accuracy of Length 63: {len_correct[63]/len_correct_total[63]}")  
-    elif args.attribute == "country":
-        print(f"Accuracy of Length 59: {len_correct[59]/len_correct_total[59]}")
-        print(f"Accuracy of Length 60: {len_correct[60]/len_correct_total[60]}")
-        print(f"Accuracy of Length 61: {len_correct[61]/len_correct_total[61]}")   
+    # elif args.attribute == "country":
+    #     print(f"Accuracy of Length 59: {len_correct[59]/len_correct_total[59]}")
+    #     print(f"Accuracy of Length 60: {len_correct[60]/len_correct_total[60]}")
+    #     print(f"Accuracy of Length 61: {len_correct[61]/len_correct_total[61]}")   
     print()
     print("Len correct dictionary")
     print(len_correct)
