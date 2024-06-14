@@ -170,9 +170,15 @@ if __name__ == "__main__":
 
     i = 1
     total_samples_processed = 0
-    len_correct = {61:0, 62:0, 63:0, 64:0}
-    len_correct_total = {61:0, 62:0, 63:0, 64:0}
     
+    if args.attribute == "continent":
+        len_correct = {61:0, 62:0, 63:0, 64:0}
+        len_correct_total = {61:0, 62:0, 63:0, 64:0}
+    
+    elif args.attribute == "country":
+        len_correct = {59:0, 60:0, 61:0, 62:0}
+        len_correct_total = {59:0, 60:0, 61:0, 62:0}
+        
     
     
     for sample_no in tqdm(range(len(data))):
@@ -229,7 +235,7 @@ if __name__ == "__main__":
         if source_ids.shape != base_ids.shape:
             continue
         
-        # if len(source_tokens) == 61:
+        # if len(source_tokens) == 59:
         #     pass
         # else:
         #     continue
@@ -245,7 +251,7 @@ if __name__ == "__main__":
         assert len(base_tokens) == len(source_tokens)
         token_length = len(base_tokens)
 
-        # print(source_tokens)
+        print(source_tokens)
 
         with model.trace() as tracer:
         
@@ -261,12 +267,12 @@ if __name__ == "__main__":
         
         predicted_text = model.tokenizer.decode(intervened_base_output[0][-1])
         
-        # print()
-        # pprint(f"Base Label: {base_label}")
-        # pprint(f"Predicted text: {predicted_text}")
-        # pprint(f"Source Label: {source_label}")
-        # print(token_length)
-        # print()
+        print()
+        pprint(f"Base Label: {base_label}")
+        pprint(f"Predicted text: {predicted_text}")
+        pprint(f"Source Label: {source_label}")
+        print(token_length)
+        print()
         
         matches = 1 if predicted_text.split()[0] == source_label.split()[0] else 0
         # print(matches)
@@ -288,10 +294,16 @@ if __name__ == "__main__":
     # for i in range(0,9):
     print(sum(correct[i]))
     print(f"The accuracy of {args.attribute} layer {i} is {sum(correct[i])/total}")
-    print(f"Accuracy of Length 61: {len_correct[61]/len_correct_total[61]}")
-    print(f"Accuracy of Length 62: {len_correct[62]/len_correct_total[62]}")
-    print(f"Accuracy of Length 63: {len_correct[63]/len_correct_total[63]}")
-    print(f"Accuracy of Length 64: {len_correct[64]/len_correct_total[64]}")   
+    if args.attribute == "continent":
+        print(f"Accuracy of Length 61: {len_correct[61]/len_correct_total[61]}")
+        print(f"Accuracy of Length 62: {len_correct[62]/len_correct_total[62]}")
+        print(f"Accuracy of Length 63: {len_correct[63]/len_correct_total[63]}")
+        print(f"Accuracy of Length 64: {len_correct[64]/len_correct_total[64]}")   
+    elif args.attribute == "country":
+        print(f"Accuracy of Length 59: {len_correct[59]/len_correct_total[59]}")
+        print(f"Accuracy of Length 60: {len_correct[60]/len_correct_total[60]}")
+        print(f"Accuracy of Length 61: {len_correct[61]/len_correct_total[61]}")
+        print(f"Accuracy of Length 62: {len_correct[62]/len_correct_total[62]}")   
     print()
     print("Len correct dictionary")
     print(len_correct)
