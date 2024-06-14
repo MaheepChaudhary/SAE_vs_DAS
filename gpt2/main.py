@@ -245,7 +245,7 @@ if __name__ == "__main__":
         assert len(base_tokens) == len(source_tokens)
         token_length = len(base_tokens)
 
-        print(source_tokens)
+        # print(source_tokens)
 
         with model.trace() as tracer:
         
