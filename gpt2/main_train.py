@@ -1,24 +1,7 @@
 from imports import *
 from ravel_data_prep import *
 from eval_gpt2 import *
-
-def neuron_masking(model, source_ids, base_ids):
-    
-    with model.trace() as tracer:
-        
-        with tracer.invoke(source_ids) as runner:
-
-            vector_source = model.transformer.h[layer_intervened].output
-
-        with tracer.invoke(base_ids) as runner_:
-            
-            # print(vector_source.shape)
-            model.transformer.h[layer_intervened].output[0][:,intervened_token_idx,:] = vector_source[0][:,intervened_token_idx,:]
-            intervened_base_output = model.lm_head.output.argmax(dim = -1).save()
-        
-        predicted_text = model.tokenizer.decode(intervened_base_output[0][-1])
-
-    return predicted_text
+from models import *
 
 
 if __name__ == "__main__":
@@ -34,10 +17,11 @@ if __name__ == "__main__":
     parser.add_argument("-tla", "--token_length_allowed", required=True, help = "insert the length you would allow the model to train mask")
     parser.add_argument("-m", "--method", required=True, help="to let know if you want neuron masking, das masking or SAE masking")
     parser.add_argument("-e", "--epochs", default=10, help="# of epochs on which mask is to be trained")
+    parser.add_argument("-ef", "--expansion_factor", default=1, help="expansion factor for SAE")
 
     args = parser.parse_args()
     wandb.init(project="sae_concept_eraser")
-    wandb.run.name = f"{args.model}-{args.attribute}-{args.method}-{args.epochs}"
+    wandb.run.name = f"{args.model}-TLA_{args.tla}-{args.attribute}-{args.method}-{args.epochs}"
     
     DEVICE = args.device 
     
@@ -55,70 +39,87 @@ if __name__ == "__main__":
     with open(args.eval_file_path, "r") as file:
         data = json.load(file)
     
-    
-    correct = {0:[0],
-            1:[0],
-            2:[0],
-            3:[0],
-            4:[0],
-            5:[0],
-            6:[0],
-            7:[0],
-            8:[0],
-            9:[0],
-            10:[0],
-            11:[0]}
 
     layer_intervened = 1 # As the layer has descent performance in the previous metrics of intervention, we will take it.
     intervened_token_idx = -8
     intervention_token_length = args.token_length_allowed
-    total_samples_processed = 0
+
+    training_model = my_model(model, DEVICE, args.method, args.token_length_allowed, expansion_factor=args.expansion_factor,
+                            layer_intervened=layer_intervened, intervened_token_idx=intervened_token_idx)
+
+    loss_fn = nn.CrossEntropyLoss()
+    optimizer = optim.Adam(training_model.parameters(), lr=args.learning_rate)
 
 
-    for sample_no in tqdm(range(len(data))):
-        
-        # Data Processing
-        sample = data[sample_no]
-        base = sample[0][0]
-        source = sample[1][0]
-        base_label = sample[0][1]
-        source_label = sample[1][1]
-        
-        base_ids = tokenizer.encode(base, return_tensors='pt').type(torch.LongTensor).to(DEVICE)
-        base_tokens = tokenizer.tokenize(base)
-        source_ids = tokenizer.encode(source, return_tensors='pt').type(torch.LongTensor).to(DEVICE)
-        source_tokens = tokenizer.tokenize(source) 
-        
-        # Conditions to filter data:
-        
-        if len(base_tokens) == args.token_length_allowed:
-            pass
-        else:
-            continue
-        
-        if source_ids.shape != base_ids.shape:
-            continue
-        
-        assert len(base_tokens) == len(source_tokens)
-        token_length = len(base_tokens)
-        
-        # training the model
+    for epoch in args.epochs:
 
-        if args.method == "neuron masking":
-            predicted_text = neuron_masking(model = model,source_ids=source_ids, base_ids=base_ids)
-        elif args.method == "sae masking":
-            pass
-        elif args.method == "das masking":
-            pass
+        correct = []
+        total_samples_processed = 0
+        total_loss = 0.0
         
-        matches = 1 if predicted_text.split()[0] == source_label.split()[0] else 0
-        correct[layer_intervened].append(matches)
-        total_samples_processed+=1
+        for sample_no in tqdm(range(len(data))):
+            
+            # Data Processing
+            sample = data[sample_no]
+            base = sample[0][0]
+            source = sample[1][0]
+            base_label = sample[0][1]
+            source_label = sample[1][1]
+            
+            base_ids = tokenizer.encode(base, return_tensors='pt').type(torch.LongTensor).to(DEVICE)
+            base_tokens = tokenizer.tokenize(base)
+            source_ids = tokenizer.encode(source, return_tensors='pt').type(torch.LongTensor).to(DEVICE)
+            source_tokens = tokenizer.tokenize(source) 
+            
+            # Conditions to filter data:
+            
+            if len(base_tokens) == args.token_length_allowed:
+                pass
+            else:
+                continue
+            
+            if source_ids.shape != base_ids.shape:
+                continue
+            
+            assert len(base_tokens) == len(source_tokens)
+            token_length = len(base_tokens)
+            
+            # training the model
+            optimizer.zero_grad()  # Reset gradients
+            
+            # training the model
+            if args.method == "neuron masking":
+                predicted_text = training_model(source_ids, base_ids, layer_intervened, intervened_token_idx)
+            elif args.method == "sae masking":
+                pass
+            elif args.method == "das masking":
+                pass
+            
+            predicted_ids = tokenizer.encode(predicted_text, return_tensors='pt').type(torch.LongTensor).to(DEVICE)
+            source_label_ids = tokenizer.encode(source_label, return_tensors='pt').type(torch.LongTensor).to(DEVICE)
+            
+            if predicted_ids.shape != source_label_ids.shape:
+                continue
+            
+            loss = loss_fn(predicted_ids, source_label_ids)
+            total_loss += loss.item()
+            
+            # Backpropagation
+            loss.backward()
+            optimizer.step()
+            
+            # Calculate accuracy
+            matches = 1 if predicted_text.split()[0] == source_label.split()[0] else 0
+            correct[layer_intervened].append(matches)
+            total_samples_processed += 1
+            
+            if sample_no % 100 == 0:
+                print(f"Epoch: {epoch}, Sample: {sample_no}, Accuracy: {sum(correct[layer_intervened]) / total_samples_processed:.4f}, Loss: {total_loss / total_samples_processed:.4f}")
         
+        # Log accuracy and loss to wandb
+        epoch_accuracy = sum(correct[layer_intervened]) / total_samples_processed
+        wandb.log({"Epoch": epoch, "GPT-2 Accuracy": epoch_accuracy, "Loss": total_loss / total_samples_processed})
 
-        if sample_no%100 == 0:
-            print(sum(correct[layer_intervened]))
-            print(sum(correct[layer_intervened])/total_samples_processed)
+        print(f"Epoch {epoch} finished with accuracy {epoch_accuracy:.4f} and average loss {total_loss / total_samples_processed:.4f}")
 
-
-    print(f"The accuracy of {args.attribute} layer {layer_intervened} is {sum(correct[layer_intervened])/total_samples_processed}")
+            
