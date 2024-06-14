@@ -168,7 +168,7 @@ if __name__ == "__main__":
         except:
             return " "
 
-    i = 1
+    i = 0
     total_samples_processed = 0
     
     if args.attribute == "continent":
@@ -286,8 +286,6 @@ if __name__ == "__main__":
         
         len_correct_total[token_length]+=1
         len_correct[token_length]+=matches
-
-        len_correct_total[token_length]+=1
         total_samples_processed+=1
         
 
