@@ -132,12 +132,12 @@ if __name__ == "__main__":
     '''
     
     # model_eval(eval_file_path=args.eval_file_path, model = model, attribute=args.attribute)
-    overlapping_cities = overlap_measure()
+    # overlapping_cities = overlap_measure()
     
     # creating the intervention dataset of overlapping cities. 
-    intervention_dataset(overlapping_cities=overlapping_cities)
+    # intervention_dataset(overlapping_cities=overlapping_cities)
     
-    '''
+
     with open(args.eval_file_path, "r") as file:
         data = json.load(file)
     
@@ -205,29 +205,34 @@ if __name__ == "__main__":
         base_ids = base_ids.type(torch.LongTensor)
         source_ids = source_ids.type(torch.LongTensor)
         
-        # print(source_tokens)
+        
         
         # if len(base_tokens) == 61:
         #     pass
         # else:
         #     continue
         
-        
-        # if len(base_tokens) == 61:
-        #     intervened_token_idx = -8 # -8 for continent and -9 for country
-        # elif len(base_tokens) == 62:
-        #     intervened_token_idx = slice(-9, -8)
-        # elif len(base_tokens) == 63:
-        #     intervened_token_idx = slice(-10 ,-8)
-        
+        '''
+        if len(base_tokens) == 61:
+            intervened_token_idx = -8 # -8 for continent and -9 for country
+        elif len(base_tokens) == 62:
+            intervened_token_idx = slice(-9, -8)
+        elif len(base_tokens) == 63:
+            intervened_token_idx = slice(-10 ,-8)
+        '''
         
         intervened_token_idx = -8
         
         # for i in range(0,9):
         
         # only intervening for same shapes as intervening on different shapes misleads the results, giving 0 acc for intervention (done only for initial experimentation)
-        # if source_ids.shape != base_ids.shape:
-        #     continue
+        if source_ids.shape != base_ids.shape:
+            continue
+        
+        if len(source_tokens) == 61:
+            pass
+        else:
+            continue
     
         # print()
         # print(base_tokens)
@@ -237,7 +242,10 @@ if __name__ == "__main__":
         # print(f"Shape: {len(base_tokens)}")
         # print()
         
+        assert len(base_tokens) == len(source_tokens)
         token_length = len(base_tokens)
+
+        print(source_tokens)
 
         with model.trace() as tracer:
         
@@ -257,10 +265,11 @@ if __name__ == "__main__":
         # pprint(f"Base Label: {base_label}")
         # pprint(f"Predicted text: {predicted_text}")
         # pprint(f"Source Label: {source_label}")
-        
-        matches = sum(1 for a, b in zip(predicted_text, source_label) if a == b)
-        # print(matches)
+        # print(token_length)
         # print()
+        
+        matches = 1 if predicted_text.split()[0] == source_label.split()[0] else 0
+        # print(matches)
         correct[i].append(matches)
         
         len_correct_total[token_length]+=1
@@ -282,8 +291,12 @@ if __name__ == "__main__":
     print(f"Accuracy of Length 61: {len_correct[61]/len_correct_total[61]}")
     print(f"Accuracy of Length 62: {len_correct[62]/len_correct_total[62]}")
     print(f"Accuracy of Length 63: {len_correct[63]/len_correct_total[63]}")
-    print(f"Accuracy of Length 64: {len_correct[64]/len_correct_total[64]}")
+    print(f"Accuracy of Length 64: {len_correct[64]/len_correct_total[64]}")   
+    print()
+    print("Len correct dictionary")
+    print(len_correct)
+    print()
+    print("Total length present")
+    print(len_correct_total)
 
-
-    '''
     
