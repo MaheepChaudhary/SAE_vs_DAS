@@ -229,10 +229,10 @@ if __name__ == "__main__":
         if source_ids.shape != base_ids.shape:
             continue
         
-        if len(source_tokens) == 61:
-            pass
-        else:
-            continue
+        # if len(source_tokens) == 61:
+        #     pass
+        # else:
+        #     continue
     
         # print()
         # print(base_tokens)
