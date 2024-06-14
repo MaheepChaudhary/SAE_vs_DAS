@@ -168,7 +168,7 @@ if __name__ == "__main__":
         except:
             return " "
 
-    i = 0
+    i = 1
     total_samples_processed = 0
     
     if args.attribute == "continent":
@@ -301,7 +301,7 @@ if __name__ == "__main__":
 
     # for i in range(0,9):
     print(sum(correct[i]))
-    print(f"The accuracy of {args.attribute} layer {i} is {sum(correct[i])/total}")
+    print(f"The accuracy of {args.attribute} layer {i} is {sum(correct[i])/total_samples_processed}")
     if args.attribute == "continent":
         print(f"Accuracy of Length 61: {len_correct[61]/len_correct_total[61]}")
         print(f"Accuracy of Length 62: {len_correct[62]/len_correct_total[62]}")
