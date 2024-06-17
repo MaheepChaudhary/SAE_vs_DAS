@@ -50,7 +50,7 @@ def model_eval(model, eval_file_path, attribute):
     print(f"the accuracy for {args.attribute} is {correct/len(data)}")
 
 
-def intervention_dataset(overlapping_cities):
+def intervention_dataset():
     
     with open("comfy_country_top1.json", "r") as file:
         country_data = json.load(file)
@@ -160,6 +160,7 @@ if __name__ == "__main__":
         if tokenizer.pad_token is None:
             tokenizer.add_special_tokens({'pad_token': '[PAD]'}) 
 
+    intervention_dataset()
     # eval_file_path  = f"/content/{args.attribute}_data.json"
     
 
