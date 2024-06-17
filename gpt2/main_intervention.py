@@ -48,7 +48,7 @@ def model_eval(model, eval_file_path, attribute):
     
 
     print(f"the accuracy for {args.attribute} is {correct/len(data)}")
-    
+
 
 def intervention_dataset(overlapping_cities):
     
@@ -93,8 +93,46 @@ def intervention_dataset(overlapping_cities):
     dataset(country_data, "country")
     dataset(continent_data, "continent")
     
+def data_process(sample):
+    
+    '''
+    This is used to extract data in the passing format of the model, extracting base, source and converting them.
+    '''
+    
+    base = sample[0][0]
+    source = sample[1][0]
+    base_label = sample[0][1]
+    source_label = sample[1][1]
+    
+    if len(base.split()) != len(source.split()):
+        return False, None, None, None, None
+    else:
+        base_ids = tokenizer.encode(base, return_tensors='pt').type(torch.LongTensor).to(DEVICE)
+        # base_tokens = tokenizer.tokenize(base)
+        source_ids = tokenizer.encode(source, return_tensors='pt').type(torch.LongTensor).to(DEVICE)
+        # source_tokens = tokenizer.tokenize(source) 
+        return True, base_ids, source_ids, base_label, source_label    
 
+def intervention(model, source_ids, base_ids, layer_index, intervened_token_idx):
+    
+    '''
+    This is defined to do intervention from the source to the base.
+    '''
 
+    with model.trace() as tracer:
+
+        with tracer.invoke(source_ids) as runner:
+
+            vector_source = model.transformer.h[layer_index].output
+
+        with tracer.invoke(base_ids) as runner_:
+            
+            model.transformer.h[layer_index].output[0][:,intervened_token_idx,:] = vector_source[0][:,intervened_token_idx,:]
+            intervened_base_output = model.lm_head.output.argmax(dim = -1).save()
+        
+        predicted_text = model.tokenizer.decode(intervened_base_output[0][-1])
+    
+    return predicted_text
 
 if __name__ == "__main__":
     
@@ -108,11 +146,9 @@ if __name__ == "__main__":
     parser.add_argument("-acc", "--accuracy", required=True, help = "type of accuracy of the model on the evaluation dataset, i.e. top 1 or top 5 or top 10")
 
     args = parser.parse_args()
-    # wandb.init(project="sae_concept_eraser")
-    # wandb.run.name = f"{args.model}-{args.attribute}"
+    wandb.init(project="sae_concept_eraser")
     
     DEVICE = args.device 
-    # DEVICE = torch.device(DEVICE)
     
     # Load gpt2
     if args.model == "gpt2":
@@ -129,7 +165,6 @@ if __name__ == "__main__":
 
     '''
     #Now I will have to make the code for taking the accuracy on the prepared selected dataset of ravel
-
     '''
     
     # model_eval(eval_file_path=args.eval_file_path, model = model, attribute=args.attribute)
@@ -139,7 +174,6 @@ if __name__ == "__main__":
     # intervention_dataset(overlapping_cities=overlapping_cities)
     
     
-
     with open(args.eval_file_path, "r") as file:
         data = json.load(file)
     
@@ -152,27 +186,12 @@ if __name__ == "__main__":
         comfy_continent_cities = [sample.split(".")[-1].split()[0] for sample, label in comfy_continent_data]
     
     print(f"The total number of samples with which GPT-2 is comfortable for country dataset are {len(comfy_country_data)}")
+    print(f"The total length of the cities with which GPT-2 is comfortable for country dataset are {len(set(comfy_country_cities))}")
     print(f"The total number of samples with which GPT-2 is comfortable for continent dataset are {len(comfy_continent_data)}")    
+    print(f"The total length of the cities with which GPT-2 is comfortable for continent dataset are {len(set(comfy_continent_cities))}")
     print(f"The total number of intersecting cities between country and continent are {len(set(comfy_country_cities) & set(comfy_continent_cities))}")
         
-    '''
-    # Now, I will have to make the code for intervention of the data in the first layer of GPT2
-    '''
-    
-    # tokenizer.pad_token = tokenizer.eos_token
-    
-    correct = {0:[0],
-            1:[0],
-            2:[0],
-            3:[0],
-            4:[0],
-            5:[0],
-            6:[0],
-            7:[0],
-            8:[0],
-            9:[0],
-            10:[0],
-            11:[0]}
+    correct = {0:[0],1:[0],2:[0],3:[0],4:[0],5:[0],6:[0],7:[0],8:[0],9:[0],10:[0],11:[0]}
     
 
     def safe_split(word):
@@ -181,8 +200,7 @@ if __name__ == "__main__":
             return a 
         except:
             return " "
-
-    i = 1
+        
     total_samples_processed = 0
     
     if args.attribute == "continent":
@@ -192,187 +210,56 @@ if __name__ == "__main__":
     elif args.attribute == "country":
         len_correct = {59:0, 60:0, 61:0}
         len_correct_total = {59:0, 60:0, 61:0}
-        
+
     
     all_cities = []
     count = 0
     len_arr = {}
     
+    
     for sample_no in tqdm(range(len(data))):
         
         sample = data[sample_no]
-        base = sample[0][0]
-        source = sample[1][0]
-        base_label = sample[0][1]
-        source_label = sample[1][1]
-        # base_city = sample[:][0][0].split(".")[-1].split()[0]
+        proceed, base_ids, source_ids, base_label, source_label = data_process(sample)
         
-        # pprint(base)
-        # base_label = sample[:][0][1]
-        # base_city = sample[:][0][0].split(".")[-1].split()[0]
-        
-        # source_text = sample[:][1][0]
-        # source_label = sample[:][1][1]
-
-        base_ids = []
-        source_ids = []
-        
-        base_ids = tokenizer.encode(base, return_tensors='pt') 
-        base_tokens = tokenizer.tokenize(base)
-        source_ids = tokenizer.encode(source, return_tensors='pt')
-        source_tokens = tokenizer.tokenize(source) 
-        
-        if source_ids.shape != base_ids.shape:
-            continue
-        
-    
-
-        base_ids = base_ids.to(DEVICE)
-        source_ids = source_ids.to(DEVICE)
-
-        base_ids = base_ids.type(torch.LongTensor)
-        source_ids = source_ids.type(torch.LongTensor)
-    
-        # counting the number of cities in the dataset
-        try:
-            len_arr[len(source_tokens)]+=1
-        except:
-            len_arr[len(source_tokens)] = 1
-        if args.attribute == "continent":
-            sentence_length_allowed = 61
-        if args.attribute == "country":
-            sentence_length_allowed = 59
-        if len(source_tokens) == sentence_length_allowed:
-            city_source = source.split(".")[-1].split()[0]
-            city_base = base.split(".")[-1].split()[0]
-            all_cities.append(city_source)
-            all_cities.append(city_base)
-            count+=1
-        
-
-        
-    print(count)
-    print(len(all_cities))
-    print(set(all_cities))
-    print(f"The list of cities for {args.attribute} is {len(list(set(all_cities)))} for sentence length {sentence_length_allowed}")
-    print(f"The distribution length of tokens in {args.attribute} is {len_arr}")
-    
-    
-    '''
-        
-        if len(base_tokens) == 61:
-            pass
-        else:
-            continue
-        
-        
-        # if len(base_tokens) == 61:
-        #     intervened_token_idx = -8 # -8 for continent and -9 for country
-        # elif len(base_tokens) == 62:
-        #     intervened_token_idx = slice(-9, -8)
-        # elif len(base_tokens) == 63:
-        #     intervened_token_idx = slice(-10 ,-8)
-        
+        if proceed: pass 
+        else: continue
         
         intervened_token_idx = -8
         
-        # for i in range(0,9):
+        for layer_index in range(0,12):
+            
+            predicted_text = intervention(model, source_ids, base_ids, layer_index, intervened_token_idx)
+            
+            len_arr[base_ids.size()[1]] = 1 if base_ids.size()[1] not in len_arr else len_arr[base_ids.size()[1]]+1
+            
+            # The prediction would be done based on the condition of the length of the source label.
+            matches = 1 if safe_split(predicted_text)[0] == safe_split(source_label)[0] else 0
+            assert type(safe_split(predicted_text)[0]) == type(safe_split(source_label)[0]) == str
+            assert safe_split(predicted_text)[0] and safe_split(source_label)[0] != " "
+            
+            # The correct has all the total number of correct samples in each category of the [layer]. 
+            # and len_correct contains the total number of correct samples in each category of [length of tokens].
+            correct[layer_index].append(matches); total_samples_processed+=1
+            len_correct_total[base_ids.size()[1]]+=1; len_correct[base_ids.size()[1]]+=matches
+            
+            if sample_no%100 == 0:
+                print(correct[layer_index])
+                print(sum(correct[layer_index])/total_samples_processed)
         
-        # only intervening for same shapes as intervening on different shapes misleads the results, giving 0 acc for intervention (done only for initial experimentation)
-        if source_ids.shape != base_ids.shape:
-            continue
-        
-        if len(source_tokens) == 61:
-            pass
-        else:
-            continue
+    wandb.run.name = f"{args.model}-{args.attribute}"
     
-        # print()
-        # print(base_tokens)
-        # print(source_tokens)
-        # print(f"Source token {intervened_token_idx} : {source_tokens[intervened_token_idx]}, and Base token {intervened_token_idx}: {base_tokens[intervened_token_idx]}")
+    for layer_index in range(0,12):
+        print(f"The accuracy of {args.attribute} layer {layer_index} is {sum(correct[layer_index])/total_samples_processed}")
         
-        # print(f"Shape: {len(base_tokens)}")
-        # print()
-        
-        assert len(base_tokens) == len(source_tokens)
-        token_length = len(base_tokens)
-
-        # print(source_tokens)
-
-
-        # with model.trace() as tracer:
-        
-        #     with tracer.invoke(source_ids) as runner:
-
-        #         vector_source = model.transformer.h[i].output
-
-        #     with tracer.invoke(base_ids) as runner_:
-                
-        #         # print(vector_source.shape)
-        #         model.transformer.h[i].output[0][:,intervened_token_idx,:] = vector_source[0][:,intervened_token_idx,:]
-        #         intervened_base_output = model.lm_head.output.argmax(dim = -1).save()
-        
-        # predicted_text = model.tokenizer.decode(intervened_base_output[0][-1])
-
-        
-        # print()
-        # print("Base Token:", base_tokens)
-        # print()
-        # print("Source Token:", source_tokens)
-        # print()
-        # pprint(f"Base Label: {base_label}")
-        # pprint(f"Predicted text: {predicted_text}")
-        # pprint(f"Source Label: {source_label}")
-        # print(token_length)
-        # print()
-        
-        if len(source_label.split()) == 2:
-            print(source_label)
-            # print(predicted_text)
-
-        # matches = 1 if predicted_text.split()[0] == source_label.split()[0] else 0
-        # # print(matches)
-        # correct[i].append(matches)
-        # # print(matches)
-        
-        # len_correct_total[token_length]+=1
-        # len_correct[token_length]+=matches
-        # total_samples_processed+=1
-        
-
-        # if sample_no%100 == 0:
-        #     print(correct[i])
-        #     print(sum(correct[i])/total_samples_processed)
-
-        
-    total = len(data)
-    #total = 100
-
-    # for i in range(0,9):
-    print(sum(correct[i]))
-    print(f"The accuracy of {args.attribute} layer {i} is {sum(correct[i])/total_samples_processed}")
+        wandb.log({"Layer-wise Intervention Accuracy": sum(correct[layer_index])/total_samples_processed})
+    
     if args.attribute == "continent":
-        print(f"Accuracy of Length 61: {len_correct[61]/len_correct_total[61]}")
-        print(f"Accuracy of Length 62: {len_correct[62]/len_correct_total[62]}")
-        print(f"Accuracy of Length 63: {len_correct[63]/len_correct_total[63]}")  
-    # elif args.attribute == "country":
-    #     print(f"Accuracy of Length 59: {len_correct[59]/len_correct_total[59]}")
-    #     print(f"Accuracy of Length 60: {len_correct[60]/len_correct_total[60]}")
-    #     print(f"Accuracy of Length 61: {len_correct[61]/len_correct_total[61]}")   
-    print()
-    print("Len correct dictionary")
-    print(len_correct)
-    print()
-    print("Total length present")
-    print(len_correct_total)
-
+        for index in [61,62,63]:
+            wandb.log({"Length-wise Intervention Accuracy": len_correct[index]/len_correct_total[index]})
+            print(f"Accuracy of Length {index}: {len_correct[index]/len_correct_total[index]}")
     
-    '''
-
-
-'''
-{'Dublin', 'Tulsa', 'Wilmington', 'Dresden', 'Emerald', 'Wick', 'Ankara', 'Lisbon', 'Vernon', 'Auckland', 'Adelaide', 'Rome', 'Canberra', 'Tampa', 'Brussels', 'Budapest', 'Edmonton', 'Dayton', 'Dortmund', 'Sunderland', 'Alert', 'Karachi', 'Montreal', 'Paris', 'Frankfurt', 'Quebec', 'Havana', 'Perth', 'Tehran', 'Brooks', 'Providence', 'Nice', 'Kabul', 'Manila', 'Naples', 'Copenhagen', 'Santos', 'Wellington', 'Kobe', 'Cornwall', 'Windsor', 'Tokyo', 'Kiev', 'Donetsk', 'Churchill', 'Zurich', 'Wichita', 'Dawson', 'Tyler', 'Warsaw', 'Sydney', 'Calgary', 'Ob', 'Istanbul', 'Cologne', 'Darwin', 'Atlanta', 'Baghdad', 'Indianapolis', 'Oslo', 'Madrid', 'Hof', 'Moscow', 'Brandon', 'Idlib', 'Florence', 'Milan', 'Osaka', 'Prague', 'Toronto', 'Shanghai', 'Norfolk', 'Sochi', 'Orleans', 'Kyoto', 'Albany', 'Tunis', 'Cork', 'Calais', 'Jerusalem', 'Delhi', 'Vladimir', 'Lyon', 'Amsterdam', 'Jakarta', 'Mosul', 'Cairo', 'Valencia', 'Portsmouth', 'Seoul', 'Venice', 'Melbourne', 'Munich', 'Bowen', 'Berlin', 'Aleppo', 'Lima', 'Beijing', 'Vienna', 'Salvador', 'Ottawa', 'Mumbai', 'Tours', 'Beirut', 'Jian', 'Medina', 'Hamburg', 'Vancouver', 'Wallace', 'Orange', 'Stockholm', 'Jasper', 'Kuwait', 'Aden', 'Barcelona', 'Guatemala', 'Athens'}
-117
-
-'''
+    elif args.attribute == "country":
+        for index in [59,60,61]:
+            wandb.log({"Length-wise Intervention Accuracy": len_correct[index]/len_correct_total[index]})
+            print(f"Accuracy of Length {index}: {len_correct[index]/len_correct_total[index]}")
