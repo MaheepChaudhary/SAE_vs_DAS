@@ -15,13 +15,13 @@ if __name__ == "__main__":
     parser.add_argument("-a", "--attribute", required = True, help = "name of the attribute on which evaluation is being performned")
     parser.add_argument("-acc", "--accuracy", required=True, help = "type of accuracy of the model on the evaluation dataset, i.e. top 1 or top 5 or top 10")
     parser.add_argument("-tla", "--token_length_allowed", required=True, help = "insert the length you would allow the model to train mask")
-    parser.add_argument("-m", "--method", required=True, help="to let know if you want neuron masking, das masking or SAE masking")
+    parser.add_argument("-method", "--method", required=True, help="to let know if you want neuron masking, das masking or SAE masking")
     parser.add_argument("-e", "--epochs", default=10, help="# of epochs on which mask is to be trained")
     parser.add_argument("-ef", "--expansion_factor", default=1, help="expansion factor for SAE")
 
     args = parser.parse_args()
     wandb.init(project="sae_concept_eraser")
-    wandb.run.name = f"{args.model}-TLA_{args.tla}-{args.attribute}-{args.method}-{args.epochs}"
+    wandb.run.name = f"{args.model}-TLA_{args.token_length_allowed}-{args.attribute}-{args.method}-{args.epochs}"
     
     DEVICE = args.device 
     
@@ -44,7 +44,7 @@ if __name__ == "__main__":
     intervened_token_idx = -8
     intervention_token_length = args.token_length_allowed
 
-    training_model = my_model(model, DEVICE, args.method, args.token_length_allowed, expansion_factor=args.expansion_factor,
+    training_model = my_model(model = model, DEVICE=DEVICE, method=args.method, token_length_allowed=args.token_length_allowed, expansion_factor=args.expansion_factor,
                             layer_intervened=layer_intervened, intervened_token_idx=intervened_token_idx)
 
     loss_fn = nn.CrossEntropyLoss()
