@@ -50,7 +50,7 @@ def model_eval(model, eval_file_path, attribute):
     print(f"the accuracy for {args.attribute} is {correct/len(data)}")
 
 
-def intervention_dataset():
+def intervention_dataset(overlapping_cities):
     
     with open("comfy_country_top1.json", "r") as file:
         country_data = json.load(file)
@@ -65,24 +65,16 @@ def intervention_dataset():
         
         for i in data:
         
-            city_name = i[0].split(".")[-1].split()[0]
-            # if city_name in overlapping_cities:
-            #     pass
-            # else:
-            #     continue
-        
             for j in data:
                 
-                indented_city_name = j[0].split(".")[-1].split()[0]
-                # if indented_city_name in overlapping_cities:
-                #     pass
-                # else:
-                #     continue
-        
-                if i != j:
-                    if i[1] != j[1]:
-                        new_data.append([i,j])
-                elif i == j:
+                if i[0].split(".")[-1].split()[0] and j[0].split(".")[-1].split()[0] in overlapping_cities:
+            
+                    if i != j:
+                        if i[1] != j[1]:
+                            new_data.append([i,j])
+                    elif i == j:
+                        pass
+                else:
                     pass
         
         print(f"The total number of sample pairs in {attribute} are {len(new_data)}")
@@ -160,7 +152,6 @@ if __name__ == "__main__":
         if tokenizer.pad_token is None:
             tokenizer.add_special_tokens({'pad_token': '[PAD]'}) 
 
-    intervention_dataset()
     # eval_file_path  = f"/content/{args.attribute}_data.json"
     
 
@@ -169,10 +160,10 @@ if __name__ == "__main__":
     '''
     
     # model_eval(eval_file_path=args.eval_file_path, model = model, attribute=args.attribute)
-    # overlapping_cities = overlap_measure()
+    overlapping_cities = overlap_measure()
     
     # creating the intervention dataset of overlapping cities. 
-    # intervention_dataset(overlapping_cities=overlapping_cities)
+    intervention_dataset(overlapping_cities=overlapping_cities)
     
     
     with open(args.eval_file_path, "r") as file:
