@@ -32,3 +32,15 @@ else:
     tracer_kwargs = dict(scan=False, validate=False)
 
 # model hyperparameters
+
+import warnings
+
+# Suppress specific warnings
+warnings.filterwarnings("ignore", message="Setting `pad_token_id` to `eos_token_id`:50256 for open-end generation. A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.")
+
+import logging
+from transformers import logging as transformers_logging
+
+# Suppress logging messages from the `transformers` library
+transformers_logging.set_verbosity_error()
+logging.getLogger("transformers").setLevel(logging.ERROR)

@@ -2,6 +2,12 @@ from imports import *
 from ravel_data_prep import *
 from eval_gpt2 import *
 
+def safe_split(word):
+    try:
+        a = word.split()[0]
+        return a 
+    except:
+        return " "
 
 def overlap_measure():
     
@@ -85,7 +91,7 @@ def intervention_dataset(overlapping_cities):
     dataset(country_data, "country")
     dataset(continent_data, "continent")
     
-def data_process(sample):
+def data_process(sample, model):
     
     '''
     This is used to extract data in the passing format of the model, extracting base, source and converting them.
@@ -96,14 +102,20 @@ def data_process(sample):
     base_label = sample[0][1]
     source_label = sample[1][1]
     
-    if len(base.split()) != len(source.split()):
-        return False, None, None, None, None
+    base_ids = model.tokenizer.encode(base, return_tensors='pt').type(torch.LongTensor).to(DEVICE)
+    base_tokens = model.tokenizer.tokenize(base)
+    source_ids = model.tokenizer.encode(source, return_tensors='pt').type(torch.LongTensor).to(DEVICE)
+    # source_tokens = tokenizer.tokenize(source) 
+    
+    if source_ids.shape[1] != base_ids.shape[1]:
+        return False, None, None, None, None, source, base
+    
+    # if base_ids.size()[1] != 59:
+    #     return False, None, None, None, None, source, base
+    
     else:
-        base_ids = tokenizer.encode(base, return_tensors='pt').type(torch.LongTensor).to(DEVICE)
-        # base_tokens = tokenizer.tokenize(base)
-        source_ids = tokenizer.encode(source, return_tensors='pt').type(torch.LongTensor).to(DEVICE)
-        # source_tokens = tokenizer.tokenize(source) 
-        return True, base_ids, source_ids, base_label, source_label    
+        # print(base_tokens)
+        return True, base_ids, source_ids, base_label, source_label, source, base    
 
 def intervention(model, source_ids, base_ids, layer_index, intervened_token_idx):
     
@@ -111,19 +123,20 @@ def intervention(model, source_ids, base_ids, layer_index, intervened_token_idx)
     This is defined to do intervention from the source to the base.
     '''
 
-    with model.trace() as tracer:
+    with model.generate(max_new_tokens=1) as tracer:
 
-        with tracer.invoke(source_ids) as runner:
+        with tracer.invoke(source_ids):
 
             vector_source = model.transformer.h[layer_index].output
 
-        with tracer.invoke(base_ids) as runner_:
-            
+        with tracer.invoke(base_ids):
+
             model.transformer.h[layer_index].output[0][:,intervened_token_idx,:] = vector_source[0][:,intervened_token_idx,:]
-            intervened_base_output = model.lm_head.output.argmax(dim = -1).save()
-        
-        predicted_text = model.tokenizer.decode(intervened_base_output[0][-1])
-    
+            # intervened_base_output = model.lm_head.output.argmax(dim = -1).save()
+            intervened_base_output = model.generator.output.save()
+
+    predicted_text = model.tokenizer.decode(intervened_base_output[0][-1])
+
     return predicted_text
 
 if __name__ == "__main__":
@@ -145,12 +158,16 @@ if __name__ == "__main__":
     # Load gpt2
     if args.model == "gpt2":
         model = LanguageModel("openai-community/gpt2", device_map=DEVICE)
-        tokenizer = GPT2Tokenizer.from_pretrained("openai-community/gpt2")
+        # tokenizer = GPT2Tokenizer.from_pretrained("openai-community/gpt2")
     elif args.model == "mistral":
         model = LanguageModel("mistralai/Mistral-7B-v0.1", device_map=DEVICE)
         tokenizer = AutoTokenizer.from_pretrained("mistralai/Mistral-7B-v0.1")
-        if tokenizer.pad_token is None:
-            tokenizer.add_special_tokens({'pad_token': '[PAD]'}) 
+        # if tokenizer.pad_token is None:
+        #     tokenizer.add_special_tokens({'pad_token': '[PAD]'}) 
+
+    tokenizer = model.tokenizer
+    tokenizer.padding_side = "left"
+    tokenizer.pad_token_id = tokenizer.eos_token_id
 
     # eval_file_path  = f"/content/{args.attribute}_data.json"
     
@@ -183,15 +200,8 @@ if __name__ == "__main__":
     print(f"The total length of the cities with which GPT-2 is comfortable for continent dataset are {len(set(comfy_continent_cities))}")
     print(f"The total number of intersecting cities between country and continent are {len(set(comfy_country_cities) & set(comfy_continent_cities))}")
         
-    correct = {0:[0],1:[0],2:[0],3:[0],4:[0],5:[0],6:[0],7:[0],8:[0],9:[0],10:[0],11:[0]}
+    correct = {i:[0] for i in range(0,12)}
     
-
-    def safe_split(word):
-        try:
-            a = word.split()[0]
-            return a 
-        except:
-            return " "
         
     total_samples_processed = 0
     
@@ -203,25 +213,31 @@ if __name__ == "__main__":
         len_correct = {59:0, 60:0, 61:0}
         len_correct_total = {59:0, 60:0, 61:0}
 
-    
     all_cities = []
     count = 0
     len_arr = {}
-    
+    total_samples_processed = 0
     
     for sample_no in tqdm(range(len(data))):
         
         sample = data[sample_no]
-        proceed, base_ids, source_ids, base_label, source_label = data_process(sample)
+        proceed, base_ids, source_ids, base_label, source_label, source, base = data_process(sample, model)
         
-        if proceed: pass 
-        else: continue
-        
+        if not proceed: continue 
+
         intervened_token_idx = -8
         
         for layer_index in range(0,12):
             
-            predicted_text = intervention(model, source_ids, base_ids, layer_index, intervened_token_idx)
+            # layer_index = 0
+            predicted_text = intervention(model=model, source_ids=source_ids, base_ids=base_ids, layer_index=layer_index, intervened_token_idx=intervened_token_idx)
+
+            
+            # print(f"Layer Index: {layer_index}")
+            # print(f"Base Label: {base_label}")
+            # print(f"Source Label: {source_label}")
+            # print(f"Predicted Text: {predicted_text}")
+            # print()
             
             len_arr[base_ids.size()[1]] = 1 if base_ids.size()[1] not in len_arr else len_arr[base_ids.size()[1]]+1
             
@@ -232,12 +248,14 @@ if __name__ == "__main__":
             
             # The correct has all the total number of correct samples in each category of the [layer]. 
             # and len_correct contains the total number of correct samples in each category of [length of tokens].
-            correct[layer_index].append(matches); total_samples_processed+=1
+            correct[layer_index].append(matches); 
             len_correct_total[base_ids.size()[1]]+=1; len_correct[base_ids.size()[1]]+=matches
-            
-            if sample_no%100 == 0:
+        
+            if total_samples_processed%100 == 0 and total_samples_processed != 0:
                 print(correct[layer_index])
                 print(sum(correct[layer_index])/total_samples_processed)
+        
+        total_samples_processed+=1
         
     wandb.run.name = f"{args.model}-{args.attribute}"
     
