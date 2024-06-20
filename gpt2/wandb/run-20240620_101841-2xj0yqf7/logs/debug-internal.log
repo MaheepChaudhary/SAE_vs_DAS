@@ -1,0 +1,187 @@
+2024-06-20 10:18:41,149 INFO    StreamThr :270740 [internal.py:wandb_internal():85] W&B internal server running at pid: 270740, started at: 2024-06-20 10:18:41.148888
+2024-06-20 10:18:41,150 DEBUG   HandlerThread:270740 [handler.py:handle_request():158] handle_request: status
+2024-06-20 10:18:41,151 INFO    WriterThread:270740 [datastore.py:open_for_write():87] open: /home/atticus/maheep/SAE_vs_DAS/gpt2/wandb/run-20240620_101841-2xj0yqf7/run-2xj0yqf7.wandb
+2024-06-20 10:18:41,152 DEBUG   SenderThread:270740 [sender.py:send():378] send: header
+2024-06-20 10:18:41,153 DEBUG   SenderThread:270740 [sender.py:send():378] send: run
+2024-06-20 10:18:41,531 INFO    SenderThread:270740 [dir_watcher.py:__init__():211] watching files in: /home/atticus/maheep/SAE_vs_DAS/gpt2/wandb/run-20240620_101841-2xj0yqf7/files
+2024-06-20 10:18:41,531 INFO    SenderThread:270740 [sender.py:_start_run_threads():1123] run started: 2xj0yqf7 with start time 1718903921.148591
+2024-06-20 10:18:41,542 DEBUG   HandlerThread:270740 [handler.py:handle_request():158] handle_request: check_version
+2024-06-20 10:18:41,543 DEBUG   SenderThread:270740 [sender.py:send_request():405] send_request: check_version
+2024-06-20 10:18:41,696 DEBUG   HandlerThread:270740 [handler.py:handle_request():158] handle_request: run_start
+2024-06-20 10:18:41,703 DEBUG   HandlerThread:270740 [system_info.py:__init__():26] System info init
+2024-06-20 10:18:41,703 DEBUG   HandlerThread:270740 [system_info.py:__init__():41] System info init done
+2024-06-20 10:18:41,703 INFO    HandlerThread:270740 [system_monitor.py:start():194] Starting system monitor
+2024-06-20 10:18:41,704 INFO    SystemMonitor:270740 [system_monitor.py:_start():158] Starting system asset monitoring threads
+2024-06-20 10:18:41,704 INFO    HandlerThread:270740 [system_monitor.py:probe():214] Collecting system info
+2024-06-20 10:18:41,704 INFO    SystemMonitor:270740 [interfaces.py:start():188] Started cpu monitoring
+2024-06-20 10:18:41,705 INFO    SystemMonitor:270740 [interfaces.py:start():188] Started disk monitoring
+2024-06-20 10:18:41,705 INFO    SystemMonitor:270740 [interfaces.py:start():188] Started gpu monitoring
+2024-06-20 10:18:41,705 INFO    SystemMonitor:270740 [interfaces.py:start():188] Started memory monitoring
+2024-06-20 10:18:41,706 INFO    SystemMonitor:270740 [interfaces.py:start():188] Started network monitoring
+2024-06-20 10:18:41,719 DEBUG   HandlerThread:270740 [system_info.py:probe():150] Probing system
+2024-06-20 10:18:41,720 DEBUG   HandlerThread:270740 [system_info.py:_probe_git():135] Probing git
+2024-06-20 10:18:41,727 DEBUG   HandlerThread:270740 [system_info.py:_probe_git():143] Probing git done
+2024-06-20 10:18:41,727 DEBUG   HandlerThread:270740 [system_info.py:probe():198] Probing system done
+2024-06-20 10:18:41,727 DEBUG   HandlerThread:270740 [system_monitor.py:probe():223] {'os': 'Linux-6.5.0-41-generic-x86_64-with-glibc2.35', 'python': '3.10.12', 'heartbeatAt': '2024-06-20T17:18:41.719118', 'startedAt': '2024-06-20T17:18:41.144418', 'docker': None, 'cuda': None, 'args': ('-efp', 'country_intervention_dataset.json', '-a', 'country', '-acc', 'top1', '-d', 'mps'), 'state': 'running', 'program': '/home/atticus/maheep/SAE_vs_DAS/gpt2/main_intervention.py', 'codePathLocal': 'main_intervention.py', 'codePath': 'gpt2/main_intervention.py', 'git': {'remote': 'https://github.com/MaheepChaudhary/SAE_vs_DAS.git', 'commit': 'fa2e7e41b39d6c1722db3a9cb177d5e51f4bba39'}, 'email': 'chaudhary.maheep28@gmail.com', 'root': '/home/atticus/maheep/SAE_vs_DAS', 'host': 'AtticusDeepLearner', 'username': 'atticus', 'executable': '/usr/bin/python', 'cpu_count': 16, 'cpu_count_logical': 32, 'cpu_freq': {'current': 2.427624999999999, 'min': 1800.0, 'max': 4000.0}, 'cpu_freq_per_core': [{'current': 1.929, 'min': 1800.0, 'max': 4000.0}, {'current': 2.315, 'min': 1800.0, 'max': 4000.0}, {'current': 3.048, 'min': 1800.0, 'max': 4000.0}, {'current': 2.315, 'min': 1800.0, 'max': 4000.0}, {'current': 2.315, 'min': 1800.0, 'max': 4000.0}, {'current': 2.314, 'min': 1800.0, 'max': 4000.0}, {'current': 1.986, 'min': 1800.0, 'max': 4000.0}, {'current': 1.924, 'min': 1800.0, 'max': 4000.0}, {'current': 2.439, 'min': 1800.0, 'max': 4000.0}, {'current': 2.721, 'min': 1800.0, 'max': 4000.0}, {'current': 2.067, 'min': 1800.0, 'max': 4000.0}, {'current': 1.8, 'min': 1800.0, 'max': 4000.0}, {'current': 1.928, 'min': 1800.0, 'max': 4000.0}, {'current': 1.92, 'min': 1800.0, 'max': 4000.0}, {'current': 1.8, 'min': 1800.0, 'max': 4000.0}, {'current': 1.925, 'min': 1800.0, 'max': 4000.0}, {'current': 2.382, 'min': 1800.0, 'max': 4000.0}, {'current': 1.8, 'min': 1800.0, 'max': 4000.0}, {'current': 1.916, 'min': 1800.0, 'max': 4000.0}, {'current': 1.8, 'min': 1800.0, 'max': 4000.0}, {'current': 1.8, 'min': 1800.0, 'max': 4000.0}, {'current': 2.144, 'min': 1800.0, 'max': 4000.0}, {'current': 1.9, 'min': 1800.0, 'max': 4000.0}, {'current': 2.007, 'min': 1800.0, 'max': 4000.0}, {'current': 2.535, 'min': 1800.0, 'max': 4000.0}, {'current': 1.926, 'min': 1800.0, 'max': 4000.0}, {'current': 1.941, 'min': 1800.0, 'max': 4000.0}, {'current': 2.424, 'min': 1800.0, 'max': 4000.0}, {'current': 2.719, 'min': 1800.0, 'max': 4000.0}, {'current': 2.027, 'min': 1800.0, 'max': 4000.0}, {'current': 1.938, 'min': 1800.0, 'max': 4000.0}, {'current': 2.09, 'min': 1800.0, 'max': 4000.0}], 'disk': {'/': {'total': 3519.256721496582, 'used': 148.63356018066406}}, 'gpu': 'NVIDIA RTX A6000', 'gpu_count': 2, 'gpu_devices': [{'name': 'NVIDIA RTX A6000', 'memory_total': 51527024640}, {'name': 'NVIDIA RTX A6000', 'memory_total': 51527024640}], 'memory': {'total': 251.5378875732422}}
+2024-06-20 10:18:41,727 INFO    HandlerThread:270740 [system_monitor.py:probe():224] Finished collecting system info
+2024-06-20 10:18:41,727 INFO    HandlerThread:270740 [system_monitor.py:probe():227] Publishing system info
+2024-06-20 10:18:41,727 INFO    HandlerThread:270740 [system_monitor.py:probe():229] Finished publishing system info
+2024-06-20 10:18:41,734 DEBUG   SenderThread:270740 [sender.py:send():378] send: files
+2024-06-20 10:18:41,734 INFO    SenderThread:270740 [sender.py:_save_file():1389] saving file wandb-metadata.json with policy now
+2024-06-20 10:18:41,882 DEBUG   HandlerThread:270740 [handler.py:handle_request():158] handle_request: python_packages
+2024-06-20 10:18:41,882 DEBUG   SenderThread:270740 [sender.py:send_request():405] send_request: python_packages
+2024-06-20 10:18:41,924 DEBUG   HandlerThread:270740 [handler.py:handle_request():158] handle_request: stop_status
+2024-06-20 10:18:41,924 DEBUG   SenderThread:270740 [sender.py:send_request():405] send_request: stop_status
+2024-06-20 10:18:42,004 DEBUG   SenderThread:270740 [sender.py:send():378] send: telemetry
+2024-06-20 10:18:42,361 INFO    wandb-upload_0:270740 [upload_job.py:push():130] Uploaded file /tmp/tmphn6lo1ocwandb/7khs1wmt-wandb-metadata.json
+2024-06-20 10:18:42,534 INFO    Thread-12 :270740 [dir_watcher.py:_on_file_created():271] file/dir created: /home/atticus/maheep/SAE_vs_DAS/gpt2/wandb/run-20240620_101841-2xj0yqf7/files/requirements.txt
+2024-06-20 10:18:42,534 INFO    Thread-12 :270740 [dir_watcher.py:_on_file_created():271] file/dir created: /home/atticus/maheep/SAE_vs_DAS/gpt2/wandb/run-20240620_101841-2xj0yqf7/files/wandb-metadata.json
+2024-06-20 10:18:42,534 INFO    Thread-12 :270740 [dir_watcher.py:_on_file_created():271] file/dir created: /home/atticus/maheep/SAE_vs_DAS/gpt2/wandb/run-20240620_101841-2xj0yqf7/files/output.log
+2024-06-20 10:18:44,533 INFO    Thread-12 :270740 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/gpt2/wandb/run-20240620_101841-2xj0yqf7/files/output.log
+2024-06-20 10:18:46,533 INFO    Thread-12 :270740 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/gpt2/wandb/run-20240620_101841-2xj0yqf7/files/output.log
+2024-06-20 10:18:46,790 DEBUG   HandlerThread:270740 [handler.py:handle_request():158] handle_request: status_report
+2024-06-20 10:18:47,008 DEBUG   SenderThread:270740 [sender.py:send():378] send: exit
+2024-06-20 10:18:47,008 INFO    SenderThread:270740 [sender.py:send_exit():585] handling exit code: 1
+2024-06-20 10:18:47,008 INFO    SenderThread:270740 [sender.py:send_exit():587] handling runtime: 5
+2024-06-20 10:18:47,008 INFO    SenderThread:270740 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-06-20 10:18:47,008 INFO    SenderThread:270740 [sender.py:send_exit():593] send defer
+2024-06-20 10:18:47,008 DEBUG   HandlerThread:270740 [handler.py:handle_request():158] handle_request: defer
+2024-06-20 10:18:47,008 INFO    HandlerThread:270740 [handler.py:handle_request_defer():184] handle defer: 0
+2024-06-20 10:18:47,008 DEBUG   SenderThread:270740 [sender.py:send_request():405] send_request: defer
+2024-06-20 10:18:47,008 INFO    SenderThread:270740 [sender.py:send_request_defer():609] handle sender defer: 0
+2024-06-20 10:18:47,008 INFO    SenderThread:270740 [sender.py:transition_state():613] send defer: 1
+2024-06-20 10:18:47,008 DEBUG   HandlerThread:270740 [handler.py:handle_request():158] handle_request: defer
+2024-06-20 10:18:47,008 INFO    HandlerThread:270740 [handler.py:handle_request_defer():184] handle defer: 1
+2024-06-20 10:18:47,009 DEBUG   SenderThread:270740 [sender.py:send_request():405] send_request: defer
+2024-06-20 10:18:47,009 INFO    SenderThread:270740 [sender.py:send_request_defer():609] handle sender defer: 1
+2024-06-20 10:18:47,009 INFO    SenderThread:270740 [sender.py:transition_state():613] send defer: 2
+2024-06-20 10:18:47,009 DEBUG   HandlerThread:270740 [handler.py:handle_request():158] handle_request: defer
+2024-06-20 10:18:47,009 INFO    HandlerThread:270740 [handler.py:handle_request_defer():184] handle defer: 2
+2024-06-20 10:18:47,009 INFO    HandlerThread:270740 [system_monitor.py:finish():203] Stopping system monitor
+2024-06-20 10:18:47,009 DEBUG   SystemMonitor:270740 [system_monitor.py:_start():172] Starting system metrics aggregation loop
+2024-06-20 10:18:47,009 DEBUG   SystemMonitor:270740 [system_monitor.py:_start():179] Finished system metrics aggregation loop
+2024-06-20 10:18:47,009 DEBUG   SystemMonitor:270740 [system_monitor.py:_start():183] Publishing last batch of metrics
+2024-06-20 10:18:47,009 INFO    HandlerThread:270740 [interfaces.py:finish():200] Joined cpu monitor
+2024-06-20 10:18:47,010 INFO    HandlerThread:270740 [interfaces.py:finish():200] Joined disk monitor
+2024-06-20 10:18:47,108 INFO    HandlerThread:270740 [interfaces.py:finish():200] Joined gpu monitor
+2024-06-20 10:18:47,109 INFO    HandlerThread:270740 [interfaces.py:finish():200] Joined memory monitor
+2024-06-20 10:18:47,109 INFO    HandlerThread:270740 [interfaces.py:finish():200] Joined network monitor
+2024-06-20 10:18:47,109 DEBUG   SenderThread:270740 [sender.py:send_request():405] send_request: defer
+2024-06-20 10:18:47,109 INFO    SenderThread:270740 [sender.py:send_request_defer():609] handle sender defer: 2
+2024-06-20 10:18:47,109 INFO    SenderThread:270740 [sender.py:transition_state():613] send defer: 3
+2024-06-20 10:18:47,110 DEBUG   HandlerThread:270740 [handler.py:handle_request():158] handle_request: defer
+2024-06-20 10:18:47,110 INFO    HandlerThread:270740 [handler.py:handle_request_defer():184] handle defer: 3
+2024-06-20 10:18:47,110 DEBUG   SenderThread:270740 [sender.py:send_request():405] send_request: defer
+2024-06-20 10:18:47,110 INFO    SenderThread:270740 [sender.py:send_request_defer():609] handle sender defer: 3
+2024-06-20 10:18:47,110 INFO    SenderThread:270740 [sender.py:transition_state():613] send defer: 4
+2024-06-20 10:18:47,110 DEBUG   HandlerThread:270740 [handler.py:handle_request():158] handle_request: defer
+2024-06-20 10:18:47,110 INFO    HandlerThread:270740 [handler.py:handle_request_defer():184] handle defer: 4
+2024-06-20 10:18:47,111 DEBUG   SenderThread:270740 [sender.py:send_request():405] send_request: defer
+2024-06-20 10:18:47,111 INFO    SenderThread:270740 [sender.py:send_request_defer():609] handle sender defer: 4
+2024-06-20 10:18:47,111 INFO    SenderThread:270740 [sender.py:transition_state():613] send defer: 5
+2024-06-20 10:18:47,111 DEBUG   HandlerThread:270740 [handler.py:handle_request():158] handle_request: defer
+2024-06-20 10:18:47,111 INFO    HandlerThread:270740 [handler.py:handle_request_defer():184] handle defer: 5
+2024-06-20 10:18:47,111 DEBUG   SenderThread:270740 [sender.py:send():378] send: summary
+2024-06-20 10:18:47,112 INFO    SenderThread:270740 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-06-20 10:18:47,112 DEBUG   SenderThread:270740 [sender.py:send_request():405] send_request: defer
+2024-06-20 10:18:47,112 INFO    SenderThread:270740 [sender.py:send_request_defer():609] handle sender defer: 5
+2024-06-20 10:18:47,112 INFO    SenderThread:270740 [sender.py:transition_state():613] send defer: 6
+2024-06-20 10:18:47,112 DEBUG   HandlerThread:270740 [handler.py:handle_request():158] handle_request: defer
+2024-06-20 10:18:47,112 INFO    HandlerThread:270740 [handler.py:handle_request_defer():184] handle defer: 6
+2024-06-20 10:18:47,112 DEBUG   SenderThread:270740 [sender.py:send_request():405] send_request: defer
+2024-06-20 10:18:47,112 INFO    SenderThread:270740 [sender.py:send_request_defer():609] handle sender defer: 6
+2024-06-20 10:18:47,116 DEBUG   HandlerThread:270740 [handler.py:handle_request():158] handle_request: status_report
+2024-06-20 10:18:47,212 INFO    SenderThread:270740 [sender.py:transition_state():613] send defer: 7
+2024-06-20 10:18:47,212 DEBUG   HandlerThread:270740 [handler.py:handle_request():158] handle_request: defer
+2024-06-20 10:18:47,212 INFO    HandlerThread:270740 [handler.py:handle_request_defer():184] handle defer: 7
+2024-06-20 10:18:47,213 DEBUG   SenderThread:270740 [sender.py:send_request():405] send_request: defer
+2024-06-20 10:18:47,213 INFO    SenderThread:270740 [sender.py:send_request_defer():609] handle sender defer: 7
+2024-06-20 10:18:47,534 INFO    Thread-12 :270740 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/gpt2/wandb/run-20240620_101841-2xj0yqf7/files/config.yaml
+2024-06-20 10:18:47,534 INFO    Thread-12 :270740 [dir_watcher.py:_on_file_created():271] file/dir created: /home/atticus/maheep/SAE_vs_DAS/gpt2/wandb/run-20240620_101841-2xj0yqf7/files/wandb-summary.json
+2024-06-20 10:18:48,008 DEBUG   HandlerThread:270740 [handler.py:handle_request():158] handle_request: poll_exit
+2024-06-20 10:18:48,535 INFO    Thread-12 :270740 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/gpt2/wandb/run-20240620_101841-2xj0yqf7/files/output.log
+2024-06-20 10:18:48,994 INFO    SenderThread:270740 [sender.py:transition_state():613] send defer: 8
+2024-06-20 10:18:48,994 DEBUG   SenderThread:270740 [sender.py:send_request():405] send_request: poll_exit
+2024-06-20 10:18:48,995 DEBUG   HandlerThread:270740 [handler.py:handle_request():158] handle_request: defer
+2024-06-20 10:18:48,995 INFO    HandlerThread:270740 [handler.py:handle_request_defer():184] handle defer: 8
+2024-06-20 10:18:48,995 DEBUG   SenderThread:270740 [sender.py:send_request():405] send_request: defer
+2024-06-20 10:18:48,995 INFO    SenderThread:270740 [sender.py:send_request_defer():609] handle sender defer: 8
+2024-06-20 10:18:48,996 INFO    SenderThread:270740 [job_builder.py:build():432] Attempting to build job artifact
+2024-06-20 10:18:48,996 INFO    SenderThread:270740 [job_builder.py:_get_source_type():565] is repo sourced job
+2024-06-20 10:18:49,009 DEBUG   HandlerThread:270740 [handler.py:handle_request():158] handle_request: poll_exit
+2024-06-20 10:18:49,013 INFO    SenderThread:270740 [job_builder.py:build():541] adding wandb-job metadata file
+2024-06-20 10:18:49,015 INFO    SenderThread:270740 [sender.py:transition_state():613] send defer: 9
+2024-06-20 10:18:49,015 DEBUG   SenderThread:270740 [sender.py:send_request():405] send_request: poll_exit
+2024-06-20 10:18:49,015 DEBUG   HandlerThread:270740 [handler.py:handle_request():158] handle_request: defer
+2024-06-20 10:18:49,015 INFO    HandlerThread:270740 [handler.py:handle_request_defer():184] handle defer: 9
+2024-06-20 10:18:49,016 DEBUG   SenderThread:270740 [sender.py:send():378] send: artifact
+2024-06-20 10:18:49,536 INFO    Thread-12 :270740 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/gpt2/wandb/run-20240620_101841-2xj0yqf7/files/output.log
+2024-06-20 10:18:49,719 INFO    wandb-upload_1:270740 [upload_job.py:push():85] Skipped uploading /home/atticus/.local/share/wandb/artifacts/staging/tmpcl23omqy
+2024-06-20 10:18:49,861 INFO    wandb-upload_0:270740 [upload_job.py:push():88] Uploaded file /tmp/tmp43kz07h7/wandb-job.json
+2024-06-20 10:18:50,010 DEBUG   HandlerThread:270740 [handler.py:handle_request():158] handle_request: poll_exit
+2024-06-20 10:18:50,640 INFO    SenderThread:270740 [sender.py:send_artifact():1467] sent artifact job-https___github.com_MaheepChaudhary_SAE_vs_DAS.git_gpt2_main_intervention.py - {'id': 'QXJ0aWZhY3Q6OTAyODk4MTkw', 'state': 'PENDING', 'artifactSequence': {'id': 'QXJ0aWZhY3RDb2xsZWN0aW9uOjIwNTgxOTc1Nw==', 'latestArtifact': {'id': 'QXJ0aWZhY3Q6ODk1ODU5MjM0', 'versionIndex': 2}}}
+2024-06-20 10:18:50,640 DEBUG   SenderThread:270740 [sender.py:send_request():405] send_request: defer
+2024-06-20 10:18:50,640 INFO    SenderThread:270740 [sender.py:send_request_defer():609] handle sender defer: 9
+2024-06-20 10:18:50,640 INFO    SenderThread:270740 [dir_watcher.py:finish():358] shutting down directory watcher
+2024-06-20 10:18:51,537 INFO    SenderThread:270740 [dir_watcher.py:finish():388] scan: /home/atticus/maheep/SAE_vs_DAS/gpt2/wandb/run-20240620_101841-2xj0yqf7/files
+2024-06-20 10:18:51,537 INFO    SenderThread:270740 [dir_watcher.py:finish():402] scan save: /home/atticus/maheep/SAE_vs_DAS/gpt2/wandb/run-20240620_101841-2xj0yqf7/files/wandb-metadata.json wandb-metadata.json
+2024-06-20 10:18:51,537 INFO    SenderThread:270740 [dir_watcher.py:finish():402] scan save: /home/atticus/maheep/SAE_vs_DAS/gpt2/wandb/run-20240620_101841-2xj0yqf7/files/requirements.txt requirements.txt
+2024-06-20 10:18:51,538 INFO    SenderThread:270740 [dir_watcher.py:finish():402] scan save: /home/atticus/maheep/SAE_vs_DAS/gpt2/wandb/run-20240620_101841-2xj0yqf7/files/wandb-summary.json wandb-summary.json
+2024-06-20 10:18:51,538 INFO    SenderThread:270740 [dir_watcher.py:finish():402] scan save: /home/atticus/maheep/SAE_vs_DAS/gpt2/wandb/run-20240620_101841-2xj0yqf7/files/output.log output.log
+2024-06-20 10:18:51,538 INFO    SenderThread:270740 [dir_watcher.py:finish():402] scan save: /home/atticus/maheep/SAE_vs_DAS/gpt2/wandb/run-20240620_101841-2xj0yqf7/files/config.yaml config.yaml
+2024-06-20 10:18:51,538 INFO    SenderThread:270740 [sender.py:transition_state():613] send defer: 10
+2024-06-20 10:18:51,539 DEBUG   SenderThread:270740 [sender.py:send_request():405] send_request: poll_exit
+2024-06-20 10:18:51,542 DEBUG   HandlerThread:270740 [handler.py:handle_request():158] handle_request: defer
+2024-06-20 10:18:51,542 INFO    HandlerThread:270740 [handler.py:handle_request_defer():184] handle defer: 10
+2024-06-20 10:18:51,545 DEBUG   SenderThread:270740 [sender.py:send_request():405] send_request: defer
+2024-06-20 10:18:51,545 INFO    SenderThread:270740 [sender.py:send_request_defer():609] handle sender defer: 10
+2024-06-20 10:18:51,545 INFO    SenderThread:270740 [file_pusher.py:finish():169] shutting down file pusher
+2024-06-20 10:18:51,890 INFO    wandb-upload_1:270740 [upload_job.py:push():130] Uploaded file /home/atticus/maheep/SAE_vs_DAS/gpt2/wandb/run-20240620_101841-2xj0yqf7/files/requirements.txt
+2024-06-20 10:18:52,012 DEBUG   HandlerThread:270740 [handler.py:handle_request():158] handle_request: poll_exit
+2024-06-20 10:18:52,012 DEBUG   SenderThread:270740 [sender.py:send_request():405] send_request: poll_exit
+2024-06-20 10:18:52,117 INFO    wandb-upload_2:270740 [upload_job.py:push():130] Uploaded file /home/atticus/maheep/SAE_vs_DAS/gpt2/wandb/run-20240620_101841-2xj0yqf7/files/output.log
+2024-06-20 10:18:52,117 INFO    wandb-upload_3:270740 [upload_job.py:push():130] Uploaded file /home/atticus/maheep/SAE_vs_DAS/gpt2/wandb/run-20240620_101841-2xj0yqf7/files/config.yaml
+2024-06-20 10:18:52,135 INFO    wandb-upload_0:270740 [upload_job.py:push():130] Uploaded file /home/atticus/maheep/SAE_vs_DAS/gpt2/wandb/run-20240620_101841-2xj0yqf7/files/wandb-summary.json
+2024-06-20 10:18:52,336 INFO    Thread-11 (_thread_body):270740 [sender.py:transition_state():613] send defer: 11
+2024-06-20 10:18:52,336 DEBUG   HandlerThread:270740 [handler.py:handle_request():158] handle_request: defer
+2024-06-20 10:18:52,336 INFO    HandlerThread:270740 [handler.py:handle_request_defer():184] handle defer: 11
+2024-06-20 10:18:52,337 DEBUG   SenderThread:270740 [sender.py:send_request():405] send_request: defer
+2024-06-20 10:18:52,337 INFO    SenderThread:270740 [sender.py:send_request_defer():609] handle sender defer: 11
+2024-06-20 10:18:52,337 INFO    SenderThread:270740 [file_pusher.py:join():175] waiting for file pusher
+2024-06-20 10:18:52,337 INFO    SenderThread:270740 [sender.py:transition_state():613] send defer: 12
+2024-06-20 10:18:52,338 DEBUG   HandlerThread:270740 [handler.py:handle_request():158] handle_request: defer
+2024-06-20 10:18:52,338 INFO    HandlerThread:270740 [handler.py:handle_request_defer():184] handle defer: 12
+2024-06-20 10:18:52,338 DEBUG   SenderThread:270740 [sender.py:send_request():405] send_request: defer
+2024-06-20 10:18:52,338 INFO    SenderThread:270740 [sender.py:send_request_defer():609] handle sender defer: 12
+2024-06-20 10:18:52,338 INFO    SenderThread:270740 [file_stream.py:finish():601] file stream finish called
+2024-06-20 10:18:52,435 INFO    SenderThread:270740 [file_stream.py:finish():605] file stream finish is done
+2024-06-20 10:18:52,436 INFO    SenderThread:270740 [sender.py:transition_state():613] send defer: 13
+2024-06-20 10:18:52,436 DEBUG   HandlerThread:270740 [handler.py:handle_request():158] handle_request: defer
+2024-06-20 10:18:52,436 INFO    HandlerThread:270740 [handler.py:handle_request_defer():184] handle defer: 13
+2024-06-20 10:18:52,436 DEBUG   SenderThread:270740 [sender.py:send_request():405] send_request: defer
+2024-06-20 10:18:52,436 INFO    SenderThread:270740 [sender.py:send_request_defer():609] handle sender defer: 13
+2024-06-20 10:18:52,437 INFO    SenderThread:270740 [sender.py:transition_state():613] send defer: 14
+2024-06-20 10:18:52,437 DEBUG   HandlerThread:270740 [handler.py:handle_request():158] handle_request: defer
+2024-06-20 10:18:52,437 INFO    HandlerThread:270740 [handler.py:handle_request_defer():184] handle defer: 14
+2024-06-20 10:18:52,437 DEBUG   SenderThread:270740 [sender.py:send():378] send: final
+2024-06-20 10:18:52,437 DEBUG   SenderThread:270740 [sender.py:send():378] send: footer
+2024-06-20 10:18:52,438 DEBUG   SenderThread:270740 [sender.py:send_request():405] send_request: defer
+2024-06-20 10:18:52,438 INFO    SenderThread:270740 [sender.py:send_request_defer():609] handle sender defer: 14
+2024-06-20 10:18:52,438 DEBUG   HandlerThread:270740 [handler.py:handle_request():158] handle_request: poll_exit
+2024-06-20 10:18:52,439 DEBUG   SenderThread:270740 [sender.py:send_request():405] send_request: poll_exit
+2024-06-20 10:18:52,439 DEBUG   HandlerThread:270740 [handler.py:handle_request():158] handle_request: poll_exit
+2024-06-20 10:18:52,440 DEBUG   HandlerThread:270740 [handler.py:handle_request():158] handle_request: server_info
+2024-06-20 10:18:52,440 DEBUG   HandlerThread:270740 [handler.py:handle_request():158] handle_request: get_summary
+2024-06-20 10:18:52,440 DEBUG   SenderThread:270740 [sender.py:send_request():405] send_request: poll_exit
+2024-06-20 10:18:52,441 DEBUG   HandlerThread:270740 [handler.py:handle_request():158] handle_request: sampled_history
+2024-06-20 10:18:52,441 DEBUG   SenderThread:270740 [sender.py:send_request():405] send_request: server_info
+2024-06-20 10:18:52,441 DEBUG   HandlerThread:270740 [handler.py:handle_request():158] handle_request: internal_messages
+2024-06-20 10:18:52,529 INFO    MainThread:270740 [wandb_run.py:_footer_history_summary_info():3994] rendering history
+2024-06-20 10:18:52,529 INFO    MainThread:270740 [wandb_run.py:_footer_history_summary_info():4026] rendering summary
+2024-06-20 10:18:52,529 INFO    MainThread:270740 [wandb_run.py:_footer_sync_info():3953] logging synced files
+2024-06-20 10:18:52,530 DEBUG   HandlerThread:270740 [handler.py:handle_request():158] handle_request: shutdown
+2024-06-20 10:18:52,530 INFO    HandlerThread:270740 [handler.py:finish():882] shutting down handler
+2024-06-20 10:18:53,441 INFO    WriterThread:270740 [datastore.py:close():296] close: /home/atticus/maheep/SAE_vs_DAS/gpt2/wandb/run-20240620_101841-2xj0yqf7/run-2xj0yqf7.wandb
+2024-06-20 10:18:53,529 INFO    SenderThread:270740 [sender.py:finish():1545] shutting down sender
+2024-06-20 10:18:53,529 INFO    SenderThread:270740 [file_pusher.py:finish():169] shutting down file pusher
+2024-06-20 10:18:53,530 INFO    SenderThread:270740 [file_pusher.py:join():175] waiting for file pusher
