@@ -1,0 +1,505 @@
+2024-06-18 04:49:50,186 INFO    StreamThr :2634967 [internal.py:wandb_internal():85] W&B internal server running at pid: 2634967, started at: 2024-06-18 04:49:50.186051
+2024-06-18 04:49:50,187 DEBUG   HandlerThread:2634967 [handler.py:handle_request():158] handle_request: status
+2024-06-18 04:49:50,188 INFO    WriterThread:2634967 [datastore.py:open_for_write():87] open: /home/atticus/maheep/SAE_vs_DAS/gpt2/wandb/run-20240618_044950-n8gf9rhg/run-n8gf9rhg.wandb
+2024-06-18 04:49:50,189 DEBUG   SenderThread:2634967 [sender.py:send():378] send: header
+2024-06-18 04:49:50,190 DEBUG   SenderThread:2634967 [sender.py:send():378] send: run
+2024-06-18 04:49:50,607 INFO    SenderThread:2634967 [dir_watcher.py:__init__():211] watching files in: /home/atticus/maheep/SAE_vs_DAS/gpt2/wandb/run-20240618_044950-n8gf9rhg/files
+2024-06-18 04:49:50,607 INFO    SenderThread:2634967 [sender.py:_start_run_threads():1123] run started: n8gf9rhg with start time 1718711390.185756
+2024-06-18 04:49:50,611 DEBUG   HandlerThread:2634967 [handler.py:handle_request():158] handle_request: check_version
+2024-06-18 04:49:50,612 DEBUG   SenderThread:2634967 [sender.py:send_request():405] send_request: check_version
+2024-06-18 04:49:50,747 DEBUG   HandlerThread:2634967 [handler.py:handle_request():158] handle_request: run_start
+2024-06-18 04:49:50,753 ERROR   HandlerThread:2634967 [gpu.py:is_available():381] Error initializing NVML: RM has detected an NVML/RM version mismatch.
+2024-06-18 04:49:50,753 DEBUG   HandlerThread:2634967 [system_info.py:__init__():26] System info init
+2024-06-18 04:49:50,753 DEBUG   HandlerThread:2634967 [system_info.py:__init__():41] System info init done
+2024-06-18 04:49:50,754 INFO    HandlerThread:2634967 [system_monitor.py:start():194] Starting system monitor
+2024-06-18 04:49:50,754 INFO    SystemMonitor:2634967 [system_monitor.py:_start():158] Starting system asset monitoring threads
+2024-06-18 04:49:50,754 INFO    HandlerThread:2634967 [system_monitor.py:probe():214] Collecting system info
+2024-06-18 04:49:50,754 INFO    SystemMonitor:2634967 [interfaces.py:start():188] Started cpu monitoring
+2024-06-18 04:49:50,755 INFO    SystemMonitor:2634967 [interfaces.py:start():188] Started disk monitoring
+2024-06-18 04:49:50,756 INFO    SystemMonitor:2634967 [interfaces.py:start():188] Started memory monitoring
+2024-06-18 04:49:50,756 INFO    SystemMonitor:2634967 [interfaces.py:start():188] Started network monitoring
+2024-06-18 04:49:50,766 DEBUG   HandlerThread:2634967 [system_info.py:probe():150] Probing system
+2024-06-18 04:49:50,767 DEBUG   HandlerThread:2634967 [system_info.py:_probe_git():135] Probing git
+2024-06-18 04:49:50,773 DEBUG   HandlerThread:2634967 [system_info.py:_probe_git():143] Probing git done
+2024-06-18 04:49:50,773 DEBUG   HandlerThread:2634967 [system_info.py:probe():198] Probing system done
+2024-06-18 04:49:50,773 DEBUG   HandlerThread:2634967 [system_monitor.py:probe():223] {'os': 'Linux-6.5.0-28-generic-x86_64-with-glibc2.35', 'python': '3.10.12', 'heartbeatAt': '2024-06-18T11:49:50.766277', 'startedAt': '2024-06-18T11:49:50.182990', 'docker': None, 'cuda': None, 'args': ('-efp', 'continent_intervention_dataset.json', '-a', 'continent', '-acc', 'top1'), 'state': 'running', 'program': '/home/atticus/maheep/SAE_vs_DAS/gpt2/main_intervention.py', 'codePathLocal': 'main_intervention.py', 'codePath': 'gpt2/main_intervention.py', 'git': {'remote': 'https://github.com/MaheepChaudhary/SAE_vs_DAS.git', 'commit': '538200ca745f046480e3d48453e7f850b23f1857'}, 'email': 'chaudhary.maheep28@gmail.com', 'root': '/home/atticus/maheep/SAE_vs_DAS', 'host': 'AtticusDeepLearner', 'username': 'atticus', 'executable': '/usr/bin/python', 'cpu_count': 16, 'cpu_count_logical': 32, 'cpu_freq': {'current': 2.485218749999999, 'min': 1800.0, 'max': 4000.0}, 'cpu_freq_per_core': [{'current': 1.8, 'min': 1800.0, 'max': 4000.0}, {'current': 1.8, 'min': 1800.0, 'max': 4000.0}, {'current': 3.535, 'min': 1800.0, 'max': 4000.0}, {'current': 4.529, 'min': 1800.0, 'max': 4000.0}, {'current': 4.312, 'min': 1800.0, 'max': 4000.0}, {'current': 4.0, 'min': 1800.0, 'max': 4000.0}, {'current': 4.545, 'min': 1800.0, 'max': 4000.0}, {'current': 1.8, 'min': 1800.0, 'max': 4000.0}, {'current': 1.8, 'min': 1800.0, 'max': 4000.0}, {'current': 3.626, 'min': 1800.0, 'max': 4000.0}, {'current': 2.394, 'min': 1800.0, 'max': 4000.0}, {'current': 1.914, 'min': 1800.0, 'max': 4000.0}, {'current': 1.916, 'min': 1800.0, 'max': 4000.0}, {'current': 1.8, 'min': 1800.0, 'max': 4000.0}, {'current': 1.8, 'min': 1800.0, 'max': 4000.0}, {'current': 1.8, 'min': 1800.0, 'max': 4000.0}, {'current': 1.8, 'min': 1800.0, 'max': 4000.0}, {'current': 1.8, 'min': 1800.0, 'max': 4000.0}, {'current': 1.8, 'min': 1800.0, 'max': 4000.0}, {'current': 1.8, 'min': 1800.0, 'max': 4000.0}, {'current': 1.8, 'min': 1800.0, 'max': 4000.0}, {'current': 1.8, 'min': 1800.0, 'max': 4000.0}, {'current': 4.538, 'min': 1800.0, 'max': 4000.0}, {'current': 1.8, 'min': 1800.0, 'max': 4000.0}, {'current': 1.8, 'min': 1800.0, 'max': 4000.0}, {'current': 1.8, 'min': 1800.0, 'max': 4000.0}, {'current': 1.8, 'min': 1800.0, 'max': 4000.0}, {'current': 1.8, 'min': 1800.0, 'max': 4000.0}, {'current': 1.8, 'min': 1800.0, 'max': 4000.0}, {'current': 2.305, 'min': 1800.0, 'max': 4000.0}, {'current': 4.0, 'min': 1800.0, 'max': 4000.0}, {'current': 2.9, 'min': 1800.0, 'max': 4000.0}], 'disk': {'/': {'total': 3519.256721496582, 'used': 149.37493133544922}}, 'memory': {'total': 251.53791046142578}}
+2024-06-18 04:49:50,773 INFO    HandlerThread:2634967 [system_monitor.py:probe():224] Finished collecting system info
+2024-06-18 04:49:50,773 INFO    HandlerThread:2634967 [system_monitor.py:probe():227] Publishing system info
+2024-06-18 04:49:50,774 INFO    HandlerThread:2634967 [system_monitor.py:probe():229] Finished publishing system info
+2024-06-18 04:49:50,778 DEBUG   SenderThread:2634967 [sender.py:send():378] send: files
+2024-06-18 04:49:50,778 INFO    SenderThread:2634967 [sender.py:_save_file():1389] saving file wandb-metadata.json with policy now
+2024-06-18 04:49:50,888 DEBUG   HandlerThread:2634967 [handler.py:handle_request():158] handle_request: python_packages
+2024-06-18 04:49:50,889 DEBUG   SenderThread:2634967 [sender.py:send_request():405] send_request: python_packages
+2024-06-18 04:49:50,929 DEBUG   HandlerThread:2634967 [handler.py:handle_request():158] handle_request: stop_status
+2024-06-18 04:49:50,929 DEBUG   SenderThread:2634967 [sender.py:send_request():405] send_request: stop_status
+2024-06-18 04:49:51,014 DEBUG   SenderThread:2634967 [sender.py:send():378] send: telemetry
+2024-06-18 04:49:51,277 INFO    wandb-upload_0:2634967 [upload_job.py:push():130] Uploaded file /tmp/tmp7wdmwvtawandb/d1nuc6kc-wandb-metadata.json
+2024-06-18 04:49:51,608 INFO    Thread-12 :2634967 [dir_watcher.py:_on_file_created():271] file/dir created: /home/atticus/maheep/SAE_vs_DAS/gpt2/wandb/run-20240618_044950-n8gf9rhg/files/output.log
+2024-06-18 04:49:51,609 INFO    Thread-12 :2634967 [dir_watcher.py:_on_file_created():271] file/dir created: /home/atticus/maheep/SAE_vs_DAS/gpt2/wandb/run-20240618_044950-n8gf9rhg/files/wandb-metadata.json
+2024-06-18 04:49:51,609 INFO    Thread-12 :2634967 [dir_watcher.py:_on_file_created():271] file/dir created: /home/atticus/maheep/SAE_vs_DAS/gpt2/wandb/run-20240618_044950-n8gf9rhg/files/requirements.txt
+2024-06-18 04:49:53,608 INFO    Thread-12 :2634967 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/gpt2/wandb/run-20240618_044950-n8gf9rhg/files/output.log
+2024-06-18 04:49:55,609 INFO    Thread-12 :2634967 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/gpt2/wandb/run-20240618_044950-n8gf9rhg/files/output.log
+2024-06-18 04:49:55,907 DEBUG   HandlerThread:2634967 [handler.py:handle_request():158] handle_request: status_report
+2024-06-18 04:49:57,180 DEBUG   SenderThread:2634967 [sender.py:send():378] send: telemetry
+2024-06-18 04:49:57,485 DEBUG   SenderThread:2634967 [sender.py:send():378] send: telemetry
+2024-06-18 04:49:57,485 DEBUG   SenderThread:2634967 [sender.py:send():378] send: telemetry
+2024-06-18 04:49:57,609 INFO    Thread-12 :2634967 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/gpt2/wandb/run-20240618_044950-n8gf9rhg/files/output.log
+2024-06-18 04:49:58,609 INFO    Thread-12 :2634967 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/gpt2/wandb/run-20240618_044950-n8gf9rhg/files/output.log
+2024-06-18 04:49:59,609 INFO    Thread-12 :2634967 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/gpt2/wandb/run-20240618_044950-n8gf9rhg/files/output.log
+2024-06-18 04:50:00,969 DEBUG   HandlerThread:2634967 [handler.py:handle_request():158] handle_request: status_report
+2024-06-18 04:50:01,610 INFO    Thread-12 :2634967 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/gpt2/wandb/run-20240618_044950-n8gf9rhg/files/output.log
+2024-06-18 04:50:03,610 INFO    Thread-12 :2634967 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/gpt2/wandb/run-20240618_044950-n8gf9rhg/files/output.log
+2024-06-18 04:50:04,610 INFO    Thread-12 :2634967 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/gpt2/wandb/run-20240618_044950-n8gf9rhg/files/output.log
+2024-06-18 04:50:05,890 DEBUG   HandlerThread:2634967 [handler.py:handle_request():158] handle_request: stop_status
+2024-06-18 04:50:05,891 DEBUG   SenderThread:2634967 [sender.py:send_request():405] send_request: stop_status
+2024-06-18 04:50:06,061 DEBUG   HandlerThread:2634967 [handler.py:handle_request():158] handle_request: status_report
+2024-06-18 04:50:06,611 INFO    Thread-12 :2634967 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/gpt2/wandb/run-20240618_044950-n8gf9rhg/files/output.log
+2024-06-18 04:50:10,612 INFO    Thread-12 :2634967 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/gpt2/wandb/run-20240618_044950-n8gf9rhg/files/output.log
+2024-06-18 04:50:11,529 DEBUG   HandlerThread:2634967 [handler.py:handle_request():158] handle_request: status_report
+2024-06-18 04:50:14,612 INFO    Thread-12 :2634967 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/gpt2/wandb/run-20240618_044950-n8gf9rhg/files/output.log
+2024-06-18 04:50:16,613 INFO    Thread-12 :2634967 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/gpt2/wandb/run-20240618_044950-n8gf9rhg/files/output.log
+2024-06-18 04:50:17,482 DEBUG   HandlerThread:2634967 [handler.py:handle_request():158] handle_request: status_report
+2024-06-18 04:50:20,614 INFO    Thread-12 :2634967 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/gpt2/wandb/run-20240618_044950-n8gf9rhg/files/output.log
+2024-06-18 04:50:20,890 DEBUG   HandlerThread:2634967 [handler.py:handle_request():158] handle_request: stop_status
+2024-06-18 04:50:20,890 DEBUG   SenderThread:2634967 [sender.py:send_request():405] send_request: stop_status
+2024-06-18 04:50:23,458 DEBUG   HandlerThread:2634967 [handler.py:handle_request():158] handle_request: status_report
+2024-06-18 04:50:23,614 INFO    Thread-12 :2634967 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/gpt2/wandb/run-20240618_044950-n8gf9rhg/files/config.yaml
+2024-06-18 04:50:24,615 INFO    Thread-12 :2634967 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/gpt2/wandb/run-20240618_044950-n8gf9rhg/files/output.log
+2024-06-18 04:50:26,615 INFO    Thread-12 :2634967 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/gpt2/wandb/run-20240618_044950-n8gf9rhg/files/output.log
+2024-06-18 04:50:28,805 DEBUG   HandlerThread:2634967 [handler.py:handle_request():158] handle_request: status_report
+2024-06-18 04:50:30,616 INFO    Thread-12 :2634967 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/gpt2/wandb/run-20240618_044950-n8gf9rhg/files/output.log
+2024-06-18 04:50:34,497 DEBUG   HandlerThread:2634967 [handler.py:handle_request():158] handle_request: status_report
+2024-06-18 04:50:34,617 INFO    Thread-12 :2634967 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/gpt2/wandb/run-20240618_044950-n8gf9rhg/files/output.log
+2024-06-18 04:50:35,891 DEBUG   HandlerThread:2634967 [handler.py:handle_request():158] handle_request: stop_status
+2024-06-18 04:50:35,891 DEBUG   SenderThread:2634967 [sender.py:send_request():405] send_request: stop_status
+2024-06-18 04:50:36,617 INFO    Thread-12 :2634967 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/gpt2/wandb/run-20240618_044950-n8gf9rhg/files/output.log
+2024-06-18 04:50:40,489 DEBUG   HandlerThread:2634967 [handler.py:handle_request():158] handle_request: status_report
+2024-06-18 04:50:40,618 INFO    Thread-12 :2634967 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/gpt2/wandb/run-20240618_044950-n8gf9rhg/files/output.log
+2024-06-18 04:50:44,619 INFO    Thread-12 :2634967 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/gpt2/wandb/run-20240618_044950-n8gf9rhg/files/output.log
+2024-06-18 04:50:45,834 DEBUG   HandlerThread:2634967 [handler.py:handle_request():158] handle_request: status_report
+2024-06-18 04:50:46,619 INFO    Thread-12 :2634967 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/gpt2/wandb/run-20240618_044950-n8gf9rhg/files/output.log
+2024-06-18 04:50:50,620 INFO    Thread-12 :2634967 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/gpt2/wandb/run-20240618_044950-n8gf9rhg/files/output.log
+2024-06-18 04:50:50,757 DEBUG   SystemMonitor:2634967 [system_monitor.py:_start():172] Starting system metrics aggregation loop
+2024-06-18 04:50:50,758 DEBUG   SenderThread:2634967 [sender.py:send():378] send: stats
+2024-06-18 04:50:50,890 DEBUG   HandlerThread:2634967 [handler.py:handle_request():158] handle_request: stop_status
+2024-06-18 04:50:50,890 DEBUG   SenderThread:2634967 [sender.py:send_request():405] send_request: stop_status
+2024-06-18 04:50:51,088 DEBUG   HandlerThread:2634967 [handler.py:handle_request():158] handle_request: status_report
+2024-06-18 04:50:54,621 INFO    Thread-12 :2634967 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/gpt2/wandb/run-20240618_044950-n8gf9rhg/files/output.log
+2024-06-18 04:50:56,209 DEBUG   HandlerThread:2634967 [handler.py:handle_request():158] handle_request: status_report
+2024-06-18 04:50:58,622 INFO    Thread-12 :2634967 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/gpt2/wandb/run-20240618_044950-n8gf9rhg/files/output.log
+2024-06-18 04:51:00,622 INFO    Thread-12 :2634967 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/gpt2/wandb/run-20240618_044950-n8gf9rhg/files/output.log
+2024-06-18 04:51:01,882 DEBUG   HandlerThread:2634967 [handler.py:handle_request():158] handle_request: status_report
+2024-06-18 04:51:04,623 INFO    Thread-12 :2634967 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/gpt2/wandb/run-20240618_044950-n8gf9rhg/files/output.log
+2024-06-18 04:51:05,891 DEBUG   HandlerThread:2634967 [handler.py:handle_request():158] handle_request: stop_status
+2024-06-18 04:51:05,892 DEBUG   SenderThread:2634967 [sender.py:send_request():405] send_request: stop_status
+2024-06-18 04:51:06,996 DEBUG   HandlerThread:2634967 [handler.py:handle_request():158] handle_request: status_report
+2024-06-18 04:51:08,624 INFO    Thread-12 :2634967 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/gpt2/wandb/run-20240618_044950-n8gf9rhg/files/output.log
+2024-06-18 04:51:12,337 DEBUG   HandlerThread:2634967 [handler.py:handle_request():158] handle_request: status_report
+2024-06-18 04:51:12,625 INFO    Thread-12 :2634967 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/gpt2/wandb/run-20240618_044950-n8gf9rhg/files/output.log
+2024-06-18 04:51:14,625 INFO    Thread-12 :2634967 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/gpt2/wandb/run-20240618_044950-n8gf9rhg/files/output.log
+2024-06-18 04:51:18,006 DEBUG   HandlerThread:2634967 [handler.py:handle_request():158] handle_request: status_report
+2024-06-18 04:51:18,626 INFO    Thread-12 :2634967 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/gpt2/wandb/run-20240618_044950-n8gf9rhg/files/output.log
+2024-06-18 04:51:20,758 DEBUG   SenderThread:2634967 [sender.py:send():378] send: stats
+2024-06-18 04:51:20,890 DEBUG   HandlerThread:2634967 [handler.py:handle_request():158] handle_request: stop_status
+2024-06-18 04:51:20,890 DEBUG   SenderThread:2634967 [sender.py:send_request():405] send_request: stop_status
+2024-06-18 04:51:22,627 INFO    Thread-12 :2634967 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/gpt2/wandb/run-20240618_044950-n8gf9rhg/files/output.log
+2024-06-18 04:51:23,061 DEBUG   HandlerThread:2634967 [handler.py:handle_request():158] handle_request: status_report
+2024-06-18 04:51:24,628 INFO    Thread-12 :2634967 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/gpt2/wandb/run-20240618_044950-n8gf9rhg/files/output.log
+2024-06-18 04:51:28,535 DEBUG   HandlerThread:2634967 [handler.py:handle_request():158] handle_request: status_report
+2024-06-18 04:51:28,629 INFO    Thread-12 :2634967 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/gpt2/wandb/run-20240618_044950-n8gf9rhg/files/output.log
+2024-06-18 04:51:32,629 INFO    Thread-12 :2634967 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/gpt2/wandb/run-20240618_044950-n8gf9rhg/files/output.log
+2024-06-18 04:51:33,889 DEBUG   HandlerThread:2634967 [handler.py:handle_request():158] handle_request: status_report
+2024-06-18 04:51:34,630 INFO    Thread-12 :2634967 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/gpt2/wandb/run-20240618_044950-n8gf9rhg/files/output.log
+2024-06-18 04:51:35,890 DEBUG   HandlerThread:2634967 [handler.py:handle_request():158] handle_request: stop_status
+2024-06-18 04:51:35,890 DEBUG   SenderThread:2634967 [sender.py:send_request():405] send_request: stop_status
+2024-06-18 04:51:38,631 INFO    Thread-12 :2634967 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/gpt2/wandb/run-20240618_044950-n8gf9rhg/files/output.log
+2024-06-18 04:51:39,552 DEBUG   HandlerThread:2634967 [handler.py:handle_request():158] handle_request: status_report
+2024-06-18 04:51:42,631 INFO    Thread-12 :2634967 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/gpt2/wandb/run-20240618_044950-n8gf9rhg/files/output.log
+2024-06-18 04:51:44,632 INFO    Thread-12 :2634967 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/gpt2/wandb/run-20240618_044950-n8gf9rhg/files/output.log
+2024-06-18 04:51:45,216 DEBUG   HandlerThread:2634967 [handler.py:handle_request():158] handle_request: status_report
+2024-06-18 04:51:48,633 INFO    Thread-12 :2634967 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/gpt2/wandb/run-20240618_044950-n8gf9rhg/files/output.log
+2024-06-18 04:51:50,545 DEBUG   HandlerThread:2634967 [handler.py:handle_request():158] handle_request: status_report
+2024-06-18 04:51:50,759 DEBUG   SenderThread:2634967 [sender.py:send():378] send: stats
+2024-06-18 04:51:50,891 DEBUG   HandlerThread:2634967 [handler.py:handle_request():158] handle_request: stop_status
+2024-06-18 04:51:50,891 DEBUG   SenderThread:2634967 [sender.py:send_request():405] send_request: stop_status
+2024-06-18 04:51:52,634 INFO    Thread-12 :2634967 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/gpt2/wandb/run-20240618_044950-n8gf9rhg/files/output.log
+2024-06-18 04:51:55,802 DEBUG   HandlerThread:2634967 [handler.py:handle_request():158] handle_request: status_report
+2024-06-18 04:51:56,634 INFO    Thread-12 :2634967 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/gpt2/wandb/run-20240618_044950-n8gf9rhg/files/output.log
+2024-06-18 04:51:58,635 INFO    Thread-12 :2634967 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/gpt2/wandb/run-20240618_044950-n8gf9rhg/files/output.log
+2024-06-18 04:52:01,151 DEBUG   HandlerThread:2634967 [handler.py:handle_request():158] handle_request: status_report
+2024-06-18 04:52:02,636 INFO    Thread-12 :2634967 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/gpt2/wandb/run-20240618_044950-n8gf9rhg/files/output.log
+2024-06-18 04:52:05,890 DEBUG   HandlerThread:2634967 [handler.py:handle_request():158] handle_request: stop_status
+2024-06-18 04:52:05,891 DEBUG   SenderThread:2634967 [sender.py:send_request():405] send_request: stop_status
+2024-06-18 04:52:06,637 INFO    Thread-12 :2634967 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/gpt2/wandb/run-20240618_044950-n8gf9rhg/files/output.log
+2024-06-18 04:52:06,966 DEBUG   HandlerThread:2634967 [handler.py:handle_request():158] handle_request: status_report
+2024-06-18 04:52:10,638 INFO    Thread-12 :2634967 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/gpt2/wandb/run-20240618_044950-n8gf9rhg/files/output.log
+2024-06-18 04:52:12,551 DEBUG   HandlerThread:2634967 [handler.py:handle_request():158] handle_request: status_report
+2024-06-18 04:52:12,638 INFO    Thread-12 :2634967 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/gpt2/wandb/run-20240618_044950-n8gf9rhg/files/output.log
+2024-06-18 04:52:16,639 INFO    Thread-12 :2634967 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/gpt2/wandb/run-20240618_044950-n8gf9rhg/files/output.log
+2024-06-18 04:52:17,578 DEBUG   HandlerThread:2634967 [handler.py:handle_request():158] handle_request: status_report
+2024-06-18 04:52:20,640 INFO    Thread-12 :2634967 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/gpt2/wandb/run-20240618_044950-n8gf9rhg/files/output.log
+2024-06-18 04:52:20,759 DEBUG   SenderThread:2634967 [sender.py:send():378] send: stats
+2024-06-18 04:52:20,891 DEBUG   HandlerThread:2634967 [handler.py:handle_request():158] handle_request: stop_status
+2024-06-18 04:52:20,892 DEBUG   SenderThread:2634967 [sender.py:send_request():405] send_request: stop_status
+2024-06-18 04:52:22,640 INFO    Thread-12 :2634967 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/gpt2/wandb/run-20240618_044950-n8gf9rhg/files/output.log
+2024-06-18 04:52:23,247 DEBUG   HandlerThread:2634967 [handler.py:handle_request():158] handle_request: status_report
+2024-06-18 04:52:26,641 INFO    Thread-12 :2634967 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/gpt2/wandb/run-20240618_044950-n8gf9rhg/files/output.log
+2024-06-18 04:52:28,582 DEBUG   HandlerThread:2634967 [handler.py:handle_request():158] handle_request: status_report
+2024-06-18 04:52:30,642 INFO    Thread-12 :2634967 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/gpt2/wandb/run-20240618_044950-n8gf9rhg/files/output.log
+2024-06-18 04:52:32,643 INFO    Thread-12 :2634967 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/gpt2/wandb/run-20240618_044950-n8gf9rhg/files/output.log
+2024-06-18 04:52:34,268 DEBUG   HandlerThread:2634967 [handler.py:handle_request():158] handle_request: status_report
+2024-06-18 04:52:35,890 DEBUG   HandlerThread:2634967 [handler.py:handle_request():158] handle_request: stop_status
+2024-06-18 04:52:35,891 DEBUG   SenderThread:2634967 [sender.py:send_request():405] send_request: stop_status
+2024-06-18 04:52:36,644 INFO    Thread-12 :2634967 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/gpt2/wandb/run-20240618_044950-n8gf9rhg/files/output.log
+2024-06-18 04:52:39,966 DEBUG   HandlerThread:2634967 [handler.py:handle_request():158] handle_request: status_report
+2024-06-18 04:52:40,644 INFO    Thread-12 :2634967 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/gpt2/wandb/run-20240618_044950-n8gf9rhg/files/output.log
+2024-06-18 04:52:44,645 INFO    Thread-12 :2634967 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/gpt2/wandb/run-20240618_044950-n8gf9rhg/files/output.log
+2024-06-18 04:52:45,088 DEBUG   HandlerThread:2634967 [handler.py:handle_request():158] handle_request: status_report
+2024-06-18 04:52:48,646 INFO    Thread-12 :2634967 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/gpt2/wandb/run-20240618_044950-n8gf9rhg/files/output.log
+2024-06-18 04:52:50,647 INFO    Thread-12 :2634967 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/gpt2/wandb/run-20240618_044950-n8gf9rhg/files/output.log
+2024-06-18 04:52:50,760 DEBUG   SenderThread:2634967 [sender.py:send():378] send: stats
+2024-06-18 04:52:50,760 DEBUG   HandlerThread:2634967 [handler.py:handle_request():158] handle_request: status_report
+2024-06-18 04:52:50,891 DEBUG   HandlerThread:2634967 [handler.py:handle_request():158] handle_request: stop_status
+2024-06-18 04:52:50,891 DEBUG   SenderThread:2634967 [sender.py:send_request():405] send_request: stop_status
+2024-06-18 04:52:54,648 INFO    Thread-12 :2634967 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/gpt2/wandb/run-20240618_044950-n8gf9rhg/files/output.log
+2024-06-18 04:52:56,121 DEBUG   HandlerThread:2634967 [handler.py:handle_request():158] handle_request: status_report
+2024-06-18 04:52:58,649 INFO    Thread-12 :2634967 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/gpt2/wandb/run-20240618_044950-n8gf9rhg/files/output.log
+2024-06-18 04:53:00,649 INFO    Thread-12 :2634967 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/gpt2/wandb/run-20240618_044950-n8gf9rhg/files/output.log
+2024-06-18 04:53:01,813 DEBUG   HandlerThread:2634967 [handler.py:handle_request():158] handle_request: status_report
+2024-06-18 04:53:04,650 INFO    Thread-12 :2634967 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/gpt2/wandb/run-20240618_044950-n8gf9rhg/files/output.log
+2024-06-18 04:53:05,891 DEBUG   HandlerThread:2634967 [handler.py:handle_request():158] handle_request: stop_status
+2024-06-18 04:53:05,892 DEBUG   SenderThread:2634967 [sender.py:send_request():405] send_request: stop_status
+2024-06-18 04:53:07,489 DEBUG   HandlerThread:2634967 [handler.py:handle_request():158] handle_request: status_report
+2024-06-18 04:53:08,651 INFO    Thread-12 :2634967 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/gpt2/wandb/run-20240618_044950-n8gf9rhg/files/output.log
+2024-06-18 04:53:10,651 INFO    Thread-12 :2634967 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/gpt2/wandb/run-20240618_044950-n8gf9rhg/files/output.log
+2024-06-18 04:53:12,822 DEBUG   HandlerThread:2634967 [handler.py:handle_request():158] handle_request: status_report
+2024-06-18 04:53:16,653 INFO    Thread-12 :2634967 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/gpt2/wandb/run-20240618_044950-n8gf9rhg/files/output.log
+2024-06-18 04:53:18,378 DEBUG   HandlerThread:2634967 [handler.py:handle_request():158] handle_request: status_report
+2024-06-18 04:53:18,653 INFO    Thread-12 :2634967 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/gpt2/wandb/run-20240618_044950-n8gf9rhg/files/output.log
+2024-06-18 04:53:20,760 DEBUG   SenderThread:2634967 [sender.py:send():378] send: stats
+2024-06-18 04:53:20,891 DEBUG   HandlerThread:2634967 [handler.py:handle_request():158] handle_request: stop_status
+2024-06-18 04:53:20,891 DEBUG   SenderThread:2634967 [sender.py:send_request():405] send_request: stop_status
+2024-06-18 04:53:22,654 INFO    Thread-12 :2634967 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/gpt2/wandb/run-20240618_044950-n8gf9rhg/files/output.log
+2024-06-18 04:53:24,054 DEBUG   HandlerThread:2634967 [handler.py:handle_request():158] handle_request: status_report
+2024-06-18 04:53:26,655 INFO    Thread-12 :2634967 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/gpt2/wandb/run-20240618_044950-n8gf9rhg/files/output.log
+2024-06-18 04:53:28,655 INFO    Thread-12 :2634967 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/gpt2/wandb/run-20240618_044950-n8gf9rhg/files/output.log
+2024-06-18 04:53:29,391 DEBUG   HandlerThread:2634967 [handler.py:handle_request():158] handle_request: status_report
+2024-06-18 04:53:32,656 INFO    Thread-12 :2634967 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/gpt2/wandb/run-20240618_044950-n8gf9rhg/files/output.log
+2024-06-18 04:53:35,078 DEBUG   HandlerThread:2634967 [handler.py:handle_request():158] handle_request: status_report
+2024-06-18 04:53:35,892 DEBUG   HandlerThread:2634967 [handler.py:handle_request():158] handle_request: stop_status
+2024-06-18 04:53:35,893 DEBUG   SenderThread:2634967 [sender.py:send_request():405] send_request: stop_status
+2024-06-18 04:53:36,657 INFO    Thread-12 :2634967 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/gpt2/wandb/run-20240618_044950-n8gf9rhg/files/output.log
+2024-06-18 04:53:38,657 INFO    Thread-12 :2634967 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/gpt2/wandb/run-20240618_044950-n8gf9rhg/files/output.log
+2024-06-18 04:53:40,423 DEBUG   HandlerThread:2634967 [handler.py:handle_request():158] handle_request: status_report
+2024-06-18 04:53:42,658 INFO    Thread-12 :2634967 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/gpt2/wandb/run-20240618_044950-n8gf9rhg/files/output.log
+2024-06-18 04:53:46,108 DEBUG   HandlerThread:2634967 [handler.py:handle_request():158] handle_request: status_report
+2024-06-18 04:53:46,659 INFO    Thread-12 :2634967 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/gpt2/wandb/run-20240618_044950-n8gf9rhg/files/output.log
+2024-06-18 04:53:50,660 INFO    Thread-12 :2634967 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/gpt2/wandb/run-20240618_044950-n8gf9rhg/files/output.log
+2024-06-18 04:53:50,761 DEBUG   SenderThread:2634967 [sender.py:send():378] send: stats
+2024-06-18 04:53:50,893 DEBUG   HandlerThread:2634967 [handler.py:handle_request():158] handle_request: stop_status
+2024-06-18 04:53:50,894 DEBUG   SenderThread:2634967 [sender.py:send_request():405] send_request: stop_status
+2024-06-18 04:53:51,801 DEBUG   HandlerThread:2634967 [handler.py:handle_request():158] handle_request: status_report
+2024-06-18 04:53:52,661 INFO    Thread-12 :2634967 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/gpt2/wandb/run-20240618_044950-n8gf9rhg/files/output.log
+2024-06-18 04:53:56,662 INFO    Thread-12 :2634967 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/gpt2/wandb/run-20240618_044950-n8gf9rhg/files/output.log
+2024-06-18 04:53:57,189 DEBUG   HandlerThread:2634967 [handler.py:handle_request():158] handle_request: status_report
+2024-06-18 04:54:00,663 INFO    Thread-12 :2634967 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/gpt2/wandb/run-20240618_044950-n8gf9rhg/files/output.log
+2024-06-18 04:54:02,663 INFO    Thread-12 :2634967 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/gpt2/wandb/run-20240618_044950-n8gf9rhg/files/output.log
+2024-06-18 04:54:02,971 DEBUG   HandlerThread:2634967 [handler.py:handle_request():158] handle_request: status_report
+2024-06-18 04:54:05,892 DEBUG   HandlerThread:2634967 [handler.py:handle_request():158] handle_request: stop_status
+2024-06-18 04:54:05,892 DEBUG   SenderThread:2634967 [sender.py:send_request():405] send_request: stop_status
+2024-06-18 04:54:06,664 INFO    Thread-12 :2634967 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/gpt2/wandb/run-20240618_044950-n8gf9rhg/files/output.log
+2024-06-18 04:54:08,063 DEBUG   HandlerThread:2634967 [handler.py:handle_request():158] handle_request: status_report
+2024-06-18 04:54:10,665 INFO    Thread-12 :2634967 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/gpt2/wandb/run-20240618_044950-n8gf9rhg/files/output.log
+2024-06-18 04:54:14,058 DEBUG   HandlerThread:2634967 [handler.py:handle_request():158] handle_request: status_report
+2024-06-18 04:54:14,666 INFO    Thread-12 :2634967 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/gpt2/wandb/run-20240618_044950-n8gf9rhg/files/output.log
+2024-06-18 04:54:16,666 INFO    Thread-12 :2634967 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/gpt2/wandb/run-20240618_044950-n8gf9rhg/files/output.log
+2024-06-18 04:54:19,820 DEBUG   HandlerThread:2634967 [handler.py:handle_request():158] handle_request: status_report
+2024-06-18 04:54:20,667 INFO    Thread-12 :2634967 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/gpt2/wandb/run-20240618_044950-n8gf9rhg/files/output.log
+2024-06-18 04:54:20,761 DEBUG   SenderThread:2634967 [sender.py:send():378] send: stats
+2024-06-18 04:54:20,892 DEBUG   HandlerThread:2634967 [handler.py:handle_request():158] handle_request: stop_status
+2024-06-18 04:54:20,893 DEBUG   SenderThread:2634967 [sender.py:send_request():405] send_request: stop_status
+2024-06-18 04:54:24,668 INFO    Thread-12 :2634967 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/gpt2/wandb/run-20240618_044950-n8gf9rhg/files/output.log
+2024-06-18 04:54:25,165 DEBUG   HandlerThread:2634967 [handler.py:handle_request():158] handle_request: status_report
+2024-06-18 04:54:26,669 INFO    Thread-12 :2634967 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/gpt2/wandb/run-20240618_044950-n8gf9rhg/files/output.log
+2024-06-18 04:54:30,669 INFO    Thread-12 :2634967 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/gpt2/wandb/run-20240618_044950-n8gf9rhg/files/output.log
+2024-06-18 04:54:31,001 DEBUG   HandlerThread:2634967 [handler.py:handle_request():158] handle_request: status_report
+2024-06-18 04:54:34,670 INFO    Thread-12 :2634967 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/gpt2/wandb/run-20240618_044950-n8gf9rhg/files/output.log
+2024-06-18 04:54:35,893 DEBUG   HandlerThread:2634967 [handler.py:handle_request():158] handle_request: stop_status
+2024-06-18 04:54:35,893 DEBUG   SenderThread:2634967 [sender.py:send_request():405] send_request: stop_status
+2024-06-18 04:54:36,035 DEBUG   HandlerThread:2634967 [handler.py:handle_request():158] handle_request: status_report
+2024-06-18 04:54:38,671 INFO    Thread-12 :2634967 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/gpt2/wandb/run-20240618_044950-n8gf9rhg/files/output.log
+2024-06-18 04:54:40,672 INFO    Thread-12 :2634967 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/gpt2/wandb/run-20240618_044950-n8gf9rhg/files/output.log
+2024-06-18 04:54:42,027 DEBUG   HandlerThread:2634967 [handler.py:handle_request():158] handle_request: status_report
+2024-06-18 04:54:44,672 INFO    Thread-12 :2634967 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/gpt2/wandb/run-20240618_044950-n8gf9rhg/files/output.log
+2024-06-18 04:54:47,771 DEBUG   HandlerThread:2634967 [handler.py:handle_request():158] handle_request: status_report
+2024-06-18 04:54:48,673 INFO    Thread-12 :2634967 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/gpt2/wandb/run-20240618_044950-n8gf9rhg/files/output.log
+2024-06-18 04:54:50,762 DEBUG   SenderThread:2634967 [sender.py:send():378] send: stats
+2024-06-18 04:54:50,893 DEBUG   HandlerThread:2634967 [handler.py:handle_request():158] handle_request: stop_status
+2024-06-18 04:54:50,893 DEBUG   SenderThread:2634967 [sender.py:send_request():405] send_request: stop_status
+2024-06-18 04:54:52,674 INFO    Thread-12 :2634967 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/gpt2/wandb/run-20240618_044950-n8gf9rhg/files/output.log
+2024-06-18 04:54:53,018 DEBUG   HandlerThread:2634967 [handler.py:handle_request():158] handle_request: status_report
+2024-06-18 04:54:54,675 INFO    Thread-12 :2634967 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/gpt2/wandb/run-20240618_044950-n8gf9rhg/files/output.log
+2024-06-18 04:54:58,675 INFO    Thread-12 :2634967 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/gpt2/wandb/run-20240618_044950-n8gf9rhg/files/output.log
+2024-06-18 04:54:58,842 DEBUG   HandlerThread:2634967 [handler.py:handle_request():158] handle_request: status_report
+2024-06-18 04:55:02,676 INFO    Thread-12 :2634967 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/gpt2/wandb/run-20240618_044950-n8gf9rhg/files/output.log
+2024-06-18 04:55:04,593 DEBUG   HandlerThread:2634967 [handler.py:handle_request():158] handle_request: status_report
+2024-06-18 04:55:04,677 INFO    Thread-12 :2634967 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/gpt2/wandb/run-20240618_044950-n8gf9rhg/files/output.log
+2024-06-18 04:55:05,893 DEBUG   HandlerThread:2634967 [handler.py:handle_request():158] handle_request: stop_status
+2024-06-18 04:55:05,893 DEBUG   SenderThread:2634967 [sender.py:send_request():405] send_request: stop_status
+2024-06-18 04:55:08,678 INFO    Thread-12 :2634967 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/gpt2/wandb/run-20240618_044950-n8gf9rhg/files/output.log
+2024-06-18 04:55:09,978 DEBUG   HandlerThread:2634967 [handler.py:handle_request():158] handle_request: status_report
+2024-06-18 04:55:12,679 INFO    Thread-12 :2634967 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/gpt2/wandb/run-20240618_044950-n8gf9rhg/files/output.log
+2024-06-18 04:55:15,023 DEBUG   HandlerThread:2634967 [handler.py:handle_request():158] handle_request: status_report
+2024-06-18 04:55:16,680 INFO    Thread-12 :2634967 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/gpt2/wandb/run-20240618_044950-n8gf9rhg/files/output.log
+2024-06-18 04:55:20,404 DEBUG   HandlerThread:2634967 [handler.py:handle_request():158] handle_request: status_report
+2024-06-18 04:55:20,680 INFO    Thread-12 :2634967 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/gpt2/wandb/run-20240618_044950-n8gf9rhg/files/output.log
+2024-06-18 04:55:20,762 DEBUG   SenderThread:2634967 [sender.py:send():378] send: stats
+2024-06-18 04:55:20,893 DEBUG   HandlerThread:2634967 [handler.py:handle_request():158] handle_request: stop_status
+2024-06-18 04:55:20,893 DEBUG   SenderThread:2634967 [sender.py:send_request():405] send_request: stop_status
+2024-06-18 04:55:22,681 INFO    Thread-12 :2634967 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/gpt2/wandb/run-20240618_044950-n8gf9rhg/files/output.log
+2024-06-18 04:55:26,171 DEBUG   HandlerThread:2634967 [handler.py:handle_request():158] handle_request: status_report
+2024-06-18 04:55:26,682 INFO    Thread-12 :2634967 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/gpt2/wandb/run-20240618_044950-n8gf9rhg/files/output.log
+2024-06-18 04:55:30,683 INFO    Thread-12 :2634967 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/gpt2/wandb/run-20240618_044950-n8gf9rhg/files/output.log
+2024-06-18 04:55:31,559 DEBUG   HandlerThread:2634967 [handler.py:handle_request():158] handle_request: status_report
+2024-06-18 04:55:32,683 INFO    Thread-12 :2634967 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/gpt2/wandb/run-20240618_044950-n8gf9rhg/files/output.log
+2024-06-18 04:55:35,894 DEBUG   HandlerThread:2634967 [handler.py:handle_request():158] handle_request: stop_status
+2024-06-18 04:55:35,894 DEBUG   SenderThread:2634967 [sender.py:send_request():405] send_request: stop_status
+2024-06-18 04:55:36,684 INFO    Thread-12 :2634967 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/gpt2/wandb/run-20240618_044950-n8gf9rhg/files/output.log
+2024-06-18 04:55:37,066 DEBUG   HandlerThread:2634967 [handler.py:handle_request():158] handle_request: status_report
+2024-06-18 04:55:40,685 INFO    Thread-12 :2634967 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/gpt2/wandb/run-20240618_044950-n8gf9rhg/files/output.log
+2024-06-18 04:55:42,075 DEBUG   HandlerThread:2634967 [handler.py:handle_request():158] handle_request: status_report
+2024-06-18 04:55:42,685 INFO    Thread-12 :2634967 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/gpt2/wandb/run-20240618_044950-n8gf9rhg/files/output.log
+2024-06-18 04:55:44,686 INFO    Thread-12 :2634967 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/gpt2/wandb/run-20240618_044950-n8gf9rhg/files/output.log
+2024-06-18 04:55:46,686 INFO    Thread-12 :2634967 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/gpt2/wandb/run-20240618_044950-n8gf9rhg/files/output.log
+2024-06-18 04:55:47,478 DEBUG   HandlerThread:2634967 [handler.py:handle_request():158] handle_request: status_report
+2024-06-18 04:55:48,687 INFO    Thread-12 :2634967 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/gpt2/wandb/run-20240618_044950-n8gf9rhg/files/output.log
+2024-06-18 04:55:50,687 INFO    Thread-12 :2634967 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/gpt2/wandb/run-20240618_044950-n8gf9rhg/files/output.log
+2024-06-18 04:55:50,763 DEBUG   SenderThread:2634967 [sender.py:send():378] send: stats
+2024-06-18 04:55:50,894 DEBUG   HandlerThread:2634967 [handler.py:handle_request():158] handle_request: stop_status
+2024-06-18 04:55:50,894 DEBUG   SenderThread:2634967 [sender.py:send_request():405] send_request: stop_status
+2024-06-18 04:55:53,252 DEBUG   HandlerThread:2634967 [handler.py:handle_request():158] handle_request: status_report
+2024-06-18 04:55:54,688 INFO    Thread-12 :2634967 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/gpt2/wandb/run-20240618_044950-n8gf9rhg/files/output.log
+2024-06-18 04:55:56,688 INFO    Thread-12 :2634967 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/gpt2/wandb/run-20240618_044950-n8gf9rhg/files/output.log
+2024-06-18 04:55:58,626 DEBUG   HandlerThread:2634967 [handler.py:handle_request():158] handle_request: status_report
+2024-06-18 04:56:00,689 INFO    Thread-12 :2634967 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/gpt2/wandb/run-20240618_044950-n8gf9rhg/files/output.log
+2024-06-18 04:56:04,333 DEBUG   HandlerThread:2634967 [handler.py:handle_request():158] handle_request: status_report
+2024-06-18 04:56:04,690 INFO    Thread-12 :2634967 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/gpt2/wandb/run-20240618_044950-n8gf9rhg/files/output.log
+2024-06-18 04:56:05,894 DEBUG   HandlerThread:2634967 [handler.py:handle_request():158] handle_request: stop_status
+2024-06-18 04:56:05,894 DEBUG   SenderThread:2634967 [sender.py:send_request():405] send_request: stop_status
+2024-06-18 04:56:08,691 INFO    Thread-12 :2634967 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/gpt2/wandb/run-20240618_044950-n8gf9rhg/files/output.log
+2024-06-18 04:56:10,158 DEBUG   HandlerThread:2634967 [handler.py:handle_request():158] handle_request: status_report
+2024-06-18 04:56:12,692 INFO    Thread-12 :2634967 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/gpt2/wandb/run-20240618_044950-n8gf9rhg/files/output.log
+2024-06-18 04:56:14,693 INFO    Thread-12 :2634967 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/gpt2/wandb/run-20240618_044950-n8gf9rhg/files/output.log
+2024-06-18 04:56:15,853 DEBUG   HandlerThread:2634967 [handler.py:handle_request():158] handle_request: status_report
+2024-06-18 04:56:18,693 INFO    Thread-12 :2634967 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/gpt2/wandb/run-20240618_044950-n8gf9rhg/files/output.log
+2024-06-18 04:56:20,763 DEBUG   SenderThread:2634967 [sender.py:send():378] send: stats
+2024-06-18 04:56:20,894 DEBUG   HandlerThread:2634967 [handler.py:handle_request():158] handle_request: stop_status
+2024-06-18 04:56:20,894 DEBUG   SenderThread:2634967 [sender.py:send_request():405] send_request: stop_status
+2024-06-18 04:56:21,058 DEBUG   HandlerThread:2634967 [handler.py:handle_request():158] handle_request: status_report
+2024-06-18 04:56:22,694 INFO    Thread-12 :2634967 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/gpt2/wandb/run-20240618_044950-n8gf9rhg/files/output.log
+2024-06-18 04:56:24,695 INFO    Thread-12 :2634967 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/gpt2/wandb/run-20240618_044950-n8gf9rhg/files/output.log
+2024-06-18 04:56:26,974 DEBUG   HandlerThread:2634967 [handler.py:handle_request():158] handle_request: status_report
+2024-06-18 04:56:28,696 INFO    Thread-12 :2634967 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/gpt2/wandb/run-20240618_044950-n8gf9rhg/files/output.log
+2024-06-18 04:56:32,697 INFO    Thread-12 :2634967 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/gpt2/wandb/run-20240618_044950-n8gf9rhg/files/output.log
+2024-06-18 04:56:32,716 DEBUG   HandlerThread:2634967 [handler.py:handle_request():158] handle_request: status_report
+2024-06-18 04:56:34,697 INFO    Thread-12 :2634967 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/gpt2/wandb/run-20240618_044950-n8gf9rhg/files/output.log
+2024-06-18 04:56:35,894 DEBUG   HandlerThread:2634967 [handler.py:handle_request():158] handle_request: stop_status
+2024-06-18 04:56:35,894 DEBUG   SenderThread:2634967 [sender.py:send_request():405] send_request: stop_status
+2024-06-18 04:56:38,450 DEBUG   HandlerThread:2634967 [handler.py:handle_request():158] handle_request: status_report
+2024-06-18 04:56:38,698 INFO    Thread-12 :2634967 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/gpt2/wandb/run-20240618_044950-n8gf9rhg/files/output.log
+2024-06-18 04:56:42,699 INFO    Thread-12 :2634967 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/gpt2/wandb/run-20240618_044950-n8gf9rhg/files/output.log
+2024-06-18 04:56:43,835 DEBUG   HandlerThread:2634967 [handler.py:handle_request():158] handle_request: status_report
+2024-06-18 04:56:46,700 INFO    Thread-12 :2634967 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/gpt2/wandb/run-20240618_044950-n8gf9rhg/files/output.log
+2024-06-18 04:56:48,701 INFO    Thread-12 :2634967 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/gpt2/wandb/run-20240618_044950-n8gf9rhg/files/output.log
+2024-06-18 04:56:49,574 DEBUG   HandlerThread:2634967 [handler.py:handle_request():158] handle_request: status_report
+2024-06-18 04:56:50,764 DEBUG   SenderThread:2634967 [sender.py:send():378] send: stats
+2024-06-18 04:56:50,894 DEBUG   HandlerThread:2634967 [handler.py:handle_request():158] handle_request: stop_status
+2024-06-18 04:56:50,894 DEBUG   SenderThread:2634967 [sender.py:send_request():405] send_request: stop_status
+2024-06-18 04:56:52,701 INFO    Thread-12 :2634967 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/gpt2/wandb/run-20240618_044950-n8gf9rhg/files/output.log
+2024-06-18 04:56:55,351 DEBUG   HandlerThread:2634967 [handler.py:handle_request():158] handle_request: status_report
+2024-06-18 04:56:57,703 INFO    Thread-12 :2634967 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/gpt2/wandb/run-20240618_044950-n8gf9rhg/files/output.log
+2024-06-18 04:56:59,703 INFO    Thread-12 :2634967 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/gpt2/wandb/run-20240618_044950-n8gf9rhg/files/output.log
+2024-06-18 04:57:00,749 DEBUG   HandlerThread:2634967 [handler.py:handle_request():158] handle_request: status_report
+2024-06-18 04:57:05,705 INFO    Thread-12 :2634967 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/gpt2/wandb/run-20240618_044950-n8gf9rhg/files/output.log
+2024-06-18 04:57:05,793 DEBUG   HandlerThread:2634967 [handler.py:handle_request():158] handle_request: status_report
+2024-06-18 04:57:05,894 DEBUG   HandlerThread:2634967 [handler.py:handle_request():158] handle_request: stop_status
+2024-06-18 04:57:05,894 DEBUG   SenderThread:2634967 [sender.py:send_request():405] send_request: stop_status
+2024-06-18 04:57:07,705 INFO    Thread-12 :2634967 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/gpt2/wandb/run-20240618_044950-n8gf9rhg/files/output.log
+2024-06-18 04:57:11,550 DEBUG   HandlerThread:2634967 [handler.py:handle_request():158] handle_request: status_report
+2024-06-18 04:57:11,706 INFO    Thread-12 :2634967 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/gpt2/wandb/run-20240618_044950-n8gf9rhg/files/output.log
+2024-06-18 04:57:15,707 INFO    Thread-12 :2634967 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/gpt2/wandb/run-20240618_044950-n8gf9rhg/files/output.log
+2024-06-18 04:57:17,335 DEBUG   HandlerThread:2634967 [handler.py:handle_request():158] handle_request: status_report
+2024-06-18 04:57:19,708 INFO    Thread-12 :2634967 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/gpt2/wandb/run-20240618_044950-n8gf9rhg/files/output.log
+2024-06-18 04:57:20,765 DEBUG   SenderThread:2634967 [sender.py:send():378] send: stats
+2024-06-18 04:57:20,894 DEBUG   HandlerThread:2634967 [handler.py:handle_request():158] handle_request: stop_status
+2024-06-18 04:57:20,894 DEBUG   SenderThread:2634967 [sender.py:send_request():405] send_request: stop_status
+2024-06-18 04:57:21,708 INFO    Thread-12 :2634967 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/gpt2/wandb/run-20240618_044950-n8gf9rhg/files/output.log
+2024-06-18 04:57:23,028 DEBUG   HandlerThread:2634967 [handler.py:handle_request():158] handle_request: status_report
+2024-06-18 04:57:25,709 INFO    Thread-12 :2634967 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/gpt2/wandb/run-20240618_044950-n8gf9rhg/files/output.log
+2024-06-18 04:57:28,549 DEBUG   HandlerThread:2634967 [handler.py:handle_request():158] handle_request: status_report
+2024-06-18 04:57:29,710 INFO    Thread-12 :2634967 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/gpt2/wandb/run-20240618_044950-n8gf9rhg/files/output.log
+2024-06-18 04:57:31,711 INFO    Thread-12 :2634967 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/gpt2/wandb/run-20240618_044950-n8gf9rhg/files/output.log
+2024-06-18 04:57:34,325 DEBUG   HandlerThread:2634967 [handler.py:handle_request():158] handle_request: status_report
+2024-06-18 04:57:35,713 INFO    Thread-12 :2634967 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/gpt2/wandb/run-20240618_044950-n8gf9rhg/files/output.log
+2024-06-18 04:57:35,895 DEBUG   HandlerThread:2634967 [handler.py:handle_request():158] handle_request: stop_status
+2024-06-18 04:57:35,895 DEBUG   SenderThread:2634967 [sender.py:send_request():405] send_request: stop_status
+2024-06-18 04:57:39,665 DEBUG   HandlerThread:2634967 [handler.py:handle_request():158] handle_request: status_report
+2024-06-18 04:57:39,714 INFO    Thread-12 :2634967 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/gpt2/wandb/run-20240618_044950-n8gf9rhg/files/output.log
+2024-06-18 04:57:41,714 INFO    Thread-12 :2634967 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/gpt2/wandb/run-20240618_044950-n8gf9rhg/files/output.log
+2024-06-18 04:57:45,312 DEBUG   HandlerThread:2634967 [handler.py:handle_request():158] handle_request: status_report
+2024-06-18 04:57:45,715 INFO    Thread-12 :2634967 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/gpt2/wandb/run-20240618_044950-n8gf9rhg/files/output.log
+2024-06-18 04:57:49,716 INFO    Thread-12 :2634967 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/gpt2/wandb/run-20240618_044950-n8gf9rhg/files/output.log
+2024-06-18 04:57:50,765 DEBUG   SenderThread:2634967 [sender.py:send():378] send: stats
+2024-06-18 04:57:50,765 DEBUG   HandlerThread:2634967 [handler.py:handle_request():158] handle_request: status_report
+2024-06-18 04:57:50,895 DEBUG   HandlerThread:2634967 [handler.py:handle_request():158] handle_request: stop_status
+2024-06-18 04:57:50,895 DEBUG   SenderThread:2634967 [sender.py:send_request():405] send_request: stop_status
+2024-06-18 04:57:51,717 INFO    Thread-12 :2634967 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/gpt2/wandb/run-20240618_044950-n8gf9rhg/files/output.log
+2024-06-18 04:57:55,718 INFO    Thread-12 :2634967 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/gpt2/wandb/run-20240618_044950-n8gf9rhg/files/output.log
+2024-06-18 04:57:56,536 DEBUG   HandlerThread:2634967 [handler.py:handle_request():158] handle_request: status_report
+2024-06-18 04:57:59,719 INFO    Thread-12 :2634967 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/gpt2/wandb/run-20240618_044950-n8gf9rhg/files/output.log
+2024-06-18 04:58:01,719 INFO    Thread-12 :2634967 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/gpt2/wandb/run-20240618_044950-n8gf9rhg/files/output.log
+2024-06-18 04:58:02,351 DEBUG   HandlerThread:2634967 [handler.py:handle_request():158] handle_request: status_report
+2024-06-18 04:58:05,720 INFO    Thread-12 :2634967 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/gpt2/wandb/run-20240618_044950-n8gf9rhg/files/output.log
+2024-06-18 04:58:07,429 DEBUG   HandlerThread:2634967 [handler.py:handle_request():158] handle_request: status_report
+2024-06-18 04:58:07,430 DEBUG   HandlerThread:2634967 [handler.py:handle_request():158] handle_request: stop_status
+2024-06-18 04:58:07,430 DEBUG   SenderThread:2634967 [sender.py:send_request():405] send_request: stop_status
+2024-06-18 04:58:07,919 DEBUG   SenderThread:2634967 [sender.py:send():378] send: exit
+2024-06-18 04:58:07,920 INFO    SenderThread:2634967 [sender.py:send_exit():585] handling exit code: 255
+2024-06-18 04:58:07,920 INFO    SenderThread:2634967 [sender.py:send_exit():587] handling runtime: 497
+2024-06-18 04:58:07,920 INFO    SenderThread:2634967 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-06-18 04:58:07,921 INFO    SenderThread:2634967 [sender.py:send_exit():593] send defer
+2024-06-18 04:58:07,921 DEBUG   HandlerThread:2634967 [handler.py:handle_request():158] handle_request: defer
+2024-06-18 04:58:07,921 INFO    HandlerThread:2634967 [handler.py:handle_request_defer():184] handle defer: 0
+2024-06-18 04:58:07,921 DEBUG   SenderThread:2634967 [sender.py:send_request():405] send_request: defer
+2024-06-18 04:58:07,921 INFO    SenderThread:2634967 [sender.py:send_request_defer():609] handle sender defer: 0
+2024-06-18 04:58:07,921 INFO    SenderThread:2634967 [sender.py:transition_state():613] send defer: 1
+2024-06-18 04:58:07,922 DEBUG   HandlerThread:2634967 [handler.py:handle_request():158] handle_request: defer
+2024-06-18 04:58:07,922 INFO    HandlerThread:2634967 [handler.py:handle_request_defer():184] handle defer: 1
+2024-06-18 04:58:07,922 DEBUG   SenderThread:2634967 [sender.py:send_request():405] send_request: defer
+2024-06-18 04:58:07,922 INFO    SenderThread:2634967 [sender.py:send_request_defer():609] handle sender defer: 1
+2024-06-18 04:58:07,922 INFO    SenderThread:2634967 [sender.py:transition_state():613] send defer: 2
+2024-06-18 04:58:07,922 DEBUG   HandlerThread:2634967 [handler.py:handle_request():158] handle_request: defer
+2024-06-18 04:58:07,922 INFO    HandlerThread:2634967 [handler.py:handle_request_defer():184] handle defer: 2
+2024-06-18 04:58:07,922 INFO    HandlerThread:2634967 [system_monitor.py:finish():203] Stopping system monitor
+2024-06-18 04:58:07,922 DEBUG   SystemMonitor:2634967 [system_monitor.py:_start():179] Finished system metrics aggregation loop
+2024-06-18 04:58:07,923 DEBUG   SystemMonitor:2634967 [system_monitor.py:_start():183] Publishing last batch of metrics
+2024-06-18 04:58:07,924 INFO    HandlerThread:2634967 [interfaces.py:finish():200] Joined cpu monitor
+2024-06-18 04:58:07,924 INFO    HandlerThread:2634967 [interfaces.py:finish():200] Joined disk monitor
+2024-06-18 04:58:07,924 INFO    HandlerThread:2634967 [interfaces.py:finish():200] Joined memory monitor
+2024-06-18 04:58:07,925 INFO    HandlerThread:2634967 [interfaces.py:finish():200] Joined network monitor
+2024-06-18 04:58:07,925 DEBUG   SenderThread:2634967 [sender.py:send_request():405] send_request: defer
+2024-06-18 04:58:07,925 INFO    SenderThread:2634967 [sender.py:send_request_defer():609] handle sender defer: 2
+2024-06-18 04:58:07,925 INFO    SenderThread:2634967 [sender.py:transition_state():613] send defer: 3
+2024-06-18 04:58:07,925 DEBUG   HandlerThread:2634967 [handler.py:handle_request():158] handle_request: defer
+2024-06-18 04:58:07,925 INFO    HandlerThread:2634967 [handler.py:handle_request_defer():184] handle defer: 3
+2024-06-18 04:58:07,926 DEBUG   SenderThread:2634967 [sender.py:send():378] send: stats
+2024-06-18 04:58:07,926 DEBUG   SenderThread:2634967 [sender.py:send_request():405] send_request: defer
+2024-06-18 04:58:07,926 INFO    SenderThread:2634967 [sender.py:send_request_defer():609] handle sender defer: 3
+2024-06-18 04:58:07,926 INFO    SenderThread:2634967 [sender.py:transition_state():613] send defer: 4
+2024-06-18 04:58:07,926 DEBUG   HandlerThread:2634967 [handler.py:handle_request():158] handle_request: defer
+2024-06-18 04:58:07,927 INFO    HandlerThread:2634967 [handler.py:handle_request_defer():184] handle defer: 4
+2024-06-18 04:58:07,927 DEBUG   SenderThread:2634967 [sender.py:send_request():405] send_request: defer
+2024-06-18 04:58:07,927 INFO    SenderThread:2634967 [sender.py:send_request_defer():609] handle sender defer: 4
+2024-06-18 04:58:07,927 INFO    SenderThread:2634967 [sender.py:transition_state():613] send defer: 5
+2024-06-18 04:58:07,927 DEBUG   HandlerThread:2634967 [handler.py:handle_request():158] handle_request: defer
+2024-06-18 04:58:07,927 INFO    HandlerThread:2634967 [handler.py:handle_request_defer():184] handle defer: 5
+2024-06-18 04:58:07,927 DEBUG   SenderThread:2634967 [sender.py:send():378] send: summary
+2024-06-18 04:58:07,928 INFO    SenderThread:2634967 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-06-18 04:58:07,928 DEBUG   SenderThread:2634967 [sender.py:send_request():405] send_request: defer
+2024-06-18 04:58:07,928 INFO    SenderThread:2634967 [sender.py:send_request_defer():609] handle sender defer: 5
+2024-06-18 04:58:07,928 INFO    SenderThread:2634967 [sender.py:transition_state():613] send defer: 6
+2024-06-18 04:58:07,928 DEBUG   HandlerThread:2634967 [handler.py:handle_request():158] handle_request: defer
+2024-06-18 04:58:07,928 INFO    HandlerThread:2634967 [handler.py:handle_request_defer():184] handle defer: 6
+2024-06-18 04:58:07,929 DEBUG   SenderThread:2634967 [sender.py:send_request():405] send_request: defer
+2024-06-18 04:58:07,929 INFO    SenderThread:2634967 [sender.py:send_request_defer():609] handle sender defer: 6
+2024-06-18 04:58:07,929 INFO    SenderThread:2634967 [sender.py:transition_state():613] send defer: 7
+2024-06-18 04:58:07,929 DEBUG   HandlerThread:2634967 [handler.py:handle_request():158] handle_request: status_report
+2024-06-18 04:58:07,929 DEBUG   HandlerThread:2634967 [handler.py:handle_request():158] handle_request: defer
+2024-06-18 04:58:07,929 INFO    HandlerThread:2634967 [handler.py:handle_request_defer():184] handle defer: 7
+2024-06-18 04:58:07,929 DEBUG   SenderThread:2634967 [sender.py:send_request():405] send_request: defer
+2024-06-18 04:58:07,929 INFO    SenderThread:2634967 [sender.py:send_request_defer():609] handle sender defer: 7
+2024-06-18 04:58:08,721 INFO    Thread-12 :2634967 [dir_watcher.py:_on_file_created():271] file/dir created: /home/atticus/maheep/SAE_vs_DAS/gpt2/wandb/run-20240618_044950-n8gf9rhg/files/wandb-summary.json
+2024-06-18 04:58:08,807 INFO    SenderThread:2634967 [sender.py:transition_state():613] send defer: 8
+2024-06-18 04:58:08,808 DEBUG   HandlerThread:2634967 [handler.py:handle_request():158] handle_request: defer
+2024-06-18 04:58:08,808 INFO    HandlerThread:2634967 [handler.py:handle_request_defer():184] handle defer: 8
+2024-06-18 04:58:08,808 DEBUG   SenderThread:2634967 [sender.py:send_request():405] send_request: defer
+2024-06-18 04:58:08,808 INFO    SenderThread:2634967 [sender.py:send_request_defer():609] handle sender defer: 8
+2024-06-18 04:58:08,808 INFO    SenderThread:2634967 [job_builder.py:build():432] Attempting to build job artifact
+2024-06-18 04:58:08,809 INFO    SenderThread:2634967 [job_builder.py:_get_source_type():565] is repo sourced job
+2024-06-18 04:58:08,825 INFO    SenderThread:2634967 [job_builder.py:build():541] adding wandb-job metadata file
+2024-06-18 04:58:08,827 INFO    SenderThread:2634967 [sender.py:transition_state():613] send defer: 9
+2024-06-18 04:58:08,827 DEBUG   HandlerThread:2634967 [handler.py:handle_request():158] handle_request: defer
+2024-06-18 04:58:08,827 INFO    HandlerThread:2634967 [handler.py:handle_request_defer():184] handle defer: 9
+2024-06-18 04:58:08,827 DEBUG   SenderThread:2634967 [sender.py:send():378] send: artifact
+2024-06-18 04:58:08,915 DEBUG   HandlerThread:2634967 [handler.py:handle_request():158] handle_request: poll_exit
+2024-06-18 04:58:09,446 INFO    wandb-upload_1:2634967 [upload_job.py:push():85] Skipped uploading /home/atticus/.local/share/wandb/artifacts/staging/tmp9qxsdib7
+2024-06-18 04:58:09,674 INFO    wandb-upload_0:2634967 [upload_job.py:push():88] Uploaded file /tmp/tmpe4sxl8nv/wandb-job.json
+2024-06-18 04:58:09,722 INFO    Thread-12 :2634967 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/gpt2/wandb/run-20240618_044950-n8gf9rhg/files/output.log
+2024-06-18 04:58:10,478 INFO    SenderThread:2634967 [sender.py:send_artifact():1467] sent artifact job-https___github.com_MaheepChaudhary_SAE_vs_DAS.git_gpt2_main_intervention.py - {'id': 'QXJ0aWZhY3Q6ODk1ODU5MjM0', 'state': 'PENDING', 'artifactSequence': {'id': 'QXJ0aWZhY3RDb2xsZWN0aW9uOjIwNTgxOTc1Nw==', 'latestArtifact': {'id': 'QXJ0aWZhY3Q6ODkzMTIwNDMz', 'versionIndex': 1}}}
+2024-06-18 04:58:10,479 DEBUG   SenderThread:2634967 [sender.py:send_request():405] send_request: defer
+2024-06-18 04:58:10,479 INFO    SenderThread:2634967 [sender.py:send_request_defer():609] handle sender defer: 9
+2024-06-18 04:58:10,479 INFO    SenderThread:2634967 [dir_watcher.py:finish():358] shutting down directory watcher
+2024-06-18 04:58:10,722 INFO    SenderThread:2634967 [dir_watcher.py:finish():388] scan: /home/atticus/maheep/SAE_vs_DAS/gpt2/wandb/run-20240618_044950-n8gf9rhg/files
+2024-06-18 04:58:10,723 INFO    SenderThread:2634967 [dir_watcher.py:finish():402] scan save: /home/atticus/maheep/SAE_vs_DAS/gpt2/wandb/run-20240618_044950-n8gf9rhg/files/wandb-metadata.json wandb-metadata.json
+2024-06-18 04:58:10,723 INFO    SenderThread:2634967 [dir_watcher.py:finish():402] scan save: /home/atticus/maheep/SAE_vs_DAS/gpt2/wandb/run-20240618_044950-n8gf9rhg/files/requirements.txt requirements.txt
+2024-06-18 04:58:10,723 INFO    SenderThread:2634967 [dir_watcher.py:finish():402] scan save: /home/atticus/maheep/SAE_vs_DAS/gpt2/wandb/run-20240618_044950-n8gf9rhg/files/wandb-summary.json wandb-summary.json
+2024-06-18 04:58:10,723 INFO    SenderThread:2634967 [dir_watcher.py:finish():402] scan save: /home/atticus/maheep/SAE_vs_DAS/gpt2/wandb/run-20240618_044950-n8gf9rhg/files/output.log output.log
+2024-06-18 04:58:10,723 INFO    SenderThread:2634967 [dir_watcher.py:finish():402] scan save: /home/atticus/maheep/SAE_vs_DAS/gpt2/wandb/run-20240618_044950-n8gf9rhg/files/config.yaml config.yaml
+2024-06-18 04:58:10,724 INFO    SenderThread:2634967 [sender.py:transition_state():613] send defer: 10
+2024-06-18 04:58:10,724 DEBUG   SenderThread:2634967 [sender.py:send_request():405] send_request: poll_exit
+2024-06-18 04:58:10,726 DEBUG   HandlerThread:2634967 [handler.py:handle_request():158] handle_request: defer
+2024-06-18 04:58:10,726 INFO    HandlerThread:2634967 [handler.py:handle_request_defer():184] handle defer: 10
+2024-06-18 04:58:10,728 DEBUG   SenderThread:2634967 [sender.py:send_request():405] send_request: defer
+2024-06-18 04:58:10,731 INFO    SenderThread:2634967 [sender.py:send_request_defer():609] handle sender defer: 10
+2024-06-18 04:58:10,731 INFO    SenderThread:2634967 [file_pusher.py:finish():169] shutting down file pusher
+2024-06-18 04:58:10,915 DEBUG   HandlerThread:2634967 [handler.py:handle_request():158] handle_request: poll_exit
+2024-06-18 04:58:10,916 DEBUG   SenderThread:2634967 [sender.py:send_request():405] send_request: poll_exit
+2024-06-18 04:58:10,960 INFO    wandb-upload_1:2634967 [upload_job.py:push():130] Uploaded file /home/atticus/maheep/SAE_vs_DAS/gpt2/wandb/run-20240618_044950-n8gf9rhg/files/requirements.txt
+2024-06-18 04:58:11,916 DEBUG   HandlerThread:2634967 [handler.py:handle_request():158] handle_request: poll_exit
+2024-06-18 04:58:11,917 DEBUG   SenderThread:2634967 [sender.py:send_request():405] send_request: poll_exit
+2024-06-18 04:58:11,923 INFO    wandb-upload_3:2634967 [upload_job.py:push():130] Uploaded file /home/atticus/maheep/SAE_vs_DAS/gpt2/wandb/run-20240618_044950-n8gf9rhg/files/output.log
+2024-06-18 04:58:12,022 INFO    wandb-upload_0:2634967 [upload_job.py:push():130] Uploaded file /home/atticus/maheep/SAE_vs_DAS/gpt2/wandb/run-20240618_044950-n8gf9rhg/files/config.yaml
+2024-06-18 04:58:12,022 INFO    wandb-upload_2:2634967 [upload_job.py:push():130] Uploaded file /home/atticus/maheep/SAE_vs_DAS/gpt2/wandb/run-20240618_044950-n8gf9rhg/files/wandb-summary.json
+2024-06-18 04:58:12,223 INFO    Thread-11 (_thread_body):2634967 [sender.py:transition_state():613] send defer: 11
+2024-06-18 04:58:12,223 DEBUG   HandlerThread:2634967 [handler.py:handle_request():158] handle_request: defer
+2024-06-18 04:58:12,223 INFO    HandlerThread:2634967 [handler.py:handle_request_defer():184] handle defer: 11
+2024-06-18 04:58:12,224 DEBUG   SenderThread:2634967 [sender.py:send_request():405] send_request: defer
+2024-06-18 04:58:12,224 INFO    SenderThread:2634967 [sender.py:send_request_defer():609] handle sender defer: 11
+2024-06-18 04:58:12,224 INFO    SenderThread:2634967 [file_pusher.py:join():175] waiting for file pusher
+2024-06-18 04:58:12,225 INFO    SenderThread:2634967 [sender.py:transition_state():613] send defer: 12
+2024-06-18 04:58:12,225 DEBUG   HandlerThread:2634967 [handler.py:handle_request():158] handle_request: defer
+2024-06-18 04:58:12,225 INFO    HandlerThread:2634967 [handler.py:handle_request_defer():184] handle defer: 12
+2024-06-18 04:58:12,225 DEBUG   SenderThread:2634967 [sender.py:send_request():405] send_request: defer
+2024-06-18 04:58:12,225 INFO    SenderThread:2634967 [sender.py:send_request_defer():609] handle sender defer: 12
+2024-06-18 04:58:12,225 INFO    SenderThread:2634967 [file_stream.py:finish():601] file stream finish called
+2024-06-18 04:58:12,659 INFO    SenderThread:2634967 [file_stream.py:finish():605] file stream finish is done
+2024-06-18 04:58:12,659 INFO    SenderThread:2634967 [sender.py:transition_state():613] send defer: 13
+2024-06-18 04:58:12,659 DEBUG   HandlerThread:2634967 [handler.py:handle_request():158] handle_request: defer
+2024-06-18 04:58:12,660 INFO    HandlerThread:2634967 [handler.py:handle_request_defer():184] handle defer: 13
+2024-06-18 04:58:12,660 DEBUG   SenderThread:2634967 [sender.py:send_request():405] send_request: defer
+2024-06-18 04:58:12,660 INFO    SenderThread:2634967 [sender.py:send_request_defer():609] handle sender defer: 13
+2024-06-18 04:58:12,660 INFO    SenderThread:2634967 [sender.py:transition_state():613] send defer: 14
+2024-06-18 04:58:12,660 DEBUG   HandlerThread:2634967 [handler.py:handle_request():158] handle_request: defer
+2024-06-18 04:58:12,660 INFO    HandlerThread:2634967 [handler.py:handle_request_defer():184] handle defer: 14
+2024-06-18 04:58:12,661 DEBUG   SenderThread:2634967 [sender.py:send():378] send: final
+2024-06-18 04:58:12,661 DEBUG   SenderThread:2634967 [sender.py:send():378] send: footer
+2024-06-18 04:58:12,661 DEBUG   SenderThread:2634967 [sender.py:send_request():405] send_request: defer
+2024-06-18 04:58:12,661 INFO    SenderThread:2634967 [sender.py:send_request_defer():609] handle sender defer: 14
+2024-06-18 04:58:12,662 DEBUG   HandlerThread:2634967 [handler.py:handle_request():158] handle_request: poll_exit
+2024-06-18 04:58:12,662 DEBUG   SenderThread:2634967 [sender.py:send_request():405] send_request: poll_exit
+2024-06-18 04:58:12,663 DEBUG   HandlerThread:2634967 [handler.py:handle_request():158] handle_request: poll_exit
+2024-06-18 04:58:12,663 DEBUG   HandlerThread:2634967 [handler.py:handle_request():158] handle_request: server_info
+2024-06-18 04:58:12,664 DEBUG   SenderThread:2634967 [sender.py:send_request():405] send_request: poll_exit
+2024-06-18 04:58:12,664 DEBUG   HandlerThread:2634967 [handler.py:handle_request():158] handle_request: get_summary
+2024-06-18 04:58:12,664 DEBUG   SenderThread:2634967 [sender.py:send_request():405] send_request: server_info
+2024-06-18 04:58:12,667 DEBUG   HandlerThread:2634967 [handler.py:handle_request():158] handle_request: sampled_history
+2024-06-18 04:58:12,667 DEBUG   HandlerThread:2634967 [handler.py:handle_request():158] handle_request: internal_messages
+2024-06-18 04:58:12,743 INFO    MainThread:2634967 [wandb_run.py:_footer_history_summary_info():3994] rendering history
+2024-06-18 04:58:12,743 INFO    MainThread:2634967 [wandb_run.py:_footer_history_summary_info():4026] rendering summary
+2024-06-18 04:58:12,744 INFO    MainThread:2634967 [wandb_run.py:_footer_sync_info():3953] logging synced files
+2024-06-18 04:58:12,744 DEBUG   HandlerThread:2634967 [handler.py:handle_request():158] handle_request: shutdown
+2024-06-18 04:58:12,744 INFO    HandlerThread:2634967 [handler.py:finish():882] shutting down handler
+2024-06-18 04:58:13,664 INFO    WriterThread:2634967 [datastore.py:close():296] close: /home/atticus/maheep/SAE_vs_DAS/gpt2/wandb/run-20240618_044950-n8gf9rhg/run-n8gf9rhg.wandb
+2024-06-18 04:58:13,743 INFO    SenderThread:2634967 [sender.py:finish():1545] shutting down sender
+2024-06-18 04:58:13,744 INFO    SenderThread:2634967 [file_pusher.py:finish():169] shutting down file pusher
+2024-06-18 04:58:13,744 INFO    SenderThread:2634967 [file_pusher.py:join():175] waiting for file pusher
