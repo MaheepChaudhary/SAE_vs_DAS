@@ -1,0 +1,51 @@
+2024-06-18 17:55:47,016 INFO    StreamThr :30818 [internal.py:wandb_internal():85] W&B internal server running at pid: 30818, started at: 2024-06-18 17:55:47.015726
+2024-06-18 17:55:47,016 DEBUG   HandlerThread:30818 [handler.py:handle_request():158] handle_request: status
+2024-06-18 17:55:47,018 INFO    WriterThread:30818 [datastore.py:open_for_write():87] open: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/gpt2/wandb/offline-run-20240618_175547-iauxqcac/run-iauxqcac.wandb
+2024-06-18 17:55:47,038 DEBUG   HandlerThread:30818 [handler.py:handle_request():158] handle_request: run_start
+2024-06-18 17:55:47,042 DEBUG   HandlerThread:30818 [system_info.py:__init__():26] System info init
+2024-06-18 17:55:47,042 DEBUG   HandlerThread:30818 [system_info.py:__init__():41] System info init done
+2024-06-18 17:55:47,042 INFO    HandlerThread:30818 [system_monitor.py:start():194] Starting system monitor
+2024-06-18 17:55:47,042 INFO    SystemMonitor:30818 [system_monitor.py:_start():158] Starting system asset monitoring threads
+2024-06-18 17:55:47,042 INFO    HandlerThread:30818 [system_monitor.py:probe():214] Collecting system info
+2024-06-18 17:55:47,043 INFO    SystemMonitor:30818 [interfaces.py:start():188] Started cpu monitoring
+2024-06-18 17:55:47,044 INFO    SystemMonitor:30818 [interfaces.py:start():188] Started disk monitoring
+2024-06-18 17:55:47,046 INFO    SystemMonitor:30818 [interfaces.py:start():188] Started gpuapple monitoring
+2024-06-18 17:55:47,047 INFO    SystemMonitor:30818 [interfaces.py:start():188] Started memory monitoring
+2024-06-18 17:55:47,048 INFO    SystemMonitor:30818 [interfaces.py:start():188] Started network monitoring
+2024-06-18 17:55:47,362 DEBUG   HandlerThread:30818 [system_info.py:probe():150] Probing system
+2024-06-18 17:55:47,365 DEBUG   HandlerThread:30818 [system_info.py:_probe_git():135] Probing git
+2024-06-18 17:55:47,378 DEBUG   HandlerThread:30818 [system_info.py:_probe_git():143] Probing git done
+2024-06-18 17:55:47,379 DEBUG   HandlerThread:30818 [system_info.py:probe():198] Probing system done
+2024-06-18 17:55:47,379 DEBUG   HandlerThread:30818 [system_monitor.py:probe():223] {'os': 'macOS-14.5-arm64-arm-64bit', 'python': '3.12.3', 'heartbeatAt': '2024-06-18T12:25:47.362904', 'startedAt': '2024-06-18T12:25:47.010537', 'docker': None, 'cuda': None, 'args': ('-efp', 'country_intervention_dataset.json', '-a', 'country', '-acc', 'top1', '-d', 'mps'), 'state': 'running', 'program': '/Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/gpt2/main_intervention.py', 'codePathLocal': 'main_intervention.py', 'codePath': 'gpt2/main_intervention.py', 'git': {'remote': 'https://github.com/MaheepChaudhary/SAE_vs_DAS.git', 'commit': '538200ca745f046480e3d48453e7f850b23f1857'}, 'email': 'my email address used on my git repo', 'root': '/Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS', 'host': 'Maheeps-MacBook-Pro.local', 'username': 'maheepchaudhary', 'executable': '/Users/maheepchaudhary/miniforge3/envs/nnsight/bin/python', 'cpu_count': 11, 'cpu_count_logical': 11, 'cpu_freq': {'current': 4056, 'min': 696, 'max': 4056}, 'cpu_freq_per_core': [{'current': 4056, 'min': 696, 'max': 4056}], 'disk': {'/': {'total': 460.4317207336426, 'used': 444.233097076416}}, 'gpuapple': {'type': 'Apple M3 Pro', 'vendor': 'sppci_vendor_Apple'}, 'memory': {'total': 18.0}}
+2024-06-18 17:55:47,379 INFO    HandlerThread:30818 [system_monitor.py:probe():224] Finished collecting system info
+2024-06-18 17:55:47,379 INFO    HandlerThread:30818 [system_monitor.py:probe():227] Publishing system info
+2024-06-18 17:55:47,379 DEBUG   HandlerThread:30818 [system_info.py:_save_conda():207] Saving list of conda packages installed into the current environment
+2024-06-18 17:55:51,944 DEBUG   HandlerThread:30818 [system_info.py:_save_conda():222] Saving conda packages done
+2024-06-18 17:55:51,945 INFO    HandlerThread:30818 [system_monitor.py:probe():229] Finished publishing system info
+2024-06-18 17:55:51,993 DEBUG   HandlerThread:30818 [handler.py:handle_request():158] handle_request: python_packages
+2024-06-18 17:55:52,044 DEBUG   HandlerThread:30818 [handler.py:handle_request():158] handle_request: status_report
+2024-06-18 17:55:52,044 DEBUG   SenderThread:30818 [sender.py:send_request():405] send_request: status_report
+2024-06-18 17:55:57,064 DEBUG   HandlerThread:30818 [handler.py:handle_request():158] handle_request: status_report
+2024-06-18 17:55:57,065 DEBUG   SenderThread:30818 [sender.py:send_request():405] send_request: status_report
+2024-06-18 17:56:02,088 DEBUG   HandlerThread:30818 [handler.py:handle_request():158] handle_request: status_report
+2024-06-18 17:56:02,089 DEBUG   SenderThread:30818 [sender.py:send_request():405] send_request: status_report
+2024-06-18 17:56:07,114 DEBUG   HandlerThread:30818 [handler.py:handle_request():158] handle_request: status_report
+2024-06-18 17:56:07,115 DEBUG   SenderThread:30818 [sender.py:send_request():405] send_request: status_report
+2024-06-18 17:56:12,139 WARNING StreamThr :30818 [internal.py:is_dead():413] Internal process exiting, parent pid 30801 disappeared
+2024-06-18 17:56:12,139 DEBUG   HandlerThread:30818 [handler.py:handle_request():158] handle_request: status_report
+2024-06-18 17:56:12,139 ERROR   StreamThr :30818 [internal.py:wandb_internal():151] Internal process shutdown.
+2024-06-18 17:56:12,140 DEBUG   SenderThread:30818 [sender.py:send_request():405] send_request: status_report
+2024-06-18 17:56:12,140 INFO    SenderThread:30818 [sender.py:finish():1545] shutting down sender
+2024-06-18 17:56:13,106 INFO    memory    :30818 [interfaces.py:monitor():138] Process proc.memory.rssMB has exited.
+2024-06-18 17:56:13,107 INFO    cpu       :30818 [interfaces.py:monitor():138] Process cpu has exited.
+2024-06-18 17:56:13,107 DEBUG   SystemMonitor:30818 [system_monitor.py:_start():172] Starting system metrics aggregation loop
+2024-06-18 17:56:13,107 DEBUG   SystemMonitor:30818 [system_monitor.py:_start():179] Finished system metrics aggregation loop
+2024-06-18 17:56:13,107 DEBUG   SystemMonitor:30818 [system_monitor.py:_start():183] Publishing last batch of metrics
+2024-06-18 17:56:13,108 INFO    HandlerThread:30818 [handler.py:finish():882] shutting down handler
+2024-06-18 17:56:13,108 INFO    WriterThread:30818 [datastore.py:close():296] close: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/gpt2/wandb/offline-run-20240618_175547-iauxqcac/run-iauxqcac.wandb
+2024-06-18 17:56:13,108 INFO    HandlerThread:30818 [system_monitor.py:finish():203] Stopping system monitor
+2024-06-18 17:56:13,108 INFO    HandlerThread:30818 [interfaces.py:finish():200] Joined cpu monitor
+2024-06-18 17:56:13,108 INFO    HandlerThread:30818 [interfaces.py:finish():200] Joined disk monitor
+2024-06-18 17:56:13,307 INFO    HandlerThread:30818 [interfaces.py:finish():200] Joined gpuapple monitor
+2024-06-18 17:56:13,307 INFO    HandlerThread:30818 [interfaces.py:finish():200] Joined memory monitor
+2024-06-18 17:56:13,307 INFO    HandlerThread:30818 [interfaces.py:finish():200] Joined network monitor

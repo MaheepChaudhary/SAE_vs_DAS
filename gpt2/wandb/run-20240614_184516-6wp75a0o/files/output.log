@@ -1,0 +1,5 @@
+Traceback (most recent call last):
+  File "/Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/gpt2/main_train.py", line 24, in <module>
+    wandb.run.name = f"{args.model}-TLA_{args.tla}-{args.attribute}-{args.method}-{args.epochs}"
+                                         ^^^^^^^^
+AttributeError: 'Namespace' object has no attribute 'tla'
