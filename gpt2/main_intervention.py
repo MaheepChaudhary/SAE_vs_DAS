@@ -151,7 +151,7 @@ if __name__ == "__main__":
     parser.add_argument("-acc", "--accuracy", required=True, help = "type of accuracy of the model on the evaluation dataset, i.e. top 1 or top 5 or top 10")
 
     args = parser.parse_args()
-    wandb.init(project="sae_concept_eraser")
+    # wandb.init(project="sae_concept_eraser")
     
     DEVICE = args.device 
     
