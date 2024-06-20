@@ -36,7 +36,7 @@ else:
 import warnings
 
 # Suppress specific warnings
-warnings.filterwarnings("ignore", message="Setting `pad_token_id` to `eos_token_id`:50256 for open-end generation. A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.")
+warnings.filterwarnings('ignore')
 
 import logging
 from transformers import logging as transformers_logging

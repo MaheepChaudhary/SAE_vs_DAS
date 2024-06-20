@@ -102,9 +102,9 @@ def data_process(sample, model):
     base_label = sample[0][1]
     source_label = sample[1][1]
     
-    base_ids = model.tokenizer.encode(base, return_tensors='pt').type(torch.LongTensor).to(DEVICE)
-    base_tokens = model.tokenizer.tokenize(base)
-    source_ids = model.tokenizer.encode(source, return_tensors='pt').type(torch.LongTensor).to(DEVICE)
+    base_ids = tokenizer.encode(base, return_tensors='pt', padding=True, truncation=True).type(torch.LongTensor).to(DEVICE)
+    base_tokens = tokenizer.tokenize(base)
+    source_ids = tokenizer.encode(source, return_tensors='pt', padding=True, truncation=True).type(torch.LongTensor).to(DEVICE)
     # source_tokens = tokenizer.tokenize(source) 
     
     if source_ids.shape[1] != base_ids.shape[1]:
@@ -123,7 +123,7 @@ def intervention(model, source_ids, base_ids, layer_index, intervened_token_idx)
     This is defined to do intervention from the source to the base.
     '''
 
-    with model.generate(max_new_tokens=1) as tracer:
+    with model.generate(max_new_tokens=1, pad_token_id=tokenizer.eos_token_id) as tracer:
 
         with tracer.invoke(source_ids):
 
@@ -135,7 +135,7 @@ def intervention(model, source_ids, base_ids, layer_index, intervened_token_idx)
             # intervened_base_output = model.lm_head.output.argmax(dim = -1).save()
             intervened_base_output = model.generator.output.save()
 
-    predicted_text = model.tokenizer.decode(intervened_base_output[0][-1])
+    predicted_text = tokenizer.decode(intervened_base_output[0][-1])
 
     return predicted_text
 
@@ -157,16 +157,19 @@ if __name__ == "__main__":
     
     # Load gpt2
     if args.model == "gpt2":
+        tokenizer = GPT2Tokenizer.from_pretrained("openai-community/gpt2")
+        tokenizer.padding_side = "left"
         model = LanguageModel("openai-community/gpt2", device_map=DEVICE)
         # tokenizer = GPT2Tokenizer.from_pretrained("openai-community/gpt2")
+        
     elif args.model == "mistral":
         model = LanguageModel("mistralai/Mistral-7B-v0.1", device_map=DEVICE)
         tokenizer = AutoTokenizer.from_pretrained("mistralai/Mistral-7B-v0.1")
         # if tokenizer.pad_token is None:
         #     tokenizer.add_special_tokens({'pad_token': '[PAD]'}) 
 
-    tokenizer = model.tokenizer
-    tokenizer.padding_side = "left"
+    # tokenizer = model.tokenizer
+    
     tokenizer.pad_token_id = tokenizer.eos_token_id
 
     # eval_file_path  = f"/content/{args.attribute}_data.json"
