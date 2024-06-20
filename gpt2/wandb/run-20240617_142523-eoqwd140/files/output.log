@@ -1,0 +1,203 @@
+The total number of samples with which GPT-2 is comfortable for country dataset are 661
+The total length of the cities with which GPT-2 is comfortable for country dataset are 661
+The total number of samples with which GPT-2 is comfortable for continent dataset are 974
+The total length of the cities with which GPT-2 is comfortable for continent dataset are 974
+The total number of intersecting cities between country and continent are 250
+  0%|                                                  | 0/6688 [00:00<?, ?it/s]You're using a GPT2TokenizerFast tokenizer. Please note that with a fast tokenizer, using the `__call__` method is faster than using a method to encode the text followed by a call to the `pad` method to get a padded encoding.
+/home/atticus/.local/lib/python3.10/site-packages/pandas/core/computation/expressions.py:21: UserWarning: Pandas requires version '2.8.4' or newer of 'numexpr' (version '2.8.1' currently installed).
+  from pandas.core.computation.check import NUMEXPR_INSTALLED
+/home/atticus/.local/lib/python3.10/site-packages/pandas/core/arrays/masked.py:60: UserWarning: Pandas requires version '1.3.6' or newer of 'bottleneck' (version '1.3.2' currently installed).
+  from pandas.core import (
+[0, 0]
+0.0
+[0, 0]
+0.0
+[0, 0]
+0.0
+[0, 0]
+0.0
+[0, 0]
+0.0
+[0, 0]
+0.0
+[0, 0]
+0.0
+[0, 0]
+0.0
+[0, 0]
+0.0
+[0, 0]
+0.0
+  0%|                                       | 1/6688 [00:05<11:02:32,  5.94s/it]
+[0, 0]
+0.0
+[0, 0]
+  0%|                                       | 1/6688 [00:08<15:39:05,  8.43s/it]
+Traceback (most recent call last):
+  File "/home/atticus/maheep/SAE_vs_DAS/gpt2/main_intervention.py", line 232, in <module>
+    predicted_text = intervention(model, source_ids, base_ids, layer_index, intervened_token_idx)
+  File "/home/atticus/maheep/SAE_vs_DAS/gpt2/main_intervention.py", line 122, in intervention
+    with model.trace() as tracer:
+  File "/home/atticus/.local/lib/python3.10/site-packages/nnsight/contexts/Runner.py", line 41, in __exit__
+    raise exc_val
+  File "/home/atticus/maheep/SAE_vs_DAS/gpt2/main_intervention.py", line 124, in intervention
+    with tracer.invoke(source_ids) as runner:
+  File "/home/atticus/.local/lib/python3.10/site-packages/nnsight/contexts/Invoker.py", line 69, in __enter__
+    self.tracer._model._execute(
+  File "/home/atticus/.local/lib/python3.10/site-packages/nnsight/models/mixins/Generation.py", line 21, in _execute
+    return self._execute_forward(prepared_inputs, *args, **kwargs)
+  File "/home/atticus/.local/lib/python3.10/site-packages/nnsight/models/LanguageModel.py", line 281, in _execute_forward
+    return self._model(
+  File "/home/atticus/.local/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1532, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/home/atticus/.local/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1582, in _call_impl
+    result = forward_call(*args, **kwargs)
+  File "/home/atticus/.local/lib/python3.10/site-packages/transformers/models/gpt2/modeling_gpt2.py", line 1074, in forward
+    transformer_outputs = self.transformer(
+  File "/home/atticus/.local/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1532, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/home/atticus/.local/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1582, in _call_impl
+    result = forward_call(*args, **kwargs)
+  File "/home/atticus/.local/lib/python3.10/site-packages/transformers/models/gpt2/modeling_gpt2.py", line 837, in forward
+    inputs_embeds = self.wte(input_ids)
+  File "/home/atticus/.local/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1532, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/home/atticus/.local/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1582, in _call_impl
+    result = forward_call(*args, **kwargs)
+  File "/home/atticus/.local/lib/python3.10/site-packages/torch/nn/modules/sparse.py", line 163, in forward
+    return F.embedding(
+  File "/home/atticus/.local/lib/python3.10/site-packages/torch/nn/functional.py", line 2233, in embedding
+    return handle_torch_function(
+  File "/home/atticus/.local/lib/python3.10/site-packages/torch/overrides.py", line 1619, in handle_torch_function
+    result = mode.__torch_function__(public_api, types, args, kwargs)
+  File "/home/atticus/.local/lib/python3.10/site-packages/torch/_subclasses/fake_tensor.py", line 1780, in __torch_function__
+    return func(*args, **kwargs)
+  File "/home/atticus/.local/lib/python3.10/site-packages/torch/nn/functional.py", line 2264, in embedding
+    return torch.embedding(weight, input, padding_idx, scale_grad_by_freq, sparse)
+  File "/home/atticus/.local/lib/python3.10/site-packages/torch/utils/_stats.py", line 20, in wrapper
+    return fn(*args, **kwargs)
+  File "/home/atticus/.local/lib/python3.10/site-packages/torch/_subclasses/fake_tensor.py", line 896, in __torch_dispatch__
+    return self.dispatch(func, types, args, kwargs)
+  File "/home/atticus/.local/lib/python3.10/site-packages/torch/_subclasses/fake_tensor.py", line 1241, in dispatch
+    return self._cached_dispatch_impl(func, types, args, kwargs)
+  File "/home/atticus/.local/lib/python3.10/site-packages/torch/_subclasses/fake_tensor.py", line 974, in _cached_dispatch_impl
+    output = self._dispatch_impl(func, types, args, kwargs)
+  File "/home/atticus/.local/lib/python3.10/site-packages/torch/_subclasses/fake_tensor.py", line 1393, in _dispatch_impl
+    return decomposition_table[func](*args, **kwargs)
+  File "/home/atticus/.local/lib/python3.10/site-packages/torch/_prims_common/wrappers.py", line 252, in _fn
+    result = fn(*args, **kwargs)
+  File "/home/atticus/.local/lib/python3.10/site-packages/torch/_decomp/decompositions.py", line 1173, in embedding
+    return weight[indices]
+  File "/home/atticus/.local/lib/python3.10/site-packages/torch/utils/_stats.py", line 20, in wrapper
+    return fn(*args, **kwargs)
+  File "/home/atticus/.local/lib/python3.10/site-packages/torch/_subclasses/fake_tensor.py", line 896, in __torch_dispatch__
+    return self.dispatch(func, types, args, kwargs)
+  File "/home/atticus/.local/lib/python3.10/site-packages/torch/_subclasses/fake_tensor.py", line 1241, in dispatch
+    return self._cached_dispatch_impl(func, types, args, kwargs)
+  File "/home/atticus/.local/lib/python3.10/site-packages/torch/_subclasses/fake_tensor.py", line 974, in _cached_dispatch_impl
+    output = self._dispatch_impl(func, types, args, kwargs)
+  File "/home/atticus/.local/lib/python3.10/site-packages/torch/_subclasses/fake_tensor.py", line 1431, in _dispatch_impl
+    op_impl_out = op_impl(self, func, *args, **kwargs)
+  File "/home/atticus/.local/lib/python3.10/site-packages/torch/_subclasses/fake_impls.py", line 150, in dispatch_to_op_implementations_dict
+    return op_implementations_dict[func](fake_mode, func, *args, **kwargs)
+  File "/home/atticus/.local/lib/python3.10/site-packages/torch/_subclasses/fake_impls.py", line 460, in index_tensor
+    return out.to(out_device)
+  File "/home/atticus/.local/lib/python3.10/site-packages/torch/utils/_stats.py", line 20, in wrapper
+    return fn(*args, **kwargs)
+  File "/home/atticus/.local/lib/python3.10/site-packages/torch/_subclasses/fake_tensor.py", line 896, in __torch_dispatch__
+    return self.dispatch(func, types, args, kwargs)
+  File "/home/atticus/.local/lib/python3.10/site-packages/torch/_subclasses/fake_tensor.py", line 1241, in dispatch
+    return self._cached_dispatch_impl(func, types, args, kwargs)
+  File "/home/atticus/.local/lib/python3.10/site-packages/torch/_subclasses/fake_tensor.py", line 974, in _cached_dispatch_impl
+    output = self._dispatch_impl(func, types, args, kwargs)
+  File "/home/atticus/.local/lib/python3.10/site-packages/torch/_subclasses/fake_tensor.py", line 1397, in _dispatch_impl
+    r = func.decompose(*args, **kwargs)
+  File "/home/atticus/.local/lib/python3.10/site-packages/torch/_ops.py", line 631, in decompose
+    return self._op_dk(dk, *args, **kwargs)
+  File "/home/atticus/.local/lib/python3.10/site-packages/torch/utils/_stats.py", line 15, in wrapper
+    @functools.wraps(fn)
+KeyboardInterrupt
+Traceback (most recent call last):
+  File "/home/atticus/maheep/SAE_vs_DAS/gpt2/main_intervention.py", line 232, in <module>
+    predicted_text = intervention(model, source_ids, base_ids, layer_index, intervened_token_idx)
+  File "/home/atticus/maheep/SAE_vs_DAS/gpt2/main_intervention.py", line 122, in intervention
+    with model.trace() as tracer:
+  File "/home/atticus/.local/lib/python3.10/site-packages/nnsight/contexts/Runner.py", line 41, in __exit__
+    raise exc_val
+  File "/home/atticus/maheep/SAE_vs_DAS/gpt2/main_intervention.py", line 124, in intervention
+    with tracer.invoke(source_ids) as runner:
+  File "/home/atticus/.local/lib/python3.10/site-packages/nnsight/contexts/Invoker.py", line 69, in __enter__
+    self.tracer._model._execute(
+  File "/home/atticus/.local/lib/python3.10/site-packages/nnsight/models/mixins/Generation.py", line 21, in _execute
+    return self._execute_forward(prepared_inputs, *args, **kwargs)
+  File "/home/atticus/.local/lib/python3.10/site-packages/nnsight/models/LanguageModel.py", line 281, in _execute_forward
+    return self._model(
+  File "/home/atticus/.local/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1532, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/home/atticus/.local/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1582, in _call_impl
+    result = forward_call(*args, **kwargs)
+  File "/home/atticus/.local/lib/python3.10/site-packages/transformers/models/gpt2/modeling_gpt2.py", line 1074, in forward
+    transformer_outputs = self.transformer(
+  File "/home/atticus/.local/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1532, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/home/atticus/.local/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1582, in _call_impl
+    result = forward_call(*args, **kwargs)
+  File "/home/atticus/.local/lib/python3.10/site-packages/transformers/models/gpt2/modeling_gpt2.py", line 837, in forward
+    inputs_embeds = self.wte(input_ids)
+  File "/home/atticus/.local/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1532, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/home/atticus/.local/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1582, in _call_impl
+    result = forward_call(*args, **kwargs)
+  File "/home/atticus/.local/lib/python3.10/site-packages/torch/nn/modules/sparse.py", line 163, in forward
+    return F.embedding(
+  File "/home/atticus/.local/lib/python3.10/site-packages/torch/nn/functional.py", line 2233, in embedding
+    return handle_torch_function(
+  File "/home/atticus/.local/lib/python3.10/site-packages/torch/overrides.py", line 1619, in handle_torch_function
+    result = mode.__torch_function__(public_api, types, args, kwargs)
+  File "/home/atticus/.local/lib/python3.10/site-packages/torch/_subclasses/fake_tensor.py", line 1780, in __torch_function__
+    return func(*args, **kwargs)
+  File "/home/atticus/.local/lib/python3.10/site-packages/torch/nn/functional.py", line 2264, in embedding
+    return torch.embedding(weight, input, padding_idx, scale_grad_by_freq, sparse)
+  File "/home/atticus/.local/lib/python3.10/site-packages/torch/utils/_stats.py", line 20, in wrapper
+    return fn(*args, **kwargs)
+  File "/home/atticus/.local/lib/python3.10/site-packages/torch/_subclasses/fake_tensor.py", line 896, in __torch_dispatch__
+    return self.dispatch(func, types, args, kwargs)
+  File "/home/atticus/.local/lib/python3.10/site-packages/torch/_subclasses/fake_tensor.py", line 1241, in dispatch
+    return self._cached_dispatch_impl(func, types, args, kwargs)
+  File "/home/atticus/.local/lib/python3.10/site-packages/torch/_subclasses/fake_tensor.py", line 974, in _cached_dispatch_impl
+    output = self._dispatch_impl(func, types, args, kwargs)
+  File "/home/atticus/.local/lib/python3.10/site-packages/torch/_subclasses/fake_tensor.py", line 1393, in _dispatch_impl
+    return decomposition_table[func](*args, **kwargs)
+  File "/home/atticus/.local/lib/python3.10/site-packages/torch/_prims_common/wrappers.py", line 252, in _fn
+    result = fn(*args, **kwargs)
+  File "/home/atticus/.local/lib/python3.10/site-packages/torch/_decomp/decompositions.py", line 1173, in embedding
+    return weight[indices]
+  File "/home/atticus/.local/lib/python3.10/site-packages/torch/utils/_stats.py", line 20, in wrapper
+    return fn(*args, **kwargs)
+  File "/home/atticus/.local/lib/python3.10/site-packages/torch/_subclasses/fake_tensor.py", line 896, in __torch_dispatch__
+    return self.dispatch(func, types, args, kwargs)
+  File "/home/atticus/.local/lib/python3.10/site-packages/torch/_subclasses/fake_tensor.py", line 1241, in dispatch
+    return self._cached_dispatch_impl(func, types, args, kwargs)
+  File "/home/atticus/.local/lib/python3.10/site-packages/torch/_subclasses/fake_tensor.py", line 974, in _cached_dispatch_impl
+    output = self._dispatch_impl(func, types, args, kwargs)
+  File "/home/atticus/.local/lib/python3.10/site-packages/torch/_subclasses/fake_tensor.py", line 1431, in _dispatch_impl
+    op_impl_out = op_impl(self, func, *args, **kwargs)
+  File "/home/atticus/.local/lib/python3.10/site-packages/torch/_subclasses/fake_impls.py", line 150, in dispatch_to_op_implementations_dict
+    return op_implementations_dict[func](fake_mode, func, *args, **kwargs)
+  File "/home/atticus/.local/lib/python3.10/site-packages/torch/_subclasses/fake_impls.py", line 460, in index_tensor
+    return out.to(out_device)
+  File "/home/atticus/.local/lib/python3.10/site-packages/torch/utils/_stats.py", line 20, in wrapper
+    return fn(*args, **kwargs)
+  File "/home/atticus/.local/lib/python3.10/site-packages/torch/_subclasses/fake_tensor.py", line 896, in __torch_dispatch__
+    return self.dispatch(func, types, args, kwargs)
+  File "/home/atticus/.local/lib/python3.10/site-packages/torch/_subclasses/fake_tensor.py", line 1241, in dispatch
+    return self._cached_dispatch_impl(func, types, args, kwargs)
+  File "/home/atticus/.local/lib/python3.10/site-packages/torch/_subclasses/fake_tensor.py", line 974, in _cached_dispatch_impl
+    output = self._dispatch_impl(func, types, args, kwargs)
+  File "/home/atticus/.local/lib/python3.10/site-packages/torch/_subclasses/fake_tensor.py", line 1397, in _dispatch_impl
+    r = func.decompose(*args, **kwargs)
+  File "/home/atticus/.local/lib/python3.10/site-packages/torch/_ops.py", line 631, in decompose
+    return self._op_dk(dk, *args, **kwargs)
+  File "/home/atticus/.local/lib/python3.10/site-packages/torch/utils/_stats.py", line 15, in wrapper
+    @functools.wraps(fn)
+KeyboardInterrupt
