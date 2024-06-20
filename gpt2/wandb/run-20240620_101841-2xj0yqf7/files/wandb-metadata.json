@@ -1,0 +1,221 @@
+{
+    "os": "Linux-6.5.0-41-generic-x86_64-with-glibc2.35",
+    "python": "3.10.12",
+    "heartbeatAt": "2024-06-20T17:18:41.719118",
+    "startedAt": "2024-06-20T17:18:41.144418",
+    "docker": null,
+    "cuda": null,
+    "args": [
+        "-efp",
+        "country_intervention_dataset.json",
+        "-a",
+        "country",
+        "-acc",
+        "top1",
+        "-d",
+        "mps"
+    ],
+    "state": "running",
+    "program": "/home/atticus/maheep/SAE_vs_DAS/gpt2/main_intervention.py",
+    "codePathLocal": "main_intervention.py",
+    "codePath": "gpt2/main_intervention.py",
+    "git": {
+        "remote": "https://github.com/MaheepChaudhary/SAE_vs_DAS.git",
+        "commit": "fa2e7e41b39d6c1722db3a9cb177d5e51f4bba39"
+    },
+    "email": "chaudhary.maheep28@gmail.com",
+    "root": "/home/atticus/maheep/SAE_vs_DAS",
+    "host": "AtticusDeepLearner",
+    "username": "atticus",
+    "executable": "/usr/bin/python",
+    "cpu_count": 16,
+    "cpu_count_logical": 32,
+    "cpu_freq": {
+        "current": 2.427624999999999,
+        "min": 1800.0,
+        "max": 4000.0
+    },
+    "cpu_freq_per_core": [
+        {
+            "current": 1.929,
+            "min": 1800.0,
+            "max": 4000.0
+        },
+        {
+            "current": 2.315,
+            "min": 1800.0,
+            "max": 4000.0
+        },
+        {
+            "current": 3.048,
+            "min": 1800.0,
+            "max": 4000.0
+        },
+        {
+            "current": 2.315,
+            "min": 1800.0,
+            "max": 4000.0
+        },
+        {
+            "current": 2.315,
+            "min": 1800.0,
+            "max": 4000.0
+        },
+        {
+            "current": 2.314,
+            "min": 1800.0,
+            "max": 4000.0
+        },
+        {
+            "current": 1.986,
+            "min": 1800.0,
+            "max": 4000.0
+        },
+        {
+            "current": 1.924,
+            "min": 1800.0,
+            "max": 4000.0
+        },
+        {
+            "current": 2.439,
+            "min": 1800.0,
+            "max": 4000.0
+        },
+        {
+            "current": 2.721,
+            "min": 1800.0,
+            "max": 4000.0
+        },
+        {
+            "current": 2.067,
+            "min": 1800.0,
+            "max": 4000.0
+        },
+        {
+            "current": 1.8,
+            "min": 1800.0,
+            "max": 4000.0
+        },
+        {
+            "current": 1.928,
+            "min": 1800.0,
+            "max": 4000.0
+        },
+        {
+            "current": 1.92,
+            "min": 1800.0,
+            "max": 4000.0
+        },
+        {
+            "current": 1.8,
+            "min": 1800.0,
+            "max": 4000.0
+        },
+        {
+            "current": 1.925,
+            "min": 1800.0,
+            "max": 4000.0
+        },
+        {
+            "current": 2.382,
+            "min": 1800.0,
+            "max": 4000.0
+        },
+        {
+            "current": 1.8,
+            "min": 1800.0,
+            "max": 4000.0
+        },
+        {
+            "current": 1.916,
+            "min": 1800.0,
+            "max": 4000.0
+        },
+        {
+            "current": 1.8,
+            "min": 1800.0,
+            "max": 4000.0
+        },
+        {
+            "current": 1.8,
+            "min": 1800.0,
+            "max": 4000.0
+        },
+        {
+            "current": 2.144,
+            "min": 1800.0,
+            "max": 4000.0
+        },
+        {
+            "current": 1.9,
+            "min": 1800.0,
+            "max": 4000.0
+        },
+        {
+            "current": 2.007,
+            "min": 1800.0,
+            "max": 4000.0
+        },
+        {
+            "current": 2.535,
+            "min": 1800.0,
+            "max": 4000.0
+        },
+        {
+            "current": 1.926,
+            "min": 1800.0,
+            "max": 4000.0
+        },
+        {
+            "current": 1.941,
+            "min": 1800.0,
+            "max": 4000.0
+        },
+        {
+            "current": 2.424,
+            "min": 1800.0,
+            "max": 4000.0
+        },
+        {
+            "current": 2.719,
+            "min": 1800.0,
+            "max": 4000.0
+        },
+        {
+            "current": 2.027,
+            "min": 1800.0,
+            "max": 4000.0
+        },
+        {
+            "current": 1.938,
+            "min": 1800.0,
+            "max": 4000.0
+        },
+        {
+            "current": 2.09,
+            "min": 1800.0,
+            "max": 4000.0
+        }
+    ],
+    "disk": {
+        "/": {
+            "total": 3519.256721496582,
+            "used": 148.63356018066406
+        }
+    },
+    "gpu": "NVIDIA RTX A6000",
+    "gpu_count": 2,
+    "gpu_devices": [
+        {
+            "name": "NVIDIA RTX A6000",
+            "memory_total": 51527024640
+        },
+        {
+            "name": "NVIDIA RTX A6000",
+            "memory_total": 51527024640
+        }
+    ],
+    "memory": {
+        "total": 251.5378875732422
+    }
+}
