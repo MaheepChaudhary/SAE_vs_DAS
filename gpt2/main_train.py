@@ -3,6 +3,55 @@ from ravel_data_prep import *
 from eval_gpt2 import *
 from models import *
 
+def config(file_path, learning_rate, token_length):
+    
+    # Load gpt2
+    if args.model == "gpt2":
+        model = LanguageModel("openai-community/gpt2", device_map=DEVICE)
+        tokenizer = GPT2Tokenizer.from_pretrained("openai-community/gpt2")
+    elif args.model == "mistral":
+        model = LanguageModel("mistralai/Mistral-7B-v0.1", device_map=DEVICE)
+        tokenizer = AutoTokenizer.from_pretrained("mistralai/Mistral-7B-v0.1")
+        if tokenizer.pad_token is None:
+            tokenizer.add_special_tokens({'pad_token': '[PAD]'}) 
+    
+
+    with open(file_path, "r") as file:
+        data = json.load(file)
+    
+
+    layer_intervened = 1 # As the layer has descent performance in the previous metrics of intervention, we will take it.
+    intervened_token_idx = -8
+    intervention_token_length = token_length
+    optimizer = optim.Adam(training_model.parameters(), lr=learning_rate)
+
+    return data, model, tokenizer, layer_intervened, intervened_token_idx, optimizer
+
+def data_processing(sample, token_length_allowed):
+    base = sample[0][0]
+    source = sample[1][0]
+    base_label = sample[0][1]
+    source_label = sample[1][1]
+    
+    base_ids = tokenizer.encode(base, return_tensors='pt').type(torch.LongTensor).to(DEVICE)
+    base_tokens = tokenizer.tokenize(base)
+    source_ids = tokenizer.encode(source, return_tensors='pt').type(torch.LongTensor).to(DEVICE)
+    source_tokens = tokenizer.tokenize(source) 
+    
+    # Conditions to filter data:
+    
+    if len(base_tokens) == token_length_allowed:
+        proceed = True
+    else:
+        proceed = False
+    
+    if source_ids.shape != base_ids.shape:
+        proceed = False
+    
+    assert len(base_tokens) == len(source_tokens)
+    token_length = len(base_tokens)
+    
+    return proceed, base_ids, source_ids, base_label, source_label, token_length
 
 if __name__ == "__main__":
     
@@ -22,34 +71,14 @@ if __name__ == "__main__":
     args = parser.parse_args()
     wandb.init(project="sae_concept_eraser")
     wandb.run.name = f"{args.model}-TLA_{args.token_length_allowed}-{args.attribute}-{args.method}-{args.epochs}"
-    
     DEVICE = args.device 
-    
-    # Load gpt2
-    if args.model == "gpt2":
-        model = LanguageModel("openai-community/gpt2", device_map=DEVICE)
-        tokenizer = GPT2Tokenizer.from_pretrained("openai-community/gpt2")
-    elif args.model == "mistral":
-        model = LanguageModel("mistralai/Mistral-7B-v0.1", device_map=DEVICE)
-        tokenizer = AutoTokenizer.from_pretrained("mistralai/Mistral-7B-v0.1")
-        if tokenizer.pad_token is None:
-            tokenizer.add_special_tokens({'pad_token': '[PAD]'}) 
-    
 
-    with open(args.eval_file_path, "r") as file:
-        data = json.load(file)
-    
-
-    layer_intervened = 1 # As the layer has descent performance in the previous metrics of intervention, we will take it.
-    intervened_token_idx = -8
-    intervention_token_length = args.token_length_allowed
-
+    data, model, tokenizer, layer_intervened, intervened_token_idx, optimizer = config(file_path = args.eval_file_path, learning_rate = args.learning_rate,
+                                                                                        token_length = args.token_length_allowed)
     training_model = my_model(model = model, DEVICE=DEVICE, method=args.method, token_length_allowed=args.token_length_allowed, expansion_factor=args.expansion_factor,
                             layer_intervened=layer_intervened, intervened_token_idx=intervened_token_idx)
-
     loss_fn = nn.CrossEntropyLoss()
-    optimizer = optim.Adam(training_model.parameters(), lr=args.learning_rate)
-
+    
 
     for epoch in args.epochs:
 
@@ -59,33 +88,14 @@ if __name__ == "__main__":
         
         for sample_no in tqdm(range(len(data))):
             
-            # Data Processing
             sample = data[sample_no]
-            base = sample[0][0]
-            source = sample[1][0]
-            base_label = sample[0][1]
-            source_label = sample[1][1]
+            # Data Processing
+            proceed, base_ids, source_ids, base_label, source_label, token_length = data_processing(sample, args.token_length_allowed)
             
-            base_ids = tokenizer.encode(base, return_tensors='pt').type(torch.LongTensor).to(DEVICE)
-            base_tokens = tokenizer.tokenize(base)
-            source_ids = tokenizer.encode(source, return_tensors='pt').type(torch.LongTensor).to(DEVICE)
-            source_tokens = tokenizer.tokenize(source) 
-            
-            # Conditions to filter data:
-            
-            if len(base_tokens) == args.token_length_allowed:
-                pass
-            else:
-                continue
-            
-            if source_ids.shape != base_ids.shape:
-                continue
-            
-            assert len(base_tokens) == len(source_tokens)
-            token_length = len(base_tokens)
+            if not proceed: continue
             
             # training the model
-            optimizer.zero_grad()  # Reset gradients
+            optimizer.zero_grad()  
             
             # training the model
             if args.method == "neuron masking":
