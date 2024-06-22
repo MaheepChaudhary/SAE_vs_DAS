@@ -18,8 +18,8 @@ class my_model(nn.Module):
             sae_dim = (1,1,512*self.expansion_factor)
             self.l4_mask = t.nn.Parameter(t.zeros(sae_dim), requires_grad=True)
         elif method == "neuron masking":
-            neuron_dim = (1,self.token_length_allowed, 768)
-            print(neuron_dim)
+            # neuron_dim = (1,self.token_length_allowed, 768)
+            neuron_dim = (1,1,768)
             self.l4_mask = t.nn.Parameter(t.zeros(neuron_dim), requires_grad=True)
         elif method == "das masking":
             das_dim = (1,1,512)
@@ -49,11 +49,11 @@ class my_model(nn.Module):
                 with tracer.invoke(base_ids) as runner_:
                     
                     intermediate_output = self.model.transformer.h[self.layer_intervened].output[0].clone()
-                    intermediate_output = (1 - self.l4_mask) * intermediate_output + self.l4_mask * vector_source[0]
-                    
+                    intermediate_output = (1 - self.l4_mask) * intermediate_output[:,self.intervened_token_idx,:].unsqueeze(0) + self.l4_mask * vector_source[0][:,self.intervened_token_idx,:].unsqueeze(0)
+                    assert intermediate_output.shape == vector_source[0][:,self.intervened_token_idx,:].unsqueeze(0).shape == torch.Size([1, 1, 768])
                     # Create a new tuple with the modified intermediate_output
-                    modified_output = (intermediate_output,) + self.model.transformer.h[self.layer_intervened].output[1:]
-                    self.model.transformer.h[self.layer_intervened].output = modified_output
+                    # modified_output = (intermediate_output,) + self.model.transformer.h[self.layer_intervened].output[1:]
+                    self.model.transformer.h[self.layer_intervened].output[0][:,self.intervened_token_idx,:] = intermediate_output
                     
                     intervened_base_predicted = self.model.lm_head.output.argmax(dim=-1).save()
                     intervened_base_output = self.model.lm_head.output.save()
