@@ -12,6 +12,7 @@ import torch
 import torch as t
 import torch.optim as optim
 import torch.nn as nn
+import torch.nn.functional as F
 
 import os
 os.environ["CUDA_LAUNCH_BLOCKING"] = "1"
