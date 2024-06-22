@@ -77,5 +77,6 @@ class my_model(nn.Module):
                     intervened_base_output = self.model.lm_head.output.save()
                 
             predicted_text = self.model.tokenizer.decode(intervened_base_predicted[0][-1])
+            
 
             return intervened_base_output, predicted_text

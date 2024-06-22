@@ -39,21 +39,23 @@ def data_processing(sample, token_length_allowed):
     source_label_token = tokenizer.tokenize(source_label)
     base_label_token = tokenizer.tokenize(base_label)
     
+    # The model has the vocab with words with space along side them, so we are making the tokens s.t. they do not split and correspond to their word with integrated space. 
+    source_label_mod = " " + source_label.split()[0]
+    base_label_mod = " " + base_label.split()[0]
+                    
+    base_label_ids = tokenizer.encode(base_label_mod, return_tensors='pt').squeeze(0).type(torch.LongTensor).to(DEVICE)
+    source_label_ids = tokenizer.encode(source_label_mod, return_tensors='pt').squeeze(0).type(torch.LongTensor).to(DEVICE)
+    
     # Conditions to filter data:
-    if len(base_tokens) == token_length_allowed and len(source_tokens) == len(base_tokens) and len(source_label_token) == len(base_label_token) == 1:
+    if len(base_tokens) == len(source_tokens) == token_length_allowed and len(source_label_ids) == len(base_label_ids) == 1:
         proceed = True
         print(len(base_tokens), len(source_tokens))
         assert len(base_tokens) == len(source_tokens)
+        assert len(base_tokens) == token_length_allowed
     else:
         proceed = False
     
-    if source_ids.shape != base_ids.shape:
-        proceed = False
-    
-    
-    token_length = len(base_tokens)
-    
-    return proceed, base_ids, source_ids, base_label, source_label, token_length
+    return proceed, base_ids, source_ids, base_label_ids, source_label_ids, source_label
 
 if __name__ == "__main__":
     
@@ -97,7 +99,7 @@ if __name__ == "__main__":
             
             sample = data[sample_no]
             # Data Processing
-            proceed, base_ids, source_ids, base_label, source_label, token_length = data_processing(sample, args.token_length_allowed)
+            proceed, base_ids, source_ids, base_label_ids, source_label_ids, source_label = data_processing(sample, args.token_length_allowed)
             
             if not proceed: continue
             
@@ -115,7 +117,9 @@ if __name__ == "__main__":
             
             # predicted_ids = tokenizer.encode(predicted_text, return_tensors='pt').type(torch.LongTensor).to(DEVICE)
             # print(source_label.split()[0])
-            ground_truth_token_id = source_label_ids = tokenizer.encode(source_label.split()[0], return_tensors='pt').squeeze(0).type(torch.LongTensor).to(DEVICE)
+            
+            # ground_truth_token_id = source_label_ids = tokenizer.encode(source_label.split()[0], return_tensors='pt').squeeze(0).type(torch.LongTensor).to(DEVICE)
+            ground_truth_token_id = source_label_ids
             vocab_size = tokenizer.vocab_size
             ground_truth_one_hot = F.one_hot(ground_truth_token_id, num_classes=vocab_size).float()
             predicted_logit = intervened_base_output[:, -1, :]

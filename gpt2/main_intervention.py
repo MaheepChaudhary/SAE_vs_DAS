@@ -130,7 +130,7 @@ def intervention(model, source_ids, base_ids, layer_index, intervened_token_idx)
             vector_source = model.transformer.h[layer_index].output
 
         with tracer.invoke(base_ids):
-
+            
             model.transformer.h[layer_index].output[0][:,intervened_token_idx,:] = vector_source[0][:,intervened_token_idx,:]
             # intervened_base_output = model.lm_head.output.argmax(dim = -1).save()
             intervened_base_output = model.generator.output.save()
