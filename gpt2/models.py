@@ -35,7 +35,9 @@ class my_model(nn.Module):
             param.requires_grad = False
         
         
-    def forward(self, source_ids, base_ids):
+    def forward(self, source_ids, base_ids, temperature):
+        
+        l4_mask_sigmoid = t.sigmoid(self.l4_mask / temperature)
         
         if self.method == "neuron masking" or self.method == "sae masking" or self.method == "das masking":
             with self.model.trace() as tracer:

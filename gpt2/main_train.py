@@ -26,7 +26,7 @@ def config(file_path, learning_rate, token_length):
 
     return data, model, tokenizer, layer_intervened, intervened_token_idx
 
-def data_processing(sample, token_length_allowed):
+def data_processing(sample, token_length_allowed, attribute):
     base = sample[0][0]
     source = sample[1][0]
     base_label = sample[0][1]
@@ -49,9 +49,7 @@ def data_processing(sample, token_length_allowed):
     # Conditions to filter data:
     if len(base_tokens) == len(source_tokens) == token_length_allowed and len(source_label_ids) == len(base_label_ids) == 1:
         proceed = True
-        print(len(base_tokens), len(source_tokens))
-        assert len(base_tokens) == len(source_tokens)
-        assert len(base_tokens) == token_length_allowed
+        assert len(base_tokens) == len(source_tokens) == token_length_allowed == 61 if attribute == "continent" else 59
     else:
         proceed = False
     
@@ -75,7 +73,7 @@ if __name__ == "__main__":
 
     args = parser.parse_args()
     wandb.init(project="sae_concept_eraser")
-    wandb.run.name = f"{args.model}-TLA_{args.token_length_allowed}-{args.attribute}-{args.method}-{args.epochs}"
+    wandb.run.name = f"[w/temp]-{args.model}-TLA_{args.token_length_allowed}-{args.attribute}-{args.method}-{args.epochs}"
     DEVICE = args.device 
 
     data, model, tokenizer, layer_intervened, intervened_token_idx, = config(file_path = args.eval_file_path, learning_rate = args.learning_rate,
@@ -89,27 +87,43 @@ if __name__ == "__main__":
     loss_fn = nn.CrossEntropyLoss()
     optimizer = optim.Adam(training_model.parameters(), lr=args.learning_rate)
 
+    #Inserting the temperature
+    total_step = 0
+    # target_total_step = len(batches) * args.epochs
+    target_total_step = args.epochs
+    temperature_start = 10
+    temperature_end = 0.1
+    temperature_schedule = (
+        t.linspace(temperature_start, temperature_end, target_total_step)
+        .to(t.bfloat16)
+        .to(DEVICE)
+    )
+    
+    temp_idx = 0
     for epoch in range(args.epochs):
 
         correct = {i:[] for i in range(0,12)}
         total_samples_processed = 0
         total_loss = 0.0
-        
+
         for sample_no in tqdm(range(len(data))):
             
             sample = data[sample_no]
             # Data Processing
-            proceed, base_ids, source_ids, base_label_ids, source_label_ids, source_label = data_processing(sample, args.token_length_allowed)
+            proceed, base_ids, source_ids, base_label_ids, source_label_ids, source_label = data_processing(sample, 
+                                                                                                            args.token_length_allowed, 
+                                                                                                            args.attribute)
             
             if not proceed: continue
             
             # training the model
             optimizer.zero_grad()  
             
+            temperature = temperature_schedule[temp_idx]
             # training the model
             if args.method == "neuron masking" or args.method == "vanilla":
                 # predicted_text = training_model(source_ids, base_ids, layer_intervened, intervened_token_idx)
-                intervened_base_output, predicted_text = training_model(source_ids, base_ids)
+                intervened_base_output, predicted_text = training_model(source_ids, base_ids, temperature)
             elif args.method == "sae masking":
                 pass
             elif args.method == "das masking":
@@ -138,7 +152,9 @@ if __name__ == "__main__":
             
             if sample_no % 100 == 0:
                 print(f"Epoch: {epoch}, Sample: {sample_no}, Accuracy: {sum(correct[layer_intervened]) / total_samples_processed:.4f}, Loss: {total_loss / total_samples_processed:.4f}")
-                
+        
+        temp_idx += 1
+        
         # Log accuracy and loss to wandb
         epoch_accuracy = sum(correct[layer_intervened]) / total_samples_processed
         print(f"The total samples proceesed for {args.attribute} is {total_samples_processed}")
