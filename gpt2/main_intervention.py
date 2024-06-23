@@ -113,7 +113,7 @@ def data_process(sample, model):
     # if base_ids.size()[1] != 59:
     #     return False, None, None, None, None, source, base
     
-    else:
+    elif source_ids.shape[1] == base_ids.shape[1] == 59 if args.attribute == "country" else 61:
         # print(base_tokens)
         return True, base_ids, source_ids, base_label, source_label, source, base    
 
