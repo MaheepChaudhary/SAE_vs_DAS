@@ -55,14 +55,15 @@ def intervention_data(model):
     new_continent_data = filter(continent_data, 61)
     new_country_data = filter(country_data, 59)
     
+    with open("filtered_continent_intervention_dataset.json", "w") as file:
+        json.dump(new_continent_data, file)
+    
+    with open("filtered_country_intervention_dataset.json", "w") as file:
+        json.dump(new_country_data, file)
+    
     print(f"The lenght of original continent data is {len(continent_data)} and the new continent data is {len(new_continent_data)}")
     print(f"The lenght of original country data is {len(country_data)} and the new country data is {len(new_country_data)}")
-    
-    # train_data = all_data[:int(0.7*len(all_data))]
-    # val_data = all_data[int(0.7*len(all_data)):int(0.8*len(all_data))]
-    # test_data = all_data[int(0.8*len(all_data)):]
 
-    # return train_data, val_data, test_data
 
 if __name__ == "__main__":
     model = LanguageModel("openai-community/gpt2", device_map="mps")

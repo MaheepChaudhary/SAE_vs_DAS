@@ -4,6 +4,7 @@ import argparse
 from tqdm import tqdm
 from pprint import pprint
 import wandb
+import random
 
 from nnsight import LanguageModel
 from transformers import GPT2Tokenizer, GPT2LMHeadModel, AutoTokenizer
