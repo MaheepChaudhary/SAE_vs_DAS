@@ -208,7 +208,11 @@ if __name__ == "__main__":
                     if not proceed:
                         continue
                     
-                    temperature = temperature_schedule[temp_idx]
+                    try:
+                        temperature = temperature_schedule[temp_idx]
+                    except:
+                        temperature = temperature_schedule[temp_idx-1]
+                        
                     if args.method == "neuron masking" or args.method == "vanilla":
                         intervened_base_output, predicted_text = training_model(source_ids, base_ids, temperature)
                     elif args.method == "sae masking":
