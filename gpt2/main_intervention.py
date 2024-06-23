@@ -228,6 +228,7 @@ if __name__ == "__main__":
         
         if not proceed: continue 
 
+        assert base_ids.size()[1] == source_ids.size()[1] == 59 if args.attribute == "country" else 61
         intervened_token_idx = -8
         
         # for layer_index in range(0,12):
