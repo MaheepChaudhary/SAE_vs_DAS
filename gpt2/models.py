@@ -106,8 +106,6 @@ class my_model(nn.Module):
                     iia_vector = masked_intermediate_output_unrotated + masked_vector_source_unrotated
                     
                     # intermediate_output = (1 - self.l4_mask) * intermediate_output[:,self.intervened_token_idx,:].unsqueeze(0) + self.l4_mask * vector_source[0][:,self.intervened_token_idx,:].unsqueeze(0)
-                    print(iia_vector.shape)
-                    print(vector_source[0][:,self.intervened_token_idx,:].unsqueeze(0).shape)
                     assert iia_vector.shape == vector_source[0][:,self.intervened_token_idx,:].unsqueeze(0).shape == torch.Size([1, 1, 768])
                     # Create a new tuple with the modified intermediate_output
                     # modified_output = (intermediate_output,) + self.model.transformer.h[self.layer_intervened].output[1:]

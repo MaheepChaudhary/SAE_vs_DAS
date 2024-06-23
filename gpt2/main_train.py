@@ -95,8 +95,8 @@ if __name__ == "__main__":
     parser.add_argument("-svd", "--saved_model_path", default="gpt2/models/saved_model.pth", help="path to the saved model")
 
     args = parser.parse_args()
-    # wandb.init(project="sae_concept_eraser")
-    # wandb.run.name = f"{args.method}-TLA_{args.token_length_allowed}-{args.attribute}-{args.model}-{args.epochs}"
+    wandb.init(project="sae_concept_eraser")
+    wandb.run.name = f"{args.method}-TLA_{args.token_length_allowed}-{args.attribute}-{args.model}-{args.epochs}"
     DEVICE = args.device 
 
     data, model, tokenizer, layer_intervened, intervened_token_idx, = config(file_path = args.eval_file_path, learning_rate = args.learning_rate,
@@ -185,7 +185,7 @@ if __name__ == "__main__":
             # Log accuracy and loss to wandb
             epoch_accuracy = sum(correct[layer_intervened]) / total_samples_processed
             print(f"The total samples proceesed for {args.attribute} is {total_samples_processed}")
-            # wandb.log({"GPT-2 Sub-Space IIA": epoch_accuracy, "Loss": total_loss / total_samples_processed})
+            wandb.log({"GPT-2 Sub-Space IIA": epoch_accuracy, "Loss": total_loss / total_samples_processed})
 
             print(f"Epoch {epoch} finished with accuracy {epoch_accuracy:.4f} and average loss {total_loss / total_samples_processed:.4f}")
 
@@ -228,7 +228,7 @@ if __name__ == "__main__":
                     total_val_samples_processed += 1
                     
                 epoch_val_accuracy = sum(correct_val[layer_intervened]) / total_val_samples_processed
-                # wandb.log({"Validation Accuracy": epoch_val_accuracy, "Validation Loss": total_val_loss / total_val_samples_processed})
+                wandb.log({"Validation Accuracy": epoch_val_accuracy, "Validation Loss": total_val_loss / total_val_samples_processed})
                 
                 print(f"Epoch {epoch} finished with validation accuracy {epoch_val_accuracy:.4f} and average validation loss {total_val_loss / total_val_samples_processed:.4f}")
         
