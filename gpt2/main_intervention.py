@@ -2,6 +2,8 @@ from imports import *
 from ravel_data_prep import *
 from eval_gpt2 import *
 
+
+
 def safe_split(word):
     try:
         a = word.split()[0]
@@ -91,7 +93,7 @@ def intervention_dataset(overlapping_cities):
     dataset(country_data, "country")
     dataset(continent_data, "continent")
     
-def data_process(sample, model):
+def data_process(sample, model, attribute):
     
     '''
     This is used to extract data in the passing format of the model, extracting base, source and converting them.
@@ -110,11 +112,10 @@ def data_process(sample, model):
     if source_ids.shape[1] != base_ids.shape[1]:
         return False, None, None, None, None, source, base
     
-    # if base_ids.size()[1] != 59:
-    #     return False, None, None, None, None, source, base
+    if source_ids.shape[1] != allowed_token_length or base_ids.size()[1] != allowed_token_length:
+        return False, None, None, None, None, source, base
     
-    elif source_ids.shape[1] == base_ids.shape[1] == 59 if args.attribute == "country" else 61:
-        # print(base_tokens)
+    elif source_ids.shape[1] == base_ids.shape[1] == allowed_token_length:
         return True, base_ids, source_ids, base_label, source_label, source, base    
 
 def intervention(model, source_ids, base_ids, layer_index, intervened_token_idx):
@@ -132,8 +133,8 @@ def intervention(model, source_ids, base_ids, layer_index, intervened_token_idx)
         with tracer.invoke(base_ids):
 
             model.transformer.h[layer_index].output[0][:,intervened_token_idx,:] = vector_source[0][:,intervened_token_idx,:]
-            # intervened_base_output = model.lm_head.output.argmax(dim = -1).save()
-            intervened_base_output = model.generator.output.save()
+            intervened_base_output = model.lm_head.output.argmax(dim = -1).save()
+            # intervened_base_output = model.generator.output.save()
 
     predicted_text = tokenizer.decode(intervened_base_output[0][-1])
 
@@ -152,7 +153,7 @@ if __name__ == "__main__":
 
     args = parser.parse_args()
     wandb.init(project="sae_concept_eraser")
-    
+    allowed_token_length = 59 if args.attribute == "country" else 61    
     DEVICE = args.device 
     
     # Load gpt2
@@ -224,11 +225,11 @@ if __name__ == "__main__":
     for sample_no in tqdm(range(len(data))):
         
         sample = data[sample_no]
-        proceed, base_ids, source_ids, base_label, source_label, source, base = data_process(sample, model)
+        proceed, base_ids, source_ids, base_label, source_label, source, base = data_process(sample, model, args.attribute)
         
         if not proceed: continue 
 
-        assert base_ids.size()[1] == source_ids.size()[1] == 59 if args.attribute == "country" else 61
+        assert base_ids.size()[1] == source_ids.size()[1] == allowed_token_length
         intervened_token_idx = -8
         
         # for layer_index in range(0,12):
@@ -236,7 +237,6 @@ if __name__ == "__main__":
             
             # layer_index = 0
             predicted_text = intervention(model=model, source_ids=source_ids, base_ids=base_ids, layer_index=layer_index, intervened_token_idx=intervened_token_idx)
-
             
             # print(f"Layer Index: {layer_index}")
             # print(f"Base Label: {base_label}")
@@ -247,9 +247,12 @@ if __name__ == "__main__":
             len_arr[base_ids.size()[1]] = 1 if base_ids.size()[1] not in len_arr else len_arr[base_ids.size()[1]]+1
             
             # The prediction would be done based on the condition of the length of the source label.
-            matches = 1 if safe_split(predicted_text)[0] == safe_split(source_label)[0] else 0
+            matches = 1 if predicted_text.split()[0] == source_label.split()[0] else 0
             assert type(safe_split(predicted_text)[0]) == type(safe_split(source_label)[0]) == str
             assert safe_split(predicted_text)[0] and safe_split(source_label)[0] != " "
+            
+            if matches == 0:
+                print(predicted_text.split()[0], source_label.split()[0])
             
             # The correct has all the total number of correct samples in each category of the [layer]. 
             # and len_correct contains the total number of correct samples in each category of [length of tokens].
@@ -262,7 +265,7 @@ if __name__ == "__main__":
         
         total_samples_processed+=1
         
-    wandb.run.name = f"{args.model}-{args.attribute}"
+    wandb.run.name = f"{args.model}-{args.attribute}-ttl_samp_proc{total_samples_processed}"
     
     for layer_index in range(0,1):
         print(f"The accuracy of {args.attribute} layer {layer_index} is {sum(correct[layer_index])/total_samples_processed}")

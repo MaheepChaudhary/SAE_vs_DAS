@@ -46,14 +46,18 @@ def data_processing(sample, token_length_allowed, attribute):
     base_label_ids = tokenizer.encode(base_label_mod, return_tensors='pt').squeeze(0).type(torch.LongTensor).to(DEVICE)
     source_label_ids = tokenizer.encode(source_label_mod, return_tensors='pt').squeeze(0).type(torch.LongTensor).to(DEVICE)
     
+    assert token_length_allowed == 61 if attribute == "continent" else 59
+    
     # Conditions to filter data:
     if len(base_tokens) == len(source_tokens) == token_length_allowed and len(source_label_ids) == len(base_label_ids) == 1:
         proceed = True
-        assert len(base_tokens) == len(source_tokens) == token_length_allowed == 61 if attribute == "continent" else 59
+        assert len(base_tokens) == len(source_tokens) == token_length_allowed
     else:
         proceed = False
     
     return proceed, base_ids, source_ids, base_label_ids, source_label_ids, source_label
+
+
 
 if __name__ == "__main__":
     
