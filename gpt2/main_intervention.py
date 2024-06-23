@@ -209,11 +209,11 @@ if __name__ == "__main__":
     total_samples_processed = 0
     
     if args.attribute == "continent":
-        len_correct = {61:0, 62:0, 63:0}
+        len_correct = {61:0, 62:0, 63:0, 64:0}
         len_correct_total = {61:0, 62:0, 63:0, 64:0}
     
     elif args.attribute == "country":
-        len_correct = {59:0, 60:0, 61:0}
+        len_correct = {59:0, 60:0, 61:0, 62:0}
         len_correct_total = {59:0, 60:0, 61:0, 62:0}
 
     all_cities = []
