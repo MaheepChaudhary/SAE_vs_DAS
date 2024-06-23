@@ -267,7 +267,7 @@ if __name__ == "__main__":
     for layer_index in range(0,1):
         print(f"The accuracy of {args.attribute} layer {layer_index} is {sum(correct[layer_index])/total_samples_processed}")
         
-        wandb.log({"Layer-wise Intervention Accuracy": sum(correct[layer_index])/total_samples_processed})
+        # wandb.log({"Layer-wise Intervention Accuracy": sum(correct[layer_index])/total_samples_processed})
     
     if args.attribute == "continent":
         # for index in [61,62,63]:
