@@ -68,7 +68,7 @@ def train_data_processing():
         country_data = json.load(file)
     
     data = continent_data + country_data
-    data = random.shuffle(data)
+    random.shuffle(data)
     
     train_data = data[:int(0.7*len(data))]
     val_data = data[int(0.7*len(data)):int(0.8*len(data))]
