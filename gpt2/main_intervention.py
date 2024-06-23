@@ -230,7 +230,8 @@ if __name__ == "__main__":
 
         intervened_token_idx = -8
         
-        for layer_index in range(0,12):
+        # for layer_index in range(0,12):
+        for layer_index in range(0,1):
             
             # layer_index = 0
             predicted_text = intervention(model=model, source_ids=source_ids, base_ids=base_ids, layer_index=layer_index, intervened_token_idx=intervened_token_idx)
@@ -262,17 +263,19 @@ if __name__ == "__main__":
         
     wandb.run.name = f"{args.model}-{args.attribute}"
     
-    for layer_index in range(0,12):
+    for layer_index in range(0,1):
         print(f"The accuracy of {args.attribute} layer {layer_index} is {sum(correct[layer_index])/total_samples_processed}")
         
         wandb.log({"Layer-wise Intervention Accuracy": sum(correct[layer_index])/total_samples_processed})
     
     if args.attribute == "continent":
-        for index in [61,62,63]:
+        # for index in [61,62,63]:
+        for index in [61]:
             wandb.log({"Length-wise Intervention Accuracy": len_correct[index]/len_correct_total[index]})
             print(f"Accuracy of Length {index}: {len_correct[index]/len_correct_total[index]}")
     
     elif args.attribute == "country":
-        for index in [59,60,61]:
+        # for index in [59,60,61]:
+        for index in [59]:
             wandb.log({"Length-wise Intervention Accuracy": len_correct[index]/len_correct_total[index]})
             print(f"Accuracy of Length {index}: {len_correct[index]/len_correct_total[index]}")
