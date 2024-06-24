@@ -64,7 +64,7 @@ class my_model(nn.Module):
                 with tracer.invoke(base_ids) as runner_:
                     
                     intermediate_output = self.model.transformer.h[self.layer_intervened].output[0].clone()
-                    intermediate_output = (1 - self.l4_mask) * intermediate_output[:,self.intervened_token_idx,:].unsqueeze(0) + self.l4_mask * vector_source[0][:,self.intervened_token_idx,:].unsqueeze(0)
+                    intermediate_output = (1 - l4_mask_sigmoid) * intermediate_output[:,self.intervened_token_idx,:].unsqueeze(0) + l4_mask_sigmoid * vector_source[0][:,self.intervened_token_idx,:].unsqueeze(0)
                     assert intermediate_output.shape == vector_source[0][:,self.intervened_token_idx,:].unsqueeze(0).shape == torch.Size([1, 1, 768])
                     # Create a new tuple with the modified intermediate_output
                     # modified_output = (intermediate_output,) + self.model.transformer.h[self.layer_intervened].output[1:]
@@ -97,8 +97,8 @@ class my_model(nn.Module):
                     vector_source_rotated = self.rotate_layer(vector_source[0][:,self.intervened_token_idx,:])
                     intermediate_output_rotated = self.rotate_layer(intermediate_output[:,self.intervened_token_idx,:])
                     
-                    masked_intermediate_output_rotated = (1 - self.l4_mask) * intermediate_output_rotated 
-                    masked_vector_source_rotated = self.l4_mask * vector_source_rotated
+                    masked_intermediate_output_rotated = (1 - l4_mask_sigmoid) * intermediate_output_rotated 
+                    masked_vector_source_rotated = l4_mask_sigmoid * vector_source_rotated
                     
                     masked_intermediate_output_unrotated = torch.matmul(masked_intermediate_output_rotated,self.rotate_layer.weight.T)
                     masked_vector_source_unrotated = torch.matmul(masked_vector_source_rotated,self.rotate_layer.weight.T)
