@@ -15,6 +15,18 @@ import torch.optim as optim
 import torch.nn as nn
 import torch.nn.functional as F
 
+from transformer_lens import HookedTransformer, utils
+import einops
+import plotly.express as px
+import plotly.graph_objects as go
+import pandas as pd
+from functools import partial
+from datasets import load_dataset
+import numpy as np
+from jaxtyping import Float
+from transformer_lens import ActivationCache
+from pathlib import Path
+
 import os
 os.environ["CUDA_LAUNCH_BLOCKING"] = "1"
 

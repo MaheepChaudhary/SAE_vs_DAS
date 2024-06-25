@@ -2,6 +2,93 @@ from imports import *
 from ravel_data_prep import *
 from eval_gpt2 import *
 
+DTYPES = {"fp32": torch.float32, "fp16": torch.float16, "bf16": torch.bfloat16}
+SAVE_DIR = Path("/workspace/1L-Sparse-Autoencoder/checkpoints")
+class AutoEncoder(nn.Module):
+    def __init__(self, cfg):
+        super().__init__()
+        d_hidden = cfg["dict_size"]
+        l1_coeff = cfg["l1_coeff"]
+        dtype = DTYPES[cfg["enc_dtype"]]
+        torch.manual_seed(cfg["seed"])
+        self.W_enc = nn.Parameter(torch.nn.init.kaiming_uniform_(torch.empty(cfg["act_size"], d_hidden, dtype=dtype)))
+        self.W_dec = nn.Parameter(torch.nn.init.kaiming_uniform_(torch.empty(d_hidden, cfg["act_size"], dtype=dtype)))
+        self.b_enc = nn.Parameter(torch.zeros(d_hidden, dtype=dtype))
+        self.b_dec = nn.Parameter(torch.zeros(cfg["act_size"], dtype=dtype))
+
+        self.W_dec.data[:] = self.W_dec / self.W_dec.norm(dim=-1, keepdim=True)
+
+        self.d_hidden = d_hidden
+        self.l1_coeff = l1_coeff
+
+        self.to(cfg["device"])
+    
+    # inserted mask here
+    def forward(self, x, mask, token_intervened_idx):
+        x_cent = x - self.b_dec
+        acts = F.relu(x_cent @ self.W_enc + self.b_enc)
+        acts = acts[:,token_intervened_idx,:] * mask
+        x_reconstruct = acts @ self.W_dec + self.b_dec
+        l2_loss = (x_reconstruct.float() - x.float()).pow(2).sum(-1).mean(0)
+        l1_loss = self.l1_coeff * (acts.float().abs().sum())
+        loss = l2_loss + l1_loss
+        return loss, x_reconstruct, acts, l2_loss, l1_loss
+    
+    @torch.no_grad()
+    def make_decoder_weights_and_grad_unit_norm(self):
+        W_dec_normed = self.W_dec / self.W_dec.norm(dim=-1, keepdim=True)
+        W_dec_grad_proj = (self.W_dec.grad * W_dec_normed).sum(-1, keepdim=True) * W_dec_normed
+        self.W_dec.grad -= W_dec_grad_proj
+        # Bugfix(?) for ensuring W_dec retains unit norm, this was not there when I trained my original autoencoders.
+        self.W_dec.data = W_dec_normed
+    
+    def get_version(self):
+        version_list = [int(file.name.split(".")[0]) for file in list(SAVE_DIR.iterdir()) if "pt" in str(file)]
+        if len(version_list):
+            return 1+max(version_list)
+        else:
+            return 0
+
+    def save(self):
+        version = self.get_version()
+        torch.save(self.state_dict(), SAVE_DIR/(str(version)+".pt"))
+        with open(SAVE_DIR/(str(version)+"_cfg.json"), "w") as f:
+            json.dump(cfg, f)
+        print("Saved as version", version)
+    
+    @classmethod
+    def load(cls, version):
+        cfg = (json.load(open(SAVE_DIR/(str(version)+"_cfg.json"), "r")))
+        pprint.pprint(cfg)
+        self = cls(cfg=cfg)
+        self.load_state_dict(torch.load(SAVE_DIR/(str(version)+".pt")))
+        return self
+
+    @classmethod
+    def load_from_hf(cls, version, device_override=None):
+        """
+        Loads the saved autoencoder from HuggingFace. 
+        
+        Version is expected to be an int, or "run1" or "run2"
+
+        version 25 is the final checkpoint of the first autoencoder run,
+        version 47 is the final checkpoint of the second autoencoder run.
+        """
+        if version=="run1":
+            version = 25
+        elif version=="run2":
+            version = 47
+        
+        cfg = utils.download_file_from_hf("NeelNanda/sparse_autoencoder", f"{version}_cfg.json")
+        if device_override is not None:
+            cfg["device"] = device_override
+
+        pprint.pprint(cfg)
+        self = cls(cfg=cfg)
+        self.load_state_dict(utils.download_file_from_hf("NeelNanda/sparse_autoencoder", f"{version}.pt", force_is_torch=True))
+        return self
+
+
 class RotateLayer(t.nn.Module):
     """A linear transformation with orthogonal initialization."""
 
@@ -28,12 +115,30 @@ class my_model(nn.Module):
         self.method = method
         
         if method == "sae masking":
-            sae_dim = (1,1,512*self.expansion_factor)
+            sae_dim = (1,1,6144)
             self.l4_mask = t.nn.Parameter(t.zeros(sae_dim), requires_grad=True)
+            dic = torch.load("gpt2-small-sparse-autoencoders/gpt2-small_6144_mlp_out_0.pt")
+            cfg = {
+                "dict_size": 6144,
+                "act_size": 768,
+                "l1_coeff": 0.001,
+                "enc_dtype": "fp32",
+                "seed": 0,
+                "device": DEVICE,
+                "model_batch_size": 1,
+            }
+            self.encoder_mlp_out_0 = AutoEncoder(cfg)
+            self.encoder_mlp_out_0.load_state_dict(dic)
+            
+            for params in self.encoder_mlp_out_0.parameters():
+                param.requires_grad = False
+                
+        
         elif method == "neuron masking":
             # neuron_dim = (1,self.token_length_allowed, 768)
             neuron_dim = (1,1,768)
             self.l4_mask = t.nn.Parameter(t.zeros(neuron_dim), requires_grad=True)
+            
         elif method == "das masking":
             das_dim = (1,1,768)
             self.l4_mask = t.nn.Parameter(t.zeros(das_dim), requires_grad=True)
@@ -120,7 +225,33 @@ class my_model(nn.Module):
             return intervened_base_output, predicted_text
 
         elif self.method == "sae masking":
-            pass
+            
+            with self.model.trace() as tracer:
+                
+                with tracer.invoke(source_ids) as runner:
+
+                    source = self.model.transformer.h[self.layer_intervened].output
+
+                with tracer.invoke(base_ids) as runner_:
+                    
+                    base = self.model.transformer.h[self.layer_intervened].output[0].clone()
+                    _, source_masked, _, _, _ = self.encoder_mlp_out_0(source, l4_mask_sigmoid)
+                    _, base_masked, _, _, _ = self.encoder_mlp_out_0(base, 1-l4_mask_sigmoid)
+                    # intermediate_output = (1 - l4_mask_sigmoid) * intermediate_output[:,self.intervened_token_idx,:].unsqueeze(0) + l4_mask_sigmoid * vector_source[0][:,self.intervened_token_idx,:].unsqueeze(0)
+                    base[:,intervened_token_idx,:] = source_masked[:,intervened_token_idx,:] + base_masked[:,intervened_token_idx,:]
+                    assert base.shape == vector_source[0][:,self.intervened_token_idx,:].unsqueeze(0).shape == torch.Size([1, 1, 768])
+                    # Create a new tuple with the modified intermediate_output
+                    # modified_output = (intermediate_output,) + self.model.transformer.h[self.layer_intervened].output[1:]
+                    self.model.transformer.h[self.layer_intervened].output[0][:,self.intervened_token_idx,:] = base
+                    
+                    intervened_base_predicted = self.model.lm_head.output.argmax(dim=-1).save()
+                    intervened_base_output = self.model.lm_head.output.save()
+                
+                
+            predicted_text = self.model.tokenizer.decode(intervened_base_predicted[0][-1])
+
+            return intervened_base_output, predicted_text
+
 
         elif self.method == "vanilla":
             intervened_token_idx = -8
