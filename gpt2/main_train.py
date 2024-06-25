@@ -150,11 +150,7 @@ if __name__ == "__main__":
                 
                 temperature = temperature_schedule[temp_idx]
                 # training the model
-                if args.method == "neuron masking" or args.method == "vanilla" or args.method == "das masking":
-                    # predicted_text = training_model(source_ids, base_ids, layer_intervened, intervened_token_idx)
-                    intervened_base_output, predicted_text = training_model(source_ids, base_ids, temperature)
-                elif args.method == "sae masking":
-                    pass
+                intervened_base_output, predicted_text = training_model(source_ids, base_ids, temperature)
                 
                 # predicted_ids = tokenizer.encode(predicted_text, return_tensors='pt').type(torch.LongTensor).to(DEVICE)
                 # print(source_label.split()[0])

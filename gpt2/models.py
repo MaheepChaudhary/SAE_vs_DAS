@@ -2,6 +2,7 @@ from imports import *
 from ravel_data_prep import *
 from eval_gpt2 import *
 
+torch.autograd.set_detect_anomaly(True)
 DTYPES = {"fp32": torch.float32, "fp16": torch.float16, "bf16": torch.bfloat16}
 SAVE_DIR = Path("/workspace/1L-Sparse-Autoencoder/checkpoints")
 class AutoEncoder(nn.Module):
@@ -27,7 +28,9 @@ class AutoEncoder(nn.Module):
     def forward(self, x, mask, token_intervened_idx):
         x_cent = x - self.b_dec
         acts = F.relu(x_cent @ self.W_enc + self.b_enc)
-        acts = acts[:,token_intervened_idx,:] * mask
+        new_acts = acts.clone()  # Clone the original tensor to avoid modifying it in-place
+        new_acts[:, token_intervened_idx, :] = acts[:, token_intervened_idx, :] * mask
+        acts = new_acts 
         x_reconstruct = acts @ self.W_dec + self.b_dec
         l2_loss = (x_reconstruct.float() - x.float()).pow(2).sum(-1).mean(0)
         l1_loss = self.l1_coeff * (acts.float().abs().sum())
@@ -117,7 +120,7 @@ class my_model(nn.Module):
         if method == "sae masking":
             sae_dim = (1,1,6144)
             self.l4_mask = t.nn.Parameter(t.zeros(sae_dim), requires_grad=True)
-            dic = torch.load("gpt2-small-sparse-autoencoders/gpt2-small_6144_mlp_out_0.pt")
+            dic = torch.load("gpt2-small-sparse-autoencoders/gpt2-small_6144_mlp_out_0.pt", map_location=torch.device(DEVICE))
             cfg = {
                 "dict_size": 6144,
                 "act_size": 768,
@@ -131,7 +134,7 @@ class my_model(nn.Module):
             self.encoder_mlp_out_0.load_state_dict(dic)
             
             for params in self.encoder_mlp_out_0.parameters():
-                param.requires_grad = False
+                params.requires_grad = False
                 
         
         elif method == "neuron masking":
@@ -235,14 +238,18 @@ class my_model(nn.Module):
                 with tracer.invoke(base_ids) as runner_:
                     
                     base = self.model.transformer.h[self.layer_intervened].output[0].clone()
-                    _, source_masked, _, _, _ = self.encoder_mlp_out_0(source, l4_mask_sigmoid)
-                    _, base_masked, _, _, _ = self.encoder_mlp_out_0(base, 1-l4_mask_sigmoid)
+                    _, source_masked, _, _, _ = self.encoder_mlp_out_0(source[0], l4_mask_sigmoid, self.intervened_token_idx)
+                    _, base_masked, _, _, _ = self.encoder_mlp_out_0(base, 1-l4_mask_sigmoid, self.intervened_token_idx)
                     # intermediate_output = (1 - l4_mask_sigmoid) * intermediate_output[:,self.intervened_token_idx,:].unsqueeze(0) + l4_mask_sigmoid * vector_source[0][:,self.intervened_token_idx,:].unsqueeze(0)
-                    base[:,intervened_token_idx,:] = source_masked[:,intervened_token_idx,:] + base_masked[:,intervened_token_idx,:]
-                    assert base.shape == vector_source[0][:,self.intervened_token_idx,:].unsqueeze(0).shape == torch.Size([1, 1, 768])
+                    
+                    base_masked_ind = base_masked[:,self.intervened_token_idx,:]
+                    source_masked_ind = source_masked[:,self.intervened_token_idx,:]
+                    
+                    iia_vector = base_masked_ind + source_masked_ind
+                    assert iia_vector.unsqueeze(0).shape == source[0][:,self.intervened_token_idx,:].unsqueeze(0).shape == torch.Size([1, 1, 768])
                     # Create a new tuple with the modified intermediate_output
                     # modified_output = (intermediate_output,) + self.model.transformer.h[self.layer_intervened].output[1:]
-                    self.model.transformer.h[self.layer_intervened].output[0][:,self.intervened_token_idx,:] = base
+                    self.model.transformer.h[self.layer_intervened].output[0][:,self.intervened_token_idx,:] = iia_vector
                     
                     intervened_base_predicted = self.model.lm_head.output.argmax(dim=-1).save()
                     intervened_base_output = self.model.lm_head.output.save()
