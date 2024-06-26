@@ -157,10 +157,10 @@ if __name__ == "__main__":
                 
                 # ground_truth_token_id = source_label_ids = tokenizer.encode(source_label.split()[0], return_tensors='pt').squeeze(0).type(torch.LongTensor).to(DEVICE)
                 # if country token then source label and if contintent token then base label
-                if sample[0][0][0].split()[-2] == "country":
+                if sample[0][0].split()[-2] == "country":
                     ground_truth_token_id = base_label_ids
                     
-                elif sample[0][0][0].split()[-2] == "continent":    
+                elif sample[0][0].split()[-2] == "continent":    
                     ground_truth_token_id = source_label_ids
                 
                 vocab_size = tokenizer.vocab_size
