@@ -108,6 +108,9 @@ if __name__ == "__main__":
     # print()
     # print(training_model)
     loss_fn = nn.CrossEntropyLoss()
+    
+    for name, param in training_model.named_parameters():
+        print(f'{name}: requires_grad={param.requires_grad}')
     optimizer = optim.Adam([training_model.l4_mask], lr=args.learning_rate)
 
     #Inserting the temperature
