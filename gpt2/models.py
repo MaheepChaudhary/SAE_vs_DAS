@@ -147,8 +147,8 @@ class my_model(nn.Module):
             self.encoder_mlp_out_0 = AutoEncoder(cfg)
             self.encoder_mlp_out_0.load_state_dict(dic)
             
-            # for params in self.encoder_mlp_out_0.parameters():
-            #     params.requires_grad = False
+            for params in self.encoder_mlp_out_0.parameters():
+                params.requires_grad = False
                 
                 
                 
@@ -170,8 +170,8 @@ class my_model(nn.Module):
         #     das_dim = (1,1,dictionary_size)
         #     self.l4_mask = t.nn.Parameter(t.zeros(das_dim), requires_grad=True)
         
-        for param in self.model.parameters():
-            param.requires_grad = False
+        # for param in self.model.parameters():
+        #     param.requires_grad = False
         
         
     def forward(self, source_ids, base_ids, temperature):
