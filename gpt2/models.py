@@ -42,6 +42,8 @@ class AutoEncoder(nn.Module):
             new_acts[:, token_intervened_idx, :] = new_acts[:, token_intervened_idx, :] * mask
         elif bs == "source":
             new_acts[:, token_intervened_idx, :] = (1 - mask) * new_acts[:, token_intervened_idx, :]
+        
+        #TODO: first add them and then decode, not decode and then add.
 
         acts = new_acts
 
@@ -206,8 +208,6 @@ class my_model(nn.Module):
 
 
         elif self.method == "das masking":
-            
-            l4_mask_sigmoid = t.sigmoid(self.l4_mask / temperature)
         
             with self.model.trace() as tracer:
                 
@@ -226,10 +226,16 @@ class my_model(nn.Module):
                     masked_intermediate_output_rotated = (1 - l4_mask_sigmoid) * intermediate_output_rotated 
                     masked_vector_source_rotated = l4_mask_sigmoid * vector_source_rotated
                     
-                    masked_intermediate_output_unrotated = torch.matmul(masked_intermediate_output_rotated,self.rotate_layer.weight.T)
-                    masked_vector_source_unrotated = torch.matmul(masked_vector_source_rotated,self.rotate_layer.weight.T)
+                    iia_vector_rotated = masked_intermediate_output_rotated + masked_vector_source_rotated
                     
-                    iia_vector = masked_intermediate_output_unrotated + masked_vector_source_unrotated
+                    #TODO: first add them then unrotate. 
+                    
+                    # masked_intermediate_output_unrotated = torch.matmul(masked_intermediate_output_rotated,self.rotate_layer.weight.T)
+                    # masked_vector_source_unrotated = torch.matmul(masked_vector_source_rotated,self.rotate_layer.weight.T)
+                    
+                    iia_vector = torch.matmul(iia_vector_rotated, self.rotate_layer.weight.T)
+                    
+                    # iia_vector = masked_intermediate_output_unrotated + masked_vector_source_unrotated
                     
                     # intermediate_output = (1 - self.l4_mask) * intermediate_output[:,self.intervened_token_idx,:].unsqueeze(0) + self.l4_mask * vector_source[0][:,self.intervened_token_idx,:].unsqueeze(0)
                     assert iia_vector.shape == vector_source[0][:,self.intervened_token_idx,:].unsqueeze(0).shape == torch.Size([1, 1, 768])
