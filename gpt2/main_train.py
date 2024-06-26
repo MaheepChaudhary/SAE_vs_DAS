@@ -46,6 +46,13 @@ def data_processing(sample, token_length_allowed, attribute):
     base_label_ids = tokenizer.encode(base_label_mod, return_tensors='pt').squeeze(0).type(torch.LongTensor).to(DEVICE)
     source_label_ids = tokenizer.encode(source_label_mod, return_tensors='pt').squeeze(0).type(torch.LongTensor).to(DEVICE)
     
+    allowed_token_length = 59 if attribute == "country" else 61
+    
+    # if source_ids.shape[1] == base_ids.shape[1] == allowed_token_length:
+    #     return True, base_ids, source_ids, base_label_ids, source_label_ids, source, base   
+
+    # else:
+    #     return False, base_ids, source_ids, base_label_ids, source_label_ids, source_label, base_label  
     '''
     assert token_length_allowed == 61 if attribute == "continent" else 59
     
@@ -57,7 +64,7 @@ def data_processing(sample, token_length_allowed, attribute):
         proceed = False
     '''
     proceed = True
-    return proceed, base_ids, source_ids, base_label_ids, source_label_ids, source_label
+    return proceed, base_ids, source_ids, base_label_ids, source_label_ids, source_label, base_label
 
 def train_data_processing():
     
@@ -96,7 +103,7 @@ if __name__ == "__main__":
 
     args = parser.parse_args()
     wandb.init(project="sae_concept_eraser")
-    wandb.run.name = f"{args.method}-TLA_{args.token_length_allowed}-{args.attribute}-{args.model}-{args.epochs}"
+    wandb.run.name = f"{args.method}-{args.epochs}"
     DEVICE = args.device 
 
     data, model, tokenizer, layer_intervened, intervened_token_idx, = config(file_path = args.eval_file_path, learning_rate = args.learning_rate,
@@ -113,11 +120,15 @@ if __name__ == "__main__":
         print(f'{name}: requires_grad={param.requires_grad}')
     optimizer = optim.Adam(training_model.parameters(), lr=args.learning_rate)
 
+    train_data, val_data, test_data = train_data_processing()
+
     #Inserting the temperature
     total_step = 0
     # target_total_step = len(batches) * args.epochs
-    target_total_step = args.epochs
-    temperature_start = 0.2
+    #TODO: The total number of batches is total_no_samples/batch_len
+    batch_size = 1
+    target_total_step = int(len(train_data)/(batch_size) * args.epochs)
+    temperature_start = 10.0
     temperature_end = 0.1
     temperature_schedule = (
         t.linspace(temperature_start, temperature_end, target_total_step)
@@ -126,8 +137,6 @@ if __name__ == "__main__":
     )
     
     temp_idx = 0
-    
-    train_data, val_data, test_data = train_data_processing()
     
     if args.task == "train":
         
@@ -142,7 +151,7 @@ if __name__ == "__main__":
                 
                 sample = train_data[sample_no]
                 # Data Processing
-                proceed, base_ids, source_ids, base_label_ids, source_label_ids, source_label = data_processing(sample, 
+                proceed, base_ids, source_ids, base_label_ids, source_label_ids, source_label, base_label = data_processing(sample, 
                                                                                                                 args.token_length_allowed, 
                                                                                                                 args.attribute)
                 
@@ -183,15 +192,15 @@ if __name__ == "__main__":
                 correct[layer_intervened].append(matches)
                 total_samples_processed += 1
                 
-                if sample_no % 100 == 0:
+                if sample_no % 100 == 0 and sample_no != 0:
                     print(f"Epoch: {epoch}, Sample: {sample_no}, Accuracy: {sum(correct[layer_intervened]) / total_samples_processed:.4f}, Loss: {total_loss / total_samples_processed:.4f}")
-            
-            temp_idx += 1
+                    wandb.log({"GPT-2 Token Sub-Space Intervention Accuracy": sum(correct[layer_intervened]) / total_samples_processed, "GPT-2 Token Sub-Space Intervention Loss": total_loss / total_samples_processed})
+                temp_idx += 1
             
             # Log accuracy and loss to wandb
             epoch_accuracy = sum(correct[layer_intervened]) / total_samples_processed
             print(f"The total samples proceesed for {args.attribute} is {total_samples_processed}")
-            wandb.log({"GPT-2 Sub-Space IIA": epoch_accuracy, "Loss": total_loss / total_samples_processed})
+            # wandb.log({"GPT-2 Sub-Space IIA": epoch_accuracy, "Loss": total_loss / total_samples_processed})
 
             print(f"Epoch {epoch} finished with accuracy {epoch_accuracy:.4f} and average loss {total_loss / total_samples_processed:.4f}")
 
@@ -239,7 +248,7 @@ if __name__ == "__main__":
                 print(f"Epoch {epoch} finished with validation accuracy {epoch_val_accuracy:.4f} and average validation loss {total_val_loss / total_val_samples_processed:.4f}")
         
         # Save the model
-        torch.save(training_model.state_dict(), f"gpt2/models/saved_model_{args.method}_{args.token_length_allowed}_{args.attribute}_{args.model}_{args.epochs}.pth")
+        torch.save(training_model.state_dict(), f"models/saved_model_{args.method}_{args.token_length_allowed}_{args.attribute}_{args.model}_{args.epochs}.pth")
         
     elif args.task == "test":
         # Load the saved model
