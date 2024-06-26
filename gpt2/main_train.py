@@ -117,7 +117,7 @@ if __name__ == "__main__":
     total_step = 0
     # target_total_step = len(batches) * args.epochs
     target_total_step = args.epochs
-    temperature_start = 10
+    temperature_start = 0.2
     temperature_end = 0.1
     temperature_schedule = (
         t.linspace(temperature_start, temperature_end, target_total_step)
@@ -159,12 +159,13 @@ if __name__ == "__main__":
                 # print(source_label.split()[0])
                 
                 # ground_truth_token_id = source_label_ids = tokenizer.encode(source_label.split()[0], return_tensors='pt').squeeze(0).type(torch.LongTensor).to(DEVICE)
+                # print(ground_truth_token_id.shape)
                 # if country token then source label and if contintent token then base label
                 if sample[0][0].split()[-2] == "country":
-                    ground_truth_token_id = base_label_ids
+                    ground_truth_token_id = source_label_ids
                     
                 elif sample[0][0].split()[-2] == "continent":    
-                    ground_truth_token_id = source_label_ids
+                    ground_truth_token_id = base_label_ids
                 
                 vocab_size = tokenizer.vocab_size
                 ground_truth_one_hot = F.one_hot(ground_truth_token_id, num_classes=vocab_size).float()
