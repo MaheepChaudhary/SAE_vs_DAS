@@ -108,7 +108,7 @@ if __name__ == "__main__":
     # print()
     # print(training_model)
     loss_fn = nn.CrossEntropyLoss()
-    optimizer = optim.Adam(training_model.parameters(), lr=args.learning_rate)
+    optimizer = optim.Adam([training_model.l4_mask], lr=args.learning_rate)
 
     #Inserting the temperature
     total_step = 0
@@ -156,7 +156,13 @@ if __name__ == "__main__":
                 # print(source_label.split()[0])
                 
                 # ground_truth_token_id = source_label_ids = tokenizer.encode(source_label.split()[0], return_tensors='pt').squeeze(0).type(torch.LongTensor).to(DEVICE)
-                ground_truth_token_id = source_label_ids
+                # if country token then source label and if contintent token then base label
+                if sample[0][0][0].split()[-2] == "country":
+                    ground_truth_token_id = base_label_ids
+                    
+                elif sample[0][0][0].split()[-2] == "continent":    
+                    ground_truth_token_id = source_label_ids
+                
                 vocab_size = tokenizer.vocab_size
                 ground_truth_one_hot = F.one_hot(ground_truth_token_id, num_classes=vocab_size).float()
                 predicted_logit = intervened_base_output[:, -1, :]
