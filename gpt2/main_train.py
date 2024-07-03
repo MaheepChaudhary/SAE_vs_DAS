@@ -124,9 +124,9 @@ if __name__ == "__main__":
     total_step = 0
     # target_total_step = len(batches) * args.epochs
     #TODO: The total number of batches is total_no_samples/batch_len
-    batch_size = 1
-    target_total_step = int(len(train_data)/(batch_size) * args.epochs)
-    temperature_start = 10.0
+    batch_size = 32
+    target_total_step = int(len(train_data)/(batch_size)) * args.epochs
+    temperature_start = 50.0
     temperature_end = 0.1
     temperature_schedule = (
         t.linspace(temperature_start, temperature_end, target_total_step)

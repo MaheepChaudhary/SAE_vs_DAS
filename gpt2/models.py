@@ -155,7 +155,6 @@ class my_model(nn.Module):
                 
         self.DEVICE = DEVICE
                 
-        
         if method == "neuron masking":
             # neuron_dim = (1,self.token_length_allowed, 768)
             neuron_dim = (1,768)
@@ -197,7 +196,7 @@ class my_model(nn.Module):
                     intermediate_output = (1 - l4_mask_sigmoid) * intermediate_output[:,self.intervened_token_idx,:] + l4_mask_sigmoid * vector_source[:,self.intervened_token_idx,:]
                     assert intermediate_output.squeeze(1).shape == vector_source[:,self.intervened_token_idx,:].shape == torch.Size([32, 768])
                     self.model.transformer.h[self.layer_intervened].output[0][:,self.intervened_token_idx,:] = intermediate_output.squeeze(1)
-                    # self.model.transformer.h[self.layer_intervened].output[0][:,self.intervened_token_idx,:] = vector_source[0][:,self.intervened_token_idx,:]
+                    # self.model.transformer.h[self.layer_intervened].output[0][:,self.intervened_token_idx,:] = vector_source[:,self.intervened_token_idx,:]
                     
                     intervened_base_predicted = self.model.lm_head.output.argmax(dim=-1).save()
                     intervened_base_output = self.model.lm_head.output.save()
