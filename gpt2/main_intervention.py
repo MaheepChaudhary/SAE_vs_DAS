@@ -75,11 +75,11 @@ def intervention_dataset(overlapping_cities):
         
             for j in data:
                 
-                if i[0].split(".")[-1].split()[0] and j[0].split(".")[-1].split()[0] in overlapping_cities:
+                if i[0].split(".")[-1].split()[0] in overlapping_cities and j[0].split(".")[-1].split()[0] in overlapping_cities:
             
                     if i != j:
-                        if i[1] != j[1]:
-                            new_data.append([i,j])
+                        # if i[1] != j[1]:
+                        new_data.append([i,j])
                     elif i == j:
                         pass
                 else:

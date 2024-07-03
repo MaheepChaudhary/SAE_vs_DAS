@@ -1,5 +1,28 @@
 from imports import *
 
+def overlap_measure():
+    
+    with open("comfy_country_top1.json", "r") as file:
+        country_data = json.load(file)
+    
+    with open("comfy_continent_top1.json", "r") as file:
+        continent_data = json.load(file)
+    
+    country_cities = []
+    for i in country_data:
+        country_cities.append(i[0].split(".")[-1].split()[0])
+    
+    continent_cities = []
+    for i in continent_data:
+        continent_cities.append(i[0].split(".")[-1].split()[0])
+    
+    overlap = list(set(country_cities) & set(continent_cities))
+    print(overlap)
+    print(f"The total number of overlapping words are {len(overlap)}")
+    
+    return overlap
+
+
 def intervention_data(model):
     '''
     The file will be able to do the following:
@@ -9,6 +32,8 @@ def intervention_data(model):
     
     * Split the data into three parts: train, validation and test.
     '''
+    
+    overlapping_cities = overlap_measure()
     
     with open('continent_intervention_dataset.json', 'r') as file:
         continent_data = json.load(file)
@@ -48,7 +73,8 @@ def intervention_data(model):
             source_label_ids = model.tokenizer.encode(source_label_mod, return_tensors='pt').squeeze(0).type(torch.LongTensor).to(model.device)
             
             if len(base_tokens) == len(source_tokens) == token_length_allowed and len(source_label_ids) == len(base_label_ids) == 1:
-                new_all_data.append(sample)
+                if base.split(".")[-1].split()[0] in overlapping_cities and source.split(".")[-1].split()[0] in overlapping_cities:
+                    new_all_data.append(sample)
 
         return new_all_data
     
