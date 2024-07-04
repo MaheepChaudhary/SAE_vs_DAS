@@ -180,8 +180,8 @@ class my_model(nn.Module):
         
     def forward(self, source_ids, base_ids, temperature):
         
-        # l4_mask_sigmoid = t.sigmoid(self.l4_mask / temperature)
-        l4_mask_sigmoid = self.l4_mask
+        l4_mask_sigmoid = t.sigmoid(self.l4_mask / temperature)
+        # l4_mask_sigmoid = self.l4_mask
         # l4_mask_sigmoid.to(self.DEVICE)
         
         if self.method == "neuron masking":
