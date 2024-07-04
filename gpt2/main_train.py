@@ -202,13 +202,13 @@ if __name__ == "__main__":
                 assert ground_truth_one_hot.squeeze(1).shape == last_token_output.shape
                 ground_truth_indices = torch.argmax(ground_truth_one_hot.squeeze(1), dim=1)
                 ground_truth_indices = ground_truth_indices.float()
-                # loss = loss_fn(last_token_output, ground_truth_indices)
+                loss = loss_fn(last_token_output, ground_truth_indices)
                 # loss = loss_fn(predicted_logit.view(-1, predicted_logit.size(-1)), ground_truth_token_id.view(-1))
-                # total_loss += loss.item()
+                total_loss += loss.item()
                 
                 # Backpropagation
-                # loss.backward()
-                # optimizer.step()
+                loss.backward()
+                optimizer.step()
                 
                 # Calculate accuracy
                 predicted_text = [word.split()[0] for word in predicted_text]
