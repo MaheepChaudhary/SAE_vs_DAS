@@ -31,7 +31,7 @@ def data_processing(model, samples, token_length_allowed, attribute, DEVICE):
     
     base_ids = model.tokenizer(bases, padding=True, return_tensors='pt').to(DEVICE)
     source_ids = model.tokenizer(sources, padding=True, return_tensors='pt').to(DEVICE)
-
+    print(base_ids["input_ids"].shape, source_ids["input_ids"].shape)
     source_tokens = model.tokenizer(sources) 
     base_tokens = model.tokenizer(bases)
     source_label_token = model.tokenizer(source_labels)
@@ -52,19 +52,19 @@ def data_processing(model, samples, token_length_allowed, attribute, DEVICE):
     # else:
     #     return False, base_ids, source_ids, base_label_ids, source_label_ids, source_label, base_label  
 
-    assert token_length_allowed == 61 if attribute == "continent" else 59
+    # assert token_length_allowed == 61 if attribute == "continent" else 59
     
-    # Conditions to filter data:
-    if len(base_tokens) == len(source_tokens) == token_length_allowed and len(source_label_ids) == len(base_label_ids) == 1:
-        proceed = True
-        assert len(base_tokens) == len(source_tokens) == token_length_allowed
-    else:
-        proceed = False
+    # # Conditions to filter data:
+    # if len(base_tokens) == len(source_tokens) == token_length_allowed and len(source_label_ids) == len(base_label_ids) == 1:
+    #     proceed = True
+    #     assert len(base_tokens) == len(source_tokens) == token_length_allowed
+    # else:
+    #     proceed = False
 
     proceed = True
     return proceed, base_ids, source_ids, base_label_ids, source_label_ids, source_labels, base_labels
 
-def train_data_processing():
+def train_data_processing(intervention_divided_data):
     
     with open("filtered_continent_intervention_dataset.json", "r") as file:
         continent_data = json.load(file)
@@ -72,13 +72,36 @@ def train_data_processing():
     with open("filtered_country_intervention_dataset.json", "r") as file:
         country_data = json.load(file)
     
-    data = continent_data + country_data
-    random.shuffle(data)
+
+    
+    # if intervention_divided_data == "continent":
+    #     data1 = country_data
+    #     data2 = continent_data
+    # if intervention_divided_data == "country":
+    #     data1 = continent_data
+    #     data2 = country_data
+        
+    # for sample_no in range(len(data1)):
+    #     sample = data1[sample_no]
+    #     base = sample[0][0]
+    #     source = sample[1][0]
+    #     base_label = sample[0][1]
+    #     source_label = sample[1][1]
+        
+    #     data1[sample_no][1][1] = base_label
+            
+    # random.shuffle(data1)
+    # random.shuffle(data2)
+    # data = data1 + data2
+    data =  country_data + continent_data
+    print(len(data))
+    # random.shuffle(data)
     # print(data)
     
-    train_data = data[:int(0.7*len(data))]
-    val_data = data[int(0.7*len(data)):int(0.8*len(data))]
-    test_data = data[int(0.8*len(data)):]
+    # train_data = data[:int(0.7*len(data))]
+    # val_data = data[int(0.7*len(data)):int(0.8*len(data))]
+    # test_data = data[int(0.8*len(data)):]
+    train_data = test_data = val_data = data    
     return train_data, val_data, test_data
 
 if __name__ == "__main__":
@@ -95,10 +118,11 @@ if __name__ == "__main__":
     parser.add_argument("-method", "--method", required=True, help="to let know if you want neuron masking, das masking or SAE masking")
     parser.add_argument("-e", "--epochs", default=1, type = int, help="# of epochs on which mask is to be trained")
     parser.add_argument("-ef", "--expansion_factor", default=1, help="expansion factor for SAE")
-    parser.add_argument("-lr", "--learning_rate", default=0.01, help="learning rate for the optimizer")
+    parser.add_argument("-lr", "--learning_rate", default=0.001, help="learning rate for the optimizer")
     parser.add_argument("-t", "--task", required=True, help="task to perform, i.e. train or test")
     parser.add_argument("-svd", "--saved_model_path", default="gpt2/models/saved_model.pth", help="path to the saved model")
     parser.add_argument("-n", "--notes", default="", help = "Any notes you want to write for the wandb graph")
+    parser.add_argument("-idd", "--intervention_divided_data", help = "The data which is divided for intervention")
 
     args = parser.parse_args()
     # wandb.init(project="sae_concept_eraser")
@@ -118,7 +142,7 @@ if __name__ == "__main__":
         print(f'{name}: requires_grad={param.requires_grad}')
     optimizer = optim.Adam(training_model.parameters(), lr=args.learning_rate)
 
-    train_data, val_data, test_data = train_data_processing()
+    train_data, val_data, test_data = train_data_processing(args.intervention_divided_data)
 
     #Inserting the temperature
     total_step = 0
@@ -176,18 +200,18 @@ if __name__ == "__main__":
                 assert ground_truth_one_hot.squeeze(1).shape == last_token_output.shape
                 ground_truth_indices = torch.argmax(ground_truth_one_hot.squeeze(1), dim=1)
                 ground_truth_indices = ground_truth_indices.float()
-                loss = loss_fn(last_token_output, ground_truth_indices)
+                # loss = loss_fn(last_token_output, ground_truth_indices)
                 # loss = loss_fn(predicted_logit.view(-1, predicted_logit.size(-1)), ground_truth_token_id.view(-1))
-                total_loss += loss.item()
+                # total_loss += loss.item()
                 
                 # Backpropagation
-                loss.backward()
-                optimizer.step()
+                # loss.backward()
+                # optimizer.step()
                 
                 # Calculate accuracy
                 predicted_text = [word.split()[0] for word in predicted_text]
                 source_label = [word.split()[0] for word in source_label]
-                # base_label = [word.split()[0] for word in base_label]
+                # base_label = [word.split()[0] for word in source_label]
                 matches_arr = [i for i in range(len(predicted_text)) if predicted_text[i] == source_label[i]]
                 # print(predicted_text)
                 # print(source_label)

@@ -158,7 +158,7 @@ class my_model(nn.Module):
         if method == "neuron masking":
             # neuron_dim = (1,self.token_length_allowed, 768)
             neuron_dim = (1,768)
-            self.l4_mask = t.nn.Parameter(t.rand(neuron_dim, device=DEVICE), requires_grad=True)
+            self.l4_mask = t.nn.Parameter(t.zeros(neuron_dim, device=DEVICE), requires_grad=True)
             # self.l4_mask = self.l4_mask.to(DEVICE)
             
         elif method == "das masking":
@@ -180,7 +180,7 @@ class my_model(nn.Module):
         
     def forward(self, source_ids, base_ids, temperature):
         
-        l4_mask_sigmoid = t.sigmoid(self.l4_mask / temperature)
+        # l4_mask_sigmoid = t.sigmoid(self.l4_mask / temperature)
         # l4_mask_sigmoid = self.l4_mask
         # l4_mask_sigmoid.to(self.DEVICE)
         
@@ -192,11 +192,11 @@ class my_model(nn.Module):
 
                 with tracer.invoke(base_ids) as runner_:
                     
-                    intermediate_output = self.model.transformer.h[self.layer_intervened].output[0].clone()
-                    intermediate_output = (1 - l4_mask_sigmoid) * intermediate_output[:,self.intervened_token_idx,:] + l4_mask_sigmoid * vector_source[:,self.intervened_token_idx,:]
-                    assert intermediate_output.squeeze(1).shape == vector_source[:,self.intervened_token_idx,:].shape == torch.Size([32, 768])
-                    self.model.transformer.h[self.layer_intervened].output[0][:,self.intervened_token_idx,:] = intermediate_output.squeeze(1)
-                    # self.model.transformer.h[self.layer_intervened].output[0][:,self.intervened_token_idx,:] = vector_source[:,self.intervened_token_idx,:]
+                    # intermediate_output = self.model.transformer.h[self.layer_intervened].output[0].clone()
+                    # intermediate_output = (1 - l4_mask_sigmoid) * intermediate_output[:,self.intervened_token_idx,:] + l4_mask_sigmoid * vector_source[:,self.intervened_token_idx,:]
+                    # assert intermediate_output.squeeze(1).shape == vector_source[:,self.intervened_token_idx,:].shape == torch.Size([32, 768])
+                    # self.model.transformer.h[self.layer_intervened].output[0][:,self.intervened_token_idx,:] = intermediate_output.squeeze(1)
+                    self.model.transformer.h[self.layer_intervened].output[0][:,self.intervened_token_idx,:] = vector_source[:,self.intervened_token_idx,:]
                     
                     intervened_base_predicted = self.model.lm_head.output.argmax(dim=-1).save()
                     intervened_base_output = self.model.lm_head.output.save()
