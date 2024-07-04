@@ -7,44 +7,42 @@ def config(file_path, learning_rate, token_length):
     
     # Load gpt2
     if args.model == "gpt2":
-        model = LanguageModel("openai-community/gpt2", device_map=DEVICE)
-        tokenizer = GPT2Tokenizer.from_pretrained("openai-community/gpt2")
-    elif args.model == "mistral":
-        model = LanguageModel("mistralai/Mistral-7B-v0.1", device_map=DEVICE)
-        tokenizer = AutoTokenizer.from_pretrained("mistralai/Mistral-7B-v0.1")
-        if tokenizer.pad_token is None:
-            tokenizer.add_special_tokens({'pad_token': '[PAD]'}) 
-    
+        model = LanguageModel("openai-community/gpt2", device_map = DEVICE)
 
     with open(file_path, "r") as file:
         data = json.load(file)
     
 
-    layer_intervened = 0 # As the layer has descent performance in the previous metrics of intervention, we will take it.
+    layer_intervened = 1 # As the layer has descent performance in the previous metrics of intervention, we will take it.
     intervened_token_idx = -8
     intervention_token_length = token_length
 
-    return data, model, tokenizer, layer_intervened, intervened_token_idx
+    return data, model, layer_intervened, intervened_token_idx
 
-def data_processing(sample, token_length_allowed, attribute):
-    base = sample[0][0]
-    source = sample[1][0]
-    base_label = sample[0][1]
-    source_label = sample[1][1]
+def data_processing(model, samples, token_length_allowed, attribute, DEVICE):
     
-    base_ids = tokenizer.encode(base, return_tensors='pt').type(torch.LongTensor).to(DEVICE)
-    base_tokens = tokenizer.tokenize(base)
-    source_ids = tokenizer.encode(source, return_tensors='pt').type(torch.LongTensor).to(DEVICE)
-    source_tokens = tokenizer.tokenize(source) 
-    source_label_token = tokenizer.tokenize(source_label)
-    base_label_token = tokenizer.tokenize(base_label)
+    bases = list(np.array(samples)[:,0,0])
+    sources = list(np.array(samples)[:,1,0])
+    # print(bases)
+    base_labels = list(np.array(samples)[:,0,1])
+    # print(base_labels)
+    source_labels = list(np.array(samples)[:,1,1])
+    assert len(bases) == len(sources) == len(base_labels) == len(source_labels) == 32
+    
+    base_ids = model.tokenizer(bases, padding=True, return_tensors='pt').to(DEVICE)
+    source_ids = model.tokenizer(sources, padding=True, return_tensors='pt').to(DEVICE)
+    print(base_ids["input_ids"].shape, source_ids["input_ids"].shape)
+    source_tokens = model.tokenizer(sources) 
+    base_tokens = model.tokenizer(bases)
+    source_label_token = model.tokenizer(source_labels)
+    base_label_token = model.tokenizer(base_labels)
     
     # The model has the vocab with words with space along side them, so we are making the tokens s.t. they do not split and correspond to their word with integrated space. 
-    source_label_mod = " " + source_label.split()[0]
-    base_label_mod = " " + base_label.split()[0]
-                    
-    base_label_ids = tokenizer.encode(base_label_mod, return_tensors='pt').squeeze(0).type(torch.LongTensor).to(DEVICE)
-    source_label_ids = tokenizer.encode(source_label_mod, return_tensors='pt').squeeze(0).type(torch.LongTensor).to(DEVICE)
+    source_label_mods = [" " + label.split()[0] for label in source_labels]
+    base_label_mods = [" " + label.split()[0] for label in base_labels]
+    
+    base_label_ids = model.tokenizer(base_label_mods, return_tensors='pt').to(DEVICE)
+    source_label_ids = model.tokenizer(source_label_mods, return_tensors='pt').to(DEVICE)
     
     allowed_token_length = 59 if attribute == "country" else 61
     
@@ -53,20 +51,20 @@ def data_processing(sample, token_length_allowed, attribute):
 
     # else:
     #     return False, base_ids, source_ids, base_label_ids, source_label_ids, source_label, base_label  
-    '''
-    assert token_length_allowed == 61 if attribute == "continent" else 59
-    
-    # Conditions to filter data:
-    if len(base_tokens) == len(source_tokens) == token_length_allowed and len(source_label_ids) == len(base_label_ids) == 1:
-        proceed = True
-        assert len(base_tokens) == len(source_tokens) == token_length_allowed
-    else:
-        proceed = False
-    '''
-    proceed = True
-    return proceed, base_ids, source_ids, base_label_ids, source_label_ids, source_label, base_label
 
-def train_data_processing():
+    # assert token_length_allowed == 61 if attribute == "continent" else 59
+    
+    # # Conditions to filter data:
+    # if len(base_tokens) == len(source_tokens) == token_length_allowed and len(source_label_ids) == len(base_label_ids) == 1:
+    #     proceed = True
+    #     assert len(base_tokens) == len(source_tokens) == token_length_allowed
+    # else:
+    #     proceed = False
+
+    proceed = True
+    return proceed, base_ids, source_ids, base_label_ids, source_label_ids, source_labels, base_labels
+
+def train_data_processing(intervention_divided_data):
     
     with open("filtered_continent_intervention_dataset.json", "r") as file:
         continent_data = json.load(file)
@@ -74,13 +72,38 @@ def train_data_processing():
     with open("filtered_country_intervention_dataset.json", "r") as file:
         country_data = json.load(file)
     
-    data = continent_data + country_data
-    random.shuffle(data)
-    
-    train_data = data[:int(0.7*len(data))]
-    val_data = data[int(0.7*len(data)):int(0.8*len(data))]
-    test_data = data[int(0.8*len(data)):]
 
+    
+    # if intervention_divided_data == "continent":
+    #     data1 = country_data
+    #     data2 = continent_data
+    # if intervention_divided_data == "country":
+    #     data1 = continent_data
+    #     data2 = country_data
+        
+    # for sample_no in range(len(data1)):
+    #     sample = data1[sample_no]
+    #     base = sample[0][0]
+    #     source = sample[1][0]
+    #     base_label = sample[0][1]
+    #     source_label = sample[1][1]
+        
+    #     data1[sample_no][1][1] = base_label
+            
+    # random.shuffle(data1)
+    # random.shuffle(data2)
+    # data = data1 + data2
+    random.shuffle(country_data)
+    random.shuffle(continent_data)
+    data =  country_data + continent_data
+    print(len(data))
+    # random.shuffle(data)
+    # print(data)
+    
+    # train_data = data[:int(0.7*len(data))]
+    # val_data = data[int(0.7*len(data)):int(0.8*len(data))]
+    # test_data = data[int(0.8*len(data)):]
+    train_data = test_data = val_data = data    
     return train_data, val_data, test_data
 
 if __name__ == "__main__":
@@ -100,35 +123,36 @@ if __name__ == "__main__":
     parser.add_argument("-lr", "--learning_rate", default=0.001, help="learning rate for the optimizer")
     parser.add_argument("-t", "--task", required=True, help="task to perform, i.e. train or test")
     parser.add_argument("-svd", "--saved_model_path", default="gpt2/models/saved_model.pth", help="path to the saved model")
+    parser.add_argument("-n", "--notes", default="", help = "Any notes you want to write for the wandb graph")
+    parser.add_argument("-idd", "--intervention_divided_data", help = "The data which is divided for intervention")
 
     args = parser.parse_args()
-    wandb.init(project="sae_concept_eraser")
-    wandb.run.name = f"{args.method}-{args.epochs}"
+    # wandb.init(project="sae_concept_eraser")
+    # wandb.run.name = f"{args.method}-{args.epochs}-{args.notes}"
     DEVICE = args.device 
 
-    data, model, tokenizer, layer_intervened, intervened_token_idx, = config(file_path = args.eval_file_path, learning_rate = args.learning_rate,
-                                                                                        token_length = args.token_length_allowed)
+    data, model, layer_intervened, intervened_token_idx, = config(file_path = args.eval_file_path, learning_rate = args.learning_rate,
+                                                                                token_length = args.token_length_allowed)
+    # model.to(DEVICE)
     training_model = my_model(model = model, DEVICE=DEVICE, method=args.method, token_length_allowed=args.token_length_allowed, expansion_factor=args.expansion_factor,
                             layer_intervened=layer_intervened, intervened_token_idx=intervened_token_idx)
-    # print(training_model)
+
     training_model.to(DEVICE)
-    # print()
-    # print(training_model)
     loss_fn = nn.CrossEntropyLoss()
     
     for name, param in training_model.named_parameters():
         print(f'{name}: requires_grad={param.requires_grad}')
     optimizer = optim.Adam(training_model.parameters(), lr=args.learning_rate)
 
-    train_data, val_data, test_data = train_data_processing()
+    train_data, val_data, test_data = train_data_processing(args.intervention_divided_data)
 
     #Inserting the temperature
     total_step = 0
     # target_total_step = len(batches) * args.epochs
     #TODO: The total number of batches is total_no_samples/batch_len
-    batch_size = 1
-    target_total_step = int(len(train_data)/(batch_size) * args.epochs)
-    temperature_start = 10.0
+    batch_size = 32
+    target_total_step = int(len(train_data)/(batch_size)) * args.epochs
+    temperature_start = 50.0
     temperature_end = 0.1
     temperature_schedule = (
         t.linspace(temperature_start, temperature_end, target_total_step)
@@ -139,21 +163,28 @@ if __name__ == "__main__":
     temp_idx = 0
     
     if args.task == "train":
-        
+    
+
         for epoch in range(args.epochs):
 
             correct = {i:[] for i in range(0,12)}
             total_samples_processed = 0
             total_loss = 0.0
-            print(len(train_data))
+
             # for sample_no in tqdm(range(len(data))):
-            for sample_no in tqdm(range(len(train_data))):
+            i = 0
+            batch_size = 32
+            matches = 0
+            for sample_no in tqdm(range(int(len(train_data)/batch_size))):
                 
-                sample = train_data[sample_no]
+                samples = train_data[i*batch_size:i*batch_size+batch_size]
+                
                 # Data Processing
-                proceed, base_ids, source_ids, base_label_ids, source_label_ids, source_label, base_label = data_processing(sample, 
-                                                                                                                args.token_length_allowed, 
-                                                                                                                args.attribute)
+                proceed, base_ids, source_ids, base_label_ids, source_label_ids, source_label, base_label = data_processing(model = model,
+                                                                                                                            samples = samples, 
+                                                                                                                            token_length_allowed=args.token_length_allowed, 
+                                                                                                                            attribute=args.attribute,
+                                                                                                                            DEVICE=DEVICE)
                 
                 if not proceed: continue
                 
@@ -161,26 +192,18 @@ if __name__ == "__main__":
                 optimizer.zero_grad()  
                 
                 temperature = temperature_schedule[temp_idx]
-                # training the model
                 intervened_base_output, predicted_text = training_model(source_ids, base_ids, temperature)
-                
-                # predicted_ids = tokenizer.encode(predicted_text, return_tensors='pt').type(torch.LongTensor).to(DEVICE)
-                # print(source_label.split()[0])
-                
-                # ground_truth_token_id = source_label_ids = tokenizer.encode(source_label.split()[0], return_tensors='pt').squeeze(0).type(torch.LongTensor).to(DEVICE)
-                # print(ground_truth_token_id.shape)
-                # if country token then source label and if contintent token then base label
-                if sample[0][0].split()[-2] == "country":
-                    ground_truth_token_id = source_label_ids
-                    
-                elif sample[0][0].split()[-2] == "continent":    
-                    ground_truth_token_id = base_label_ids
-                
-                vocab_size = tokenizer.vocab_size
-                ground_truth_one_hot = F.one_hot(ground_truth_token_id, num_classes=vocab_size).float()
-                predicted_logit = intervened_base_output[:, -1, :]
-                
-                loss = loss_fn(predicted_logit.view(-1, predicted_logit.size(-1)), ground_truth_token_id.view(-1))
+                ground_truth_token_id = source_label_ids
+                # ground_truth_token_id = base_label_ids
+                vocab_size = model.tokenizer.vocab_size
+                ground_truth_one_hot = F.one_hot(ground_truth_token_id["input_ids"], num_classes=vocab_size).float()
+                cloned_intervened_base_output = intervened_base_output.clone()
+                last_token_output = cloned_intervened_base_output[:,-1,:]
+                assert ground_truth_one_hot.squeeze(1).shape == last_token_output.shape
+                ground_truth_indices = torch.argmax(ground_truth_one_hot.squeeze(1), dim=1)
+                ground_truth_indices = ground_truth_indices.float()
+                loss = loss_fn(last_token_output, ground_truth_indices)
+                # loss = loss_fn(predicted_logit.view(-1, predicted_logit.size(-1)), ground_truth_token_id.view(-1))
                 total_loss += loss.item()
                 
                 # Backpropagation
@@ -188,14 +211,23 @@ if __name__ == "__main__":
                 optimizer.step()
                 
                 # Calculate accuracy
-                matches = 1 if predicted_text.split()[0] == source_label.split()[0] else 0
-                correct[layer_intervened].append(matches)
-                total_samples_processed += 1
+                predicted_text = [word.split()[0] for word in predicted_text]
+                source_label = [word.split()[0] for word in source_label]
+                # base_label = [word.split()[0] for word in source_label]
+                matches_arr = [i for i in range(len(predicted_text)) if predicted_text[i] == source_label[i]]
+                # print(predicted_text)
+                # print(source_label)
+                # print(matches_arr)
+                matches+=len(matches_arr)
+                # matches = 1 if predicted_text.split()[0] == source_label.split()[0] else 0
+                # correct[layer_intervened].append(matches)
+                total_samples_processed +=32
                 
-                if sample_no % 100 == 0 and sample_no != 0:
-                    print(f"Epoch: {epoch}, Sample: {sample_no}, Accuracy: {sum(correct[layer_intervened]) / total_samples_processed:.4f}, Loss: {total_loss / total_samples_processed:.4f}")
-                    wandb.log({"GPT-2 Token Sub-Space Intervention Accuracy": sum(correct[layer_intervened]) / total_samples_processed, "GPT-2 Token Sub-Space Intervention Loss": total_loss / total_samples_processed})
+                # if sample_no % 100 == 0 and sample_no != 0:
+                print(f"Epoch: {epoch}, Sample: {sample_no}, Accuracy: {matches / total_samples_processed:.4f}, Loss: {total_loss / total_samples_processed:.4f}")
+                    # wandb.log({"GPT-2 Token Sub-Space Intervention Accuracy": sum(correct[layer_intervened]) / total_samples_processed, "GPT-2 Token Sub-Space Intervention Loss": total_loss / total_samples_processed})
                 temp_idx += 1
+                i+=1
             
             # Log accuracy and loss to wandb
             epoch_accuracy = sum(correct[layer_intervened]) / total_samples_processed
@@ -205,7 +237,7 @@ if __name__ == "__main__":
             print(f"Epoch {epoch} finished with accuracy {epoch_accuracy:.4f} and average loss {total_loss / total_samples_processed:.4f}")
 
             # Validation Data Evaluation
-            
+            '''
             with torch.no_grad():
                 total_val_samples_processed = 0
                 total_val_loss = 0
@@ -214,9 +246,11 @@ if __name__ == "__main__":
                 for sample_no in range(len(val_data)):
                     sample = val_data[sample_no]
                     # Data Processing
-                    proceed, base_ids, source_ids, base_label_ids, source_label_ids, source_label = data_processing(sample, 
-                                                                                                                    args.token_length_allowed, 
-                                                                                                                    args.attribute)
+                    proceed, base_ids, source_ids, base_label_ids, source_label_ids, source_label, base_label = data_processing(model = model,
+                                                                                                                    samples = samples, 
+                                                                                                                    token_length_allowed=args.token_length_allowed, 
+                                                                                                                    attribute=args.attribute,
+                                                                                                                    DEVICE=DEVICE)
                     
                     if not proceed:
                         continue
@@ -246,7 +280,7 @@ if __name__ == "__main__":
                 wandb.log({"Validation Accuracy": epoch_val_accuracy, "Validation Loss": total_val_loss / total_val_samples_processed})
                 
                 print(f"Epoch {epoch} finished with validation accuracy {epoch_val_accuracy:.4f} and average validation loss {total_val_loss / total_val_samples_processed:.4f}")
-        
+        '''
         # Save the model
         torch.save(training_model.state_dict(), f"models/saved_model_{args.method}_{args.token_length_allowed}_{args.attribute}_{args.model}_{args.epochs}.pth")
         
