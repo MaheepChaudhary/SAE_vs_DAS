@@ -283,7 +283,7 @@ if __name__ == "__main__":
                 print(f"Epoch {epoch} finished with validation accuracy {epoch_val_accuracy:.4f} and average validation loss {total_val_loss / total_val_samples_processed:.4f}")
         '''
         # Save the model
-        torch.save(training_model.state_dict(), f"models/saved_model_{args.method}_{args.token_length_allowed}_{args.attribute}_{args.model}_{args.epochs}.pth")
+        # torch.save(training_model.state_dict(), f"models/saved_model_{args.method}_{args.token_length_allowed}_{args.attribute}_{args.model}_{args.epochs}.pth")
         
     elif args.task == "test":
         # Load the saved model
