@@ -197,12 +197,12 @@ if __name__ == "__main__":
                 # ground_truth_token_id = base_label_ids
                 vocab_size = model.tokenizer.vocab_size
                 ground_truth_one_hot = F.one_hot(ground_truth_token_id["input_ids"], num_classes=vocab_size)
-                ground_truth_indices = ground_truth_indices.to(dtype=torch.long)
+                ground_truth_one_hot = ground_truth_one_hot.to(dtype=torch.long)
                 cloned_intervened_base_output = intervened_base_output.clone()
                 last_token_output = cloned_intervened_base_output[:,-1,:]
                 assert ground_truth_one_hot.squeeze(1).shape == last_token_output.shape
                 ground_truth_indices = torch.argmax(ground_truth_one_hot.squeeze(1), dim=1)
-                ground_truth_indices = ground_truth_indices.float()
+                ground_truth_indices = ground_truth_indices.to(dtype=torch.long)
                 loss = loss_fn(last_token_output, ground_truth_indices)
                 # loss = loss_fn(predicted_logit.view(-1, predicted_logit.size(-1)), ground_truth_token_id.view(-1))
                 total_loss += loss.item()
