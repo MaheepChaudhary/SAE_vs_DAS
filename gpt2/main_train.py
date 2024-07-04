@@ -93,6 +93,8 @@ def train_data_processing(intervention_divided_data):
     # random.shuffle(data1)
     # random.shuffle(data2)
     # data = data1 + data2
+    random.shuffle(country_data)
+    random.shuffle(continent_data)
     data =  country_data + continent_data
     print(len(data))
     # random.shuffle(data)
