@@ -46,13 +46,13 @@ def model_eval(model, eval_file_path, attribute):
     def filter(data):
         comfy_data = []
         correct = 0
-        # for index in tqdm(range(len(data))):
-            # sample, label = data[index]
-        for sample, label in data:
+        for index in tqdm(range(len(data))):
+            sample, label = data[index]
+        # for sample, label in data:
             # print(index)
-            print(sample)
-            print(label)
-            print()
+            # print(sample)
+            # print(label)
+            # print()
             with model.trace(sample):
                 output = model.lm_head.output.argmax(dim = -1).save()
         
