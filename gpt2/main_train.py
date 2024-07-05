@@ -21,11 +21,10 @@ def config(file_path, learning_rate, token_length):
 
 def data_processing(model, samples, token_length_allowed, attribute, DEVICE, batch_size):
     
+    # print(np.array(samples).shape)
     bases = list(np.array(samples)[:,0,0])
     sources = list(np.array(samples)[:,1,0])
-    # print(bases)
     base_labels = list(np.array(samples)[:,0,1])
-    # print(base_labels)
     source_labels = list(np.array(samples)[:,1,1])
     assert len(bases) == len(sources) == len(base_labels) == len(source_labels) == batch_size
     
@@ -41,8 +40,8 @@ def data_processing(model, samples, token_length_allowed, attribute, DEVICE, bat
     source_label_mods = [" " + label.split()[0] for label in source_labels]
     base_label_mods = [" " + label.split()[0] for label in base_labels]
     
-    base_label_ids = model.tokenizer(base_label_mods, padding = True, return_tensors='pt').to(DEVICE)
-    source_label_ids = model.tokenizer(source_label_mods, padding = True, return_tensors='pt').to(DEVICE)
+    base_label_ids = model.tokenizer(base_label_mods, return_tensors='pt').to(DEVICE)
+    source_label_ids = model.tokenizer(source_label_mods, return_tensors='pt').to(DEVICE)
     
     allowed_token_length = 59 if attribute == "country" else 61
     
@@ -64,7 +63,7 @@ def data_processing(model, samples, token_length_allowed, attribute, DEVICE, bat
     proceed = True
     return proceed, base_ids, source_ids, base_label_ids, source_label_ids, source_labels, base_labels
 
-def train_data_processing(intervention_divided_data):
+def train_data_processing(intervention_divided_data, batch_size):
     
     with open("filtered_continent_intervention_dataset.json", "r") as file:
         continent_data = json.load(file)
@@ -97,25 +96,17 @@ def train_data_processing(intervention_divided_data):
     random.shuffle(country_data)
     random.shuffle(continent_data)
     
-    country_batch_data = []; continent_batch_data = []
-    batch_size = 32
+    country_num_batches = np.array(country_data).shape[0] // batch_size
+    continent_num_batches = np.array(continent_data).shape[0] // batch_size
     
-    i = 0; j = 0
-    for batch in country_data[i*batch_size:(i+1)*batch_size]:
-        country_batch_data.append(batch)
-        i+=1
-    
-    for batch in continent_data[j*batch_size:(j+1)*batch_size]:
-        continent_batch_data.append(batch)
-        j+=1
-    
-    print(np.array(country_batch_data).shape, np.array(continent_batch_data).shape)
-    assert np.array(country_batch_data).shape == np.array(continent_batch_data).shape == (batch_size, 2, 2)
+    country_batch_data = [country_data[i*batch_size:(i+1)*batch_size] for i in range(country_num_batches)]
+    continent_batch_data = [continent_data[i*batch_size:(i+1)*batch_size] for i in range(continent_num_batches)]
+    assert np.array(country_batch_data).shape == (country_num_batches,batch_size,2,2)
+    assert np.array(continent_batch_data).shape == (continent_num_batches,batch_size, 2, 2)
     
     # data =  country_data + continent_data
     data = country_batch_data + continent_batch_data
-    print(len(data))
-    # random.shuffle(data)jkahfs
+    random.shuffle(data)
     # print(data)
     
     # train_data = data[:int(0.7*len(data))]
@@ -163,14 +154,14 @@ if __name__ == "__main__":
         print(f'{name}: requires_grad={param.requires_grad}')
     optimizer = optim.Adam(training_model.parameters(), lr=args.learning_rate)
 
-    train_data, val_data, test_data = train_data_processing(args.intervention_divided_data)
+    train_data, val_data, test_data = train_data_processing(args.intervention_divided_data, batch_size=args.batch_size)
 
     #Inserting the temperature
     total_step = 0
     # target_total_step = len(batches) * args.epochs
     #TODO: The total number of batches is total_no_samples/batch_len
     batch_size = args.batch_size
-    target_total_step = int(len(train_data)/(batch_size)) * args.epochs
+    target_total_step = len(train_data) * args.epochs
     temperature_start = 50.0
     temperature_end = 0.1
     temperature_schedule = (
@@ -197,7 +188,7 @@ if __name__ == "__main__":
             for sample_no in range(np.array(train_data).shape[0]):
                 
                 samples = train_data[sample_no]
-                assert np.array(samples).shape == (2, 2)
+                assert np.array(samples).shape == (batch_size, 2, 2)
                 # samples = train_data[i*batch_size:(i+1)*batch_size]
                 
                 # Data Processing
