@@ -194,7 +194,7 @@ if __name__ == "__main__":
     Now I will have to make the code for taking the accuracy on the prepared selected dataset of ravel
     '''
     
-    # model_eval(eval_file_path=args.eval_file_path, model = model, attribute=args.attribute)
+    model_eval(eval_file_path=args.eval_file_path, model = model, attribute=args.attribute)
     overlapping_cities = overlap_measure()
     
     # creating the intervention dataset of overlapping cities. 
