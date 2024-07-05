@@ -95,9 +95,9 @@ def train_data_processing(intervention_divided_data):
     # data = data1 + data2
     random.shuffle(country_data)
     random.shuffle(continent_data)
-    data =  country_data
+    data =  country_data + continent_data
     print(len(data))
-    # random.shuffle(data)
+    # random.shuffle(data)jkahfs
     # print(data)
     
     # train_data = data[:int(0.7*len(data))]
