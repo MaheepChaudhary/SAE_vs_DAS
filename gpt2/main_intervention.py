@@ -57,7 +57,7 @@ def model_eval(model, eval_file_path, attribute):
                 output = model.lm_head.output.argmax(dim = -1).save()
         
             prediction = model.tokenizer.decode(output[0][-1])
-            if prediction.split()[0] == label[-1].split()[0]:
+            if prediction.split()[0] == label.split()[0]:
                 correct+=1
 
                 comfy_data.append([sample, label])

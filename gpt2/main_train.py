@@ -93,9 +93,27 @@ def train_data_processing(intervention_divided_data):
     # random.shuffle(data1)
     # random.shuffle(data2)
     # data = data1 + data2
+        
     random.shuffle(country_data)
     random.shuffle(continent_data)
-    data =  country_data + continent_data
+    
+    country_batch_data = []; continent_batch_data = []
+    batch_size = 32
+    
+    i = 0; j = 0
+    for batch in country_data[i*batch_size:(i+1)*batch_size]:
+        country_batch_data.append(batch)
+        i+=1
+    
+    for batch in continent_data[j*batch_size:(j+1)*batch_size]:
+        continent_batch_data.append(batch)
+        j+=1
+    
+    print(np.array(country_batch_data).shape, np.array(continent_batch_data).shape)
+    assert np.array(country_batch_data).shape == np.array(continent_batch_data).shape == (batch_size, 2, 2)
+    
+    # data =  country_data + continent_data
+    data = country_batch_data + continent_batch_data
     print(len(data))
     # random.shuffle(data)jkahfs
     # print(data)
@@ -176,9 +194,11 @@ if __name__ == "__main__":
             # for sample_no in tqdm(range(len(data))):
             i = 0
             matches = 0
-            for sample_no in range(int(len(train_data)/batch_size)):
+            for sample_no in range(np.array(train_data).shape[0]):
                 
-                samples = train_data[i*batch_size:(i+1)*batch_size]
+                samples = train_data[sample_no]
+                assert np.array(samples).shape == (2, 2)
+                # samples = train_data[i*batch_size:(i+1)*batch_size]
                 
                 # Data Processing
                 proceed, base_ids, source_ids, base_label_ids, source_label_ids, source_label, base_label = data_processing(model = model,
