@@ -24,8 +24,8 @@ def overlap_measure():
         country_cities.append(i[0].split(".")[-1].split()[0])
     
     continent_cities = []
+    print(len(continent_data))
     for i in continent_data:
-        print(i)
         continent_cities.append(i[0].split(".")[-1].split()[0])
     
     overlap = list(set(country_cities) & set(continent_cities))
