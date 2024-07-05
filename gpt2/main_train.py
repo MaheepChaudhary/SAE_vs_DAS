@@ -19,7 +19,7 @@ def config(file_path, learning_rate, token_length):
 
     return data, model, layer_intervened, intervened_token_idx
 
-def data_processing(model, samples, token_length_allowed, attribute, DEVICE):
+def data_processing(model, samples, token_length_allowed, attribute, DEVICE, batch_size):
     
     bases = list(np.array(samples)[:,0,0])
     sources = list(np.array(samples)[:,1,0])
@@ -27,11 +27,11 @@ def data_processing(model, samples, token_length_allowed, attribute, DEVICE):
     base_labels = list(np.array(samples)[:,0,1])
     # print(base_labels)
     source_labels = list(np.array(samples)[:,1,1])
-    assert len(bases) == len(sources) == len(base_labels) == len(source_labels) == 32
+    assert len(bases) == len(sources) == len(base_labels) == len(source_labels) == batch_size
     
-    base_ids = model.tokenizer(bases, padding=True, return_tensors='pt').to(DEVICE)
-    source_ids = model.tokenizer(sources, padding=True, return_tensors='pt').to(DEVICE)
-    print(base_ids["input_ids"].shape, source_ids["input_ids"].shape)
+    base_ids = model.tokenizer(bases, return_tensors='pt').to(DEVICE)
+    source_ids = model.tokenizer(sources, return_tensors='pt').to(DEVICE)
+    # print(base_ids["input_ids"].shape, source_ids["input_ids"].shape)
     source_tokens = model.tokenizer(sources) 
     base_tokens = model.tokenizer(bases)
     source_label_token = model.tokenizer(source_labels)
@@ -41,8 +41,8 @@ def data_processing(model, samples, token_length_allowed, attribute, DEVICE):
     source_label_mods = [" " + label.split()[0] for label in source_labels]
     base_label_mods = [" " + label.split()[0] for label in base_labels]
     
-    base_label_ids = model.tokenizer(base_label_mods, return_tensors='pt').to(DEVICE)
-    source_label_ids = model.tokenizer(source_label_mods, return_tensors='pt').to(DEVICE)
+    base_label_ids = model.tokenizer(base_label_mods, padding = True, return_tensors='pt').to(DEVICE)
+    source_label_ids = model.tokenizer(source_label_mods, padding = True, return_tensors='pt').to(DEVICE)
     
     allowed_token_length = 59 if attribute == "country" else 61
     
@@ -95,7 +95,7 @@ def train_data_processing(intervention_divided_data):
     # data = data1 + data2
     random.shuffle(country_data)
     random.shuffle(continent_data)
-    data =  country_data + continent_data
+    data =  country_data
     print(len(data))
     # random.shuffle(data)
     # print(data)
@@ -120,11 +120,12 @@ if __name__ == "__main__":
     parser.add_argument("-method", "--method", required=True, help="to let know if you want neuron masking, das masking or SAE masking")
     parser.add_argument("-e", "--epochs", default=1, type = int, help="# of epochs on which mask is to be trained")
     parser.add_argument("-ef", "--expansion_factor", default=1, help="expansion factor for SAE")
-    parser.add_argument("-lr", "--learning_rate", default=0.001, help="learning rate for the optimizer")
+    parser.add_argument("-lr", "--learning_rate", default=0.001, type = int, help="learning rate for the optimizer")
     parser.add_argument("-t", "--task", required=True, help="task to perform, i.e. train or test")
     parser.add_argument("-svd", "--saved_model_path", default="gpt2/models/saved_model.pth", help="path to the saved model")
     parser.add_argument("-n", "--notes", default="", help = "Any notes you want to write for the wandb graph")
     parser.add_argument("-idd", "--intervention_divided_data", help = "The data which is divided for intervention")
+    parser.add_argument("-bs", "--batch_size", default=32, type = int, help="Batch size for training")
 
     args = parser.parse_args()
     # wandb.init(project="sae_concept_eraser")
@@ -135,7 +136,7 @@ if __name__ == "__main__":
                                                                                 token_length = args.token_length_allowed)
     # model.to(DEVICE)
     training_model = my_model(model = model, DEVICE=DEVICE, method=args.method, token_length_allowed=args.token_length_allowed, expansion_factor=args.expansion_factor,
-                            layer_intervened=layer_intervened, intervened_token_idx=intervened_token_idx)
+                            layer_intervened=layer_intervened, intervened_token_idx=intervened_token_idx, batch_size=args.batch_size)
 
     training_model.to(DEVICE)
     loss_fn = nn.CrossEntropyLoss()
@@ -150,7 +151,7 @@ if __name__ == "__main__":
     total_step = 0
     # target_total_step = len(batches) * args.epochs
     #TODO: The total number of batches is total_no_samples/batch_len
-    batch_size = 32
+    batch_size = args.batch_size
     target_total_step = int(len(train_data)/(batch_size)) * args.epochs
     temperature_start = 50.0
     temperature_end = 0.1
@@ -164,8 +165,9 @@ if __name__ == "__main__":
     
     if args.task == "train":
     
+        training_model.train()
 
-        for epoch in range(args.epochs):
+        for epoch in tqdm(range(args.epochs)):
 
             correct = {i:[] for i in range(0,12)}
             total_samples_processed = 0
@@ -173,18 +175,18 @@ if __name__ == "__main__":
 
             # for sample_no in tqdm(range(len(data))):
             i = 0
-            batch_size = 32
             matches = 0
-            for sample_no in tqdm(range(int(len(train_data)/batch_size))):
+            for sample_no in range(int(len(train_data)/batch_size)):
                 
-                samples = train_data[i*batch_size:i*batch_size+batch_size]
+                samples = train_data[i*batch_size:(i+1)*batch_size]
                 
                 # Data Processing
                 proceed, base_ids, source_ids, base_label_ids, source_label_ids, source_label, base_label = data_processing(model = model,
                                                                                                                             samples = samples, 
                                                                                                                             token_length_allowed=args.token_length_allowed, 
                                                                                                                             attribute=args.attribute,
-                                                                                                                            DEVICE=DEVICE)
+                                                                                                                            DEVICE=DEVICE,
+                                                                                                                            batch_size=batch_size)
                 
                 if not proceed: continue
                 
@@ -198,8 +200,7 @@ if __name__ == "__main__":
                 vocab_size = model.tokenizer.vocab_size
                 ground_truth_one_hot = F.one_hot(ground_truth_token_id["input_ids"], num_classes=vocab_size)
                 ground_truth_one_hot = ground_truth_one_hot.to(dtype=torch.long)
-                cloned_intervened_base_output = intervened_base_output.clone()
-                last_token_output = cloned_intervened_base_output[:,-1,:]
+                last_token_output = intervened_base_output[:,-1,:]
                 assert ground_truth_one_hot.squeeze(1).shape == last_token_output.shape
                 ground_truth_indices = torch.argmax(ground_truth_one_hot.squeeze(1), dim=1)
                 ground_truth_indices = ground_truth_indices.to(dtype=torch.long)
@@ -222,17 +223,17 @@ if __name__ == "__main__":
                 matches+=len(matches_arr)
                 # matches = 1 if predicted_text.split()[0] == source_label.split()[0] else 0
                 # correct[layer_intervened].append(matches)
-                total_samples_processed +=32
+                total_samples_processed +=batch_size
                 
                 # if sample_no % 100 == 0 and sample_no != 0:
-                print(f"Epoch: {epoch}, Sample: {sample_no}, Accuracy: {matches / total_samples_processed:.4f}, Loss: {total_loss / total_samples_processed:.4f}")
+                # print(f"Epoch: {epoch}, Sample: {sample_no}, Accuracy: {matches / total_samples_processed:.4f}, Loss: {total_loss / total_samples_processed:.4f}")
                     # wandb.log({"GPT-2 Token Sub-Space Intervention Accuracy": sum(correct[layer_intervened]) / total_samples_processed, "GPT-2 Token Sub-Space Intervention Loss": total_loss / total_samples_processed})
                 temp_idx += 1
                 i+=1
             
             # Log accuracy and loss to wandb
-            epoch_accuracy = sum(correct[layer_intervened]) / total_samples_processed
-            print(f"The total samples proceesed for {args.attribute} is {total_samples_processed}")
+            epoch_accuracy = matches / total_samples_processed
+            # print(f"The total samples proceesed for {args.attribute} is {total_samples_processed}")
             # wandb.log({"GPT-2 Sub-Space IIA": epoch_accuracy, "Loss": total_loss / total_samples_processed})
 
             print(f"Epoch {epoch} finished with accuracy {epoch_accuracy:.4f} and average loss {total_loss / total_samples_processed:.4f}")

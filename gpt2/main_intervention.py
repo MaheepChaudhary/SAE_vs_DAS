@@ -36,27 +36,34 @@ def overlap_measure():
 
 def model_eval(model, eval_file_path, attribute):
     
-    with open(eval_file_path, 'r') as file:
-        data = json.load(file)
+    with open("continent_intervention_dataset.json", 'r') as file:
+        continent_data = json.load(file)
 
-    comfy_data = []
-    correct = 0
-    for sample, label in data:
-        with model.trace(sample):
-            output = model.lm_head.output.argmax(dim = -1).save()
+    with open("country_intervention_dataset.json", 'r') as file:
+        country_data = json.load(file)
     
-        prediction = model.tokenizer.decode(output[0][-1])
-        if prediction.split()[0] == label[-1].split()[0]:
-            correct+=1
-
-            comfy_data.append([sample, label])
+    def filter(data):
+        comfy_data = []
+        correct = 0
+        for index in tqdm(range(len(data))):
+            sample, label = data[index]
+            with model.trace(sample):
+                output = model.lm_head.output.argmax(dim = -1).save()
         
-    with open(f"comfy_{attribute}_top1.json", "w") as file:
-        json.dump(comfy_data, file)
+            prediction = model.tokenizer.decode(output[0][-1])
+            if prediction.split()[0] == label[-1].split()[0]:
+                correct+=1
+
+                comfy_data.append([sample, label])
+            
+        with open(f"comfy_{attribute}_top1.json", "w") as file:
+            json.dump(comfy_data, file)
+        
+        print(f"the accuracy for {args.attribute} is {correct/len(data)}")
+
+    filter(continent_data)
+    filter(country_data)
     
-
-    print(f"the accuracy for {args.attribute} is {correct/len(data)}")
-
 
 def intervention_dataset(overlapping_cities):
     
@@ -152,14 +159,14 @@ if __name__ == "__main__":
     parser.add_argument("-acc", "--accuracy", required=True, help = "type of accuracy of the model on the evaluation dataset, i.e. top 1 or top 5 or top 10")
 
     args = parser.parse_args()
-    wandb.init(project="sae_concept_eraser")
+    # wandb.init(project="sae_concept_eraser")
     allowed_token_length = 59 if args.attribute == "country" else 61    
     DEVICE = args.device 
     
     # Load gpt2
     if args.model == "gpt2":
         tokenizer = GPT2Tokenizer.from_pretrained("openai-community/gpt2")
-        tokenizer.padding_side = "left"
+        # tokenizer.padding_side = "left"
         model = LanguageModel("openai-community/gpt2", device_map=DEVICE)
         # tokenizer = GPT2Tokenizer.from_pretrained("openai-community/gpt2")
         
@@ -171,13 +178,13 @@ if __name__ == "__main__":
 
     # tokenizer = model.tokenizer
     
-    tokenizer.pad_token_id = tokenizer.eos_token_id
+    # tokenizer.pad_token_id = tokenizer.eos_token_id
 
     # eval_file_path  = f"/content/{args.attribute}_data.json"
     
 
     '''
-    #Now I will have to make the code for taking the accuracy on the prepared selected dataset of ravel
+    Now I will have to make the code for taking the accuracy on the prepared selected dataset of ravel
     '''
     
     model_eval(eval_file_path=args.eval_file_path, model = model, attribute=args.attribute)
@@ -265,7 +272,7 @@ if __name__ == "__main__":
         
         total_samples_processed+=1
         
-    wandb.run.name = f"{args.model}-{args.attribute}-ttl_samp_proc{total_samples_processed}"
+    # wandb.run.name = f"{args.model}-{args.attribute}-ttl_samp_proc{total_samples_processed}"
     
     for layer_index in range(0,1):
         print(f"The accuracy of {args.attribute} layer {layer_index} is {sum(correct[layer_index])/total_samples_processed}")
@@ -276,10 +283,10 @@ if __name__ == "__main__":
         # for index in [61,62,63]:
         for index in [61]:
             wandb.log({"Length-wise Intervention Accuracy": len_correct[index]/len_correct_total[index]})
-            print(f"Accuracy of Length {index}: {len_correct[index]/len_correct_total[index]}")
+            # print(f"Accuracy of Length {index}: {len_correct[index]/len_correct_total[index]}")
     
     elif args.attribute == "country":
         # for index in [59,60,61]:
         for index in [59]:
-            wandb.log({"Length-wise Intervention Accuracy": len_correct[index]/len_correct_total[index]})
+            # wandb.log({"Length-wise Intervention Accuracy": len_correct[index]/len_correct_total[index]})
             print(f"Accuracy of Length {index}: {len_correct[index]/len_correct_total[index]}")
