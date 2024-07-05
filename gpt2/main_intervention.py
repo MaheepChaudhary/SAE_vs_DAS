@@ -37,17 +37,22 @@ def overlap_measure():
 
 def model_eval(model, eval_file_path, attribute):
     
-    with open("continent_intervention_dataset.json", 'r') as file:
+    with open("ravel/processed_data/continent_data.json", 'r') as file:
         continent_data = json.load(file)
 
-    with open("country_intervention_dataset.json", 'r') as file:
+    with open("ravel/processed_data/country_data.json", 'r') as file:
         country_data = json.load(file)
     
     def filter(data):
         comfy_data = []
         correct = 0
-        for index in tqdm(range(len(data))):
-            sample, label = data[index]
+        # for index in tqdm(range(len(data))):
+            # sample, label = data[index]
+        for sample, label in data:
+            # print(index)
+            print(sample)
+            print(label)
+            print()
             with model.trace(sample):
                 output = model.lm_head.output.argmax(dim = -1).save()
         
@@ -57,8 +62,8 @@ def model_eval(model, eval_file_path, attribute):
 
                 comfy_data.append([sample, label])
             
-        with open(f"comfy_{attribute}_top1.json", "w") as file:
-            json.dump(comfy_data, file)
+        # with open(f"comfy_{attribute}_top1.json", "w") as file:
+        #     json.dump(comfy_data, file)
         
         print(f"the accuracy for {args.attribute} is {correct/len(data)}")
 
@@ -188,7 +193,7 @@ if __name__ == "__main__":
     Now I will have to make the code for taking the accuracy on the prepared selected dataset of ravel
     '''
     
-    # model_eval(eval_file_path=args.eval_file_path, model = model, attribute=args.attribute)
+    model_eval(eval_file_path=args.eval_file_path, model = model, attribute=args.attribute)
     overlapping_cities = overlap_measure()
     
     # creating the intervention dataset of overlapping cities. 
