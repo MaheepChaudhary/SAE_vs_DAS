@@ -21,7 +21,6 @@ def overlap_measure():
     
     country_cities = []
     for i in country_data:
-        print(i)
         country_cities.append(i[0].split(".")[-1].split()[0])
     
     continent_cities = []
@@ -118,9 +117,9 @@ def data_process(sample, model, attribute):
     base_label = sample[0][1]
     source_label = sample[1][1]
     
-    base_ids = tokenizer.encode(base, return_tensors='pt', padding=True, truncation=True).type(torch.LongTensor).to(DEVICE)
+    base_ids = tokenizer.encode(base, return_tensors='pt', truncation=True).type(torch.LongTensor).to(DEVICE)
     base_tokens = tokenizer.tokenize(base)
-    source_ids = tokenizer.encode(source, return_tensors='pt', padding=True, truncation=True).type(torch.LongTensor).to(DEVICE)
+    source_ids = tokenizer.encode(source, return_tensors='pt', truncation=True).type(torch.LongTensor).to(DEVICE)
     # source_tokens = tokenizer.tokenize(source) 
     
     if source_ids.shape[1] != base_ids.shape[1]:
@@ -194,7 +193,7 @@ if __name__ == "__main__":
     Now I will have to make the code for taking the accuracy on the prepared selected dataset of ravel
     '''
     
-    model_eval(eval_file_path=args.eval_file_path, model = model)
+    # model_eval(eval_file_path=args.eval_file_path, model = model)
     overlapping_cities = overlap_measure()
     
     # creating the intervention dataset of overlapping cities. 

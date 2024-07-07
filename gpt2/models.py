@@ -222,8 +222,7 @@ class my_model(nn.Module):
                 # print("Intermediate shape",intermediate_output.shape)
                     
                     # das 
-                    l4_mask_sigmoid = l4_mask_sigmoid.squeeze(0)
-                    assert vector_source[0][:,self.intervened_token_idx,:].shape == intermediate_output[:,self.intervened_token_idx,:].shape == torch.Size([args.batch_size,768])
+                    assert vector_source[0][:,self.intervened_token_idx,:].shape == intermediate_output[:,self.intervened_token_idx,:].shape == torch.Size([self.batch_size,768])
                     vector_source_rotated = self.rotate_layer(vector_source[0][:,self.intervened_token_idx,:])
                     cloned_intermediate_output = intermediate_output.clone()
                     intermediate_output_rotated = self.rotate_layer(cloned_intermediate_output[:,self.intervened_token_idx,:])
