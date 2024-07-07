@@ -25,11 +25,15 @@ class AutoEncoder(nn.Module):
         self.to(cfg["device"])
     
     # inserted mask here
-    def forward(self, x, mask, token_intervened_idx, bs):
-        x_cent = x - self.b_dec
-        acts = F.relu(x_cent @ self.W_enc + self.b_enc)
+    def forward(self, x_base, x_source, mask, token_intervened_idx, bs):
+        x_base_cent = x_base - self.b_dec
+        x_source_cent = x_source - self.b_dec
+        base_acts = F.relu(x_base_cent @ self.W_enc + self.b_enc)
+        source_acts = F.relu(x_source_cent @ self.W_enc + self.b_enc)
+        
         # Create a new tensor by modifying only the token_intervened_idx dimensions
-        new_acts = acts.clone()  # Clone the original tensor to avoid modifying it in-place
+        base_new_acts = base_acts.clone()  # Clone the original tensor to avoid modifying it in-place
+        source_new_acts = source_acts.clone()
 
         # Ensure token_intervened_idx is a tensor
         if isinstance(token_intervened_idx, int):
@@ -38,20 +42,17 @@ class AutoEncoder(nn.Module):
         # Reshape mask to match the new_acts dimensions
         mask = mask.view(-1, 6144)
 
-        if bs == "base":
-            new_acts[:, token_intervened_idx, :] = new_acts[:, token_intervened_idx, :] * mask
-        elif bs == "source":
-            new_acts[:, token_intervened_idx, :] = (1 - mask) * new_acts[:, token_intervened_idx, :]
+        base_new_acts[:, token_intervened_idx, :] = base_new_acts[:, token_intervened_idx, :] * mask
+        source_new_acts[:, token_intervened_idx, :] = (1 - mask) * source_new_acts[:, token_intervened_idx, :]
         
-        #TODO: first add them and then decode, not decode and then add.
-
-        acts = new_acts
+        new_acts = base_new_acts + source_new_acts
 
         x_reconstruct = new_acts @ self.W_dec + self.b_dec
-        l2_loss = (x_reconstruct.float() - x.float()).pow(2).sum(-1).mean(0)
-        l1_loss = self.l1_coeff * (acts.float().abs().sum())
-        loss = l2_loss + l1_loss
-        return loss, x_reconstruct, acts, l2_loss, l1_loss
+        return x_reconstruct
+        # l2_loss = (x_reconstruct.float() - x.float()).pow(2).sum(-1).mean(0)
+        # l1_loss = self.l1_coeff * (acts.float().abs().sum())
+        # loss = l2_loss + l1_loss
+        # return loss, x_reconstruct, new_acts, l2_loss, l1_loss
     
     @torch.no_grad()
     def make_decoder_weights_and_grad_unit_norm(self):
@@ -270,25 +271,17 @@ class my_model(nn.Module):
                 with tracer.invoke(base_ids) as runner_:
                     
                     base = self.model.transformer.h[self.layer_intervened].output[0].clone()
-                    _, source_masked, _, _, _ = self.encoder_mlp_out_0(source[0], l4_mask_sigmoid, self.intervened_token_idx, "base")
-                    _, base_masked, _, _, _ = self.encoder_mlp_out_0(base, l4_mask_sigmoid, self.intervened_token_idx, "source")
-                    # intermediate_output = (1 - l4_mask_sigmoid) * intermediate_output[:,self.intervened_token_idx,:].unsqueeze(0) + l4_mask_sigmoid * vector_source[0][:,self.intervened_token_idx,:].unsqueeze(0)
+                    iia_vector = self.encoder_mlp_out_0(base, source[0], l4_mask_sigmoid, self.intervened_token_idx, "base")
                     
-                    base_masked_ind = base_masked[:,self.intervened_token_idx,:]
-                    source_masked_ind = source_masked[:,self.intervened_token_idx,:]
-                    
-                    iia_vector = base_masked_ind + source_masked_ind
-                    # assert iia_vector.unsqueeze(0).shape == source[0][:,self.intervened_token_idx,:].unsqueeze(0).shape == torch.Size([1, 1, 768])
-                    # Create a new tuple with the modified intermediate_output
-                    # modified_output = (intermediate_output,) + self.model.transformer.h[self.layer_intervened].output[1:]
-                    self.model.transformer.h[self.layer_intervened].output[0][:,self.intervened_token_idx,:] = iia_vector
-                    # self.model.transformer.h[self.layer_intervened].output[0][:, self.intervened_token_idx,:] = source_masked[:,self.intervened_token_idx,:]
+                    self.model.transformer.h[self.layer_intervened].output[0][:,self.intervened_token_idx,:] = iia_vector[:, self.intervened_token_idx, :]
                     
                     intervened_base_predicted = self.model.lm_head.output.argmax(dim=-1).save()
                     intervened_base_output = self.model.lm_head.output.save()
                 
                 
-            predicted_text = self.model.tokenizer.decode(intervened_base_predicted[0][-1])
+            predicted_text = []
+            for index in range(intervened_base_output.shape[0]):
+                predicted_text.append(self.model.tokenizer.decode(intervened_base_output[index].argmax(dim = -1)).split()[-1])
 
             return intervened_base_output, predicted_text
 
