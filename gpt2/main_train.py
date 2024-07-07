@@ -73,39 +73,49 @@ def train_data_processing(intervention_divided_data, batch_size):
     
 
     
-    # if intervention_divided_data == "continent":
-    #     data1 = country_data
-    #     data2 = continent_data
-    # if intervention_divided_data == "country":
-    #     data1 = continent_data
-    #     data2 = country_data
+    if intervention_divided_data == "continent":
+        data1 = country_data
+        data2 = continent_data
+    if intervention_divided_data == "country":
+        data1 = continent_data
+        data2 = country_data
         
-    # for sample_no in range(len(data1)):
-    #     sample = data1[sample_no]
-    #     base = sample[0][0]
-    #     source = sample[1][0]
-    #     base_label = sample[0][1]
-    #     source_label = sample[1][1]
+    for sample_no in range(len(data1)):
+        sample = data1[sample_no]
+        base = sample[0][0]
+        source = sample[1][0]
+        base_label = sample[0][1]
+        source_label = sample[1][1]
         
-    #     data1[sample_no][1][1] = base_label
+        data1[sample_no][1][1] = base_label
             
-    # random.shuffle(data1)
-    # random.shuffle(data2)
-    # data = data1 + data2
+    random.shuffle(data1)
+    random.shuffle(data2)
         
-    random.shuffle(country_data)
-    random.shuffle(continent_data)
+    # random.shuffle(country_data)
+    # random.shuffle(continent_data)
     
-    country_num_batches = np.array(country_data).shape[0] // batch_size
-    continent_num_batches = np.array(continent_data).shape[0] // batch_size
+    # country_num_batches = np.array(country_data).shape[0] // batch_size
+    # continent_num_batches = np.array(continent_data).shape[0] // batch_size
     
-    country_batch_data = [country_data[i*batch_size:(i+1)*batch_size] for i in range(country_num_batches)]
-    continent_batch_data = [continent_data[i*batch_size:(i+1)*batch_size] for i in range(continent_num_batches)]
-    assert np.array(country_batch_data).shape == (country_num_batches,batch_size,2,2)
-    assert np.array(continent_batch_data).shape == (continent_num_batches,batch_size, 2, 2)
+    data1_num_batches = np.array(data1).shape[0] // batch_size
+    data2_num_batches = np.array(data2).shape[0] // batch_size
+    
+    # country_batch_data = [country_data[i*batch_size:(i+1)*batch_size] for i in range(country_num_batches)]
+    # continent_batch_data = [continent_data[i*batch_size:(i+1)*batch_size] for i in range(continent_num_batches)]
+    
+    data1_batch_data = [data1[i*batch_size:(i+1)*batch_size] for i in range(data1_num_batches)]
+    data2_batch_data = [data2[i*batch_size:(i+1)*batch_size] for i in range(data2_num_batches)]
+    
+    # assert np.array(country_batch_data).shape == (country_num_batches,batch_size,2,2)
+    # assert np.array(continent_batch_data).shape == (continent_num_batches,batch_size, 2, 2)
+    
+    assert np.array(data1_batch_data).shape == (data1_num_batches, batch_size, 2, 2)
+    assert np.array(data2_batch_data).shape == (data2_num_batches, batch_size, 2, 2)
     
     # data =  country_data + continent_data
-    data = country_batch_data + continent_batch_data
+    # data = country_batch_data + continent_batch_data
+    data = data1_batch_data + data2_batch_data
     random.shuffle(data)
     # print(data)
     
