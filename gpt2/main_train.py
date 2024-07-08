@@ -193,7 +193,7 @@ def train(continent_data, country_data, training_model, model, train_data, optim
             i+=1
         print(f"Epoch: {epoch}, Accuracy: {matches / total_samples_processed:.4f}, Loss: {total_loss / total_samples_processed:.4f}")
 
-        val(training_model, model, val_data, loss_fn, batch_size, token_length_allowed, attribute, temperature_end, DEVICE)
+        val(training_model, model, val_data, loss_fn, batch_size, token_length_allowed, attribute, temperature, DEVICE)
         
         if epoch % 2 == 0:
             continent_acc = calculate_accuracy(training_model, model, continent_data, token_length_allowed, attribute, batch_size, DEVICE, temperature)
@@ -248,7 +248,7 @@ def calculate_accuracy(training_model, model, data, token_length_allowed, attrib
             
     return matches / total_samples_processed
 
-def val(training_model, model, val_data, loss_fn, batch_size, token_length_allowed, attribute, temperature_end, DEVICE):
+def val(training_model, model, val_data, loss_fn, batch_size, token_length_allowed, attribute, temperature, DEVICE):
     with torch.no_grad():
         matches_val = 0
         total_val_samples_processed = 0
@@ -268,8 +268,6 @@ def val(training_model, model, val_data, loss_fn, batch_size, token_length_allow
             
             if not proceed:
                 continue
-            
-            temperature = temperature_end
                 
             intervened_base_output, predicted_text = training_model(source_ids, base_ids, temperature)
             
