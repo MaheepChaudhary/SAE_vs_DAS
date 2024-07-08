@@ -44,21 +44,6 @@ def data_processing(model, samples, token_length_allowed, attribute, DEVICE, bat
     source_label_ids = model.tokenizer(source_label_mods, return_tensors='pt').to(DEVICE)
     
     allowed_token_length = 59 if attribute == "country" else 61
-    
-    # if source_ids.shape[1] == base_ids.shape[1] == allowed_token_length:
-    #     return True, base_ids, source_ids, base_label_ids, source_label_ids, source, base   
-
-    # else:
-    #     return False, base_ids, source_ids, base_label_ids, source_label_ids, source_label, base_label  
-
-    # assert token_length_allowed == 61 if attribute == "continent" else 59
-    
-    # # Conditions to filter data:
-    # if len(base_tokens) == len(source_tokens) == token_length_allowed and len(source_label_ids) == len(base_label_ids) == 1:
-    #     proceed = True
-    #     assert len(base_tokens) == len(source_tokens) == token_length_allowed
-    # else:
-    #     proceed = False
 
     proceed = True
     return proceed, base_ids, source_ids, base_label_ids, source_label_ids, source_labels, base_labels
@@ -74,7 +59,7 @@ def train_data_processing(task, intervention_divided_data, batch_size):
     random.shuffle(country_data) 
     random.shuffle(continent_data)
     
-    if task == "train":
+    if task == "train" or task == "test":
         if intervention_divided_data == "continent":
             data1 = country_data
             data2 = continent_data
