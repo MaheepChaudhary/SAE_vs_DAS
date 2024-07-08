@@ -71,7 +71,9 @@ def train_data_processing(task, intervention_divided_data, batch_size):
     with open("filtered_country_intervention_dataset.json", "r") as file:
         country_data = json.load(file)
     
-
+    random.shuffle(country_data) 
+    random.shuffle(continent_data)
+    
     if task == "total_iia_train":
         if intervention_divided_data == "continent":
             data1 = country_data
@@ -89,8 +91,6 @@ def train_data_processing(task, intervention_divided_data, batch_size):
             
             data1[sample_no][1][1] = base_label
                 
-        random.shuffle(data1)
-        random.shuffle(data2)
         data1_num_batches = np.array(data1).shape[0] // batch_size
         data2_num_batches = np.array(data2).shape[0] // batch_size
         data1_batch_data = [data1[i*batch_size:(i+1)*batch_size] for i in range(data1_num_batches)]
@@ -98,12 +98,11 @@ def train_data_processing(task, intervention_divided_data, batch_size):
         assert np.array(data1_batch_data).shape == (data1_num_batches, batch_size, 2, 2)
         assert np.array(data2_batch_data).shape == (data2_num_batches, batch_size, 2, 2)
         data = data1_batch_data + data2_batch_data
-        random.shuffle(data)
+
         
     elif task == "train":
         
-        random.shuffle(country_data) 
-        random.shuffle(continent_data)
+        
         country_num_batches = np.array(country_data).shape[0] // batch_size
         continent_num_batches = np.array(continent_data).shape[0] // batch_size
         country_batch_data = [country_data[i*batch_size:(i+1)*batch_size] for i in range(country_num_batches)]
@@ -113,15 +112,16 @@ def train_data_processing(task, intervention_divided_data, batch_size):
         assert np.array(continent_batch_data).shape == (continent_num_batches,batch_size, 2, 2)
     
         data = country_batch_data + continent_batch_data
-        random.shuffle(data)
+    
+    random.shuffle(data)
     
     train_data = data[:int(0.7*len(data))]
     val_data = data[int(0.7*len(data)):int(0.8*len(data))]
     test_data = data[int(0.8*len(data)):]
-    return train_data, val_data, test_data
+    return country_batch_data, continent_batch_data, train_data, val_data, test_data
     
 
-def train(training_model, model, train_data, optimizer, loss_fn, epochs, token_length_allowed, attribute, temperature_schedule, temp_idx, batch_size, DEVICE):
+def train(continent_data, country_data, training_model, model, train_data, optimizer, loss_fn, epochs, token_length_allowed, attribute, temperature_schedule, temp_idx, batch_size, DEVICE):
     training_model.train()
 
     for epoch in tqdm(range(epochs)):
@@ -153,6 +153,7 @@ def train(training_model, model, train_data, optimizer, loss_fn, epochs, token_l
             optimizer.zero_grad()  
             
             temperature = temperature_schedule[temp_idx]
+
             intervened_base_output, predicted_text = training_model(source_ids, base_ids, temperature)
             ground_truth_token_id = source_label_ids
             # ground_truth_token_id = base_label_ids
@@ -189,13 +190,59 @@ def train(training_model, model, train_data, optimizer, loss_fn, epochs, token_l
             wandb.log({"GPT-2 Token Sub-Space Intervention Accuracy": matches / total_samples_processed, "GPT-2 Token Sub-Space Intervention Loss": total_loss / total_samples_processed})
             temp_idx += 1
             i+=1
-        
-        # Log accuracy and loss to wandb
-        epoch_accuracy = matches / total_samples_processed
-        # print(f"The total samples proceesed for {args.attribute} is {total_samples_processed}")
-        # wandb.log({"GPT-2 Sub-Space IIA": epoch_accuracy, "Loss": total_loss / total_samples_processed})
 
-        print(f"Epoch {epoch} finished with accuracy {epoch_accuracy:.4f} and average loss {total_loss / total_samples_processed:.4f}")
+        if epoch % 2 == 0:
+            continent_acc = calculate_accuracy(training_model, model, continent_data, token_length_allowed, attribute, batch_size, DEVICE, temperature)
+            country_acc = calculate_accuracy(training_model, model, country_data, token_length_allowed, attribute, batch_size, DEVICE, temperature)
+            print(f"Continent Accuracy: {continent_acc}, Country Accuracy: {country_acc}")
+            wandb.log({"Continent Accuracy": continent_acc, "Country Accuracy": country_acc})
+    
+        # Log accuracy and loss to wandb
+        # epoch_accuracy = matches / total_samples_processed
+
+        # print(f"Epoch {epoch} finished with accuracy {epoch_accuracy:.4f} and average loss {total_loss / total_samples_processed:.4f}")
+
+def calculate_accuracy(training_model, model, data, token_length_allowed, attribute, batch_size, DEVICE, temperature):
+    correct_predictions = 0
+    total_predictions = 0
+    total_samples_processed = 0
+    matches = 0
+    with t.no_grad():
+        for sample_no in range(np.array(data).shape[0]):
+            
+            samples = data[sample_no]
+            assert np.array(samples).shape == (batch_size, 2, 2)
+            # samples = train_data[i*batch_size:(i+1)*batch_size]
+            
+            # Data Processing
+            proceed, base_ids, source_ids, base_label_ids, source_label_ids, source_label, base_label = data_processing(model = model,
+                                                                                                                        samples = samples, 
+                                                                                                                        token_length_allowed=token_length_allowed, 
+                                                                                                                        attribute=attribute,
+                                                                                                                        DEVICE=DEVICE,
+                                                                                                                        batch_size=batch_size)
+            
+            if not proceed: continue 
+            
+            intervened_base_output, predicted_text = training_model(source_ids, base_ids, temperature)
+            ground_truth_token_id = source_label_ids
+            vocab_size = model.tokenizer.vocab_size
+            ground_truth_one_hot = F.one_hot(ground_truth_token_id["input_ids"], num_classes=vocab_size)
+            ground_truth_one_hot = ground_truth_one_hot.to(dtype=torch.long)
+            last_token_output = intervened_base_output[:,-1,:]
+            assert ground_truth_one_hot.squeeze(1).shape == last_token_output.shape
+            ground_truth_indices = torch.argmax(ground_truth_one_hot.squeeze(1), dim=1)
+            ground_truth_indices = ground_truth_indices.to(dtype=torch.long)
+            loss = loss_fn(last_token_output, ground_truth_indices)
+            
+            # Calculate accuracy
+            predicted_text = [word.split()[0] for word in predicted_text]
+            source_label = [word.split()[0] for word in source_label]
+            matches_arr = [i for i in range(len(predicted_text)) if predicted_text[i] == source_label[i]]
+            matches+=len(matches_arr)
+            total_samples_processed +=batch_size
+            
+    return matches / total_samples_processed
 
 def val(training_model, model, val_data, loss_fn, batch_size, token_length_allowed, attribute, temperature_end, DEVICE):
     with torch.no_grad():
@@ -240,7 +287,7 @@ def val(training_model, model, val_data, loss_fn, batch_size, token_length_allow
             matches_val+=len(matches_arr)
             total_val_samples_processed +=batch_size
             
-        wandb.log({"GPT-2 Token Sub-Space Intervention Accuracy": matches_val / total_val_samples_processed, "GPT-2 Token Sub-Space Intervention Loss": total_val_loss / total_val_samples_processed})
+        wandb.log({"GPT-2 SS IIA Val": matches_val / total_val_samples_processed, "GPT-2 SS IIA Val Loss": total_val_loss / total_val_samples_processed})
         print(f"Validation Accuracy: {matches_val / total_val_samples_processed:.4f}, Validation Loss: {total_val_loss / total_val_samples_processed:.4f}")
 
 def test(model_path, model, test_data, loss_fn, attribute, token_length_allowed, batch_size, temperature_end, DEVICE):
@@ -334,7 +381,7 @@ if __name__ == "__main__":
         print(f'{name}: requires_grad={param.requires_grad}')
     optimizer = optim.Adam(training_model.parameters(), lr=args.learning_rate)
 
-    train_data, val_data, test_data = train_data_processing(args.task, args.intervention_divided_data, args.batch_size)
+    country_data, continent_data, train_data, val_data, test_data = train_data_processing(args.task, args.intervention_divided_data, args.batch_size)
 
     #Inserting the temperature
     total_step = 0
@@ -356,13 +403,13 @@ if __name__ == "__main__":
         '''
         This correponds to the fact when we are training the model with total intervention and not partial, either on continent or country.
         '''
-        train(training_model, model, train_data, optimizer, loss_fn, args.epochs, args.token_length_allowed, args.attribute, temperature_schedule, temp_idx, batch_size, DEVICE)
+        train(continent_data, country_data, training_model, model, train_data, optimizer, loss_fn, args.epochs, args.token_length_allowed, args.attribute, temperature_schedule, temp_idx, batch_size, DEVICE)
     
         val(training_model, model, val_data, loss_fn, batch_size, args.token_length_allowed, args.attribute, temperature_end, DEVICE)
     
-    if args.task == "train":
+    elif args.task == "train":
     
-        train(training_model, model, train_data, optimizer, loss_fn, args.epochs, args.token_length_allowed, args.attribute, temperature_schedule, temp_idx, batch_size, DEVICE)
+        train(continent_data, country_data, training_model, model, train_data, optimizer, loss_fn, args.epochs, args.token_length_allowed, args.attribute, temperature_schedule, temp_idx, batch_size, DEVICE)
         
         # Validation Data Evaluation
         val(training_model, model, val_data, loss_fn, batch_size, args.token_length_allowed, args.attribute, temperature_end, DEVICE)
