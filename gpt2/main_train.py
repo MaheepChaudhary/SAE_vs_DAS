@@ -277,7 +277,7 @@ def val(training_model, model, val_data, loss_fn, batch_size, token_length_allow
         wandb.log({"GPT-2 SS IIA Val": matches_val / total_val_samples_processed, "GPT-2 SS IIA Val Loss": total_val_loss / total_val_samples_processed})
         print(f"Validation Accuracy: {matches_val / total_val_samples_processed:.4f}, Validation Loss: {total_val_loss / total_val_samples_processed:.4f}")
 
-def test(model_path, model, test_data, loss_fn, attribute, token_length_allowed, batch_size, temperature_end, DEVICE):
+def test(model_path, training_model, test_data, loss_fn, attribute, token_length_allowed, batch_size, temperature_end, DEVICE):
     model.load_state_dict(torch.load(model_path))
     model.eval()
 
@@ -401,5 +401,5 @@ if __name__ == "__main__":
         
     elif args.task == "test":
         model_path = args.saved_model_path
-        test(model_path, model, test_data, loss_fn, args.attribute, args.token_length_allowed, batch_size, temperature_end, DEVICE)
+        test(model_path, training_model, test_data, loss_fn, args.attribute, args.token_length_allowed, batch_size, temperature_end, DEVICE)
         
