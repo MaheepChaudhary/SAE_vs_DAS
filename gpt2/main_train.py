@@ -318,7 +318,7 @@ if __name__ == "__main__":
 
     args = parser.parse_args()
     wandb.init(project="sae_concept_eraser")
-    wandb.run.name = f"{args.method}-{args.epochs}-{args.notes}"
+    wandb.run.name = f"{args.method}-e{args.epochs}-b{args.batch_size}-{args.notes}"
     DEVICE = args.device 
 
     data, model, layer_intervened, intervened_token_idx, = config(file_path = args.eval_file_path, learning_rate = args.learning_rate,
