@@ -341,7 +341,7 @@ def test(model_path, model, test_data, loss_fn, attribute, token_length_allowed,
             matches_test+=len(matches_arr)
             total_test_samples_processed +=batch_size
             
-        wandb.log({"GPT-2 Token Sub-Space Intervention Accuracy": matches_test / total_test_samples_processed, "GPT-2 Token Sub-Space Intervention Loss": total_test_loss / total_test_samples_processed})
+        wandb.log({"GPT-2 SS IIA Test Acc": matches_test / total_test_samples_processed, "GPT-2 SS IIA Test Loss": total_test_loss / total_test_samples_processed})
 
 
 if __name__ == "__main__":
