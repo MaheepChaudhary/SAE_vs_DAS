@@ -63,7 +63,7 @@ def data_processing(model, samples, token_length_allowed, attribute, DEVICE, bat
     proceed = True
     return proceed, base_ids, source_ids, base_label_ids, source_label_ids, source_labels, base_labels
 
-def train_data_processing(intervention_divided_data, batch_size):
+def train_data_processing(task, intervention_divided_data, batch_size):
     
     with open("filtered_continent_intervention_dataset.json", "r") as file:
         continent_data = json.load(file)
@@ -72,58 +72,228 @@ def train_data_processing(intervention_divided_data, batch_size):
         country_data = json.load(file)
     
 
-    
-    if intervention_divided_data == "continent":
-        data1 = country_data
-        data2 = continent_data
-    if intervention_divided_data == "country":
-        data1 = continent_data
-        data2 = country_data
-        
-    for sample_no in range(len(data1)):
-        sample = data1[sample_no]
-        base = sample[0][0]
-        source = sample[1][0]
-        base_label = sample[0][1]
-        source_label = sample[1][1]
-        
-        data1[sample_no][1][1] = base_label
+    if task == "total_iia_train":
+        if intervention_divided_data == "continent":
+            data1 = country_data
+            data2 = continent_data
+        if intervention_divided_data == "country":
+            data1 = continent_data
+            data2 = country_data
             
-    random.shuffle(data1)
-    random.shuffle(data2)
+        for sample_no in range(len(data1)):
+            sample = data1[sample_no]
+            base = sample[0][0]
+            source = sample[1][0]
+            base_label = sample[0][1]
+            source_label = sample[1][1]
+            
+            data1[sample_no][1][1] = base_label
+                
+        random.shuffle(data1)
+        random.shuffle(data2)
+        data1_num_batches = np.array(data1).shape[0] // batch_size
+        data2_num_batches = np.array(data2).shape[0] // batch_size
+        data1_batch_data = [data1[i*batch_size:(i+1)*batch_size] for i in range(data1_num_batches)]
+        data2_batch_data = [data2[i*batch_size:(i+1)*batch_size] for i in range(data2_num_batches)]
+        assert np.array(data1_batch_data).shape == (data1_num_batches, batch_size, 2, 2)
+        assert np.array(data2_batch_data).shape == (data2_num_batches, batch_size, 2, 2)
+        data = data1_batch_data + data2_batch_data
+        random.shuffle(data)
         
-    # random.shuffle(country_data)
-    # random.shuffle(continent_data)
+    elif task == "train":
+        
+        random.shuffle(country_data) 
+        random.shuffle(continent_data)
+        country_num_batches = np.array(country_data).shape[0] // batch_size
+        continent_num_batches = np.array(continent_data).shape[0] // batch_size
+        country_batch_data = [country_data[i*batch_size:(i+1)*batch_size] for i in range(country_num_batches)]
+        continent_batch_data = [continent_data[i*batch_size:(i+1)*batch_size] for i in range(continent_num_batches)]
+        
+        assert np.array(country_batch_data).shape == (country_num_batches,batch_size,2,2)
+        assert np.array(continent_batch_data).shape == (continent_num_batches,batch_size, 2, 2)
     
-    # country_num_batches = np.array(country_data).shape[0] // batch_size
-    # continent_num_batches = np.array(continent_data).shape[0] // batch_size
+        data = country_batch_data + continent_batch_data
+        random.shuffle(data)
     
-    data1_num_batches = np.array(data1).shape[0] // batch_size
-    data2_num_batches = np.array(data2).shape[0] // batch_size
-    
-    # country_batch_data = [country_data[i*batch_size:(i+1)*batch_size] for i in range(country_num_batches)]
-    # continent_batch_data = [continent_data[i*batch_size:(i+1)*batch_size] for i in range(continent_num_batches)]
-    
-    data1_batch_data = [data1[i*batch_size:(i+1)*batch_size] for i in range(data1_num_batches)]
-    data2_batch_data = [data2[i*batch_size:(i+1)*batch_size] for i in range(data2_num_batches)]
-    
-    # assert np.array(country_batch_data).shape == (country_num_batches,batch_size,2,2)
-    # assert np.array(continent_batch_data).shape == (continent_num_batches,batch_size, 2, 2)
-    
-    assert np.array(data1_batch_data).shape == (data1_num_batches, batch_size, 2, 2)
-    assert np.array(data2_batch_data).shape == (data2_num_batches, batch_size, 2, 2)
-    
-    # data =  country_data + continent_data
-    # data = country_batch_data + continent_batch_data
-    data = data1_batch_data + data2_batch_data
-    random.shuffle(data)
-    # print(data)
-    
-    # train_data = data[:int(0.7*len(data))]
-    # val_data = data[int(0.7*len(data)):int(0.8*len(data))]
-    # test_data = data[int(0.8*len(data)):]
-    train_data = test_data = val_data = data    
+    train_data = data[:int(0.7*len(data))]
+    val_data = data[int(0.7*len(data)):int(0.8*len(data))]
+    test_data = data[int(0.8*len(data)):]
     return train_data, val_data, test_data
+    
+
+def train(training_model, model, train_data, optimizer, loss_fn, epochs, token_length_allowed, attribute, temperature_schedule, temp_idx, batch_size, DEVICE):
+    training_model.train()
+
+    for epoch in tqdm(range(epochs)):
+
+        correct = {i:[] for i in range(0,12)}
+        total_samples_processed = 0
+        total_loss = 0.0
+
+        # for sample_no in tqdm(range(len(data))):
+        i = 0
+        matches = 0
+        for sample_no in range(np.array(train_data).shape[0]):
+            
+            samples = train_data[sample_no]
+            assert np.array(samples).shape == (batch_size, 2, 2)
+            # samples = train_data[i*batch_size:(i+1)*batch_size]
+            
+            # Data Processing
+            proceed, base_ids, source_ids, base_label_ids, source_label_ids, source_label, base_label = data_processing(model = model,
+                                                                                                                        samples = samples, 
+                                                                                                                        token_length_allowed=token_length_allowed, 
+                                                                                                                        attribute=attribute,
+                                                                                                                        DEVICE=DEVICE,
+                                                                                                                        batch_size=batch_size)
+            
+            if not proceed: continue
+            
+            # training the model
+            optimizer.zero_grad()  
+            
+            temperature = temperature_schedule[temp_idx]
+            intervened_base_output, predicted_text = training_model(source_ids, base_ids, temperature)
+            ground_truth_token_id = source_label_ids
+            # ground_truth_token_id = base_label_ids
+            vocab_size = model.tokenizer.vocab_size
+            ground_truth_one_hot = F.one_hot(ground_truth_token_id["input_ids"], num_classes=vocab_size)
+            ground_truth_one_hot = ground_truth_one_hot.to(dtype=torch.long)
+            last_token_output = intervened_base_output[:,-1,:]
+            assert ground_truth_one_hot.squeeze(1).shape == last_token_output.shape
+            ground_truth_indices = torch.argmax(ground_truth_one_hot.squeeze(1), dim=1)
+            ground_truth_indices = ground_truth_indices.to(dtype=torch.long)
+            loss = loss_fn(last_token_output, ground_truth_indices)
+            # loss = loss_fn(predicted_logit.view(-1, predicted_logit.size(-1)), ground_truth_token_id.view(-1))
+            total_loss += loss.item()
+            
+            # Backpropagation
+            loss.backward()
+            optimizer.step()
+            
+            # Calculate accuracy
+            predicted_text = [word.split()[0] for word in predicted_text]
+            source_label = [word.split()[0] for word in source_label]
+            # base_label = [word.split()[0] for word in source_label]
+            matches_arr = [i for i in range(len(predicted_text)) if predicted_text[i] == source_label[i]]
+            # print(predicted_text)
+            # print(source_label)
+            # print(matches_arr)
+            matches+=len(matches_arr)
+            # matches = 1 if predicted_text.split()[0] == source_label.split()[0] else 0
+            # correct[layer_intervened].append(matches)
+            total_samples_processed +=batch_size
+            
+            # if sample_no % 100 == 0 and sample_no != 0:
+            # print(f"Epoch: {epoch}, Sample: {sample_no}, Accuracy: {matches / total_samples_processed:.4f}, Loss: {total_loss / total_samples_processed:.4f}")
+            wandb.log({"GPT-2 Token Sub-Space Intervention Accuracy": matches / total_samples_processed, "GPT-2 Token Sub-Space Intervention Loss": total_loss / total_samples_processed})
+            temp_idx += 1
+            i+=1
+        
+        # Log accuracy and loss to wandb
+        epoch_accuracy = matches / total_samples_processed
+        # print(f"The total samples proceesed for {args.attribute} is {total_samples_processed}")
+        # wandb.log({"GPT-2 Sub-Space IIA": epoch_accuracy, "Loss": total_loss / total_samples_processed})
+
+        print(f"Epoch {epoch} finished with accuracy {epoch_accuracy:.4f} and average loss {total_loss / total_samples_processed:.4f}")
+
+def val(training_model, model, val_data, loss_fn, batch_size, token_length_allowed, attribute, temperature_end, DEVICE):
+    with torch.no_grad():
+        matches_val = 0
+        total_val_samples_processed = 0
+        total_val_loss = 0
+        
+        correct_val = {i:[] for i in range(0,12)}
+        for sample_no in range(np.array(val_data).shape[0]):
+            samples = val_data[sample_no]
+            assert np.array(samples).shape == (batch_size, 2, 2)
+            # Data Processing
+            proceed, base_ids, source_ids, base_label_ids, source_label_ids, source_label, base_label = data_processing(model = model,
+                                                                                                                        samples = samples, 
+                                                                                                                        token_length_allowed=token_length_allowed, 
+                                                                                                                        attribute=attribute,
+                                                                                                                        DEVICE=DEVICE,
+                                                                                                                        batch_size=batch_size)
+            
+            if not proceed:
+                continue
+            
+            temperature = temperature_end
+                
+            intervened_base_output, predicted_text = training_model(source_ids, base_ids, temperature)
+            
+            ground_truth_token_id = source_label_ids
+            vocab_size = model.tokenizer.vocab_size
+            ground_truth_one_hot = F.one_hot(ground_truth_token_id["input_ids"], num_classes=vocab_size)
+            ground_truth_one_hot = ground_truth_one_hot.to(dtype=torch.long)
+            last_token_output = intervened_base_output[:,-1,:]
+            assert ground_truth_one_hot.squeeze(1).shape == last_token_output.shape
+            ground_truth_indices = torch.argmax(ground_truth_one_hot.squeeze(1), dim=1)
+            ground_truth_indices = ground_truth_indices.to(dtype=torch.long)
+            loss = loss_fn(last_token_output, ground_truth_indices)
+            total_val_loss += loss.item()
+            
+            # Calculate accuracy
+            predicted_text = [word.split()[0] for word in predicted_text]
+            source_label = [word.split()[0] for word in source_label]
+            matches_arr = [i for i in range(len(predicted_text)) if predicted_text[i] == source_label[i]]
+            matches_val+=len(matches_arr)
+            total_val_samples_processed +=batch_size
+            
+        wandb.log({"GPT-2 Token Sub-Space Intervention Accuracy": matches_val / total_val_samples_processed, "GPT-2 Token Sub-Space Intervention Loss": total_val_loss / total_val_samples_processed})
+        print(f"Validation Accuracy: {matches_val / total_val_samples_processed:.4f}, Validation Loss: {total_val_loss / total_val_samples_processed:.4f}")
+
+def test(model_path, model, test_data, loss_fn, attribute, token_length_allowed, batch_size, temperature_end, DEVICE):
+    model.load_state_dict(torch.load(model_path))
+    model.eval()
+
+    total_test_samples_processed = 0
+    total_test_loss = 0.0
+
+    with torch.no_grad():
+        matches_test = 0
+        total_test_samples_processed = 0
+        total_test_loss = 0
+        
+        correct_test = {i:[] for i in range(0,12)}
+        for sample_no in range(np.array(test_data).shape[0]):
+            samples = test_data[sample_no]
+            assert np.array(samples).shape == (batch_size, 2, 2)
+            # Data Processing
+            proceed, base_ids, source_ids, base_label_ids, source_label_ids, source_label, base_label = data_processing(model = model,
+                                                                                                            samples = samples, 
+                                                                                                            token_length_allowed=token_length_allowed, 
+                                                                                                            attribute=attribute,
+                                                                                                            DEVICE=DEVICE,
+                                                                                                            batch_size=batch_size)
+            
+            if not proceed:
+                continue
+            
+            temperature = temperature_end
+                
+            intervened_base_output, predicted_text = training_model(source_ids, base_ids, temperature)
+            
+            ground_truth_token_id = source_label_ids
+            vocab_size = model.tokenizer.vocab_size
+            ground_truth_one_hot = F.one_hot(ground_truth_token_id["input_ids"], num_classes=vocab_size)
+            ground_truth_one_hot = ground_truth_one_hot.to(dtype=torch.long)
+            last_token_output = intervened_base_output[:,-1,:]
+            assert ground_truth_one_hot.squeeze(1).shape == last_token_output.shape
+            ground_truth_indices = torch.argmax(ground_truth_one_hot.squeeze(1), dim=1)
+            ground_truth_indices = ground_truth_indices.to(dtype=torch.long)
+            loss = loss_fn(last_token_output, ground_truth_indices)
+            total_test_loss += loss.item()
+            
+            # Calculate accuracy
+            predicted_text = [word.split()[0] for word in predicted_text]
+            source_label = [word.split()[0] for word in source_label]
+            matches_arr = [i for i in range(len(predicted_text)) if predicted_text[i] == source_label[i]]
+            matches_test+=len(matches_arr)
+            total_test_samples_processed +=batch_size
+            
+        wandb.log({"GPT-2 Token Sub-Space Intervention Accuracy": matches_test / total_test_samples_processed, "GPT-2 Token Sub-Space Intervention Loss": total_test_loss / total_test_samples_processed})
+
 
 if __name__ == "__main__":
     
@@ -140,15 +310,15 @@ if __name__ == "__main__":
     parser.add_argument("-e", "--epochs", default=1, type = int, help="# of epochs on which mask is to be trained")
     parser.add_argument("-ef", "--expansion_factor", default=1, help="expansion factor for SAE")
     parser.add_argument("-lr", "--learning_rate", default=0.001, type = int, help="learning rate for the optimizer")
-    parser.add_argument("-t", "--task", required=True, help="task to perform, i.e. train or test")
+    parser.add_argument("-t", "--task", required=True, help="task to perform, i.e. train or test or total_iia_train")
     parser.add_argument("-svd", "--saved_model_path", default="gpt2/models/saved_model.pth", help="path to the saved model")
     parser.add_argument("-n", "--notes", default="", help = "Any notes you want to write for the wandb graph")
     parser.add_argument("-idd", "--intervention_divided_data", help = "The data which is divided for intervention")
     parser.add_argument("-bs", "--batch_size", default=32, type = int, help="Batch size for training")
 
     args = parser.parse_args()
-    # wandb.init(project="sae_concept_eraser")
-    # wandb.run.name = f"{args.method}-{args.epochs}-{args.notes}"
+    wandb.init(project="sae_concept_eraser")
+    wandb.run.name = f"{args.method}-{args.epochs}-{args.notes}"
     DEVICE = args.device 
 
     data, model, layer_intervened, intervened_token_idx, = config(file_path = args.eval_file_path, learning_rate = args.learning_rate,
@@ -164,7 +334,7 @@ if __name__ == "__main__":
         print(f'{name}: requires_grad={param.requires_grad}')
     optimizer = optim.Adam(training_model.parameters(), lr=args.learning_rate)
 
-    train_data, val_data, test_data = train_data_processing(args.intervention_divided_data, batch_size=args.batch_size)
+    train_data, val_data, test_data = train_data_processing(args.task, args.intervention_divided_data, args.batch_size)
 
     #Inserting the temperature
     total_step = 0
@@ -182,179 +352,25 @@ if __name__ == "__main__":
     
     temp_idx = 0
     
+    if args.task == "total_iia_train":
+        '''
+        This correponds to the fact when we are training the model with total intervention and not partial, either on continent or country.
+        '''
+        train(training_model, model, train_data, optimizer, loss_fn, args.epochs, args.token_length_allowed, args.attribute, temperature_schedule, temp_idx, batch_size, DEVICE)
+    
+        val(training_model, model, val_data, loss_fn, batch_size, args.token_length_allowed, args.attribute, temperature_end, DEVICE)
+    
     if args.task == "train":
     
-        training_model.train()
+        train(training_model, model, train_data, optimizer, loss_fn, args.epochs, args.token_length_allowed, args.attribute, temperature_schedule, temp_idx, batch_size, DEVICE)
+        
+        # Validation Data Evaluation
+        val(training_model, model, val_data, loss_fn, batch_size, args.token_length_allowed, args.attribute, temperature_end, DEVICE)
 
-        for epoch in tqdm(range(args.epochs)):
-
-            correct = {i:[] for i in range(0,12)}
-            total_samples_processed = 0
-            total_loss = 0.0
-
-            # for sample_no in tqdm(range(len(data))):
-            i = 0
-            matches = 0
-            for sample_no in range(np.array(train_data).shape[0]):
-                
-                samples = train_data[sample_no]
-                assert np.array(samples).shape == (batch_size, 2, 2)
-                # samples = train_data[i*batch_size:(i+1)*batch_size]
-                
-                # Data Processing
-                proceed, base_ids, source_ids, base_label_ids, source_label_ids, source_label, base_label = data_processing(model = model,
-                                                                                                                            samples = samples, 
-                                                                                                                            token_length_allowed=args.token_length_allowed, 
-                                                                                                                            attribute=args.attribute,
-                                                                                                                            DEVICE=DEVICE,
-                                                                                                                            batch_size=batch_size)
-                
-                if not proceed: continue
-                
-                # training the model
-                optimizer.zero_grad()  
-                
-                temperature = temperature_schedule[temp_idx]
-                intervened_base_output, predicted_text = training_model(source_ids, base_ids, temperature)
-                ground_truth_token_id = source_label_ids
-                # ground_truth_token_id = base_label_ids
-                vocab_size = model.tokenizer.vocab_size
-                ground_truth_one_hot = F.one_hot(ground_truth_token_id["input_ids"], num_classes=vocab_size)
-                ground_truth_one_hot = ground_truth_one_hot.to(dtype=torch.long)
-                last_token_output = intervened_base_output[:,-1,:]
-                assert ground_truth_one_hot.squeeze(1).shape == last_token_output.shape
-                ground_truth_indices = torch.argmax(ground_truth_one_hot.squeeze(1), dim=1)
-                ground_truth_indices = ground_truth_indices.to(dtype=torch.long)
-                loss = loss_fn(last_token_output, ground_truth_indices)
-                # loss = loss_fn(predicted_logit.view(-1, predicted_logit.size(-1)), ground_truth_token_id.view(-1))
-                total_loss += loss.item()
-                
-                # Backpropagation
-                loss.backward()
-                optimizer.step()
-                
-                # Calculate accuracy
-                predicted_text = [word.split()[0] for word in predicted_text]
-                source_label = [word.split()[0] for word in source_label]
-                # base_label = [word.split()[0] for word in source_label]
-                matches_arr = [i for i in range(len(predicted_text)) if predicted_text[i] == source_label[i]]
-                # print(predicted_text)
-                # print(source_label)
-                # print(matches_arr)
-                matches+=len(matches_arr)
-                # matches = 1 if predicted_text.split()[0] == source_label.split()[0] else 0
-                # correct[layer_intervened].append(matches)
-                total_samples_processed +=batch_size
-                
-                # if sample_no % 100 == 0 and sample_no != 0:
-                # print(f"Epoch: {epoch}, Sample: {sample_no}, Accuracy: {matches / total_samples_processed:.4f}, Loss: {total_loss / total_samples_processed:.4f}")
-                    # wandb.log({"GPT-2 Token Sub-Space Intervention Accuracy": sum(correct[layer_intervened]) / total_samples_processed, "GPT-2 Token Sub-Space Intervention Loss": total_loss / total_samples_processed})
-                temp_idx += 1
-                i+=1
-            
-            # Log accuracy and loss to wandb
-            epoch_accuracy = matches / total_samples_processed
-            # print(f"The total samples proceesed for {args.attribute} is {total_samples_processed}")
-            # wandb.log({"GPT-2 Sub-Space IIA": epoch_accuracy, "Loss": total_loss / total_samples_processed})
-
-            print(f"Epoch {epoch} finished with accuracy {epoch_accuracy:.4f} and average loss {total_loss / total_samples_processed:.4f}")
-
-            # Validation Data Evaluation
-            '''
-            with torch.no_grad():
-                total_val_samples_processed = 0
-                total_val_loss = 0
-                
-                correct_val = {i:[] for i in range(0,12)}
-                for sample_no in range(len(val_data)):
-                    sample = val_data[sample_no]
-                    # Data Processing
-                    proceed, base_ids, source_ids, base_label_ids, source_label_ids, source_label, base_label = data_processing(model = model,
-                                                                                                                    samples = samples, 
-                                                                                                                    token_length_allowed=args.token_length_allowed, 
-                                                                                                                    attribute=args.attribute,
-                                                                                                                    DEVICE=DEVICE)
-                    
-                    if not proceed:
-                        continue
-                    
-                    try:
-                        temperature = temperature_schedule[temp_idx]
-                    except:
-                        temperature = temperature_schedule[temp_idx-1]
-                        
-                    if args.method == "neuron masking" or args.method == "vanilla" or args.method == "das masking":
-                        intervened_base_output, predicted_text = training_model(source_ids, base_ids, temperature)
-                    elif args.method == "sae masking":
-                        pass
-                    
-                    ground_truth_token_id = source_label_ids
-                    predicted_logit = intervened_base_output[:, -1, :]
-                    
-                    loss = loss_fn(predicted_logit.view(-1, predicted_logit.size(-1)), ground_truth_token_id.view(-1))
-                    total_val_loss += loss.item()
-                    
-                    # Calculate accuracy
-                    matches = 1 if predicted_text.split()[0] == source_label.split()[0] else 0
-                    correct_val[layer_intervened].append(matches)
-                    total_val_samples_processed += 1
-                    
-                epoch_val_accuracy = sum(correct_val[layer_intervened]) / total_val_samples_processed
-                wandb.log({"Validation Accuracy": epoch_val_accuracy, "Validation Loss": total_val_loss / total_val_samples_processed})
-                
-                print(f"Epoch {epoch} finished with validation accuracy {epoch_val_accuracy:.4f} and average validation loss {total_val_loss / total_val_samples_processed:.4f}")
-        '''
         # Save the model
-        # torch.save(training_model.state_dict(), f"models/saved_model_{args.method}_{args.token_length_allowed}_{args.attribute}_{args.model}_{args.epochs}.pth")
+        torch.save(training_model.state_dict(), f"models/saved_model_{args.method}_{args.attribute}_{args.model}_{args.epochs}.pth")
         
     elif args.task == "test":
-        # Load the saved model
         model_path = args.saved_model_path
-        model.load_state_dict(torch.load(model_path))
-        model.eval()
-
-        correct_test = {i: [] for i in range(0, 12)}
-        total_test_samples_processed = 0
-        total_test_loss = 0.0
-
-        with torch.no_grad():
-            for sample_no in range(len(test_data)):
-                sample = test_data[sample_no]
-                # Data Processing
-                proceed, base_ids, source_ids, base_label_ids, source_label_ids, source_label = data_processing(sample, 
-                                                                                                                args.token_length_allowed, 
-                                                                                                                args.attribute)
-                
-                if not proceed:
-                    continue
-                
-                temperature = temperature_schedule[temp_idx]
-                if args.method == "neuron masking" or args.method == "vanilla":
-                    intervened_base_output, predicted_text = training_model(source_ids, base_ids, temperature)
-                elif args.method == "sae masking":
-                    pass
-                elif args.method == "das masking":
-                    pass
-                
-                ground_truth_token_id = source_label_ids
-                predicted_logit = intervened_base_output[:, -1, :]
-                
-                loss = loss_fn(predicted_logit.view(-1, predicted_logit.size(-1)), ground_truth_token_id.view(-1))
-                total_test_loss += loss.item()
-                
-                # Calculate accuracy
-                matches = 1 if predicted_text.split()[0] == source_label.split()[0] else 0
-                correct_test[layer_intervened].append(matches)
-                total_test_samples_processed += 1
-                
-                if sample_no % 100 == 0:
-                    print(f"Sample: {sample_no}, Test Accuracy: {sum(correct_test[layer_intervened]) / total_test_samples_processed:.4f}, Test Loss: {total_test_loss / total_test_samples_processed:.4f}")
-
-        # Calculate final test accuracy and loss
-        test_accuracy = sum(correct_test[layer_intervened]) / total_test_samples_processed
-        test_loss = total_test_loss / total_test_samples_processed
-
-        print(f"Test finished with accuracy {test_accuracy:.4f} and average loss {test_loss:.4f}")
-
-        # Log test accuracy and loss to wandb
-        wandb.log({"GPT-2 Subspace Test Accuracy": test_accuracy, "Test Loss": test_loss})
+        test(model_path, model, test_data, loss_fn, args.attribute, args.token_length_allowed, batch_size, temperature_end, DEVICE)
+        
