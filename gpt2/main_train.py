@@ -74,7 +74,7 @@ def train_data_processing(task, intervention_divided_data, batch_size):
     random.shuffle(country_data) 
     random.shuffle(continent_data)
     
-    if task == "total_iia_train":
+    if task == "train":
         if intervention_divided_data == "continent":
             data1 = country_data
             data2 = continent_data
@@ -99,8 +99,15 @@ def train_data_processing(task, intervention_divided_data, batch_size):
         assert np.array(data2_batch_data).shape == (data2_num_batches, batch_size, 2, 2)
         data = data1_batch_data + data2_batch_data
 
+        if intervention_divided_data == "continent":
+            country_batch_data = data1_batch_data
+            continent_batch_data = data2_batch_data
+        elif intervention_divided_data == "country":
+            continent_batch_data = data1_batch_data
+            country_batch_data = data2_batch_data
+
         
-    elif task == "train":
+    elif task == "total_iia_train":
         
         
         country_num_batches = np.array(country_data).shape[0] // batch_size
@@ -175,14 +182,8 @@ def train(continent_data, country_data, training_model, model, train_data, optim
             # Calculate accuracy
             predicted_text = [word.split()[0] for word in predicted_text]
             source_label = [word.split()[0] for word in source_label]
-            # base_label = [word.split()[0] for word in source_label]
             matches_arr = [i for i in range(len(predicted_text)) if predicted_text[i] == source_label[i]]
-            # print(predicted_text)
-            # print(source_label)
-            # print(matches_arr)
             matches+=len(matches_arr)
-            # matches = 1 if predicted_text.split()[0] == source_label.split()[0] else 0
-            # correct[layer_intervened].append(matches)
             total_samples_processed +=batch_size
             
             # if sample_no % 100 == 0 and sample_no != 0:
@@ -190,6 +191,7 @@ def train(continent_data, country_data, training_model, model, train_data, optim
             wandb.log({"GPT-2 Token Sub-Space Intervention Accuracy": matches / total_samples_processed, "GPT-2 Token Sub-Space Intervention Loss": total_loss / total_samples_processed})
             temp_idx += 1
             i+=1
+        print(f"Epoch: {epoch}, Accuracy: {matches / total_samples_processed:.4f}, Loss: {total_loss / total_samples_processed:.4f}")
 
         if epoch % 2 == 0:
             continent_acc = calculate_accuracy(training_model, model, continent_data, token_length_allowed, attribute, batch_size, DEVICE, temperature)
