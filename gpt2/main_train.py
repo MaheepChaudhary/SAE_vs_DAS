@@ -63,7 +63,7 @@ def data_processing(model, samples, token_length_allowed, attribute, DEVICE, bat
     proceed = True
     return proceed, base_ids, source_ids, base_label_ids, source_label_ids, source_labels, base_labels
 
-def train_data_processing(task, intervention_divided_data, batch_size, task):
+def train_data_processing(task, intervention_divided_data, batch_size):
     
     with open("filtered_continent_intervention_dataset.json", "r") as file:
         continent_data = json.load(file)
@@ -100,7 +100,7 @@ def train_data_processing(task, intervention_divided_data, batch_size, task):
         data = data1_batch_data + data2_batch_data
         random.shuffle(data)
         
-    if task == "train":
+    elif task == "train":
         
         random.shuffle(country_data) 
         random.shuffle(continent_data)
@@ -111,9 +111,9 @@ def train_data_processing(task, intervention_divided_data, batch_size, task):
         
         assert np.array(country_batch_data).shape == (country_num_batches,batch_size,2,2)
         assert np.array(continent_batch_data).shape == (continent_num_batches,batch_size, 2, 2)
-        
-        data =  country_data + continent_data
+    
         data = country_batch_data + continent_batch_data
+        random.shuffle(data)
     
     train_data = data[:int(0.7*len(data))]
     val_data = data[int(0.7*len(data)):int(0.8*len(data))]
@@ -212,7 +212,8 @@ def val(training_model, model, val_data, loss_fn, batch_size, token_length_allow
                                                                                                                         samples = samples, 
                                                                                                                         token_length_allowed=token_length_allowed, 
                                                                                                                         attribute=attribute,
-                                                                                                                        DEVICE=DEVICE)
+                                                                                                                        DEVICE=DEVICE,
+                                                                                                                        batch_size=batch_size)
             
             if not proceed:
                 continue
@@ -240,6 +241,7 @@ def val(training_model, model, val_data, loss_fn, batch_size, token_length_allow
             total_val_samples_processed +=batch_size
             
         wandb.log({"GPT-2 Token Sub-Space Intervention Accuracy": matches_val / total_val_samples_processed, "GPT-2 Token Sub-Space Intervention Loss": total_val_loss / total_val_samples_processed})
+        print(f"Validation Accuracy: {matches_val / total_val_samples_processed:.4f}, Validation Loss: {total_val_loss / total_val_samples_processed:.4f}")
 
 def test(model_path, model, test_data, loss_fn, attribute, token_length_allowed, batch_size, temperature_end, DEVICE):
     model.load_state_dict(torch.load(model_path))
@@ -262,7 +264,8 @@ def test(model_path, model, test_data, loss_fn, attribute, token_length_allowed,
                                                                                                             samples = samples, 
                                                                                                             token_length_allowed=token_length_allowed, 
                                                                                                             attribute=attribute,
-                                                                                                            DEVICE=DEVICE)
+                                                                                                            DEVICE=DEVICE,
+                                                                                                            batch_size=batch_size)
             
             if not proceed:
                 continue
@@ -331,7 +334,7 @@ if __name__ == "__main__":
         print(f'{name}: requires_grad={param.requires_grad}')
     optimizer = optim.Adam(training_model.parameters(), lr=args.learning_rate)
 
-    train_data, val_data, test_data = train_data_processing(args.task, args.intervention_divided_data, batch_size=args.batch_size)
+    train_data, val_data, test_data = train_data_processing(args.task, args.intervention_divided_data, args.batch_size)
 
     #Inserting the temperature
     total_step = 0
