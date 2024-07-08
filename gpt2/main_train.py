@@ -193,6 +193,8 @@ def train(continent_data, country_data, training_model, model, train_data, optim
             i+=1
         print(f"Epoch: {epoch}, Accuracy: {matches / total_samples_processed:.4f}, Loss: {total_loss / total_samples_processed:.4f}")
 
+        val(training_model, model, val_data, loss_fn, batch_size, token_length_allowed, attribute, temperature_end, DEVICE)
+        
         if epoch % 2 == 0:
             continent_acc = calculate_accuracy(training_model, model, continent_data, token_length_allowed, attribute, batch_size, DEVICE, temperature)
             country_acc = calculate_accuracy(training_model, model, country_data, token_length_allowed, attribute, batch_size, DEVICE, temperature)
@@ -407,14 +409,9 @@ if __name__ == "__main__":
         '''
         train(continent_data, country_data, training_model, model, train_data, optimizer, loss_fn, args.epochs, args.token_length_allowed, args.attribute, temperature_schedule, temp_idx, batch_size, DEVICE)
     
-        val(training_model, model, val_data, loss_fn, batch_size, args.token_length_allowed, args.attribute, temperature_end, DEVICE)
-    
     elif args.task == "train":
     
         train(continent_data, country_data, training_model, model, train_data, optimizer, loss_fn, args.epochs, args.token_length_allowed, args.attribute, temperature_schedule, temp_idx, batch_size, DEVICE)
-        
-        # Validation Data Evaluation
-        val(training_model, model, val_data, loss_fn, batch_size, args.token_length_allowed, args.attribute, temperature_end, DEVICE)
 
         # Save the model
         torch.save(training_model.state_dict(), f"models/saved_model_{args.method}_{args.attribute}_{args.model}_{args.epochs}.pth")
