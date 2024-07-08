@@ -168,11 +168,7 @@ class my_model(nn.Module):
             self.l4_mask = t.nn.Parameter(t.zeros(das_dim, device=DEVICE), requires_grad=True)
             rotate_layer = RotateLayer(768)
             self.rotate_layer = t.nn.utils.parametrizations.orthogonal(rotate_layer)
-            
-        elif method == "sae masking":
-            sae_dim = (1,1,6144)
-            self.l4_mask = t.nn.Parameter(t.zeros(das_dim, device=DEVICE), requires_grad=True)
-            self.l4_mask = self.l4_mask.to(DEVICE)
+
         
         elif method == "vanilla":
             proxy_dim = (1,1,1)
