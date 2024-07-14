@@ -13,11 +13,10 @@ def config(file_path, learning_rate, token_length):
         data = json.load(file)
     
 
-    layer_intervened = 1 # As the layer has descent performance in the previous metrics of intervention, we will take it.
     intervened_token_idx = -8
     intervention_token_length = token_length
 
-    return data, model, layer_intervened, intervened_token_idx
+    return data, model, intervened_token_idx
 
 def data_processing(model, samples, token_length_allowed, attribute, DEVICE, batch_size):
     
@@ -111,9 +110,9 @@ def train_data_processing(task, intervention_divided_data, batch_size):
     val_data = data[int(0.7*len(data)):int(0.8*len(data))]
     test_data = data[int(0.8*len(data)):]
     return country_batch_data, continent_batch_data, train_data, val_data, test_data
-    
 
-def train(continent_data, country_data, training_model, model, train_data, optimizer, loss_fn, epochs, token_length_allowed, attribute, temperature_schedule, temp_idx, batch_size, DEVICE):
+
+def train(continent_data, country_data, training_model, model, train_data, optimizer, loss_fn, epochs, token_length_allowed, attribute, temperature_schedule, temp_idx, batch_size, DEVICE, wndb):
     training_model.train()
 
     for epoch in tqdm(range(epochs)):
@@ -173,7 +172,8 @@ def train(continent_data, country_data, training_model, model, train_data, optim
             
             # if sample_no % 100 == 0 and sample_no != 0:
             # print(f"Epoch: {epoch}, Sample: {sample_no}, Accuracy: {matches / total_samples_processed:.4f}, Loss: {total_loss / total_samples_processed:.4f}")
-            wandb.log({"GPT-2 Token Sub-Space Intervention Accuracy": matches / total_samples_processed, "GPT-2 Token Sub-Space Intervention Loss": total_loss / total_samples_processed})
+            if wndb == True:
+                wandb.log({"GPT-2 Token Sub-Space Intervention Accuracy": matches / total_samples_processed, "GPT-2 Token Sub-Space Intervention Loss": total_loss / total_samples_processed})
             temp_idx += 1
             i+=1
         print(f"Epoch: {epoch}, Accuracy: {matches / total_samples_processed:.4f}, Loss: {total_loss / total_samples_processed:.4f}")
@@ -184,7 +184,8 @@ def train(continent_data, country_data, training_model, model, train_data, optim
             continent_acc = calculate_accuracy(training_model, model, continent_data, token_length_allowed, attribute, batch_size, DEVICE, temperature)
             country_acc = calculate_accuracy(training_model, model, country_data, token_length_allowed, attribute, batch_size, DEVICE, temperature)
             print(f"Continent Accuracy: {continent_acc}, Country Accuracy: {country_acc}")
-            wandb.log({"Continent Accuracy": continent_acc, "Country Accuracy": country_acc})
+            if wndb == True:
+                wandb.log({"Continent Accuracy": continent_acc, "Country Accuracy": country_acc})
     
         # Log accuracy and loss to wandb
         # epoch_accuracy = matches / total_samples_processed
@@ -233,7 +234,7 @@ def calculate_accuracy(training_model, model, data, token_length_allowed, attrib
             
     return matches / total_samples_processed
 
-def val(training_model, model, val_data, loss_fn, batch_size, token_length_allowed, attribute, temperature, DEVICE):
+def val(training_model, model, val_data, loss_fn, batch_size, token_length_allowed, attribute, temperature, DEVICE, wndb):
     with torch.no_grad():
         matches_val = 0
         total_val_samples_processed = 0
@@ -274,10 +275,11 @@ def val(training_model, model, val_data, loss_fn, batch_size, token_length_allow
             matches_val+=len(matches_arr)
             total_val_samples_processed +=batch_size
             
-        wandb.log({"GPT-2 SS IIA Val": matches_val / total_val_samples_processed, "GPT-2 SS IIA Val Loss": total_val_loss / total_val_samples_processed})
+        if wndb == True:
+            wandb.log({"GPT-2 SS IIA Val": matches_val / total_val_samples_processed, "GPT-2 SS IIA Val Loss": total_val_loss / total_val_samples_processed})
         print(f"Validation Accuracy: {matches_val / total_val_samples_processed:.4f}, Validation Loss: {total_val_loss / total_val_samples_processed:.4f}")
 
-def test(model_path, training_model, model, test_data, loss_fn, attribute, token_length_allowed, batch_size, temperature_end, DEVICE):
+def test(model_path, training_model, model, test_data, loss_fn, attribute, token_length_allowed, batch_size, temperature_end, DEVICE, wndb):
     training_model.load_state_dict(torch.load(model_path))
     training_model.eval()
 
@@ -325,8 +327,9 @@ def test(model_path, training_model, model, test_data, loss_fn, attribute, token
             matches_arr = [i for i in range(len(predicted_text)) if predicted_text[i] == source_label[i]]
             matches_test+=len(matches_arr)
             total_test_samples_processed +=batch_size
-            
-        wandb.log({"GPT-2 SS IIA Test Acc": matches_test / total_test_samples_processed, "GPT-2 SS IIA Test Loss": total_test_loss / total_test_samples_processed})
+        
+        if wndb == True:
+            wandb.log({"GPT-2 SS IIA Test Acc": matches_test / total_test_samples_processed, "GPT-2 SS IIA Test Loss": total_test_loss / total_test_samples_processed})
 
 
 if __name__ == "__main__":
@@ -349,13 +352,17 @@ if __name__ == "__main__":
     parser.add_argument("-n", "--notes", default="", help = "Any notes you want to write for the wandb graph")
     parser.add_argument("-idd", "--intervention_divided_data", help = "The data which is divided for intervention")
     parser.add_argument("-bs", "--batch_size", default=32, type = int, help="Batch size for training")
+    parser.add_argument("-lid", "--layer_intervened", default=0, type = int, help="Layer intervened for the SAE masking")
+    parser.add_argument("-wb", "--wndb", default=False, help="Whether to log the data to wandb or not")
 
     args = parser.parse_args()
-    wandb.init(project="sae_concept_eraser")
-    wandb.run.name = f"{args.method}-{args.intervention_divided_data}_intervened-e{args.epochs}-b{args.batch_size}-{args.notes}"
+    if args.wndb == "True":
+        wandb.init(project="sae_concept_eraser")
+        wandb.run.name = f"{args.method}-{args.intervention_divided_data}_intervened-e{args.epochs}-b{args.batch_size}-{args.notes}"
     DEVICE = args.device
+    layer_intervened = args.layer_intervened
 
-    data, model, layer_intervened, intervened_token_idx, = config(file_path = args.eval_file_path, learning_rate = args.learning_rate,
+    data, model, intervened_token_idx, = config(file_path = args.eval_file_path, learning_rate = args.learning_rate,
                                                                                 token_length = args.token_length_allowed)
     # model.to(DEVICE)
     training_model = my_model(model = model, DEVICE=DEVICE, method=args.method, token_length_allowed=args.token_length_allowed, expansion_factor=args.expansion_factor,
@@ -386,20 +393,21 @@ if __name__ == "__main__":
     
     temp_idx = 0
     
-    if args.task == "total_iia_train":
-        '''
-        This correponds to the fact when we are training the model with total intervention and not partial, either on continent or country.
-        '''
-        train(continent_data, country_data, training_model, model, train_data, optimizer, loss_fn, args.epochs, args.token_length_allowed, args.attribute, temperature_schedule, temp_idx, batch_size, DEVICE)
-    
-    elif args.task == "train":
-    
-        train(continent_data, country_data, training_model, model, train_data, optimizer, loss_fn, args.epochs, args.token_length_allowed, args.attribute, temperature_schedule, temp_idx, batch_size, DEVICE)
+    with torch.autograd.set_detect_anomaly(True):
+        if args.task == "total_iia_train":
+            '''
+            This correponds to the fact when we are training the model with total intervention and not partial, either on continent or country.
+            '''
+            train(continent_data, country_data, training_model, model, train_data, optimizer, loss_fn, args.epochs, args.token_length_allowed, args.attribute, temperature_schedule, temp_idx, batch_size, DEVICE, wndb = args.wndb)
+        
+        elif args.task == "train":
+        
+            train(continent_data, country_data, training_model, model, train_data, optimizer, loss_fn, args.epochs, args.token_length_allowed, args.attribute, temperature_schedule, temp_idx, batch_size, DEVICE, wndb=args.wndb)
 
-        # Save the model
-        torch.save(training_model.state_dict(), f"models/saved_model_{args.method}_{args.attribute}_{args.model}_{args.epochs}.pth")
-        
-    elif args.task == "test":
-        model_path = args.saved_model_path
-        test(model_path, training_model, model, test_data, loss_fn, args.attribute, args.token_length_allowed, batch_size, temperature_end, DEVICE)
-        
+            # Save the model
+            torch.save(training_model.state_dict(), f"models/saved_model_{args.intervention_divided_data}_{args.method}_{args.attribute}_{args.model}_{args.epochs}.pth")
+            
+        elif args.task == "test":
+            model_path = args.saved_model_path
+            test(model_path, training_model, model,test_data, loss_fn, args.attribute, args.token_length_allowed, batch_size, temperature_end, DEVICE, wndb=args.wndb)
+
