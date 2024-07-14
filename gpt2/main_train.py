@@ -178,7 +178,7 @@ def train(continent_data, country_data, training_model, model, train_data, optim
             i+=1
         print(f"Epoch: {epoch}, Accuracy: {matches / total_samples_processed:.4f}, Loss: {total_loss / total_samples_processed:.4f}")
 
-        val(training_model, model, val_data, loss_fn, batch_size, token_length_allowed, attribute, temperature, DEVICE)
+        val(training_model, model, val_data, loss_fn, batch_size, token_length_allowed, attribute, temperature, DEVICE, wndb)
         
         if epoch % 2 == 0:
             continent_acc = calculate_accuracy(training_model, model, continent_data, token_length_allowed, attribute, batch_size, DEVICE, temperature)
