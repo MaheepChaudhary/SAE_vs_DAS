@@ -393,20 +393,21 @@ if __name__ == "__main__":
     
     temp_idx = 0
     
-    if args.task == "total_iia_train":
-        '''
-        This correponds to the fact when we are training the model with total intervention and not partial, either on continent or country.
-        '''
-        train(continent_data, country_data, training_model, model, train_data, optimizer, loss_fn, args.epochs, args.token_length_allowed, args.attribute, temperature_schedule, temp_idx, batch_size, DEVICE, wndb = args.wndb)
-    
-    elif args.task == "train":
-    
-        train(continent_data, country_data, training_model, model, train_data, optimizer, loss_fn, args.epochs, args.token_length_allowed, args.attribute, temperature_schedule, temp_idx, batch_size, DEVICE, wndb=args.wndb)
-
-        # Save the model
-        torch.save(training_model.state_dict(), f"models/saved_model_{args.intervention_divided_data}_{args.method}_{args.attribute}_{args.model}_{args.epochs}.pth")
+    with torch.autograd.set_detect_anomaly(True):
+        if args.task == "total_iia_train":
+            '''
+            This correponds to the fact when we are training the model with total intervention and not partial, either on continent or country.
+            '''
+            train(continent_data, country_data, training_model, model, train_data, optimizer, loss_fn, args.epochs, args.token_length_allowed, args.attribute, temperature_schedule, temp_idx, batch_size, DEVICE, wndb = args.wndb)
         
-    elif args.task == "test":
-        model_path = args.saved_model_path
-        test(model_path, training_model, model,test_data, loss_fn, args.attribute, args.token_length_allowed, batch_size, temperature_end, DEVICE, wndb=args.wndb)
+        elif args.task == "train":
+        
+            train(continent_data, country_data, training_model, model, train_data, optimizer, loss_fn, args.epochs, args.token_length_allowed, args.attribute, temperature_schedule, temp_idx, batch_size, DEVICE, wndb=args.wndb)
+
+            # Save the model
+            torch.save(training_model.state_dict(), f"models/saved_model_{args.intervention_divided_data}_{args.method}_{args.attribute}_{args.model}_{args.epochs}.pth")
+            
+        elif args.task == "test":
+            model_path = args.saved_model_path
+            test(model_path, training_model, model,test_data, loss_fn, args.attribute, args.token_length_allowed, batch_size, temperature_end, DEVICE, wndb=args.wndb)
 

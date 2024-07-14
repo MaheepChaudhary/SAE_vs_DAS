@@ -141,13 +141,14 @@ class my_model(nn.Module):
         self.method = method
         self.batch_size = batch_size
         
-        if method == "sae masking opeanai":
-            state_dict = t.load(f"gpt2/openai_sae/downloaded_saes/{self.layer_intervened}.pt")
+        if method == "sae masking openai":
+            sae_dim = (1,1,32768)
+            state_dict = t.load(f"openai_sae/downloaded_saes/{self.layer_intervened}.pt")
             self.autoencoder = sparse_autoencoder.Autoencoder.from_state_dict(state_dict)
             self.l4_mask = t.nn.Parameter(t.zeros(sae_dim), requires_grad=True)
 
 
-            for params in autoencoder.parameters():
+            for params in self.autoencoder.parameters():
                 params.requires_grad = False
         
         if method == "sae masking neel":
@@ -295,31 +296,49 @@ class my_model(nn.Module):
 
             return intervened_base_output, predicted_text
 
-        elif self.method == "sae masking opeanai":
-            
+        elif self.method == "sae masking openai":
+    
             with self.model.trace() as tracer:
                 
                 with tracer.invoke(source_ids) as runner:
-
                     source = self.model.transformer.h[self.layer_intervened].output
 
                 with tracer.invoke(base_ids) as runner_:
                     
                     base = self.model.transformer.h[self.layer_intervened].output[0].clone()
+                    encoded_base, base_info = self.autoencoder.encode(base)
+                    encoded_source, source_info = self.autoencoder.encode(source[0]) 
+
+                    # Clone the tensors to avoid in-place operations
+                    encoded_base_modified = encoded_base.clone()
+                    encoded_source_modified = encoded_source.clone()  
+
+                    assert base_info == source_info
+
+                    # Apply the mask in a non-inplace way
+                    modified_base = encoded_base_modified[:, self.intervened_token_idx, :] * l4_mask_sigmoid
+                    modified_source = encoded_source_modified[:, self.intervened_token_idx, :] * (1 - l4_mask_sigmoid)
                     
-                    encoded_base = self.autoencoder.encode(base)
-                    encoded_source = self.autoencoder.encode(source[0])   
-                    encoded_base[:, self.token_intervened_idx, :] = encoded_base[:, self.token_intervened_idx, :] * l4_mask_sigmoid
-                    encoded_source[:, self.token_intervened_idx, :] = (1 - l4_mask_sigmoid) * encoded_source[:, self.token_intervened_idx, :]
+                    # Assign the modified tensors to the correct indices
+                    encoded_base_modified = encoded_base_modified.clone()
+                    encoded_source_modified = encoded_source_modified.clone()
                     
-                    new_acts = encoded_base + encoded_source
-                    iia_vector = self.autoencoder.decode(new_acts)
-                    
-                    self.model.transformer.h[self.layer_intervened].output[0][:,self.intervened_token_idx,:] = iia_vector[:, self.intervened_token_idx, :]
+                    # Combine the modified tensors
+                    new_acts = encoded_base_modified.clone()
+                    new_acts[:, self.intervened_token_idx, :] = modified_base + modified_source
+                
+                    iia_vector = self.autoencoder.decode(new_acts, base_info)
+
+                    # Use a copy to avoid in-place modification
+                    h_layer_output_copy = self.model.transformer.h[self.layer_intervened].output[0].clone()
+                    h_layer_output_copy[:, self.intervened_token_idx, :] = iia_vector[:, self.intervened_token_idx, :]
+
+                    # Update the model's output with the modified copy
+                    self.model.transformer.h[self.layer_intervened].output[0][:,:,:] = h_layer_output_copy
                     
                     intervened_base_predicted = self.model.lm_head.output.argmax(dim=-1).save()
                     intervened_base_output = self.model.lm_head.output.save()
-                
+
                 
             predicted_text = []
             for index in range(intervened_base_output.shape[0]):
