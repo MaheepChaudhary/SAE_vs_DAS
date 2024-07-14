@@ -27,6 +27,8 @@ from jaxtyping import Float
 from transformer_lens import ActivationCache
 from pathlib import Path
 
+from openai_sae import sparse_autoencoder
+
 import os
 os.environ["CUDA_LAUNCH_BLOCKING"] = "1"
 
