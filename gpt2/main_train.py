@@ -171,13 +171,12 @@ def train(continent_data, country_data, training_model, model, train_data, optim
             matches+=len(matches_arr)
             total_samples_processed +=batch_size
             
-            # if sample_no % 100 == 0 and sample_no != 0:
+            # if sample_no % \100 == 0 and sample_no != 0:
             # print(f"Epoch: {epoch}, Sample: {sample_no}, Accuracy: {matches / total_samples_processed:.4f}, Loss: {total_loss / total_samples_processed:.4f}")
-
+            if wndb == "True":
+                wandb.log({"GPT-2 Token Sub-Space Intervention Accuracy": matches / total_samples_processed, "GPT-2 Token Sub-Space Intervention Loss": total_loss / total_samples_processed})
             temp_idx += 1
             i+=1
-        if wndb == True:
-            wandb.log({"GPT-2 Token Sub-Space Intervention Accuracy": matches / total_samples_processed, "GPT-2 Token Sub-Space Intervention Loss": total_loss / total_samples_processed})
         print(f"Epoch: {epoch}, Accuracy: {matches / total_samples_processed:.4f}, Loss: {total_loss / total_samples_processed:.4f}")
         '''
         val(training_model, model, val_data, loss_fn, batch_size, token_length_allowed, attribute, temperature, DEVICE, wndb)
@@ -384,8 +383,8 @@ if __name__ == "__main__":
     #TODO: The total number of batches is total_no_samples/batch_len
     batch_size = args.batch_size
     target_total_step = len(train_data) * args.epochs
-    temperature_start = 25.0
-    temperature_end = 0.01
+    temperature_start = 20.0
+    temperature_end = 0.1
     temperature_schedule = (
         t.linspace(temperature_start, temperature_end, target_total_step)
         .to(t.bfloat16)
