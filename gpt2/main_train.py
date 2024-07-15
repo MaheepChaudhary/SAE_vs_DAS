@@ -124,7 +124,8 @@ def train(continent_data, country_data, training_model, model, train_data, optim
         # for sample_no in tqdm(range(len(data))):
         i = 0
         matches = 0
-        for sample_no in range(np.array(train_data).shape[0]):
+        print(np.array(train_data).shape[0])
+        for sample_no in range(np.array(train_data).shape[0]//3):
             
             samples = train_data[sample_no]
             assert np.array(samples).shape == (batch_size, 2, 2)
@@ -172,21 +173,21 @@ def train(continent_data, country_data, training_model, model, train_data, optim
             
             # if sample_no % 100 == 0 and sample_no != 0:
             # print(f"Epoch: {epoch}, Sample: {sample_no}, Accuracy: {matches / total_samples_processed:.4f}, Loss: {total_loss / total_samples_processed:.4f}")
-            if wndb == True:
-                wandb.log({"GPT-2 Token Sub-Space Intervention Accuracy": matches / total_samples_processed, "GPT-2 Token Sub-Space Intervention Loss": total_loss / total_samples_processed})
+
             temp_idx += 1
             i+=1
+        if wndb == True:
+            wandb.log({"GPT-2 Token Sub-Space Intervention Accuracy": matches / total_samples_processed, "GPT-2 Token Sub-Space Intervention Loss": total_loss / total_samples_processed})
         print(f"Epoch: {epoch}, Accuracy: {matches / total_samples_processed:.4f}, Loss: {total_loss / total_samples_processed:.4f}")
-
+        '''
         val(training_model, model, val_data, loss_fn, batch_size, token_length_allowed, attribute, temperature, DEVICE, wndb)
-        
-        if epoch % 2 == 0:
+        if epoch % 1 == 0:
             continent_acc = calculate_accuracy(training_model, model, continent_data, token_length_allowed, attribute, batch_size, DEVICE, temperature)
             country_acc = calculate_accuracy(training_model, model, country_data, token_length_allowed, attribute, batch_size, DEVICE, temperature)
             print(f"Continent Accuracy: {continent_acc}, Country Accuracy: {country_acc}")
-            if wndb == True:
+            if wndb == "True":
                 wandb.log({"Continent Accuracy": continent_acc, "Country Accuracy": country_acc})
-    
+        '''
         # Log accuracy and loss to wandb
         # epoch_accuracy = matches / total_samples_processed
 
@@ -275,7 +276,7 @@ def val(training_model, model, val_data, loss_fn, batch_size, token_length_allow
             matches_val+=len(matches_arr)
             total_val_samples_processed +=batch_size
             
-        if wndb == True:
+        if wndb == "True":
             wandb.log({"GPT-2 SS IIA Val": matches_val / total_val_samples_processed, "GPT-2 SS IIA Val Loss": total_val_loss / total_val_samples_processed})
         print(f"Validation Accuracy: {matches_val / total_val_samples_processed:.4f}, Validation Loss: {total_val_loss / total_val_samples_processed:.4f}")
 
@@ -403,7 +404,20 @@ if __name__ == "__main__":
         elif args.task == "train":
         
             train(continent_data, country_data, training_model, model, train_data, optimizer, loss_fn, args.epochs, args.token_length_allowed, args.attribute, temperature_schedule, temp_idx, batch_size, DEVICE, wndb=args.wndb)
+            # Assuming training_model.l4_mask is your tensor
+            l4_mask_cpu = training_model.l4_mask.to('cpu')  # Move tensor to CPU
 
+            # Create a boolean mask where the condition is true
+            mask_greater_than_0_5 = l4_mask_cpu > 0.5
+            mask_equal_to_0 = l4_mask_cpu == 0
+
+            # Sum the mask to get the number of elements satisfying the conditions
+            num_elements_greater_than_0_5 = mask_greater_than_0_5.sum().item()
+            num_elements_equal_to_0 = mask_equal_to_0.sum().item()
+
+            print(f"Number of elements in l4_mask greater than 0.5: {num_elements_greater_than_0_5}")
+            print(f"Number of elements in l4_mask equal to 0: {num_elements_equal_to_0}")
+            
             # Save the model
             torch.save(training_model.state_dict(), f"models/saved_model_{args.intervention_divided_data}_{args.method}_{args.attribute}_{args.model}_{args.epochs}.pth")
             
