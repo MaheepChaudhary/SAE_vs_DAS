@@ -1,7 +1,0 @@
-Traceback (most recent call last):
-  File "/Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/main.py", line 270, in <module>
-    eval(args.device, args.saved_model_path, args.evaluation)
-  File "/Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/main.py", line 111, in eval
-    new_model = my_model()
-                ^^^^^^^^^^
-TypeError: my_model.__init__() missing 11 required positional arguments: 'DEVICE', 'probe', 'dict_embed_path', 'attn_dict_path', 'mlp_dict_path', 'resid_dict_path', 'resid_layers', 'method', 'activation_dim', 'expansion_factor', and 'epochs'

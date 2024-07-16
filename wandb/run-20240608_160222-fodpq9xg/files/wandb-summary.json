@@ -1,1 +1,0 @@
-{"Full Data Gender de-baising Losses": 1.0764049626337078, "_timestamp": 1717889170.4352007, "_runtime": 1428.429646730423, "_step": 22, "sae masking Gender Test (during_train) Accuracy": 0.532830536365509, "sae masking Professional Test (during_train) Accuracy": 0.7340283989906311, "_wandb": {"runtime": 1433}}
