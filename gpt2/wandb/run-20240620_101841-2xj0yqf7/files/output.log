@@ -1,0 +1,22 @@
+['Yichang', 'Hirosaki', 'Kabul', 'Kushiro', 'Hanoi', 'Dhanbad', 'Ajmer', 'Leipzig', 'Moncton', 'Flensburg', 'Luan', 'Itanagar', 'Hathras', 'Fuyu', 'Yichun', 'Dublin', 'Hangu', 'Shihezi', 'Lishui', 'Guntur', 'Calais', 'Baddeck', 'Karachi', 'Shiyan', 'Jasper', 'Creston', 'Wilmington', 'Zunyi', 'Yorkton', 'Camrose', 'Brooks', 'Parnaiba', 'Lodz', 'Madurai', 'Wichita', 'Mainz', 'Taian', 'Brandon', 'Donegal', 'Brugge', 'Linxia', 'Delhi', 'Xinyang', 'Kelang', 'Tunis', 'Curitiba', 'Cork', 'Liuhe', 'Brockville', 'Jinan', 'Penticton', 'Puri', 'Shanghai', 'Cartwright', 'Caruaru', 'Langfang', 'Yian', 'Baku', 'Sendai', 'Waco', 'Belleville', 'Nanping', 'Shashi', 'Montreal', 'Kalyan', 'Kochi', 'Shishou', 'Shulan', 'Zigong', 'Helong', 'Tailai', 'Panshi', 'Yiyang', 'Yishui', 'Daqing', 'Linfen', 'Barrie', 'Pingyi', 'Melville', 'Yitulihe', 'Agra', 'Linyi', 'Luoyang', 'Quebec', 'Mandya', 'Williamsport', 'Xiamen', 'Mumbai', 'Gwalior', 'Gannan', 'Kyoto', 'Bidar', 'Yingkow', 'Huanren', 'Xining', 'Paracatu', 'Yulin', 'Hotan', 'Tampa', 'Yancheng', 'Ahmedabad', 'Sanya', 'Karnal', 'Banff', 'Ankara', 'Providence', 'Monterrey', 'Maizuru', 'Sapporo', 'Kure', 'Akita', 'Longyan', 'Patna', 'Ahvaz', 'Changling', 'Navsari', 'Kofu', 'Vernon', 'Nautla', 'Cornwall', 'Zixing', 'Panaji', 'Vienna', 'Cochrane', 'Xigaze', 'Strasbourg', 'Dezhou', 'Mysore', 'Fushun', 'Wallace', 'Jincheng', 'Houma', 'Paranaiba', 'Yumen', 'Jacunda', 'Anxi', 'Whitehorse', 'Dawson', 'Kitchener', 'Formiga', 'Sanaa', 'Changping', 'Windsor', 'Dhule', 'Brussels', 'Weifang', 'Lijiang', 'Yibin', 'Hancheng', 'Putian', 'Medina', 'Nagpur', 'Tacheng', 'Linchuan', 'Itaituba', 'Jerusalem', 'Norfolk', 'Stephenville', 'Trang', 'Shangdu', 'Ambala', 'Changde', 'Simao', 'Winona', 'Iguatu', 'Dalian', 'Maanshan', 'Brumado', 'Rohtak', 'Changsha', 'Resolute', 'Sikar', 'Xuchang', 'Rampur', 'Merida', 'Beihai', 'Motul', 'Changting', 'Fujin', 'Beijing', 'Dhaka', 'Handan', 'Varanasi', 'Sagar', 'Tulsa', 'Phuket', 'Yishan', 'Churchill', 'Pune', 'Wuxi', 'Dandong', 'Basel', 'Pilibhit', 'Mombasa', 'Edmonton', 'Chamdo', 'Pathankot', 'Weihai', 'Istanbul', 'Surakarta', 'Doha', 'Pingdu', 'Heyuan', 'Anyang', 'Datong', 'Cobalt', 'Deyang', 'Tecoman', 'Dayton', 'Malacca', 'Reynosa', 'Indore', 'Xinyu', 'Hapur', 'Jammu', 'Shantou', 'Lethbridge', 'Santos', 'Isfahan', 'Baoji', 'Rabat', 'Minxian', 'Januaria', 'Trieste', 'Zurich', 'Mengzi', 'Amravati', 'Nairobi', 'Manila', 'Hefei', 'Yuci', 'Itabuna', 'Utica', 'Heihe', 'Tecpan', 'Nogales', 'Sakata', 'Beian', 'Foshan', 'Jakarta', 'Stuttgart', 'Angangxi', 'Linqing', 'Guilin', 'Sanming', 'Yaan', 'Sudbury', 'Chifeng', 'Tarsus', 'Anqing']
+The total number of overlapping words are 250
+The total number of sample pairs in country are 143168
+The total number of sample pairs in continent are 143251
+The total number of samples with which GPT-2 is comfortable for country dataset are 661
+The total length of the cities with which GPT-2 is comfortable for country dataset are 661
+The total number of samples with which GPT-2 is comfortable for continent dataset are 974
+The total length of the cities with which GPT-2 is comfortable for continent dataset are 974
+The total number of intersecting cities between country and continent are 250
+  0%|                                                                        | 0/143168 [00:00<?, ?it/s]
+Traceback (most recent call last):
+  File "/home/atticus/maheep/SAE_vs_DAS/gpt2/main_intervention.py", line 224, in <module>
+    proceed, base_ids, source_ids, base_label, source_label, source, base = data_process(sample, model)
+  File "/home/atticus/maheep/SAE_vs_DAS/gpt2/main_intervention.py", line 105, in data_process
+    base_ids = model.tokenizer.encode(base, return_tensors='pt').type(torch.LongTensor).to(DEVICE)
+RuntimeError: PyTorch is not linked with support for mps devices
+Traceback (most recent call last):
+  File "/home/atticus/maheep/SAE_vs_DAS/gpt2/main_intervention.py", line 224, in <module>
+    proceed, base_ids, source_ids, base_label, source_label, source, base = data_process(sample, model)
+  File "/home/atticus/maheep/SAE_vs_DAS/gpt2/main_intervention.py", line 105, in data_process
+    base_ids = model.tokenizer.encode(base, return_tensors='pt').type(torch.LongTensor).to(DEVICE)
+RuntimeError: PyTorch is not linked with support for mps devices

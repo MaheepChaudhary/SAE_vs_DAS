@@ -1,0 +1,295 @@
+['Dublin', 'Sanming', 'Churchill', 'Edmonton', 'Hirosaki', 'Malacca', 'Heihe', 'Penticton', 'Yiyang', 'Xigaze', 'Motul', 'Varanasi', 'Liuhe', 'Caruaru', 'Wilmington', 'Surakarta', 'Sudbury', 'Tampa', 'Shulan', 'Pingdu', 'Weihai', 'Yulin', 'Heyuan', 'Sanya', 'Strasbourg', 'Indore', 'Whitehorse', 'Yishan', 'Dhanbad', 'Huanren', 'Kyoto', 'Lishui', 'Medina', 'Shashi', 'Tacheng', 'Yichang', 'Fujin', 'Gwalior', 'Zunyi', 'Jerusalem', 'Baku', 'Sagar', 'Dalian', 'Lijiang', 'Flensburg', 'Hotan', 'Foshan', 'Anyang', 'Tunis', 'Changsha', 'Bidar', 'Vernon', 'Leipzig', 'Yingkow', 'Kofu', 'Dandong', 'Iguatu', 'Formiga', 'Isfahan', 'Itanagar', 'Panshi', 'Cobalt', 'Shihezi', 'Zurich', 'Datong', 'Zixing', 'Sapporo', 'Providence', 'Gannan', 'Dayton', 'Resolute', 'Hefei', 'Linchuan', 'Wuxi', 'Ahvaz', 'Quebec', 'Mumbai', 'Shantou', 'Xinyang', 'Curitiba', 'Helong', 'Cochrane', 'Fushun', 'Windsor', 'Chifeng', 'Karachi', 'Brandon', 'Changping', 'Stephenville', 'Zigong', 'Amravati', 'Tecpan', 'Guntur', 'Manila', 'Kitchener', 'Nairobi', 'Ajmer', 'Luan', 'Nautla', 'Yaan', 'Kure', 'Trieste', 'Yichun', 'Simao', 'Anxi', 'Utica', 'Melville', 'Hanoi', 'Putian', 'Waco', 'Anqing', 'Creston', 'Cornwall', 'Hapur', 'Linqing', 'Sanaa', 'Banff', 'Yibin', 'Vienna', 'Shishou', 'Hancheng', 'Brockville', 'Nagpur', 'Trang', 'Wichita', 'Reynosa', 'Sakata', 'Beihai', 'Navsari', 'Donegal', 'Brussels', 'Rohtak', 'Daqing', 'Jasper', 'Pingyi', 'Mombasa', 'Ankara', 'Jakarta', 'Cartwright', 'Brugge', 'Tarsus', 'Akita', 'Brumado', 'Beian', 'Mainz', 'Phuket', 'Yishui', 'Kalyan', 'Patna', 'Linyi', 'Norfolk', 'Changling', 'Sikar', 'Itaituba', 'Houma', 'Guilin', 'Yumen', 'Januaria', 'Yancheng', 'Brooks', 'Mysore', 'Doha', 'Beijing', 'Itabuna', 'Tulsa', 'Yitulihe', 'Shiyan', 'Changting', 'Parnaiba', 'Merida', 'Rampur', 'Ahmedabad', 'Nogales', 'Mandya', 'Tailai', 'Shanghai', 'Xinyu', 'Wallace', 'Madurai', 'Paranaiba', 'Maanshan', 'Maizuru', 'Yorkton', 'Baoji', 'Dhaka', 'Stuttgart', 'Yuci', 'Linxia', 'Handan', 'Rabat', 'Luoyang', 'Chamdo', 'Kabul', 'Montreal', 'Xuchang', 'Sendai', 'Delhi', 'Pathankot', 'Angangxi', 'Shangdu', 'Calais', 'Xining', 'Cork', 'Monterrey', 'Dezhou', 'Minxian', 'Kochi', 'Tecoman', 'Puri', 'Jacunda', 'Hathras', 'Barrie', 'Dhule', 'Nanping', 'Linfen', 'Camrose', 'Yian', 'Basel', 'Pilibhit', 'Williamsport', 'Winona', 'Jinan', 'Dawson', 'Fuyu', 'Jammu', 'Lethbridge', 'Deyang', 'Weifang', 'Moncton', 'Santos', 'Xiamen', 'Agra', 'Panaji', 'Paracatu', 'Taian', 'Belleville', 'Kelang', 'Hangu', 'Langfang', 'Kushiro', 'Pune', 'Changde', 'Jincheng', 'Longyan', 'Karnal', 'Lodz', 'Baddeck', 'Ambala', 'Mengzi', 'Istanbul']
+The total number of overlapping words are 250
+The total number of sample pairs in country are 143168
+The total number of sample pairs in continent are 143251
+The total number of samples with which GPT-2 is comfortable for country dataset are 661
+The total length of the cities with which GPT-2 is comfortable for country dataset are 661
+The total number of samples with which GPT-2 is comfortable for continent dataset are 974
+The total length of the cities with which GPT-2 is comfortable for continent dataset are 974
+The total number of intersecting cities between country and continent are 250
+  0%|                                                | 0/143251 [00:00<?, ?it/s]You're using a GPT2TokenizerFast tokenizer. Please note that with a fast tokenizer, using the `__call__` method is faster than using a method to encode the text followed by a call to the `pad` method to get a padded encoding.
+/home/atticus/.local/lib/python3.10/site-packages/pandas/core/computation/expressions.py:21: UserWarning: Pandas requires version '2.8.4' or newer of 'numexpr' (version '2.8.1' currently installed).
+  from pandas.core.computation.check import NUMEXPR_INSTALLED
+/home/atticus/.local/lib/python3.10/site-packages/pandas/core/arrays/masked.py:60: UserWarning: Pandas requires version '1.3.6' or newer of 'bottleneck' (version '1.3.2' currently installed).
+  from pandas.core import (
+[0, 0]
+0.0
+[0, 0]
+0.0
+[0, 0]
+0.0
+[0, 0]
+0.0
+[0, 0]
+0.0
+[0, 0]
+0.0
+[0, 0]
+0.0
+[0, 0]
+0.0
+[0, 0]
+0.0
+[0, 0]
+0.0
+[0, 0]
+0.0
+[0, 0]
+0.0
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  0%|                                  | 100/143251 [05:45<135:16:26,  3.40s/it]
+[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+0.0
+[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+0.0
+[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+0.0
+[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+0.0
+[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+0.0
+[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+0.0
+[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+0.0
+[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+0.0
+[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+0.0
+[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+0.0
+[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+
+  0%|                                  | 101/143251 [05:49<135:16:53,  3.40s/it]
+[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  0%|                                  | 141/143251 [08:11<138:37:27,  3.49s/it]
+Traceback (most recent call last):
+  File "/home/atticus/maheep/SAE_vs_DAS/gpt2/main_intervention.py", line 224, in <module>
+    predicted_text = intervention(model, source_ids, base_ids, layer_index, intervened_token_idx)
+  File "/home/atticus/maheep/SAE_vs_DAS/gpt2/main_intervention.py", line 114, in intervention
+    with model.trace() as tracer:
+  File "/home/atticus/.local/lib/python3.10/site-packages/nnsight/contexts/Runner.py", line 41, in __exit__
+    raise exc_val
+  File "/home/atticus/maheep/SAE_vs_DAS/gpt2/main_intervention.py", line 120, in intervention
+    with tracer.invoke(base_ids) as runner_:
+  File "/home/atticus/.local/lib/python3.10/site-packages/nnsight/contexts/Invoker.py", line 69, in __enter__
+    self.tracer._model._execute(
+  File "/home/atticus/.local/lib/python3.10/site-packages/nnsight/models/mixins/Generation.py", line 21, in _execute
+    return self._execute_forward(prepared_inputs, *args, **kwargs)
+  File "/home/atticus/.local/lib/python3.10/site-packages/nnsight/models/LanguageModel.py", line 281, in _execute_forward
+    return self._model(
+  File "/home/atticus/.local/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1532, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/home/atticus/.local/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1582, in _call_impl
+    result = forward_call(*args, **kwargs)
+  File "/home/atticus/.local/lib/python3.10/site-packages/transformers/models/gpt2/modeling_gpt2.py", line 1074, in forward
+    transformer_outputs = self.transformer(
+  File "/home/atticus/.local/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1532, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/home/atticus/.local/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1582, in _call_impl
+    result = forward_call(*args, **kwargs)
+  File "/home/atticus/.local/lib/python3.10/site-packages/transformers/models/gpt2/modeling_gpt2.py", line 888, in forward
+    outputs = block(
+  File "/home/atticus/.local/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1532, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/home/atticus/.local/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1582, in _call_impl
+    result = forward_call(*args, **kwargs)
+  File "/home/atticus/.local/lib/python3.10/site-packages/transformers/models/gpt2/modeling_gpt2.py", line 390, in forward
+    attn_outputs = self.attn(
+  File "/home/atticus/.local/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1532, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/home/atticus/.local/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1582, in _call_impl
+    result = forward_call(*args, **kwargs)
+  File "/home/atticus/.local/lib/python3.10/site-packages/transformers/models/gpt2/modeling_gpt2.py", line 333, in forward
+    attn_output = self._merge_heads(attn_output, self.num_heads, self.head_dim)
+  File "/home/atticus/.local/lib/python3.10/site-packages/transformers/models/gpt2/modeling_gpt2.py", line 288, in _merge_heads
+    return tensor.view(new_shape)
+  File "/home/atticus/.local/lib/python3.10/site-packages/torch/_subclasses/fake_tensor.py", line 1780, in __torch_function__
+    return func(*args, **kwargs)
+  File "/home/atticus/.local/lib/python3.10/site-packages/torch/utils/_stats.py", line 15, in wrapper
+    @functools.wraps(fn)
+KeyboardInterrupt
+Traceback (most recent call last):
+  File "/home/atticus/maheep/SAE_vs_DAS/gpt2/main_intervention.py", line 224, in <module>
+    predicted_text = intervention(model, source_ids, base_ids, layer_index, intervened_token_idx)
+  File "/home/atticus/maheep/SAE_vs_DAS/gpt2/main_intervention.py", line 114, in intervention
+    with model.trace() as tracer:
+  File "/home/atticus/.local/lib/python3.10/site-packages/nnsight/contexts/Runner.py", line 41, in __exit__
+    raise exc_val
+  File "/home/atticus/maheep/SAE_vs_DAS/gpt2/main_intervention.py", line 120, in intervention
+    with tracer.invoke(base_ids) as runner_:
+  File "/home/atticus/.local/lib/python3.10/site-packages/nnsight/contexts/Invoker.py", line 69, in __enter__
+    self.tracer._model._execute(
+  File "/home/atticus/.local/lib/python3.10/site-packages/nnsight/models/mixins/Generation.py", line 21, in _execute
+    return self._execute_forward(prepared_inputs, *args, **kwargs)
+  File "/home/atticus/.local/lib/python3.10/site-packages/nnsight/models/LanguageModel.py", line 281, in _execute_forward
+    return self._model(
+  File "/home/atticus/.local/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1532, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/home/atticus/.local/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1582, in _call_impl
+    result = forward_call(*args, **kwargs)
+  File "/home/atticus/.local/lib/python3.10/site-packages/transformers/models/gpt2/modeling_gpt2.py", line 1074, in forward
+    transformer_outputs = self.transformer(
+  File "/home/atticus/.local/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1532, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/home/atticus/.local/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1582, in _call_impl
+    result = forward_call(*args, **kwargs)
+  File "/home/atticus/.local/lib/python3.10/site-packages/transformers/models/gpt2/modeling_gpt2.py", line 888, in forward
+    outputs = block(
+  File "/home/atticus/.local/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1532, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/home/atticus/.local/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1582, in _call_impl
+    result = forward_call(*args, **kwargs)
+  File "/home/atticus/.local/lib/python3.10/site-packages/transformers/models/gpt2/modeling_gpt2.py", line 390, in forward
+    attn_outputs = self.attn(
+  File "/home/atticus/.local/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1532, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/home/atticus/.local/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1582, in _call_impl
+    result = forward_call(*args, **kwargs)
+  File "/home/atticus/.local/lib/python3.10/site-packages/transformers/models/gpt2/modeling_gpt2.py", line 333, in forward
+    attn_output = self._merge_heads(attn_output, self.num_heads, self.head_dim)
+  File "/home/atticus/.local/lib/python3.10/site-packages/transformers/models/gpt2/modeling_gpt2.py", line 288, in _merge_heads
+    return tensor.view(new_shape)
+  File "/home/atticus/.local/lib/python3.10/site-packages/torch/_subclasses/fake_tensor.py", line 1780, in __torch_function__
+    return func(*args, **kwargs)
+  File "/home/atticus/.local/lib/python3.10/site-packages/torch/utils/_stats.py", line 15, in wrapper
+    @functools.wraps(fn)
+KeyboardInterrupt
