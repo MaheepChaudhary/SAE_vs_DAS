@@ -1,0 +1,96 @@
+
+passed dict emned path ./dictionary_learning/dictionaries/pythia-70m-deduped/embed
+Special tokens have been added in the vocabulary, make sure the associated word embeddings are fine-tuned or trained.
+  0%|                                                | 0/71 [00:00<?, ?it/s]You're using a GPTNeoXTokenizerFast tokenizer. Please note that with a fast tokenizer, using the `__call__` method is faster than using a method to encode the text followed by a call to the `pad` method to get a padded encoding.
+
+
+
+
+
+
+
+
+100%|███████████████████████████████████████| 71/71 [00:19<00:00,  3.57it/s]
+
+
+
+
+
+
+
+
+100%|███████████████████████████████████████| 71/71 [00:18<00:00,  3.94it/s]
+
+
+
+
+
+
+
+
+100%|███████████████████████████████████████| 71/71 [00:18<00:00,  3.93it/s]
+
+
+
+
+
+
+
+
+100%|███████████████████████████████████████| 71/71 [00:18<00:00,  3.90it/s]
+
+
+
+
+
+
+
+
+100%|███████████████████████████████████████| 71/71 [00:18<00:00,  3.89it/s]
+
+
+
+
+
+
+
+
+100%|███████████████████████████████████████| 71/71 [00:17<00:00,  3.97it/s]
+
+
+
+
+
+
+
+
+
+100%|███████████████████████████████████████| 71/71 [00:18<00:00,  3.88it/s]
+
+
+
+
+
+
+
+100%|███████████████████████████████████████| 71/71 [00:17<00:00,  3.98it/s]
+
+
+
+
+
+
+
+
+
+100%|███████████████████████████████████████| 71/71 [00:18<00:00,  3.87it/s]
+
+
+
+
+
+
+
+
+
+100%|███████████████████████████████████████| 71/71 [00:17<00:00,  3.97it/s]

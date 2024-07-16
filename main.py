@@ -6,6 +6,7 @@ from dataprocessing import *
 
 def train(DEVICE, 
         epochs, 
+        # temp,
         lr,
         mini_batch,
         evaluation,
@@ -22,7 +23,8 @@ def train(DEVICE,
     tokenizer = BertTokenizer.from_pretrained('bert-base-uncased')
 
     wandb.init(project="sae_concept_eraser")
-    wandb.run.name = f"[{evaluation}]-{residual_layer}-{method}_b{batch_size_train}_e{epochs}"
+    # Through extensive experimentation we can say that the best value for the temperature is 0.1 -> 0.001
+    wandb.run.name = f"[{evaluation}]-{residual_layer}-{method}_b{batch_size_train}_e{epochs}_lr{lr}_temp({0.1},{0.001})"
 
     print("passed dict emned path", dict_embed_path)
 
@@ -52,8 +54,8 @@ def train(DEVICE,
 
     total_step = 0
     target_total_step = len(batches) * epochs
-    temperature_start = 50.0
-    temperature_end = 0.1
+    temperature_start = 0.1
+    temperature_end = 0.001
     temperature_schedule = (
         t.linspace(temperature_start, temperature_end, target_total_step)
         .to(t.bfloat16)
@@ -77,19 +79,13 @@ def train(DEVICE,
                 labels = batches[i][2]
             
             temprature = temperature_schedule[temp_idx]
-
-
-            logits = new_model(text, temperature=temprature)
-            # print(logits.shape)
-            # print(labels.float)
+            logits, l4_mask_sigmoid = new_model(text, temperature=temprature)
+            
             loss = criterion(logits, labels.float())
-            optimizer.zero_grad()
-            try:
-                loss.backward()
-            except:
-                pass
-            optimizer.step()
             losses.append(loss.item())
+            optimizer.zero_grad()
+            loss.backward()
+            optimizer.step()
             temp_idx += 1
             # if len(losses) % 10 == 0:
                 # print(f"Epoch: {epoch}, Loss: {np.mean(losses)}")
@@ -101,11 +97,54 @@ def train(DEVICE,
                 t.mps.empty_cache()
         
         wandb.log({"Full Data Gender de-baising Losses": np.mean(losses)})
-            
-        
-        
+
+        # evaluation for each group
+        batches_test = get_data(DEVICE, train = False, ambiguous=False)
+        corrects_gender = []
+        corrects_profession = []
+
+        with t.no_grad():       
+            len_batches = len(batches_test)
+            for i in tqdm(range(len_batches)):
+                text = batches_test[i][0]
                 
-    # t.save(new_model.state_dict(), f"saved_models/{evaluation}-{residual_layer}-{method}_b{batch_size_train}_e{epochs}.pth")
+                # if evaluation == "profession":
+                #     labels = batches[i][1] # true label, if [2] then spurious label. We will be training the model in hope that mask will learn which concepts to mask. 
+                # elif evaluation == "gender":
+                labels_gender = batches_test[i][2]
+                
+                # acts = get_acts(text)
+                logits, _ = new_model(text, temperature=temprature)
+                # preds = (logits > 0.0).long()
+                preds_gender = (logits > 0.0).long()
+                corrects_gender.append((preds_gender == labels_gender).float())
+            
+            accuracy = t.cat(corrects_gender).mean().item()
+
+
+            wandb.log({f"{method} Gender Test (during_train) Accuracy": accuracy})
+            
+            for i in tqdm(range(len_batches)):
+                text = batches_test[i][0]
+                
+                # if evaluation == "profession":
+                #     labels = batches[i][1] # true label, if [2] then spurious label. We will be training the model in hope that mask will learn which concepts to mask. 
+                # elif evaluation == "gender":
+                labels_profession = batches_test[i][1]
+                
+                # acts = get_acts(text)
+                logits, _ = new_model(text, temperature=temprature)
+                # preds = (logits > 0.0).long()
+                preds_profession = (logits > 0.0).long()
+                corrects_profession.append((preds_profession == labels_profession).float())
+            
+            accuracy = t.cat(corrects_profession).mean().item()
+
+
+            wandb.log({f"{method} Professional Test (during_train) Accuracy": accuracy})
+                    
+                
+    # t.save(new_model.state_dict(), f"saved_models/{evaluation}-{residual_layer}-{method}_b{batch_size_train}_e{epochs}_temp({0.1},{0.001}).pth")
                 
 def eval(DEVICE, 
         saved_model_path,
@@ -169,7 +208,7 @@ def eval(DEVICE,
                 labels = batches[i][2]
             
             # acts = get_acts(text)
-            logits = new_model(text, temperature=0.1)
+            logits, _ = new_model(text, temperature=0.001)
             # preds = (logits > 0.0).long()
             preds = (logits > 0.0).long()
             corrects.append((preds == labels).float())
@@ -224,7 +263,7 @@ def eval_on_subgroups(DEVICE,
             for i in tqdm(range(len(batches))):
                 text = batches[i][0]
                 labels = label_profile[0] # true label, if [2] then spurious label. We will be training the model in hope that mask will learn which concepts to mask.
-                logits = new_model(text, temperature = 0.1)
+                logits = new_model(text, temperature = 0.001)
                 preds = (logits > 0.0).long()
                 corrects.append((preds == labels).float())
             
@@ -285,7 +324,11 @@ if __name__ == "__main__":
     
     argparser.add_argument("-task", "--task", required=True, type=str, help="task to be performed, i.e. train, eval or eval_on_subgroups")
     argparser.add_argument("-nds", "--method", required=True, type=str, help="method to be used, i.e. neuron masking, sae masking or das masking or das sae masking")
+<<<<<<< HEAD
     
+=======
+    # argparser.add_argument("-temp", "--temperature", required=True, type=list, help="temperature for the model [initial_value, end_value]")
+>>>>>>> server
     
     args = argparser.parse_args()
     # args.residual_layer = [int(i) for i in args.residual_layer]
@@ -300,6 +343,7 @@ if __name__ == "__main__":
         
     
         train(DEVICE=args.device,
+            # temp = args.temperature,
             epochs=args.epochs,
             lr = args.learning_rate,
             mini_batch=args.mini_batch,
@@ -362,3 +406,5 @@ if __name__ == "__main__":
 # Figure out the set of cities that GPT-2 knows the country and continent for
 
 # python main.py -e 10 -btr 16 -d cuda:1 -layer "4" -pp probe_shift.pkl -task train -eval profession -nds "neuron masking" -dpath ./dictionary_learning/dictionaries/pythia-70m-deduped/embed -atpath ./dictionary_learning/dictionaries/pythia-70m-deduped/attn_out_layer -mpath ./dictionary_learning/dictionaries/pythia-70m-deduped/mlp_out_layer -rpath ./dictionary_learning/dictionaries/pythia-70m-deduped/resid_out_layer -mb 1
+
+# python main.py -d cuda:1 -layer "4" -dpath ./dictionary_learning/dictionaries/pythia-70m-deduped/embed -atpath ./dictionary_learning/dictionaries/pythia-70m-deduped/attn_out_layer -mpath ./dictionary_learning/dictionaries/pythia-70m-deduped/mlp_out_layer -rpath ./dictionary_learning/dictionaries/pythia-70m-deduped/resid_out_layer -mb 1 -e 25 -btr 16 -task train -eval profession -nds "neuron masking" -temp "[0.1,0.001]"

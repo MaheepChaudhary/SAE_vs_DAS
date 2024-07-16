@@ -1,0 +1,16 @@
+
+Special tokens have been added in the vocabulary, make sure the associated word embeddings are fine-tuned or trained.
+  0%|                                             | 0/1736 [00:00<?, ?it/s]You're using a GPTNeoXTokenizerFast tokenizer. Please note that with a fast tokenizer, using the `__call__` method is faster than using a method to encode the text followed by a call to the `pad` method to get a padded encoding.
+  0%|                                             | 0/1736 [00:01<?, ?it/s]
+Traceback (most recent call last):
+  File "/home/atticus/maheep/SAE_vs_DAS/main.py", line 314, in <module>
+    eval(args.device,
+  File "/home/atticus/maheep/SAE_vs_DAS/main.py", line 168, in eval
+    preds = (logits > 0.0).long()
+TypeError: '>' not supported between instances of 'tuple' and 'float'
+Traceback (most recent call last):
+  File "/home/atticus/maheep/SAE_vs_DAS/main.py", line 314, in <module>
+    eval(args.device,
+  File "/home/atticus/maheep/SAE_vs_DAS/main.py", line 168, in eval
+    preds = (logits > 0.0).long()
+TypeError: '>' not supported between instances of 'tuple' and 'float'

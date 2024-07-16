@@ -1,0 +1,1 @@
+{"Full Data Gender de-baising Losses": 1.9078838874114057, "_timestamp": 1717891718.5375626, "_runtime": 1881.5243365764618, "_step": 33, "neuron masking Gender Test (during_train) Accuracy": 0.5170807838439941, "neuron masking Professional Test (during_train) Accuracy": 0.9376664161682129, "_wandb": {"runtime": 1886}}

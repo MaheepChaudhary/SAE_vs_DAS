@@ -1,0 +1,42 @@
+
+Special tokens have been added in the vocabulary, make sure the associated word embeddings are fine-tuned or trained.
+Traceback (most recent call last):
+  File "/home/atticus/maheep/SAE_vs_DAS/main.py", line 314, in <module>
+    eval(args.device,
+  File "/home/atticus/maheep/SAE_vs_DAS/main.py", line 123, in eval
+    new_model = my_model(DEVICE = DEVICE,
+  File "/home/atticus/maheep/SAE_vs_DAS/model.py", line 118, in __init__
+    self.sae_rotate_layer = t.nn.utils.parametrizations.orthogonal(sae_rotate_layer)
+  File "/home/atticus/.local/lib/python3.10/site-packages/torch/nn/utils/parametrizations.py", line 285, in orthogonal
+    parametrize.register_parametrization(module, name, orth, unsafe=True)
+  File "/home/atticus/.local/lib/python3.10/site-packages/torch/nn/utils/parametrize.py", line 562, in register_parametrization
+    parametrizations = ParametrizationList([parametrization], original, unsafe=unsafe)
+  File "/home/atticus/.local/lib/python3.10/site-packages/torch/nn/utils/parametrize.py", line 136, in __init__
+    new = module.right_inverse(new)
+  File "/home/atticus/.local/lib/python3.10/site-packages/torch/utils/_contextlib.py", line 115, in decorate_context
+    return func(*args, **kwargs)
+  File "/home/atticus/.local/lib/python3.10/site-packages/torch/nn/utils/parametrizations.py", line 154, in right_inverse
+    if not _is_orthogonal(Q):
+  File "/home/atticus/.local/lib/python3.10/site-packages/torch/nn/utils/parametrizations.py", line 19, in _is_orthogonal
+    return torch.allclose(Q.mH @ Q, Id, atol=eps)
+KeyboardInterrupt
+Traceback (most recent call last):
+  File "/home/atticus/maheep/SAE_vs_DAS/main.py", line 314, in <module>
+    eval(args.device,
+  File "/home/atticus/maheep/SAE_vs_DAS/main.py", line 123, in eval
+    new_model = my_model(DEVICE = DEVICE,
+  File "/home/atticus/maheep/SAE_vs_DAS/model.py", line 118, in __init__
+    self.sae_rotate_layer = t.nn.utils.parametrizations.orthogonal(sae_rotate_layer)
+  File "/home/atticus/.local/lib/python3.10/site-packages/torch/nn/utils/parametrizations.py", line 285, in orthogonal
+    parametrize.register_parametrization(module, name, orth, unsafe=True)
+  File "/home/atticus/.local/lib/python3.10/site-packages/torch/nn/utils/parametrize.py", line 562, in register_parametrization
+    parametrizations = ParametrizationList([parametrization], original, unsafe=unsafe)
+  File "/home/atticus/.local/lib/python3.10/site-packages/torch/nn/utils/parametrize.py", line 136, in __init__
+    new = module.right_inverse(new)
+  File "/home/atticus/.local/lib/python3.10/site-packages/torch/utils/_contextlib.py", line 115, in decorate_context
+    return func(*args, **kwargs)
+  File "/home/atticus/.local/lib/python3.10/site-packages/torch/nn/utils/parametrizations.py", line 154, in right_inverse
+    if not _is_orthogonal(Q):
+  File "/home/atticus/.local/lib/python3.10/site-packages/torch/nn/utils/parametrizations.py", line 19, in _is_orthogonal
+    return torch.allclose(Q.mH @ Q, Id, atol=eps)
+KeyboardInterrupt

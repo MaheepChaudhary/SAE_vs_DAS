@@ -1,0 +1,72 @@
+
+passed dict emned path ./dictionary_learning/dictionaries/pythia-70m-deduped/embed
+Special tokens have been added in the vocabulary, make sure the associated word embeddings are fine-tuned or trained.
+  0%|       | 0/282 [00:00<?, ?it/s]You're using a GPTNeoXTokenizerFast tokenizer. Please note that with a fast tokenizer, using the `__call__` method is faster than using a method to encode the text followed by a call to the `pad` method to get a padded encoding.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+100%|█| 282/282 [00:46<00:00,  6.06i
+  0%|                                           | 0/14 [00:00<?, ?it/s]
+Traceback (most recent call last):
+  File "/home/atticus/maheep/SAE_vs_DAS/main.py", line 339, in <module>
+    train(DEVICE=args.device,
+  File "/home/atticus/maheep/SAE_vs_DAS/main.py", line 126, in train
+    logits, _ = new_model(batch_texts, temperature=0.001)
+  File "/home/atticus/.local/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1532, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/home/atticus/.local/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1541, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/atticus/maheep/SAE_vs_DAS/model.py", line 136, in forward
+    with self.model.trace(text) as tracer:
+  File "/home/atticus/.local/lib/python3.10/site-packages/nnsight/models/NNsightModel.py", line 196, in trace
+    runner.invoke(*inputs, **invoker_args).__enter__()
+  File "/home/atticus/.local/lib/python3.10/site-packages/nnsight/contexts/Invoker.py", line 57, in __enter__
+    self.inputs, batch_size = self.tracer._model._prepare_inputs(*self.inputs, **self.kwargs)
+  File "/home/atticus/.local/lib/python3.10/site-packages/nnsight/models/LanguageModel.py", line 240, in _prepare_inputs
+    inputs = self._tokenize(inputs, **kwargs)
+  File "/home/atticus/.local/lib/python3.10/site-packages/nnsight/models/LanguageModel.py", line 198, in _tokenize
+    return self.tokenizer.pad(inputs, return_tensors="pt", **kwargs)
+  File "/home/atticus/.local/lib/python3.10/site-packages/transformers/tokenization_utils_base.py", line 3277, in pad
+    raise ValueError(
+ValueError: type of He holds a PhD in Agricultural Botany an Msc in Agronomy and a BSc. in Agriculture. He has previously worked as the national coordinator for cereal crops in the Malawi ministry of agriculture and a national team leader for maize research and the focal person for Malawi for the regional soil fertility consortium for Southern Africa (SOFECSA). Dr. Kabambe has supervised a large number of Postgraduate students and published widely in the area of agronomy. Read more unknown: <class 'str'>. Should be one of a python, numpy, pytorch or tensorflow object.
+Traceback (most recent call last):
+  File "/home/atticus/maheep/SAE_vs_DAS/main.py", line 339, in <module>
+    train(DEVICE=args.device,
+  File "/home/atticus/maheep/SAE_vs_DAS/main.py", line 126, in train
+    logits, _ = new_model(batch_texts, temperature=0.001)
+  File "/home/atticus/.local/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1532, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/home/atticus/.local/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1541, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/atticus/maheep/SAE_vs_DAS/model.py", line 136, in forward
+    with self.model.trace(text) as tracer:
+  File "/home/atticus/.local/lib/python3.10/site-packages/nnsight/models/NNsightModel.py", line 196, in trace
+    runner.invoke(*inputs, **invoker_args).__enter__()
+  File "/home/atticus/.local/lib/python3.10/site-packages/nnsight/contexts/Invoker.py", line 57, in __enter__
+    self.inputs, batch_size = self.tracer._model._prepare_inputs(*self.inputs, **self.kwargs)
+  File "/home/atticus/.local/lib/python3.10/site-packages/nnsight/models/LanguageModel.py", line 240, in _prepare_inputs
+    inputs = self._tokenize(inputs, **kwargs)
+  File "/home/atticus/.local/lib/python3.10/site-packages/nnsight/models/LanguageModel.py", line 198, in _tokenize
+    return self.tokenizer.pad(inputs, return_tensors="pt", **kwargs)
+  File "/home/atticus/.local/lib/python3.10/site-packages/transformers/tokenization_utils_base.py", line 3277, in pad
+    raise ValueError(
+ValueError: type of He holds a PhD in Agricultural Botany an Msc in Agronomy and a BSc. in Agriculture. He has previously worked as the national coordinator for cereal crops in the Malawi ministry of agriculture and a national team leader for maize research and the focal person for Malawi for the regional soil fertility consortium for Southern Africa (SOFECSA). Dr. Kabambe has supervised a large number of Postgraduate students and published widely in the area of agronomy. Read more unknown: <class 'str'>. Should be one of a python, numpy, pytorch or tensorflow object.

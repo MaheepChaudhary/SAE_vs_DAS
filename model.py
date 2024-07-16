@@ -152,23 +152,16 @@ class my_model(nn.Module):
                 # self.submodules[self.resid_arr[layer]].output[0][:] = acts.clone()
                 self.submodules[self.resid_arr[self.resid_layer]].output[0][:] = acts.clone()
                 final_acts = self.submodules[-1].output[0][:].save()
-            
-                
                 
                 
             elif self.method == "neuron masking":
                 
                 # for layer in self.resid_layers:
                 
-                # dictionary = self.dictionaries[self.submodules[self.resid_arr[layer]]]
                 dictionary = self.dictionaries[self.submodules[self.resid_arr[self.resid_layer]]]
-                # acts = self.submodules[self.resid_arr[layer]].output[0][:].clone().save()
                 acts = self.submodules[self.resid_arr[self.resid_layer]].output[0][:].clone().save()
                 cond = type(self.submodules[self.resid_arr[self.resid_layer]].output.shape) == tuple
-                # print(f"Shape of l4_mask_sigmoid: {l4_mask_sigmoid.shape}")
-                # print(f"Shape of acts: {acts.shape}")
                 acts = l4_mask_sigmoid * acts
-                # self.submodules[self.resid_arr[layer]].output[0][:] = acts.clone()
                 self.submodules[self.resid_arr[self.resid_layer]].output[0][:] = acts.clone()
                 final_acts = self.submodules[-1].output[0][:].save()
                 
@@ -234,5 +227,5 @@ class my_model(nn.Module):
         new_acts = final_acts.sum(1)
         acts = self.probe.net(new_acts).squeeze(-1)
             
-        return acts
+        return acts, l4_mask_sigmoid
     

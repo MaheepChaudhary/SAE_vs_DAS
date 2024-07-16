@@ -1,0 +1,736 @@
+2024-06-08 00:56:46,040 INFO    StreamThr :2263539 [internal.py:wandb_internal():85] W&B internal server running at pid: 2263539, started at: 2024-06-08 00:56:46.040260
+2024-06-08 00:56:46,041 DEBUG   HandlerThread:2263539 [handler.py:handle_request():158] handle_request: status
+2024-06-08 00:56:46,043 INFO    WriterThread:2263539 [datastore.py:open_for_write():87] open: /home/atticus/maheep/SAE_vs_DAS/wandb/run-20240608_005646-c8evl5v0/run-c8evl5v0.wandb
+2024-06-08 00:56:46,043 DEBUG   SenderThread:2263539 [sender.py:send():378] send: header
+2024-06-08 00:56:46,044 DEBUG   SenderThread:2263539 [sender.py:send():378] send: run
+2024-06-08 00:56:46,382 INFO    SenderThread:2263539 [dir_watcher.py:__init__():211] watching files in: /home/atticus/maheep/SAE_vs_DAS/wandb/run-20240608_005646-c8evl5v0/files
+2024-06-08 00:56:46,382 INFO    SenderThread:2263539 [sender.py:_start_run_threads():1123] run started: c8evl5v0 with start time 1717833406.040179
+2024-06-08 00:56:46,386 DEBUG   HandlerThread:2263539 [handler.py:handle_request():158] handle_request: check_version
+2024-06-08 00:56:46,386 DEBUG   SenderThread:2263539 [sender.py:send_request():405] send_request: check_version
+2024-06-08 00:56:46,491 DEBUG   HandlerThread:2263539 [handler.py:handle_request():158] handle_request: run_start
+2024-06-08 00:56:46,497 ERROR   HandlerThread:2263539 [gpu.py:is_available():381] Error initializing NVML: RM has detected an NVML/RM version mismatch.
+2024-06-08 00:56:46,497 DEBUG   HandlerThread:2263539 [system_info.py:__init__():26] System info init
+2024-06-08 00:56:46,497 DEBUG   HandlerThread:2263539 [system_info.py:__init__():41] System info init done
+2024-06-08 00:56:46,497 INFO    HandlerThread:2263539 [system_monitor.py:start():194] Starting system monitor
+2024-06-08 00:56:46,498 INFO    SystemMonitor:2263539 [system_monitor.py:_start():158] Starting system asset monitoring threads
+2024-06-08 00:56:46,498 INFO    HandlerThread:2263539 [system_monitor.py:probe():214] Collecting system info
+2024-06-08 00:56:46,498 INFO    SystemMonitor:2263539 [interfaces.py:start():188] Started cpu monitoring
+2024-06-08 00:56:46,498 INFO    SystemMonitor:2263539 [interfaces.py:start():188] Started disk monitoring
+2024-06-08 00:56:46,499 INFO    SystemMonitor:2263539 [interfaces.py:start():188] Started memory monitoring
+2024-06-08 00:56:46,499 INFO    SystemMonitor:2263539 [interfaces.py:start():188] Started network monitoring
+2024-06-08 00:56:46,508 DEBUG   HandlerThread:2263539 [system_info.py:probe():150] Probing system
+2024-06-08 00:56:46,509 DEBUG   HandlerThread:2263539 [system_info.py:_probe_git():135] Probing git
+2024-06-08 00:56:46,513 DEBUG   HandlerThread:2263539 [system_info.py:_probe_git():143] Probing git done
+2024-06-08 00:56:46,513 DEBUG   HandlerThread:2263539 [system_info.py:probe():198] Probing system done
+2024-06-08 00:56:46,513 DEBUG   HandlerThread:2263539 [system_monitor.py:probe():223] {'os': 'Linux-6.5.0-28-generic-x86_64-with-glibc2.35', 'python': '3.10.12', 'heartbeatAt': '2024-06-08T07:56:46.508217', 'startedAt': '2024-06-08T07:56:46.034448', 'docker': None, 'cuda': None, 'args': ('-e', '10', '-btr', '16', '-d', 'cuda:1', '-layer', '4', '-task', 'train', '-eval', 'profession', '-nds', 'neuron masking', '-dpath', './dictionary_learning/dictionaries/pythia-70m-deduped/embed', '-atpath', './dictionary_learning/dictionaries/pythia-70m-deduped/attn_out_layer', '-mpath', './dictionary_learning/dictionaries/pythia-70m-deduped/mlp_out_layer', '-rpath', './dictionary_learning/dictionaries/pythia-70m-deduped/resid_out_layer', '-mb', '1'), 'state': 'running', 'program': '/home/atticus/maheep/SAE_vs_DAS/main.py', 'codePathLocal': 'main.py', 'codePath': 'main.py', 'git': {'remote': 'https://github.com/MaheepChaudhary/SAE_vs_DAS.git', 'commit': '01556287ca0f7d32e02c55fa0ec1ed2739d3f650'}, 'email': 'chaudhary.maheep28@gmail.com', 'root': '/home/atticus/maheep/SAE_vs_DAS', 'host': 'AtticusDeepLearner', 'username': 'atticus', 'executable': '/usr/bin/python', 'cpu_count': 16, 'cpu_count_logical': 32, 'cpu_freq': {'current': 3.0645624999999996, 'min': 1800.0, 'max': 4000.0}, 'cpu_freq_per_core': [{'current': 3.633, 'min': 1800.0, 'max': 4000.0}, {'current': 4.539, 'min': 1800.0, 'max': 4000.0}, {'current': 1.8, 'min': 1800.0, 'max': 4000.0}, {'current': 3.632, 'min': 1800.0, 'max': 4000.0}, {'current': 3.633, 'min': 1800.0, 'max': 4000.0}, {'current': 3.632, 'min': 1800.0, 'max': 4000.0}, {'current': 3.633, 'min': 1800.0, 'max': 4000.0}, {'current': 3.69, 'min': 1800.0, 'max': 4000.0}, {'current': 4.33, 'min': 1800.0, 'max': 4000.0}, {'current': 3.633, 'min': 1800.0, 'max': 4000.0}, {'current': 1.8, 'min': 1800.0, 'max': 4000.0}, {'current': 2.584, 'min': 1800.0, 'max': 4000.0}, {'current': 4.537, 'min': 1800.0, 'max': 4000.0}, {'current': 1.8, 'min': 1800.0, 'max': 4000.0}, {'current': 4.297, 'min': 1800.0, 'max': 4000.0}, {'current': 1.8, 'min': 1800.0, 'max': 4000.0}, {'current': 1.8, 'min': 1800.0, 'max': 4000.0}, {'current': 4.539, 'min': 1800.0, 'max': 4000.0}, {'current': 3.633, 'min': 1800.0, 'max': 4000.0}, {'current': 4.0, 'min': 1800.0, 'max': 4000.0}, {'current': 3.633, 'min': 1800.0, 'max': 4000.0}, {'current': 3.632, 'min': 1800.0, 'max': 4000.0}, {'current': 1.8, 'min': 1800.0, 'max': 4000.0}, {'current': 3.629, 'min': 1800.0, 'max': 4000.0}, {'current': 2.243, 'min': 1800.0, 'max': 4000.0}, {'current': 3.633, 'min': 1800.0, 'max': 4000.0}, {'current': 4.537, 'min': 1800.0, 'max': 4000.0}, {'current': 1.8, 'min': 1800.0, 'max': 4000.0}, {'current': 1.8, 'min': 1800.0, 'max': 4000.0}, {'current': 4.0, 'min': 1800.0, 'max': 4000.0}, {'current': 1.8, 'min': 1800.0, 'max': 4000.0}, {'current': 4.315, 'min': 1800.0, 'max': 4000.0}], 'disk': {'/': {'total': 3519.256721496582, 'used': 126.85319137573242}}, 'memory': {'total': 251.53791046142578}}
+2024-06-08 00:56:46,513 INFO    HandlerThread:2263539 [system_monitor.py:probe():224] Finished collecting system info
+2024-06-08 00:56:46,513 INFO    HandlerThread:2263539 [system_monitor.py:probe():227] Publishing system info
+2024-06-08 00:56:46,513 INFO    HandlerThread:2263539 [system_monitor.py:probe():229] Finished publishing system info
+2024-06-08 00:56:46,516 DEBUG   SenderThread:2263539 [sender.py:send():378] send: files
+2024-06-08 00:56:46,516 INFO    SenderThread:2263539 [sender.py:_save_file():1389] saving file wandb-metadata.json with policy now
+2024-06-08 00:56:46,629 DEBUG   HandlerThread:2263539 [handler.py:handle_request():158] handle_request: python_packages
+2024-06-08 00:56:46,629 DEBUG   SenderThread:2263539 [sender.py:send_request():405] send_request: python_packages
+2024-06-08 00:56:46,677 DEBUG   HandlerThread:2263539 [handler.py:handle_request():158] handle_request: stop_status
+2024-06-08 00:56:46,677 DEBUG   SenderThread:2263539 [sender.py:send_request():405] send_request: stop_status
+2024-06-08 00:56:46,814 DEBUG   SenderThread:2263539 [sender.py:send():378] send: telemetry
+2024-06-08 00:56:46,815 DEBUG   SenderThread:2263539 [sender.py:send():378] send: telemetry
+2024-06-08 00:56:46,815 DEBUG   SenderThread:2263539 [sender.py:send():378] send: run
+2024-06-08 00:56:46,903 INFO    SenderThread:2263539 [sender.py:send_run():996] updated run: c8evl5v0
+2024-06-08 00:56:47,057 INFO    wandb-upload_0:2263539 [upload_job.py:push():130] Uploaded file /tmp/tmpw6hffkl5wandb/sccjzdmd-wandb-metadata.json
+2024-06-08 00:56:47,383 INFO    Thread-12 :2263539 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/wandb/run-20240608_005646-c8evl5v0/files/config.yaml
+2024-06-08 00:56:47,383 INFO    Thread-12 :2263539 [dir_watcher.py:_on_file_created():271] file/dir created: /home/atticus/maheep/SAE_vs_DAS/wandb/run-20240608_005646-c8evl5v0/files/output.log
+2024-06-08 00:56:47,383 INFO    Thread-12 :2263539 [dir_watcher.py:_on_file_created():271] file/dir created: /home/atticus/maheep/SAE_vs_DAS/wandb/run-20240608_005646-c8evl5v0/files/requirements.txt
+2024-06-08 00:56:47,383 INFO    Thread-12 :2263539 [dir_watcher.py:_on_file_created():271] file/dir created: /home/atticus/maheep/SAE_vs_DAS/wandb/run-20240608_005646-c8evl5v0/files/wandb-metadata.json
+2024-06-08 00:56:49,382 INFO    Thread-12 :2263539 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/wandb/run-20240608_005646-c8evl5v0/files/output.log
+2024-06-08 00:56:51,904 DEBUG   HandlerThread:2263539 [handler.py:handle_request():158] handle_request: status_report
+2024-06-08 00:56:56,905 DEBUG   HandlerThread:2263539 [handler.py:handle_request():158] handle_request: status_report
+2024-06-08 00:57:01,630 DEBUG   HandlerThread:2263539 [handler.py:handle_request():158] handle_request: stop_status
+2024-06-08 00:57:01,630 DEBUG   SenderThread:2263539 [sender.py:send_request():405] send_request: stop_status
+2024-06-08 00:57:02,781 DEBUG   HandlerThread:2263539 [handler.py:handle_request():158] handle_request: status_report
+2024-06-08 00:57:07,782 DEBUG   HandlerThread:2263539 [handler.py:handle_request():158] handle_request: status_report
+2024-06-08 00:57:12,782 DEBUG   HandlerThread:2263539 [handler.py:handle_request():158] handle_request: status_report
+2024-06-08 00:57:16,630 DEBUG   HandlerThread:2263539 [handler.py:handle_request():158] handle_request: stop_status
+2024-06-08 00:57:16,630 DEBUG   SenderThread:2263539 [sender.py:send_request():405] send_request: stop_status
+2024-06-08 00:57:18,736 DEBUG   HandlerThread:2263539 [handler.py:handle_request():158] handle_request: status_report
+2024-06-08 00:57:19,391 INFO    Thread-12 :2263539 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/wandb/run-20240608_005646-c8evl5v0/files/config.yaml
+2024-06-08 00:57:23,839 DEBUG   HandlerThread:2263539 [handler.py:handle_request():158] handle_request: status_report
+2024-06-08 00:57:28,840 DEBUG   HandlerThread:2263539 [handler.py:handle_request():158] handle_request: status_report
+2024-06-08 00:57:31,630 DEBUG   HandlerThread:2263539 [handler.py:handle_request():158] handle_request: stop_status
+2024-06-08 00:57:31,630 DEBUG   SenderThread:2263539 [sender.py:send_request():405] send_request: stop_status
+2024-06-08 00:57:34,731 DEBUG   HandlerThread:2263539 [handler.py:handle_request():158] handle_request: status_report
+2024-06-08 00:57:39,732 DEBUG   HandlerThread:2263539 [handler.py:handle_request():158] handle_request: status_report
+2024-06-08 00:57:44,733 DEBUG   HandlerThread:2263539 [handler.py:handle_request():158] handle_request: status_report
+2024-06-08 00:57:46,499 DEBUG   SystemMonitor:2263539 [system_monitor.py:_start():172] Starting system metrics aggregation loop
+2024-06-08 00:57:46,500 DEBUG   SenderThread:2263539 [sender.py:send():378] send: stats
+2024-06-08 00:57:46,630 DEBUG   HandlerThread:2263539 [handler.py:handle_request():158] handle_request: stop_status
+2024-06-08 00:57:46,631 DEBUG   SenderThread:2263539 [sender.py:send_request():405] send_request: stop_status
+2024-06-08 00:57:49,776 DEBUG   HandlerThread:2263539 [handler.py:handle_request():158] handle_request: status_report
+2024-06-08 00:57:54,777 DEBUG   HandlerThread:2263539 [handler.py:handle_request():158] handle_request: status_report
+2024-06-08 00:57:59,778 DEBUG   HandlerThread:2263539 [handler.py:handle_request():158] handle_request: status_report
+2024-06-08 00:58:01,631 DEBUG   HandlerThread:2263539 [handler.py:handle_request():158] handle_request: stop_status
+2024-06-08 00:58:01,631 DEBUG   SenderThread:2263539 [sender.py:send_request():405] send_request: stop_status
+2024-06-08 00:58:05,765 DEBUG   HandlerThread:2263539 [handler.py:handle_request():158] handle_request: status_report
+2024-06-08 00:58:10,766 DEBUG   HandlerThread:2263539 [handler.py:handle_request():158] handle_request: status_report
+2024-06-08 00:58:15,767 DEBUG   HandlerThread:2263539 [handler.py:handle_request():158] handle_request: status_report
+2024-06-08 00:58:16,502 DEBUG   SenderThread:2263539 [sender.py:send():378] send: stats
+2024-06-08 00:58:16,631 DEBUG   HandlerThread:2263539 [handler.py:handle_request():158] handle_request: stop_status
+2024-06-08 00:58:16,632 DEBUG   SenderThread:2263539 [sender.py:send_request():405] send_request: stop_status
+2024-06-08 00:58:20,783 DEBUG   HandlerThread:2263539 [handler.py:handle_request():158] handle_request: status_report
+2024-06-08 00:58:25,785 DEBUG   HandlerThread:2263539 [handler.py:handle_request():158] handle_request: status_report
+2024-06-08 00:58:30,786 DEBUG   HandlerThread:2263539 [handler.py:handle_request():158] handle_request: status_report
+2024-06-08 00:58:31,631 DEBUG   HandlerThread:2263539 [handler.py:handle_request():158] handle_request: stop_status
+2024-06-08 00:58:31,631 DEBUG   SenderThread:2263539 [sender.py:send_request():405] send_request: stop_status
+2024-06-08 00:58:36,726 DEBUG   HandlerThread:2263539 [handler.py:handle_request():158] handle_request: status_report
+2024-06-08 00:58:41,727 DEBUG   HandlerThread:2263539 [handler.py:handle_request():158] handle_request: status_report
+2024-06-08 00:58:46,502 DEBUG   SenderThread:2263539 [sender.py:send():378] send: stats
+2024-06-08 00:58:46,634 DEBUG   HandlerThread:2263539 [handler.py:handle_request():158] handle_request: stop_status
+2024-06-08 00:58:46,635 DEBUG   SenderThread:2263539 [sender.py:send_request():405] send_request: stop_status
+2024-06-08 00:58:46,758 DEBUG   HandlerThread:2263539 [handler.py:handle_request():158] handle_request: status_report
+2024-06-08 00:58:51,759 DEBUG   HandlerThread:2263539 [handler.py:handle_request():158] handle_request: status_report
+2024-06-08 00:58:56,761 DEBUG   HandlerThread:2263539 [handler.py:handle_request():158] handle_request: status_report
+2024-06-08 00:59:01,635 DEBUG   HandlerThread:2263539 [handler.py:handle_request():158] handle_request: stop_status
+2024-06-08 00:59:01,635 DEBUG   SenderThread:2263539 [sender.py:send_request():405] send_request: stop_status
+2024-06-08 00:59:01,762 DEBUG   HandlerThread:2263539 [handler.py:handle_request():158] handle_request: status_report
+2024-06-08 00:59:06,764 DEBUG   HandlerThread:2263539 [handler.py:handle_request():158] handle_request: status_report
+2024-06-08 00:59:11,765 DEBUG   HandlerThread:2263539 [handler.py:handle_request():158] handle_request: status_report
+2024-06-08 00:59:16,503 DEBUG   SenderThread:2263539 [sender.py:send():378] send: stats
+2024-06-08 00:59:16,634 DEBUG   HandlerThread:2263539 [handler.py:handle_request():158] handle_request: stop_status
+2024-06-08 00:59:16,635 DEBUG   SenderThread:2263539 [sender.py:send_request():405] send_request: stop_status
+2024-06-08 00:59:16,816 DEBUG   HandlerThread:2263539 [handler.py:handle_request():158] handle_request: status_report
+2024-06-08 00:59:21,817 DEBUG   HandlerThread:2263539 [handler.py:handle_request():158] handle_request: status_report
+2024-06-08 00:59:26,817 DEBUG   HandlerThread:2263539 [handler.py:handle_request():158] handle_request: status_report
+2024-06-08 00:59:31,635 DEBUG   HandlerThread:2263539 [handler.py:handle_request():158] handle_request: stop_status
+2024-06-08 00:59:31,635 DEBUG   SenderThread:2263539 [sender.py:send_request():405] send_request: stop_status
+2024-06-08 00:59:32,756 DEBUG   HandlerThread:2263539 [handler.py:handle_request():158] handle_request: status_report
+2024-06-08 00:59:37,757 DEBUG   HandlerThread:2263539 [handler.py:handle_request():158] handle_request: status_report
+2024-06-08 00:59:42,758 DEBUG   HandlerThread:2263539 [handler.py:handle_request():158] handle_request: status_report
+2024-06-08 00:59:46,504 DEBUG   SenderThread:2263539 [sender.py:send():378] send: stats
+2024-06-08 00:59:46,637 DEBUG   HandlerThread:2263539 [handler.py:handle_request():158] handle_request: stop_status
+2024-06-08 00:59:46,638 DEBUG   SenderThread:2263539 [sender.py:send_request():405] send_request: stop_status
+2024-06-08 00:59:47,794 DEBUG   HandlerThread:2263539 [handler.py:handle_request():158] handle_request: status_report
+2024-06-08 00:59:52,795 DEBUG   HandlerThread:2263539 [handler.py:handle_request():158] handle_request: status_report
+2024-06-08 00:59:57,796 DEBUG   HandlerThread:2263539 [handler.py:handle_request():158] handle_request: status_report
+2024-06-08 01:00:01,637 DEBUG   HandlerThread:2263539 [handler.py:handle_request():158] handle_request: stop_status
+2024-06-08 01:00:01,638 DEBUG   SenderThread:2263539 [sender.py:send_request():405] send_request: stop_status
+2024-06-08 01:00:03,792 DEBUG   HandlerThread:2263539 [handler.py:handle_request():158] handle_request: status_report
+2024-06-08 01:00:08,793 DEBUG   HandlerThread:2263539 [handler.py:handle_request():158] handle_request: status_report
+2024-06-08 01:00:13,794 DEBUG   HandlerThread:2263539 [handler.py:handle_request():158] handle_request: status_report
+2024-06-08 01:00:16,505 DEBUG   SenderThread:2263539 [sender.py:send():378] send: stats
+2024-06-08 01:00:16,637 DEBUG   HandlerThread:2263539 [handler.py:handle_request():158] handle_request: stop_status
+2024-06-08 01:00:16,638 DEBUG   SenderThread:2263539 [sender.py:send_request():405] send_request: stop_status
+2024-06-08 01:00:19,734 DEBUG   HandlerThread:2263539 [handler.py:handle_request():158] handle_request: status_report
+2024-06-08 01:00:24,736 DEBUG   HandlerThread:2263539 [handler.py:handle_request():158] handle_request: status_report
+2024-06-08 01:00:29,737 DEBUG   HandlerThread:2263539 [handler.py:handle_request():158] handle_request: status_report
+2024-06-08 01:00:31,637 DEBUG   HandlerThread:2263539 [handler.py:handle_request():158] handle_request: stop_status
+2024-06-08 01:00:31,637 DEBUG   SenderThread:2263539 [sender.py:send_request():405] send_request: stop_status
+2024-06-08 01:00:34,830 DEBUG   HandlerThread:2263539 [handler.py:handle_request():158] handle_request: status_report
+2024-06-08 01:00:39,831 DEBUG   HandlerThread:2263539 [handler.py:handle_request():158] handle_request: status_report
+2024-06-08 01:00:44,832 DEBUG   HandlerThread:2263539 [handler.py:handle_request():158] handle_request: status_report
+2024-06-08 01:00:46,506 DEBUG   SenderThread:2263539 [sender.py:send():378] send: stats
+2024-06-08 01:00:46,648 DEBUG   HandlerThread:2263539 [handler.py:handle_request():158] handle_request: stop_status
+2024-06-08 01:00:46,648 DEBUG   SenderThread:2263539 [sender.py:send_request():405] send_request: stop_status
+2024-06-08 01:00:50,789 DEBUG   HandlerThread:2263539 [handler.py:handle_request():158] handle_request: status_report
+2024-06-08 01:00:55,790 DEBUG   HandlerThread:2263539 [handler.py:handle_request():158] handle_request: status_report
+2024-06-08 01:00:57,474 INFO    Thread-12 :2263539 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/wandb/run-20240608_005646-c8evl5v0/files/output.log
+2024-06-08 01:00:58,353 DEBUG   SenderThread:2263539 [sender.py:send():378] send: telemetry
+2024-06-08 01:00:58,565 DEBUG   SenderThread:2263539 [sender.py:send():378] send: telemetry
+2024-06-08 01:00:58,565 DEBUG   SenderThread:2263539 [sender.py:send():378] send: telemetry
+2024-06-08 01:00:59,475 INFO    Thread-12 :2263539 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/wandb/run-20240608_005646-c8evl5v0/files/output.log
+2024-06-08 01:01:00,930 DEBUG   HandlerThread:2263539 [handler.py:handle_request():158] handle_request: status_report
+2024-06-08 01:01:01,476 INFO    Thread-12 :2263539 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/wandb/run-20240608_005646-c8evl5v0/files/output.log
+2024-06-08 01:01:01,639 DEBUG   HandlerThread:2263539 [handler.py:handle_request():158] handle_request: stop_status
+2024-06-08 01:01:01,640 DEBUG   SenderThread:2263539 [sender.py:send_request():405] send_request: stop_status
+2024-06-08 01:01:03,477 INFO    Thread-12 :2263539 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/wandb/run-20240608_005646-c8evl5v0/files/output.log
+2024-06-08 01:01:05,478 INFO    Thread-12 :2263539 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/wandb/run-20240608_005646-c8evl5v0/files/output.log
+2024-06-08 01:01:06,128 DEBUG   HandlerThread:2263539 [handler.py:handle_request():158] handle_request: status_report
+2024-06-08 01:01:07,478 INFO    Thread-12 :2263539 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/wandb/run-20240608_005646-c8evl5v0/files/output.log
+2024-06-08 01:01:09,480 INFO    Thread-12 :2263539 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/wandb/run-20240608_005646-c8evl5v0/files/output.log
+2024-06-08 01:01:11,283 DEBUG   HandlerThread:2263539 [handler.py:handle_request():158] handle_request: status_report
+2024-06-08 01:01:11,480 INFO    Thread-12 :2263539 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/wandb/run-20240608_005646-c8evl5v0/files/output.log
+2024-06-08 01:01:13,481 INFO    Thread-12 :2263539 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/wandb/run-20240608_005646-c8evl5v0/files/output.log
+2024-06-08 01:01:15,483 INFO    Thread-12 :2263539 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/wandb/run-20240608_005646-c8evl5v0/files/output.log
+2024-06-08 01:01:16,507 DEBUG   SenderThread:2263539 [sender.py:send():378] send: stats
+2024-06-08 01:01:16,507 DEBUG   HandlerThread:2263539 [handler.py:handle_request():158] handle_request: status_report
+2024-06-08 01:01:16,654 DEBUG   HandlerThread:2263539 [handler.py:handle_request():158] handle_request: stop_status
+2024-06-08 01:01:16,655 DEBUG   SenderThread:2263539 [sender.py:send_request():405] send_request: stop_status
+2024-06-08 01:01:17,484 INFO    Thread-12 :2263539 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/wandb/run-20240608_005646-c8evl5v0/files/output.log
+2024-06-08 01:01:19,485 INFO    Thread-12 :2263539 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/wandb/run-20240608_005646-c8evl5v0/files/output.log
+2024-06-08 01:01:21,486 INFO    Thread-12 :2263539 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/wandb/run-20240608_005646-c8evl5v0/files/output.log
+2024-06-08 01:01:21,565 DEBUG   HandlerThread:2263539 [handler.py:handle_request():158] handle_request: status_report
+2024-06-08 01:01:23,487 INFO    Thread-12 :2263539 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/wandb/run-20240608_005646-c8evl5v0/files/output.log
+2024-06-08 01:01:25,488 INFO    Thread-12 :2263539 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/wandb/run-20240608_005646-c8evl5v0/files/output.log
+2024-06-08 01:01:26,624 DEBUG   HandlerThread:2263539 [handler.py:handle_request():158] handle_request: status_report
+2024-06-08 01:01:27,488 INFO    Thread-12 :2263539 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/wandb/run-20240608_005646-c8evl5v0/files/output.log
+2024-06-08 01:01:27,488 INFO    Thread-12 :2263539 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/wandb/run-20240608_005646-c8evl5v0/files/config.yaml
+2024-06-08 01:01:29,489 INFO    Thread-12 :2263539 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/wandb/run-20240608_005646-c8evl5v0/files/output.log
+2024-06-08 01:01:31,489 INFO    Thread-12 :2263539 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/wandb/run-20240608_005646-c8evl5v0/files/output.log
+2024-06-08 01:01:31,653 DEBUG   HandlerThread:2263539 [handler.py:handle_request():158] handle_request: stop_status
+2024-06-08 01:01:31,653 DEBUG   SenderThread:2263539 [sender.py:send_request():405] send_request: stop_status
+2024-06-08 01:01:31,843 DEBUG   HandlerThread:2263539 [handler.py:handle_request():158] handle_request: status_report
+2024-06-08 01:01:33,490 INFO    Thread-12 :2263539 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/wandb/run-20240608_005646-c8evl5v0/files/output.log
+2024-06-08 01:01:35,490 INFO    Thread-12 :2263539 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/wandb/run-20240608_005646-c8evl5v0/files/output.log
+2024-06-08 01:01:36,856 DEBUG   HandlerThread:2263539 [handler.py:handle_request():158] handle_request: status_report
+2024-06-08 01:01:37,491 INFO    Thread-12 :2263539 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/wandb/run-20240608_005646-c8evl5v0/files/output.log
+2024-06-08 01:01:39,491 INFO    Thread-12 :2263539 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/wandb/run-20240608_005646-c8evl5v0/files/output.log
+2024-06-08 01:01:41,492 INFO    Thread-12 :2263539 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/wandb/run-20240608_005646-c8evl5v0/files/output.log
+2024-06-08 01:01:42,062 DEBUG   HandlerThread:2263539 [handler.py:handle_request():158] handle_request: status_report
+2024-06-08 01:01:43,493 INFO    Thread-12 :2263539 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/wandb/run-20240608_005646-c8evl5v0/files/output.log
+2024-06-08 01:01:45,494 INFO    Thread-12 :2263539 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/wandb/run-20240608_005646-c8evl5v0/files/output.log
+2024-06-08 01:01:46,508 DEBUG   SenderThread:2263539 [sender.py:send():378] send: stats
+2024-06-08 01:01:46,653 DEBUG   HandlerThread:2263539 [handler.py:handle_request():158] handle_request: stop_status
+2024-06-08 01:01:46,654 DEBUG   SenderThread:2263539 [sender.py:send_request():405] send_request: stop_status
+2024-06-08 01:01:47,494 INFO    Thread-12 :2263539 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/wandb/run-20240608_005646-c8evl5v0/files/output.log
+2024-06-08 01:01:47,738 DEBUG   HandlerThread:2263539 [handler.py:handle_request():158] handle_request: status_report
+2024-06-08 01:01:49,495 INFO    Thread-12 :2263539 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/wandb/run-20240608_005646-c8evl5v0/files/output.log
+2024-06-08 01:01:51,495 INFO    Thread-12 :2263539 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/wandb/run-20240608_005646-c8evl5v0/files/output.log
+2024-06-08 01:01:52,855 DEBUG   HandlerThread:2263539 [handler.py:handle_request():158] handle_request: status_report
+2024-06-08 01:01:53,496 INFO    Thread-12 :2263539 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/wandb/run-20240608_005646-c8evl5v0/files/output.log
+2024-06-08 01:01:55,497 INFO    Thread-12 :2263539 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/wandb/run-20240608_005646-c8evl5v0/files/output.log
+2024-06-08 01:01:57,497 INFO    Thread-12 :2263539 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/wandb/run-20240608_005646-c8evl5v0/files/output.log
+2024-06-08 01:01:57,971 DEBUG   HandlerThread:2263539 [handler.py:handle_request():158] handle_request: partial_history
+2024-06-08 01:01:57,972 DEBUG   HandlerThread:2263539 [handler.py:handle_request():158] handle_request: status_report
+2024-06-08 01:01:57,972 DEBUG   SenderThread:2263539 [sender.py:send():378] send: history
+2024-06-08 01:01:57,973 DEBUG   SenderThread:2263539 [sender.py:send_request():405] send_request: summary_record
+2024-06-08 01:01:57,973 INFO    SenderThread:2263539 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-06-08 01:01:58,498 INFO    Thread-12 :2263539 [dir_watcher.py:_on_file_created():271] file/dir created: /home/atticus/maheep/SAE_vs_DAS/wandb/run-20240608_005646-c8evl5v0/files/wandb-summary.json
+2024-06-08 01:01:59,498 INFO    Thread-12 :2263539 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/wandb/run-20240608_005646-c8evl5v0/files/output.log
+2024-06-08 01:02:01,499 INFO    Thread-12 :2263539 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/wandb/run-20240608_005646-c8evl5v0/files/output.log
+2024-06-08 01:02:01,654 DEBUG   HandlerThread:2263539 [handler.py:handle_request():158] handle_request: stop_status
+2024-06-08 01:02:01,655 DEBUG   SenderThread:2263539 [sender.py:send_request():405] send_request: stop_status
+2024-06-08 01:02:03,023 DEBUG   HandlerThread:2263539 [handler.py:handle_request():158] handle_request: status_report
+2024-06-08 01:02:03,500 INFO    Thread-12 :2263539 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/wandb/run-20240608_005646-c8evl5v0/files/output.log
+2024-06-08 01:02:05,500 INFO    Thread-12 :2263539 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/wandb/run-20240608_005646-c8evl5v0/files/output.log
+2024-06-08 01:02:07,501 INFO    Thread-12 :2263539 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/wandb/run-20240608_005646-c8evl5v0/files/output.log
+2024-06-08 01:02:08,100 DEBUG   HandlerThread:2263539 [handler.py:handle_request():158] handle_request: status_report
+2024-06-08 01:02:09,501 INFO    Thread-12 :2263539 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/wandb/run-20240608_005646-c8evl5v0/files/output.log
+2024-06-08 01:02:11,502 INFO    Thread-12 :2263539 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/wandb/run-20240608_005646-c8evl5v0/files/output.log
+2024-06-08 01:02:13,146 DEBUG   HandlerThread:2263539 [handler.py:handle_request():158] handle_request: status_report
+2024-06-08 01:02:13,503 INFO    Thread-12 :2263539 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/wandb/run-20240608_005646-c8evl5v0/files/output.log
+2024-06-08 01:02:15,503 INFO    Thread-12 :2263539 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/wandb/run-20240608_005646-c8evl5v0/files/output.log
+2024-06-08 01:02:16,509 DEBUG   SenderThread:2263539 [sender.py:send():378] send: stats
+2024-06-08 01:02:16,654 DEBUG   HandlerThread:2263539 [handler.py:handle_request():158] handle_request: stop_status
+2024-06-08 01:02:16,655 DEBUG   SenderThread:2263539 [sender.py:send_request():405] send_request: stop_status
+2024-06-08 01:02:17,504 INFO    Thread-12 :2263539 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/wandb/run-20240608_005646-c8evl5v0/files/output.log
+2024-06-08 01:02:18,152 DEBUG   HandlerThread:2263539 [handler.py:handle_request():158] handle_request: status_report
+2024-06-08 01:02:19,505 INFO    Thread-12 :2263539 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/wandb/run-20240608_005646-c8evl5v0/files/output.log
+2024-06-08 01:02:21,505 INFO    Thread-12 :2263539 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/wandb/run-20240608_005646-c8evl5v0/files/output.log
+2024-06-08 01:02:23,302 DEBUG   HandlerThread:2263539 [handler.py:handle_request():158] handle_request: status_report
+2024-06-08 01:02:23,506 INFO    Thread-12 :2263539 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/wandb/run-20240608_005646-c8evl5v0/files/output.log
+2024-06-08 01:02:25,506 INFO    Thread-12 :2263539 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/wandb/run-20240608_005646-c8evl5v0/files/output.log
+2024-06-08 01:02:27,507 INFO    Thread-12 :2263539 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/wandb/run-20240608_005646-c8evl5v0/files/output.log
+2024-06-08 01:02:28,349 DEBUG   HandlerThread:2263539 [handler.py:handle_request():158] handle_request: status_report
+2024-06-08 01:02:29,507 INFO    Thread-12 :2263539 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/wandb/run-20240608_005646-c8evl5v0/files/output.log
+2024-06-08 01:02:31,508 INFO    Thread-12 :2263539 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/wandb/run-20240608_005646-c8evl5v0/files/output.log
+2024-06-08 01:02:31,654 DEBUG   HandlerThread:2263539 [handler.py:handle_request():158] handle_request: stop_status
+2024-06-08 01:02:31,654 DEBUG   SenderThread:2263539 [sender.py:send_request():405] send_request: stop_status
+2024-06-08 01:02:33,389 DEBUG   HandlerThread:2263539 [handler.py:handle_request():158] handle_request: status_report
+2024-06-08 01:02:33,508 INFO    Thread-12 :2263539 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/wandb/run-20240608_005646-c8evl5v0/files/output.log
+2024-06-08 01:02:35,509 INFO    Thread-12 :2263539 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/wandb/run-20240608_005646-c8evl5v0/files/output.log
+2024-06-08 01:02:37,509 INFO    Thread-12 :2263539 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/wandb/run-20240608_005646-c8evl5v0/files/output.log
+2024-06-08 01:02:38,449 DEBUG   HandlerThread:2263539 [handler.py:handle_request():158] handle_request: status_report
+2024-06-08 01:02:39,510 INFO    Thread-12 :2263539 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/wandb/run-20240608_005646-c8evl5v0/files/output.log
+2024-06-08 01:02:41,510 INFO    Thread-12 :2263539 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/wandb/run-20240608_005646-c8evl5v0/files/output.log
+2024-06-08 01:02:43,511 INFO    Thread-12 :2263539 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/wandb/run-20240608_005646-c8evl5v0/files/output.log
+2024-06-08 01:02:43,577 DEBUG   HandlerThread:2263539 [handler.py:handle_request():158] handle_request: status_report
+2024-06-08 01:02:45,511 INFO    Thread-12 :2263539 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/wandb/run-20240608_005646-c8evl5v0/files/output.log
+2024-06-08 01:02:46,509 DEBUG   SenderThread:2263539 [sender.py:send():378] send: stats
+2024-06-08 01:02:46,657 DEBUG   HandlerThread:2263539 [handler.py:handle_request():158] handle_request: stop_status
+2024-06-08 01:02:46,657 DEBUG   SenderThread:2263539 [sender.py:send_request():405] send_request: stop_status
+2024-06-08 01:02:46,997 DEBUG   HandlerThread:2263539 [handler.py:handle_request():158] handle_request: partial_history
+2024-06-08 01:02:46,997 DEBUG   SenderThread:2263539 [sender.py:send():378] send: history
+2024-06-08 01:02:46,997 DEBUG   SenderThread:2263539 [sender.py:send_request():405] send_request: summary_record
+2024-06-08 01:02:46,998 INFO    SenderThread:2263539 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-06-08 01:02:47,512 INFO    Thread-12 :2263539 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/wandb/run-20240608_005646-c8evl5v0/files/wandb-summary.json
+2024-06-08 01:02:47,512 INFO    Thread-12 :2263539 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/wandb/run-20240608_005646-c8evl5v0/files/output.log
+2024-06-08 01:02:48,691 DEBUG   HandlerThread:2263539 [handler.py:handle_request():158] handle_request: status_report
+2024-06-08 01:02:49,513 INFO    Thread-12 :2263539 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/wandb/run-20240608_005646-c8evl5v0/files/output.log
+2024-06-08 01:02:51,513 INFO    Thread-12 :2263539 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/wandb/run-20240608_005646-c8evl5v0/files/output.log
+2024-06-08 01:02:53,513 INFO    Thread-12 :2263539 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/wandb/run-20240608_005646-c8evl5v0/files/output.log
+2024-06-08 01:02:53,742 DEBUG   HandlerThread:2263539 [handler.py:handle_request():158] handle_request: status_report
+2024-06-08 01:02:55,514 INFO    Thread-12 :2263539 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/wandb/run-20240608_005646-c8evl5v0/files/output.log
+2024-06-08 01:02:57,515 INFO    Thread-12 :2263539 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/wandb/run-20240608_005646-c8evl5v0/files/output.log
+2024-06-08 01:02:58,829 DEBUG   HandlerThread:2263539 [handler.py:handle_request():158] handle_request: status_report
+2024-06-08 01:02:59,515 INFO    Thread-12 :2263539 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/wandb/run-20240608_005646-c8evl5v0/files/output.log
+2024-06-08 01:03:01,516 INFO    Thread-12 :2263539 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/wandb/run-20240608_005646-c8evl5v0/files/output.log
+2024-06-08 01:03:01,656 DEBUG   HandlerThread:2263539 [handler.py:handle_request():158] handle_request: stop_status
+2024-06-08 01:03:01,656 DEBUG   SenderThread:2263539 [sender.py:send_request():405] send_request: stop_status
+2024-06-08 01:03:03,516 INFO    Thread-12 :2263539 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/wandb/run-20240608_005646-c8evl5v0/files/output.log
+2024-06-08 01:03:03,911 DEBUG   HandlerThread:2263539 [handler.py:handle_request():158] handle_request: status_report
+2024-06-08 01:03:05,517 INFO    Thread-12 :2263539 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/wandb/run-20240608_005646-c8evl5v0/files/output.log
+2024-06-08 01:03:07,517 INFO    Thread-12 :2263539 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/wandb/run-20240608_005646-c8evl5v0/files/output.log
+2024-06-08 01:03:09,051 DEBUG   HandlerThread:2263539 [handler.py:handle_request():158] handle_request: status_report
+2024-06-08 01:03:09,518 INFO    Thread-12 :2263539 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/wandb/run-20240608_005646-c8evl5v0/files/output.log
+2024-06-08 01:03:11,518 INFO    Thread-12 :2263539 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/wandb/run-20240608_005646-c8evl5v0/files/output.log
+2024-06-08 01:03:13,519 INFO    Thread-12 :2263539 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/wandb/run-20240608_005646-c8evl5v0/files/output.log
+2024-06-08 01:03:14,133 DEBUG   HandlerThread:2263539 [handler.py:handle_request():158] handle_request: status_report
+2024-06-08 01:03:15,519 INFO    Thread-12 :2263539 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/wandb/run-20240608_005646-c8evl5v0/files/output.log
+2024-06-08 01:03:16,510 DEBUG   SenderThread:2263539 [sender.py:send():378] send: stats
+2024-06-08 01:03:16,654 DEBUG   HandlerThread:2263539 [handler.py:handle_request():158] handle_request: stop_status
+2024-06-08 01:03:16,654 DEBUG   SenderThread:2263539 [sender.py:send_request():405] send_request: stop_status
+2024-06-08 01:03:17,520 INFO    Thread-12 :2263539 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/wandb/run-20240608_005646-c8evl5v0/files/output.log
+2024-06-08 01:03:19,199 DEBUG   HandlerThread:2263539 [handler.py:handle_request():158] handle_request: status_report
+2024-06-08 01:03:19,520 INFO    Thread-12 :2263539 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/wandb/run-20240608_005646-c8evl5v0/files/output.log
+2024-06-08 01:03:21,521 INFO    Thread-12 :2263539 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/wandb/run-20240608_005646-c8evl5v0/files/output.log
+2024-06-08 01:03:23,521 INFO    Thread-12 :2263539 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/wandb/run-20240608_005646-c8evl5v0/files/output.log
+2024-06-08 01:03:24,279 DEBUG   HandlerThread:2263539 [handler.py:handle_request():158] handle_request: status_report
+2024-06-08 01:03:25,522 INFO    Thread-12 :2263539 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/wandb/run-20240608_005646-c8evl5v0/files/output.log
+2024-06-08 01:03:27,522 INFO    Thread-12 :2263539 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/wandb/run-20240608_005646-c8evl5v0/files/output.log
+2024-06-08 01:03:29,364 DEBUG   HandlerThread:2263539 [handler.py:handle_request():158] handle_request: status_report
+2024-06-08 01:03:29,523 INFO    Thread-12 :2263539 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/wandb/run-20240608_005646-c8evl5v0/files/output.log
+2024-06-08 01:03:31,524 INFO    Thread-12 :2263539 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/wandb/run-20240608_005646-c8evl5v0/files/output.log
+2024-06-08 01:03:31,654 DEBUG   HandlerThread:2263539 [handler.py:handle_request():158] handle_request: stop_status
+2024-06-08 01:03:31,655 DEBUG   SenderThread:2263539 [sender.py:send_request():405] send_request: stop_status
+2024-06-08 01:03:33,287 DEBUG   HandlerThread:2263539 [handler.py:handle_request():158] handle_request: partial_history
+2024-06-08 01:03:33,287 DEBUG   SenderThread:2263539 [sender.py:send():378] send: history
+2024-06-08 01:03:33,288 DEBUG   SenderThread:2263539 [sender.py:send_request():405] send_request: summary_record
+2024-06-08 01:03:33,288 INFO    SenderThread:2263539 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-06-08 01:03:33,524 INFO    Thread-12 :2263539 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/wandb/run-20240608_005646-c8evl5v0/files/wandb-summary.json
+2024-06-08 01:03:33,524 INFO    Thread-12 :2263539 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/wandb/run-20240608_005646-c8evl5v0/files/output.log
+2024-06-08 01:03:34,377 DEBUG   HandlerThread:2263539 [handler.py:handle_request():158] handle_request: status_report
+2024-06-08 01:03:35,525 INFO    Thread-12 :2263539 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/wandb/run-20240608_005646-c8evl5v0/files/output.log
+2024-06-08 01:03:37,525 INFO    Thread-12 :2263539 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/wandb/run-20240608_005646-c8evl5v0/files/output.log
+2024-06-08 01:03:39,410 DEBUG   HandlerThread:2263539 [handler.py:handle_request():158] handle_request: status_report
+2024-06-08 01:03:39,526 INFO    Thread-12 :2263539 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/wandb/run-20240608_005646-c8evl5v0/files/output.log
+2024-06-08 01:03:41,526 INFO    Thread-12 :2263539 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/wandb/run-20240608_005646-c8evl5v0/files/output.log
+2024-06-08 01:03:43,527 INFO    Thread-12 :2263539 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/wandb/run-20240608_005646-c8evl5v0/files/output.log
+2024-06-08 01:03:44,457 DEBUG   HandlerThread:2263539 [handler.py:handle_request():158] handle_request: status_report
+2024-06-08 01:03:45,527 INFO    Thread-12 :2263539 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/wandb/run-20240608_005646-c8evl5v0/files/output.log
+2024-06-08 01:03:46,511 DEBUG   SenderThread:2263539 [sender.py:send():378] send: stats
+2024-06-08 01:03:46,656 DEBUG   HandlerThread:2263539 [handler.py:handle_request():158] handle_request: stop_status
+2024-06-08 01:03:46,656 DEBUG   SenderThread:2263539 [sender.py:send_request():405] send_request: stop_status
+2024-06-08 01:03:47,528 INFO    Thread-12 :2263539 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/wandb/run-20240608_005646-c8evl5v0/files/output.log
+2024-06-08 01:03:49,481 DEBUG   HandlerThread:2263539 [handler.py:handle_request():158] handle_request: status_report
+2024-06-08 01:03:49,529 INFO    Thread-12 :2263539 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/wandb/run-20240608_005646-c8evl5v0/files/output.log
+2024-06-08 01:03:51,529 INFO    Thread-12 :2263539 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/wandb/run-20240608_005646-c8evl5v0/files/output.log
+2024-06-08 01:03:53,530 INFO    Thread-12 :2263539 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/wandb/run-20240608_005646-c8evl5v0/files/output.log
+2024-06-08 01:03:54,613 DEBUG   HandlerThread:2263539 [handler.py:handle_request():158] handle_request: status_report
+2024-06-08 01:03:55,530 INFO    Thread-12 :2263539 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/wandb/run-20240608_005646-c8evl5v0/files/output.log
+2024-06-08 01:03:57,531 INFO    Thread-12 :2263539 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/wandb/run-20240608_005646-c8evl5v0/files/output.log
+2024-06-08 01:03:59,532 INFO    Thread-12 :2263539 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/wandb/run-20240608_005646-c8evl5v0/files/output.log
+2024-06-08 01:03:59,700 DEBUG   HandlerThread:2263539 [handler.py:handle_request():158] handle_request: status_report
+2024-06-08 01:04:01,532 INFO    Thread-12 :2263539 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/wandb/run-20240608_005646-c8evl5v0/files/output.log
+2024-06-08 01:04:01,664 DEBUG   HandlerThread:2263539 [handler.py:handle_request():158] handle_request: stop_status
+2024-06-08 01:04:01,664 DEBUG   SenderThread:2263539 [sender.py:send_request():405] send_request: stop_status
+2024-06-08 01:04:03,532 INFO    Thread-12 :2263539 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/wandb/run-20240608_005646-c8evl5v0/files/output.log
+2024-06-08 01:04:04,796 DEBUG   HandlerThread:2263539 [handler.py:handle_request():158] handle_request: status_report
+2024-06-08 01:04:05,533 INFO    Thread-12 :2263539 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/wandb/run-20240608_005646-c8evl5v0/files/output.log
+2024-06-08 01:04:07,534 INFO    Thread-12 :2263539 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/wandb/run-20240608_005646-c8evl5v0/files/output.log
+2024-06-08 01:04:09,534 INFO    Thread-12 :2263539 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/wandb/run-20240608_005646-c8evl5v0/files/output.log
+2024-06-08 01:04:09,806 DEBUG   HandlerThread:2263539 [handler.py:handle_request():158] handle_request: status_report
+2024-06-08 01:04:11,535 INFO    Thread-12 :2263539 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/wandb/run-20240608_005646-c8evl5v0/files/output.log
+2024-06-08 01:04:13,535 INFO    Thread-12 :2263539 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/wandb/run-20240608_005646-c8evl5v0/files/output.log
+2024-06-08 01:04:14,923 DEBUG   HandlerThread:2263539 [handler.py:handle_request():158] handle_request: status_report
+2024-06-08 01:04:15,536 INFO    Thread-12 :2263539 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/wandb/run-20240608_005646-c8evl5v0/files/output.log
+2024-06-08 01:04:16,511 DEBUG   SenderThread:2263539 [sender.py:send():378] send: stats
+2024-06-08 01:04:16,664 DEBUG   HandlerThread:2263539 [handler.py:handle_request():158] handle_request: stop_status
+2024-06-08 01:04:16,664 DEBUG   SenderThread:2263539 [sender.py:send_request():405] send_request: stop_status
+2024-06-08 01:04:17,537 INFO    Thread-12 :2263539 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/wandb/run-20240608_005646-c8evl5v0/files/output.log
+2024-06-08 01:04:18,158 DEBUG   HandlerThread:2263539 [handler.py:handle_request():158] handle_request: partial_history
+2024-06-08 01:04:18,159 DEBUG   SenderThread:2263539 [sender.py:send():378] send: history
+2024-06-08 01:04:18,159 DEBUG   SenderThread:2263539 [sender.py:send_request():405] send_request: summary_record
+2024-06-08 01:04:18,159 INFO    SenderThread:2263539 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-06-08 01:04:18,537 INFO    Thread-12 :2263539 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/wandb/run-20240608_005646-c8evl5v0/files/wandb-summary.json
+2024-06-08 01:04:19,537 INFO    Thread-12 :2263539 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/wandb/run-20240608_005646-c8evl5v0/files/output.log
+2024-06-08 01:04:20,054 DEBUG   HandlerThread:2263539 [handler.py:handle_request():158] handle_request: status_report
+2024-06-08 01:04:21,538 INFO    Thread-12 :2263539 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/wandb/run-20240608_005646-c8evl5v0/files/output.log
+2024-06-08 01:04:23,538 INFO    Thread-12 :2263539 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/wandb/run-20240608_005646-c8evl5v0/files/output.log
+2024-06-08 01:04:25,082 DEBUG   HandlerThread:2263539 [handler.py:handle_request():158] handle_request: status_report
+2024-06-08 01:04:25,539 INFO    Thread-12 :2263539 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/wandb/run-20240608_005646-c8evl5v0/files/output.log
+2024-06-08 01:04:27,540 INFO    Thread-12 :2263539 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/wandb/run-20240608_005646-c8evl5v0/files/output.log
+2024-06-08 01:04:29,540 INFO    Thread-12 :2263539 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/wandb/run-20240608_005646-c8evl5v0/files/output.log
+2024-06-08 01:04:30,088 DEBUG   HandlerThread:2263539 [handler.py:handle_request():158] handle_request: status_report
+2024-06-08 01:04:31,541 INFO    Thread-12 :2263539 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/wandb/run-20240608_005646-c8evl5v0/files/output.log
+2024-06-08 01:04:31,664 DEBUG   HandlerThread:2263539 [handler.py:handle_request():158] handle_request: stop_status
+2024-06-08 01:04:31,665 DEBUG   SenderThread:2263539 [sender.py:send_request():405] send_request: stop_status
+2024-06-08 01:04:33,541 INFO    Thread-12 :2263539 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/wandb/run-20240608_005646-c8evl5v0/files/output.log
+2024-06-08 01:04:35,169 DEBUG   HandlerThread:2263539 [handler.py:handle_request():158] handle_request: status_report
+2024-06-08 01:04:35,542 INFO    Thread-12 :2263539 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/wandb/run-20240608_005646-c8evl5v0/files/output.log
+2024-06-08 01:04:37,542 INFO    Thread-12 :2263539 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/wandb/run-20240608_005646-c8evl5v0/files/output.log
+2024-06-08 01:04:39,543 INFO    Thread-12 :2263539 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/wandb/run-20240608_005646-c8evl5v0/files/output.log
+2024-06-08 01:04:40,182 DEBUG   HandlerThread:2263539 [handler.py:handle_request():158] handle_request: status_report
+2024-06-08 01:04:41,543 INFO    Thread-12 :2263539 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/wandb/run-20240608_005646-c8evl5v0/files/output.log
+2024-06-08 01:04:43,544 INFO    Thread-12 :2263539 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/wandb/run-20240608_005646-c8evl5v0/files/output.log
+2024-06-08 01:04:45,350 DEBUG   HandlerThread:2263539 [handler.py:handle_request():158] handle_request: status_report
+2024-06-08 01:04:45,544 INFO    Thread-12 :2263539 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/wandb/run-20240608_005646-c8evl5v0/files/output.log
+2024-06-08 01:04:46,512 DEBUG   SenderThread:2263539 [sender.py:send():378] send: stats
+2024-06-08 01:04:46,666 DEBUG   HandlerThread:2263539 [handler.py:handle_request():158] handle_request: stop_status
+2024-06-08 01:04:46,666 DEBUG   SenderThread:2263539 [sender.py:send_request():405] send_request: stop_status
+2024-06-08 01:04:47,545 INFO    Thread-12 :2263539 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/wandb/run-20240608_005646-c8evl5v0/files/output.log
+2024-06-08 01:04:49,545 INFO    Thread-12 :2263539 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/wandb/run-20240608_005646-c8evl5v0/files/output.log
+2024-06-08 01:04:50,418 DEBUG   HandlerThread:2263539 [handler.py:handle_request():158] handle_request: status_report
+2024-06-08 01:04:51,546 INFO    Thread-12 :2263539 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/wandb/run-20240608_005646-c8evl5v0/files/output.log
+2024-06-08 01:04:53,546 INFO    Thread-12 :2263539 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/wandb/run-20240608_005646-c8evl5v0/files/output.log
+2024-06-08 01:04:55,472 DEBUG   HandlerThread:2263539 [handler.py:handle_request():158] handle_request: status_report
+2024-06-08 01:04:55,547 INFO    Thread-12 :2263539 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/wandb/run-20240608_005646-c8evl5v0/files/output.log
+2024-06-08 01:04:57,547 INFO    Thread-12 :2263539 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/wandb/run-20240608_005646-c8evl5v0/files/output.log
+2024-06-08 01:04:59,548 INFO    Thread-12 :2263539 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/wandb/run-20240608_005646-c8evl5v0/files/output.log
+2024-06-08 01:05:00,487 DEBUG   HandlerThread:2263539 [handler.py:handle_request():158] handle_request: status_report
+2024-06-08 01:05:01,549 INFO    Thread-12 :2263539 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/wandb/run-20240608_005646-c8evl5v0/files/output.log
+2024-06-08 01:05:01,665 DEBUG   HandlerThread:2263539 [handler.py:handle_request():158] handle_request: stop_status
+2024-06-08 01:05:01,665 DEBUG   SenderThread:2263539 [sender.py:send_request():405] send_request: stop_status
+2024-06-08 01:05:02,646 DEBUG   HandlerThread:2263539 [handler.py:handle_request():158] handle_request: partial_history
+2024-06-08 01:05:02,648 DEBUG   SenderThread:2263539 [sender.py:send():378] send: history
+2024-06-08 01:05:02,648 DEBUG   SenderThread:2263539 [sender.py:send_request():405] send_request: summary_record
+2024-06-08 01:05:02,648 INFO    SenderThread:2263539 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-06-08 01:05:03,549 INFO    Thread-12 :2263539 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/wandb/run-20240608_005646-c8evl5v0/files/wandb-summary.json
+2024-06-08 01:05:03,549 INFO    Thread-12 :2263539 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/wandb/run-20240608_005646-c8evl5v0/files/output.log
+2024-06-08 01:05:05,550 INFO    Thread-12 :2263539 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/wandb/run-20240608_005646-c8evl5v0/files/output.log
+2024-06-08 01:05:05,552 DEBUG   HandlerThread:2263539 [handler.py:handle_request():158] handle_request: status_report
+2024-06-08 01:05:07,550 INFO    Thread-12 :2263539 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/wandb/run-20240608_005646-c8evl5v0/files/output.log
+2024-06-08 01:05:09,551 INFO    Thread-12 :2263539 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/wandb/run-20240608_005646-c8evl5v0/files/output.log
+2024-06-08 01:05:10,694 DEBUG   HandlerThread:2263539 [handler.py:handle_request():158] handle_request: status_report
+2024-06-08 01:05:11,551 INFO    Thread-12 :2263539 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/wandb/run-20240608_005646-c8evl5v0/files/output.log
+2024-06-08 01:05:13,552 INFO    Thread-12 :2263539 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/wandb/run-20240608_005646-c8evl5v0/files/output.log
+2024-06-08 01:05:15,552 INFO    Thread-12 :2263539 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/wandb/run-20240608_005646-c8evl5v0/files/output.log
+2024-06-08 01:05:15,694 DEBUG   HandlerThread:2263539 [handler.py:handle_request():158] handle_request: status_report
+2024-06-08 01:05:16,512 DEBUG   SenderThread:2263539 [sender.py:send():378] send: stats
+2024-06-08 01:05:16,665 DEBUG   HandlerThread:2263539 [handler.py:handle_request():158] handle_request: stop_status
+2024-06-08 01:05:16,665 DEBUG   SenderThread:2263539 [sender.py:send_request():405] send_request: stop_status
+2024-06-08 01:05:17,553 INFO    Thread-12 :2263539 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/wandb/run-20240608_005646-c8evl5v0/files/output.log
+2024-06-08 01:05:19,553 INFO    Thread-12 :2263539 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/wandb/run-20240608_005646-c8evl5v0/files/output.log
+2024-06-08 01:05:20,834 DEBUG   HandlerThread:2263539 [handler.py:handle_request():158] handle_request: status_report
+2024-06-08 01:05:21,554 INFO    Thread-12 :2263539 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/wandb/run-20240608_005646-c8evl5v0/files/output.log
+2024-06-08 01:05:23,554 INFO    Thread-12 :2263539 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/wandb/run-20240608_005646-c8evl5v0/files/output.log
+2024-06-08 01:05:25,554 INFO    Thread-12 :2263539 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/wandb/run-20240608_005646-c8evl5v0/files/output.log
+2024-06-08 01:05:25,908 DEBUG   HandlerThread:2263539 [handler.py:handle_request():158] handle_request: status_report
+2024-06-08 01:05:27,555 INFO    Thread-12 :2263539 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/wandb/run-20240608_005646-c8evl5v0/files/output.log
+2024-06-08 01:05:29,555 INFO    Thread-12 :2263539 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/wandb/run-20240608_005646-c8evl5v0/files/output.log
+2024-06-08 01:05:31,078 DEBUG   HandlerThread:2263539 [handler.py:handle_request():158] handle_request: status_report
+2024-06-08 01:05:31,556 INFO    Thread-12 :2263539 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/wandb/run-20240608_005646-c8evl5v0/files/output.log
+2024-06-08 01:05:31,667 DEBUG   HandlerThread:2263539 [handler.py:handle_request():158] handle_request: stop_status
+2024-06-08 01:05:31,667 DEBUG   SenderThread:2263539 [sender.py:send_request():405] send_request: stop_status
+2024-06-08 01:05:33,557 INFO    Thread-12 :2263539 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/wandb/run-20240608_005646-c8evl5v0/files/output.log
+2024-06-08 01:05:35,557 INFO    Thread-12 :2263539 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/wandb/run-20240608_005646-c8evl5v0/files/output.log
+2024-06-08 01:05:36,093 DEBUG   HandlerThread:2263539 [handler.py:handle_request():158] handle_request: status_report
+2024-06-08 01:05:37,558 INFO    Thread-12 :2263539 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/wandb/run-20240608_005646-c8evl5v0/files/output.log
+2024-06-08 01:05:39,558 INFO    Thread-12 :2263539 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/wandb/run-20240608_005646-c8evl5v0/files/output.log
+2024-06-08 01:05:41,102 DEBUG   HandlerThread:2263539 [handler.py:handle_request():158] handle_request: status_report
+2024-06-08 01:05:41,558 INFO    Thread-12 :2263539 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/wandb/run-20240608_005646-c8evl5v0/files/output.log
+2024-06-08 01:05:43,559 INFO    Thread-12 :2263539 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/wandb/run-20240608_005646-c8evl5v0/files/output.log
+2024-06-08 01:05:45,559 INFO    Thread-12 :2263539 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/wandb/run-20240608_005646-c8evl5v0/files/output.log
+2024-06-08 01:05:46,182 DEBUG   HandlerThread:2263539 [handler.py:handle_request():158] handle_request: status_report
+2024-06-08 01:05:46,513 DEBUG   SenderThread:2263539 [sender.py:send():378] send: stats
+2024-06-08 01:05:46,667 DEBUG   HandlerThread:2263539 [handler.py:handle_request():158] handle_request: stop_status
+2024-06-08 01:05:46,667 DEBUG   SenderThread:2263539 [sender.py:send_request():405] send_request: stop_status
+2024-06-08 01:05:47,560 INFO    Thread-12 :2263539 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/wandb/run-20240608_005646-c8evl5v0/files/output.log
+2024-06-08 01:05:49,560 INFO    Thread-12 :2263539 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/wandb/run-20240608_005646-c8evl5v0/files/output.log
+2024-06-08 01:05:50,275 DEBUG   HandlerThread:2263539 [handler.py:handle_request():158] handle_request: partial_history
+2024-06-08 01:05:50,276 DEBUG   SenderThread:2263539 [sender.py:send():378] send: history
+2024-06-08 01:05:50,276 DEBUG   SenderThread:2263539 [sender.py:send_request():405] send_request: summary_record
+2024-06-08 01:05:50,276 INFO    SenderThread:2263539 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-06-08 01:05:50,561 INFO    Thread-12 :2263539 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/wandb/run-20240608_005646-c8evl5v0/files/wandb-summary.json
+2024-06-08 01:05:51,309 DEBUG   HandlerThread:2263539 [handler.py:handle_request():158] handle_request: status_report
+2024-06-08 01:05:51,561 INFO    Thread-12 :2263539 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/wandb/run-20240608_005646-c8evl5v0/files/output.log
+2024-06-08 01:05:53,561 INFO    Thread-12 :2263539 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/wandb/run-20240608_005646-c8evl5v0/files/output.log
+2024-06-08 01:05:55,562 INFO    Thread-12 :2263539 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/wandb/run-20240608_005646-c8evl5v0/files/output.log
+2024-06-08 01:05:56,313 DEBUG   HandlerThread:2263539 [handler.py:handle_request():158] handle_request: status_report
+2024-06-08 01:05:57,563 INFO    Thread-12 :2263539 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/wandb/run-20240608_005646-c8evl5v0/files/output.log
+2024-06-08 01:05:59,563 INFO    Thread-12 :2263539 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/wandb/run-20240608_005646-c8evl5v0/files/output.log
+2024-06-08 01:06:01,373 DEBUG   HandlerThread:2263539 [handler.py:handle_request():158] handle_request: status_report
+2024-06-08 01:06:01,564 INFO    Thread-12 :2263539 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/wandb/run-20240608_005646-c8evl5v0/files/output.log
+2024-06-08 01:06:01,666 DEBUG   HandlerThread:2263539 [handler.py:handle_request():158] handle_request: stop_status
+2024-06-08 01:06:01,666 DEBUG   SenderThread:2263539 [sender.py:send_request():405] send_request: stop_status
+2024-06-08 01:06:03,564 INFO    Thread-12 :2263539 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/wandb/run-20240608_005646-c8evl5v0/files/output.log
+2024-06-08 01:06:05,565 INFO    Thread-12 :2263539 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/wandb/run-20240608_005646-c8evl5v0/files/output.log
+2024-06-08 01:06:06,458 DEBUG   HandlerThread:2263539 [handler.py:handle_request():158] handle_request: status_report
+2024-06-08 01:06:07,565 INFO    Thread-12 :2263539 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/wandb/run-20240608_005646-c8evl5v0/files/output.log
+2024-06-08 01:06:09,566 INFO    Thread-12 :2263539 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/wandb/run-20240608_005646-c8evl5v0/files/output.log
+2024-06-08 01:06:11,545 DEBUG   HandlerThread:2263539 [handler.py:handle_request():158] handle_request: status_report
+2024-06-08 01:06:11,566 INFO    Thread-12 :2263539 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/wandb/run-20240608_005646-c8evl5v0/files/output.log
+2024-06-08 01:06:13,567 INFO    Thread-12 :2263539 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/wandb/run-20240608_005646-c8evl5v0/files/output.log
+2024-06-08 01:06:15,567 INFO    Thread-12 :2263539 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/wandb/run-20240608_005646-c8evl5v0/files/output.log
+2024-06-08 01:06:16,513 DEBUG   SenderThread:2263539 [sender.py:send():378] send: stats
+2024-06-08 01:06:16,609 DEBUG   HandlerThread:2263539 [handler.py:handle_request():158] handle_request: status_report
+2024-06-08 01:06:16,667 DEBUG   HandlerThread:2263539 [handler.py:handle_request():158] handle_request: stop_status
+2024-06-08 01:06:16,667 DEBUG   SenderThread:2263539 [sender.py:send_request():405] send_request: stop_status
+2024-06-08 01:06:17,568 INFO    Thread-12 :2263539 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/wandb/run-20240608_005646-c8evl5v0/files/output.log
+2024-06-08 01:06:19,568 INFO    Thread-12 :2263539 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/wandb/run-20240608_005646-c8evl5v0/files/output.log
+2024-06-08 01:06:21,569 INFO    Thread-12 :2263539 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/wandb/run-20240608_005646-c8evl5v0/files/output.log
+2024-06-08 01:06:21,685 DEBUG   HandlerThread:2263539 [handler.py:handle_request():158] handle_request: status_report
+2024-06-08 01:06:23,569 INFO    Thread-12 :2263539 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/wandb/run-20240608_005646-c8evl5v0/files/output.log
+2024-06-08 01:06:25,569 INFO    Thread-12 :2263539 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/wandb/run-20240608_005646-c8evl5v0/files/output.log
+2024-06-08 01:06:27,073 DEBUG   HandlerThread:2263539 [handler.py:handle_request():158] handle_request: status_report
+2024-06-08 01:06:27,570 INFO    Thread-12 :2263539 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/wandb/run-20240608_005646-c8evl5v0/files/output.log
+2024-06-08 01:06:29,570 INFO    Thread-12 :2263539 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/wandb/run-20240608_005646-c8evl5v0/files/output.log
+2024-06-08 01:06:31,571 INFO    Thread-12 :2263539 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/wandb/run-20240608_005646-c8evl5v0/files/output.log
+2024-06-08 01:06:31,668 DEBUG   HandlerThread:2263539 [handler.py:handle_request():158] handle_request: stop_status
+2024-06-08 01:06:31,668 DEBUG   SenderThread:2263539 [sender.py:send_request():405] send_request: stop_status
+2024-06-08 01:06:32,171 DEBUG   HandlerThread:2263539 [handler.py:handle_request():158] handle_request: status_report
+2024-06-08 01:06:33,571 INFO    Thread-12 :2263539 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/wandb/run-20240608_005646-c8evl5v0/files/output.log
+2024-06-08 01:06:35,572 INFO    Thread-12 :2263539 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/wandb/run-20240608_005646-c8evl5v0/files/output.log
+2024-06-08 01:06:37,211 DEBUG   HandlerThread:2263539 [handler.py:handle_request():158] handle_request: status_report
+2024-06-08 01:06:37,572 INFO    Thread-12 :2263539 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/wandb/run-20240608_005646-c8evl5v0/files/output.log
+2024-06-08 01:06:39,573 INFO    Thread-12 :2263539 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/wandb/run-20240608_005646-c8evl5v0/files/output.log
+2024-06-08 01:06:40,367 DEBUG   HandlerThread:2263539 [handler.py:handle_request():158] handle_request: partial_history
+2024-06-08 01:06:40,368 DEBUG   SenderThread:2263539 [sender.py:send():378] send: history
+2024-06-08 01:06:40,368 DEBUG   SenderThread:2263539 [sender.py:send_request():405] send_request: summary_record
+2024-06-08 01:06:40,368 INFO    SenderThread:2263539 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-06-08 01:06:40,573 INFO    Thread-12 :2263539 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/wandb/run-20240608_005646-c8evl5v0/files/wandb-summary.json
+2024-06-08 01:06:41,573 INFO    Thread-12 :2263539 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/wandb/run-20240608_005646-c8evl5v0/files/output.log
+2024-06-08 01:06:42,304 DEBUG   HandlerThread:2263539 [handler.py:handle_request():158] handle_request: status_report
+2024-06-08 01:06:43,574 INFO    Thread-12 :2263539 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/wandb/run-20240608_005646-c8evl5v0/files/output.log
+2024-06-08 01:06:45,574 INFO    Thread-12 :2263539 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/wandb/run-20240608_005646-c8evl5v0/files/output.log
+2024-06-08 01:06:46,514 DEBUG   SenderThread:2263539 [sender.py:send():378] send: stats
+2024-06-08 01:06:46,725 DEBUG   HandlerThread:2263539 [handler.py:handle_request():158] handle_request: stop_status
+2024-06-08 01:06:46,726 DEBUG   SenderThread:2263539 [sender.py:send_request():405] send_request: stop_status
+2024-06-08 01:06:47,305 DEBUG   HandlerThread:2263539 [handler.py:handle_request():158] handle_request: status_report
+2024-06-08 01:06:47,575 INFO    Thread-12 :2263539 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/wandb/run-20240608_005646-c8evl5v0/files/output.log
+2024-06-08 01:06:49,575 INFO    Thread-12 :2263539 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/wandb/run-20240608_005646-c8evl5v0/files/output.log
+2024-06-08 01:06:52,359 DEBUG   HandlerThread:2263539 [handler.py:handle_request():158] handle_request: status_report
+2024-06-08 01:06:52,576 INFO    Thread-12 :2263539 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/wandb/run-20240608_005646-c8evl5v0/files/output.log
+2024-06-08 01:06:54,577 INFO    Thread-12 :2263539 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/wandb/run-20240608_005646-c8evl5v0/files/output.log
+2024-06-08 01:06:56,577 INFO    Thread-12 :2263539 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/wandb/run-20240608_005646-c8evl5v0/files/output.log
+2024-06-08 01:06:57,364 DEBUG   HandlerThread:2263539 [handler.py:handle_request():158] handle_request: status_report
+2024-06-08 01:06:58,577 INFO    Thread-12 :2263539 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/wandb/run-20240608_005646-c8evl5v0/files/output.log
+2024-06-08 01:07:00,578 INFO    Thread-12 :2263539 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/wandb/run-20240608_005646-c8evl5v0/files/output.log
+2024-06-08 01:07:01,726 DEBUG   HandlerThread:2263539 [handler.py:handle_request():158] handle_request: stop_status
+2024-06-08 01:07:01,727 DEBUG   SenderThread:2263539 [sender.py:send_request():405] send_request: stop_status
+2024-06-08 01:07:02,385 DEBUG   HandlerThread:2263539 [handler.py:handle_request():158] handle_request: status_report
+2024-06-08 01:07:02,578 INFO    Thread-12 :2263539 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/wandb/run-20240608_005646-c8evl5v0/files/output.log
+2024-06-08 01:07:04,579 INFO    Thread-12 :2263539 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/wandb/run-20240608_005646-c8evl5v0/files/output.log
+2024-06-08 01:07:06,580 INFO    Thread-12 :2263539 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/wandb/run-20240608_005646-c8evl5v0/files/output.log
+2024-06-08 01:07:07,519 DEBUG   HandlerThread:2263539 [handler.py:handle_request():158] handle_request: status_report
+2024-06-08 01:07:08,580 INFO    Thread-12 :2263539 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/wandb/run-20240608_005646-c8evl5v0/files/output.log
+2024-06-08 01:07:10,581 INFO    Thread-12 :2263539 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/wandb/run-20240608_005646-c8evl5v0/files/output.log
+2024-06-08 01:07:12,563 DEBUG   HandlerThread:2263539 [handler.py:handle_request():158] handle_request: status_report
+2024-06-08 01:07:12,581 INFO    Thread-12 :2263539 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/wandb/run-20240608_005646-c8evl5v0/files/output.log
+2024-06-08 01:07:14,581 INFO    Thread-12 :2263539 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/wandb/run-20240608_005646-c8evl5v0/files/output.log
+2024-06-08 01:07:16,515 DEBUG   SenderThread:2263539 [sender.py:send():378] send: stats
+2024-06-08 01:07:16,582 INFO    Thread-12 :2263539 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/wandb/run-20240608_005646-c8evl5v0/files/output.log
+2024-06-08 01:07:16,727 DEBUG   HandlerThread:2263539 [handler.py:handle_request():158] handle_request: stop_status
+2024-06-08 01:07:16,728 DEBUG   SenderThread:2263539 [sender.py:send_request():405] send_request: stop_status
+2024-06-08 01:07:17,614 DEBUG   HandlerThread:2263539 [handler.py:handle_request():158] handle_request: status_report
+2024-06-08 01:07:18,582 INFO    Thread-12 :2263539 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/wandb/run-20240608_005646-c8evl5v0/files/output.log
+2024-06-08 01:07:20,583 INFO    Thread-12 :2263539 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/wandb/run-20240608_005646-c8evl5v0/files/output.log
+2024-06-08 01:07:22,583 INFO    Thread-12 :2263539 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/wandb/run-20240608_005646-c8evl5v0/files/output.log
+2024-06-08 01:07:22,638 DEBUG   HandlerThread:2263539 [handler.py:handle_request():158] handle_request: status_report
+2024-06-08 01:07:24,584 INFO    Thread-12 :2263539 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/wandb/run-20240608_005646-c8evl5v0/files/output.log
+2024-06-08 01:07:26,584 INFO    Thread-12 :2263539 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/wandb/run-20240608_005646-c8evl5v0/files/output.log
+2024-06-08 01:07:27,507 DEBUG   HandlerThread:2263539 [handler.py:handle_request():158] handle_request: partial_history
+2024-06-08 01:07:27,507 DEBUG   SenderThread:2263539 [sender.py:send():378] send: history
+2024-06-08 01:07:27,507 DEBUG   SenderThread:2263539 [sender.py:send_request():405] send_request: summary_record
+2024-06-08 01:07:27,508 INFO    SenderThread:2263539 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-06-08 01:07:27,585 INFO    Thread-12 :2263539 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/wandb/run-20240608_005646-c8evl5v0/files/wandb-summary.json
+2024-06-08 01:07:27,648 DEBUG   HandlerThread:2263539 [handler.py:handle_request():158] handle_request: status_report
+2024-06-08 01:07:28,585 INFO    Thread-12 :2263539 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/wandb/run-20240608_005646-c8evl5v0/files/output.log
+2024-06-08 01:07:30,585 INFO    Thread-12 :2263539 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/wandb/run-20240608_005646-c8evl5v0/files/output.log
+2024-06-08 01:07:31,728 DEBUG   HandlerThread:2263539 [handler.py:handle_request():158] handle_request: stop_status
+2024-06-08 01:07:31,729 DEBUG   SenderThread:2263539 [sender.py:send_request():405] send_request: stop_status
+2024-06-08 01:07:32,586 INFO    Thread-12 :2263539 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/wandb/run-20240608_005646-c8evl5v0/files/output.log
+2024-06-08 01:07:32,654 DEBUG   HandlerThread:2263539 [handler.py:handle_request():158] handle_request: status_report
+2024-06-08 01:07:34,586 INFO    Thread-12 :2263539 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/wandb/run-20240608_005646-c8evl5v0/files/output.log
+2024-06-08 01:07:36,587 INFO    Thread-12 :2263539 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/wandb/run-20240608_005646-c8evl5v0/files/output.log
+2024-06-08 01:07:37,691 DEBUG   HandlerThread:2263539 [handler.py:handle_request():158] handle_request: status_report
+2024-06-08 01:07:38,587 INFO    Thread-12 :2263539 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/wandb/run-20240608_005646-c8evl5v0/files/output.log
+2024-06-08 01:07:40,588 INFO    Thread-12 :2263539 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/wandb/run-20240608_005646-c8evl5v0/files/output.log
+2024-06-08 01:07:42,589 INFO    Thread-12 :2263539 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/wandb/run-20240608_005646-c8evl5v0/files/output.log
+2024-06-08 01:07:42,837 DEBUG   HandlerThread:2263539 [handler.py:handle_request():158] handle_request: status_report
+2024-06-08 01:07:44,590 INFO    Thread-12 :2263539 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/wandb/run-20240608_005646-c8evl5v0/files/output.log
+2024-06-08 01:07:46,516 DEBUG   SenderThread:2263539 [sender.py:send():378] send: stats
+2024-06-08 01:07:46,591 INFO    Thread-12 :2263539 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/wandb/run-20240608_005646-c8evl5v0/files/output.log
+2024-06-08 01:07:46,730 DEBUG   HandlerThread:2263539 [handler.py:handle_request():158] handle_request: stop_status
+2024-06-08 01:07:46,731 DEBUG   SenderThread:2263539 [sender.py:send_request():405] send_request: stop_status
+2024-06-08 01:07:47,922 DEBUG   HandlerThread:2263539 [handler.py:handle_request():158] handle_request: status_report
+2024-06-08 01:07:48,592 INFO    Thread-12 :2263539 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/wandb/run-20240608_005646-c8evl5v0/files/output.log
+2024-06-08 01:07:50,592 INFO    Thread-12 :2263539 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/wandb/run-20240608_005646-c8evl5v0/files/output.log
+2024-06-08 01:07:52,593 INFO    Thread-12 :2263539 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/wandb/run-20240608_005646-c8evl5v0/files/output.log
+2024-06-08 01:07:53,024 DEBUG   HandlerThread:2263539 [handler.py:handle_request():158] handle_request: status_report
+2024-06-08 01:07:54,593 INFO    Thread-12 :2263539 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/wandb/run-20240608_005646-c8evl5v0/files/output.log
+2024-06-08 01:07:56,594 INFO    Thread-12 :2263539 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/wandb/run-20240608_005646-c8evl5v0/files/output.log
+2024-06-08 01:07:58,174 DEBUG   HandlerThread:2263539 [handler.py:handle_request():158] handle_request: status_report
+2024-06-08 01:07:58,594 INFO    Thread-12 :2263539 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/wandb/run-20240608_005646-c8evl5v0/files/output.log
+2024-06-08 01:08:00,595 INFO    Thread-12 :2263539 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/wandb/run-20240608_005646-c8evl5v0/files/output.log
+2024-06-08 01:08:01,727 DEBUG   HandlerThread:2263539 [handler.py:handle_request():158] handle_request: stop_status
+2024-06-08 01:08:01,727 DEBUG   SenderThread:2263539 [sender.py:send_request():405] send_request: stop_status
+2024-06-08 01:08:02,595 INFO    Thread-12 :2263539 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/wandb/run-20240608_005646-c8evl5v0/files/output.log
+2024-06-08 01:08:03,273 DEBUG   HandlerThread:2263539 [handler.py:handle_request():158] handle_request: status_report
+2024-06-08 01:08:04,596 INFO    Thread-12 :2263539 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/wandb/run-20240608_005646-c8evl5v0/files/output.log
+2024-06-08 01:08:06,596 INFO    Thread-12 :2263539 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/wandb/run-20240608_005646-c8evl5v0/files/output.log
+2024-06-08 01:08:08,396 DEBUG   HandlerThread:2263539 [handler.py:handle_request():158] handle_request: status_report
+2024-06-08 01:08:08,597 INFO    Thread-12 :2263539 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/wandb/run-20240608_005646-c8evl5v0/files/output.log
+2024-06-08 01:08:10,598 INFO    Thread-12 :2263539 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/wandb/run-20240608_005646-c8evl5v0/files/output.log
+2024-06-08 01:08:11,389 DEBUG   HandlerThread:2263539 [handler.py:handle_request():158] handle_request: partial_history
+2024-06-08 01:08:11,390 DEBUG   SenderThread:2263539 [sender.py:send():378] send: history
+2024-06-08 01:08:11,390 DEBUG   SenderThread:2263539 [sender.py:send_request():405] send_request: summary_record
+2024-06-08 01:08:11,390 INFO    SenderThread:2263539 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-06-08 01:08:11,598 INFO    Thread-12 :2263539 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/wandb/run-20240608_005646-c8evl5v0/files/wandb-summary.json
+2024-06-08 01:08:12,598 INFO    Thread-12 :2263539 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/wandb/run-20240608_005646-c8evl5v0/files/output.log
+2024-06-08 01:08:13,429 DEBUG   HandlerThread:2263539 [handler.py:handle_request():158] handle_request: status_report
+2024-06-08 01:08:14,598 INFO    Thread-12 :2263539 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/wandb/run-20240608_005646-c8evl5v0/files/output.log
+2024-06-08 01:08:16,516 DEBUG   SenderThread:2263539 [sender.py:send():378] send: stats
+2024-06-08 01:08:16,599 INFO    Thread-12 :2263539 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/wandb/run-20240608_005646-c8evl5v0/files/output.log
+2024-06-08 01:08:16,727 DEBUG   HandlerThread:2263539 [handler.py:handle_request():158] handle_request: stop_status
+2024-06-08 01:08:16,727 DEBUG   SenderThread:2263539 [sender.py:send_request():405] send_request: stop_status
+2024-06-08 01:08:18,486 DEBUG   HandlerThread:2263539 [handler.py:handle_request():158] handle_request: status_report
+2024-06-08 01:08:18,600 INFO    Thread-12 :2263539 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/wandb/run-20240608_005646-c8evl5v0/files/output.log
+2024-06-08 01:08:20,600 INFO    Thread-12 :2263539 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/wandb/run-20240608_005646-c8evl5v0/files/output.log
+2024-06-08 01:08:22,601 INFO    Thread-12 :2263539 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/wandb/run-20240608_005646-c8evl5v0/files/output.log
+2024-06-08 01:08:23,539 DEBUG   HandlerThread:2263539 [handler.py:handle_request():158] handle_request: status_report
+2024-06-08 01:08:24,602 INFO    Thread-12 :2263539 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/wandb/run-20240608_005646-c8evl5v0/files/output.log
+2024-06-08 01:08:26,602 INFO    Thread-12 :2263539 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/wandb/run-20240608_005646-c8evl5v0/files/output.log
+2024-06-08 01:08:28,603 INFO    Thread-12 :2263539 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/wandb/run-20240608_005646-c8evl5v0/files/output.log
+2024-06-08 01:08:28,635 DEBUG   HandlerThread:2263539 [handler.py:handle_request():158] handle_request: status_report
+2024-06-08 01:08:30,603 INFO    Thread-12 :2263539 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/wandb/run-20240608_005646-c8evl5v0/files/output.log
+2024-06-08 01:08:31,979 DEBUG   HandlerThread:2263539 [handler.py:handle_request():158] handle_request: stop_status
+2024-06-08 01:08:31,979 DEBUG   SenderThread:2263539 [sender.py:send_request():405] send_request: stop_status
+2024-06-08 01:08:32,604 INFO    Thread-12 :2263539 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/wandb/run-20240608_005646-c8evl5v0/files/output.log
+2024-06-08 01:08:33,654 DEBUG   HandlerThread:2263539 [handler.py:handle_request():158] handle_request: status_report
+2024-06-08 01:08:34,605 INFO    Thread-12 :2263539 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/wandb/run-20240608_005646-c8evl5v0/files/output.log
+2024-06-08 01:08:36,605 INFO    Thread-12 :2263539 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/wandb/run-20240608_005646-c8evl5v0/files/output.log
+2024-06-08 01:08:38,606 INFO    Thread-12 :2263539 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/wandb/run-20240608_005646-c8evl5v0/files/output.log
+2024-06-08 01:08:38,714 DEBUG   HandlerThread:2263539 [handler.py:handle_request():158] handle_request: status_report
+2024-06-08 01:08:40,606 INFO    Thread-12 :2263539 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/wandb/run-20240608_005646-c8evl5v0/files/output.log
+2024-06-08 01:08:42,607 INFO    Thread-12 :2263539 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/wandb/run-20240608_005646-c8evl5v0/files/output.log
+2024-06-08 01:08:43,734 DEBUG   HandlerThread:2263539 [handler.py:handle_request():158] handle_request: status_report
+2024-06-08 01:08:44,607 INFO    Thread-12 :2263539 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/wandb/run-20240608_005646-c8evl5v0/files/output.log
+2024-06-08 01:08:46,517 DEBUG   SenderThread:2263539 [sender.py:send():378] send: stats
+2024-06-08 01:08:46,608 INFO    Thread-12 :2263539 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/wandb/run-20240608_005646-c8evl5v0/files/output.log
+2024-06-08 01:08:46,976 DEBUG   HandlerThread:2263539 [handler.py:handle_request():158] handle_request: stop_status
+2024-06-08 01:08:46,976 DEBUG   SenderThread:2263539 [sender.py:send_request():405] send_request: stop_status
+2024-06-08 01:08:48,608 INFO    Thread-12 :2263539 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/wandb/run-20240608_005646-c8evl5v0/files/output.log
+2024-06-08 01:08:48,785 DEBUG   HandlerThread:2263539 [handler.py:handle_request():158] handle_request: status_report
+2024-06-08 01:08:50,609 INFO    Thread-12 :2263539 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/wandb/run-20240608_005646-c8evl5v0/files/output.log
+2024-06-08 01:08:52,609 INFO    Thread-12 :2263539 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/wandb/run-20240608_005646-c8evl5v0/files/output.log
+2024-06-08 01:08:53,790 DEBUG   HandlerThread:2263539 [handler.py:handle_request():158] handle_request: status_report
+2024-06-08 01:08:54,610 INFO    Thread-12 :2263539 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/wandb/run-20240608_005646-c8evl5v0/files/output.log
+2024-06-08 01:08:56,610 INFO    Thread-12 :2263539 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/wandb/run-20240608_005646-c8evl5v0/files/output.log
+2024-06-08 01:08:57,155 DEBUG   HandlerThread:2263539 [handler.py:handle_request():158] handle_request: partial_history
+2024-06-08 01:08:57,156 DEBUG   SenderThread:2263539 [sender.py:send():378] send: history
+2024-06-08 01:08:57,156 DEBUG   SenderThread:2263539 [sender.py:send_request():405] send_request: summary_record
+2024-06-08 01:08:57,156 INFO    SenderThread:2263539 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-06-08 01:08:57,158 DEBUG   SenderThread:2263539 [sender.py:send():378] send: exit
+2024-06-08 01:08:57,158 INFO    SenderThread:2263539 [sender.py:send_exit():585] handling exit code: 0
+2024-06-08 01:08:57,158 INFO    SenderThread:2263539 [sender.py:send_exit():587] handling runtime: 730
+2024-06-08 01:08:57,158 INFO    SenderThread:2263539 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-06-08 01:08:57,158 INFO    SenderThread:2263539 [sender.py:send_exit():593] send defer
+2024-06-08 01:08:57,158 DEBUG   HandlerThread:2263539 [handler.py:handle_request():158] handle_request: defer
+2024-06-08 01:08:57,158 INFO    HandlerThread:2263539 [handler.py:handle_request_defer():184] handle defer: 0
+2024-06-08 01:08:57,158 DEBUG   SenderThread:2263539 [sender.py:send_request():405] send_request: defer
+2024-06-08 01:08:57,158 INFO    SenderThread:2263539 [sender.py:send_request_defer():609] handle sender defer: 0
+2024-06-08 01:08:57,158 INFO    SenderThread:2263539 [sender.py:transition_state():613] send defer: 1
+2024-06-08 01:08:57,158 DEBUG   HandlerThread:2263539 [handler.py:handle_request():158] handle_request: defer
+2024-06-08 01:08:57,159 INFO    HandlerThread:2263539 [handler.py:handle_request_defer():184] handle defer: 1
+2024-06-08 01:08:57,159 DEBUG   SenderThread:2263539 [sender.py:send_request():405] send_request: defer
+2024-06-08 01:08:57,159 INFO    SenderThread:2263539 [sender.py:send_request_defer():609] handle sender defer: 1
+2024-06-08 01:08:57,159 INFO    SenderThread:2263539 [sender.py:transition_state():613] send defer: 2
+2024-06-08 01:08:57,159 DEBUG   HandlerThread:2263539 [handler.py:handle_request():158] handle_request: defer
+2024-06-08 01:08:57,159 INFO    HandlerThread:2263539 [handler.py:handle_request_defer():184] handle defer: 2
+2024-06-08 01:08:57,159 INFO    HandlerThread:2263539 [system_monitor.py:finish():203] Stopping system monitor
+2024-06-08 01:08:57,159 DEBUG   SystemMonitor:2263539 [system_monitor.py:_start():179] Finished system metrics aggregation loop
+2024-06-08 01:08:57,159 DEBUG   SystemMonitor:2263539 [system_monitor.py:_start():183] Publishing last batch of metrics
+2024-06-08 01:08:57,159 INFO    HandlerThread:2263539 [interfaces.py:finish():200] Joined cpu monitor
+2024-06-08 01:08:57,160 INFO    HandlerThread:2263539 [interfaces.py:finish():200] Joined disk monitor
+2024-06-08 01:08:57,160 INFO    HandlerThread:2263539 [interfaces.py:finish():200] Joined memory monitor
+2024-06-08 01:08:57,160 INFO    HandlerThread:2263539 [interfaces.py:finish():200] Joined network monitor
+2024-06-08 01:08:57,160 DEBUG   SenderThread:2263539 [sender.py:send_request():405] send_request: defer
+2024-06-08 01:08:57,160 INFO    SenderThread:2263539 [sender.py:send_request_defer():609] handle sender defer: 2
+2024-06-08 01:08:57,160 INFO    SenderThread:2263539 [sender.py:transition_state():613] send defer: 3
+2024-06-08 01:08:57,160 DEBUG   SenderThread:2263539 [sender.py:send():378] send: stats
+2024-06-08 01:08:57,161 DEBUG   HandlerThread:2263539 [handler.py:handle_request():158] handle_request: defer
+2024-06-08 01:08:57,161 INFO    HandlerThread:2263539 [handler.py:handle_request_defer():184] handle defer: 3
+2024-06-08 01:08:57,161 DEBUG   SenderThread:2263539 [sender.py:send_request():405] send_request: defer
+2024-06-08 01:08:57,161 INFO    SenderThread:2263539 [sender.py:send_request_defer():609] handle sender defer: 3
+2024-06-08 01:08:57,161 INFO    SenderThread:2263539 [sender.py:transition_state():613] send defer: 4
+2024-06-08 01:08:57,161 DEBUG   HandlerThread:2263539 [handler.py:handle_request():158] handle_request: defer
+2024-06-08 01:08:57,161 INFO    HandlerThread:2263539 [handler.py:handle_request_defer():184] handle defer: 4
+2024-06-08 01:08:57,161 DEBUG   SenderThread:2263539 [sender.py:send_request():405] send_request: defer
+2024-06-08 01:08:57,161 INFO    SenderThread:2263539 [sender.py:send_request_defer():609] handle sender defer: 4
+2024-06-08 01:08:57,161 INFO    SenderThread:2263539 [sender.py:transition_state():613] send defer: 5
+2024-06-08 01:08:57,161 DEBUG   HandlerThread:2263539 [handler.py:handle_request():158] handle_request: defer
+2024-06-08 01:08:57,161 INFO    HandlerThread:2263539 [handler.py:handle_request_defer():184] handle defer: 5
+2024-06-08 01:08:57,161 DEBUG   SenderThread:2263539 [sender.py:send():378] send: summary
+2024-06-08 01:08:57,161 INFO    SenderThread:2263539 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-06-08 01:08:57,162 DEBUG   SenderThread:2263539 [sender.py:send_request():405] send_request: defer
+2024-06-08 01:08:57,162 INFO    SenderThread:2263539 [sender.py:send_request_defer():609] handle sender defer: 5
+2024-06-08 01:08:57,162 INFO    SenderThread:2263539 [sender.py:transition_state():613] send defer: 6
+2024-06-08 01:08:57,162 DEBUG   HandlerThread:2263539 [handler.py:handle_request():158] handle_request: defer
+2024-06-08 01:08:57,162 INFO    HandlerThread:2263539 [handler.py:handle_request_defer():184] handle defer: 6
+2024-06-08 01:08:57,162 DEBUG   SenderThread:2263539 [sender.py:send_request():405] send_request: defer
+2024-06-08 01:08:57,162 INFO    SenderThread:2263539 [sender.py:send_request_defer():609] handle sender defer: 6
+2024-06-08 01:08:57,162 INFO    SenderThread:2263539 [sender.py:transition_state():613] send defer: 7
+2024-06-08 01:08:57,162 DEBUG   HandlerThread:2263539 [handler.py:handle_request():158] handle_request: status_report
+2024-06-08 01:08:57,162 DEBUG   HandlerThread:2263539 [handler.py:handle_request():158] handle_request: defer
+2024-06-08 01:08:57,162 INFO    HandlerThread:2263539 [handler.py:handle_request_defer():184] handle defer: 7
+2024-06-08 01:08:57,162 DEBUG   SenderThread:2263539 [sender.py:send_request():405] send_request: defer
+2024-06-08 01:08:57,162 INFO    SenderThread:2263539 [sender.py:send_request_defer():609] handle sender defer: 7
+2024-06-08 01:08:57,611 INFO    Thread-12 :2263539 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/wandb/run-20240608_005646-c8evl5v0/files/wandb-summary.json
+2024-06-08 01:08:57,756 INFO    SenderThread:2263539 [sender.py:transition_state():613] send defer: 8
+2024-06-08 01:08:57,756 DEBUG   HandlerThread:2263539 [handler.py:handle_request():158] handle_request: defer
+2024-06-08 01:08:57,757 INFO    HandlerThread:2263539 [handler.py:handle_request_defer():184] handle defer: 8
+2024-06-08 01:08:57,757 DEBUG   SenderThread:2263539 [sender.py:send_request():405] send_request: defer
+2024-06-08 01:08:57,757 INFO    SenderThread:2263539 [sender.py:send_request_defer():609] handle sender defer: 8
+2024-06-08 01:08:57,757 INFO    SenderThread:2263539 [job_builder.py:build():432] Attempting to build job artifact
+2024-06-08 01:08:57,757 INFO    SenderThread:2263539 [job_builder.py:_get_source_type():565] is repo sourced job
+2024-06-08 01:08:57,773 INFO    SenderThread:2263539 [job_builder.py:build():541] adding wandb-job metadata file
+2024-06-08 01:08:57,774 INFO    SenderThread:2263539 [sender.py:transition_state():613] send defer: 9
+2024-06-08 01:08:57,775 DEBUG   HandlerThread:2263539 [handler.py:handle_request():158] handle_request: defer
+2024-06-08 01:08:57,775 DEBUG   SenderThread:2263539 [sender.py:send():378] send: artifact
+2024-06-08 01:08:57,775 INFO    HandlerThread:2263539 [handler.py:handle_request_defer():184] handle defer: 9
+2024-06-08 01:08:58,158 DEBUG   HandlerThread:2263539 [handler.py:handle_request():158] handle_request: poll_exit
+2024-06-08 01:08:58,225 INFO    SenderThread:2263539 [sender.py:send_artifact():1467] sent artifact job-https___github.com_MaheepChaudhary_SAE_vs_DAS.git_main.py - {'id': 'QXJ0aWZhY3Q6ODY0NTU3NDU5', 'state': 'COMMITTED', 'artifactSequence': {'id': 'QXJ0aWZhY3RDb2xsZWN0aW9uOjE3ODM4MjIxOA==', 'latestArtifact': {'id': 'QXJ0aWZhY3Q6ODY0NTkxNjAy', 'versionIndex': 35}}}
+2024-06-08 01:08:58,225 DEBUG   SenderThread:2263539 [sender.py:send_request():405] send_request: defer
+2024-06-08 01:08:58,225 INFO    SenderThread:2263539 [sender.py:send_request_defer():609] handle sender defer: 9
+2024-06-08 01:08:58,225 INFO    SenderThread:2263539 [dir_watcher.py:finish():358] shutting down directory watcher
+2024-06-08 01:08:58,611 INFO    Thread-12 :2263539 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/atticus/maheep/SAE_vs_DAS/wandb/run-20240608_005646-c8evl5v0/files/output.log
+2024-06-08 01:08:58,611 INFO    SenderThread:2263539 [dir_watcher.py:finish():388] scan: /home/atticus/maheep/SAE_vs_DAS/wandb/run-20240608_005646-c8evl5v0/files
+2024-06-08 01:08:58,611 INFO    SenderThread:2263539 [dir_watcher.py:finish():402] scan save: /home/atticus/maheep/SAE_vs_DAS/wandb/run-20240608_005646-c8evl5v0/files/wandb-metadata.json wandb-metadata.json
+2024-06-08 01:08:58,611 INFO    SenderThread:2263539 [dir_watcher.py:finish():402] scan save: /home/atticus/maheep/SAE_vs_DAS/wandb/run-20240608_005646-c8evl5v0/files/requirements.txt requirements.txt
+2024-06-08 01:08:58,612 INFO    SenderThread:2263539 [dir_watcher.py:finish():402] scan save: /home/atticus/maheep/SAE_vs_DAS/wandb/run-20240608_005646-c8evl5v0/files/wandb-summary.json wandb-summary.json
+2024-06-08 01:08:58,612 INFO    SenderThread:2263539 [dir_watcher.py:finish():402] scan save: /home/atticus/maheep/SAE_vs_DAS/wandb/run-20240608_005646-c8evl5v0/files/output.log output.log
+2024-06-08 01:08:58,612 INFO    SenderThread:2263539 [dir_watcher.py:finish():402] scan save: /home/atticus/maheep/SAE_vs_DAS/wandb/run-20240608_005646-c8evl5v0/files/config.yaml config.yaml
+2024-06-08 01:08:58,614 INFO    SenderThread:2263539 [sender.py:transition_state():613] send defer: 10
+2024-06-08 01:08:58,617 DEBUG   SenderThread:2263539 [sender.py:send_request():405] send_request: poll_exit
+2024-06-08 01:08:58,617 DEBUG   HandlerThread:2263539 [handler.py:handle_request():158] handle_request: defer
+2024-06-08 01:08:58,617 INFO    HandlerThread:2263539 [handler.py:handle_request_defer():184] handle defer: 10
+2024-06-08 01:08:58,618 DEBUG   SenderThread:2263539 [sender.py:send_request():405] send_request: defer
+2024-06-08 01:08:58,618 INFO    SenderThread:2263539 [sender.py:send_request_defer():609] handle sender defer: 10
+2024-06-08 01:08:58,618 INFO    SenderThread:2263539 [file_pusher.py:finish():169] shutting down file pusher
+2024-06-08 01:08:58,963 INFO    wandb-upload_0:2263539 [upload_job.py:push():130] Uploaded file /home/atticus/maheep/SAE_vs_DAS/wandb/run-20240608_005646-c8evl5v0/files/requirements.txt
+2024-06-08 01:08:59,144 INFO    wandb-upload_3:2263539 [upload_job.py:push():130] Uploaded file /home/atticus/maheep/SAE_vs_DAS/wandb/run-20240608_005646-c8evl5v0/files/config.yaml
+2024-06-08 01:08:59,149 INFO    wandb-upload_2:2263539 [upload_job.py:push():130] Uploaded file /home/atticus/maheep/SAE_vs_DAS/wandb/run-20240608_005646-c8evl5v0/files/output.log
+2024-06-08 01:08:59,158 DEBUG   HandlerThread:2263539 [handler.py:handle_request():158] handle_request: poll_exit
+2024-06-08 01:08:59,159 DEBUG   SenderThread:2263539 [sender.py:send_request():405] send_request: poll_exit
+2024-06-08 01:08:59,160 INFO    wandb-upload_1:2263539 [upload_job.py:push():130] Uploaded file /home/atticus/maheep/SAE_vs_DAS/wandb/run-20240608_005646-c8evl5v0/files/wandb-summary.json
+2024-06-08 01:08:59,360 INFO    Thread-11 (_thread_body):2263539 [sender.py:transition_state():613] send defer: 11
+2024-06-08 01:08:59,360 DEBUG   HandlerThread:2263539 [handler.py:handle_request():158] handle_request: defer
+2024-06-08 01:08:59,361 INFO    HandlerThread:2263539 [handler.py:handle_request_defer():184] handle defer: 11
+2024-06-08 01:08:59,361 DEBUG   SenderThread:2263539 [sender.py:send_request():405] send_request: defer
+2024-06-08 01:08:59,361 INFO    SenderThread:2263539 [sender.py:send_request_defer():609] handle sender defer: 11
+2024-06-08 01:08:59,361 INFO    SenderThread:2263539 [file_pusher.py:join():175] waiting for file pusher
+2024-06-08 01:08:59,361 INFO    SenderThread:2263539 [sender.py:transition_state():613] send defer: 12
+2024-06-08 01:08:59,361 DEBUG   HandlerThread:2263539 [handler.py:handle_request():158] handle_request: defer
+2024-06-08 01:08:59,361 INFO    HandlerThread:2263539 [handler.py:handle_request_defer():184] handle defer: 12
+2024-06-08 01:08:59,361 DEBUG   SenderThread:2263539 [sender.py:send_request():405] send_request: defer
+2024-06-08 01:08:59,361 INFO    SenderThread:2263539 [sender.py:send_request_defer():609] handle sender defer: 12
+2024-06-08 01:08:59,361 INFO    SenderThread:2263539 [file_stream.py:finish():601] file stream finish called
+2024-06-08 01:08:59,683 INFO    SenderThread:2263539 [file_stream.py:finish():605] file stream finish is done
+2024-06-08 01:08:59,683 INFO    SenderThread:2263539 [sender.py:transition_state():613] send defer: 13
+2024-06-08 01:08:59,683 DEBUG   HandlerThread:2263539 [handler.py:handle_request():158] handle_request: defer
+2024-06-08 01:08:59,683 INFO    HandlerThread:2263539 [handler.py:handle_request_defer():184] handle defer: 13
+2024-06-08 01:08:59,683 DEBUG   SenderThread:2263539 [sender.py:send_request():405] send_request: defer
+2024-06-08 01:08:59,683 INFO    SenderThread:2263539 [sender.py:send_request_defer():609] handle sender defer: 13
+2024-06-08 01:08:59,683 INFO    SenderThread:2263539 [sender.py:transition_state():613] send defer: 14
+2024-06-08 01:08:59,684 DEBUG   HandlerThread:2263539 [handler.py:handle_request():158] handle_request: defer
+2024-06-08 01:08:59,684 INFO    HandlerThread:2263539 [handler.py:handle_request_defer():184] handle defer: 14
+2024-06-08 01:08:59,684 DEBUG   SenderThread:2263539 [sender.py:send():378] send: final
+2024-06-08 01:08:59,684 DEBUG   SenderThread:2263539 [sender.py:send():378] send: footer
+2024-06-08 01:08:59,684 DEBUG   SenderThread:2263539 [sender.py:send_request():405] send_request: defer
+2024-06-08 01:08:59,684 INFO    SenderThread:2263539 [sender.py:send_request_defer():609] handle sender defer: 14
+2024-06-08 01:08:59,685 DEBUG   HandlerThread:2263539 [handler.py:handle_request():158] handle_request: poll_exit
+2024-06-08 01:08:59,685 DEBUG   SenderThread:2263539 [sender.py:send_request():405] send_request: poll_exit
+2024-06-08 01:08:59,685 DEBUG   HandlerThread:2263539 [handler.py:handle_request():158] handle_request: poll_exit
+2024-06-08 01:08:59,685 DEBUG   SenderThread:2263539 [sender.py:send_request():405] send_request: poll_exit
+2024-06-08 01:08:59,686 DEBUG   HandlerThread:2263539 [handler.py:handle_request():158] handle_request: server_info
+2024-06-08 01:08:59,686 DEBUG   SenderThread:2263539 [sender.py:send_request():405] send_request: server_info
+2024-06-08 01:08:59,687 DEBUG   HandlerThread:2263539 [handler.py:handle_request():158] handle_request: get_summary
+2024-06-08 01:08:59,687 DEBUG   HandlerThread:2263539 [handler.py:handle_request():158] handle_request: sampled_history
+2024-06-08 01:08:59,688 DEBUG   HandlerThread:2263539 [handler.py:handle_request():158] handle_request: internal_messages
+2024-06-08 01:08:59,778 INFO    MainThread:2263539 [wandb_run.py:_footer_history_summary_info():3994] rendering history
+2024-06-08 01:08:59,778 INFO    MainThread:2263539 [wandb_run.py:_footer_history_summary_info():4026] rendering summary
+2024-06-08 01:08:59,778 INFO    MainThread:2263539 [wandb_run.py:_footer_sync_info():3953] logging synced files
+2024-06-08 01:08:59,778 DEBUG   HandlerThread:2263539 [handler.py:handle_request():158] handle_request: shutdown
+2024-06-08 01:08:59,778 INFO    HandlerThread:2263539 [handler.py:finish():882] shutting down handler
+2024-06-08 01:09:00,686 INFO    WriterThread:2263539 [datastore.py:close():296] close: /home/atticus/maheep/SAE_vs_DAS/wandb/run-20240608_005646-c8evl5v0/run-c8evl5v0.wandb
+2024-06-08 01:09:00,778 INFO    SenderThread:2263539 [sender.py:finish():1545] shutting down sender
+2024-06-08 01:09:00,778 INFO    SenderThread:2263539 [file_pusher.py:finish():169] shutting down file pusher
+2024-06-08 01:09:00,778 INFO    SenderThread:2263539 [file_pusher.py:join():175] waiting for file pusher

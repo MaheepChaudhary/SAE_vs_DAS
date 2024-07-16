@@ -1,0 +1,7 @@
+Traceback (most recent call last):
+  File "/Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/main.py", line 296, in <module>
+    train(DEVICE=args.device,
+  File "/Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/main.py", line 27, in train
+    wandb.run.name = f"[{evaluation}]-{residual_layer}-{method}_b{batch_size_train}_e{epochs}_lr{lr}_temp({temp[0]},{temp[1]})"
+                                                                                                           ^^^^
+NameError: name 'temp' is not defined
