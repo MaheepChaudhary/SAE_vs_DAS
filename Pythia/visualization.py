@@ -1,4 +1,4 @@
-from Pythia.config import *
+from config import *
 from imports import *
 
 def visualization(loss, acc, title):

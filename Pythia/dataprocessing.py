@@ -1,5 +1,5 @@
 from imports import *
-from Pythia.config import *
+from config import *
 
 # dataset hyperparameters
 dataset = load_dataset(gender_dataset)
