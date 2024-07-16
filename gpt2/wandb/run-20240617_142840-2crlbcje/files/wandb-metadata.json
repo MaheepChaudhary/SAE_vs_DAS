@@ -1,0 +1,207 @@
+{
+    "os": "Linux-6.5.0-28-generic-x86_64-with-glibc2.35",
+    "python": "3.10.12",
+    "heartbeatAt": "2024-06-17T21:28:41.404471",
+    "startedAt": "2024-06-17T21:28:40.849556",
+    "docker": null,
+    "cuda": null,
+    "args": [
+        "-efp",
+        "continent_intervention_dataset.json",
+        "-a",
+        "continent",
+        "-acc",
+        "top1"
+    ],
+    "state": "running",
+    "program": "/home/atticus/maheep/SAE_vs_DAS/gpt2/main_intervention.py",
+    "codePathLocal": "main_intervention.py",
+    "codePath": "gpt2/main_intervention.py",
+    "git": {
+        "remote": "https://github.com/MaheepChaudhary/SAE_vs_DAS.git",
+        "commit": "b3b1220de864aa338a4c3c9d159a06ba8358161b"
+    },
+    "email": "chaudhary.maheep28@gmail.com",
+    "root": "/home/atticus/maheep/SAE_vs_DAS",
+    "host": "AtticusDeepLearner",
+    "username": "atticus",
+    "executable": "/usr/bin/python",
+    "cpu_count": 16,
+    "cpu_count_logical": 32,
+    "cpu_freq": {
+        "current": 2.399312499999999,
+        "min": 1800.0,
+        "max": 4000.0
+    },
+    "cpu_freq_per_core": [
+        {
+            "current": 1.8,
+            "min": 1800.0,
+            "max": 4000.0
+        },
+        {
+            "current": 1.8,
+            "min": 1800.0,
+            "max": 4000.0
+        },
+        {
+            "current": 4.0,
+            "min": 1800.0,
+            "max": 4000.0
+        },
+        {
+            "current": 4.0,
+            "min": 1800.0,
+            "max": 4000.0
+        },
+        {
+            "current": 1.793,
+            "min": 1800.0,
+            "max": 4000.0
+        },
+        {
+            "current": 2.428,
+            "min": 1800.0,
+            "max": 4000.0
+        },
+        {
+            "current": 1.8,
+            "min": 1800.0,
+            "max": 4000.0
+        },
+        {
+            "current": 1.8,
+            "min": 1800.0,
+            "max": 4000.0
+        },
+        {
+            "current": 1.916,
+            "min": 1800.0,
+            "max": 4000.0
+        },
+        {
+            "current": 1.8,
+            "min": 1800.0,
+            "max": 4000.0
+        },
+        {
+            "current": 1.8,
+            "min": 1800.0,
+            "max": 4000.0
+        },
+        {
+            "current": 1.8,
+            "min": 1800.0,
+            "max": 4000.0
+        },
+        {
+            "current": 1.8,
+            "min": 1800.0,
+            "max": 4000.0
+        },
+        {
+            "current": 3.51,
+            "min": 1800.0,
+            "max": 4000.0
+        },
+        {
+            "current": 1.8,
+            "min": 1800.0,
+            "max": 4000.0
+        },
+        {
+            "current": 1.8,
+            "min": 1800.0,
+            "max": 4000.0
+        },
+        {
+            "current": 1.8,
+            "min": 1800.0,
+            "max": 4000.0
+        },
+        {
+            "current": 1.8,
+            "min": 1800.0,
+            "max": 4000.0
+        },
+        {
+            "current": 1.8,
+            "min": 1800.0,
+            "max": 4000.0
+        },
+        {
+            "current": 3.127,
+            "min": 1800.0,
+            "max": 4000.0
+        },
+        {
+            "current": 1.794,
+            "min": 1800.0,
+            "max": 4000.0
+        },
+        {
+            "current": 1.8,
+            "min": 1800.0,
+            "max": 4000.0
+        },
+        {
+            "current": 4.0,
+            "min": 1800.0,
+            "max": 4000.0
+        },
+        {
+            "current": 1.79,
+            "min": 1800.0,
+            "max": 4000.0
+        },
+        {
+            "current": 1.8,
+            "min": 1800.0,
+            "max": 4000.0
+        },
+        {
+            "current": 1.8,
+            "min": 1800.0,
+            "max": 4000.0
+        },
+        {
+            "current": 1.8,
+            "min": 1800.0,
+            "max": 4000.0
+        },
+        {
+            "current": 1.911,
+            "min": 1800.0,
+            "max": 4000.0
+        },
+        {
+            "current": 1.913,
+            "min": 1800.0,
+            "max": 4000.0
+        },
+        {
+            "current": 1.916,
+            "min": 1800.0,
+            "max": 4000.0
+        },
+        {
+            "current": 1.911,
+            "min": 1800.0,
+            "max": 4000.0
+        },
+        {
+            "current": 2.392,
+            "min": 1800.0,
+            "max": 4000.0
+        }
+    ],
+    "disk": {
+        "/": {
+            "total": 3519.256721496582,
+            "used": 148.84263610839844
+        }
+    },
+    "memory": {
+        "total": 251.53791046142578
+    }
+}

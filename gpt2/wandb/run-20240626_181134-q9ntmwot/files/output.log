@@ -1,0 +1,8 @@
+  0%|                          | 0/5240 [00:01<?, ?it/s]
+Traceback (most recent call last):
+  File "/Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/gpt2/main_train.py", line 161, in <module>
+    if sample[0][0].split()[-2] == "country":
+       ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+IndexError: list index out of range
+5240
+Toronto is a city in the continent of North America. Beijing is a city in the continent of Asia. Miami is a city in the continent of North America. Santiago is a city in the continent of South America. London is a city in the continent of Europe. Windsor is a city in the continent of

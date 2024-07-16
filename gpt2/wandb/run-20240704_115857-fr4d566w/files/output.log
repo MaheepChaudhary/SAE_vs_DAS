@@ -1,0 +1,9 @@
+Traceback (most recent call last):
+  File "/Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/gpt2/main_intervention.py", line 185, in <module>
+    model_eval(eval_file_path=args.eval_file_path, model = model, attribute=args.attribute)
+  File "/Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/gpt2/main_intervention.py", line 51, in model_eval
+    if prediction.split()[0] == label.split()[0]:
+                                ^^^^^^^^^^^
+AttributeError: 'list' object has no attribute 'split'
+['Toronto is a city in the continent of North America. Beijing is a city in the continent of Asia. Miami is a city in the continent of North America. Santiago is a city in the continent of South America. London is a city in the continent of Europe. Ahmedabad is a city in the continent of', 'Asia']
+ Asia

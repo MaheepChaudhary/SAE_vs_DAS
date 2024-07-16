@@ -1,0 +1,7 @@
+Traceback (most recent call last):
+  File "/Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/gpt2/main_intervention.py", line 183, in <module>
+    model_eval(eval_file_path=args.eval_file_path, model = model, attribute=args.attribute)
+  File "/Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/gpt2/main_intervention.py", line 49, in model_eval
+    if prediction.split()[0] == label.split()[0]:
+                                ^^^^^^^^^^^
+AttributeError: 'list' object has no attribute 'split'

@@ -1,0 +1,8 @@
+l4_mask: requires_grad=True
+87150
+  0%|              | 20/87150 [00:02<2:47:47,  8.65it/s]
+Traceback (most recent call last):
+  File "/Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/gpt2/main_train.py", line 191, in <module>
+    matches = 1 if predicted_text.split()[0] == source_label.split()[0] else 0
+                                                ^^^^^^^^^^^^
+NameError: name 'source_label' is not defined. Did you mean: 'source_label_ids'?

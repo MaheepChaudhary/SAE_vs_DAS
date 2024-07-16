@@ -1,0 +1,5 @@
+Traceback (most recent call last):
+  File "/Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/gpt2/main_train.py", line 111, in <module>
+    optimizer = optim.Adam(training_model.l4_mask.parameters(), lr=args.learning_rate)
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'Parameter' object has no attribute 'parameters'

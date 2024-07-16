@@ -1,0 +1,8 @@
+Traceback (most recent call last):
+  File "/Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/gpt2/main_train.py", line 127, in <module>
+    train_data, val_data, test_data = train_data_processing()
+                                      ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/gpt2/main_train.py", line 73, in train_data_processing
+    train_data = data[:int(0.7*len(data))]
+                               ^^^^^^^^^
+TypeError: object of type 'NoneType' has no len()
