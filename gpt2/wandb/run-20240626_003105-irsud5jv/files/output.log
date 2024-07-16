@@ -1,0 +1,369 @@
+5240
+Epoch: 0, Sample: 0, Accuracy: 1.0000, Loss: 1.5719
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  2%|▎              | 98/5240 [01:09<1:00:43,  1.41it/s]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  4%|▌             | 200/5240 [02:21<1:02:54,  1.34it/s]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  6%|▊             | 300/5240 [03:37<1:02:10,  1.32it/s]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  8%|█▏              | 398/5240 [04:48<56:23,  1.43it/s]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 10%|█▌              | 499/5240 [06:00<55:41,  1.42it/s]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 11%|█▊              | 599/5240 [07:12<54:20,  1.42it/s]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 13%|██▏             | 699/5240 [08:24<57:56,  1.31it/s]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 14%|██▎             | 753/5240 [09:03<53:59,  1.38it/s]
+Traceback (most recent call last):
+  File "/Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/gpt2/main_train.py", line 153, in <module>
+    # training the model
+  File "/Users/maheepchaudhary/miniforge3/envs/nnsight/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1532, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/maheepchaudhary/miniforge3/envs/nnsight/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1541, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/gpt2/models.py", line 237, in forward
+    with self.model.trace() as tracer:
+  File "/Users/maheepchaudhary/miniforge3/envs/nnsight/lib/python3.12/site-packages/nnsight/contexts/Runner.py", line 41, in __exit__
+    raise exc_val
+  File "/Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/gpt2/models.py", line 239, in forward
+    with tracer.invoke(source_ids) as runner:
+  File "/Users/maheepchaudhary/miniforge3/envs/nnsight/lib/python3.12/site-packages/nnsight/contexts/Invoker.py", line 69, in __enter__
+    self.tracer._model._execute(
+  File "/Users/maheepchaudhary/miniforge3/envs/nnsight/lib/python3.12/site-packages/nnsight/models/mixins/Generation.py", line 21, in _execute
+    return self._execute_forward(prepared_inputs, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/maheepchaudhary/miniforge3/envs/nnsight/lib/python3.12/site-packages/nnsight/models/LanguageModel.py", line 281, in _execute_forward
+    return self._model(
+           ^^^^^^^^^^^^
+  File "/Users/maheepchaudhary/miniforge3/envs/nnsight/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1532, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/maheepchaudhary/miniforge3/envs/nnsight/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1582, in _call_impl
+    result = forward_call(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/maheepchaudhary/miniforge3/envs/nnsight/lib/python3.12/site-packages/transformers/models/gpt2/modeling_gpt2.py", line 1305, in forward
+    transformer_outputs = self.transformer(
+                          ^^^^^^^^^^^^^^^^^
+  File "/Users/maheepchaudhary/miniforge3/envs/nnsight/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1532, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/maheepchaudhary/miniforge3/envs/nnsight/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1582, in _call_impl
+    result = forward_call(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/maheepchaudhary/miniforge3/envs/nnsight/lib/python3.12/site-packages/transformers/models/gpt2/modeling_gpt2.py", line 1119, in forward
+    outputs = block(
+              ^^^^^^
+  File "/Users/maheepchaudhary/miniforge3/envs/nnsight/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1532, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/maheepchaudhary/miniforge3/envs/nnsight/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1582, in _call_impl
+    result = forward_call(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/maheepchaudhary/miniforge3/envs/nnsight/lib/python3.12/site-packages/transformers/models/gpt2/modeling_gpt2.py", line 654, in forward
+    feed_forward_hidden_states = self.mlp(hidden_states)
+                                 ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/maheepchaudhary/miniforge3/envs/nnsight/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1532, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/maheepchaudhary/miniforge3/envs/nnsight/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1582, in _call_impl
+    result = forward_call(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/maheepchaudhary/miniforge3/envs/nnsight/lib/python3.12/site-packages/transformers/models/gpt2/modeling_gpt2.py", line 575, in forward
+    hidden_states = self.act(hidden_states)
+                    ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/maheepchaudhary/miniforge3/envs/nnsight/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1532, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/maheepchaudhary/miniforge3/envs/nnsight/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1582, in _call_impl
+    result = forward_call(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/maheepchaudhary/miniforge3/envs/nnsight/lib/python3.12/site-packages/transformers/activations.py", line 56, in forward
+    return 0.5 * input * (1.0 + torch.tanh(math.sqrt(2.0 / math.pi) * (input + 0.044715 * torch.pow(input, 3.0))))
+                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/maheepchaudhary/miniforge3/envs/nnsight/lib/python3.12/site-packages/torch/_subclasses/fake_tensor.py", line 1780, in __torch_function__
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/maheepchaudhary/miniforge3/envs/nnsight/lib/python3.12/site-packages/torch/utils/_stats.py", line 20, in wrapper
+    return fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^
+  File "/Users/maheepchaudhary/miniforge3/envs/nnsight/lib/python3.12/site-packages/torch/_subclasses/fake_tensor.py", line 896, in __torch_dispatch__
+    return self.dispatch(func, types, args, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/maheepchaudhary/miniforge3/envs/nnsight/lib/python3.12/site-packages/torch/_subclasses/fake_tensor.py", line 1241, in dispatch
+    return self._cached_dispatch_impl(func, types, args, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/maheepchaudhary/miniforge3/envs/nnsight/lib/python3.12/site-packages/torch/_subclasses/fake_tensor.py", line 956, in _cached_dispatch_impl
+    key = self._cache_key(func, args, kwargs)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/maheepchaudhary/miniforge3/envs/nnsight/lib/python3.12/site-packages/torch/_subclasses/fake_tensor.py", line 1034, in _cache_key
+    _ShapeEnvSettings(self.shape_env) if self.shape_env else None,
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/maheepchaudhary/miniforge3/envs/nnsight/lib/python3.12/site-packages/torch/_subclasses/fake_tensor.py", line 739, in __init__
+    def __init__(self, env: "ShapeEnv"):
+KeyboardInterrupt

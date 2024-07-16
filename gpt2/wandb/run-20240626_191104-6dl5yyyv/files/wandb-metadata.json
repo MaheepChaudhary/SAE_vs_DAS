@@ -1,0 +1,62 @@
+{
+    "os": "macOS-14.5-arm64-arm-64bit",
+    "python": "3.12.3",
+    "heartbeatAt": "2024-06-26T13:41:06.021888",
+    "startedAt": "2024-06-26T13:41:04.845798",
+    "docker": null,
+    "cuda": null,
+    "args": [
+        "-efp",
+        "continent_intervention_dataset.json",
+        "-a",
+        "continent",
+        "-d",
+        "mps",
+        "-tla",
+        "61",
+        "-method",
+        "neuron masking",
+        "-t",
+        "train"
+    ],
+    "state": "running",
+    "program": "/Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/gpt2/main_train.py",
+    "codePathLocal": "main_train.py",
+    "codePath": "gpt2/main_train.py",
+    "git": {
+        "remote": "https://github.com/MaheepChaudhary/SAE_vs_DAS.git",
+        "commit": "42ad76d1cbd021f9e6aa20e06db044f6913c635a"
+    },
+    "email": "my email address used on my git repo",
+    "root": "/Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS",
+    "host": "Maheeps-MBP",
+    "username": "maheepchaudhary",
+    "executable": "/Users/maheepchaudhary/miniforge3/envs/nnsight/bin/python",
+    "cpu_count": 11,
+    "cpu_count_logical": 11,
+    "cpu_freq": {
+        "current": 4056,
+        "min": 696,
+        "max": 4056
+    },
+    "cpu_freq_per_core": [
+        {
+            "current": 4056,
+            "min": 696,
+            "max": 4056
+        }
+    ],
+    "disk": {
+        "/": {
+            "total": 460.4317207336426,
+            "used": 416.7828025817871
+        }
+    },
+    "gpuapple": {
+        "type": "Apple M3 Pro",
+        "vendor": "sppci_vendor_Apple"
+    },
+    "memory": {
+        "total": 18.0
+    }
+}

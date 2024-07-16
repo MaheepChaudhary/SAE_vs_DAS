@@ -1,0 +1,9 @@
+l4_mask: requires_grad=True
+rotate_layer.parametrizations.weight.original: requires_grad=True
+2184
+  0%|                            | 0/68 [00:00<?, ?it/s]
+Traceback (most recent call last):
+  File "/Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/gpt2/main_train.py", line 157, in <module>
+    proceed, base_ids, source_ids, base_label_ids, source_label_ids, source_label, base_label = data_processing(sample,
+                                                                                                               ^^^^^^
+NameError: name 'sample' is not defined. Did you mean: 'samples'?

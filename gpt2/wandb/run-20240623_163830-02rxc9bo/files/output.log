@@ -1,0 +1,11 @@
+
+5240
+  0%|                             | 0/5240 [00:00<?, ?it/s]
+Traceback (most recent call last):
+  File "/Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/gpt2/main_train.py", line 142, in <module>
+    proceed, base_ids, source_ids, base_label_ids, source_label_ids, source_label = data_processing(sample,
+                                                                                   ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/gpt2/main_train.py", line 60, in data_processing
+    return proceed, base_ids, source_ids, base_label_ids, source_label_ids, source_label
+           ^^^^^^^
+NameError: name 'proceed' is not defined

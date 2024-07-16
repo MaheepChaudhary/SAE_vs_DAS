@@ -1,0 +1,11 @@
+l4_mask: requires_grad=True
+87150
+  0%|              | 21/87150 [00:02<2:23:41, 10.11it/s]
+Traceback (most recent call last):
+  File "/Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/gpt2/main_train.py", line 180, in <module>
+    ground_truth_one_hot = F.one_hot(ground_truth_token_id, num_classes=vocab_size).float()
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/maheepchaudhary/miniforge3/envs/nnsight/lib/python3.12/site-packages/nnsight/__init__.py", line 72, in onehot
+    if input.device.type == "meta":
+       ^^^^^^^^^^^^
+AttributeError: 'str' object has no attribute 'device'

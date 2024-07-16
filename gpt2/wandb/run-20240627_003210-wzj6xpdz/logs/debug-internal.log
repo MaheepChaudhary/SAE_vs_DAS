@@ -1,0 +1,573 @@
+2024-06-27 00:32:10,657 INFO    StreamThr :18836 [internal.py:wandb_internal():85] W&B internal server running at pid: 18836, started at: 2024-06-27 00:32:10.656900
+2024-06-27 00:32:10,658 DEBUG   HandlerThread:18836 [handler.py:handle_request():158] handle_request: status
+2024-06-27 00:32:10,661 INFO    WriterThread:18836 [datastore.py:open_for_write():87] open: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/gpt2/wandb/run-20240627_003210-wzj6xpdz/run-wzj6xpdz.wandb
+2024-06-27 00:32:10,661 DEBUG   SenderThread:18836 [sender.py:send():378] send: header
+2024-06-27 00:32:10,678 DEBUG   SenderThread:18836 [sender.py:send():378] send: run
+2024-06-27 00:32:11,471 INFO    SenderThread:18836 [dir_watcher.py:__init__():211] watching files in: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/gpt2/wandb/run-20240627_003210-wzj6xpdz/files
+2024-06-27 00:32:11,471 INFO    SenderThread:18836 [sender.py:_start_run_threads():1123] run started: wzj6xpdz with start time 1719428530.657235
+2024-06-27 00:32:11,480 DEBUG   HandlerThread:18836 [handler.py:handle_request():158] handle_request: check_version
+2024-06-27 00:32:11,481 DEBUG   SenderThread:18836 [sender.py:send_request():405] send_request: check_version
+2024-06-27 00:32:11,581 DEBUG   HandlerThread:18836 [handler.py:handle_request():158] handle_request: run_start
+2024-06-27 00:32:11,586 DEBUG   HandlerThread:18836 [system_info.py:__init__():26] System info init
+2024-06-27 00:32:11,586 DEBUG   HandlerThread:18836 [system_info.py:__init__():41] System info init done
+2024-06-27 00:32:11,586 INFO    HandlerThread:18836 [system_monitor.py:start():194] Starting system monitor
+2024-06-27 00:32:11,586 INFO    SystemMonitor:18836 [system_monitor.py:_start():158] Starting system asset monitoring threads
+2024-06-27 00:32:11,586 INFO    HandlerThread:18836 [system_monitor.py:probe():214] Collecting system info
+2024-06-27 00:32:11,587 INFO    SystemMonitor:18836 [interfaces.py:start():188] Started cpu monitoring
+2024-06-27 00:32:11,590 INFO    SystemMonitor:18836 [interfaces.py:start():188] Started disk monitoring
+2024-06-27 00:32:11,590 INFO    SystemMonitor:18836 [interfaces.py:start():188] Started gpuapple monitoring
+2024-06-27 00:32:11,592 INFO    SystemMonitor:18836 [interfaces.py:start():188] Started memory monitoring
+2024-06-27 00:32:11,592 INFO    SystemMonitor:18836 [interfaces.py:start():188] Started network monitoring
+2024-06-27 00:32:11,911 DEBUG   HandlerThread:18836 [system_info.py:probe():150] Probing system
+2024-06-27 00:32:11,914 DEBUG   HandlerThread:18836 [system_info.py:_probe_git():135] Probing git
+2024-06-27 00:32:11,926 DEBUG   HandlerThread:18836 [system_info.py:_probe_git():143] Probing git done
+2024-06-27 00:32:11,926 DEBUG   HandlerThread:18836 [system_info.py:probe():198] Probing system done
+2024-06-27 00:32:11,926 DEBUG   HandlerThread:18836 [system_monitor.py:probe():223] {'os': 'macOS-14.5-arm64-arm-64bit', 'python': '3.12.3', 'heartbeatAt': '2024-06-26T19:02:11.911784', 'startedAt': '2024-06-26T19:02:10.647405', 'docker': None, 'cuda': None, 'args': ('-efp', 'continent_intervention_dataset.json', '-a', 'continent', '-d', 'mps', '-tla', '61', '-method', 'neuron masking', '-t', 'train', '-e', '2'), 'state': 'running', 'program': '/Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/gpt2/main_train.py', 'codePathLocal': 'main_train.py', 'codePath': 'gpt2/main_train.py', 'git': {'remote': 'https://github.com/MaheepChaudhary/SAE_vs_DAS.git', 'commit': 'a6d11aade01bfe5cd1e6a17ab6f90a9022b4c184'}, 'email': 'my email address used on my git repo', 'root': '/Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS', 'host': 'Maheeps-MBP', 'username': 'maheepchaudhary', 'executable': '/Users/maheepchaudhary/miniforge3/envs/nnsight/bin/python', 'cpu_count': 11, 'cpu_count_logical': 11, 'cpu_freq': {'current': 4056, 'min': 696, 'max': 4056}, 'cpu_freq_per_core': [{'current': 4056, 'min': 696, 'max': 4056}], 'disk': {'/': {'total': 460.4317207336426, 'used': 417.9117851257324}}, 'gpuapple': {'type': 'Apple M3 Pro', 'vendor': 'sppci_vendor_Apple'}, 'memory': {'total': 18.0}}
+2024-06-27 00:32:11,926 INFO    HandlerThread:18836 [system_monitor.py:probe():224] Finished collecting system info
+2024-06-27 00:32:11,926 INFO    HandlerThread:18836 [system_monitor.py:probe():227] Publishing system info
+2024-06-27 00:32:11,926 DEBUG   HandlerThread:18836 [system_info.py:_save_conda():207] Saving list of conda packages installed into the current environment
+2024-06-27 00:32:12,473 INFO    Thread-12 :18836 [dir_watcher.py:_on_file_created():271] file/dir created: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/gpt2/wandb/run-20240627_003210-wzj6xpdz/files/conda-environment.yaml
+2024-06-27 00:32:16,315 DEBUG   HandlerThread:18836 [system_info.py:_save_conda():222] Saving conda packages done
+2024-06-27 00:32:16,316 INFO    HandlerThread:18836 [system_monitor.py:probe():229] Finished publishing system info
+2024-06-27 00:32:16,317 DEBUG   SenderThread:18836 [sender.py:send():378] send: files
+2024-06-27 00:32:16,317 INFO    SenderThread:18836 [sender.py:_save_file():1389] saving file wandb-metadata.json with policy now
+2024-06-27 00:32:16,318 DEBUG   HandlerThread:18836 [handler.py:handle_request():158] handle_request: status_report
+2024-06-27 00:32:16,361 DEBUG   HandlerThread:18836 [handler.py:handle_request():158] handle_request: python_packages
+2024-06-27 00:32:16,361 DEBUG   SenderThread:18836 [sender.py:send_request():405] send_request: python_packages
+2024-06-27 00:32:16,361 DEBUG   HandlerThread:18836 [handler.py:handle_request():158] handle_request: stop_status
+2024-06-27 00:32:16,361 DEBUG   SenderThread:18836 [sender.py:send_request():405] send_request: stop_status
+2024-06-27 00:32:16,493 INFO    Thread-12 :18836 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/gpt2/wandb/run-20240627_003210-wzj6xpdz/files/conda-environment.yaml
+2024-06-27 00:32:16,493 INFO    Thread-12 :18836 [dir_watcher.py:_on_file_created():271] file/dir created: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/gpt2/wandb/run-20240627_003210-wzj6xpdz/files/requirements.txt
+2024-06-27 00:32:16,493 INFO    Thread-12 :18836 [dir_watcher.py:_on_file_created():271] file/dir created: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/gpt2/wandb/run-20240627_003210-wzj6xpdz/files/wandb-metadata.json
+2024-06-27 00:32:16,739 DEBUG   SenderThread:18836 [sender.py:send():378] send: telemetry
+2024-06-27 00:32:16,739 DEBUG   SenderThread:18836 [sender.py:send():378] send: telemetry
+2024-06-27 00:32:16,740 DEBUG   SenderThread:18836 [sender.py:send():378] send: run
+2024-06-27 00:32:17,022 INFO    SenderThread:18836 [sender.py:send_run():996] updated run: wzj6xpdz
+2024-06-27 00:32:17,489 INFO    wandb-upload_0:18836 [upload_job.py:push():130] Uploaded file /var/folders/_x/mkf1szd12yv28px5ztl_sjjr0000gn/T/tmpeuzudms5wandb/d3yym469-wandb-metadata.json
+2024-06-27 00:32:17,499 INFO    Thread-12 :18836 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/gpt2/wandb/run-20240627_003210-wzj6xpdz/files/config.yaml
+2024-06-27 00:32:18,503 INFO    Thread-12 :18836 [dir_watcher.py:_on_file_created():271] file/dir created: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/gpt2/wandb/run-20240627_003210-wzj6xpdz/files/output.log
+2024-06-27 00:32:20,512 INFO    Thread-12 :18836 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/gpt2/wandb/run-20240627_003210-wzj6xpdz/files/output.log
+2024-06-27 00:32:21,615 DEBUG   HandlerThread:18836 [handler.py:handle_request():158] handle_request: status_report
+2024-06-27 00:32:22,518 INFO    Thread-12 :18836 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/gpt2/wandb/run-20240627_003210-wzj6xpdz/files/output.log
+2024-06-27 00:32:24,525 INFO    Thread-12 :18836 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/gpt2/wandb/run-20240627_003210-wzj6xpdz/files/output.log
+2024-06-27 00:32:26,536 INFO    Thread-12 :18836 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/gpt2/wandb/run-20240627_003210-wzj6xpdz/files/output.log
+2024-06-27 00:32:27,035 DEBUG   HandlerThread:18836 [handler.py:handle_request():158] handle_request: status_report
+2024-06-27 00:32:28,546 INFO    Thread-12 :18836 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/gpt2/wandb/run-20240627_003210-wzj6xpdz/files/output.log
+2024-06-27 00:32:30,556 INFO    Thread-12 :18836 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/gpt2/wandb/run-20240627_003210-wzj6xpdz/files/output.log
+2024-06-27 00:32:31,366 DEBUG   HandlerThread:18836 [handler.py:handle_request():158] handle_request: stop_status
+2024-06-27 00:32:31,367 DEBUG   SenderThread:18836 [sender.py:send_request():405] send_request: stop_status
+2024-06-27 00:32:32,401 DEBUG   HandlerThread:18836 [handler.py:handle_request():158] handle_request: status_report
+2024-06-27 00:32:32,563 INFO    Thread-12 :18836 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/gpt2/wandb/run-20240627_003210-wzj6xpdz/files/output.log
+2024-06-27 00:32:34,573 INFO    Thread-12 :18836 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/gpt2/wandb/run-20240627_003210-wzj6xpdz/files/output.log
+2024-06-27 00:32:36,583 INFO    Thread-12 :18836 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/gpt2/wandb/run-20240627_003210-wzj6xpdz/files/output.log
+2024-06-27 00:32:37,564 DEBUG   HandlerThread:18836 [handler.py:handle_request():158] handle_request: status_report
+2024-06-27 00:32:38,595 INFO    Thread-12 :18836 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/gpt2/wandb/run-20240627_003210-wzj6xpdz/files/output.log
+2024-06-27 00:32:40,605 INFO    Thread-12 :18836 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/gpt2/wandb/run-20240627_003210-wzj6xpdz/files/output.log
+2024-06-27 00:32:42,616 INFO    Thread-12 :18836 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/gpt2/wandb/run-20240627_003210-wzj6xpdz/files/output.log
+2024-06-27 00:32:42,978 DEBUG   HandlerThread:18836 [handler.py:handle_request():158] handle_request: status_report
+2024-06-27 00:32:43,621 INFO    Thread-12 :18836 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/gpt2/wandb/run-20240627_003210-wzj6xpdz/files/config.yaml
+2024-06-27 00:32:44,626 INFO    Thread-12 :18836 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/gpt2/wandb/run-20240627_003210-wzj6xpdz/files/output.log
+2024-06-27 00:32:46,371 DEBUG   HandlerThread:18836 [handler.py:handle_request():158] handle_request: stop_status
+2024-06-27 00:32:46,372 DEBUG   SenderThread:18836 [sender.py:send_request():405] send_request: stop_status
+2024-06-27 00:32:46,631 INFO    Thread-12 :18836 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/gpt2/wandb/run-20240627_003210-wzj6xpdz/files/output.log
+2024-06-27 00:32:48,642 INFO    Thread-12 :18836 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/gpt2/wandb/run-20240627_003210-wzj6xpdz/files/output.log
+2024-06-27 00:32:48,796 DEBUG   HandlerThread:18836 [handler.py:handle_request():158] handle_request: status_report
+2024-06-27 00:32:50,651 INFO    Thread-12 :18836 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/gpt2/wandb/run-20240627_003210-wzj6xpdz/files/output.log
+2024-06-27 00:32:52,661 INFO    Thread-12 :18836 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/gpt2/wandb/run-20240627_003210-wzj6xpdz/files/output.log
+2024-06-27 00:32:54,190 DEBUG   HandlerThread:18836 [handler.py:handle_request():158] handle_request: status_report
+2024-06-27 00:32:54,667 INFO    Thread-12 :18836 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/gpt2/wandb/run-20240627_003210-wzj6xpdz/files/output.log
+2024-06-27 00:32:56,677 INFO    Thread-12 :18836 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/gpt2/wandb/run-20240627_003210-wzj6xpdz/files/output.log
+2024-06-27 00:32:58,684 INFO    Thread-12 :18836 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/gpt2/wandb/run-20240627_003210-wzj6xpdz/files/output.log
+2024-06-27 00:32:59,600 DEBUG   HandlerThread:18836 [handler.py:handle_request():158] handle_request: status_report
+2024-06-27 00:33:00,695 INFO    Thread-12 :18836 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/gpt2/wandb/run-20240627_003210-wzj6xpdz/files/output.log
+2024-06-27 00:33:01,376 DEBUG   HandlerThread:18836 [handler.py:handle_request():158] handle_request: stop_status
+2024-06-27 00:33:01,377 DEBUG   SenderThread:18836 [sender.py:send_request():405] send_request: stop_status
+2024-06-27 00:33:02,708 INFO    Thread-12 :18836 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/gpt2/wandb/run-20240627_003210-wzj6xpdz/files/output.log
+2024-06-27 00:33:04,714 INFO    Thread-12 :18836 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/gpt2/wandb/run-20240627_003210-wzj6xpdz/files/output.log
+2024-06-27 00:33:04,792 DEBUG   HandlerThread:18836 [handler.py:handle_request():158] handle_request: status_report
+2024-06-27 00:33:06,720 INFO    Thread-12 :18836 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/gpt2/wandb/run-20240627_003210-wzj6xpdz/files/output.log
+2024-06-27 00:33:08,727 INFO    Thread-12 :18836 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/gpt2/wandb/run-20240627_003210-wzj6xpdz/files/output.log
+2024-06-27 00:33:10,180 DEBUG   HandlerThread:18836 [handler.py:handle_request():158] handle_request: status_report
+2024-06-27 00:33:10,737 INFO    Thread-12 :18836 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/gpt2/wandb/run-20240627_003210-wzj6xpdz/files/output.log
+2024-06-27 00:33:11,596 DEBUG   SystemMonitor:18836 [system_monitor.py:_start():172] Starting system metrics aggregation loop
+2024-06-27 00:33:11,596 DEBUG   SenderThread:18836 [sender.py:send():378] send: telemetry
+2024-06-27 00:33:11,596 DEBUG   SenderThread:18836 [sender.py:send():378] send: stats
+2024-06-27 00:33:12,745 INFO    Thread-12 :18836 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/gpt2/wandb/run-20240627_003210-wzj6xpdz/files/output.log
+2024-06-27 00:33:14,755 INFO    Thread-12 :18836 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/gpt2/wandb/run-20240627_003210-wzj6xpdz/files/output.log
+2024-06-27 00:33:15,311 DEBUG   HandlerThread:18836 [handler.py:handle_request():158] handle_request: status_report
+2024-06-27 00:33:16,382 DEBUG   HandlerThread:18836 [handler.py:handle_request():158] handle_request: stop_status
+2024-06-27 00:33:16,382 DEBUG   SenderThread:18836 [sender.py:send_request():405] send_request: stop_status
+2024-06-27 00:33:16,762 INFO    Thread-12 :18836 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/gpt2/wandb/run-20240627_003210-wzj6xpdz/files/output.log
+2024-06-27 00:33:16,762 INFO    Thread-12 :18836 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/gpt2/wandb/run-20240627_003210-wzj6xpdz/files/config.yaml
+2024-06-27 00:33:18,773 INFO    Thread-12 :18836 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/gpt2/wandb/run-20240627_003210-wzj6xpdz/files/output.log
+2024-06-27 00:33:20,783 INFO    Thread-12 :18836 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/gpt2/wandb/run-20240627_003210-wzj6xpdz/files/output.log
+2024-06-27 00:33:21,428 DEBUG   HandlerThread:18836 [handler.py:handle_request():158] handle_request: status_report
+2024-06-27 00:33:22,793 INFO    Thread-12 :18836 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/gpt2/wandb/run-20240627_003210-wzj6xpdz/files/output.log
+2024-06-27 00:33:24,799 INFO    Thread-12 :18836 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/gpt2/wandb/run-20240627_003210-wzj6xpdz/files/output.log
+2024-06-27 00:33:26,810 INFO    Thread-12 :18836 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/gpt2/wandb/run-20240627_003210-wzj6xpdz/files/output.log
+2024-06-27 00:33:26,919 DEBUG   HandlerThread:18836 [handler.py:handle_request():158] handle_request: status_report
+2024-06-27 00:33:28,817 INFO    Thread-12 :18836 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/gpt2/wandb/run-20240627_003210-wzj6xpdz/files/output.log
+2024-06-27 00:33:30,827 INFO    Thread-12 :18836 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/gpt2/wandb/run-20240627_003210-wzj6xpdz/files/output.log
+2024-06-27 00:33:31,387 DEBUG   HandlerThread:18836 [handler.py:handle_request():158] handle_request: stop_status
+2024-06-27 00:33:31,387 DEBUG   SenderThread:18836 [sender.py:send_request():405] send_request: stop_status
+2024-06-27 00:33:31,940 DEBUG   HandlerThread:18836 [handler.py:handle_request():158] handle_request: status_report
+2024-06-27 00:33:32,837 INFO    Thread-12 :18836 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/gpt2/wandb/run-20240627_003210-wzj6xpdz/files/output.log
+2024-06-27 00:33:34,848 INFO    Thread-12 :18836 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/gpt2/wandb/run-20240627_003210-wzj6xpdz/files/output.log
+2024-06-27 00:33:36,856 INFO    Thread-12 :18836 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/gpt2/wandb/run-20240627_003210-wzj6xpdz/files/output.log
+2024-06-27 00:33:37,107 DEBUG   HandlerThread:18836 [handler.py:handle_request():158] handle_request: status_report
+2024-06-27 00:33:38,862 INFO    Thread-12 :18836 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/gpt2/wandb/run-20240627_003210-wzj6xpdz/files/output.log
+2024-06-27 00:33:40,868 INFO    Thread-12 :18836 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/gpt2/wandb/run-20240627_003210-wzj6xpdz/files/output.log
+2024-06-27 00:33:41,598 DEBUG   SenderThread:18836 [sender.py:send():378] send: stats
+2024-06-27 00:33:42,376 DEBUG   HandlerThread:18836 [handler.py:handle_request():158] handle_request: status_report
+2024-06-27 00:33:42,878 INFO    Thread-12 :18836 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/gpt2/wandb/run-20240627_003210-wzj6xpdz/files/output.log
+2024-06-27 00:33:44,888 INFO    Thread-12 :18836 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/gpt2/wandb/run-20240627_003210-wzj6xpdz/files/output.log
+2024-06-27 00:33:46,388 DEBUG   HandlerThread:18836 [handler.py:handle_request():158] handle_request: stop_status
+2024-06-27 00:33:46,388 DEBUG   SenderThread:18836 [sender.py:send_request():405] send_request: stop_status
+2024-06-27 00:33:46,898 INFO    Thread-12 :18836 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/gpt2/wandb/run-20240627_003210-wzj6xpdz/files/output.log
+2024-06-27 00:33:47,860 DEBUG   HandlerThread:18836 [handler.py:handle_request():158] handle_request: status_report
+2024-06-27 00:33:48,907 INFO    Thread-12 :18836 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/gpt2/wandb/run-20240627_003210-wzj6xpdz/files/output.log
+2024-06-27 00:33:50,918 INFO    Thread-12 :18836 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/gpt2/wandb/run-20240627_003210-wzj6xpdz/files/output.log
+2024-06-27 00:33:52,924 INFO    Thread-12 :18836 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/gpt2/wandb/run-20240627_003210-wzj6xpdz/files/output.log
+2024-06-27 00:33:53,239 DEBUG   HandlerThread:18836 [handler.py:handle_request():158] handle_request: status_report
+2024-06-27 00:33:54,934 INFO    Thread-12 :18836 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/gpt2/wandb/run-20240627_003210-wzj6xpdz/files/output.log
+2024-06-27 00:33:56,942 INFO    Thread-12 :18836 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/gpt2/wandb/run-20240627_003210-wzj6xpdz/files/output.log
+2024-06-27 00:33:58,511 DEBUG   HandlerThread:18836 [handler.py:handle_request():158] handle_request: status_report
+2024-06-27 00:33:58,959 INFO    Thread-12 :18836 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/gpt2/wandb/run-20240627_003210-wzj6xpdz/files/output.log
+2024-06-27 00:34:00,958 INFO    Thread-12 :18836 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/gpt2/wandb/run-20240627_003210-wzj6xpdz/files/output.log
+2024-06-27 00:34:01,382 DEBUG   HandlerThread:18836 [handler.py:handle_request():158] handle_request: stop_status
+2024-06-27 00:34:01,383 DEBUG   SenderThread:18836 [sender.py:send_request():405] send_request: stop_status
+2024-06-27 00:34:02,960 INFO    Thread-12 :18836 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/gpt2/wandb/run-20240627_003210-wzj6xpdz/files/output.log
+2024-06-27 00:34:04,036 DEBUG   HandlerThread:18836 [handler.py:handle_request():158] handle_request: status_report
+2024-06-27 00:34:04,963 INFO    Thread-12 :18836 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/gpt2/wandb/run-20240627_003210-wzj6xpdz/files/output.log
+2024-06-27 00:34:06,967 INFO    Thread-12 :18836 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/gpt2/wandb/run-20240627_003210-wzj6xpdz/files/output.log
+2024-06-27 00:34:08,971 INFO    Thread-12 :18836 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/gpt2/wandb/run-20240627_003210-wzj6xpdz/files/output.log
+2024-06-27 00:34:09,556 DEBUG   HandlerThread:18836 [handler.py:handle_request():158] handle_request: status_report
+2024-06-27 00:34:10,979 INFO    Thread-12 :18836 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/gpt2/wandb/run-20240627_003210-wzj6xpdz/files/output.log
+2024-06-27 00:34:11,581 DEBUG   SenderThread:18836 [sender.py:send():378] send: stats
+2024-06-27 00:34:12,986 INFO    Thread-12 :18836 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/gpt2/wandb/run-20240627_003210-wzj6xpdz/files/output.log
+2024-06-27 00:34:14,975 DEBUG   HandlerThread:18836 [handler.py:handle_request():158] handle_request: status_report
+2024-06-27 00:34:14,995 INFO    Thread-12 :18836 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/gpt2/wandb/run-20240627_003210-wzj6xpdz/files/output.log
+2024-06-27 00:34:16,386 DEBUG   HandlerThread:18836 [handler.py:handle_request():158] handle_request: stop_status
+2024-06-27 00:34:16,394 DEBUG   SenderThread:18836 [sender.py:send_request():405] send_request: stop_status
+2024-06-27 00:34:17,004 INFO    Thread-12 :18836 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/gpt2/wandb/run-20240627_003210-wzj6xpdz/files/output.log
+2024-06-27 00:34:19,011 INFO    Thread-12 :18836 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/gpt2/wandb/run-20240627_003210-wzj6xpdz/files/output.log
+2024-06-27 00:34:20,221 DEBUG   HandlerThread:18836 [handler.py:handle_request():158] handle_request: status_report
+2024-06-27 00:34:21,020 INFO    Thread-12 :18836 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/gpt2/wandb/run-20240627_003210-wzj6xpdz/files/output.log
+2024-06-27 00:34:23,030 INFO    Thread-12 :18836 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/gpt2/wandb/run-20240627_003210-wzj6xpdz/files/output.log
+2024-06-27 00:34:25,039 INFO    Thread-12 :18836 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/gpt2/wandb/run-20240627_003210-wzj6xpdz/files/output.log
+2024-06-27 00:34:25,355 DEBUG   HandlerThread:18836 [handler.py:handle_request():158] handle_request: status_report
+2024-06-27 00:34:27,048 INFO    Thread-12 :18836 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/gpt2/wandb/run-20240627_003210-wzj6xpdz/files/output.log
+2024-06-27 00:34:29,055 INFO    Thread-12 :18836 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/gpt2/wandb/run-20240627_003210-wzj6xpdz/files/output.log
+2024-06-27 00:34:30,782 DEBUG   HandlerThread:18836 [handler.py:handle_request():158] handle_request: status_report
+2024-06-27 00:34:31,064 INFO    Thread-12 :18836 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/gpt2/wandb/run-20240627_003210-wzj6xpdz/files/output.log
+2024-06-27 00:34:31,374 DEBUG   HandlerThread:18836 [handler.py:handle_request():158] handle_request: stop_status
+2024-06-27 00:34:31,374 DEBUG   SenderThread:18836 [sender.py:send_request():405] send_request: stop_status
+2024-06-27 00:34:33,074 INFO    Thread-12 :18836 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/gpt2/wandb/run-20240627_003210-wzj6xpdz/files/output.log
+2024-06-27 00:34:35,079 INFO    Thread-12 :18836 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/gpt2/wandb/run-20240627_003210-wzj6xpdz/files/output.log
+2024-06-27 00:34:36,135 DEBUG   HandlerThread:18836 [handler.py:handle_request():158] handle_request: status_report
+2024-06-27 00:34:37,088 INFO    Thread-12 :18836 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/gpt2/wandb/run-20240627_003210-wzj6xpdz/files/output.log
+2024-06-27 00:34:39,098 INFO    Thread-12 :18836 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/gpt2/wandb/run-20240627_003210-wzj6xpdz/files/output.log
+2024-06-27 00:34:41,104 INFO    Thread-12 :18836 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/gpt2/wandb/run-20240627_003210-wzj6xpdz/files/output.log
+2024-06-27 00:34:41,338 DEBUG   HandlerThread:18836 [handler.py:handle_request():158] handle_request: status_report
+2024-06-27 00:34:41,575 DEBUG   SenderThread:18836 [sender.py:send():378] send: stats
+2024-06-27 00:34:43,114 INFO    Thread-12 :18836 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/gpt2/wandb/run-20240627_003210-wzj6xpdz/files/output.log
+2024-06-27 00:34:45,116 INFO    Thread-12 :18836 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/gpt2/wandb/run-20240627_003210-wzj6xpdz/files/output.log
+2024-06-27 00:34:46,373 DEBUG   HandlerThread:18836 [handler.py:handle_request():158] handle_request: status_report
+2024-06-27 00:34:46,377 DEBUG   HandlerThread:18836 [handler.py:handle_request():158] handle_request: stop_status
+2024-06-27 00:34:46,377 DEBUG   SenderThread:18836 [sender.py:send_request():405] send_request: stop_status
+2024-06-27 00:34:47,121 INFO    Thread-12 :18836 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/gpt2/wandb/run-20240627_003210-wzj6xpdz/files/output.log
+2024-06-27 00:34:49,126 INFO    Thread-12 :18836 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/gpt2/wandb/run-20240627_003210-wzj6xpdz/files/output.log
+2024-06-27 00:34:51,132 INFO    Thread-12 :18836 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/gpt2/wandb/run-20240627_003210-wzj6xpdz/files/output.log
+2024-06-27 00:34:51,741 DEBUG   HandlerThread:18836 [handler.py:handle_request():158] handle_request: status_report
+2024-06-27 00:34:53,142 INFO    Thread-12 :18836 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/gpt2/wandb/run-20240627_003210-wzj6xpdz/files/output.log
+2024-06-27 00:34:55,149 INFO    Thread-12 :18836 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/gpt2/wandb/run-20240627_003210-wzj6xpdz/files/output.log
+2024-06-27 00:34:56,924 DEBUG   HandlerThread:18836 [handler.py:handle_request():158] handle_request: status_report
+2024-06-27 00:34:57,159 INFO    Thread-12 :18836 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/gpt2/wandb/run-20240627_003210-wzj6xpdz/files/output.log
+2024-06-27 00:34:59,169 INFO    Thread-12 :18836 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/gpt2/wandb/run-20240627_003210-wzj6xpdz/files/output.log
+2024-06-27 00:35:01,176 INFO    Thread-12 :18836 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/gpt2/wandb/run-20240627_003210-wzj6xpdz/files/output.log
+2024-06-27 00:35:01,377 DEBUG   HandlerThread:18836 [handler.py:handle_request():158] handle_request: stop_status
+2024-06-27 00:35:01,377 DEBUG   SenderThread:18836 [sender.py:send_request():405] send_request: stop_status
+2024-06-27 00:35:02,230 DEBUG   HandlerThread:18836 [handler.py:handle_request():158] handle_request: status_report
+2024-06-27 00:35:03,184 INFO    Thread-12 :18836 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/gpt2/wandb/run-20240627_003210-wzj6xpdz/files/output.log
+2024-06-27 00:35:05,195 INFO    Thread-12 :18836 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/gpt2/wandb/run-20240627_003210-wzj6xpdz/files/output.log
+2024-06-27 00:35:06,200 INFO    Thread-12 :18836 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/gpt2/wandb/run-20240627_003210-wzj6xpdz/files/output.log
+2024-06-27 00:35:07,205 INFO    Thread-12 :18836 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/gpt2/wandb/run-20240627_003210-wzj6xpdz/files/output.log
+2024-06-27 00:35:07,553 DEBUG   HandlerThread:18836 [handler.py:handle_request():158] handle_request: status_report
+2024-06-27 00:35:09,213 INFO    Thread-12 :18836 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/gpt2/wandb/run-20240627_003210-wzj6xpdz/files/output.log
+2024-06-27 00:35:11,224 INFO    Thread-12 :18836 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/gpt2/wandb/run-20240627_003210-wzj6xpdz/files/output.log
+2024-06-27 00:35:11,579 DEBUG   SenderThread:18836 [sender.py:send():378] send: stats
+2024-06-27 00:35:13,060 DEBUG   HandlerThread:18836 [handler.py:handle_request():158] handle_request: status_report
+2024-06-27 00:35:13,234 INFO    Thread-12 :18836 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/gpt2/wandb/run-20240627_003210-wzj6xpdz/files/output.log
+2024-06-27 00:35:15,240 INFO    Thread-12 :18836 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/gpt2/wandb/run-20240627_003210-wzj6xpdz/files/output.log
+2024-06-27 00:35:16,381 DEBUG   HandlerThread:18836 [handler.py:handle_request():158] handle_request: stop_status
+2024-06-27 00:35:16,381 DEBUG   SenderThread:18836 [sender.py:send_request():405] send_request: stop_status
+2024-06-27 00:35:17,248 INFO    Thread-12 :18836 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/gpt2/wandb/run-20240627_003210-wzj6xpdz/files/output.log
+2024-06-27 00:35:18,723 DEBUG   HandlerThread:18836 [handler.py:handle_request():158] handle_request: status_report
+2024-06-27 00:35:19,258 INFO    Thread-12 :18836 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/gpt2/wandb/run-20240627_003210-wzj6xpdz/files/output.log
+2024-06-27 00:35:21,263 INFO    Thread-12 :18836 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/gpt2/wandb/run-20240627_003210-wzj6xpdz/files/output.log
+2024-06-27 00:35:22,269 INFO    Thread-12 :18836 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/gpt2/wandb/run-20240627_003210-wzj6xpdz/files/output.log
+2024-06-27 00:35:23,274 INFO    Thread-12 :18836 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/gpt2/wandb/run-20240627_003210-wzj6xpdz/files/output.log
+2024-06-27 00:35:23,833 DEBUG   HandlerThread:18836 [handler.py:handle_request():158] handle_request: status_report
+2024-06-27 00:35:25,284 INFO    Thread-12 :18836 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/gpt2/wandb/run-20240627_003210-wzj6xpdz/files/output.log
+2024-06-27 00:35:27,293 INFO    Thread-12 :18836 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/gpt2/wandb/run-20240627_003210-wzj6xpdz/files/output.log
+2024-06-27 00:35:29,034 DEBUG   HandlerThread:18836 [handler.py:handle_request():158] handle_request: status_report
+2024-06-27 00:35:29,301 INFO    Thread-12 :18836 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/gpt2/wandb/run-20240627_003210-wzj6xpdz/files/output.log
+2024-06-27 00:35:31,309 INFO    Thread-12 :18836 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/gpt2/wandb/run-20240627_003210-wzj6xpdz/files/output.log
+2024-06-27 00:35:31,386 DEBUG   HandlerThread:18836 [handler.py:handle_request():158] handle_request: stop_status
+2024-06-27 00:35:31,386 DEBUG   SenderThread:18836 [sender.py:send_request():405] send_request: stop_status
+2024-06-27 00:35:33,319 INFO    Thread-12 :18836 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/gpt2/wandb/run-20240627_003210-wzj6xpdz/files/output.log
+2024-06-27 00:35:34,069 DEBUG   HandlerThread:18836 [handler.py:handle_request():158] handle_request: status_report
+2024-06-27 00:35:35,330 INFO    Thread-12 :18836 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/gpt2/wandb/run-20240627_003210-wzj6xpdz/files/output.log
+2024-06-27 00:35:37,340 INFO    Thread-12 :18836 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/gpt2/wandb/run-20240627_003210-wzj6xpdz/files/output.log
+2024-06-27 00:35:39,351 INFO    Thread-12 :18836 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/gpt2/wandb/run-20240627_003210-wzj6xpdz/files/output.log
+2024-06-27 00:35:39,695 DEBUG   HandlerThread:18836 [handler.py:handle_request():158] handle_request: status_report
+2024-06-27 00:35:41,361 INFO    Thread-12 :18836 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/gpt2/wandb/run-20240627_003210-wzj6xpdz/files/output.log
+2024-06-27 00:35:41,584 DEBUG   SenderThread:18836 [sender.py:send():378] send: stats
+2024-06-27 00:35:43,371 INFO    Thread-12 :18836 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/gpt2/wandb/run-20240627_003210-wzj6xpdz/files/output.log
+2024-06-27 00:35:44,724 DEBUG   HandlerThread:18836 [handler.py:handle_request():158] handle_request: status_report
+2024-06-27 00:35:45,381 INFO    Thread-12 :18836 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/gpt2/wandb/run-20240627_003210-wzj6xpdz/files/output.log
+2024-06-27 00:35:46,388 DEBUG   HandlerThread:18836 [handler.py:handle_request():158] handle_request: stop_status
+2024-06-27 00:35:46,389 DEBUG   SenderThread:18836 [sender.py:send_request():405] send_request: stop_status
+2024-06-27 00:35:47,391 INFO    Thread-12 :18836 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/gpt2/wandb/run-20240627_003210-wzj6xpdz/files/output.log
+2024-06-27 00:35:49,393 INFO    Thread-12 :18836 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/gpt2/wandb/run-20240627_003210-wzj6xpdz/files/output.log
+2024-06-27 00:35:50,090 DEBUG   HandlerThread:18836 [handler.py:handle_request():158] handle_request: status_report
+2024-06-27 00:35:51,399 INFO    Thread-12 :18836 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/gpt2/wandb/run-20240627_003210-wzj6xpdz/files/output.log
+2024-06-27 00:35:53,409 INFO    Thread-12 :18836 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/gpt2/wandb/run-20240627_003210-wzj6xpdz/files/output.log
+2024-06-27 00:35:55,420 INFO    Thread-12 :18836 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/gpt2/wandb/run-20240627_003210-wzj6xpdz/files/output.log
+2024-06-27 00:35:55,608 DEBUG   HandlerThread:18836 [handler.py:handle_request():158] handle_request: status_report
+2024-06-27 00:35:57,430 INFO    Thread-12 :18836 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/gpt2/wandb/run-20240627_003210-wzj6xpdz/files/output.log
+2024-06-27 00:35:59,441 INFO    Thread-12 :18836 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/gpt2/wandb/run-20240627_003210-wzj6xpdz/files/output.log
+2024-06-27 00:36:01,207 DEBUG   HandlerThread:18836 [handler.py:handle_request():158] handle_request: status_report
+2024-06-27 00:36:01,396 DEBUG   HandlerThread:18836 [handler.py:handle_request():158] handle_request: stop_status
+2024-06-27 00:36:01,397 DEBUG   SenderThread:18836 [sender.py:send_request():405] send_request: stop_status
+2024-06-27 00:36:01,445 INFO    Thread-12 :18836 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/gpt2/wandb/run-20240627_003210-wzj6xpdz/files/output.log
+2024-06-27 00:36:03,451 INFO    Thread-12 :18836 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/gpt2/wandb/run-20240627_003210-wzj6xpdz/files/output.log
+2024-06-27 00:36:05,461 INFO    Thread-12 :18836 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/gpt2/wandb/run-20240627_003210-wzj6xpdz/files/output.log
+2024-06-27 00:36:06,419 DEBUG   HandlerThread:18836 [handler.py:handle_request():158] handle_request: status_report
+2024-06-27 00:36:07,468 INFO    Thread-12 :18836 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/gpt2/wandb/run-20240627_003210-wzj6xpdz/files/output.log
+2024-06-27 00:36:09,479 INFO    Thread-12 :18836 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/gpt2/wandb/run-20240627_003210-wzj6xpdz/files/output.log
+2024-06-27 00:36:11,489 INFO    Thread-12 :18836 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/gpt2/wandb/run-20240627_003210-wzj6xpdz/files/output.log
+2024-06-27 00:36:11,589 DEBUG   SenderThread:18836 [sender.py:send():378] send: stats
+2024-06-27 00:36:11,589 DEBUG   HandlerThread:18836 [handler.py:handle_request():158] handle_request: status_report
+2024-06-27 00:36:13,499 INFO    Thread-12 :18836 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/gpt2/wandb/run-20240627_003210-wzj6xpdz/files/output.log
+2024-06-27 00:36:15,510 INFO    Thread-12 :18836 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/gpt2/wandb/run-20240627_003210-wzj6xpdz/files/output.log
+2024-06-27 00:36:16,394 DEBUG   HandlerThread:18836 [handler.py:handle_request():158] handle_request: stop_status
+2024-06-27 00:36:16,394 DEBUG   SenderThread:18836 [sender.py:send_request():405] send_request: stop_status
+2024-06-27 00:36:16,751 DEBUG   HandlerThread:18836 [handler.py:handle_request():158] handle_request: status_report
+2024-06-27 00:36:17,520 INFO    Thread-12 :18836 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/gpt2/wandb/run-20240627_003210-wzj6xpdz/files/output.log
+2024-06-27 00:36:19,531 INFO    Thread-12 :18836 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/gpt2/wandb/run-20240627_003210-wzj6xpdz/files/output.log
+2024-06-27 00:36:21,541 INFO    Thread-12 :18836 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/gpt2/wandb/run-20240627_003210-wzj6xpdz/files/output.log
+2024-06-27 00:36:22,494 DEBUG   HandlerThread:18836 [handler.py:handle_request():158] handle_request: status_report
+2024-06-27 00:36:23,550 INFO    Thread-12 :18836 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/gpt2/wandb/run-20240627_003210-wzj6xpdz/files/output.log
+2024-06-27 00:36:25,556 INFO    Thread-12 :18836 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/gpt2/wandb/run-20240627_003210-wzj6xpdz/files/output.log
+2024-06-27 00:36:27,563 INFO    Thread-12 :18836 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/gpt2/wandb/run-20240627_003210-wzj6xpdz/files/output.log
+2024-06-27 00:36:27,620 DEBUG   HandlerThread:18836 [handler.py:handle_request():158] handle_request: status_report
+2024-06-27 00:36:29,570 INFO    Thread-12 :18836 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/gpt2/wandb/run-20240627_003210-wzj6xpdz/files/output.log
+2024-06-27 00:36:31,397 DEBUG   HandlerThread:18836 [handler.py:handle_request():158] handle_request: stop_status
+2024-06-27 00:36:31,397 DEBUG   SenderThread:18836 [sender.py:send_request():405] send_request: stop_status
+2024-06-27 00:36:31,575 INFO    Thread-12 :18836 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/gpt2/wandb/run-20240627_003210-wzj6xpdz/files/output.log
+2024-06-27 00:36:32,798 DEBUG   HandlerThread:18836 [handler.py:handle_request():158] handle_request: status_report
+2024-06-27 00:36:33,583 INFO    Thread-12 :18836 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/gpt2/wandb/run-20240627_003210-wzj6xpdz/files/output.log
+2024-06-27 00:36:35,594 INFO    Thread-12 :18836 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/gpt2/wandb/run-20240627_003210-wzj6xpdz/files/output.log
+2024-06-27 00:36:37,604 INFO    Thread-12 :18836 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/gpt2/wandb/run-20240627_003210-wzj6xpdz/files/output.log
+2024-06-27 00:36:38,111 DEBUG   HandlerThread:18836 [handler.py:handle_request():158] handle_request: status_report
+2024-06-27 00:36:38,609 INFO    Thread-12 :18836 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/gpt2/wandb/run-20240627_003210-wzj6xpdz/files/output.log
+2024-06-27 00:36:40,616 INFO    Thread-12 :18836 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/gpt2/wandb/run-20240627_003210-wzj6xpdz/files/output.log
+2024-06-27 00:36:41,591 DEBUG   SenderThread:18836 [sender.py:send():378] send: stats
+2024-06-27 00:36:42,623 INFO    Thread-12 :18836 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/gpt2/wandb/run-20240627_003210-wzj6xpdz/files/output.log
+2024-06-27 00:36:43,175 DEBUG   HandlerThread:18836 [handler.py:handle_request():158] handle_request: status_report
+2024-06-27 00:36:44,626 INFO    Thread-12 :18836 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/gpt2/wandb/run-20240627_003210-wzj6xpdz/files/output.log
+2024-06-27 00:36:46,401 DEBUG   HandlerThread:18836 [handler.py:handle_request():158] handle_request: stop_status
+2024-06-27 00:36:46,402 DEBUG   SenderThread:18836 [sender.py:send_request():405] send_request: stop_status
+2024-06-27 00:36:46,636 INFO    Thread-12 :18836 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/gpt2/wandb/run-20240627_003210-wzj6xpdz/files/output.log
+2024-06-27 00:36:48,647 INFO    Thread-12 :18836 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/gpt2/wandb/run-20240627_003210-wzj6xpdz/files/output.log
+2024-06-27 00:36:48,717 DEBUG   HandlerThread:18836 [handler.py:handle_request():158] handle_request: status_report
+2024-06-27 00:36:50,657 INFO    Thread-12 :18836 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/gpt2/wandb/run-20240627_003210-wzj6xpdz/files/output.log
+2024-06-27 00:36:52,663 INFO    Thread-12 :18836 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/gpt2/wandb/run-20240627_003210-wzj6xpdz/files/output.log
+2024-06-27 00:36:54,319 DEBUG   HandlerThread:18836 [handler.py:handle_request():158] handle_request: status_report
+2024-06-27 00:36:54,672 INFO    Thread-12 :18836 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/gpt2/wandb/run-20240627_003210-wzj6xpdz/files/output.log
+2024-06-27 00:36:56,681 INFO    Thread-12 :18836 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/gpt2/wandb/run-20240627_003210-wzj6xpdz/files/output.log
+2024-06-27 00:36:58,691 INFO    Thread-12 :18836 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/gpt2/wandb/run-20240627_003210-wzj6xpdz/files/output.log
+2024-06-27 00:36:59,638 DEBUG   HandlerThread:18836 [handler.py:handle_request():158] handle_request: status_report
+2024-06-27 00:37:00,701 INFO    Thread-12 :18836 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/gpt2/wandb/run-20240627_003210-wzj6xpdz/files/output.log
+2024-06-27 00:37:01,407 DEBUG   HandlerThread:18836 [handler.py:handle_request():158] handle_request: stop_status
+2024-06-27 00:37:01,407 DEBUG   SenderThread:18836 [sender.py:send_request():405] send_request: stop_status
+2024-06-27 00:37:02,712 INFO    Thread-12 :18836 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/gpt2/wandb/run-20240627_003210-wzj6xpdz/files/output.log
+2024-06-27 00:37:04,713 INFO    Thread-12 :18836 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/gpt2/wandb/run-20240627_003210-wzj6xpdz/files/output.log
+2024-06-27 00:37:04,732 DEBUG   HandlerThread:18836 [handler.py:handle_request():158] handle_request: status_report
+2024-06-27 00:37:06,724 INFO    Thread-12 :18836 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/gpt2/wandb/run-20240627_003210-wzj6xpdz/files/output.log
+2024-06-27 00:37:08,734 INFO    Thread-12 :18836 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/gpt2/wandb/run-20240627_003210-wzj6xpdz/files/output.log
+2024-06-27 00:37:10,430 DEBUG   HandlerThread:18836 [handler.py:handle_request():158] handle_request: status_report
+2024-06-27 00:37:10,736 INFO    Thread-12 :18836 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/gpt2/wandb/run-20240627_003210-wzj6xpdz/files/output.log
+2024-06-27 00:37:11,597 DEBUG   SenderThread:18836 [sender.py:send():378] send: stats
+2024-06-27 00:37:12,742 INFO    Thread-12 :18836 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/gpt2/wandb/run-20240627_003210-wzj6xpdz/files/output.log
+2024-06-27 00:37:14,745 INFO    Thread-12 :18836 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/gpt2/wandb/run-20240627_003210-wzj6xpdz/files/output.log
+2024-06-27 00:37:15,496 DEBUG   HandlerThread:18836 [handler.py:handle_request():158] handle_request: status_report
+2024-06-27 00:37:16,411 DEBUG   HandlerThread:18836 [handler.py:handle_request():158] handle_request: stop_status
+2024-06-27 00:37:16,411 DEBUG   SenderThread:18836 [sender.py:send_request():405] send_request: stop_status
+2024-06-27 00:37:16,756 INFO    Thread-12 :18836 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/gpt2/wandb/run-20240627_003210-wzj6xpdz/files/output.log
+2024-06-27 00:37:18,765 INFO    Thread-12 :18836 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/gpt2/wandb/run-20240627_003210-wzj6xpdz/files/output.log
+2024-06-27 00:37:20,546 DEBUG   HandlerThread:18836 [handler.py:handle_request():158] handle_request: status_report
+2024-06-27 00:37:20,770 INFO    Thread-12 :18836 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/gpt2/wandb/run-20240627_003210-wzj6xpdz/files/output.log
+2024-06-27 00:37:22,778 INFO    Thread-12 :18836 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/gpt2/wandb/run-20240627_003210-wzj6xpdz/files/output.log
+2024-06-27 00:37:24,785 INFO    Thread-12 :18836 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/gpt2/wandb/run-20240627_003210-wzj6xpdz/files/output.log
+2024-06-27 00:37:25,788 DEBUG   HandlerThread:18836 [handler.py:handle_request():158] handle_request: status_report
+2024-06-27 00:37:26,791 INFO    Thread-12 :18836 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/gpt2/wandb/run-20240627_003210-wzj6xpdz/files/output.log
+2024-06-27 00:37:28,801 INFO    Thread-12 :18836 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/gpt2/wandb/run-20240627_003210-wzj6xpdz/files/output.log
+2024-06-27 00:37:30,805 INFO    Thread-12 :18836 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/gpt2/wandb/run-20240627_003210-wzj6xpdz/files/output.log
+2024-06-27 00:37:30,933 DEBUG   HandlerThread:18836 [handler.py:handle_request():158] handle_request: status_report
+2024-06-27 00:37:31,412 DEBUG   HandlerThread:18836 [handler.py:handle_request():158] handle_request: stop_status
+2024-06-27 00:37:31,412 DEBUG   SenderThread:18836 [sender.py:send_request():405] send_request: stop_status
+2024-06-27 00:37:32,810 INFO    Thread-12 :18836 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/gpt2/wandb/run-20240627_003210-wzj6xpdz/files/output.log
+2024-06-27 00:37:34,820 INFO    Thread-12 :18836 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/gpt2/wandb/run-20240627_003210-wzj6xpdz/files/output.log
+2024-06-27 00:37:36,081 DEBUG   HandlerThread:18836 [handler.py:handle_request():158] handle_request: status_report
+2024-06-27 00:37:36,831 INFO    Thread-12 :18836 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/gpt2/wandb/run-20240627_003210-wzj6xpdz/files/output.log
+2024-06-27 00:37:38,841 INFO    Thread-12 :18836 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/gpt2/wandb/run-20240627_003210-wzj6xpdz/files/output.log
+2024-06-27 00:37:40,852 INFO    Thread-12 :18836 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/gpt2/wandb/run-20240627_003210-wzj6xpdz/files/output.log
+2024-06-27 00:37:41,602 DEBUG   SenderThread:18836 [sender.py:send():378] send: stats
+2024-06-27 00:37:41,603 DEBUG   HandlerThread:18836 [handler.py:handle_request():158] handle_request: status_report
+2024-06-27 00:37:42,862 INFO    Thread-12 :18836 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/gpt2/wandb/run-20240627_003210-wzj6xpdz/files/output.log
+2024-06-27 00:37:44,873 INFO    Thread-12 :18836 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/gpt2/wandb/run-20240627_003210-wzj6xpdz/files/output.log
+2024-06-27 00:37:46,417 DEBUG   HandlerThread:18836 [handler.py:handle_request():158] handle_request: stop_status
+2024-06-27 00:37:46,417 DEBUG   SenderThread:18836 [sender.py:send_request():405] send_request: stop_status
+2024-06-27 00:37:46,708 DEBUG   HandlerThread:18836 [handler.py:handle_request():158] handle_request: status_report
+2024-06-27 00:37:46,883 INFO    Thread-12 :18836 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/gpt2/wandb/run-20240627_003210-wzj6xpdz/files/output.log
+2024-06-27 00:37:48,893 INFO    Thread-12 :18836 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/gpt2/wandb/run-20240627_003210-wzj6xpdz/files/output.log
+2024-06-27 00:37:50,903 INFO    Thread-12 :18836 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/gpt2/wandb/run-20240627_003210-wzj6xpdz/files/output.log
+2024-06-27 00:37:51,792 DEBUG   HandlerThread:18836 [handler.py:handle_request():158] handle_request: status_report
+2024-06-27 00:37:52,912 INFO    Thread-12 :18836 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/gpt2/wandb/run-20240627_003210-wzj6xpdz/files/output.log
+2024-06-27 00:37:54,920 INFO    Thread-12 :18836 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/gpt2/wandb/run-20240627_003210-wzj6xpdz/files/output.log
+2024-06-27 00:37:56,929 INFO    Thread-12 :18836 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/gpt2/wandb/run-20240627_003210-wzj6xpdz/files/output.log
+2024-06-27 00:37:57,348 DEBUG   HandlerThread:18836 [handler.py:handle_request():158] handle_request: status_report
+2024-06-27 00:37:58,936 INFO    Thread-12 :18836 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/gpt2/wandb/run-20240627_003210-wzj6xpdz/files/output.log
+2024-06-27 00:38:00,947 INFO    Thread-12 :18836 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/gpt2/wandb/run-20240627_003210-wzj6xpdz/files/output.log
+2024-06-27 00:38:01,419 DEBUG   HandlerThread:18836 [handler.py:handle_request():158] handle_request: stop_status
+2024-06-27 00:38:01,420 DEBUG   SenderThread:18836 [sender.py:send_request():405] send_request: stop_status
+2024-06-27 00:38:02,386 DEBUG   HandlerThread:18836 [handler.py:handle_request():158] handle_request: status_report
+2024-06-27 00:38:02,980 INFO    Thread-12 :18836 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/gpt2/wandb/run-20240627_003210-wzj6xpdz/files/output.log
+2024-06-27 00:38:04,986 INFO    Thread-12 :18836 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/gpt2/wandb/run-20240627_003210-wzj6xpdz/files/output.log
+2024-06-27 00:38:06,991 INFO    Thread-12 :18836 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/gpt2/wandb/run-20240627_003210-wzj6xpdz/files/output.log
+2024-06-27 00:38:07,421 DEBUG   HandlerThread:18836 [handler.py:handle_request():158] handle_request: status_report
+2024-06-27 00:38:09,000 INFO    Thread-12 :18836 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/gpt2/wandb/run-20240627_003210-wzj6xpdz/files/output.log
+2024-06-27 00:38:11,009 INFO    Thread-12 :18836 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/gpt2/wandb/run-20240627_003210-wzj6xpdz/files/output.log
+2024-06-27 00:38:11,608 DEBUG   SenderThread:18836 [sender.py:send():378] send: stats
+2024-06-27 00:38:12,458 DEBUG   HandlerThread:18836 [handler.py:handle_request():158] handle_request: status_report
+2024-06-27 00:38:13,019 INFO    Thread-12 :18836 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/gpt2/wandb/run-20240627_003210-wzj6xpdz/files/output.log
+2024-06-27 00:38:15,028 INFO    Thread-12 :18836 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/gpt2/wandb/run-20240627_003210-wzj6xpdz/files/output.log
+2024-06-27 00:38:16,424 DEBUG   HandlerThread:18836 [handler.py:handle_request():158] handle_request: stop_status
+2024-06-27 00:38:16,424 DEBUG   SenderThread:18836 [sender.py:send_request():405] send_request: stop_status
+2024-06-27 00:38:17,039 INFO    Thread-12 :18836 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/gpt2/wandb/run-20240627_003210-wzj6xpdz/files/output.log
+2024-06-27 00:38:17,995 DEBUG   HandlerThread:18836 [handler.py:handle_request():158] handle_request: status_report
+2024-06-27 00:38:19,042 INFO    Thread-12 :18836 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/gpt2/wandb/run-20240627_003210-wzj6xpdz/files/output.log
+2024-06-27 00:38:21,053 INFO    Thread-12 :18836 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/gpt2/wandb/run-20240627_003210-wzj6xpdz/files/output.log
+2024-06-27 00:38:23,062 INFO    Thread-12 :18836 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/gpt2/wandb/run-20240627_003210-wzj6xpdz/files/output.log
+2024-06-27 00:38:23,208 DEBUG   HandlerThread:18836 [handler.py:handle_request():158] handle_request: status_report
+2024-06-27 00:38:25,072 INFO    Thread-12 :18836 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/gpt2/wandb/run-20240627_003210-wzj6xpdz/files/output.log
+2024-06-27 00:38:27,079 INFO    Thread-12 :18836 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/gpt2/wandb/run-20240627_003210-wzj6xpdz/files/output.log
+2024-06-27 00:38:28,257 DEBUG   HandlerThread:18836 [handler.py:handle_request():158] handle_request: status_report
+2024-06-27 00:38:29,089 INFO    Thread-12 :18836 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/gpt2/wandb/run-20240627_003210-wzj6xpdz/files/output.log
+2024-06-27 00:38:31,095 INFO    Thread-12 :18836 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/gpt2/wandb/run-20240627_003210-wzj6xpdz/files/output.log
+2024-06-27 00:38:31,429 DEBUG   HandlerThread:18836 [handler.py:handle_request():158] handle_request: stop_status
+2024-06-27 00:38:31,429 DEBUG   SenderThread:18836 [sender.py:send_request():405] send_request: stop_status
+2024-06-27 00:38:33,105 INFO    Thread-12 :18836 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/gpt2/wandb/run-20240627_003210-wzj6xpdz/files/output.log
+2024-06-27 00:38:33,984 DEBUG   HandlerThread:18836 [handler.py:handle_request():158] handle_request: status_report
+2024-06-27 00:38:35,116 INFO    Thread-12 :18836 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/gpt2/wandb/run-20240627_003210-wzj6xpdz/files/output.log
+2024-06-27 00:38:37,124 INFO    Thread-12 :18836 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/gpt2/wandb/run-20240627_003210-wzj6xpdz/files/output.log
+2024-06-27 00:38:39,134 INFO    Thread-12 :18836 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/gpt2/wandb/run-20240627_003210-wzj6xpdz/files/output.log
+2024-06-27 00:38:39,698 DEBUG   HandlerThread:18836 [handler.py:handle_request():158] handle_request: status_report
+2024-06-27 00:38:41,142 INFO    Thread-12 :18836 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/gpt2/wandb/run-20240627_003210-wzj6xpdz/files/output.log
+2024-06-27 00:38:41,613 DEBUG   SenderThread:18836 [sender.py:send():378] send: stats
+2024-06-27 00:38:43,147 INFO    Thread-12 :18836 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/gpt2/wandb/run-20240627_003210-wzj6xpdz/files/output.log
+2024-06-27 00:38:44,746 DEBUG   HandlerThread:18836 [handler.py:handle_request():158] handle_request: status_report
+2024-06-27 00:38:45,157 INFO    Thread-12 :18836 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/gpt2/wandb/run-20240627_003210-wzj6xpdz/files/output.log
+2024-06-27 00:38:46,434 DEBUG   HandlerThread:18836 [handler.py:handle_request():158] handle_request: stop_status
+2024-06-27 00:38:46,434 DEBUG   SenderThread:18836 [sender.py:send_request():405] send_request: stop_status
+2024-06-27 00:38:47,167 INFO    Thread-12 :18836 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/gpt2/wandb/run-20240627_003210-wzj6xpdz/files/output.log
+2024-06-27 00:38:49,178 INFO    Thread-12 :18836 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/gpt2/wandb/run-20240627_003210-wzj6xpdz/files/output.log
+2024-06-27 00:38:50,448 DEBUG   HandlerThread:18836 [handler.py:handle_request():158] handle_request: status_report
+2024-06-27 00:38:51,183 INFO    Thread-12 :18836 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/gpt2/wandb/run-20240627_003210-wzj6xpdz/files/output.log
+2024-06-27 00:38:53,192 INFO    Thread-12 :18836 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/gpt2/wandb/run-20240627_003210-wzj6xpdz/files/output.log
+2024-06-27 00:38:55,203 INFO    Thread-12 :18836 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/gpt2/wandb/run-20240627_003210-wzj6xpdz/files/output.log
+2024-06-27 00:38:55,613 DEBUG   HandlerThread:18836 [handler.py:handle_request():158] handle_request: status_report
+2024-06-27 00:38:57,212 INFO    Thread-12 :18836 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/gpt2/wandb/run-20240627_003210-wzj6xpdz/files/output.log
+2024-06-27 00:38:59,221 INFO    Thread-12 :18836 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/gpt2/wandb/run-20240627_003210-wzj6xpdz/files/output.log
+2024-06-27 00:39:01,224 INFO    Thread-12 :18836 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/gpt2/wandb/run-20240627_003210-wzj6xpdz/files/output.log
+2024-06-27 00:39:01,308 DEBUG   HandlerThread:18836 [handler.py:handle_request():158] handle_request: status_report
+2024-06-27 00:39:01,439 DEBUG   HandlerThread:18836 [handler.py:handle_request():158] handle_request: stop_status
+2024-06-27 00:39:01,440 DEBUG   SenderThread:18836 [sender.py:send_request():405] send_request: stop_status
+2024-06-27 00:39:03,234 INFO    Thread-12 :18836 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/gpt2/wandb/run-20240627_003210-wzj6xpdz/files/output.log
+2024-06-27 00:39:05,244 INFO    Thread-12 :18836 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/gpt2/wandb/run-20240627_003210-wzj6xpdz/files/output.log
+2024-06-27 00:39:06,571 DEBUG   HandlerThread:18836 [handler.py:handle_request():158] handle_request: status_report
+2024-06-27 00:39:07,250 INFO    Thread-12 :18836 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/gpt2/wandb/run-20240627_003210-wzj6xpdz/files/output.log
+2024-06-27 00:39:09,261 INFO    Thread-12 :18836 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/gpt2/wandb/run-20240627_003210-wzj6xpdz/files/output.log
+2024-06-27 00:39:11,271 INFO    Thread-12 :18836 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/gpt2/wandb/run-20240627_003210-wzj6xpdz/files/output.log
+2024-06-27 00:39:11,615 DEBUG   SenderThread:18836 [sender.py:send():378] send: stats
+2024-06-27 00:39:11,615 DEBUG   HandlerThread:18836 [handler.py:handle_request():158] handle_request: status_report
+2024-06-27 00:39:13,278 INFO    Thread-12 :18836 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/gpt2/wandb/run-20240627_003210-wzj6xpdz/files/output.log
+2024-06-27 00:39:15,289 INFO    Thread-12 :18836 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/gpt2/wandb/run-20240627_003210-wzj6xpdz/files/output.log
+2024-06-27 00:39:16,441 DEBUG   HandlerThread:18836 [handler.py:handle_request():158] handle_request: stop_status
+2024-06-27 00:39:16,441 DEBUG   SenderThread:18836 [sender.py:send_request():405] send_request: stop_status
+2024-06-27 00:39:16,809 DEBUG   HandlerThread:18836 [handler.py:handle_request():158] handle_request: status_report
+2024-06-27 00:39:17,299 INFO    Thread-12 :18836 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/gpt2/wandb/run-20240627_003210-wzj6xpdz/files/output.log
+2024-06-27 00:39:19,306 INFO    Thread-12 :18836 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/gpt2/wandb/run-20240627_003210-wzj6xpdz/files/output.log
+2024-06-27 00:39:21,308 INFO    Thread-12 :18836 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/gpt2/wandb/run-20240627_003210-wzj6xpdz/files/output.log
+2024-06-27 00:39:22,218 DEBUG   HandlerThread:18836 [handler.py:handle_request():158] handle_request: status_report
+2024-06-27 00:39:23,318 INFO    Thread-12 :18836 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/gpt2/wandb/run-20240627_003210-wzj6xpdz/files/output.log
+2024-06-27 00:39:25,328 INFO    Thread-12 :18836 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/gpt2/wandb/run-20240627_003210-wzj6xpdz/files/output.log
+2024-06-27 00:39:27,311 DEBUG   HandlerThread:18836 [handler.py:handle_request():158] handle_request: status_report
+2024-06-27 00:39:27,339 INFO    Thread-12 :18836 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/gpt2/wandb/run-20240627_003210-wzj6xpdz/files/output.log
+2024-06-27 00:39:29,350 INFO    Thread-12 :18836 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/gpt2/wandb/run-20240627_003210-wzj6xpdz/files/output.log
+2024-06-27 00:39:31,360 INFO    Thread-12 :18836 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/gpt2/wandb/run-20240627_003210-wzj6xpdz/files/output.log
+2024-06-27 00:39:31,447 DEBUG   HandlerThread:18836 [handler.py:handle_request():158] handle_request: stop_status
+2024-06-27 00:39:31,447 DEBUG   SenderThread:18836 [sender.py:send_request():405] send_request: stop_status
+2024-06-27 00:39:32,800 DEBUG   HandlerThread:18836 [handler.py:handle_request():158] handle_request: status_report
+2024-06-27 00:39:33,371 INFO    Thread-12 :18836 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/gpt2/wandb/run-20240627_003210-wzj6xpdz/files/output.log
+2024-06-27 00:39:35,381 INFO    Thread-12 :18836 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/gpt2/wandb/run-20240627_003210-wzj6xpdz/files/output.log
+2024-06-27 00:39:37,386 INFO    Thread-12 :18836 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/gpt2/wandb/run-20240627_003210-wzj6xpdz/files/output.log
+2024-06-27 00:39:38,193 DEBUG   HandlerThread:18836 [handler.py:handle_request():158] handle_request: status_report
+2024-06-27 00:39:39,396 INFO    Thread-12 :18836 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/gpt2/wandb/run-20240627_003210-wzj6xpdz/files/output.log
+2024-06-27 00:39:41,404 INFO    Thread-12 :18836 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/gpt2/wandb/run-20240627_003210-wzj6xpdz/files/output.log
+2024-06-27 00:39:41,620 DEBUG   SenderThread:18836 [sender.py:send():378] send: stats
+2024-06-27 00:39:42,188 DEBUG   SenderThread:18836 [sender.py:send():378] send: exit
+2024-06-27 00:39:42,189 INFO    SenderThread:18836 [sender.py:send_exit():585] handling exit code: 255
+2024-06-27 00:39:42,189 INFO    SenderThread:18836 [sender.py:send_exit():587] handling runtime: 450
+2024-06-27 00:39:42,189 INFO    SenderThread:18836 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-06-27 00:39:42,189 INFO    SenderThread:18836 [sender.py:send_exit():593] send defer
+2024-06-27 00:39:42,189 DEBUG   HandlerThread:18836 [handler.py:handle_request():158] handle_request: defer
+2024-06-27 00:39:42,189 INFO    HandlerThread:18836 [handler.py:handle_request_defer():184] handle defer: 0
+2024-06-27 00:39:42,190 DEBUG   SenderThread:18836 [sender.py:send_request():405] send_request: defer
+2024-06-27 00:39:42,190 INFO    SenderThread:18836 [sender.py:send_request_defer():609] handle sender defer: 0
+2024-06-27 00:39:42,190 INFO    SenderThread:18836 [sender.py:transition_state():613] send defer: 1
+2024-06-27 00:39:42,190 DEBUG   HandlerThread:18836 [handler.py:handle_request():158] handle_request: defer
+2024-06-27 00:39:42,190 INFO    HandlerThread:18836 [handler.py:handle_request_defer():184] handle defer: 1
+2024-06-27 00:39:42,190 DEBUG   SenderThread:18836 [sender.py:send_request():405] send_request: defer
+2024-06-27 00:39:42,190 INFO    SenderThread:18836 [sender.py:send_request_defer():609] handle sender defer: 1
+2024-06-27 00:39:42,190 INFO    SenderThread:18836 [sender.py:transition_state():613] send defer: 2
+2024-06-27 00:39:42,190 DEBUG   HandlerThread:18836 [handler.py:handle_request():158] handle_request: defer
+2024-06-27 00:39:42,190 INFO    HandlerThread:18836 [handler.py:handle_request_defer():184] handle defer: 2
+2024-06-27 00:39:42,190 INFO    HandlerThread:18836 [system_monitor.py:finish():203] Stopping system monitor
+2024-06-27 00:39:42,190 DEBUG   SystemMonitor:18836 [system_monitor.py:_start():179] Finished system metrics aggregation loop
+2024-06-27 00:39:42,190 INFO    HandlerThread:18836 [interfaces.py:finish():200] Joined cpu monitor
+2024-06-27 00:39:42,190 DEBUG   SystemMonitor:18836 [system_monitor.py:_start():183] Publishing last batch of metrics
+2024-06-27 00:39:42,190 INFO    HandlerThread:18836 [interfaces.py:finish():200] Joined disk monitor
+2024-06-27 00:39:42,190 INFO    HandlerThread:18836 [interfaces.py:finish():200] Joined gpuapple monitor
+2024-06-27 00:39:42,190 INFO    HandlerThread:18836 [interfaces.py:finish():200] Joined memory monitor
+2024-06-27 00:39:42,190 INFO    HandlerThread:18836 [interfaces.py:finish():200] Joined network monitor
+2024-06-27 00:39:42,190 DEBUG   SenderThread:18836 [sender.py:send_request():405] send_request: defer
+2024-06-27 00:39:42,190 INFO    SenderThread:18836 [sender.py:send_request_defer():609] handle sender defer: 2
+2024-06-27 00:39:42,191 INFO    SenderThread:18836 [sender.py:transition_state():613] send defer: 3
+2024-06-27 00:39:42,191 DEBUG   SenderThread:18836 [sender.py:send():378] send: stats
+2024-06-27 00:39:42,191 DEBUG   HandlerThread:18836 [handler.py:handle_request():158] handle_request: defer
+2024-06-27 00:39:42,191 INFO    HandlerThread:18836 [handler.py:handle_request_defer():184] handle defer: 3
+2024-06-27 00:39:42,191 DEBUG   SenderThread:18836 [sender.py:send_request():405] send_request: defer
+2024-06-27 00:39:42,191 INFO    SenderThread:18836 [sender.py:send_request_defer():609] handle sender defer: 3
+2024-06-27 00:39:42,191 INFO    SenderThread:18836 [sender.py:transition_state():613] send defer: 4
+2024-06-27 00:39:42,191 DEBUG   HandlerThread:18836 [handler.py:handle_request():158] handle_request: defer
+2024-06-27 00:39:42,191 INFO    HandlerThread:18836 [handler.py:handle_request_defer():184] handle defer: 4
+2024-06-27 00:39:42,191 DEBUG   SenderThread:18836 [sender.py:send_request():405] send_request: defer
+2024-06-27 00:39:42,191 INFO    SenderThread:18836 [sender.py:send_request_defer():609] handle sender defer: 4
+2024-06-27 00:39:42,191 INFO    SenderThread:18836 [sender.py:transition_state():613] send defer: 5
+2024-06-27 00:39:42,191 DEBUG   HandlerThread:18836 [handler.py:handle_request():158] handle_request: defer
+2024-06-27 00:39:42,191 INFO    HandlerThread:18836 [handler.py:handle_request_defer():184] handle defer: 5
+2024-06-27 00:39:42,191 DEBUG   SenderThread:18836 [sender.py:send():378] send: summary
+2024-06-27 00:39:42,191 INFO    SenderThread:18836 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-06-27 00:39:42,191 DEBUG   SenderThread:18836 [sender.py:send_request():405] send_request: defer
+2024-06-27 00:39:42,191 INFO    SenderThread:18836 [sender.py:send_request_defer():609] handle sender defer: 5
+2024-06-27 00:39:42,191 INFO    SenderThread:18836 [sender.py:transition_state():613] send defer: 6
+2024-06-27 00:39:42,191 DEBUG   HandlerThread:18836 [handler.py:handle_request():158] handle_request: defer
+2024-06-27 00:39:42,191 INFO    HandlerThread:18836 [handler.py:handle_request_defer():184] handle defer: 6
+2024-06-27 00:39:42,191 DEBUG   SenderThread:18836 [sender.py:send_request():405] send_request: defer
+2024-06-27 00:39:42,191 INFO    SenderThread:18836 [sender.py:send_request_defer():609] handle sender defer: 6
+2024-06-27 00:39:42,191 INFO    SenderThread:18836 [sender.py:transition_state():613] send defer: 7
+2024-06-27 00:39:42,191 DEBUG   HandlerThread:18836 [handler.py:handle_request():158] handle_request: status_report
+2024-06-27 00:39:42,191 DEBUG   HandlerThread:18836 [handler.py:handle_request():158] handle_request: defer
+2024-06-27 00:39:42,191 INFO    HandlerThread:18836 [handler.py:handle_request_defer():184] handle defer: 7
+2024-06-27 00:39:42,191 DEBUG   SenderThread:18836 [sender.py:send_request():405] send_request: defer
+2024-06-27 00:39:42,191 INFO    SenderThread:18836 [sender.py:send_request_defer():609] handle sender defer: 7
+2024-06-27 00:39:42,410 INFO    Thread-12 :18836 [dir_watcher.py:_on_file_created():271] file/dir created: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/gpt2/wandb/run-20240627_003210-wzj6xpdz/files/wandb-summary.json
+2024-06-27 00:39:43,027 INFO    SenderThread:18836 [sender.py:transition_state():613] send defer: 8
+2024-06-27 00:39:43,028 DEBUG   HandlerThread:18836 [handler.py:handle_request():158] handle_request: defer
+2024-06-27 00:39:43,028 INFO    HandlerThread:18836 [handler.py:handle_request_defer():184] handle defer: 8
+2024-06-27 00:39:43,028 DEBUG   SenderThread:18836 [sender.py:send_request():405] send_request: defer
+2024-06-27 00:39:43,028 INFO    SenderThread:18836 [sender.py:send_request_defer():609] handle sender defer: 8
+2024-06-27 00:39:43,029 INFO    SenderThread:18836 [job_builder.py:build():432] Attempting to build job artifact
+2024-06-27 00:39:43,030 INFO    SenderThread:18836 [job_builder.py:_get_source_type():565] is repo sourced job
+2024-06-27 00:39:43,061 INFO    SenderThread:18836 [job_builder.py:build():541] adding wandb-job metadata file
+2024-06-27 00:39:43,063 INFO    SenderThread:18836 [sender.py:transition_state():613] send defer: 9
+2024-06-27 00:39:43,064 DEBUG   HandlerThread:18836 [handler.py:handle_request():158] handle_request: defer
+2024-06-27 00:39:43,064 DEBUG   SenderThread:18836 [sender.py:send():378] send: artifact
+2024-06-27 00:39:43,064 INFO    HandlerThread:18836 [handler.py:handle_request_defer():184] handle defer: 9
+2024-06-27 00:39:43,193 DEBUG   HandlerThread:18836 [handler.py:handle_request():158] handle_request: poll_exit
+2024-06-27 00:39:43,414 INFO    Thread-12 :18836 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/gpt2/wandb/run-20240627_003210-wzj6xpdz/files/output.log
+2024-06-27 00:39:44,499 INFO    SenderThread:18836 [sender.py:send_artifact():1467] sent artifact job-https___github.com_MaheepChaudhary_SAE_vs_DAS.git_gpt2_main_train.py - {'id': 'QXJ0aWZhY3Q6OTMwMjY5Mzc4', 'state': 'COMMITTED', 'artifactSequence': {'id': 'QXJ0aWZhY3RDb2xsZWN0aW9uOjE5MDQ4NDEyNA==', 'latestArtifact': {'id': 'QXJ0aWZhY3Q6OTMwMjY5Mzc4', 'versionIndex': 35}}}
+2024-06-27 00:39:44,500 DEBUG   SenderThread:18836 [sender.py:send_request():405] send_request: defer
+2024-06-27 00:39:44,500 INFO    SenderThread:18836 [sender.py:send_request_defer():609] handle sender defer: 9
+2024-06-27 00:39:44,500 INFO    SenderThread:18836 [dir_watcher.py:finish():358] shutting down directory watcher
+2024-06-27 00:39:45,427 INFO    SenderThread:18836 [dir_watcher.py:finish():388] scan: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/gpt2/wandb/run-20240627_003210-wzj6xpdz/files
+2024-06-27 00:39:45,427 INFO    SenderThread:18836 [dir_watcher.py:finish():402] scan save: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/gpt2/wandb/run-20240627_003210-wzj6xpdz/files/requirements.txt requirements.txt
+2024-06-27 00:39:45,428 INFO    SenderThread:18836 [dir_watcher.py:finish():402] scan save: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/gpt2/wandb/run-20240627_003210-wzj6xpdz/files/output.log output.log
+2024-06-27 00:39:45,431 INFO    SenderThread:18836 [dir_watcher.py:finish():402] scan save: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/gpt2/wandb/run-20240627_003210-wzj6xpdz/files/config.yaml config.yaml
+2024-06-27 00:39:45,434 INFO    SenderThread:18836 [dir_watcher.py:finish():402] scan save: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/gpt2/wandb/run-20240627_003210-wzj6xpdz/files/wandb-summary.json wandb-summary.json
+2024-06-27 00:39:45,437 INFO    SenderThread:18836 [dir_watcher.py:finish():402] scan save: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/gpt2/wandb/run-20240627_003210-wzj6xpdz/files/conda-environment.yaml conda-environment.yaml
+2024-06-27 00:39:45,439 INFO    SenderThread:18836 [dir_watcher.py:finish():402] scan save: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/gpt2/wandb/run-20240627_003210-wzj6xpdz/files/wandb-metadata.json wandb-metadata.json
+2024-06-27 00:39:45,440 INFO    SenderThread:18836 [sender.py:transition_state():613] send defer: 10
+2024-06-27 00:39:45,441 DEBUG   SenderThread:18836 [sender.py:send_request():405] send_request: poll_exit
+2024-06-27 00:39:45,442 DEBUG   HandlerThread:18836 [handler.py:handle_request():158] handle_request: defer
+2024-06-27 00:39:45,442 INFO    HandlerThread:18836 [handler.py:handle_request_defer():184] handle defer: 10
+2024-06-27 00:39:45,443 DEBUG   SenderThread:18836 [sender.py:send_request():405] send_request: defer
+2024-06-27 00:39:45,443 INFO    SenderThread:18836 [sender.py:send_request_defer():609] handle sender defer: 10
+2024-06-27 00:39:45,443 INFO    SenderThread:18836 [file_pusher.py:finish():169] shutting down file pusher
+2024-06-27 00:39:46,210 DEBUG   HandlerThread:18836 [handler.py:handle_request():158] handle_request: poll_exit
+2024-06-27 00:39:46,211 DEBUG   SenderThread:18836 [sender.py:send_request():405] send_request: poll_exit
+2024-06-27 00:39:46,220 INFO    wandb-upload_2:18836 [upload_job.py:push():130] Uploaded file /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/gpt2/wandb/run-20240627_003210-wzj6xpdz/files/config.yaml
+2024-06-27 00:39:47,066 INFO    wandb-upload_3:18836 [upload_job.py:push():130] Uploaded file /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/gpt2/wandb/run-20240627_003210-wzj6xpdz/files/wandb-summary.json
+2024-06-27 00:39:47,118 INFO    wandb-upload_0:18836 [upload_job.py:push():130] Uploaded file /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/gpt2/wandb/run-20240627_003210-wzj6xpdz/files/requirements.txt
+2024-06-27 00:39:47,150 INFO    wandb-upload_1:18836 [upload_job.py:push():130] Uploaded file /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/gpt2/wandb/run-20240627_003210-wzj6xpdz/files/output.log
+2024-06-27 00:39:47,151 INFO    wandb-upload_4:18836 [upload_job.py:push():130] Uploaded file /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/gpt2/wandb/run-20240627_003210-wzj6xpdz/files/conda-environment.yaml
+2024-06-27 00:39:47,216 DEBUG   HandlerThread:18836 [handler.py:handle_request():158] handle_request: poll_exit
+2024-06-27 00:39:47,217 DEBUG   SenderThread:18836 [sender.py:send_request():405] send_request: poll_exit
+2024-06-27 00:39:47,356 INFO    Thread-11 (_thread_body):18836 [sender.py:transition_state():613] send defer: 11
+2024-06-27 00:39:47,357 DEBUG   HandlerThread:18836 [handler.py:handle_request():158] handle_request: defer
+2024-06-27 00:39:47,357 INFO    HandlerThread:18836 [handler.py:handle_request_defer():184] handle defer: 11
+2024-06-27 00:39:47,358 DEBUG   SenderThread:18836 [sender.py:send_request():405] send_request: defer
+2024-06-27 00:39:47,358 INFO    SenderThread:18836 [sender.py:send_request_defer():609] handle sender defer: 11
+2024-06-27 00:39:47,358 INFO    SenderThread:18836 [file_pusher.py:join():175] waiting for file pusher
+2024-06-27 00:39:47,359 INFO    SenderThread:18836 [sender.py:transition_state():613] send defer: 12
+2024-06-27 00:39:47,359 DEBUG   HandlerThread:18836 [handler.py:handle_request():158] handle_request: defer
+2024-06-27 00:39:47,360 INFO    HandlerThread:18836 [handler.py:handle_request_defer():184] handle defer: 12
+2024-06-27 00:39:47,360 DEBUG   SenderThread:18836 [sender.py:send_request():405] send_request: defer
+2024-06-27 00:39:47,360 INFO    SenderThread:18836 [sender.py:send_request_defer():609] handle sender defer: 12
+2024-06-27 00:39:47,360 INFO    SenderThread:18836 [file_stream.py:finish():601] file stream finish called
+2024-06-27 00:39:48,222 DEBUG   HandlerThread:18836 [handler.py:handle_request():158] handle_request: poll_exit
+2024-06-27 00:39:48,643 INFO    SenderThread:18836 [file_stream.py:finish():605] file stream finish is done
+2024-06-27 00:39:48,643 INFO    SenderThread:18836 [sender.py:transition_state():613] send defer: 13
+2024-06-27 00:39:48,644 DEBUG   SenderThread:18836 [sender.py:send_request():405] send_request: poll_exit
+2024-06-27 00:39:48,644 DEBUG   HandlerThread:18836 [handler.py:handle_request():158] handle_request: defer
+2024-06-27 00:39:48,644 INFO    HandlerThread:18836 [handler.py:handle_request_defer():184] handle defer: 13
+2024-06-27 00:39:48,645 DEBUG   SenderThread:18836 [sender.py:send_request():405] send_request: defer
+2024-06-27 00:39:48,645 INFO    SenderThread:18836 [sender.py:send_request_defer():609] handle sender defer: 13
+2024-06-27 00:39:48,645 INFO    SenderThread:18836 [sender.py:transition_state():613] send defer: 14
+2024-06-27 00:39:48,645 DEBUG   HandlerThread:18836 [handler.py:handle_request():158] handle_request: defer
+2024-06-27 00:39:48,646 INFO    HandlerThread:18836 [handler.py:handle_request_defer():184] handle defer: 14
+2024-06-27 00:39:48,646 DEBUG   SenderThread:18836 [sender.py:send():378] send: final
+2024-06-27 00:39:48,646 DEBUG   SenderThread:18836 [sender.py:send():378] send: footer
+2024-06-27 00:39:48,646 DEBUG   SenderThread:18836 [sender.py:send_request():405] send_request: defer
+2024-06-27 00:39:48,646 INFO    SenderThread:18836 [sender.py:send_request_defer():609] handle sender defer: 14
+2024-06-27 00:39:48,647 DEBUG   HandlerThread:18836 [handler.py:handle_request():158] handle_request: poll_exit
+2024-06-27 00:39:48,647 DEBUG   SenderThread:18836 [sender.py:send_request():405] send_request: poll_exit
+2024-06-27 00:39:48,648 DEBUG   HandlerThread:18836 [handler.py:handle_request():158] handle_request: poll_exit
+2024-06-27 00:39:48,649 DEBUG   HandlerThread:18836 [handler.py:handle_request():158] handle_request: server_info
+2024-06-27 00:39:48,649 DEBUG   HandlerThread:18836 [handler.py:handle_request():158] handle_request: get_summary
+2024-06-27 00:39:48,649 DEBUG   SenderThread:18836 [sender.py:send_request():405] send_request: poll_exit
+2024-06-27 00:39:48,649 DEBUG   HandlerThread:18836 [handler.py:handle_request():158] handle_request: sampled_history
+2024-06-27 00:39:48,650 DEBUG   SenderThread:18836 [sender.py:send_request():405] send_request: server_info
+2024-06-27 00:39:48,650 DEBUG   HandlerThread:18836 [handler.py:handle_request():158] handle_request: internal_messages
+2024-06-27 00:39:48,922 INFO    MainThread:18836 [wandb_run.py:_footer_history_summary_info():3994] rendering history
+2024-06-27 00:39:48,923 INFO    MainThread:18836 [wandb_run.py:_footer_history_summary_info():4026] rendering summary
+2024-06-27 00:39:48,923 INFO    MainThread:18836 [wandb_run.py:_footer_sync_info():3953] logging synced files
+2024-06-27 00:39:48,924 DEBUG   HandlerThread:18836 [handler.py:handle_request():158] handle_request: shutdown
+2024-06-27 00:39:48,924 INFO    HandlerThread:18836 [handler.py:finish():882] shutting down handler
+2024-06-27 00:39:49,655 INFO    WriterThread:18836 [datastore.py:close():296] close: /Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/gpt2/wandb/run-20240627_003210-wzj6xpdz/run-wzj6xpdz.wandb
+2024-06-27 00:39:49,927 INFO    SenderThread:18836 [sender.py:finish():1545] shutting down sender
+2024-06-27 00:39:49,928 INFO    SenderThread:18836 [file_pusher.py:finish():169] shutting down file pusher
+2024-06-27 00:39:49,928 INFO    SenderThread:18836 [file_pusher.py:join():175] waiting for file pusher

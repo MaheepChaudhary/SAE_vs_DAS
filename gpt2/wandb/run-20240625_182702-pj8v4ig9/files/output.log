@@ -1,0 +1,26 @@
+5240
+Source Masked Shape: torch.Size([1, 59, 768])
+Base Masked Shape: torch.Size([1, 59, 768])
+  0%|                          | 0/5240 [00:00<?, ?it/s]
+Traceback (most recent call last):
+  File "/Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/gpt2/main_train.py", line 153, in <module>
+    intervened_base_output, predicted_text = training_model(source_ids, base_ids, temperature)
+                                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/maheepchaudhary/miniforge3/envs/nnsight/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1532, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/maheepchaudhary/miniforge3/envs/nnsight/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1541, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/gpt2/models.py", line 229, in forward
+    with self.model.trace() as tracer:
+  File "/Users/maheepchaudhary/miniforge3/envs/nnsight/lib/python3.12/site-packages/nnsight/contexts/Runner.py", line 41, in __exit__
+    raise exc_val
+  File "/Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/gpt2/models.py", line 235, in forward
+    with tracer.invoke(base_ids) as runner_:
+  File "/Users/maheepchaudhary/miniforge3/envs/nnsight/lib/python3.12/site-packages/nnsight/contexts/Invoker.py", line 91, in __exit__
+    raise exc_val
+  File "/Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/gpt2/models.py", line 244, in forward
+    assert base[:,self.intervened_token_idx,:].shape == vector_source[0][:,self.intervened_token_idx,:].unsqueeze(0).shape == torch.Size([1, 1, 768])
+                                                        ^^^^^^^^^^^^^
+UnboundLocalError: cannot access local variable 'vector_source' where it is not associated with a value

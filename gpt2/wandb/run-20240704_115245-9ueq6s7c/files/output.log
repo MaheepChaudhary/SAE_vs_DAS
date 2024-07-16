@@ -1,0 +1,86 @@
+['Minxian', 'Yorkton', 'Tunis', 'Yichang', 'Shashi', 'Quebec', 'Phuket', 'Hapur', 'Amravati', 'Jacunda', 'Windsor', 'Vernon', 'Malacca', 'Kochi', 'Hotan', 'Motul', 'Kure', 'Changling', 'Merida', 'Ahmedabad', 'Beijing', 'Williamsport', 'Zixing', 'Camrose', 'Anxi', 'Rabat', 'Kalyan', 'Chifeng', 'Yiyang', 'Norfolk', 'Medina', 'Varanasi', 'Nairobi', 'Trieste', 'Reynosa', 'Navsari', 'Mandya', 'Istanbul', 'Daqing', 'Guilin', 'Formiga', 'Sanaa', 'Lishui', 'Xinyu', 'Rampur', 'Pune', 'Manila', 'Cartwright', 'Chamdo', 'Fujin', 'Cobalt', 'Ajmer', 'Creston', 'Tecpan', 'Iguatu', 'Flensburg', 'Stuttgart', 'Langfang', 'Nautla', 'Sikar', 'Wuxi', 'Trang', 'Linfen', 'Jasper', 'Pilibhit', 'Shanghai', 'Cork', 'Basel', 'Brussels', 'Huanren', 'Simao', 'Strasbourg', 'Dublin', 'Zigong', 'Yulin', 'Banff', 'Kofu', 'Agra', 'Shiyan', 'Dayton', 'Stephenville', 'Nogales', 'Lodz', 'Xigaze', 'Kabul', 'Caruaru', 'Gannan', 'Panshi', 'Taian', 'Luoyang', 'Baddeck', 'Yingkow', 'Yumen', 'Tacheng', 'Montreal', 'Weifang', 'Paranaiba', 'Helong', 'Kyoto', 'Sanya', 'Foshan', 'Moncton', 'Liuhe', 'Handan', 'Wichita', 'Jincheng', 'Zurich', 'Fushun', 'Tailai', 'Luan', 'Isfahan', 'Pingdu', 'Changting', 'Shangdu', 'Yancheng', 'Houma', 'Itabuna', 'Changde', 'Paracatu', 'Xiamen', 'Nagpur', 'Fuyu', 'Waco', 'Shantou', 'Jammu', 'Yuci', 'Dhule', 'Sendai', 'Yishui', 'Santos', 'Leipzig', 'Heyuan', 'Itaituba', 'Rohtak', 'Yishan', 'Brugge', 'Xining', 'Monterrey', 'Hancheng', 'Calais', 'Parnaiba', 'Vienna', 'Kitchener', 'Mysore', 'Penticton', 'Yaan', 'Donegal', 'Shulan', 'Cochrane', 'Brandon', 'Nanping', 'Barrie', 'Yichun', 'Maizuru', 'Tarsus', 'Changsha', 'Bidar', 'Madurai', 'Hanoi', 'Pingyi', 'Doha', 'Melville', 'Pathankot', 'Yibin', 'Shishou', 'Brumado', 'Ankara', 'Mainz', 'Dalian', 'Linxia', 'Indore', 'Anqing', 'Winona', 'Mombasa', 'Dawson', 'Dhaka', 'Puri', 'Karachi', 'Jakarta', 'Dhanbad', 'Shihezi', 'Guntur', 'Brockville', 'Linqing', 'Ambala', 'Linchuan', 'Kushiro', 'Brooks', 'Baoji', 'Resolute', 'Maanshan', 'Akita', 'Tecoman', 'Anyang', 'Longyan', 'Hirosaki', 'Lijiang', 'Wilmington', 'Curitiba', 'Angangxi', 'Sakata', 'Patna', 'Kelang', 'Zunyi', 'Sagar', 'Hefei', 'Beian', 'Beihai', 'Wallace', 'Whitehorse', 'Itanagar', 'Baku', 'Providence', 'Churchill', 'Hathras', 'Dezhou', 'Mengzi', 'Edmonton', 'Changping', 'Yitulihe', 'Yian', 'Cornwall', 'Sanming', 'Linyi', 'Utica', 'Karnal', 'Sapporo', 'Weihai', 'Deyang', 'Tampa', 'Surakarta', 'Jinan', 'Januaria', 'Jerusalem', 'Tulsa', 'Xinyang', 'Gwalior', 'Hangu', 'Lethbridge', 'Sudbury', 'Panaji', 'Dandong', 'Xuchang', 'Heihe', 'Ahvaz', 'Datong', 'Mumbai', 'Belleville', 'Putian', 'Delhi']
+The total number of overlapping words are 250
+The total number of sample pairs in country are 62250
+The total number of sample pairs in continent are 62250
+  3%|███▉                                                                                                                      | 1988/62250 [00:01<00:38, 1572.31it/s]
+The total number of samples with which GPT-2 is comfortable for country dataset are 661
+The total length of the cities with which GPT-2 is comfortable for country dataset are 661
+The total number of samples with which GPT-2 is comfortable for continent dataset are 974
+The total length of the cities with which GPT-2 is comfortable for continent dataset are 974
+
+
+
+
+
+
+  9%|███████████▌                                                                                                               | 5833/62250 [00:21<08:40, 108.43it/s]
+Afghanistan Asia
+[0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1]
+
+
+
+ 10%|████████████▋                                                                                                               | 6348/62250 [00:27<12:19, 75.55it/s]
+
+
+
+ 11%|█████████████▉                                                                                                             | 7033/62250 [00:32<06:12, 148.31it/s]
+
+
+ 12%|██████████████▍                                                                                                             | 7252/62250 [00:37<15:30, 59.10it/s]
+[0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
+ 12%|██████████████▎                                                                                                            | 7271/62250 [00:38<04:48, 190.65it/s]
+Traceback (most recent call last):
+  File "/Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/gpt2/main_intervention.py", line 239, in <module>
+    predicted_text = intervention(model=model, source_ids=source_ids, base_ids=base_ids, layer_index=layer_index, intervened_token_idx=intervened_token_idx)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/gpt2/main_intervention.py", line 127, in intervention
+    with model.generate(max_new_tokens=1, pad_token_id=tokenizer.eos_token_id) as tracer:
+  File "/Users/maheepchaudhary/miniforge3/envs/nnsight/lib/python3.12/site-packages/nnsight/contexts/Runner.py", line 41, in __exit__
+    raise exc_val
+  File "/Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/gpt2/main_intervention.py", line 129, in intervention
+    with tracer.invoke(source_ids):
+  File "/Users/maheepchaudhary/miniforge3/envs/nnsight/lib/python3.12/site-packages/nnsight/contexts/Invoker.py", line 69, in __enter__
+    self.tracer._model._execute(
+  File "/Users/maheepchaudhary/miniforge3/envs/nnsight/lib/python3.12/site-packages/nnsight/models/mixins/Generation.py", line 19, in _execute
+    return self._execute_generate(prepared_inputs, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/maheepchaudhary/miniforge3/envs/nnsight/lib/python3.12/site-packages/nnsight/models/LanguageModel.py", line 293, in _execute_generate
+    output = self._model.generate(
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/maheepchaudhary/miniforge3/envs/nnsight/lib/python3.12/site-packages/torch/utils/_contextlib.py", line 115, in decorate_context
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/maheepchaudhary/miniforge3/envs/nnsight/lib/python3.12/site-packages/transformers/generation/utils.py", line 1576, in generate
+    result = self._greedy_search(
+             ^^^^^^^^^^^^^^^^^^^^
+  File "/Users/maheepchaudhary/miniforge3/envs/nnsight/lib/python3.12/site-packages/transformers/generation/utils.py", line 2548, in _greedy_search
+    unfinished_sequences = unfinished_sequences & ~stopping_criteria(input_ids, scores)
+                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/maheepchaudhary/miniforge3/envs/nnsight/lib/python3.12/site-packages/transformers/generation/stopping_criteria.py", line 169, in __call__
+    is_done = is_done | criteria(input_ids, scores, **kwargs)
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/maheepchaudhary/miniforge3/envs/nnsight/lib/python3.12/site-packages/transformers/generation/stopping_criteria.py", line 154, in __call__
+    .eq(self.eos_token_id.unsqueeze(1).to(input_ids.device))
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/maheepchaudhary/miniforge3/envs/nnsight/lib/python3.12/site-packages/torch/_subclasses/fake_tensor.py", line 1780, in __torch_function__
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/maheepchaudhary/miniforge3/envs/nnsight/lib/python3.12/site-packages/torch/utils/_stats.py", line 20, in wrapper
+    return fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^
+  File "/Users/maheepchaudhary/miniforge3/envs/nnsight/lib/python3.12/site-packages/torch/_subclasses/fake_tensor.py", line 896, in __torch_dispatch__
+    return self.dispatch(func, types, args, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/maheepchaudhary/miniforge3/envs/nnsight/lib/python3.12/site-packages/torch/_subclasses/fake_tensor.py", line 1241, in dispatch
+    return self._cached_dispatch_impl(func, types, args, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/maheepchaudhary/miniforge3/envs/nnsight/lib/python3.12/site-packages/torch/_subclasses/fake_tensor.py", line 974, in _cached_dispatch_impl
+    output = self._dispatch_impl(func, types, args, kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/maheepchaudhary/miniforge3/envs/nnsight/lib/python3.12/site-packages/torch/_subclasses/fake_tensor.py", line 1347, in _dispatch_impl
+    out = func(*const_args, **const_kwargs)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/maheepchaudhary/miniforge3/envs/nnsight/lib/python3.12/site-packages/torch/_ops.py", line 594, in __call__
+    return self_._op(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+KeyboardInterrupt

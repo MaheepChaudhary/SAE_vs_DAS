@@ -1,0 +1,8 @@
+l4_mask: requires_grad=True
+87150
+  0%|              | 18/87150 [00:02<2:58:03,  8.16it/s]
+Traceback (most recent call last):
+  File "/Users/maheepchaudhary/pytorch/Projects/SAE_vs_DAS/gpt2/main_train.py", line 174, in <module>
+    ground_truth_token_id = source_label_ids
+                            ^^^^^^^^^^^^^^^^
+NameError: name 'source_label_ids' is not defined. Did you mean: 'source_label'?
