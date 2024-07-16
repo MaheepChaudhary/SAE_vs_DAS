@@ -407,7 +407,7 @@ if __name__ == "__main__":
             l4_mask_cpu = training_model.l4_mask.to('cpu')  # Move tensor to CPU
 
             # Create a boolean mask where the condition is true
-            mask_greater_than_0_5 = l4_mask_cpu > 0.5
+            mask_greater_than_0_5 = l4_mask_cpu > 0
             mask_equal_to_0 = l4_mask_cpu == 0
 
             # Sum the mask to get the number of elements satisfying the conditions
