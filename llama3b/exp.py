@@ -1,4 +1,3 @@
-import torch as t
 import os
 from sae.sae import Sae
 

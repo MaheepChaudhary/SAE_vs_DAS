@@ -1,3 +1,7 @@
+gpt2/*
+llama3b/sae/*
+saved_models/*
+dictionary_learning
 .DS_Store
 .conda/
 Pythia/baulab.us/

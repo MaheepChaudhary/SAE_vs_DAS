@@ -1,0 +1,546 @@
+1399
+<built-in method float of Tensor object at 0x33afc28f0>
+torch.Size([16, 142, 32768])
+  0%|          | 0/1399 [00:00<?, ?it/s]/var/folders/_x/mkf1szd12yv28px5ztl_sjjr0000gn/T/ipykernel_24322/3948925039.py:37: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  embed_mask_sigmoid = t.sigmoid(self.embed_mask / t.tensor(self.temperature))
+/var/folders/_x/mkf1szd12yv28px5ztl_sjjr0000gn/T/ipykernel_24322/3948925039.py:38: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  l1_mask_sigmoid = t.sigmoid(self.l1_mask / t.tensor(self.temperature))
+/var/folders/_x/mkf1szd12yv28px5ztl_sjjr0000gn/T/ipykernel_24322/3948925039.py:39: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  l2_mask_sigmoid = t.sigmoid(self.l2_mask / t.tensor(self.temperature))
+/var/folders/_x/mkf1szd12yv28px5ztl_sjjr0000gn/T/ipykernel_24322/3948925039.py:40: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  l3_mask_sigmoid = t.sigmoid(self.l3_mask / t.tensor(self.temperature))
+/var/folders/_x/mkf1szd12yv28px5ztl_sjjr0000gn/T/ipykernel_24322/3948925039.py:41: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  l4_mask_sigmoid = t.sigmoid(self.l4_mask / t.tensor(self.temperature))
+You're using a GPTNeoXTokenizerFast tokenizer. Please note that with a fast tokenizer, using the `__call__` method is faster than using a method to encode the text followed by a call to the `pad` method to get a padded encoding.
+torch.Size([16])
+<built-in method float of Tensor object at 0x33afc28f0>
+<built-in method float of Tensor object at 0x33afc0050>
+torch.Size([16, 159, 32768])
+  0%|          | 1/1399 [00:02<57:46,  2.48s/it]/var/folders/_x/mkf1szd12yv28px5ztl_sjjr0000gn/T/ipykernel_24322/3948925039.py:37: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  embed_mask_sigmoid = t.sigmoid(self.embed_mask / t.tensor(self.temperature))
+/var/folders/_x/mkf1szd12yv28px5ztl_sjjr0000gn/T/ipykernel_24322/3948925039.py:38: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  l1_mask_sigmoid = t.sigmoid(self.l1_mask / t.tensor(self.temperature))
+/var/folders/_x/mkf1szd12yv28px5ztl_sjjr0000gn/T/ipykernel_24322/3948925039.py:39: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  l2_mask_sigmoid = t.sigmoid(self.l2_mask / t.tensor(self.temperature))
+/var/folders/_x/mkf1szd12yv28px5ztl_sjjr0000gn/T/ipykernel_24322/3948925039.py:40: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  l3_mask_sigmoid = t.sigmoid(self.l3_mask / t.tensor(self.temperature))
+/var/folders/_x/mkf1szd12yv28px5ztl_sjjr0000gn/T/ipykernel_24322/3948925039.py:41: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  l4_mask_sigmoid = t.sigmoid(self.l4_mask / t.tensor(self.temperature))
+torch.Size([16])
+<built-in method float of Tensor object at 0x33afc0050>
+  0%|          | 2/1399 [00:05<1:07:25,  2.90s/it]/var/folders/_x/mkf1szd12yv28px5ztl_sjjr0000gn/T/ipykernel_24322/3948925039.py:37: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  embed_mask_sigmoid = t.sigmoid(self.embed_mask / t.tensor(self.temperature))
+/var/folders/_x/mkf1szd12yv28px5ztl_sjjr0000gn/T/ipykernel_24322/3948925039.py:38: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  l1_mask_sigmoid = t.sigmoid(self.l1_mask / t.tensor(self.temperature))
+/var/folders/_x/mkf1szd12yv28px5ztl_sjjr0000gn/T/ipykernel_24322/3948925039.py:39: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  l2_mask_sigmoid = t.sigmoid(self.l2_mask / t.tensor(self.temperature))
+/var/folders/_x/mkf1szd12yv28px5ztl_sjjr0000gn/T/ipykernel_24322/3948925039.py:40: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  l3_mask_sigmoid = t.sigmoid(self.l3_mask / t.tensor(self.temperature))
+/var/folders/_x/mkf1szd12yv28px5ztl_sjjr0000gn/T/ipykernel_24322/3948925039.py:41: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  l4_mask_sigmoid = t.sigmoid(self.l4_mask / t.tensor(self.temperature))
+<built-in method float of Tensor object at 0x33afc01e0>
+torch.Size([16, 212, 32768])
+torch.Size([16])
+<built-in method float of Tensor object at 0x33afc01e0>
+  0%|          | 3/1399 [00:34<5:47:33, 14.94s/it]/var/folders/_x/mkf1szd12yv28px5ztl_sjjr0000gn/T/ipykernel_24322/3948925039.py:37: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  embed_mask_sigmoid = t.sigmoid(self.embed_mask / t.tensor(self.temperature))
+/var/folders/_x/mkf1szd12yv28px5ztl_sjjr0000gn/T/ipykernel_24322/3948925039.py:38: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  l1_mask_sigmoid = t.sigmoid(self.l1_mask / t.tensor(self.temperature))
+/var/folders/_x/mkf1szd12yv28px5ztl_sjjr0000gn/T/ipykernel_24322/3948925039.py:39: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  l2_mask_sigmoid = t.sigmoid(self.l2_mask / t.tensor(self.temperature))
+/var/folders/_x/mkf1szd12yv28px5ztl_sjjr0000gn/T/ipykernel_24322/3948925039.py:40: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  l3_mask_sigmoid = t.sigmoid(self.l3_mask / t.tensor(self.temperature))
+/var/folders/_x/mkf1szd12yv28px5ztl_sjjr0000gn/T/ipykernel_24322/3948925039.py:41: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  l4_mask_sigmoid = t.sigmoid(self.l4_mask / t.tensor(self.temperature))
+<built-in method float of Tensor object at 0x33afc1f90>
+torch.Size([16, 150, 32768])
+torch.Size([16])
+<built-in method float of Tensor object at 0x33afc1f90>
+  0%|          | 4/1399 [01:12<9:16:51, 23.95s/it]/var/folders/_x/mkf1szd12yv28px5ztl_sjjr0000gn/T/ipykernel_24322/3948925039.py:37: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  embed_mask_sigmoid = t.sigmoid(self.embed_mask / t.tensor(self.temperature))
+/var/folders/_x/mkf1szd12yv28px5ztl_sjjr0000gn/T/ipykernel_24322/3948925039.py:38: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  l1_mask_sigmoid = t.sigmoid(self.l1_mask / t.tensor(self.temperature))
+/var/folders/_x/mkf1szd12yv28px5ztl_sjjr0000gn/T/ipykernel_24322/3948925039.py:39: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  l2_mask_sigmoid = t.sigmoid(self.l2_mask / t.tensor(self.temperature))
+/var/folders/_x/mkf1szd12yv28px5ztl_sjjr0000gn/T/ipykernel_24322/3948925039.py:40: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  l3_mask_sigmoid = t.sigmoid(self.l3_mask / t.tensor(self.temperature))
+/var/folders/_x/mkf1szd12yv28px5ztl_sjjr0000gn/T/ipykernel_24322/3948925039.py:41: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  l4_mask_sigmoid = t.sigmoid(self.l4_mask / t.tensor(self.temperature))
+<built-in method float of Tensor object at 0x33afc0410>
+torch.Size([16, 164, 32768])
+torch.Size([16])
+<built-in method float of Tensor object at 0x33afc0410>
+  0%|          | 5/1399 [02:17<14:57:45, 38.64s/it]/var/folders/_x/mkf1szd12yv28px5ztl_sjjr0000gn/T/ipykernel_24322/3948925039.py:37: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  embed_mask_sigmoid = t.sigmoid(self.embed_mask / t.tensor(self.temperature))
+/var/folders/_x/mkf1szd12yv28px5ztl_sjjr0000gn/T/ipykernel_24322/3948925039.py:38: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  l1_mask_sigmoid = t.sigmoid(self.l1_mask / t.tensor(self.temperature))
+/var/folders/_x/mkf1szd12yv28px5ztl_sjjr0000gn/T/ipykernel_24322/3948925039.py:39: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  l2_mask_sigmoid = t.sigmoid(self.l2_mask / t.tensor(self.temperature))
+/var/folders/_x/mkf1szd12yv28px5ztl_sjjr0000gn/T/ipykernel_24322/3948925039.py:40: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  l3_mask_sigmoid = t.sigmoid(self.l3_mask / t.tensor(self.temperature))
+/var/folders/_x/mkf1szd12yv28px5ztl_sjjr0000gn/T/ipykernel_24322/3948925039.py:41: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  l4_mask_sigmoid = t.sigmoid(self.l4_mask / t.tensor(self.temperature))
+<built-in method float of Tensor object at 0x33afed400>
+torch.Size([16, 181, 32768])
+torch.Size([16])
+<built-in method float of Tensor object at 0x33afed400>
+  0%|          | 6/1399 [02:41<13:00:39, 33.63s/it]/var/folders/_x/mkf1szd12yv28px5ztl_sjjr0000gn/T/ipykernel_24322/3948925039.py:37: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  embed_mask_sigmoid = t.sigmoid(self.embed_mask / t.tensor(self.temperature))
+/var/folders/_x/mkf1szd12yv28px5ztl_sjjr0000gn/T/ipykernel_24322/3948925039.py:38: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  l1_mask_sigmoid = t.sigmoid(self.l1_mask / t.tensor(self.temperature))
+/var/folders/_x/mkf1szd12yv28px5ztl_sjjr0000gn/T/ipykernel_24322/3948925039.py:39: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  l2_mask_sigmoid = t.sigmoid(self.l2_mask / t.tensor(self.temperature))
+/var/folders/_x/mkf1szd12yv28px5ztl_sjjr0000gn/T/ipykernel_24322/3948925039.py:40: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  l3_mask_sigmoid = t.sigmoid(self.l3_mask / t.tensor(self.temperature))
+/var/folders/_x/mkf1szd12yv28px5ztl_sjjr0000gn/T/ipykernel_24322/3948925039.py:41: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  l4_mask_sigmoid = t.sigmoid(self.l4_mask / t.tensor(self.temperature))
+python(26595) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+<built-in method float of Tensor object at 0x33afef7a0>
+torch.Size([16, 130, 32768])
+  1%|          | 7/1399 [02:46<9:21:41, 24.21s/it] /var/folders/_x/mkf1szd12yv28px5ztl_sjjr0000gn/T/ipykernel_24322/3948925039.py:37: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  embed_mask_sigmoid = t.sigmoid(self.embed_mask / t.tensor(self.temperature))
+/var/folders/_x/mkf1szd12yv28px5ztl_sjjr0000gn/T/ipykernel_24322/3948925039.py:38: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  l1_mask_sigmoid = t.sigmoid(self.l1_mask / t.tensor(self.temperature))
+/var/folders/_x/mkf1szd12yv28px5ztl_sjjr0000gn/T/ipykernel_24322/3948925039.py:39: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  l2_mask_sigmoid = t.sigmoid(self.l2_mask / t.tensor(self.temperature))
+/var/folders/_x/mkf1szd12yv28px5ztl_sjjr0000gn/T/ipykernel_24322/3948925039.py:40: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  l3_mask_sigmoid = t.sigmoid(self.l3_mask / t.tensor(self.temperature))
+/var/folders/_x/mkf1szd12yv28px5ztl_sjjr0000gn/T/ipykernel_24322/3948925039.py:41: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  l4_mask_sigmoid = t.sigmoid(self.l4_mask / t.tensor(self.temperature))
+python(26623) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+torch.Size([16])
+<built-in method float of Tensor object at 0x33afef7a0>
+<built-in method float of Tensor object at 0x33afef8e0>
+torch.Size([16, 175, 32768])
+python(26649) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+python(26674) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+  1%|          | 8/1399 [02:51<7:04:31, 18.31s/it]/var/folders/_x/mkf1szd12yv28px5ztl_sjjr0000gn/T/ipykernel_24322/3948925039.py:37: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  embed_mask_sigmoid = t.sigmoid(self.embed_mask / t.tensor(self.temperature))
+/var/folders/_x/mkf1szd12yv28px5ztl_sjjr0000gn/T/ipykernel_24322/3948925039.py:38: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  l1_mask_sigmoid = t.sigmoid(self.l1_mask / t.tensor(self.temperature))
+/var/folders/_x/mkf1szd12yv28px5ztl_sjjr0000gn/T/ipykernel_24322/3948925039.py:39: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  l2_mask_sigmoid = t.sigmoid(self.l2_mask / t.tensor(self.temperature))
+/var/folders/_x/mkf1szd12yv28px5ztl_sjjr0000gn/T/ipykernel_24322/3948925039.py:40: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  l3_mask_sigmoid = t.sigmoid(self.l3_mask / t.tensor(self.temperature))
+/var/folders/_x/mkf1szd12yv28px5ztl_sjjr0000gn/T/ipykernel_24322/3948925039.py:41: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  l4_mask_sigmoid = t.sigmoid(self.l4_mask / t.tensor(self.temperature))
+torch.Size([16])
+<built-in method float of Tensor object at 0x33afef8e0>
+<built-in method float of Tensor object at 0x33afefa20>
+torch.Size([16, 161, 32768])
+python(26718) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+python(26743) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+torch.Size([16])
+<built-in method float of Tensor object at 0x33afefa20>
+<built-in method float of Tensor object at 0x33afefb60>
+  1%|          | 9/1399 [02:58<5:39:01, 14.63s/it]/var/folders/_x/mkf1szd12yv28px5ztl_sjjr0000gn/T/ipykernel_24322/3948925039.py:37: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  embed_mask_sigmoid = t.sigmoid(self.embed_mask / t.tensor(self.temperature))
+/var/folders/_x/mkf1szd12yv28px5ztl_sjjr0000gn/T/ipykernel_24322/3948925039.py:38: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  l1_mask_sigmoid = t.sigmoid(self.l1_mask / t.tensor(self.temperature))
+/var/folders/_x/mkf1szd12yv28px5ztl_sjjr0000gn/T/ipykernel_24322/3948925039.py:39: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  l2_mask_sigmoid = t.sigmoid(self.l2_mask / t.tensor(self.temperature))
+/var/folders/_x/mkf1szd12yv28px5ztl_sjjr0000gn/T/ipykernel_24322/3948925039.py:40: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  l3_mask_sigmoid = t.sigmoid(self.l3_mask / t.tensor(self.temperature))
+/var/folders/_x/mkf1szd12yv28px5ztl_sjjr0000gn/T/ipykernel_24322/3948925039.py:41: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  l4_mask_sigmoid = t.sigmoid(self.l4_mask / t.tensor(self.temperature))
+python(26769) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+python(26794) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+torch.Size([16, 156, 32768])
+torch.Size([16])
+<built-in method float of Tensor object at 0x33afefb60>
+<built-in method float of Tensor object at 0x33afefc50>
+  1%|          | 10/1399 [03:02<4:25:06, 11.45s/it]/var/folders/_x/mkf1szd12yv28px5ztl_sjjr0000gn/T/ipykernel_24322/3948925039.py:37: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  embed_mask_sigmoid = t.sigmoid(self.embed_mask / t.tensor(self.temperature))
+/var/folders/_x/mkf1szd12yv28px5ztl_sjjr0000gn/T/ipykernel_24322/3948925039.py:38: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  l1_mask_sigmoid = t.sigmoid(self.l1_mask / t.tensor(self.temperature))
+/var/folders/_x/mkf1szd12yv28px5ztl_sjjr0000gn/T/ipykernel_24322/3948925039.py:39: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  l2_mask_sigmoid = t.sigmoid(self.l2_mask / t.tensor(self.temperature))
+/var/folders/_x/mkf1szd12yv28px5ztl_sjjr0000gn/T/ipykernel_24322/3948925039.py:40: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  l3_mask_sigmoid = t.sigmoid(self.l3_mask / t.tensor(self.temperature))
+/var/folders/_x/mkf1szd12yv28px5ztl_sjjr0000gn/T/ipykernel_24322/3948925039.py:41: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  l4_mask_sigmoid = t.sigmoid(self.l4_mask / t.tensor(self.temperature))
+python(26820) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+python(26845) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+torch.Size([16, 186, 32768])
+torch.Size([16])
+<built-in method float of Tensor object at 0x33afefc50>
+<built-in method float of Tensor object at 0x33afefde0>
+  1%|          | 11/1399 [03:08<3:44:25,  9.70s/it]/var/folders/_x/mkf1szd12yv28px5ztl_sjjr0000gn/T/ipykernel_24322/3948925039.py:37: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  embed_mask_sigmoid = t.sigmoid(self.embed_mask / t.tensor(self.temperature))
+/var/folders/_x/mkf1szd12yv28px5ztl_sjjr0000gn/T/ipykernel_24322/3948925039.py:38: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  l1_mask_sigmoid = t.sigmoid(self.l1_mask / t.tensor(self.temperature))
+/var/folders/_x/mkf1szd12yv28px5ztl_sjjr0000gn/T/ipykernel_24322/3948925039.py:39: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  l2_mask_sigmoid = t.sigmoid(self.l2_mask / t.tensor(self.temperature))
+/var/folders/_x/mkf1szd12yv28px5ztl_sjjr0000gn/T/ipykernel_24322/3948925039.py:40: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  l3_mask_sigmoid = t.sigmoid(self.l3_mask / t.tensor(self.temperature))
+/var/folders/_x/mkf1szd12yv28px5ztl_sjjr0000gn/T/ipykernel_24322/3948925039.py:41: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  l4_mask_sigmoid = t.sigmoid(self.l4_mask / t.tensor(self.temperature))
+python(26889) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+torch.Size([16, 174, 32768])
+python(26916) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+python(26941) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+python(26967) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+torch.Size([16])
+<built-in method float of Tensor object at 0x33afefde0>
+<built-in method float of Tensor object at 0x33afeffc0>
+python(26993) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+  1%|          | 12/1399 [03:18<3:48:49,  9.90s/it]/var/folders/_x/mkf1szd12yv28px5ztl_sjjr0000gn/T/ipykernel_24322/3948925039.py:37: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  embed_mask_sigmoid = t.sigmoid(self.embed_mask / t.tensor(self.temperature))
+/var/folders/_x/mkf1szd12yv28px5ztl_sjjr0000gn/T/ipykernel_24322/3948925039.py:38: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  l1_mask_sigmoid = t.sigmoid(self.l1_mask / t.tensor(self.temperature))
+/var/folders/_x/mkf1szd12yv28px5ztl_sjjr0000gn/T/ipykernel_24322/3948925039.py:39: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  l2_mask_sigmoid = t.sigmoid(self.l2_mask / t.tensor(self.temperature))
+/var/folders/_x/mkf1szd12yv28px5ztl_sjjr0000gn/T/ipykernel_24322/3948925039.py:40: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  l3_mask_sigmoid = t.sigmoid(self.l3_mask / t.tensor(self.temperature))
+/var/folders/_x/mkf1szd12yv28px5ztl_sjjr0000gn/T/ipykernel_24322/3948925039.py:41: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  l4_mask_sigmoid = t.sigmoid(self.l4_mask / t.tensor(self.temperature))
+python(27036) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+torch.Size([16, 136, 32768])
+python(27061) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+python(27087) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+python(27113) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+torch.Size([16])
+<built-in method float of Tensor object at 0x33afeffc0>
+<built-in method float of Tensor object at 0x33afa8aa0>
+  1%|          | 13/1399 [03:28<3:50:30,  9.98s/it]/var/folders/_x/mkf1szd12yv28px5ztl_sjjr0000gn/T/ipykernel_24322/3948925039.py:37: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  embed_mask_sigmoid = t.sigmoid(self.embed_mask / t.tensor(self.temperature))
+/var/folders/_x/mkf1szd12yv28px5ztl_sjjr0000gn/T/ipykernel_24322/3948925039.py:38: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  l1_mask_sigmoid = t.sigmoid(self.l1_mask / t.tensor(self.temperature))
+/var/folders/_x/mkf1szd12yv28px5ztl_sjjr0000gn/T/ipykernel_24322/3948925039.py:39: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  l2_mask_sigmoid = t.sigmoid(self.l2_mask / t.tensor(self.temperature))
+/var/folders/_x/mkf1szd12yv28px5ztl_sjjr0000gn/T/ipykernel_24322/3948925039.py:40: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  l3_mask_sigmoid = t.sigmoid(self.l3_mask / t.tensor(self.temperature))
+/var/folders/_x/mkf1szd12yv28px5ztl_sjjr0000gn/T/ipykernel_24322/3948925039.py:41: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  l4_mask_sigmoid = t.sigmoid(self.l4_mask / t.tensor(self.temperature))
+torch.Size([16, 123, 32768])
+torch.Size([16])
+<built-in method float of Tensor object at 0x33afa8aa0>
+python(27138) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+  1%|          | 14/1399 [03:31<2:57:45,  7.70s/it]/var/folders/_x/mkf1szd12yv28px5ztl_sjjr0000gn/T/ipykernel_24322/3948925039.py:37: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  embed_mask_sigmoid = t.sigmoid(self.embed_mask / t.tensor(self.temperature))
+/var/folders/_x/mkf1szd12yv28px5ztl_sjjr0000gn/T/ipykernel_24322/3948925039.py:38: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  l1_mask_sigmoid = t.sigmoid(self.l1_mask / t.tensor(self.temperature))
+/var/folders/_x/mkf1szd12yv28px5ztl_sjjr0000gn/T/ipykernel_24322/3948925039.py:39: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  l2_mask_sigmoid = t.sigmoid(self.l2_mask / t.tensor(self.temperature))
+/var/folders/_x/mkf1szd12yv28px5ztl_sjjr0000gn/T/ipykernel_24322/3948925039.py:40: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  l3_mask_sigmoid = t.sigmoid(self.l3_mask / t.tensor(self.temperature))
+/var/folders/_x/mkf1szd12yv28px5ztl_sjjr0000gn/T/ipykernel_24322/3948925039.py:41: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  l4_mask_sigmoid = t.sigmoid(self.l4_mask / t.tensor(self.temperature))
+<built-in method float of Tensor object at 0x33afa8c30>
+torch.Size([16, 152, 32768])
+python(27181) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+python(27207) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+torch.Size([16])
+<built-in method float of Tensor object at 0x33afa8c30>
+  1%|          | 15/1399 [03:37<2:43:49,  7.10s/it]/var/folders/_x/mkf1szd12yv28px5ztl_sjjr0000gn/T/ipykernel_24322/3948925039.py:37: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  embed_mask_sigmoid = t.sigmoid(self.embed_mask / t.tensor(self.temperature))
+/var/folders/_x/mkf1szd12yv28px5ztl_sjjr0000gn/T/ipykernel_24322/3948925039.py:38: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  l1_mask_sigmoid = t.sigmoid(self.l1_mask / t.tensor(self.temperature))
+/var/folders/_x/mkf1szd12yv28px5ztl_sjjr0000gn/T/ipykernel_24322/3948925039.py:39: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  l2_mask_sigmoid = t.sigmoid(self.l2_mask / t.tensor(self.temperature))
+/var/folders/_x/mkf1szd12yv28px5ztl_sjjr0000gn/T/ipykernel_24322/3948925039.py:40: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  l3_mask_sigmoid = t.sigmoid(self.l3_mask / t.tensor(self.temperature))
+/var/folders/_x/mkf1szd12yv28px5ztl_sjjr0000gn/T/ipykernel_24322/3948925039.py:41: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  l4_mask_sigmoid = t.sigmoid(self.l4_mask / t.tensor(self.temperature))
+python(27233) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+<built-in method float of Tensor object at 0x33afa8d70>
+torch.Size([16, 159, 32768])
+python(27258) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+torch.Size([16])
+<built-in method float of Tensor object at 0x33afa8d70>
+<built-in method float of Tensor object at 0x33afa8eb0>
+python(27283) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+  1%|          | 16/1399 [03:43<2:36:07,  6.77s/it]/var/folders/_x/mkf1szd12yv28px5ztl_sjjr0000gn/T/ipykernel_24322/3948925039.py:37: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  embed_mask_sigmoid = t.sigmoid(self.embed_mask / t.tensor(self.temperature))
+/var/folders/_x/mkf1szd12yv28px5ztl_sjjr0000gn/T/ipykernel_24322/3948925039.py:38: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  l1_mask_sigmoid = t.sigmoid(self.l1_mask / t.tensor(self.temperature))
+/var/folders/_x/mkf1szd12yv28px5ztl_sjjr0000gn/T/ipykernel_24322/3948925039.py:39: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  l2_mask_sigmoid = t.sigmoid(self.l2_mask / t.tensor(self.temperature))
+/var/folders/_x/mkf1szd12yv28px5ztl_sjjr0000gn/T/ipykernel_24322/3948925039.py:40: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  l3_mask_sigmoid = t.sigmoid(self.l3_mask / t.tensor(self.temperature))
+/var/folders/_x/mkf1szd12yv28px5ztl_sjjr0000gn/T/ipykernel_24322/3948925039.py:41: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  l4_mask_sigmoid = t.sigmoid(self.l4_mask / t.tensor(self.temperature))
+python(27309) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+torch.Size([16, 186, 32768])
+python(27352) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+python(27378) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+torch.Size([16])
+<built-in method float of Tensor object at 0x33afa8eb0>
+python(27403) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+  1%|          | 17/1399 [03:53<2:59:34,  7.80s/it]/var/folders/_x/mkf1szd12yv28px5ztl_sjjr0000gn/T/ipykernel_24322/3948925039.py:37: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  embed_mask_sigmoid = t.sigmoid(self.embed_mask / t.tensor(self.temperature))
+/var/folders/_x/mkf1szd12yv28px5ztl_sjjr0000gn/T/ipykernel_24322/3948925039.py:38: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  l1_mask_sigmoid = t.sigmoid(self.l1_mask / t.tensor(self.temperature))
+/var/folders/_x/mkf1szd12yv28px5ztl_sjjr0000gn/T/ipykernel_24322/3948925039.py:39: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  l2_mask_sigmoid = t.sigmoid(self.l2_mask / t.tensor(self.temperature))
+/var/folders/_x/mkf1szd12yv28px5ztl_sjjr0000gn/T/ipykernel_24322/3948925039.py:40: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  l3_mask_sigmoid = t.sigmoid(self.l3_mask / t.tensor(self.temperature))
+/var/folders/_x/mkf1szd12yv28px5ztl_sjjr0000gn/T/ipykernel_24322/3948925039.py:41: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  l4_mask_sigmoid = t.sigmoid(self.l4_mask / t.tensor(self.temperature))
+<built-in method float of Tensor object at 0x33afa8ff0>
+python(27429) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+python(27454) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+torch.Size([16, 160, 32768])
+python(27480) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+python(27524) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+torch.Size([16])
+<built-in method float of Tensor object at 0x33afa8ff0>
+  1%|▏         | 18/1399 [04:06<3:35:43,  9.37s/it]/var/folders/_x/mkf1szd12yv28px5ztl_sjjr0000gn/T/ipykernel_24322/3948925039.py:37: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  embed_mask_sigmoid = t.sigmoid(self.embed_mask / t.tensor(self.temperature))
+/var/folders/_x/mkf1szd12yv28px5ztl_sjjr0000gn/T/ipykernel_24322/3948925039.py:38: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  l1_mask_sigmoid = t.sigmoid(self.l1_mask / t.tensor(self.temperature))
+/var/folders/_x/mkf1szd12yv28px5ztl_sjjr0000gn/T/ipykernel_24322/3948925039.py:39: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  l2_mask_sigmoid = t.sigmoid(self.l2_mask / t.tensor(self.temperature))
+/var/folders/_x/mkf1szd12yv28px5ztl_sjjr0000gn/T/ipykernel_24322/3948925039.py:40: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  l3_mask_sigmoid = t.sigmoid(self.l3_mask / t.tensor(self.temperature))
+/var/folders/_x/mkf1szd12yv28px5ztl_sjjr0000gn/T/ipykernel_24322/3948925039.py:41: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  l4_mask_sigmoid = t.sigmoid(self.l4_mask / t.tensor(self.temperature))
+python(27551) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+<built-in method float of Tensor object at 0x33afa9130>
+torch.Size([16, 160, 32768])
+python(27579) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+python(27625) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+  1%|▏         | 19/1399 [04:12<3:16:22,  8.54s/it]/var/folders/_x/mkf1szd12yv28px5ztl_sjjr0000gn/T/ipykernel_24322/3948925039.py:37: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  embed_mask_sigmoid = t.sigmoid(self.embed_mask / t.tensor(self.temperature))
+/var/folders/_x/mkf1szd12yv28px5ztl_sjjr0000gn/T/ipykernel_24322/3948925039.py:38: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  l1_mask_sigmoid = t.sigmoid(self.l1_mask / t.tensor(self.temperature))
+/var/folders/_x/mkf1szd12yv28px5ztl_sjjr0000gn/T/ipykernel_24322/3948925039.py:39: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  l2_mask_sigmoid = t.sigmoid(self.l2_mask / t.tensor(self.temperature))
+/var/folders/_x/mkf1szd12yv28px5ztl_sjjr0000gn/T/ipykernel_24322/3948925039.py:40: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  l3_mask_sigmoid = t.sigmoid(self.l3_mask / t.tensor(self.temperature))
+/var/folders/_x/mkf1szd12yv28px5ztl_sjjr0000gn/T/ipykernel_24322/3948925039.py:41: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  l4_mask_sigmoid = t.sigmoid(self.l4_mask / t.tensor(self.temperature))
+torch.Size([16])
+<built-in method float of Tensor object at 0x33afa9130>
+<built-in method float of Tensor object at 0x33afa9270>
+python(27651) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+python(27677) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+python(27704) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+torch.Size([16, 173, 32768])
+python(27729) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+python(27754) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+python(27800) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+python(27826) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+  1%|▏         | 20/1399 [04:30<4:18:25, 11.24s/it]/var/folders/_x/mkf1szd12yv28px5ztl_sjjr0000gn/T/ipykernel_24322/3948925039.py:37: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  embed_mask_sigmoid = t.sigmoid(self.embed_mask / t.tensor(self.temperature))
+/var/folders/_x/mkf1szd12yv28px5ztl_sjjr0000gn/T/ipykernel_24322/3948925039.py:38: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  l1_mask_sigmoid = t.sigmoid(self.l1_mask / t.tensor(self.temperature))
+/var/folders/_x/mkf1szd12yv28px5ztl_sjjr0000gn/T/ipykernel_24322/3948925039.py:39: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  l2_mask_sigmoid = t.sigmoid(self.l2_mask / t.tensor(self.temperature))
+/var/folders/_x/mkf1szd12yv28px5ztl_sjjr0000gn/T/ipykernel_24322/3948925039.py:40: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  l3_mask_sigmoid = t.sigmoid(self.l3_mask / t.tensor(self.temperature))
+/var/folders/_x/mkf1szd12yv28px5ztl_sjjr0000gn/T/ipykernel_24322/3948925039.py:41: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  l4_mask_sigmoid = t.sigmoid(self.l4_mask / t.tensor(self.temperature))
+python(27852) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+torch.Size([16])
+<built-in method float of Tensor object at 0x33afa9270>
+<built-in method float of Tensor object at 0x33afa93b0>
+torch.Size([16, 148, 32768])
+torch.Size([16])
+<built-in method float of Tensor object at 0x33afa93b0>
+<built-in method float of Tensor object at 0x33afa94f0>
+  2%|▏         | 21/1399 [04:33<3:19:50,  8.70s/it]/var/folders/_x/mkf1szd12yv28px5ztl_sjjr0000gn/T/ipykernel_24322/3948925039.py:37: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  embed_mask_sigmoid = t.sigmoid(self.embed_mask / t.tensor(self.temperature))
+/var/folders/_x/mkf1szd12yv28px5ztl_sjjr0000gn/T/ipykernel_24322/3948925039.py:38: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  l1_mask_sigmoid = t.sigmoid(self.l1_mask / t.tensor(self.temperature))
+/var/folders/_x/mkf1szd12yv28px5ztl_sjjr0000gn/T/ipykernel_24322/3948925039.py:39: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  l2_mask_sigmoid = t.sigmoid(self.l2_mask / t.tensor(self.temperature))
+/var/folders/_x/mkf1szd12yv28px5ztl_sjjr0000gn/T/ipykernel_24322/3948925039.py:40: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  l3_mask_sigmoid = t.sigmoid(self.l3_mask / t.tensor(self.temperature))
+/var/folders/_x/mkf1szd12yv28px5ztl_sjjr0000gn/T/ipykernel_24322/3948925039.py:41: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  l4_mask_sigmoid = t.sigmoid(self.l4_mask / t.tensor(self.temperature))
+python(27877) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+  2%|▏         | 22/1399 [04:35<2:32:56,  6.66s/it]/var/folders/_x/mkf1szd12yv28px5ztl_sjjr0000gn/T/ipykernel_24322/3948925039.py:37: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  embed_mask_sigmoid = t.sigmoid(self.embed_mask / t.tensor(self.temperature))
+/var/folders/_x/mkf1szd12yv28px5ztl_sjjr0000gn/T/ipykernel_24322/3948925039.py:38: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  l1_mask_sigmoid = t.sigmoid(self.l1_mask / t.tensor(self.temperature))
+/var/folders/_x/mkf1szd12yv28px5ztl_sjjr0000gn/T/ipykernel_24322/3948925039.py:39: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  l2_mask_sigmoid = t.sigmoid(self.l2_mask / t.tensor(self.temperature))
+/var/folders/_x/mkf1szd12yv28px5ztl_sjjr0000gn/T/ipykernel_24322/3948925039.py:40: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  l3_mask_sigmoid = t.sigmoid(self.l3_mask / t.tensor(self.temperature))
+/var/folders/_x/mkf1szd12yv28px5ztl_sjjr0000gn/T/ipykernel_24322/3948925039.py:41: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  l4_mask_sigmoid = t.sigmoid(self.l4_mask / t.tensor(self.temperature))
+torch.Size([16, 143, 32768])
+torch.Size([16])
+<built-in method float of Tensor object at 0x33afa94f0>
+<built-in method float of Tensor object at 0x33afa9630>
+python(27903) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+  2%|▏         | 23/1399 [04:37<2:00:50,  5.27s/it]/var/folders/_x/mkf1szd12yv28px5ztl_sjjr0000gn/T/ipykernel_24322/3948925039.py:37: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  embed_mask_sigmoid = t.sigmoid(self.embed_mask / t.tensor(self.temperature))
+/var/folders/_x/mkf1szd12yv28px5ztl_sjjr0000gn/T/ipykernel_24322/3948925039.py:38: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  l1_mask_sigmoid = t.sigmoid(self.l1_mask / t.tensor(self.temperature))
+/var/folders/_x/mkf1szd12yv28px5ztl_sjjr0000gn/T/ipykernel_24322/3948925039.py:39: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  l2_mask_sigmoid = t.sigmoid(self.l2_mask / t.tensor(self.temperature))
+/var/folders/_x/mkf1szd12yv28px5ztl_sjjr0000gn/T/ipykernel_24322/3948925039.py:40: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  l3_mask_sigmoid = t.sigmoid(self.l3_mask / t.tensor(self.temperature))
+/var/folders/_x/mkf1szd12yv28px5ztl_sjjr0000gn/T/ipykernel_24322/3948925039.py:41: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  l4_mask_sigmoid = t.sigmoid(self.l4_mask / t.tensor(self.temperature))
+torch.Size([16, 151, 32768])
+torch.Size([16])
+<built-in method float of Tensor object at 0x33afa9630>
+<built-in method float of Tensor object at 0x33afa9770>
+python(27947) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+torch.Size([16, 155, 32768])
+python(27972) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+torch.Size([16])
+<built-in method float of Tensor object at 0x33afa9770>
+<built-in method float of Tensor object at 0x33afa98b0>
+  2%|▏         | 24/1399 [04:41<1:53:30,  4.95s/it]/var/folders/_x/mkf1szd12yv28px5ztl_sjjr0000gn/T/ipykernel_24322/3948925039.py:37: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  embed_mask_sigmoid = t.sigmoid(self.embed_mask / t.tensor(self.temperature))
+/var/folders/_x/mkf1szd12yv28px5ztl_sjjr0000gn/T/ipykernel_24322/3948925039.py:38: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  l1_mask_sigmoid = t.sigmoid(self.l1_mask / t.tensor(self.temperature))
+/var/folders/_x/mkf1szd12yv28px5ztl_sjjr0000gn/T/ipykernel_24322/3948925039.py:39: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  l2_mask_sigmoid = t.sigmoid(self.l2_mask / t.tensor(self.temperature))
+/var/folders/_x/mkf1szd12yv28px5ztl_sjjr0000gn/T/ipykernel_24322/3948925039.py:40: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  l3_mask_sigmoid = t.sigmoid(self.l3_mask / t.tensor(self.temperature))
+/var/folders/_x/mkf1szd12yv28px5ztl_sjjr0000gn/T/ipykernel_24322/3948925039.py:41: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  l4_mask_sigmoid = t.sigmoid(self.l4_mask / t.tensor(self.temperature))
+python(27997) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+torch.Size([16, 148, 32768])
+torch.Size([16])
+<built-in method float of Tensor object at 0x33afa98b0>
+  2%|▏         | 25/1399 [04:43<1:36:36,  4.22s/it]/var/folders/_x/mkf1szd12yv28px5ztl_sjjr0000gn/T/ipykernel_24322/3948925039.py:37: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  embed_mask_sigmoid = t.sigmoid(self.embed_mask / t.tensor(self.temperature))
+/var/folders/_x/mkf1szd12yv28px5ztl_sjjr0000gn/T/ipykernel_24322/3948925039.py:38: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  l1_mask_sigmoid = t.sigmoid(self.l1_mask / t.tensor(self.temperature))
+/var/folders/_x/mkf1szd12yv28px5ztl_sjjr0000gn/T/ipykernel_24322/3948925039.py:39: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  l2_mask_sigmoid = t.sigmoid(self.l2_mask / t.tensor(self.temperature))
+/var/folders/_x/mkf1szd12yv28px5ztl_sjjr0000gn/T/ipykernel_24322/3948925039.py:40: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  l3_mask_sigmoid = t.sigmoid(self.l3_mask / t.tensor(self.temperature))
+/var/folders/_x/mkf1szd12yv28px5ztl_sjjr0000gn/T/ipykernel_24322/3948925039.py:41: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  l4_mask_sigmoid = t.sigmoid(self.l4_mask / t.tensor(self.temperature))
+python(28023) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+<built-in method float of Tensor object at 0x33afa99f0>
+torch.Size([16, 161, 32768])
+python(28048) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+python(28092) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+torch.Size([16])
+<built-in method float of Tensor object at 0x33afa99f0>
+<built-in method float of Tensor object at 0x33afa9b30>
+  2%|▏         | 26/1399 [04:51<2:00:10,  5.25s/it]/var/folders/_x/mkf1szd12yv28px5ztl_sjjr0000gn/T/ipykernel_24322/3948925039.py:37: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  embed_mask_sigmoid = t.sigmoid(self.embed_mask / t.tensor(self.temperature))
+/var/folders/_x/mkf1szd12yv28px5ztl_sjjr0000gn/T/ipykernel_24322/3948925039.py:38: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  l1_mask_sigmoid = t.sigmoid(self.l1_mask / t.tensor(self.temperature))
+/var/folders/_x/mkf1szd12yv28px5ztl_sjjr0000gn/T/ipykernel_24322/3948925039.py:39: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  l2_mask_sigmoid = t.sigmoid(self.l2_mask / t.tensor(self.temperature))
+/var/folders/_x/mkf1szd12yv28px5ztl_sjjr0000gn/T/ipykernel_24322/3948925039.py:40: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  l3_mask_sigmoid = t.sigmoid(self.l3_mask / t.tensor(self.temperature))
+/var/folders/_x/mkf1szd12yv28px5ztl_sjjr0000gn/T/ipykernel_24322/3948925039.py:41: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  l4_mask_sigmoid = t.sigmoid(self.l4_mask / t.tensor(self.temperature))
+python(28117) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+torch.Size([16, 198, 32768])
+python(28143) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+python(28169) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+python(28195) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+python(28239) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+python(28283) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+python(28308) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+python(28334) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+python(28360) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+torch.Size([16])
+<built-in method float of Tensor object at 0x33afa9b30>
+python(28386) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+python(28436) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+  2%|▏         | 27/1399 [05:22<4:57:14, 13.00s/it]/var/folders/_x/mkf1szd12yv28px5ztl_sjjr0000gn/T/ipykernel_24322/3948925039.py:37: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  embed_mask_sigmoid = t.sigmoid(self.embed_mask / t.tensor(self.temperature))
+/var/folders/_x/mkf1szd12yv28px5ztl_sjjr0000gn/T/ipykernel_24322/3948925039.py:38: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  l1_mask_sigmoid = t.sigmoid(self.l1_mask / t.tensor(self.temperature))
+/var/folders/_x/mkf1szd12yv28px5ztl_sjjr0000gn/T/ipykernel_24322/3948925039.py:39: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  l2_mask_sigmoid = t.sigmoid(self.l2_mask / t.tensor(self.temperature))
+/var/folders/_x/mkf1szd12yv28px5ztl_sjjr0000gn/T/ipykernel_24322/3948925039.py:40: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  l3_mask_sigmoid = t.sigmoid(self.l3_mask / t.tensor(self.temperature))
+/var/folders/_x/mkf1szd12yv28px5ztl_sjjr0000gn/T/ipykernel_24322/3948925039.py:41: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  l4_mask_sigmoid = t.sigmoid(self.l4_mask / t.tensor(self.temperature))
+python(28464) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+<built-in method float of Tensor object at 0x33afa9c70>
+torch.Size([16, 141, 32768])
+python(28490) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+  2%|▏         | 28/1399 [05:26<3:55:23, 10.30s/it]/var/folders/_x/mkf1szd12yv28px5ztl_sjjr0000gn/T/ipykernel_24322/3948925039.py:37: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  embed_mask_sigmoid = t.sigmoid(self.embed_mask / t.tensor(self.temperature))
+/var/folders/_x/mkf1szd12yv28px5ztl_sjjr0000gn/T/ipykernel_24322/3948925039.py:38: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  l1_mask_sigmoid = t.sigmoid(self.l1_mask / t.tensor(self.temperature))
+/var/folders/_x/mkf1szd12yv28px5ztl_sjjr0000gn/T/ipykernel_24322/3948925039.py:39: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  l2_mask_sigmoid = t.sigmoid(self.l2_mask / t.tensor(self.temperature))
+/var/folders/_x/mkf1szd12yv28px5ztl_sjjr0000gn/T/ipykernel_24322/3948925039.py:40: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  l3_mask_sigmoid = t.sigmoid(self.l3_mask / t.tensor(self.temperature))
+/var/folders/_x/mkf1szd12yv28px5ztl_sjjr0000gn/T/ipykernel_24322/3948925039.py:41: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  l4_mask_sigmoid = t.sigmoid(self.l4_mask / t.tensor(self.temperature))
+torch.Size([16])
+<built-in method float of Tensor object at 0x33afa9c70>
+<built-in method float of Tensor object at 0x33afa9db0>
+torch.Size([16, 114, 32768])
+torch.Size([16])
+<built-in method float of Tensor object at 0x33afa9db0>
+<built-in method float of Tensor object at 0x33afa9ef0>
+torch.Size([16, 179, 32768])
+python(28516) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+  2%|▏         | 29/1399 [05:28<2:58:01,  7.80s/it]/var/folders/_x/mkf1szd12yv28px5ztl_sjjr0000gn/T/ipykernel_24322/3948925039.py:37: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  embed_mask_sigmoid = t.sigmoid(self.embed_mask / t.tensor(self.temperature))
+/var/folders/_x/mkf1szd12yv28px5ztl_sjjr0000gn/T/ipykernel_24322/3948925039.py:38: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  l1_mask_sigmoid = t.sigmoid(self.l1_mask / t.tensor(self.temperature))
+/var/folders/_x/mkf1szd12yv28px5ztl_sjjr0000gn/T/ipykernel_24322/3948925039.py:39: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  l2_mask_sigmoid = t.sigmoid(self.l2_mask / t.tensor(self.temperature))
+/var/folders/_x/mkf1szd12yv28px5ztl_sjjr0000gn/T/ipykernel_24322/3948925039.py:40: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  l3_mask_sigmoid = t.sigmoid(self.l3_mask / t.tensor(self.temperature))
+/var/folders/_x/mkf1szd12yv28px5ztl_sjjr0000gn/T/ipykernel_24322/3948925039.py:41: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  l4_mask_sigmoid = t.sigmoid(self.l4_mask / t.tensor(self.temperature))
+python(28541) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+torch.Size([16])
+<built-in method float of Tensor object at 0x33afa9ef0>
+python(28585) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+  2%|▏         | 30/1399 [05:34<2:43:01,  7.14s/it]/var/folders/_x/mkf1szd12yv28px5ztl_sjjr0000gn/T/ipykernel_24322/3948925039.py:37: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  embed_mask_sigmoid = t.sigmoid(self.embed_mask / t.tensor(self.temperature))
+/var/folders/_x/mkf1szd12yv28px5ztl_sjjr0000gn/T/ipykernel_24322/3948925039.py:38: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  l1_mask_sigmoid = t.sigmoid(self.l1_mask / t.tensor(self.temperature))
+/var/folders/_x/mkf1szd12yv28px5ztl_sjjr0000gn/T/ipykernel_24322/3948925039.py:39: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  l2_mask_sigmoid = t.sigmoid(self.l2_mask / t.tensor(self.temperature))
+/var/folders/_x/mkf1szd12yv28px5ztl_sjjr0000gn/T/ipykernel_24322/3948925039.py:40: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  l3_mask_sigmoid = t.sigmoid(self.l3_mask / t.tensor(self.temperature))
+/var/folders/_x/mkf1szd12yv28px5ztl_sjjr0000gn/T/ipykernel_24322/3948925039.py:41: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  l4_mask_sigmoid = t.sigmoid(self.l4_mask / t.tensor(self.temperature))
+<built-in method float of Tensor object at 0x33afa9fe0>
+torch.Size([16, 135, 32768])
+python(28610) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+  2%|▏         | 31/1399 [05:36<2:12:21,  5.80s/it]/var/folders/_x/mkf1szd12yv28px5ztl_sjjr0000gn/T/ipykernel_24322/3948925039.py:37: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  embed_mask_sigmoid = t.sigmoid(self.embed_mask / t.tensor(self.temperature))
+/var/folders/_x/mkf1szd12yv28px5ztl_sjjr0000gn/T/ipykernel_24322/3948925039.py:38: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  l1_mask_sigmoid = t.sigmoid(self.l1_mask / t.tensor(self.temperature))
+/var/folders/_x/mkf1szd12yv28px5ztl_sjjr0000gn/T/ipykernel_24322/3948925039.py:39: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  l2_mask_sigmoid = t.sigmoid(self.l2_mask / t.tensor(self.temperature))
+/var/folders/_x/mkf1szd12yv28px5ztl_sjjr0000gn/T/ipykernel_24322/3948925039.py:40: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  l3_mask_sigmoid = t.sigmoid(self.l3_mask / t.tensor(self.temperature))
+/var/folders/_x/mkf1szd12yv28px5ztl_sjjr0000gn/T/ipykernel_24322/3948925039.py:41: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  l4_mask_sigmoid = t.sigmoid(self.l4_mask / t.tensor(self.temperature))
+torch.Size([16])
+<built-in method float of Tensor object at 0x33afa9fe0>
+<built-in method float of Tensor object at 0x33afaa120>
+torch.Size([16, 130, 32768])
+  2%|▏         | 32/1399 [05:38<1:44:14,  4.58s/it]/var/folders/_x/mkf1szd12yv28px5ztl_sjjr0000gn/T/ipykernel_24322/3948925039.py:37: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  embed_mask_sigmoid = t.sigmoid(self.embed_mask / t.tensor(self.temperature))
+/var/folders/_x/mkf1szd12yv28px5ztl_sjjr0000gn/T/ipykernel_24322/3948925039.py:38: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  l1_mask_sigmoid = t.sigmoid(self.l1_mask / t.tensor(self.temperature))
+/var/folders/_x/mkf1szd12yv28px5ztl_sjjr0000gn/T/ipykernel_24322/3948925039.py:39: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  l2_mask_sigmoid = t.sigmoid(self.l2_mask / t.tensor(self.temperature))
+/var/folders/_x/mkf1szd12yv28px5ztl_sjjr0000gn/T/ipykernel_24322/3948925039.py:40: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  l3_mask_sigmoid = t.sigmoid(self.l3_mask / t.tensor(self.temperature))
+/var/folders/_x/mkf1szd12yv28px5ztl_sjjr0000gn/T/ipykernel_24322/3948925039.py:41: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  l4_mask_sigmoid = t.sigmoid(self.l4_mask / t.tensor(self.temperature))
+python(28636) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+torch.Size([16])
+<built-in method float of Tensor object at 0x33afaa120>
+<built-in method float of Tensor object at 0x33afaa260>
+torch.Size([16, 153, 32768])
+torch.Size([16])
+<built-in method float of Tensor object at 0x33afaa260>
+<built-in method float of Tensor object at 0x33afaa3a0>
+python(28661) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+  2%|▏         | 33/1399 [05:41<1:34:06,  4.13s/it]/var/folders/_x/mkf1szd12yv28px5ztl_sjjr0000gn/T/ipykernel_24322/3948925039.py:37: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  embed_mask_sigmoid = t.sigmoid(self.embed_mask / t.tensor(self.temperature))
+/var/folders/_x/mkf1szd12yv28px5ztl_sjjr0000gn/T/ipykernel_24322/3948925039.py:38: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  l1_mask_sigmoid = t.sigmoid(self.l1_mask / t.tensor(self.temperature))
+/var/folders/_x/mkf1szd12yv28px5ztl_sjjr0000gn/T/ipykernel_24322/3948925039.py:39: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  l2_mask_sigmoid = t.sigmoid(self.l2_mask / t.tensor(self.temperature))
+/var/folders/_x/mkf1szd12yv28px5ztl_sjjr0000gn/T/ipykernel_24322/3948925039.py:40: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  l3_mask_sigmoid = t.sigmoid(self.l3_mask / t.tensor(self.temperature))
+/var/folders/_x/mkf1szd12yv28px5ztl_sjjr0000gn/T/ipykernel_24322/3948925039.py:41: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  l4_mask_sigmoid = t.sigmoid(self.l4_mask / t.tensor(self.temperature))

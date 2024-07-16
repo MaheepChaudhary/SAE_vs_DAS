@@ -1,0 +1,557 @@
+/var/folders/_x/mkf1szd12yv28px5ztl_sjjr0000gn/T/ipykernel_10411/657093325.py:61: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  self.embed_mask_sigmoid = t.nn.Parameter(t.sigmoid(self.embed_mask / t.tensor(self.temperature)), requires_grad=True)
+/var/folders/_x/mkf1szd12yv28px5ztl_sjjr0000gn/T/ipykernel_10411/657093325.py:65: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  self.l1_mask_sigmoid = t.nn.Parameter(t.sigmoid(self.l1_mask / t.tensor(self.temperature)), requires_grad=True)
+/var/folders/_x/mkf1szd12yv28px5ztl_sjjr0000gn/T/ipykernel_10411/657093325.py:69: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  self.l2_mask_sigmoid = t.nn.Parameter(t.sigmoid(self.l2_mask / t.tensor(self.temperature)), requires_grad=True)
+/var/folders/_x/mkf1szd12yv28px5ztl_sjjr0000gn/T/ipykernel_10411/657093325.py:73: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  self.l3_mask_sigmoid = t.nn.Parameter(t.sigmoid(self.l3_mask / t.tensor(self.temperature)), requires_grad=True)
+/var/folders/_x/mkf1szd12yv28px5ztl_sjjr0000gn/T/ipykernel_10411/657093325.py:78: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  self.l4_mask_sigmoid = t.nn.Parameter(t.sigmoid(self.l4_mask / t.tensor(self.temperature)), requires_grad=True)
+  0%|          | 0/4 [00:00<?, ?it/s]  Truncation was not explicitly activated but `max_length` is provided a specific value, please use `truncation=True` to explicitly truncate examples to max length. Defaulting to 'longest_first' truncation strategy. If you encode pairs of sequences (GLUE-style) with the tokenizer you can select this strategy more precisely by providing a specific strategy to `truncation`.
+  0%|          | 0/100 [00:00<?, ?it/s]
+  4%|▍         | 4/100 [00:02<00:49,  1.95it/s]
+torch.Size([11, 32768])
+torch.Size([11, 32768])
+torch.Size([11, 32768])
+torch.Size([11, 32768])
+
+  8%|▊         | 8/100 [00:04<00:45,  2.04it/s]
+torch.Size([11, 32768])
+torch.Size([11, 32768])
+torch.Size([11, 32768])
+torch.Size([11, 32768])
+torch.Size([11, 32768])
+torch.Size([11, 32768])
+torch.Size([11, 32768])
+
+ 12%|█▏        | 12/100 [00:06<00:47,  1.85it/s]
+torch.Size([11, 32768])
+torch.Size([11, 32768])
+torch.Size([11, 32768])
+
+
+ 21%|██        | 21/100 [00:10<00:37,  2.12it/s]
+torch.Size([11, 32768])
+torch.Size([11, 32768])
+torch.Size([11, 32768])
+
+ 25%|██▌       | 25/100 [00:12<00:35,  2.10it/s]
+torch.Size([11, 32768])
+torch.Size([11, 32768])
+torch.Size([11, 32768])
+torch.Size([11, 32768])
+
+ 29%|██▉       | 29/100 [00:14<00:34,  2.03it/s]
+torch.Size([11, 32768])
+torch.Size([11, 32768])
+torch.Size([11, 32768])
+torch.Size([11, 32768])
+torch.Size([11, 32768])
+torch.Size([11, 32768])
+
+ 32%|███▏      | 32/100 [00:15<00:35,  1.92it/s]
+torch.Size([11, 32768])
+torch.Size([11, 32768])
+torch.Size([11, 32768])
+
+
+ 40%|████      | 40/100 [00:19<00:29,  2.02it/s]
+torch.Size([11, 32768])
+torch.Size([11, 32768])
+torch.Size([11, 32768])
+
+ 44%|████▍     | 44/100 [00:22<00:30,  1.87it/s]
+torch.Size([11, 32768])
+torch.Size([11, 32768])
+torch.Size([11, 32768])
+torch.Size([11, 32768])
+torch.Size([11, 32768])
+torch.Size([11, 32768])
+torch.Size([11, 32768])
+
+ 48%|████▊     | 48/100 [00:24<00:26,  2.00it/s]
+torch.Size([11, 32768])
+torch.Size([11, 32768])
+torch.Size([11, 32768])
+
+ 52%|█████▏    | 52/100 [00:26<00:23,  2.03it/s]
+torch.Size([11, 32768])
+torch.Size([11, 32768])
+torch.Size([11, 32768])
+
+ 56%|█████▌    | 56/100 [00:28<00:22,  1.95it/s]
+torch.Size([11, 32768])
+torch.Size([11, 32768])
+torch.Size([11, 32768])
+
+ 60%|██████    | 60/100 [00:30<00:19,  2.08it/s]
+torch.Size([11, 32768])
+torch.Size([11, 32768])
+torch.Size([11, 32768])
+torch.Size([11, 32768])
+
+ 65%|██████▌   | 65/100 [00:32<00:16,  2.14it/s]
+torch.Size([11, 32768])
+torch.Size([11, 32768])
+torch.Size([11, 32768])
+
+ 69%|██████▉   | 69/100 [00:34<00:14,  2.10it/s]
+torch.Size([11, 32768])
+torch.Size([11, 32768])
+torch.Size([11, 32768])
+
+
+ 77%|███████▋  | 77/100 [00:38<00:11,  1.94it/s]
+torch.Size([11, 32768])
+torch.Size([11, 32768])
+torch.Size([11, 32768])
+
+ 81%|████████  | 81/100 [00:40<00:08,  2.11it/s]
+torch.Size([11, 32768])
+torch.Size([11, 32768])
+torch.Size([11, 32768])
+torch.Size([11, 32768])
+torch.Size([11, 32768])
+torch.Size([11, 32768])
+torch.Size([11, 32768])
+
+ 86%|████████▌ | 86/100 [00:42<00:06,  2.12it/s]
+torch.Size([11, 32768])
+torch.Size([11, 32768])
+torch.Size([11, 32768])
+torch.Size([11, 32768])
+
+ 90%|█████████ | 90/100 [00:44<00:04,  2.15it/s]
+torch.Size([11, 32768])
+torch.Size([11, 32768])
+torch.Size([11, 32768])
+
+ 94%|█████████▍| 94/100 [00:46<00:02,  2.13it/s]
+torch.Size([11, 32768])
+torch.Size([11, 32768])
+torch.Size([11, 32768])
+
+ 25%|██▌       | 1/4 [00:49<02:28, 49.39s/it]t/s]
+  3%|▎         | 3/100 [00:01<00:43,  2.22it/s]
+torch.Size([11, 32768])
+Epoch: 0, Loss: 0.046012431383132935
+torch.Size([11, 32768])
+torch.Size([11, 32768])
+
+  6%|▌         | 6/100 [00:02<00:47,  2.00it/s]
+torch.Size([11, 32768])
+torch.Size([11, 32768])
+torch.Size([11, 32768])
+
+ 10%|█         | 10/100 [00:04<00:45,  1.97it/s]
+torch.Size([11, 32768])
+torch.Size([11, 32768])
+torch.Size([11, 32768])
+
+ 14%|█▍        | 14/100 [00:07<00:50,  1.70it/s]
+torch.Size([11, 32768])
+torch.Size([11, 32768])
+torch.Size([11, 32768])
+
+ 18%|█▊        | 18/100 [00:09<00:41,  1.97it/s]
+torch.Size([11, 32768])
+torch.Size([11, 32768])
+torch.Size([11, 32768])
+torch.Size([11, 32768])
+torch.Size([11, 32768])
+torch.Size([11, 32768])
+torch.Size([11, 32768])
+
+
+ 27%|██▋       | 27/100 [00:13<00:34,  2.10it/s]
+torch.Size([11, 32768])
+torch.Size([11, 32768])
+torch.Size([11, 32768])
+
+ 31%|███       | 31/100 [00:15<00:32,  2.13it/s]
+torch.Size([11, 32768])
+torch.Size([11, 32768])
+torch.Size([11, 32768])
+torch.Size([11, 32768])
+
+ 35%|███▌      | 35/100 [00:17<00:30,  2.12it/s]
+torch.Size([11, 32768])
+torch.Size([11, 32768])
+torch.Size([11, 32768])
+
+ 39%|███▉      | 39/100 [00:19<00:31,  1.91it/s]
+torch.Size([11, 32768])
+torch.Size([11, 32768])
+torch.Size([11, 32768])
+
+ 43%|████▎     | 43/100 [00:21<00:27,  2.08it/s]
+torch.Size([11, 32768])
+torch.Size([11, 32768])
+torch.Size([11, 32768])
+
+ 48%|████▊     | 48/100 [00:23<00:24,  2.14it/s]
+torch.Size([11, 32768])
+torch.Size([11, 32768])
+torch.Size([11, 32768])
+torch.Size([11, 32768])
+
+ 52%|█████▏    | 52/100 [00:25<00:22,  2.13it/s]
+torch.Size([11, 32768])
+torch.Size([11, 32768])
+
+ 56%|█████▌    | 56/100 [00:27<00:21,  2.09it/s]
+torch.Size([11, 32768])
+torch.Size([11, 32768])
+torch.Size([11, 32768])
+torch.Size([11, 32768])
+torch.Size([11, 32768])
+torch.Size([11, 32768])
+torch.Size([11, 32768])
+
+ 59%|█████▉    | 59/100 [00:28<00:20,  1.97it/s]
+torch.Size([11, 32768])
+torch.Size([11, 32768])
+
+ 63%|██████▎   | 63/100 [00:31<00:19,  1.91it/s]
+torch.Size([11, 32768])
+torch.Size([11, 32768])
+torch.Size([11, 32768])
+torch.Size([11, 32768])
+
+ 67%|██████▋   | 67/100 [00:33<00:16,  2.06it/s]
+torch.Size([11, 32768])
+torch.Size([11, 32768])
+torch.Size([11, 32768])
+
+ 71%|███████   | 71/100 [00:34<00:13,  2.14it/s]
+torch.Size([11, 32768])
+torch.Size([11, 32768])
+torch.Size([11, 32768])
+
+ 75%|███████▌  | 75/100 [00:36<00:11,  2.13it/s]
+torch.Size([11, 32768])
+torch.Size([11, 32768])
+torch.Size([11, 32768])
+
+ 80%|████████  | 80/100 [00:39<00:09,  2.13it/s]
+torch.Size([11, 32768])
+torch.Size([11, 32768])
+torch.Size([11, 32768])
+torch.Size([11, 32768])
+
+ 84%|████████▍ | 84/100 [00:41<00:07,  2.15it/s]
+torch.Size([11, 32768])
+torch.Size([11, 32768])
+torch.Size([11, 32768])
+
+ 88%|████████▊ | 88/100 [00:42<00:05,  2.13it/s]
+torch.Size([11, 32768])
+torch.Size([11, 32768])
+torch.Size([11, 32768])
+
+ 93%|█████████▎| 93/100 [00:45<00:03,  2.14it/s]
+torch.Size([11, 32768])
+torch.Size([11, 32768])
+torch.Size([11, 32768])
+torch.Size([11, 32768])
+
+ 97%|█████████▋| 97/100 [00:47<00:01,  2.08it/s]
+torch.Size([11, 32768])
+torch.Size([11, 32768])
+Epoch: 1, Loss: 0.01940903067588806
+torch.Size([11, 32768])
+ 50%|█████     | 2/4 [01:37<01:37, 48.92s/it]t/s]
+  1%|          | 1/100 [00:00<00:42,  2.34it/s]
+torch.Size([11, 32768])
+torch.Size([11, 32768])
+torch.Size([11, 32768])
+
+  5%|▌         | 5/100 [00:02<00:44,  2.14it/s]
+torch.Size([11, 32768])
+torch.Size([11, 32768])
+torch.Size([11, 32768])
+
+ 10%|█         | 10/100 [00:04<00:41,  2.17it/s]
+torch.Size([11, 32768])
+torch.Size([11, 32768])
+torch.Size([11, 32768])
+
+ 13%|█▎        | 13/100 [00:06<00:50,  1.72it/s]
+torch.Size([11, 32768])
+torch.Size([11, 32768])
+torch.Size([11, 32768])
+
+ 17%|█▋        | 17/100 [00:08<00:40,  2.03it/s]
+torch.Size([11, 32768])
+torch.Size([11, 32768])
+torch.Size([11, 32768])
+torch.Size([11, 32768])
+
+
+ 26%|██▌       | 26/100 [00:12<00:34,  2.12it/s]
+torch.Size([11, 32768])
+torch.Size([11, 32768])
+torch.Size([11, 32768])
+
+ 30%|███       | 30/100 [00:14<00:32,  2.15it/s]
+torch.Size([11, 32768])
+torch.Size([11, 32768])
+torch.Size([11, 32768])
+
+ 35%|███▌      | 35/100 [00:16<00:30,  2.15it/s]
+torch.Size([11, 32768])
+torch.Size([11, 32768])
+torch.Size([11, 32768])
+torch.Size([11, 32768])
+
+ 39%|███▉      | 39/100 [00:18<00:28,  2.15it/s]
+torch.Size([11, 32768])
+torch.Size([11, 32768])
+torch.Size([11, 32768])
+torch.Size([11, 32768])
+torch.Size([11, 32768])
+torch.Size([11, 32768])
+torch.Size([11, 32768])
+
+ 43%|████▎     | 43/100 [00:20<00:26,  2.15it/s]
+torch.Size([11, 32768])
+torch.Size([11, 32768])
+torch.Size([11, 32768])
+torch.Size([11, 32768])
+
+ 48%|████▊     | 48/100 [00:22<00:23,  2.18it/s]
+torch.Size([11, 32768])
+torch.Size([11, 32768])
+torch.Size([11, 32768])
+
+ 52%|█████▏    | 52/100 [00:24<00:22,  2.14it/s]
+torch.Size([11, 32768])
+torch.Size([11, 32768])
+torch.Size([11, 32768])
+
+ 57%|█████▋    | 57/100 [00:26<00:19,  2.17it/s]
+torch.Size([11, 32768])
+torch.Size([11, 32768])
+torch.Size([11, 32768])
+torch.Size([11, 32768])
+
+ 61%|██████    | 61/100 [00:28<00:18,  2.13it/s]
+torch.Size([11, 32768])
+torch.Size([11, 32768])
+torch.Size([11, 32768])
+
+ 65%|██████▌   | 65/100 [00:30<00:16,  2.13it/s]
+torch.Size([11, 32768])
+torch.Size([11, 32768])
+torch.Size([11, 32768])
+
+ 70%|███████   | 70/100 [00:32<00:13,  2.18it/s]
+torch.Size([11, 32768])
+torch.Size([11, 32768])
+torch.Size([11, 32768])
+
+ 74%|███████▍  | 74/100 [00:34<00:12,  2.04it/s]
+torch.Size([11, 32768])
+torch.Size([11, 32768])
+
+
+ 81%|████████  | 81/100 [00:38<00:09,  2.00it/s]
+torch.Size([11, 32768])
+torch.Size([11, 32768])
+torch.Size([11, 32768])
+torch.Size([11, 32768])
+
+ 86%|████████▌ | 86/100 [00:41<00:06,  2.14it/s]
+torch.Size([11, 32768])
+torch.Size([11, 32768])
+torch.Size([11, 32768])
+
+ 90%|█████████ | 90/100 [00:42<00:04,  2.14it/s]
+torch.Size([11, 32768])
+torch.Size([11, 32768])
+torch.Size([11, 32768])
+torch.Size([11, 32768])
+
+ 94%|█████████▍| 94/100 [00:44<00:02,  2.13it/s]
+torch.Size([11, 32768])
+torch.Size([11, 32768])
+torch.Size([11, 32768])
+
+ 99%|█████████▉| 99/100 [00:47<00:00,  2.14it/s]
+torch.Size([11, 32768])
+torch.Size([11, 32768])
+torch.Size([11, 32768])
+ 75%|███████▌  | 3/4 [02:25<00:48, 48.32s/it]t/s]
+  3%|▎         | 3/100 [00:01<00:45,  2.15it/s]
+torch.Size([11, 32768])
+Epoch: 2, Loss: 0.011702694930136204
+torch.Size([11, 32768])
+torch.Size([11, 32768])
+torch.Size([11, 32768])
+
+  7%|▋         | 7/100 [00:03<00:44,  2.07it/s]
+torch.Size([11, 32768])
+torch.Size([11, 32768])
+torch.Size([11, 32768])
+
+ 11%|█         | 11/100 [00:05<00:41,  2.15it/s]
+torch.Size([11, 32768])
+torch.Size([11, 32768])
+torch.Size([11, 32768])
+
+ 15%|█▌        | 15/100 [00:07<00:39,  2.17it/s]
+torch.Size([11, 32768])
+torch.Size([11, 32768])
+torch.Size([11, 32768])
+torch.Size([11, 32768])
+
+ 19%|█▉        | 19/100 [00:08<00:37,  2.14it/s]
+torch.Size([11, 32768])
+torch.Size([11, 32768])
+torch.Size([11, 32768])
+
+ 23%|██▎       | 23/100 [00:10<00:35,  2.17it/s]
+torch.Size([11, 32768])
+torch.Size([11, 32768])
+
+ 28%|██▊       | 28/100 [00:13<00:33,  2.13it/s]
+torch.Size([11, 32768])
+torch.Size([11, 32768])
+torch.Size([11, 32768])
+
+ 32%|███▏      | 32/100 [00:14<00:31,  2.18it/s]
+torch.Size([11, 32768])
+torch.Size([11, 32768])
+torch.Size([11, 32768])
+torch.Size([11, 32768])
+
+ 36%|███▌      | 36/100 [00:16<00:29,  2.15it/s]
+torch.Size([11, 32768])
+torch.Size([11, 32768])
+torch.Size([11, 32768])
+torch.Size([11, 32768])
+torch.Size([11, 32768])
+torch.Size([11, 32768])
+torch.Size([11, 32768])
+
+
+ 44%|████▍     | 44/100 [00:20<00:28,  1.99it/s]
+torch.Size([11, 32768])
+torch.Size([11, 32768])
+torch.Size([11, 32768])
+
+ 47%|████▋     | 47/100 [00:22<00:25,  2.04it/s]
+torch.Size([11, 32768])
+torch.Size([11, 32768])
+torch.Size([11, 32768])
+torch.Size([11, 32768])
+torch.Size([11, 32768])
+torch.Size([11, 32768])
+
+ 52%|█████▏    | 52/100 [00:25<00:25,  1.88it/s]
+torch.Size([11, 32768])
+torch.Size([11, 32768])
+torch.Size([11, 32768])
+
+ 55%|█████▌    | 55/100 [00:26<00:25,  1.76it/s]
+torch.Size([11, 32768])
+torch.Size([11, 32768])
+torch.Size([11, 32768])
+
+ 59%|█████▉    | 59/100 [00:28<00:20,  1.99it/s]
+torch.Size([11, 32768])
+torch.Size([11, 32768])
+torch.Size([11, 32768])
+
+
+ 68%|██████▊   | 68/100 [00:33<00:15,  2.13it/s]
+torch.Size([11, 32768])
+torch.Size([11, 32768])
+torch.Size([11, 32768])
+torch.Size([11, 32768])
+
+ 72%|███████▏  | 72/100 [00:35<00:13,  2.14it/s]
+torch.Size([11, 32768])
+torch.Size([11, 32768])
+torch.Size([11, 32768])
+
+ 76%|███████▌  | 76/100 [00:36<00:11,  2.09it/s]
+torch.Size([11, 32768])
+torch.Size([11, 32768])
+torch.Size([11, 32768])
+
+ 81%|████████  | 81/100 [00:39<00:08,  2.13it/s]
+torch.Size([11, 32768])
+torch.Size([11, 32768])
+torch.Size([11, 32768])
+torch.Size([11, 32768])
+
+ 85%|████████▌ | 85/100 [00:41<00:06,  2.15it/s]
+torch.Size([11, 32768])
+torch.Size([11, 32768])
+torch.Size([11, 32768])
+
+ 89%|████████▉ | 89/100 [00:43<00:05,  2.15it/s]
+torch.Size([11, 32768])
+torch.Size([11, 32768])
+torch.Size([11, 32768])
+
+ 94%|█████████▍| 94/100 [00:45<00:02,  2.16it/s]
+torch.Size([11, 32768])
+torch.Size([11, 32768])
+torch.Size([11, 32768])
+torch.Size([11, 32768])
+torch.Size([11, 32768])
+torch.Size([11, 32768])
+torch.Size([11, 32768])
+torch.Size([11, 32768])
+
+ 98%|█████████▊| 98/100 [00:47<00:00,  2.12it/s]
+torch.Size([11, 32768])
+
+100%|██████████| 4/4 [03:13<00:00, 48.44s/it]t/s]
+Parameter containing:
+tensor([[1., 1., 1.,  ..., 1., 1., 1.],
+        [1., 1., 1.,  ..., 1., 1., 1.],
+        [1., 1., 1.,  ..., 1., 1., 1.],
+        ...,
+        [1., 1., 1.,  ..., 1., 1., 1.],
+        [1., 1., 1.,  ..., 1., 1., 1.],
+        [1., 1., 1.,  ..., 1., 1., 1.]], device='mps:0', requires_grad=True)
+Parameter containing:
+tensor([[1.0000, 1.0000, 1.0000,  ..., 1.0000, 1.0000, 1.0000],
+        [1.0000, 1.0000, 1.0000,  ..., 1.0000, 1.0000, 1.0000],
+        [1.0000, 3.7191, 1.0000,  ..., 1.0000, 1.0000, 1.0000],
+        ...,
+        [1.0000, 1.0000, 1.0000,  ..., 1.0000, 1.0000, 1.0000],
+        [1.0000, 1.0000, 1.0000,  ..., 1.0000, 1.0000, 1.0000],
+        [1.0000, 1.0000, 1.0000,  ..., 1.0000, 1.0000, 1.0000]],
+       device='mps:0', requires_grad=True)
+Parameter containing:
+tensor([[1., 1., 1.,  ..., 1., 1., 1.],
+        [1., 1., 1.,  ..., 1., 1., 1.],
+        [1., 1., 1.,  ..., 1., 1., 1.],
+        ...,
+        [1., 1., 1.,  ..., 1., 1., 1.],
+        [1., 1., 1.,  ..., 1., 1., 1.],
+        [1., 1., 1.,  ..., 1., 1., 1.]], device='mps:0', requires_grad=True)
+Parameter containing:
+tensor([[1.0000, 1.0000, 1.0000,  ..., 0.8587, 1.0000, 1.0000],
+        [1.0000, 1.0000, 1.0000,  ..., 1.0000, 1.0000, 1.0000],
+        [1.0000, 1.0000, 1.0000,  ..., 1.0000, 1.0000, 1.0000],
+        ...,
+        [1.0000, 1.0000, 1.0000,  ..., 1.0000, 1.0000, 1.0000],
+        [1.0000, 1.0000, 1.0000,  ..., 1.0000, 1.0000, 1.0000],
+        [1.0000, 1.0000, 1.0000,  ..., 2.2527, 1.0000, 1.0000]],
+       device='mps:0', requires_grad=True)
+Parameter containing:
+tensor([[1., 1., 1.,  ..., 1., 1., 1.],
+        [1., 1., 1.,  ..., 1., 1., 1.],
+        [1., 1., 1.,  ..., 1., 1., 1.],
+        ...,
+        [1., 1., 1.,  ..., 1., 1., 1.],
+        [1., 1., 1.,  ..., 1., 1., 1.],
+        [1., 1., 1.,  ..., 1., 1., 1.]], device='mps:0', requires_grad=True)
+/Users/maheepchaudhary/miniforge3/envs/nnsight/lib/python3.12/site-packages/huggingface_hub/file_download.py:1132: FutureWarning: `resume_download` is deprecated and will be removed in version 1.0.0. Downloads always resume when possible. If you want to force a new download, use `force_download=True`.
+  warnings.warn(

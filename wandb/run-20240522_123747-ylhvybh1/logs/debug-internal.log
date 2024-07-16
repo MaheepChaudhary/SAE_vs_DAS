@@ -1,0 +1,207 @@
+2024-05-22 12:37:57,210 INFO    StreamThr :63501 [internal.py:wandb_internal():85] W&B internal server running at pid: 63501, started at: 2024-05-22 12:37:57.204571
+2024-05-22 12:37:57,212 DEBUG   HandlerThread:63501 [handler.py:handle_request():158] handle_request: status
+2024-05-22 12:37:57,213 INFO    WriterThread:63501 [datastore.py:open_for_write():87] open: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240522_123747-ylhvybh1/run-ylhvybh1.wandb
+2024-05-22 12:37:57,214 DEBUG   SenderThread:63501 [sender.py:send():378] send: header
+2024-05-22 12:37:57,214 DEBUG   SenderThread:63501 [sender.py:send():378] send: run
+2024-05-22 12:37:57,859 INFO    SenderThread:63501 [dir_watcher.py:__init__():211] watching files in: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240522_123747-ylhvybh1/files
+2024-05-22 12:37:57,859 INFO    SenderThread:63501 [sender.py:_start_run_threads():1123] run started: ylhvybh1 with start time 1716361676.417762
+2024-05-22 12:37:57,866 DEBUG   HandlerThread:63501 [handler.py:handle_request():158] handle_request: check_version
+2024-05-22 12:37:57,866 DEBUG   SenderThread:63501 [sender.py:send_request():405] send_request: check_version
+2024-05-22 12:37:57,963 DEBUG   HandlerThread:63501 [handler.py:handle_request():158] handle_request: run_start
+2024-05-22 12:37:57,966 DEBUG   HandlerThread:63501 [system_info.py:__init__():26] System info init
+2024-05-22 12:37:57,966 DEBUG   HandlerThread:63501 [system_info.py:__init__():41] System info init done
+2024-05-22 12:37:57,966 INFO    HandlerThread:63501 [system_monitor.py:start():194] Starting system monitor
+2024-05-22 12:37:57,966 INFO    SystemMonitor:63501 [system_monitor.py:_start():158] Starting system asset monitoring threads
+2024-05-22 12:37:57,966 INFO    HandlerThread:63501 [system_monitor.py:probe():214] Collecting system info
+2024-05-22 12:37:57,967 INFO    SystemMonitor:63501 [interfaces.py:start():188] Started cpu monitoring
+2024-05-22 12:37:57,971 INFO    SystemMonitor:63501 [interfaces.py:start():188] Started disk monitoring
+2024-05-22 12:37:57,971 INFO    SystemMonitor:63501 [interfaces.py:start():188] Started gpuapple monitoring
+2024-05-22 12:37:57,972 INFO    SystemMonitor:63501 [interfaces.py:start():188] Started memory monitoring
+2024-05-22 12:37:57,974 INFO    SystemMonitor:63501 [interfaces.py:start():188] Started network monitoring
+2024-05-22 12:37:58,348 DEBUG   HandlerThread:63501 [system_info.py:probe():150] Probing system
+2024-05-22 12:37:58,351 DEBUG   HandlerThread:63501 [system_info.py:_probe_git():135] Probing git
+2024-05-22 12:37:58,363 DEBUG   HandlerThread:63501 [system_info.py:_probe_git():143] Probing git done
+2024-05-22 12:37:58,363 DEBUG   HandlerThread:63501 [system_info.py:probe():198] Probing system done
+2024-05-22 12:37:58,363 DEBUG   HandlerThread:63501 [system_monitor.py:probe():223] {'os': 'macOS-14.4.1-arm64-arm-64bit', 'python': '3.12.3', 'heartbeatAt': '2024-05-22T07:07:58.348560', 'startedAt': '2024-05-22T07:07:47.236348', 'docker': None, 'cuda': None, 'args': (), 'state': 'running', 'program': '<python with no main file>', 'codePathLocal': None, 'git': {'remote': 'https://github.com/MaheepChaudhary/DAS_MAT.git', 'commit': '92086249cd31119fe50629595b53c343f5fa4bf8'}, 'email': 'chaudhary.maheep28@gmail.com', 'root': '/Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT', 'host': 'Maheeps-MBP', 'username': 'maheepchaudhary', 'executable': '/Users/maheepchaudhary/miniforge3/envs/nnsight/bin/python', 'cpu_count': 11, 'cpu_count_logical': 11, 'cpu_freq': {'current': 4056, 'min': 696, 'max': 4056}, 'cpu_freq_per_core': [{'current': 4056, 'min': 696, 'max': 4056}], 'disk': {'/': {'total': 460.4317207336426, 'used': 394.84592056274414}}, 'gpuapple': {'type': 'Apple M3 Pro', 'vendor': 'sppci_vendor_Apple'}, 'memory': {'total': 18.0}}
+2024-05-22 12:37:58,363 INFO    HandlerThread:63501 [system_monitor.py:probe():224] Finished collecting system info
+2024-05-22 12:37:58,363 INFO    HandlerThread:63501 [system_monitor.py:probe():227] Publishing system info
+2024-05-22 12:37:58,363 DEBUG   HandlerThread:63501 [system_info.py:_save_conda():207] Saving list of conda packages installed into the current environment
+2024-05-22 12:37:58,865 INFO    Thread-24 :63501 [dir_watcher.py:_on_file_created():271] file/dir created: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240522_123747-ylhvybh1/files/conda-environment.yaml
+2024-05-22 12:38:02,792 DEBUG   HandlerThread:63501 [system_info.py:_save_conda():222] Saving conda packages done
+2024-05-22 12:38:02,793 INFO    HandlerThread:63501 [system_monitor.py:probe():229] Finished publishing system info
+2024-05-22 12:38:02,793 DEBUG   SenderThread:63501 [sender.py:send():378] send: files
+2024-05-22 12:38:02,794 INFO    SenderThread:63501 [sender.py:_save_file():1389] saving file wandb-metadata.json with policy now
+2024-05-22 12:38:02,794 DEBUG   HandlerThread:63501 [handler.py:handle_request():158] handle_request: status_report
+2024-05-22 12:38:02,862 DEBUG   HandlerThread:63501 [handler.py:handle_request():158] handle_request: python_packages
+2024-05-22 12:38:02,862 DEBUG   SenderThread:63501 [sender.py:send_request():405] send_request: python_packages
+2024-05-22 12:38:02,862 DEBUG   HandlerThread:63501 [handler.py:handle_request():158] handle_request: stop_status
+2024-05-22 12:38:02,863 DEBUG   SenderThread:63501 [sender.py:send_request():405] send_request: stop_status
+2024-05-22 12:38:02,877 INFO    Thread-24 :63501 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240522_123747-ylhvybh1/files/conda-environment.yaml
+2024-05-22 12:38:02,877 INFO    Thread-24 :63501 [dir_watcher.py:_on_file_created():271] file/dir created: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240522_123747-ylhvybh1/files/requirements.txt
+2024-05-22 12:38:02,877 INFO    Thread-24 :63501 [dir_watcher.py:_on_file_created():271] file/dir created: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240522_123747-ylhvybh1/files/wandb-metadata.json
+2024-05-22 12:38:03,507 DEBUG   SenderThread:63501 [sender.py:send():378] send: telemetry
+2024-05-22 12:38:03,507 DEBUG   SenderThread:63501 [sender.py:send():378] send: telemetry
+2024-05-22 12:38:03,507 DEBUG   SenderThread:63501 [sender.py:send():378] send: run
+2024-05-22 12:38:03,803 INFO    SenderThread:63501 [sender.py:send_run():996] updated run: ylhvybh1
+2024-05-22 12:38:03,878 INFO    Thread-24 :63501 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240522_123747-ylhvybh1/files/config.yaml
+2024-05-22 12:38:04,306 INFO    wandb-upload_0:63501 [upload_job.py:push():130] Uploaded file /var/folders/_x/mkf1szd12yv28px5ztl_sjjr0000gn/T/tmpjb_899clwandb/ayod5hh8-wandb-metadata.json
+2024-05-22 12:38:05,887 INFO    Thread-24 :63501 [dir_watcher.py:_on_file_created():271] file/dir created: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240522_123747-ylhvybh1/files/output.log
+2024-05-22 12:38:07,893 INFO    Thread-24 :63501 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240522_123747-ylhvybh1/files/output.log
+2024-05-22 12:38:08,182 DEBUG   HandlerThread:63501 [handler.py:handle_request():158] handle_request: status_report
+2024-05-22 12:38:09,904 INFO    Thread-24 :63501 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240522_123747-ylhvybh1/files/output.log
+2024-05-22 12:38:11,914 INFO    Thread-24 :63501 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240522_123747-ylhvybh1/files/output.log
+2024-05-22 12:38:13,269 DEBUG   HandlerThread:63501 [handler.py:handle_request():158] handle_request: status_report
+2024-05-22 12:38:13,924 INFO    Thread-24 :63501 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240522_123747-ylhvybh1/files/output.log
+2024-05-22 12:38:15,935 INFO    Thread-24 :63501 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240522_123747-ylhvybh1/files/output.log
+2024-05-22 12:38:17,868 DEBUG   HandlerThread:63501 [handler.py:handle_request():158] handle_request: stop_status
+2024-05-22 12:38:17,868 DEBUG   SenderThread:63501 [sender.py:send_request():405] send_request: stop_status
+2024-05-22 12:38:17,945 INFO    Thread-24 :63501 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240522_123747-ylhvybh1/files/output.log
+2024-05-22 12:38:18,334 DEBUG   HandlerThread:63501 [handler.py:handle_request():158] handle_request: status_report
+2024-05-22 12:38:19,955 INFO    Thread-24 :63501 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240522_123747-ylhvybh1/files/output.log
+2024-05-22 12:38:21,964 INFO    Thread-24 :63501 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240522_123747-ylhvybh1/files/output.log
+2024-05-22 12:38:23,434 DEBUG   HandlerThread:63501 [handler.py:handle_request():158] handle_request: status_report
+2024-05-22 12:38:23,971 INFO    Thread-24 :63501 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240522_123747-ylhvybh1/files/output.log
+2024-05-22 12:38:25,976 INFO    Thread-24 :63501 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240522_123747-ylhvybh1/files/output.log
+2024-05-22 12:38:27,983 INFO    Thread-24 :63501 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240522_123747-ylhvybh1/files/output.log
+2024-05-22 12:38:28,500 DEBUG   HandlerThread:63501 [handler.py:handle_request():158] handle_request: status_report
+2024-05-22 12:38:28,988 INFO    Thread-24 :63501 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240522_123747-ylhvybh1/files/config.yaml
+2024-05-22 12:38:29,992 INFO    Thread-24 :63501 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240522_123747-ylhvybh1/files/output.log
+2024-05-22 12:38:32,000 INFO    Thread-24 :63501 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240522_123747-ylhvybh1/files/output.log
+2024-05-22 12:38:32,872 DEBUG   HandlerThread:63501 [handler.py:handle_request():158] handle_request: stop_status
+2024-05-22 12:38:32,873 DEBUG   SenderThread:63501 [sender.py:send_request():405] send_request: stop_status
+2024-05-22 12:38:33,942 DEBUG   HandlerThread:63501 [handler.py:handle_request():158] handle_request: status_report
+2024-05-22 12:38:34,009 INFO    Thread-24 :63501 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240522_123747-ylhvybh1/files/output.log
+2024-05-22 12:38:36,014 INFO    Thread-24 :63501 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240522_123747-ylhvybh1/files/output.log
+2024-05-22 12:38:38,024 INFO    Thread-24 :63501 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240522_123747-ylhvybh1/files/output.log
+2024-05-22 12:38:38,949 DEBUG   HandlerThread:63501 [handler.py:handle_request():158] handle_request: status_report
+2024-05-22 12:38:40,032 INFO    Thread-24 :63501 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240522_123747-ylhvybh1/files/output.log
+2024-05-22 12:38:42,043 INFO    Thread-24 :63501 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240522_123747-ylhvybh1/files/output.log
+2024-05-22 12:38:44,023 DEBUG   HandlerThread:63501 [handler.py:handle_request():158] handle_request: status_report
+2024-05-22 12:38:44,051 INFO    Thread-24 :63501 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240522_123747-ylhvybh1/files/output.log
+2024-05-22 12:38:46,061 INFO    Thread-24 :63501 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240522_123747-ylhvybh1/files/output.log
+2024-05-22 12:38:47,878 DEBUG   HandlerThread:63501 [handler.py:handle_request():158] handle_request: stop_status
+2024-05-22 12:38:47,878 DEBUG   SenderThread:63501 [sender.py:send_request():405] send_request: stop_status
+2024-05-22 12:38:48,071 INFO    Thread-24 :63501 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240522_123747-ylhvybh1/files/output.log
+2024-05-22 12:38:49,142 DEBUG   HandlerThread:63501 [handler.py:handle_request():158] handle_request: status_report
+2024-05-22 12:38:50,077 INFO    Thread-24 :63501 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240522_123747-ylhvybh1/files/output.log
+2024-05-22 12:38:52,088 INFO    Thread-24 :63501 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240522_123747-ylhvybh1/files/output.log
+2024-05-22 12:38:54,098 INFO    Thread-24 :63501 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240522_123747-ylhvybh1/files/output.log
+2024-05-22 12:38:54,240 DEBUG   HandlerThread:63501 [handler.py:handle_request():158] handle_request: status_report
+2024-05-22 12:38:56,108 INFO    Thread-24 :63501 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240522_123747-ylhvybh1/files/output.log
+2024-05-22 12:38:57,980 DEBUG   SystemMonitor:63501 [system_monitor.py:_start():172] Starting system metrics aggregation loop
+2024-05-22 12:38:57,981 DEBUG   SenderThread:63501 [sender.py:send():378] send: telemetry
+2024-05-22 12:38:57,981 DEBUG   SenderThread:63501 [sender.py:send():378] send: stats
+2024-05-22 12:38:58,115 INFO    Thread-24 :63501 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240522_123747-ylhvybh1/files/output.log
+2024-05-22 12:38:59,270 DEBUG   HandlerThread:63501 [handler.py:handle_request():158] handle_request: status_report
+2024-05-22 12:39:00,127 INFO    Thread-24 :63501 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240522_123747-ylhvybh1/files/config.yaml
+2024-05-22 12:39:00,127 INFO    Thread-24 :63501 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240522_123747-ylhvybh1/files/output.log
+2024-05-22 12:39:02,133 INFO    Thread-24 :63501 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240522_123747-ylhvybh1/files/output.log
+2024-05-22 12:39:02,880 DEBUG   HandlerThread:63501 [handler.py:handle_request():158] handle_request: stop_status
+2024-05-22 12:39:02,880 DEBUG   SenderThread:63501 [sender.py:send_request():405] send_request: stop_status
+2024-05-22 12:39:04,144 INFO    Thread-24 :63501 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240522_123747-ylhvybh1/files/output.log
+2024-05-22 12:39:04,629 DEBUG   HandlerThread:63501 [handler.py:handle_request():158] handle_request: status_report
+2024-05-22 12:39:06,154 INFO    Thread-24 :63501 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240522_123747-ylhvybh1/files/output.log
+2024-05-22 12:39:08,164 INFO    Thread-24 :63501 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240522_123747-ylhvybh1/files/output.log
+2024-05-22 12:39:09,629 DEBUG   HandlerThread:63501 [handler.py:handle_request():158] handle_request: status_report
+2024-05-22 12:39:10,174 INFO    Thread-24 :63501 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240522_123747-ylhvybh1/files/output.log
+2024-05-22 12:39:12,185 INFO    Thread-24 :63501 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240522_123747-ylhvybh1/files/output.log
+2024-05-22 12:39:14,195 INFO    Thread-24 :63501 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240522_123747-ylhvybh1/files/output.log
+2024-05-22 12:39:14,648 DEBUG   HandlerThread:63501 [handler.py:handle_request():158] handle_request: status_report
+2024-05-22 12:39:16,206 INFO    Thread-24 :63501 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240522_123747-ylhvybh1/files/output.log
+2024-05-22 12:39:17,883 DEBUG   HandlerThread:63501 [handler.py:handle_request():158] handle_request: stop_status
+2024-05-22 12:39:17,883 DEBUG   SenderThread:63501 [sender.py:send_request():405] send_request: stop_status
+2024-05-22 12:39:18,213 INFO    Thread-24 :63501 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240522_123747-ylhvybh1/files/output.log
+2024-05-22 12:39:19,660 DEBUG   HandlerThread:63501 [handler.py:handle_request():158] handle_request: status_report
+2024-05-22 12:39:20,223 INFO    Thread-24 :63501 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240522_123747-ylhvybh1/files/output.log
+2024-05-22 12:39:22,234 INFO    Thread-24 :63501 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240522_123747-ylhvybh1/files/output.log
+2024-05-22 12:39:24,243 INFO    Thread-24 :63501 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240522_123747-ylhvybh1/files/output.log
+2024-05-22 12:39:24,665 DEBUG   HandlerThread:63501 [handler.py:handle_request():158] handle_request: status_report
+2024-05-22 12:39:26,252 INFO    Thread-24 :63501 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240522_123747-ylhvybh1/files/output.log
+2024-05-22 12:39:27,987 DEBUG   SenderThread:63501 [sender.py:send():378] send: stats
+2024-05-22 12:39:28,259 INFO    Thread-24 :63501 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240522_123747-ylhvybh1/files/output.log
+2024-05-22 12:39:29,779 DEBUG   HandlerThread:63501 [handler.py:handle_request():158] handle_request: status_report
+2024-05-22 12:39:30,267 INFO    Thread-24 :63501 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240522_123747-ylhvybh1/files/output.log
+2024-05-22 12:39:32,269 INFO    Thread-24 :63501 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240522_123747-ylhvybh1/files/output.log
+2024-05-22 12:39:32,888 DEBUG   HandlerThread:63501 [handler.py:handle_request():158] handle_request: stop_status
+2024-05-22 12:39:32,888 DEBUG   SenderThread:63501 [sender.py:send_request():405] send_request: stop_status
+2024-05-22 12:39:34,277 INFO    Thread-24 :63501 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240522_123747-ylhvybh1/files/output.log
+2024-05-22 12:39:34,847 DEBUG   HandlerThread:63501 [handler.py:handle_request():158] handle_request: status_report
+2024-05-22 12:39:36,284 INFO    Thread-24 :63501 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240522_123747-ylhvybh1/files/output.log
+2024-05-22 12:39:38,294 INFO    Thread-24 :63501 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240522_123747-ylhvybh1/files/output.log
+2024-05-22 12:39:39,920 DEBUG   HandlerThread:63501 [handler.py:handle_request():158] handle_request: status_report
+2024-05-22 12:39:40,297 INFO    Thread-24 :63501 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240522_123747-ylhvybh1/files/output.log
+2024-05-22 12:39:42,305 INFO    Thread-24 :63501 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240522_123747-ylhvybh1/files/output.log
+2024-05-22 12:39:44,316 INFO    Thread-24 :63501 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240522_123747-ylhvybh1/files/output.log
+2024-05-22 12:39:44,988 DEBUG   HandlerThread:63501 [handler.py:handle_request():158] handle_request: status_report
+2024-05-22 12:39:46,326 INFO    Thread-24 :63501 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240522_123747-ylhvybh1/files/output.log
+2024-05-22 12:39:47,893 DEBUG   HandlerThread:63501 [handler.py:handle_request():158] handle_request: stop_status
+2024-05-22 12:39:47,894 DEBUG   SenderThread:63501 [sender.py:send_request():405] send_request: stop_status
+2024-05-22 12:39:48,336 INFO    Thread-24 :63501 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240522_123747-ylhvybh1/files/output.log
+2024-05-22 12:39:50,049 DEBUG   HandlerThread:63501 [handler.py:handle_request():158] handle_request: status_report
+2024-05-22 12:39:50,343 INFO    Thread-24 :63501 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240522_123747-ylhvybh1/files/output.log
+2024-05-22 12:39:52,349 INFO    Thread-24 :63501 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240522_123747-ylhvybh1/files/output.log
+2024-05-22 12:39:54,358 INFO    Thread-24 :63501 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240522_123747-ylhvybh1/files/output.log
+2024-05-22 12:39:55,050 DEBUG   HandlerThread:63501 [handler.py:handle_request():158] handle_request: status_report
+2024-05-22 12:39:56,369 INFO    Thread-24 :63501 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240522_123747-ylhvybh1/files/output.log
+2024-05-22 12:39:57,993 DEBUG   SenderThread:63501 [sender.py:send():378] send: stats
+2024-05-22 12:39:58,376 INFO    Thread-24 :63501 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240522_123747-ylhvybh1/files/output.log
+2024-05-22 12:40:00,168 DEBUG   HandlerThread:63501 [handler.py:handle_request():158] handle_request: status_report
+2024-05-22 12:40:00,415 INFO    Thread-24 :63501 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240522_123747-ylhvybh1/files/output.log
+2024-05-22 12:40:01,406 INFO    Thread-24 :63501 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240522_123747-ylhvybh1/files/output.log
+2024-05-22 12:40:02,896 DEBUG   HandlerThread:63501 [handler.py:handle_request():158] handle_request: stop_status
+2024-05-22 12:40:02,897 DEBUG   SenderThread:63501 [sender.py:send_request():405] send_request: stop_status
+2024-05-22 12:40:03,416 INFO    Thread-24 :63501 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240522_123747-ylhvybh1/files/output.log
+2024-05-22 12:40:05,423 INFO    Thread-24 :63501 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240522_123747-ylhvybh1/files/output.log
+2024-05-22 12:40:05,423 DEBUG   HandlerThread:63501 [handler.py:handle_request():158] handle_request: status_report
+2024-05-22 12:40:07,261 DEBUG   HandlerThread:63501 [handler.py:handle_request():158] handle_request: partial_history
+2024-05-22 12:40:07,261 DEBUG   SenderThread:63501 [sender.py:send():378] send: history
+2024-05-22 12:40:07,261 DEBUG   SenderThread:63501 [sender.py:send_request():405] send_request: summary_record
+2024-05-22 12:40:07,262 INFO    SenderThread:63501 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-05-22 12:40:07,433 INFO    Thread-24 :63501 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240522_123747-ylhvybh1/files/output.log
+2024-05-22 12:40:07,433 INFO    Thread-24 :63501 [dir_watcher.py:_on_file_created():271] file/dir created: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240522_123747-ylhvybh1/files/wandb-summary.json
+2024-05-22 12:40:09,440 INFO    Thread-24 :63501 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240522_123747-ylhvybh1/files/output.log
+2024-05-22 12:40:10,759 DEBUG   HandlerThread:63501 [handler.py:handle_request():158] handle_request: status_report
+2024-05-22 12:40:11,450 INFO    Thread-24 :63501 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240522_123747-ylhvybh1/files/output.log
+2024-05-22 12:40:13,461 INFO    Thread-24 :63501 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240522_123747-ylhvybh1/files/output.log
+2024-05-22 12:40:15,472 INFO    Thread-24 :63501 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240522_123747-ylhvybh1/files/output.log
+2024-05-22 12:40:16,456 DEBUG   HandlerThread:63501 [handler.py:handle_request():158] handle_request: status_report
+2024-05-22 12:40:17,481 INFO    Thread-24 :63501 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240522_123747-ylhvybh1/files/output.log
+2024-05-22 12:40:17,901 DEBUG   HandlerThread:63501 [handler.py:handle_request():158] handle_request: stop_status
+2024-05-22 12:40:17,901 DEBUG   SenderThread:63501 [sender.py:send_request():405] send_request: stop_status
+2024-05-22 12:40:21,795 INFO    Thread-24 :63501 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240522_123747-ylhvybh1/files/output.log
+2024-05-22 12:40:21,837 DEBUG   HandlerThread:63501 [handler.py:handle_request():158] handle_request: status_report
+2024-05-22 12:40:27,037 DEBUG   HandlerThread:63501 [handler.py:handle_request():158] handle_request: status_report
+2024-05-22 12:40:28,108 DEBUG   SenderThread:63501 [sender.py:send():378] send: stats
+2024-05-22 12:40:30,277 INFO    Thread-24 :63501 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240522_123747-ylhvybh1/files/output.log
+2024-05-22 12:40:32,300 DEBUG   HandlerThread:63501 [handler.py:handle_request():158] handle_request: status_report
+2024-05-22 12:40:32,938 DEBUG   HandlerThread:63501 [handler.py:handle_request():158] handle_request: stop_status
+2024-05-22 12:40:32,954 DEBUG   SenderThread:63501 [sender.py:send_request():405] send_request: stop_status
+2024-05-22 12:40:36,320 INFO    Thread-24 :63501 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240522_123747-ylhvybh1/files/output.log
+2024-05-22 12:40:37,637 DEBUG   HandlerThread:63501 [handler.py:handle_request():158] handle_request: status_report
+2024-05-22 12:40:40,339 INFO    Thread-24 :63501 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240522_123747-ylhvybh1/files/output.log
+2024-05-22 12:40:42,347 INFO    Thread-24 :63501 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240522_123747-ylhvybh1/files/output.log
+2024-05-22 12:40:42,935 DEBUG   HandlerThread:63501 [handler.py:handle_request():158] handle_request: status_report
+2024-05-22 12:40:46,362 INFO    Thread-24 :63501 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240522_123747-ylhvybh1/files/output.log
+2024-05-22 12:40:47,946 DEBUG   HandlerThread:63501 [handler.py:handle_request():158] handle_request: stop_status
+2024-05-22 12:40:47,947 DEBUG   HandlerThread:63501 [handler.py:handle_request():158] handle_request: status_report
+2024-05-22 12:40:47,947 DEBUG   SenderThread:63501 [sender.py:send_request():405] send_request: stop_status
+2024-05-22 12:40:48,373 INFO    Thread-24 :63501 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240522_123747-ylhvybh1/files/output.log
+2024-05-22 12:40:50,384 INFO    Thread-24 :63501 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240522_123747-ylhvybh1/files/output.log
+2024-05-22 12:40:52,395 INFO    Thread-24 :63501 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240522_123747-ylhvybh1/files/output.log
+2024-05-22 12:40:53,047 DEBUG   HandlerThread:63501 [handler.py:handle_request():158] handle_request: status_report
+2024-05-22 12:40:54,402 INFO    Thread-24 :63501 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240522_123747-ylhvybh1/files/output.log
+2024-05-22 12:40:58,102 DEBUG   SenderThread:63501 [sender.py:send():378] send: stats
+2024-05-22 12:40:58,103 DEBUG   HandlerThread:63501 [handler.py:handle_request():158] handle_request: status_report
+2024-05-22 12:40:58,461 INFO    Thread-24 :63501 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240522_123747-ylhvybh1/files/output.log
+2024-05-22 12:41:00,472 INFO    Thread-24 :63501 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240522_123747-ylhvybh1/files/output.log
+2024-05-22 12:41:02,948 DEBUG   HandlerThread:63501 [handler.py:handle_request():158] handle_request: stop_status
+2024-05-22 12:41:02,949 DEBUG   SenderThread:63501 [sender.py:send_request():405] send_request: stop_status
+2024-05-22 12:41:03,266 DEBUG   HandlerThread:63501 [handler.py:handle_request():158] handle_request: status_report
+2024-05-22 12:41:04,488 INFO    Thread-24 :63501 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240522_123747-ylhvybh1/files/output.log
+2024-05-22 12:41:06,497 INFO    Thread-24 :63501 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240522_123747-ylhvybh1/files/output.log
+2024-05-22 12:41:08,325 DEBUG   HandlerThread:63501 [handler.py:handle_request():158] handle_request: status_report
+2024-05-22 12:41:08,507 INFO    Thread-24 :63501 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240522_123747-ylhvybh1/files/output.log
+2024-05-22 12:41:10,515 INFO    Thread-24 :63501 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240522_123747-ylhvybh1/files/output.log
+2024-05-22 12:41:12,524 INFO    Thread-24 :63501 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240522_123747-ylhvybh1/files/output.log
+2024-05-22 12:41:13,440 DEBUG   HandlerThread:63501 [handler.py:handle_request():158] handle_request: status_report
+2024-05-22 12:41:16,546 INFO    Thread-24 :63501 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/maheepchaudhary/pytorch/Projects/concept_eraser_research/DAS_MAT/wandb/run-20240522_123747-ylhvybh1/files/output.log
