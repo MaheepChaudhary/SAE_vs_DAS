@@ -324,11 +324,7 @@ if __name__ == "__main__":
     
     argparser.add_argument("-task", "--task", required=True, type=str, help="task to be performed, i.e. train, eval or eval_on_subgroups")
     argparser.add_argument("-nds", "--method", required=True, type=str, help="method to be used, i.e. neuron masking, sae masking or das masking or das sae masking")
-<<<<<<< HEAD
-    
-=======
     # argparser.add_argument("-temp", "--temperature", required=True, type=list, help="temperature for the model [initial_value, end_value]")
->>>>>>> server
     
     args = argparser.parse_args()
     # args.residual_layer = [int(i) for i in args.residual_layer]
