@@ -15,6 +15,8 @@ with n_llama_model.trace("my_name_is_maheep") as tracer:
 sae_input = outputl1.squeeze(0)[-1].unsqueeze(0)
 print(sae_input.shape)
 top_acts, top_indices  = sae.encode(sae_input)
+print(f"Top actsd shape : {top_acts.shape}")
+print(f"Top indices shape: {top_indices.shape}")
 d1 = sae.decode(top_acts, top_indices)
 
 print(d1.shape)
