@@ -146,8 +146,6 @@ class my_model(nn.Module):
             state_dict = t.load(f"openai_sae/downloaded_saes/{self.layer_intervened}.pt")
             self.autoencoder = sparse_autoencoder.Autoencoder.from_state_dict(state_dict)
             self.l4_mask = t.nn.Parameter(t.zeros(sae_dim), requires_grad=True)
-
-
             for params in self.autoencoder.parameters():
                 params.requires_grad = False
         

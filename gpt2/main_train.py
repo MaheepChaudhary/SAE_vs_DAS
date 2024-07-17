@@ -382,7 +382,7 @@ if __name__ == "__main__":
     # target_total_step = len(batches) * args.epochs
     #TODO: The total number of batches is total_no_samples/batch_len
     batch_size = args.batch_size
-    target_total_step = len(train_data) * args.epochs
+    target_total_step = (len(train_data)/batch_size) * args.epochs
     temperature_start = 20.0
     temperature_end = 0.1
     temperature_schedule = (
