@@ -11,14 +11,15 @@ print(n_llama_model)
 
 with n_llama_model.trace("my_name_is_maheep") as tracer:
     outputl1 = n_llama_model.model.layers[0].output[0].save()
-    
-top_acts, top_indices  = sae.select_topk(outputl1)
+   
+sae_input = outputl1.squeeze(0)[-1].unsqueeze(0)
+print(sae_input.shape)
+top_acts, top_indices  = sae.encode(sae_input)
 d1 = sae.decode(top_acts, top_indices)
 
 print(d1.shape)
 #print(top_indices)
 print(outputl1.shape)
-
 
 
 model_name = "meta-llama/Meta-Llama-3-8B"
