@@ -3,7 +3,7 @@ from imports import *
 class my_model(nn.Module):
     def __init__(self, model, DEVICE, method, expansion_factor, token_length_allowed, layer_intervened, intervened_token_idx, batch_size) -> None:
         super(my_model, self).__init__()
-        
+               
         self.model = model
         self.layer_intervened = t.tensor(layer_intervened, dtype=t.int32, device=DEVICE)
         self.intervened_token_idx = t.tensor(intervened_token_idx, dtype=t.int32, device=DEVICE)
