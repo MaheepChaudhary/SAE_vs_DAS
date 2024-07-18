@@ -4,3 +4,4 @@ from nnsight import LanguageModel
 import torch as t
 from huggingface_hub import login
 from transformers import AutoModel, AutoTokenizer
+from torch import nn
