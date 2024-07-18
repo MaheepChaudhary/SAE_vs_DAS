@@ -39,13 +39,14 @@ class my_model(nn.Module):
             with self.model.trace() as tracer:
                 
                 with tracer.invoke(source_ids) as runner:
-                    vector_source = self.model.transformer.h[self.layer_intervened].output[0]
+                    vector_source = self.model.model.layers[self.layer_intervened].output
 
                 with tracer.invoke(base_ids) as runner_:
-                    intermediate_output = self.model.transformer.h[self.layer_intervened].output[0].clone()
+                    intermediate_output = self.model.model.layers[self.layer_intervened].output.clone()
+                    print(intermediate_output.shape)
                     intermediate_output = (1 - l4_mask_sigmoid) * intermediate_output[:,self.intervened_token_idx,:] + l4_mask_sigmoid * vector_source[:,self.intervened_token_idx,:]
-                    assert intermediate_output.squeeze(1).shape == vector_source[:,self.intervened_token_idx,:].shape == torch.Size([self.batch_size, 768])
-                    self.model.transformer.h[self.layer_intervened].output[0][:,self.intervened_token_idx,:] = intermediate_output.squeeze(1)
+                    assert intermediate_output.squeeze(1).shape == vector_source[:,self.intervened_token_idx,:].shape == torch.Size([self.batch_size, 4096])
+                    self.model.model.layers[self.layer_intervened].output[self.intervened_token_idx,:] = intermediate_output.squeeze(1)
                     # self.model.transformer.h[self.layer_intervened].output[0][:,self.intervened_token_idx,:] = vector_source[:,self.intervened_token_idx,:]
                     
                     intervened_base_predicted = self.model.lm_head.output.argmax(dim=-1).save()
@@ -138,13 +139,16 @@ class my_model(nn.Module):
 
 
 
-if __name__ == "__main__":
+if __name__ == "__main__": 
     n_llama_model = LanguageModel("meta-llama/Meta-Llama-3-8B", device_map = t.device("cuda:1"))
-
     source_id = n_llama_model.tokenizer("maheep is the best boy in the town", return_tensors = "pt") 
     base_id = n_llama_model.tokenizer("maheep is the best boy in the town", return_tensors = "pt") 
-    print(source_id)
-    #sae = Sae.load_from_hub("EleutherAI/sae-llama-3-8b-32x", hookpoint="layers.1").to(t.device("cuda:1"))
+    print(source_id["input_ids"].shape)
+    sae = Sae.load_from_hub("EleutherAI/sae-llama-3-8b-32x", hookpoint="layers.1").to(t.device("cuda:1"))
+    my_model = my_model(intoken_length_allowed, layer_intervened, intervened_token_idx, batch_size, sae, model = n_llama_model, DEVICE = "cuda:1", method = "neuron masking") 
+#    print(n_llama_model)
+#    with n_llama_model.trace(source_id) as tracer:
+#        output = n_llama_model.model.layers[0].output.save()
 
-    #my_model = my_model(model = n_llama_model, DEVICE = "cuda:1", method = "sae masking", intoken_length_allowed, layer_intervened, intervened_token_idx, batch_size, sae)
-
+#    print(output.shape)
+    
