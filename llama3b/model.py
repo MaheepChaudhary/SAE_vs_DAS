@@ -1,9 +1,8 @@
 from imports import *
 
 class my_model(nn.Module):
-    def __init__(self, model, DEVICE, method, expansion_factor, token_length_allowed, layer_intervened, intervened_token_idx, batch_size) -> None:
+    def __init__(self, model, DEVICE, method, token_length_allowed, layer_intervened, intervened_token_idx, batch_size, sae) -> None:
         super(my_model, self).__init__()
-               
         self.model = model
         self.layer_intervened = t.tensor(layer_intervened, dtype=t.int32, device=DEVICE)
         self.intervened_token_idx = t.tensor(intervened_token_idx, dtype=t.int32, device=DEVICE)
@@ -14,31 +13,22 @@ class my_model(nn.Module):
         self.batch_size = batch_size
         
         if method == "sae masking":
-            sae_dim = (1,1,4096)
+            sae_dim = (1,192)
+            # It is a little weird but the shape of the latenet shape is [1,192]
             self.l4_mask = t.nn.Parameter(t.zeros(sae_dim), requires_grad=True)
             
-            for params in self.autoencoder.parameters():
-                params.requires_grad = False
-        
-                
         if method == "neuron masking":
             # neuron_dim = (1,self.token_length_allowed, 768)
-            neuron_dim = (1,768)
+            neuron_dim = (1,4096)
             self.l4_mask = t.nn.Parameter(t.zeros(neuron_dim, device=DEVICE), requires_grad=True)
             self.l4_mask = self.l4_mask.to(DEVICE)
             
         elif method == "das masking":
-            das_dim = (1,768)
+            das_dim = (1,4096)
             self.l4_mask = t.nn.Parameter(t.zeros(das_dim, device=DEVICE), requires_grad=True)
-            rotate_layer = RotateLayer(768)
+            rotate_layer = RotateLayer(4096)
             self.rotate_layer = t.nn.utils.parametrizations.orthogonal(rotate_layer)
 
-        
-        elif method == "vanilla":
-            proxy_dim = (1,1,1)
-            self.proxy = t.nn.Parameter(t.zeros(proxy_dim), requires_grad=True)
-
-        
         
     def forward(self, source_ids, base_ids, temperature):
         
@@ -120,6 +110,7 @@ class my_model(nn.Module):
 
             return intervened_base_output, predicted_text
 
+
         elif self.method == "sae masking":
             
             with self.model.trace() as tracer:
@@ -145,75 +136,15 @@ class my_model(nn.Module):
 
             return intervened_base_output, predicted_text
 
-        elif self.method == "sae masking openai":
-    
-            with self.model.trace() as tracer:
-                
-                with tracer.invoke(source_ids) as runner:
-                    source = self.model.transformer.h[self.layer_intervened].output
 
-                with tracer.invoke(base_ids) as runner_:
-                    
-                    base = self.model.transformer.h[self.layer_intervened].output[0].clone()
-                    encoded_base, base_info = self.autoencoder.encode(base)
-                    encoded_source, source_info = self.autoencoder.encode(source[0]) 
-
-                    # Clone the tensors to avoid in-place operations
-                    encoded_base_modified = encoded_base.clone()
-                    encoded_source_modified = encoded_source.clone()  
-
-                    assert base_info == source_info
-
-                    # Apply the mask in a non-inplace way
-                    modified_base = encoded_base_modified[:, self.intervened_token_idx, :] * l4_mask_sigmoid
-                    modified_source = encoded_source_modified[:, self.intervened_token_idx, :] * (1 - l4_mask_sigmoid)
-                    
-                    # Assign the modified tensors to the correct indices
-                    encoded_base_modified = encoded_base_modified.clone()
-                    encoded_source_modified = encoded_source_modified.clone()
-                    
-                    # Combine the modified tensors
-                    new_acts = encoded_base_modified.clone()
-                    new_acts[:, self.intervened_token_idx, :] = modified_base + modified_source
-                
-                    iia_vector = self.autoencoder.decode(new_acts, base_info)
-
-                    # Use a copy to avoid in-place modification
-                    h_layer_output_copy = self.model.transformer.h[self.layer_intervened].output[0].clone()
-                    h_layer_output_copy[:, self.intervened_token_idx, :] = iia_vector[:, self.intervened_token_idx, :]
-
-                    # Update the model's output with the modified copy
-                    self.model.transformer.h[self.layer_intervened].output[0][:,:,:] = h_layer_output_copy
-                    
-                    intervened_base_predicted = self.model.lm_head.output.argmax(dim=-1).save()
-                    intervened_base_output = self.model.lm_head.output.save()
-
-                
-            predicted_text = []
-            for index in range(intervened_base_output.shape[0]):
-                predicted_text.append(self.model.tokenizer.decode(intervened_base_output[index].argmax(dim = -1)).split()[-1])
-
-            return intervened_base_output, predicted_text
-
-        elif self.method == "vanilla":
-            intervened_token_idx = -8
-            with self.model.trace() as tracer:
-                
-                with tracer.invoke(source_ids) as runner:
-
-                    vector_source = self.model.transformer.h[self.layer_intervened].output
-
-                with tracer.invoke(base_ids) as runner_:
-                    
-                    self.model.transformer.h[self.layer_intervened].output[0][:, intervened_token_idx, :] = vector_source[0][:,intervened_token_idx,:]
-                    
-                    intervened_base_predicted = self.model.lm_head.output.argmax(dim=-1).save()
-                    intervened_base_output = self.model.lm_head.output.save()
-                
-            predicted_text = self.model.tokenizer.decode(intervened_base_predicted[0][-1])
-            
-
-            return intervened_base_output, predicted_text
 
 if __name__ == "__main__":
-    my_model = my_model()
+    n_llama_model = LanguageModel("meta-llama/Meta-Llama-3-8B", device_map = t.device("cuda:1"))
+
+    source_id = n_llama_model.tokenizer("maheep is the best boy in the town", return_tensors = "pt") 
+    base_id = n_llama_model.tokenizer("maheep is the best boy in the town", return_tensors = "pt") 
+    print(source_id)
+    #sae = Sae.load_from_hub("EleutherAI/sae-llama-3-8b-32x", hookpoint="layers.1").to(t.device("cuda:1"))
+
+    #my_model = my_model(model = n_llama_model, DEVICE = "cuda:1", method = "sae masking", intoken_length_allowed, layer_intervened, intervened_token_idx, batch_size, sae)
+
