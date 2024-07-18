@@ -1,14 +1,13 @@
 from imports import *
 
 class my_model(nn.Module):
-    def __init__(self, model, DEVICE, method, token_length_allowed, layer_intervened, intervened_token_idx, batch_size, sae) -> None:
+    def __init__(self, model, DEVICE, method,layer_intervened, intervened_token_idx, batch_size, sae) -> None:
         super(my_model, self).__init__()
         self.model = model
         self.layer_intervened = t.tensor(layer_intervened, dtype=t.int32, device=DEVICE)
         self.intervened_token_idx = t.tensor(intervened_token_idx, dtype=t.int32, device=DEVICE)
         self.intervened_token_idx = intervened_token_idx
         self.expansion_factor = expansion_factor
-        self.token_length_allowed = token_length_allowed
         self.method = method
         self.batch_size = batch_size
         
@@ -144,11 +143,13 @@ if __name__ == "__main__":
     source_id = n_llama_model.tokenizer("maheep is the best boy in the town", return_tensors = "pt") 
     base_id = n_llama_model.tokenizer("maheep is the best boy in the town", return_tensors = "pt") 
     print(source_id["input_ids"].shape)
+    layer_intervened = 1
+    intervened_token_idx = -8
     sae = Sae.load_from_hub("EleutherAI/sae-llama-3-8b-32x", hookpoint="layers.1").to(t.device("cuda:1"))
-    my_model = my_model(intoken_length_allowed, layer_intervened, intervened_token_idx, batch_size, sae, model = n_llama_model, DEVICE = "cuda:1", method = "neuron masking") 
-#    print(n_llama_model)
-#    with n_llama_model.trace(source_id) as tracer:
-#        output = n_llama_model.model.layers[0].output.save()
+    my_model = my_model(layer_intervened, intervened_token_idx, batch_size, sae, model = n_llama_model, DEVICE = "cuda:1", method = "neuron masking")
+    print(n_llama_model)
+    with n_llama_model.trace(source_id) as tracer:
+        output = n_llama_model.model.layers[0].output.save()
 
 #    print(output.shape)
     
