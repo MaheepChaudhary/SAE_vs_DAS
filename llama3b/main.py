@@ -1,9 +1,6 @@
 from imports import *
-
-from imports import *
 from ravel_data_prep import *
-from eval_gpt2 import *
-from models import *
+from model import *
 
 def config(learning_rate, token_length):
     
