@@ -38,17 +38,13 @@ class my_model(nn.Module):
             with self.model.trace() as tracer:
                 
                 with tracer.invoke(source_ids) as runner:
-                    vector_source = self.model.model.layers[self.layer_intervened].output
+                    vector_source = self.model.model.layers[self.layer_intervened].output[0]
 
                 with tracer.invoke(base_ids) as runner_:
-                    intermediate_output = self.model.model.layers[self.layer_intervened].output.clone()
-                    print(intermediate_output.shape)
+                    intermediate_output = self.model.model.layers[self.layer_intervened].output[0].clone()
                     intermediate_output = (1 - l4_mask_sigmoid) * intermediate_output[:,self.intervened_token_idx,:] + l4_mask_sigmoid * vector_source[:,self.intervened_token_idx,:]
                     assert intermediate_output.squeeze(1).shape == vector_source[:,self.intervened_token_idx,:].shape == torch.Size([self.batch_size, 4096])
                     self.model.model.layers[self.layer_intervened].output[self.intervened_token_idx,:] = intermediate_output.squeeze(1)
-                    # self.model.transformer.h[self.layer_intervened].output[0][:,self.intervened_token_idx,:] = vector_source[:,self.intervened_token_idx,:]
-                    
-                    intervened_base_predicted = self.model.lm_head.output.argmax(dim=-1).save()
                     intervened_base_output = self.model.lm_head.output.save()
 
             predicted_text = []
@@ -140,16 +136,18 @@ class my_model(nn.Module):
 
 if __name__ == "__main__": 
     n_llama_model = LanguageModel("meta-llama/Meta-Llama-3-8B", device_map = t.device("cuda:1"))
-    source_id = n_llama_model.tokenizer("maheep is the best boy in the town", return_tensors = "pt") 
-    base_id = n_llama_model.tokenizer("maheep is the best boy in the town", return_tensors = "pt") 
+    source_id = n_llama_model.tokenizer("Toronto is a city in the continent of North America. Beijing is a city in the continent of Asia. Miami is a city in the continent of North America. Santiago is a city in the continent of South America. London is a city in the continent of Europe. Aba is a city in the continent of", return_tensors = "pt") 
+    base_id = n_llama_model.tokenizer("Toronto is a city in the continent of North America. Beijing is a city in the continent of Asia. Miami is a city in the continent of North America. Santiago is a city in the continent of South America. London is a city in the continent of Europe. Paris is a city in the continent of", return_tensors = "pt") 
     print(source_id["input_ids"].shape)
     layer_intervened = 1
     intervened_token_idx = -8
+    batch_size = 1
     sae = Sae.load_from_hub("EleutherAI/sae-llama-3-8b-32x", hookpoint="layers.1").to(t.device("cuda:1"))
-    my_model = my_model(layer_intervened, intervened_token_idx, batch_size, sae, model = n_llama_model, DEVICE = "cuda:1", method = "neuron masking")
+    # my_model = my_model(layer_intervened, intervened_token_idx, batch_size, sae, model = n_llama_model, DEVICE = "cuda:1", method = "neuron masking")
     print(n_llama_model)
-    with n_llama_model.trace(source_id) as tracer:
-        output = n_llama_model.model.layers[0].output.save()
-
-#    print(output.shape)
+    with n_llama_model.trace(base_id) as tracer:
+        #output = n_llama_model.model.layers[0].output.save()
+        output = n_llama_model.lm_head.output.save()
+    print(output.shape)
+    print(n_llama_model.tokenizer.decode(output[0].argmax(dim = -1).squeeze(0)[-1]))
     
