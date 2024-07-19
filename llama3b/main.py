@@ -5,20 +5,16 @@ from ravel_data_prep import *
 from eval_gpt2 import *
 from models import *
 
-def config(file_path, learning_rate, token_length):
+def config(learning_rate, token_length):
     
     # Load gpt2
     if args.model == "gpt2":
         n_llama_model = LanguageModel("meta-llama/Meta-Llama-3-8B", device_map = t.device("cuda:1"))
 
-    with open(file_path, "r") as file:
-        data = json.load(file)
-    
-
     intervened_token_idx = -8
     intervention_token_length = token_length
 
-    return data, model, intervened_token_idx
+    return model, intervened_token_idx
 
 def data_processing(model, samples, token_length_allowed, attribute, DEVICE, batch_size):
     
@@ -340,7 +336,6 @@ if __name__ == "__main__":
     
     parser.add_argument("-p", "--path_json", default = "gpt2/ravel/data/ravel_city_entity_attributes.json", help='Prompting for Ravel Data')
     parser.add_argument("-d", "--device", default = "cuda:1", help='Device to run the model on')
-    parser.add_argument("-efp", "--eval_file_path", required = True, help = "file path which you would like to evaluate" )
     parser.add_argument("-a", "--attribute", required = True, help = "name of the attribute on which evaluation is being performned")
     # parser.add_argument("-acc", "--accuracy", required=True, help = "type of accuracy of the model on the evaluation dataset, i.e. top 1 or top 5 or top 10")
     parser.add_argument("-tla", "--token_length_allowed", required=True, type = int, help = "insert the length you would allow the model to train mask")
@@ -363,8 +358,7 @@ if __name__ == "__main__":
     DEVICE = args.device
     layer_intervened = args.layer_intervened
 
-    data, model, intervened_token_idx, = config(file_path = args.eval_file_path, learning_rate = args.learning_rate,
-                                                                                token_length = args.token_length_allowed)
+    model, intervened_token_idx, = config(learning_rate = args.learning_rate, token_length = args.token_length_allowed)
     # model.to(DEVICE)
     training_model = my_model(model = model, DEVICE=DEVICE, method=args.method, layer_intervened=layer_intervened, intervened_token_idx=intervened_token_idx, batch_size=args.batch_size)
 
