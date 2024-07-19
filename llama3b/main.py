@@ -1,17 +1,16 @@
+from sae import Sae
 from imports import *
 from ravel_data_prep import *
 from model import *
 
 def config(learning_rate, token_length):
     
-    # Load gpt2
-    if args.model == "gpt2":
-        n_llama_model = LanguageModel("meta-llama/Meta-Llama-3-8B", device_map = t.device("cuda:1"))
+    n_llama_model = LanguageModel("meta-llama/Meta-Llama-3-8B", device_map = t.device("cuda:1"))
 
     intervened_token_idx = -8
     intervention_token_length = token_length
 
-    return model, intervened_token_idx
+    return n_llama_model, intervened_token_idx
 
 def data_processing(model, samples, token_length_allowed, attribute, DEVICE, batch_size):
     
@@ -61,7 +60,7 @@ def train_data_processing(task, intervention_divided_data, batch_size):
             data1 = continent_data
             data2 = country_data
             
-        for sample_no in range(len(data1)):
+        for sample_no in range(len(data2)):
             sample = data1[sample_no]
             base = sample[0][0]
             source = sample[1][0]
@@ -357,7 +356,8 @@ if __name__ == "__main__":
 
     model, intervened_token_idx, = config(learning_rate = args.learning_rate, token_length = args.token_length_allowed)
     # model.to(DEVICE)
-    training_model = my_model(model = model, DEVICE=DEVICE, method=args.method, layer_intervened=layer_intervened, intervened_token_idx=intervened_token_idx, batch_size=args.batch_size)
+    sae = Sae.load_from_hub("EleutherAI/sae-llama-3-8b-32x", hookpoint="layers.1").to(t.device("cuda:1"))
+    training_model = my_model(model = model, DEVICE=DEVICE, method=args.method, layer_intervened=layer_intervened, intervened_token_idx=intervened_token_idx, batch_size=args.batch_size, sae = sae)
 
     training_model.to(DEVICE)
     loss_fn = nn.CrossEntropyLoss()
@@ -377,7 +377,7 @@ if __name__ == "__main__":
     temperature_start = 20.0
     temperature_end = 0.1
     temperature_schedule = (
-        t.linspace(temperature_start, temperature_end, target_total_step)
+        t.linspace(t.tensor(temperature_start), t.tensor(temperature_end), int(target_total_step))
         .to(t.bfloat16)
         .to(DEVICE)
     )
