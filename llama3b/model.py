@@ -38,17 +38,13 @@ class my_model(nn.Module):
             with self.model.trace() as tracer:
                 
                 with tracer.invoke(source_ids) as runner:
-                    vector_source = self.model.model.layers[self.layer_intervened].output
+                    vector_source = self.model.model.layers[self.layer_intervened].output[0]
 
                 with tracer.invoke(base_ids) as runner_:
-                    intermediate_output = self.model.model.layers[self.layer_intervened].output.clone()
-                    print(intermediate_output.shape)
+                    intermediate_output = self.model.model.layers[self.layer_intervened].output[0].clone()
                     intermediate_output = (1 - l4_mask_sigmoid) * intermediate_output[:,self.intervened_token_idx,:] + l4_mask_sigmoid * vector_source[:,self.intervened_token_idx,:]
                     assert intermediate_output.squeeze(1).shape == vector_source[:,self.intervened_token_idx,:].shape == torch.Size([self.batch_size, 4096])
                     self.model.model.layers[self.layer_intervened].output[self.intervened_token_idx,:] = intermediate_output.squeeze(1)
-                    # self.model.transformer.h[self.layer_intervened].output[0][:,self.intervened_token_idx,:] = vector_source[:,self.intervened_token_idx,:]
-                    
-                    intervened_base_predicted = self.model.lm_head.output.argmax(dim=-1).save()
                     intervened_base_output = self.model.lm_head.output.save()
 
             predicted_text = []
@@ -110,6 +106,7 @@ class my_model(nn.Module):
 
             return intervened_base_output, predicted_text
 
+
         elif self.method == "sae masking":
             
             with self.model.trace() as tracer:
@@ -136,25 +133,6 @@ class my_model(nn.Module):
             return intervened_base_output, predicted_text
 
 
-        elif self.method == "vanilla":
-            intervened_token_idx = -8
-            with self.model.trace() as tracer:
-                
-                with tracer.invoke(source_ids) as runner:
-
-                    vector_source = self.model.transformer.h[self.layer_intervened].output
-
-                with tracer.invoke(base_ids) as runner_:
-                    
-                    self.model.transformer.h[self.layer_intervened].output[0][:, intervened_token_idx, :] = vector_source[0][:,intervened_token_idx,:]
-                    
-                    intervened_base_predicted = self.model.lm_head.output.argmax(dim=-1).save()
-                    intervened_base_output = self.model.lm_head.output.save()
-                
-            predicted_text = self.model.tokenizer.decode(intervened_base_predicted[0][-1])
-            
-
-            return intervened_base_output, predicted_text
 
 if __name__ == "__main__": 
     n_llama_model = LanguageModel("meta-llama/Meta-Llama-3-8B", device_map = t.device("cuda:1"))
