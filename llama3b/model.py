@@ -158,8 +158,8 @@ class my_model(nn.Module):
 
 if __name__ == "__main__": 
     n_llama_model = LanguageModel("meta-llama/Meta-Llama-3-8B", device_map = t.device("cuda:1"))
-    source_id = n_llama_model.tokenizer("Toronto is a city in the continent of North America. Beijing is a city in the continent of Asia. Miami is a city in the continent of North America. Santiago is a city in the continent of South America. London is a city in the continent of Europe. Aba is a city in the continent of", return_tensors = "pt") 
-    base_id = n_llama_model.tokenizer("Toronto is a city in the continent of North America. Beijing is a city in the continent of Asia. Miami is a city in the continent of North America. Santiago is a city in the continent of South America. London is a city in the continent of Europe. Paris is a city in the continent of", return_tensors = "pt") 
+    source_id = n_llama_model.tokenizer("Toronto is a city in the continent of North America. Beijing is a city in the continent of Asia. Miami is a city in the continent of North America. Santiago is a city in the continent of South America. London is a city in the continent of Europe. Beijing is a city in the continent of", return_tensors = "pt") 
+    base_id = n_llama_model.tokenizer("Toronto is a city in the continent of North America. Beijing is a city in the continent of Asia. Miami is a city in the continent of North America. Santiago is a city in the continent of South America. London is a city in the continent of Europe. Ankara is a city in the continent of", return_tensors = "pt") 
     print(source_id["input_ids"].shape)
     layer_intervened = 1
     intervened_token_idx = -8
@@ -168,8 +168,9 @@ if __name__ == "__main__":
     # my_model = my_model(layer_intervened, intervened_token_idx, batch_size, sae, model = n_llama_model, DEVICE = "cuda:1", method = "neuron masking")
     print(n_llama_model)
     with n_llama_model.trace(base_id) as tracer:
-        #output = n_llama_model.model.layers[0].output.save()
+        output1 = n_llama_model.model.layers[0].output.save()
         output = n_llama_model.lm_head.output.save()
+    print(output1.shape)
     print(output.shape)
     print(n_llama_model.tokenizer.decode(output[0].argmax(dim = -1).squeeze(0)[-1]))
     
