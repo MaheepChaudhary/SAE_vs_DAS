@@ -51,10 +51,10 @@ def data_processing(model, samples, token_length_allowed, attribute, DEVICE, bat
 
 def train_data_processing(task, intervention_divided_data, batch_size):
     
-    with open("filtered_continent_intervention_dataset.json", "r") as file:
+    with open("gpt2/filtered_continent_intervention_dataset.json", "r") as file:
         continent_data = json.load(file)
     
-    with open("filtered_country_intervention_dataset.json", "r") as file:
+    with open("gpt2/filtered_country_intervention_dataset.json", "r") as file:
         country_data = json.load(file)
     
     random.shuffle(country_data) 
@@ -338,10 +338,9 @@ if __name__ == "__main__":
     
     parser = argparse.ArgumentParser()
     
-    parser.add_argument("-p", "--path_json", default = "ravel/data/ravel_city_entity_attributes.json", help='Prompting for Ravel Data')
+    parser.add_argument("-p", "--path_json", default = "gpt2/ravel/data/ravel_city_entity_attributes.json", help='Prompting for Ravel Data')
     parser.add_argument("-d", "--device", default = "cuda:1", help='Device to run the model on')
     parser.add_argument("-efp", "--eval_file_path", required = True, help = "file path which you would like to evaluate" )
-    parser.add_argument("-m", "--model", default = "gpt2", help= "the model which you would like to evaluate on the ravel dataset")
     parser.add_argument("-a", "--attribute", required = True, help = "name of the attribute on which evaluation is being performned")
     # parser.add_argument("-acc", "--accuracy", required=True, help = "type of accuracy of the model on the evaluation dataset, i.e. top 1 or top 5 or top 10")
     parser.add_argument("-tla", "--token_length_allowed", required=True, type = int, help = "insert the length you would allow the model to train mask")
