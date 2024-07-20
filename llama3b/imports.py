@@ -1,5 +1,4 @@
 import os
-from sae.sae import Sae
 from nnsight import LanguageModel 
 import torch as t
 from huggingface_hub import login
@@ -34,8 +33,6 @@ import numpy as np
 from jaxtyping import Float
 from transformer_lens import ActivationCache
 from pathlib import Path
-
-from openai_sae import sparse_autoencoder
 
 import os
 os.environ["CUDA_LAUNCH_BLOCKING"] = "1"
