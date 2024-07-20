@@ -93,16 +93,16 @@ if __name__ == "__main__":
     model = LanguageModel("meta-llama/Meta-Llama-3-8B", device_map = t.device("cuda:1"))
     print(model)
     
-#    with open("vanilla_data/continent_data.json", "r") as f:
-#        continent_data = json.load(f)
+    with open("vanilla_data/continent_data.json", "r") as f:
+        continent_data = json.load(f)
 
 
-#   with open("vanilla_data/country_data.json", "r") as f:
-#       country_data = json.load(f)
+    with open("vanilla_data/country_data.json", "r") as f:
+       country_data = json.load(f)
 
 
-    #analyse(model, continent_data,"continent")
-    #analyse(model, country_data, "country")
+    analyse(model, continent_data,"continent")
+    analyse(model, country_data, "country")
 
 
 
