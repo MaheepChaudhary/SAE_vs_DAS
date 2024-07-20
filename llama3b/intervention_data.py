@@ -29,6 +29,27 @@ def analyse(model, data, attribute):
     with open(f"comfy_{attribute}.json", "w") as f:
         json.dump(new_data, f)
 
+
+
+
+def overlap_measure(country_data, continent_data):
+
+    list_of_country_cities = []
+    list_of_continent_cities = []
+
+    for sample in country_data:
+        list_of_country_cities.append(sample[0].split()[-8])
+
+    for sample in continent_data:
+        list_of_continent_cities.append(sample[0].split()[-8])
+
+    ovelapping_cities = set(list_of_country_cities) & set(list_of_continent_cities)
+
+    print(f"The total number of overlapping cities are {len(overlapping_cities)}")
+
+
+
+
 if __name__ == "__main__":  
 
     model = LanguageModel("meta-llama/Meta-Llama-3-8B", device_map = t.device("cuda:1"))
