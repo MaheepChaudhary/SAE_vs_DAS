@@ -7,7 +7,6 @@ class my_model(nn.Module):
         self.layer_intervened = t.tensor(layer_intervened, dtype=t.int32, device=DEVICE)
         self.intervened_token_idx = t.tensor(intervened_token_idx, dtype=t.int32, device=DEVICE)
         self.intervened_token_idx = intervened_token_idx
-        self.expansion_factor = expansion_factor
         self.method = method
         self.batch_size = batch_size
         
@@ -42,9 +41,11 @@ class my_model(nn.Module):
 
                 with tracer.invoke(base_ids) as runner_:
                     intermediate_output = self.model.model.layers[self.layer_intervened].output[0].clone()
+                    print(f"Intermediate variable shape: {intermediate_output.shape}")
                     intermediate_output = (1 - l4_mask_sigmoid) * intermediate_output[:,self.intervened_token_idx,:] + l4_mask_sigmoid * vector_source[:,self.intervened_token_idx,:]
                     assert intermediate_output.squeeze(1).shape == vector_source[:,self.intervened_token_idx,:].shape == torch.Size([self.batch_size, 4096])
-                    self.model.model.layers[self.layer_intervened].output[self.intervened_token_idx,:] = intermediate_output.squeeze(1)
+                    print(f"Layer shape : {self.model.model.layers[self.layer_intervened].output[0][self.intervened_token_idx,:].shape}")
+                    self.model.model.layers[self.layer_intervened].output[0][self.intervened_token_idx,:] = intermediate_output.squeeze(1)
                     intervened_base_output = self.model.lm_head.output.save()
 
             predicted_text = []
