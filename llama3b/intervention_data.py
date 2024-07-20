@@ -43,28 +43,74 @@ def overlap_measure(country_data, continent_data):
     for sample in continent_data:
         list_of_continent_cities.append(sample[0].split()[-8])
 
-    ovelapping_cities = set(list_of_country_cities) & set(list_of_continent_cities)
+    overlapping_cities = set(list_of_country_cities) & set(list_of_continent_cities)
 
     print(f"The total number of overlapping cities are {len(overlapping_cities)}")
 
+    return overlapping_cities
 
 
+def final_data(country_data, continent_data):
+
+    overlapping_cities = overlap_measure(country_data, continent_data)
+
+    new_country_data = []
+    new_continent_data = []
+
+    for data in country_data:
+        city = data[0].split()[-8]
+        if city in overlapping_cities:
+            for data1 in country_data:
+                city1 = data[0].split()[-8]
+                if city1 in overlapping_cities:
+                    new_country_data.append([[data[0], data[1]], [data1[0], data1[1]]])
+                else:
+                    continue
+        else:
+            continue
+
+
+    for data in continent_data:
+        city = data[0].split()[-8]
+        if city in overlapping_cities:
+            for data1 in continent_data:
+                city1 = data[0].split()[-8]
+                if city1 in overlapping_cities:
+                    new_continent_data.append([[data[0], data[1]], [data1[0], data1[1]]])
+                else:
+                    continue
+        else:
+            continue
+
+    with open("final_data_country.json","w") as f:
+        json.dump(new_country_data, f)
+
+    with open("final_data_continent.json", "w") as f:
+        json.dump(new_continent_data, f)
 
 if __name__ == "__main__":  
 
     model = LanguageModel("meta-llama/Meta-Llama-3-8B", device_map = t.device("cuda:1"))
     print(model)
     
-    with open("vanilla_data/continent_data.json", "r") as f:
+#    with open("vanilla_data/continent_data.json", "r") as f:
+#        continent_data = json.load(f)
+
+
+#   with open("vanilla_data/country_data.json", "r") as f:
+#       country_data = json.load(f)
+
+
+    #analyse(model, continent_data,"continent")
+    #analyse(model, country_data, "country")
+
+
+
+    with open("comfy_continent.json","r") as f:
         continent_data = json.load(f)
 
-
-    with open("vanilla_data/country_data.json", "r") as f:
+    with open("comfy_country.json", "r") as f:
         country_data = json.load(f)
 
-
-    analyse(model, continent_data,"continent")
-    analyse(model, country_data, "country")
-
-
-
+    
+    final_data(continent_data = continent_data, country_data = country_data)
