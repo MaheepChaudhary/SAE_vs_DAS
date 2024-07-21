@@ -44,9 +44,10 @@ class my_model(nn.Module):
                     print(f"Intermediate variable shape: {intermediate_output.shape}")
                     intermediate_output = (1 - l4_mask_sigmoid) * intermediate_output[:,self.intervened_token_idx,:] + l4_mask_sigmoid * vector_source[:,self.intervened_token_idx,:]
                     assert intermediate_output.squeeze(1).shape == vector_source[:,self.intervened_token_idx,:].shape == torch.Size([self.batch_size, 4096])
-                    print(f"Layer shape : {self.model.model.layers[self.layer_intervened].output[0][self.intervened_token_idx,:].shape}")
-                    self.model.model.layers[self.layer_intervened].output[0][self.intervened_token_idx,:] = intermediate_output.squeeze(1)
+                    print(f"Layer shape : {self.model.model.layers[self.layer_intervened].output[0][:, self.intervened_token_idx,:].shape}")
+                    self.model.model.layers[self.layer_intervened].output[0][:, self.intervened_token_idx,:] = intermediate_output
                     intervened_base_output = self.model.lm_head.output.save()
+                    print(intervened_base_output.shape)
 
             predicted_text = []
             for index in range(intervened_base_output.shape[0]):
