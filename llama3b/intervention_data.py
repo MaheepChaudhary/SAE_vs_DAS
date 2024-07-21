@@ -90,7 +90,10 @@ def final_data(country_data, continent_data):
 
 if __name__ == "__main__":  
 
-    model = LanguageModel("openai-community/gpt2", device_map="mps")
+    try:
+        model = LanguageModel("openai-community/gpt2", device_map="cuda:1")
+    except:
+        model = LanguageModel("openai-community/gpt2", device_map="mps")
     print(model)
     
     with open("vanilla_data/continent_data.json", "r") as f:
