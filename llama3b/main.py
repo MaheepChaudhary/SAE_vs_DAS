@@ -1,6 +1,5 @@
 from sae import Sae
 from imports import *
-from ravel_data_prep import *
 from model import *
 
 def config(learning_rate, token_length):
@@ -21,20 +20,20 @@ def data_processing(model, samples, token_length_allowed, attribute, DEVICE, bat
     source_labels = list(np.array(samples)[:,1,1])
     assert len(bases) == len(sources) == len(base_labels) == len(source_labels) == batch_size
     
-    base_ids = model.tokenizer(bases, return_tensors='pt').to(DEVICE)
-    source_ids = model.tokenizer(sources, return_tensors='pt').to(DEVICE)
+    base_ids = model.tokenizer(bases, add_special_tokens = False, return_tensors='pt').to(DEVICE)
+    source_ids = model.tokenizer(sources, add_special_tokens = False, return_tensors='pt').to(DEVICE)
     # print(base_ids["input_ids"].shape, source_ids["input_ids"].shape)
-    source_tokens = model.tokenizer(sources) 
-    base_tokens = model.tokenizer(bases)
-    source_label_token = model.tokenizer(source_labels)
-    base_label_token = model.tokenizer(base_labels)
+    source_tokens = model.tokenizer(sources, add_special_tokens = False) 
+    base_tokens = model.tokenizer(bases, add_special_tokens = False)
+    source_label_token = model.tokenizer(source_labels, add_special_tokens = False)
+    base_label_token = model.tokenizer(base_labels, add_special_tokens = False)
     
     # The model has the vocab with words with space along side them, so we are making the tokens s.t. they do not split and correspond to their word with integrated space. 
     source_label_mods = [" " + label.split()[0] for label in source_labels]
     base_label_mods = [" " + label.split()[0] for label in base_labels]
     
-    base_label_ids = model.tokenizer(base_label_mods, return_tensors='pt').to(DEVICE)
-    source_label_ids = model.tokenizer(source_label_mods, return_tensors='pt').to(DEVICE)
+    base_label_ids = model.tokenizer(base_label_mods, add_special_tokens = False, return_tensors='pt').to(DEVICE)
+    source_label_ids = model.tokenizer(source_label_mods, add_special_tokens = False, return_tensors='pt').to(DEVICE)
     
     allowed_token_length = 59 if attribute == "country" else 61
 
@@ -43,10 +42,10 @@ def data_processing(model, samples, token_length_allowed, attribute, DEVICE, bat
 
 def train_data_processing(task, intervention_divided_data, batch_size):
     
-    with open("gpt2/filtered_continent_intervention_dataset.json", "r") as file:
+    with open("final_data_continent.json", "r") as file:
         continent_data = json.load(file)
     
-    with open("gpt2/filtered_country_intervention_dataset.json", "r") as file:
+    with open("final_data_country.json", "r") as file:
         country_data = json.load(file)
     
     random.shuffle(country_data) 
@@ -143,11 +142,16 @@ def train(continent_data, country_data, training_model, model, train_data, optim
             intervened_base_output, predicted_text = training_model(source_ids, base_ids, temperature)
             ground_truth_token_id = source_label_ids
             # ground_truth_token_id = base_label_ids
+            print(source_label)
+            print(ground_truth_token_id)
             vocab_size = model.tokenizer.vocab_size
+            print(f"voab size:{vocab_size}")
+            print(f'gttti:{ground_truth_token_id["input_ids"]}')
             ground_truth_one_hot = F.one_hot(ground_truth_token_id["input_ids"], num_classes=vocab_size)
             ground_truth_one_hot = ground_truth_one_hot.to(dtype=torch.long)
             last_token_output = intervened_base_output[:,-1,:]
-            assert ground_truth_one_hot.squeeze(1).shape == last_token_output.shape
+            print(ground_truth_one_hot.shape)
+            print(last_token_output.shape)
             ground_truth_indices = torch.argmax(ground_truth_one_hot.squeeze(1), dim=1)
             ground_truth_indices = ground_truth_indices.to(dtype=torch.long)
             loss = loss_fn(last_token_output, ground_truth_indices)
@@ -330,7 +334,6 @@ if __name__ == "__main__":
     
     parser = argparse.ArgumentParser()
     
-    parser.add_argument("-p", "--path_json", default = "gpt2/ravel/data/ravel_city_entity_attributes.json", help='Prompting for Ravel Data')
     parser.add_argument("-d", "--device", default = "cuda:1", help='Device to run the model on')
     parser.add_argument("-a", "--attribute", required = True, help = "name of the attribute on which evaluation is being performned")
     # parser.add_argument("-acc", "--accuracy", required=True, help = "type of accuracy of the model on the evaluation dataset, i.e. top 1 or top 5 or top 10")
