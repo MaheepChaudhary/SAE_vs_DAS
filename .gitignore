@@ -1,4 +1,5 @@
-gpt2/*
+gpt2/vanilla_data
+gpt2/*.json
 llama3b/sae/*
 saved_models/*
 dictionary_learning
