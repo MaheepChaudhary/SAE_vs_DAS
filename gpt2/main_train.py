@@ -120,8 +120,7 @@ def train(continent_data, country_data, training_model, model, train_data, optim
         # for sample_no in tqdm(range(len(data))):
         i = 0
         matches = 0
-        print(np.array(train_data).shape[0])
-        for sample_no in range(np.array(train_data).shape[0]//batch_size):
+        for sample_no in range(np.array(train_data).shape[0]):
             
             samples = train_data[sample_no]
             assert np.array(samples).shape == (batch_size, 2, 2)
@@ -164,7 +163,6 @@ def train(continent_data, country_data, training_model, model, train_data, optim
             predicted_text = [word.split()[0] for word in predicted_text]
             source_label = [word.split()[0] for word in source_label]
             matches_arr = [i for i in range(len(predicted_text)) if predicted_text[i] == source_label[i]]
-            matches+=len(matches_arr)
             total_samples_processed +=batch_size
             temp_idx += 1
             i+=1
@@ -369,7 +367,7 @@ if __name__ == "__main__":
     # target_total_step = len(batches) * args.epochs
     #TODO: The total number of batches is total_no_samples/batch_len
     batch_size = args.batch_size
-    target_total_step = (len(train_data)/batch_size) * args.epochs
+    target_total_step = len(train_data) * args.epochs
     temperature_start = 20.0
     temperature_end = 0.1
     temperature_schedule = (
@@ -377,7 +375,6 @@ if __name__ == "__main__":
         .to(t.bfloat16)
         .to(DEVICE)
     )
-    print(f"Temp Schedule lenght is {len(temperature_schedule)}")
     
     temp_idx = 0
     
