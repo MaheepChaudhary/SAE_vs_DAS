@@ -48,6 +48,7 @@ class my_model(nn.Module):
                     self.model.model.layers[self.layer_intervened].output[0][:, self.intervened_token_idx,:] = intermediate_output
                     intervened_base_output = self.model.lm_head.output.save()
                     print(intervened_base_output.shape)
+                
 
             predicted_text = []
             for index in range(intervened_base_output.shape[0]):
