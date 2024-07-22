@@ -3,20 +3,14 @@ from ravel_data_prep import *
 from eval_gpt2 import *
 from models import *
 
-def config(file_path, learning_rate, token_length):
+def config(learning_rate, token_length):
     
-    # Load gpt2
-    if args.model == "gpt2":
-        model = LanguageModel("openai-community/gpt2", device_map = DEVICE)
-
-    with open(file_path, "r") as file:
-        data = json.load(file)
-    
+    model = LanguageModel("openai-community/gpt2", device_map = DEVICE)
 
     intervened_token_idx = -8
     intervention_token_length = token_length
 
-    return data, model, intervened_token_idx
+    return model, intervened_token_idx
 
 def data_processing(model, samples, token_length_allowed, attribute, DEVICE, batch_size):
     
@@ -332,12 +326,8 @@ if __name__ == "__main__":
     
     parser = argparse.ArgumentParser()
     
-    parser.add_argument("-p", "--path_json", default = "ravel/data/ravel_city_entity_attributes.json", help='Prompting for Ravel Data')
     parser.add_argument("-d", "--device", default = "cuda:1", help='Device to run the model on')
-    parser.add_argument("-efp", "--eval_file_path", required = True, help = "file path which you would like to evaluate" )
-    parser.add_argument("-m", "--model", default = "gpt2", help= "the model which you would like to evaluate on the ravel dataset")
     parser.add_argument("-a", "--attribute", required = True, help = "name of the attribute on which evaluation is being performned")
-    # parser.add_argument("-acc", "--accuracy", required=True, help = "type of accuracy of the model on the evaluation dataset, i.e. top 1 or top 5 or top 10")
     parser.add_argument("-tla", "--token_length_allowed", required=True, type = int, help = "insert the length you would allow the model to train mask")
     parser.add_argument("-method", "--method", required=True, help="to let know if you want neuron masking, das masking or SAE masking")
     parser.add_argument("-e", "--epochs", default=1, type = int, help="# of epochs on which mask is to be trained")
@@ -358,8 +348,7 @@ if __name__ == "__main__":
     DEVICE = args.device
     layer_intervened = args.layer_intervened
 
-    data, model, intervened_token_idx, = config(file_path = args.eval_file_path, learning_rate = args.learning_rate,
-                                                                                token_length = args.token_length_allowed)
+    model, intervened_token_idx, = config(learning_rate = args.learning_rate, token_length = args.token_length_allowed)
     # model.to(DEVICE)
     training_model = my_model(model = model, DEVICE=DEVICE, method=args.method, token_length_allowed=args.token_length_allowed, expansion_factor=args.expansion_factor,
                             layer_intervened=layer_intervened, intervened_token_idx=intervened_token_idx, batch_size=args.batch_size)
@@ -382,7 +371,7 @@ if __name__ == "__main__":
     temperature_start = 20.0
     temperature_end = 0.1
     temperature_schedule = (
-        t.linspace(temperature_start, temperature_end, target_total_step)
+        t.linspace(t.tensor(temperature_start), t.tensor(temperature_end), int(target_total_step))
         .to(t.bfloat16)
         .to(DEVICE)
     )
