@@ -1,4 +1,4 @@
-# Steps to prepare ravel data:
+## Steps to prepare ravel data:
 
 * Firstly make the dataset for preparing simple file: "country_data.json"
 * After that a file is prepared consisting of cities in which the model is comforatable in predicting the cities, giving around 100% accuracy:
@@ -7,3 +7,7 @@
    * The total
 
 * After making the gpt2 from this method and also including the same sentences as base and source. Also including the sentences with same label of base and source our samples increase form 1.5k for country and continent to 4680 and 5200. Of course the overlapping cities remains the same: 40 cities. 
+
+## GPT-2 SAE Evaluation:
+
+* Now i will be evaluating on whole batch and not just per batch on wandb. 
