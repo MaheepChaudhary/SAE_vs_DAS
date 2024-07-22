@@ -170,23 +170,19 @@ def train(continent_data, country_data, training_model, model, train_data, optim
             matches_arr = [i for i in range(len(predicted_text)) if predicted_text[i] == source_label[i]]
             matches+=len(matches_arr)
             total_samples_processed +=batch_size
-            
-            # if sample_no % \100 == 0 and sample_no != 0:
-            # print(f"Epoch: {epoch}, Sample: {sample_no}, Accuracy: {matches / total_samples_processed:.4f}, Loss: {total_loss / total_samples_processed:.4f}")
-            if wndb == "True":
-                wandb.log({"GPT-2 Token Sub-Space Intervention Accuracy": matches / total_samples_processed, "GPT-2 Token Sub-Space Intervention Loss": total_loss / total_samples_processed})
             temp_idx += 1
             i+=1
+            # if sample_no % \100 == 0 and sample_no != 0:
+            # print(f"Epoch: {epoch}, Sample: {sample_no}, Accuracy: {matches / total_samples_processed:.4f}, Loss: {total_loss / total_samples_processed:.4f}")
+        if wndb == "True":
+            wandb.log({"GPT-2 Token Sub-Space Intervention Accuracy": matches / total_samples_processed, "GPT-2 Token Sub-Space Intervention Loss": total_loss / total_samples_processed})
         print(f"Epoch: {epoch}, Accuracy: {matches / total_samples_processed:.4f}, Loss: {total_loss / total_samples_processed:.4f}")
-        '''
-        val(training_model, model, val_data, loss_fn, batch_size, token_length_allowed, attribute, temperature, DEVICE, wndb)
-        if epoch % 1 == 0:
-            continent_acc = calculate_accuracy(training_model, model, continent_data, token_length_allowed, attribute, batch_size, DEVICE, temperature)
-            country_acc = calculate_accuracy(training_model, model, country_data, token_length_allowed, attribute, batch_size, DEVICE, temperature)
-            print(f"Continent Accuracy: {continent_acc}, Country Accuracy: {country_acc}")
-            if wndb == "True":
-                wandb.log({"Continent Accuracy": continent_acc, "Country Accuracy": country_acc})
-        '''
+        val(training_model, model, val_data, loss_fn, batch_size, token_length_allowed, attribute, temperature, DEVICE, wndb)    
+        continent_acc = calculate_accuracy(training_model, model, continent_data, token_length_allowed, attribute, batch_size, DEVICE, temperature)
+        country_acc = calculate_accuracy(training_model, model, country_data, token_length_allowed, attribute, batch_size, DEVICE, temperature)
+        print(f"Continent Accuracy: {continent_acc}, Country Accuracy: {country_acc}")
+        if wndb == "True":
+            wandb.log({"Continent Accuracy": continent_acc, "Country Accuracy": country_acc})
         # Log accuracy and loss to wandb
         # epoch_accuracy = matches / total_samples_processed
 
@@ -416,7 +412,25 @@ if __name__ == "__main__":
 
             print(f"Number of elements in l4_mask greater than 0.5: {num_elements_greater_than_0_5}")
             print(f"Number of elements in l4_mask equal to 0: {num_elements_equal_to_0}")
-            
+            try:
+                with open("masking_stats.json","r") as f:
+                    data = json.load(f)
+
+                data[f"[{GPT2}-{args.attirbute}] Number of elements in l4_mask > 0.5"] = num_elements_greater_than_0_5
+                data[f"[{GPT-2}-{args.attirbute}] num elements in l4 masks = 0"] = num_elements_equal_to_0
+
+                with open("masking_stats.json","w") as f:
+                    json.dump(data,f)
+
+            except:
+
+                data[f"[{GPT2}-{args.attirbute}] Number of elements in l4_mask > 0.5"] = num_elements_greater_than_0_5
+                data[f"[{GPT-2}-{args.attirbute}] num elements in l4 masks = 0"] = num_elements_equal_to_0
+
+                with open("masking_stats.json","w") as f:
+                    json.dump(data,f)
+
+
             # Save the model
             torch.save(training_model.state_dict(), f"models/saved_model_{args.intervention_divided_data}_{args.method}_{args.attribute}_{args.model}_{args.epochs}.pth")
             

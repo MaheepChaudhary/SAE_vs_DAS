@@ -269,7 +269,7 @@ class my_model(nn.Module):
 
             return intervened_base_output, predicted_text
 
-        elif self.method == "sae masking":
+        elif self.method == "sae masking neel":
             
             with self.model.trace() as tracer:
                 
