@@ -43,10 +43,10 @@ def data_processing(model, samples, token_length_allowed, attribute, DEVICE, bat
 
 def train_data_processing(task, intervention_divided_data, batch_size):
     
-    with open("filtered_continent_intervention_dataset.json", "r") as file:
+    with open("final_data_continent.json", "r") as file:
         continent_data = json.load(file)
     
-    with open("filtered_country_intervention_dataset.json", "r") as file:
+    with open("final_data_country.json", "r") as file:
         country_data = json.load(file)
     
     random.shuffle(country_data) 
@@ -106,8 +106,10 @@ def train_data_processing(task, intervention_divided_data, batch_size):
     return country_batch_data, continent_batch_data, train_data, val_data, test_data
 
 
-def train(continent_data, country_data, training_model, model, train_data, optimizer, loss_fn, epochs, token_length_allowed, attribute, temperature_schedule, temp_idx, batch_size, DEVICE, wndb):
+def train(continent_data, country_data, training_model, model, train_data, optimizer, loss_fn, epochs, token_length_allowed, attribute, temperature_schedule, batch_size, DEVICE, wndb):
     training_model.train()
+    
+    temp_idx = 0
 
     for epoch in tqdm(range(epochs)):
 
@@ -119,7 +121,7 @@ def train(continent_data, country_data, training_model, model, train_data, optim
         i = 0
         matches = 0
         print(np.array(train_data).shape[0])
-        for sample_no in range(np.array(train_data).shape[0]//3):
+        for sample_no in range(np.array(train_data).shape[0]//batch_size):
             
             samples = train_data[sample_no]
             assert np.array(samples).shape == (batch_size, 2, 2)
@@ -375,6 +377,7 @@ if __name__ == "__main__":
         .to(t.bfloat16)
         .to(DEVICE)
     )
+    print(f"Temp Schedule lenght is {len(temperature_schedule)}")
     
     temp_idx = 0
     
@@ -383,11 +386,11 @@ if __name__ == "__main__":
             '''
             This correponds to the fact when we are training the model with total intervention and not partial, either on continent or country.
             '''
-            train(continent_data, country_data, training_model, model, train_data, optimizer, loss_fn, args.epochs, args.token_length_allowed, args.attribute, temperature_schedule, temp_idx, batch_size, DEVICE, wndb = args.wndb)
+            train(continent_data = continent_data, country_data = country_data, training_model = training_model, model = model, train_data = train_data, optimizer = optimizer, loss_fn = loss_fn, epochs = args.epochs, token_length_allowed = args.token_length_allowed, attribute = args.attribute, temperature_schedule = temperature_schedule, batch_size = batch_size, DEVICE = DEVICE, wndb = args.wndb)
         
         elif args.task == "train":
         
-            train(continent_data, country_data, training_model, model, train_data, optimizer, loss_fn, args.epochs, args.token_length_allowed, args.attribute, temperature_schedule, temp_idx, batch_size, DEVICE, wndb=args.wndb)
+            train(continent_data = continent_data, country_data = country_data, training_model = training_model, model = model, train_data = train_data, optimizer = optimizer, loss_fn = loss_fn, epochs = args.epochs, token_length_allowed = args.token_length_allowed, attribute = args.attribute, temperature_schedule = temperature_schedule, batch_size = batch_size, DEVICE = DEVICE, wndb = args.wndb)
             # Assuming training_model.l4_mask is your tensor
             l4_mask_cpu = training_model.l4_mask.to('cpu')  # Move tensor to CPU
 
