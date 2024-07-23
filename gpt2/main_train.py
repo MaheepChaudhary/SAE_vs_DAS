@@ -121,7 +121,7 @@ def train(continent_data, country_data, training_model, model, train_data, optim
         i = 0
         matches = 0
         print(np.array(train_data).shape[0])
-        for sample_no in range(np.array(train_data).shape[0]//batch_size):
+        for sample_no in range(np.array(train_data).shape[0]):
             
             samples = train_data[sample_no]
             assert np.array(samples).shape == (batch_size, 2, 2)
@@ -369,7 +369,7 @@ if __name__ == "__main__":
     # target_total_step = len(batches) * args.epochs
     #TODO: The total number of batches is total_no_samples/batch_len
     batch_size = args.batch_size
-    target_total_step = (len(train_data)/batch_size) * args.epochs
+    target_total_step = len(train_data) * args.epochs
     temperature_start = 20.0
     temperature_end = 0.1
     temperature_schedule = (

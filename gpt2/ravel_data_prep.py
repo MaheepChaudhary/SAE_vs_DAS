@@ -52,7 +52,7 @@ if __name__ == "__main__":
     
     parser = argparse.ArgumentParser()
     
-    parser.add_argument("-p", "--path_json", default = "ravel/data/ravel_city_entity_attributes.json", help='Prompting for Ravel Data')
+    parser.add_argument("-p", "--path_json", default = "data/ravel_city_entity_attributes.json", help='Prompting for Ravel Data')
     
     args = parser.parse_args()
     
@@ -65,11 +65,11 @@ if __name__ == "__main__":
     continent_data = continent_prompt(data, cities)
     language_data = language_prompt(data, cities)
 
-    with open('ravel/processed_data/country_data.json', 'w') as file:
+    with open('processed_data/country_data.json', 'w') as file:
         json.dump(country_data, file)
     
-    with open('ravel/processed_data/continent_data.json', 'w') as file:
+    with open('processed_data/continent_data.json', 'w') as file:
         json.dump(continent_data, file)
     
-    with open('ravel/processed_data/language_data.json', 'w') as file:
+    with open('processed_data/language_data.json', 'w') as file:
         json.dump(language_data, file)
