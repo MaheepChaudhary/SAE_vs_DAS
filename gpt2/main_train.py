@@ -163,6 +163,7 @@ def train(continent_data, country_data, training_model, model, train_data, optim
             predicted_text = [word.split()[0] for word in predicted_text]
             source_label = [word.split()[0] for word in source_label]
             matches_arr = [i for i in range(len(predicted_text)) if predicted_text[i] == source_label[i]]
+            matches+=len(matches_arr)
             total_samples_processed +=batch_size
             temp_idx += 1
             i+=1
@@ -342,6 +343,7 @@ if __name__ == "__main__":
     parser.add_argument("-wb", "--wndb", default=False, help="Whether to log the data to wandb or not")
 
     args = parser.parse_args()
+    args.model = "gpt2"
     if args.wndb == "True":
         wandb.init(project="sae_concept_eraser")
         wandb.run.name = f"{args.method}-{args.intervention_divided_data}_intervened-e{args.epochs}-b{args.batch_size}-{args.notes}"
