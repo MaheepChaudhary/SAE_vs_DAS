@@ -163,6 +163,7 @@ class my_model(nn.Module):
                 "model_batch_size": 1,
             }
             self.encoder_resid_pre = AutoEncoder(cfg)
+            dic = t.load(f"gpt2-small-sparse_autoencoder/gpt2-small_6144_mlp_out_{self.layer_intervened}.pt")
             self.encoder_resid_pre.load_state_dict(dic)
             
             for params in self.encoder_resid_pre.parameters():

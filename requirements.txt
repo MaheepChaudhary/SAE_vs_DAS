@@ -9,7 +9,6 @@ nnsight==0.2.16
 numpy==1.26.4
 optree==0.11.0
 pandas==2.2.2
-Pillow==10.1.0
 Pillow==10.3.0
 plotly==5.22.0
 progressbar33==2.4

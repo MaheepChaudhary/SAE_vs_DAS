@@ -1,3 +1,4 @@
+import copy
 from imports import *
 
 def analyse(model, data, attribute):
@@ -57,11 +58,14 @@ def final_data(country_data, continent_data):
     new_country_data = []
     new_continent_data = []
 
+    copied_country_data = copy.deepcopy(country_data)
+    copied_continent_data = copy.deepcopy(continent_data)
+
     for data in country_data:
         city = data[0].split()[-8]
         if city in overlapping_cities:
-            for data1 in country_data:
-                city1 = data[0].split()[-8]
+            for data1 in copied_country_data:
+                city1 = data1[0].split()[-8]
                 if city1 in overlapping_cities:
                     new_country_data.append([[data[0], data[1]], [data1[0], data1[1]]])
                 else:
@@ -73,8 +77,8 @@ def final_data(country_data, continent_data):
     for data in continent_data:
         city = data[0].split()[-8]
         if city in overlapping_cities:
-            for data1 in continent_data:
-                city1 = data[0].split()[-8]
+            for data1 in copied_continent_data:
+                city1 = data1[0].split()[-8]
                 if city1 in overlapping_cities:
                     new_continent_data.append([[data[0], data[1]], [data1[0], data1[1]]])
                 else:
@@ -82,17 +86,14 @@ def final_data(country_data, continent_data):
         else:
             continue
 
-    with open("final_data_country.json","w") as f:
-        json.dump(new_country_data, f)
+    with open("final_data_country.json","w") as f1:
+        json.dump(new_country_data, f1)
 
-    with open("final_data_continent.json", "w") as f:
-        json.dump(new_continent_data, f)
+    with open("final_data_continent.json", "w") as f2:
+        json.dump(new_continent_data, f2)
 
 if __name__ == "__main__":  
-    try:
-        model = LanguageModel("openai-community/gpt2", device_map="cuda:1")
-    except:
-        model = LanguageModel("openai-community/gpt2", device_map="mps")
+    model = LanguageModel("openai-community/gpt2", device_map="mps")
     print(model)
     
     with open("vanilla_data/continent_data.json", "r") as f:

@@ -120,6 +120,7 @@ def train(continent_data, country_data, training_model, model, train_data, optim
         # for sample_no in tqdm(range(len(data))):
         i = 0
         matches = 0
+        print(np.array(train_data).shape[0])
         for sample_no in range(np.array(train_data).shape[0]):
             
             samples = train_data[sample_no]
@@ -216,7 +217,7 @@ def calculate_accuracy(training_model, model, data, token_length_allowed, attrib
             ground_truth_indices = ground_truth_indices.to(dtype=torch.long)
             loss = loss_fn(last_token_output, ground_truth_indices)
             
-            # Calculate accuracy
+            # Calculate accuracyk
             predicted_text = [word.split()[0] for word in predicted_text]
             source_label = [word.split()[0] for word in source_label]
             matches_arr = [i for i in range(len(predicted_text)) if predicted_text[i] == source_label[i]]
@@ -377,6 +378,7 @@ if __name__ == "__main__":
         .to(t.bfloat16)
         .to(DEVICE)
     )
+    print(f"Temp Schedule lenght is {len(temperature_schedule)}")
     
     temp_idx = 0
     
