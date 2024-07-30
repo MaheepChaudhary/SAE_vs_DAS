@@ -745,10 +745,10 @@ if __name__ == "__main__":
                 with open("masking_stats.json", "r") as f:
                     data = json.load(f)
 
-                data[f"[GPT2-{args.attirbute}] Number of elements in l4_mask > 0.5"] = (
+                data[f"[GPT2-{args.attribute}] Number of elements in l4_mask > 0.5"] = (
                     num_elements_greater_than_0_5
                 )
-                data[f"[GPT2-{args.attirbute}] num elements in l4 masks = 0"] = (
+                data[f"[GPT2-{args.attribute}] num elements in l4 masks = 0"] = (
                     num_elements_equal_to_0
                 )
 
@@ -758,10 +758,10 @@ if __name__ == "__main__":
             except:
 
                 data = {}
-                data[f"[GPT2-{args.attirbute}] Number of elements in l4_mask > 0.5"] = (
+                data[f"[GPT2-{args.attribute}] Number of elements in l4_mask > 0.5"] = (
                     num_elements_greater_than_0_5
                 )
-                data[f"[GPT2-{args.attirbute}] num elements in l4 masks = 0"] = (
+                data[f"[GPT2-{args.attribute}] num elements in l4 masks = 0"] = (
                     num_elements_equal_to_0
                 )
 
