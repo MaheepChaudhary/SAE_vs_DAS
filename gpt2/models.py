@@ -5,7 +5,7 @@ from ravel_data_prep import *
 from transformer_lens.hook_points import HookedRootModule, HookPoint
 
 # torch.autograd.set_detect_anomaly(True)
-# DTYPES = {"fp32": torch.float32, "fp16": torch.float16, "bf16": torch.bfloat16}
+DTYPES = {"fp32": torch.float32, "fp16": torch.float16, "bf16": torch.bfloat16}
 # SAVE_DIR = Path("/workspace/1L-Sparse-Autoencoder/checkpoints")
 
 
@@ -208,7 +208,7 @@ class my_model(nn.Module):
             }
             self.encoder_resid_pre = AutoEncoder(cfg)
             dic = t.load(
-                f"gpt2-small-sparse_autoencoder/gpt2-small_6144_mlp_out_{self.layer_intervened}.pt"
+                f"gpt2-small-sparse-autoencoders/gpt2-small_6144_resid_pre_{self.layer_intervened}.pt"
             )
             self.encoder_resid_pre.load_state_dict(dic)
 
