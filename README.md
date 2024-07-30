@@ -11,6 +11,8 @@
 
 ## GPT-2:
 
+- One of the things that could be noted in this whole experimentation is that one of the attributes, i.e. either "continent" or "country" gets sacrificed when one starts increasing for every technique, with an exception of DAS.
+
 ### GPT-2 Neuron Masking Evalutaion.
 
 - It is to be noted that the results are not in favour it seems like the making value are being favoured for the value that is not being intervened.
