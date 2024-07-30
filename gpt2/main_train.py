@@ -1,7 +1,8 @@
-from imports import *
-from ravel_data_prep import *
 from eval_gpt2 import *
+from imports import *
 from models import *
+from ravel_data_prep import *
+
 
 def config(learning_rate, token_length):
     
@@ -154,6 +155,10 @@ def train(continent_data, country_data, training_model, model, train_data, optim
             ground_truth_indices = ground_truth_indices.to(dtype=torch.long)
             loss = loss_fn(last_token_output, ground_truth_indices)
             # loss = loss_fn(predicted_logit.view(-1, predicted_logit.size(-1)), ground_truth_token_id.view(-1))
+            continent_acc = calculate_accuracy(training_model, model, continent_data, token_length_allowed, attribute, batch_size, DEVICE, temperature)
+            print(f"For epoch {epoch} continent_acc is {continent_acc}")
+            country_acc = calculate_accuracy(training_model, model, country_data, token_length_allowed, attribute, batch_size, DEVICE, temperature)
+            print(f"For epoch {epoch} country_acc is {country_acc}")
             total_loss += loss.item()
             
             # Backpropagation
@@ -191,25 +196,21 @@ def calculate_accuracy(training_model, model, data, token_length_allowed, attrib
     matches = 0
     with t.no_grad():
         for sample_no in range(np.array(data).shape[0]):
-            
             samples = data[sample_no]
             assert np.array(samples).shape == (batch_size, 2, 2)
             # samples = train_data[i*batch_size:(i+1)*batch_size]
-            
             # Data Processing
-            proceed, base_ids, source_ids, base_label_ids, source_label_ids, source_label, base_label = data_processing(model = model,
-                                                                                                                        samples = samples, 
-                                                                                                                        token_length_allowed=token_length_allowed, 
-                                                                                                                        attribute=attribute,
-                                                                                                                        DEVICE=DEVICE,
-                                                                                                                        batch_size=batch_size)
-            
+            proceed, base_ids, source_ids, _, source_label_ids, source_label, _ = data_processing(model = model,
+                                                                                                  samples = samples, 
+                                                                                                  token_length_allowed=token_length_allowed, 
+                                                                                                  attribute=attribute,
+                                                                                                  DEVICE=DEVICE,
+                                                                                                  batch_size=batch_size)
+
             if not proceed: continue 
-            
             intervened_base_output, predicted_text = training_model(source_ids, base_ids, temperature)
             ground_truth_token_id = source_label_ids
-            vocab_size = model.tokenizer.vocab_size
-            ground_truth_one_hot = F.one_hot(ground_truth_token_id["input_ids"], num_classes=vocab_size)
+            ground_truth_one_hot = F.one_hot(ground_truth_token_id["input_ids"], num_classes=model.tokenizer.vocab_size)
             ground_truth_one_hot = ground_truth_one_hot.to(dtype=torch.long)
             last_token_output = intervened_base_output[:,-1,:]
             assert ground_truth_one_hot.squeeze(1).shape == last_token_output.shape
