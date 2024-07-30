@@ -181,6 +181,8 @@ class my_model(nn.Module):
         self.method = method
         self.batch_size = batch_size
 
+        print(model)
+
         if method == "sae masking openai":
             sae_dim = (1, 1, 32768)
             state_dict = t.load(

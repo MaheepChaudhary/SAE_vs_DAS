@@ -11,6 +11,9 @@
 
 ## GPT-2:
 
+- One of the things that could be noted in this whole experimentation is that one of the attributes, i.e. either "continent" or "country" gets sacrificed when one starts increasing for every technique, with an exception of DAS.
+- It could also be the case that each of the techniques has their own appropriate temperature values. We could experiment on it in the future, as we could clearly see the transistion was not smooth for DAS and SAE, meanwhile the temperature value was set based on the optimal performance of neuron masking. I don't know if it should be done? @Atticus
+
 ### GPT-2 Neuron Masking Evalutaion.
 
 - It is to be noted that the results are not in favour it seems like the making value are being favoured for the value that is not being intervened.
