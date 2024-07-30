@@ -16,7 +16,7 @@
 - It is to be noted that the results are not in favour it seems like the making value are being favoured for the value that is not being intervened.
 - How can we explain the mismatch between the accuracy of the country and continent accuracy for the training and when we are individually targetting them.
 - One of the things to be noted is that although the accuracy of the country comes to be $1$ when continent is intervened but when we applied sigmoid, it does not happen the same.
-- The training accuracy cannot be equal to the 1/2 of the country + continent as they also include the data for testing, validation and even training.
+- The training accuracy cannot be equal to the 1/2 of the country + continent as they also include the data for testing, validation and even training. Also, i don't think we can do a partiality with the performance of the country or continent as it does not matter if they are intervened or not, as they are initialized to have 0.5 contribution of both the source and base.
 - There might be an issue in the transistion to smaller values of the temperature, as a result, let's see if the temperature instead from 20-0.1 to 10-0.1 shows what kind of values.
 - The learning rate also does not provide much performance gain when it is just 0.001, but provides significant gain, when it is 0.01.
 
