@@ -195,31 +195,21 @@ class my_model(nn.Module):
             for params in self.autoencoder.parameters():
                 params.requires_grad = False
 
-        if method == "sae masking neel":
-            sae_dim = (1, 1, 6144)
+        elif method == "sae masking neel":
+            sae_dim = (1, 24576)
             self.l4_mask = t.nn.Parameter(t.zeros(sae_dim), requires_grad=True)
 
-            cfg = {
-                "dict_size": 6144,
-                "act_size": 768,
-                "l1_coeff": 0.001,
-                "enc_dtype": "fp32",
-                "seed": 0,
-                "device": DEVICE,
-                "model_batch_size": 1,
-            }
-            self.encoder_resid_pre = AutoEncoder(cfg)
-            dic = t.load(
-                f"gpt2-small-sparse-autoencoders/gpt2-small_6144_resid_pre_{self.layer_intervened}.pt"
-            )
-            self.encoder_resid_pre.load_state_dict(dic)
 
-            for params in self.encoder_resid_pre.parameters():
+            self.sae_neel, cfg_dict, sparsity = SAE.from_pretrained(
+            release = "gpt2-small-res-jb", # see other options in sae_lens/pretrained_saes.yaml
+            sae_id = f"blocks.{self.layer_intervened}.hook_resid_pre", # won't always be a hook point
+            )
+            for params in self.sae_neel.parameters():
                 params.requires_grad = False
 
         self.DEVICE = DEVICE
 
-        if method == "neuron masking":
+        elif method == "neuron masking":
             # neuron_dim = (1,self.token_length_allowed, 768)
             neuron_dim = (1, 768)
             self.l4_mask = t.nn.Parameter(
@@ -392,7 +382,7 @@ class my_model(nn.Module):
 
                 with tracer.invoke(source_ids) as runner:
 
-                    source = self.model.transformer.h[self.layer_intervened].output
+                    source = self.model.transformer.h[self.layer_intervened].output[0]
 
                 with tracer.invoke(base_ids) as runner_:
 
@@ -401,13 +391,10 @@ class my_model(nn.Module):
                         .output[0]
                         .clone()
                     )
-                    iia_vector = self.encoder_resid_pre(
-                        base,
-                        source[0],
-                        l4_mask_sigmoid,
-                        self.intervened_token_idx,
-                        "base",
-                    )
+                    encoded_base = self.sae_neel.encode(base)
+                    encoded_source = self.sae_neel.encode(source)
+                    summed = (1 - l4_mask_sigmoid)*encoded_base[:, self.intervened_token_idx,:] + l4_mask_sigmoid*source[:,self.intervened_token_idx,:]
+                    iia_vector = self.sae_neel.decode(summed)
 
                     self.model.transformer.h[self.layer_intervened].output[0][
                         :, self.intervened_token_idx, :
