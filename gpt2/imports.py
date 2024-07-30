@@ -1,3 +1,4 @@
+from sae_lens import SAE
 from pprint import pprint
 import json
 import argparse
