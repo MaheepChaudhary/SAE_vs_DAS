@@ -210,7 +210,7 @@ class my_model(nn.Module):
             }
             self.encoder_resid_pre = AutoEncoder(cfg)
             dic = t.load(
-                f"gpt2-small-sparse-autoencoders/gpt2-small_6144_mlp_out_{self.layer_intervened}.pt"
+                f"gpt2-small-sparse-autoencoders/gpt2-small_6144_resid_pre_{self.layer_intervened}.pt"
             )
             self.encoder_resid_pre.load_state_dict(dic)
 
