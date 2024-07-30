@@ -181,6 +181,7 @@ class my_model(nn.Module):
         self.method = method
         self.batch_size = batch_size
 
+        self.DEVICE = DEVICE
         print(model)
 
         if method == "sae masking openai":
@@ -199,15 +200,12 @@ class my_model(nn.Module):
             sae_dim = (1, 24576)
             self.l4_mask = t.nn.Parameter(t.zeros(sae_dim), requires_grad=True)
 
-
             self.sae_neel, cfg_dict, sparsity = SAE.from_pretrained(
-            release = "gpt2-small-res-jb", # see other options in sae_lens/pretrained_saes.yaml
-            sae_id = f"blocks.{self.layer_intervened}.hook_resid_pre", # won't always be a hook point
+                release="gpt2-small-res-jb",  # see other options in sae_lens/pretrained_saes.yaml
+                sae_id=f"blocks.{self.layer_intervened}.hook_resid_pre",  # won't always be a hook point
             )
             for params in self.sae_neel.parameters():
                 params.requires_grad = False
-
-        self.DEVICE = DEVICE
 
         elif method == "neuron masking":
             # neuron_dim = (1,self.token_length_allowed, 768)
@@ -393,7 +391,9 @@ class my_model(nn.Module):
                     )
                     encoded_base = self.sae_neel.encode(base)
                     encoded_source = self.sae_neel.encode(source)
-                    summed = (1 - l4_mask_sigmoid)*encoded_base[:, self.intervened_token_idx,:] + l4_mask_sigmoid*source[:,self.intervened_token_idx,:]
+                    summed = (1 - l4_mask_sigmoid) * encoded_base[
+                        :, self.intervened_token_idx, :
+                    ] + l4_mask_sigmoid * source[:, self.intervened_token_idx, :]
                     iia_vector = self.sae_neel.decode(summed)
 
                     self.model.transformer.h[self.layer_intervened].output[0][
