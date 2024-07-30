@@ -238,8 +238,8 @@ class my_model(nn.Module):
             self.proxy = t.nn.Parameter(t.zeros(proxy_dim), requires_grad=True)
 
     def forward(self, source_ids, base_ids, temperature):
-        l4_mask_sigmoid = t.sigmoid(self.l4_mask / temperature)
-        # l4_mask_sigmoid = self.l4_mask
+        # l4_mask_sigmoid = t.sigmoid(self.l4_mask / temperature)
+        l4_mask_sigmoid = self.l4_mask
         if self.method == "neuron masking":
             with self.model.trace() as tracer:
 
