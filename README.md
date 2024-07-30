@@ -15,7 +15,7 @@
 
 - It is to be noted that the results are not in favour it seems like the making value are being favoured for the value that is not being intervened.
 - How can we explain the mismatch between the accuracy of the country and continent accuracy for the training and when we are individually targetting them.
--
+- One of the things to be noted is that although the accuracy of the country comes to be $1$ when continent is intervened but when we applied sigmoid, it does not happen the same.
 
 ### GPT-2 SAE Evalutation
 
