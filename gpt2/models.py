@@ -174,7 +174,7 @@ class my_model(nn.Module):
         if method == "neuron masking":
             # neuron_dim = (1,self.token_length_allowed, 768)
             neuron_dim = (1,768)
-            self.l4_mask = t.nn.Parameter(t.zeros(neuron_dim, device=DEVICE), requires_grad=True)
+            self.l4_mask = t.nn.Parameter(t.zeros(neuron_dim, device=DEVICE), requires_grad=False)
             self.l4_mask = self.l4_mask.to(DEVICE)
             
         elif method == "das masking":

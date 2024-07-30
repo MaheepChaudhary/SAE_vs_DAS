@@ -57,6 +57,7 @@ def train_data_processing(task, intervention_divided_data, batch_size):
         if intervention_divided_data == "continent":
             data1 = country_data
             data2 = continent_data
+            print("Inside continent intevention")
         if intervention_divided_data == "country":
             data1 = continent_data
             data2 = country_data
@@ -67,8 +68,9 @@ def train_data_processing(task, intervention_divided_data, batch_size):
             source = sample[1][0]
             base_label = sample[0][1]
             source_label = sample[1][1]
-            
-            data1[sample_no][1][1] = base_label
+            print(base_label) 
+            print(source_label)
+            # data1[sample_no][1][1] = base_label
                 
         data1_num_batches = np.array(data1).shape[0] // batch_size
         data2_num_batches = np.array(data2).shape[0] // batch_size
@@ -145,7 +147,7 @@ def train(continent_data, country_data, training_model, model, train_data, optim
 
             intervened_base_output, predicted_text = training_model(source_ids, base_ids, temperature)
             ground_truth_token_id = source_label_ids
-            # ground_truth_token_id = base_label_ids
+           # ground_truth_token_id = base_label_ids
             vocab_size = model.tokenizer.vocab_size
             ground_truth_one_hot = F.one_hot(ground_truth_token_id["input_ids"], num_classes=vocab_size)
             ground_truth_one_hot = ground_truth_one_hot.to(dtype=torch.long)
@@ -200,7 +202,7 @@ def calculate_accuracy(training_model, model, data, token_length_allowed, attrib
             assert np.array(samples).shape == (batch_size, 2, 2)
             # samples = train_data[i*batch_size:(i+1)*batch_size]
             # Data Processing
-            proceed, base_ids, source_ids, _, source_label_ids, source_label, _ = data_processing(model = model,
+            proceed, base_ids, source_ids, base_label_ids, source_label_ids, source_label_, _ = data_processing(model = model,
                                                                                                   samples = samples, 
                                                                                                   token_length_allowed=token_length_allowed, 
                                                                                                   attribute=attribute,
@@ -208,9 +210,11 @@ def calculate_accuracy(training_model, model, data, token_length_allowed, attrib
                                                                                                   batch_size=batch_size)
 
             if not proceed: continue 
-            intervened_base_output, predicted_text = training_model(source_ids, base_ids, temperature)
-            ground_truth_token_id = source_label_ids
+            intervened_base_output, predicted_text_ = training_model(source_ids, base_ids, temperature)
+            #  ground_truth_token_id = source_label_ids
+            ground_truth_token_id = base_label_ids
             ground_truth_one_hot = F.one_hot(ground_truth_token_id["input_ids"], num_classes=model.tokenizer.vocab_size)
+            #print(ground_truth_one_hot.shape)
             ground_truth_one_hot = ground_truth_one_hot.to(dtype=torch.long)
             last_token_output = intervened_base_output[:,-1,:]
             assert ground_truth_one_hot.squeeze(1).shape == last_token_output.shape
@@ -219,12 +223,12 @@ def calculate_accuracy(training_model, model, data, token_length_allowed, attrib
             loss = loss_fn(last_token_output, ground_truth_indices)
             
             # Calculate accuracyk
-            predicted_text = [word.split()[0] for word in predicted_text]
-            source_label = [word.split()[0] for word in source_label]
+            predicted_text = [word.split()[0] for word in predicted_text_]
+            source_label = [word.split()[0] for word in source_label_]
             matches_arr = [i for i in range(len(predicted_text)) if predicted_text[i] == source_label[i]]
             matches+=len(matches_arr)
             total_samples_processed +=batch_size
-            
+            break 
     return matches / total_samples_processed
 
 def val(training_model, model, val_data, loss_fn, batch_size, token_length_allowed, attribute, temperature, DEVICE, wndb):

@@ -93,7 +93,7 @@ def final_data(country_data, continent_data):
         json.dump(new_continent_data, f2)
 
 if __name__ == "__main__":  
-    model = LanguageModel("openai-community/gpt2", device_map="mps")
+    model = LanguageModel("openai-community/gpt2", device_map="cuda:1")
     print(model)
     
     with open("vanilla_data/continent_data.json", "r") as f:
