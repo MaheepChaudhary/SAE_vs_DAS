@@ -745,12 +745,12 @@ if __name__ == "__main__":
                 with open("masking_stats.json", "r") as f:
                     data = json.load(f)
 
-                data[f"[GPT2-{args.attribute}] Number of elements in l4_mask > 0.5"] = (
-                    num_elements_greater_than_0_5
-                )
-                data[f"[GPT2-{args.attribute}] num elements in l4 masks = 0"] = (
-                    num_elements_equal_to_0
-                )
+                data[
+                    f"[GPT2-{args.intervention_divided_data}-{args.method}-{args.learning_rate}-{args.batch_size}-{args.layer_intervened}] Number of elements in l4_mask > 0.5"
+                ] = num_elements_greater_than_0_5
+                data[
+                    f"[GPT2-{args.intervention_divided_data}-{args.method}-{args.learning_rate}-{args.batch_size}-{args.layer_intervened}] num elements in l4 masks = 0"
+                ] = num_elements_equal_to_0
 
                 with open("masking_stats.json", "w") as f:
                     json.dump(data, f)
@@ -758,12 +758,12 @@ if __name__ == "__main__":
             except:
 
                 data = {}
-                data[f"[GPT2-{args.attribute}] Number of elements in l4_mask > 0.5"] = (
-                    num_elements_greater_than_0_5
-                )
-                data[f"[GPT2-{args.attribute}] num elements in l4 masks = 0"] = (
-                    num_elements_equal_to_0
-                )
+                data[
+                    f"[GPT2-{args.intervention_divided_data}-{args.method}-{args.learning_rate}-{args.batch_size}-{args.layer_intervened}] Number of elements in l4_mask > 0.5"
+                ] = num_elements_greater_than_0_5
+                data[
+                    f"[GPT2-{args.intervention_divided_data}-{args.method}-{args.learning_rate}-{args.batch_size}-{args.layer_intervened}] num elements in l4 masks = 0"
+                ] = num_elements_equal_to_0
 
                 with open("masking_stats.json", "w") as f:
                     json.dump(data, f)
