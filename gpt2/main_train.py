@@ -775,7 +775,7 @@ if __name__ == "__main__":
             # Save the model
             torch.save(
                 training_model.state_dict(),
-                f"models/saved_model_{args.intervention_divided_data}_{args.method}_{args.attribute}_{args.model}_{args.epochs}.pth",
+                f"models/saved_model_{args.intervention_divided_data}_{args.method}_{args.model}_e{args.epochs}_lr{args.learning_rate}_layer{args.layer_intervened}.pth",
             )
 
         elif args.task == "test":
