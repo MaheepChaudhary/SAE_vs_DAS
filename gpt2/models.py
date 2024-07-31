@@ -393,12 +393,12 @@ class my_model(nn.Module):
                     encoded_source = self.sae_neel.encode(source)
                     summed = (1 - l4_mask_sigmoid) * encoded_base[
                         :, self.intervened_token_idx, :
-                    ] + l4_mask_sigmoid * source[:, self.intervened_token_idx, :]
-                    iia_vector = self.sae_neel.decode(summed)
+                    ] + l4_mask_sigmoid * encoded_source[:, self.intervened_token_idx, :]
+                    decoded_vector = self.sae_neel.decode(summed)
 
                     self.model.transformer.h[self.layer_intervened].output[0][
                         :, self.intervened_token_idx, :
-                    ] = iia_vector[:, self.intervened_token_idx, :]
+                    ] = decoded_vector
 
                     intervened_base_predicted = self.model.lm_head.output.argmax(
                         dim=-1
