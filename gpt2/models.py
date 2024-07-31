@@ -441,11 +441,11 @@ class my_model(nn.Module):
                     # Apply the mask in a non-inplace way
                     modified_base = (
                         encoded_base_modified[:, self.intervened_token_idx, :]
-                        * l4_mask_sigmoid
-                    )
+                        * (1 - l4_mask_sigmoid)
+                        )
                     modified_source = encoded_source_modified[
                         :, self.intervened_token_idx, :
-                    ] * (1 - l4_mask_sigmoid)
+                    ] * l4_mask_sigmoid
 
                     # Assign the modified tensors to the correct indices
                     encoded_base_modified = encoded_base_modified.clone()
