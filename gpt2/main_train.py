@@ -249,9 +249,9 @@ def train(
         if wndb == "True":
             wandb.log(
                 {
-                    "GPT-2 Token Sub-Space Intervention Accuracy": matches
+                    f"GPT-2 Token Sub-Space Intervention Accuracy {args.layer_intervened}": matches
                     / total_samples_processed,
-                    "GPT-2 Token Sub-Space Intervention Loss": total_loss
+                    f"GPT-2 Token Sub-Space Intervention Loss {args.layer_intervened}": total_loss
                     / total_samples_processed,
                 }
             )
@@ -293,7 +293,10 @@ def train(
         print(f"Continent Accuracy: {continent_acc}, Country Accuracy: {country_acc}")
         if wndb == "True":
             wandb.log(
-                {"Continent Accuracy": continent_acc, "Country Accuracy": country_acc}
+                {
+                    f"Continent Accuracy {args.layer_intervened}": continent_acc,
+                    f"Country Accuracy {args.layer_intervened}": country_acc,
+                }
             )
         # Log accuracy and loss to wandb
         # epoch_accuracy = matches / total_samples_processed
@@ -445,8 +448,9 @@ def val(
         if wndb == "True":
             wandb.log(
                 {
-                    "GPT-2 SS IIA Val": matches_val / total_val_samples_processed,
-                    "GPT-2 SS IIA Val Loss": total_val_loss
+                    f"GPT-2 SS IIA Val {args.layer_intervened}": matches_val
+                    / total_val_samples_processed,
+                    f"GPT-2 SS IIA Val Loss {args.layer_intervened}": total_val_loss
                     / total_val_samples_processed,
                 }
             )
@@ -537,9 +541,9 @@ def test(
         if wndb == True:
             wandb.log(
                 {
-                    "GPT-2 SS IIA Test Acc": matches_test
+                    f"GPT-2 SS IIA Test Acc {args.layer_intervened}": matches_test
                     / total_test_samples_processed,
-                    "GPT-2 SS IIA Test Loss": total_test_loss
+                    f"GPT-2 SS IIA Test Loss {args.layer_intervened}": total_test_loss
                     / total_test_samples_processed,
                 }
             )
