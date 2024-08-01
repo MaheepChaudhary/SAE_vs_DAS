@@ -599,7 +599,7 @@ if __name__ == "__main__":
     parser.add_argument(
         "-svd",
         "--saved_model_path",
-        default="Llama3b/models/saved_model.pth",
+        default="Llama3Llama3b/models/saved_model.pth",
         help="path to the saved model",
     )
     parser.add_argument(
