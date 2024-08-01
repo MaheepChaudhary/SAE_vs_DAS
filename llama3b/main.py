@@ -247,9 +247,9 @@ def train(
         if wndb == "True":
             wandb.log(
                 {
-                    f"GPT-2 Token Sub-Space Intervention Accuracy {args.layer_intervened}": matches
+                    f"Llama-3b Token Sub-Space Intervention Accuracy {args.layer_intervened}": matches
                     / total_samples_processed,
-                    f"GPT-2 Token Sub-Space Intervention Loss {args.layer_intervened}": total_loss
+                    f"Llama-3b Token Sub-Space Intervention Loss {args.layer_intervened}": total_loss
                     / total_samples_processed,
                 }
             )
@@ -292,8 +292,8 @@ def train(
         if wndb == "True":
             wandb.log(
                 {
-                    f"Continent Accuracy {args.layer_intervened}": continent_acc,
-                    f"Country Accuracy {args.layer_intervened}": country_acc,
+                    f"Llama3b Continent Accuracy {args.layer_intervened}": continent_acc,
+                    f"Llama3b Country Accuracy {args.layer_intervened}": country_acc,
                 }
             )
         # Log accuracy and loss to wandb
@@ -446,9 +446,9 @@ def val(
         if wndb == "True":
             wandb.log(
                 {
-                    f"GPT-2 SS IIA Val {args.layer_intervened}": matches_val
+                    f"Llama3b SS IIA Val {args.layer_intervened}": matches_val
                     / total_val_samples_processed,
-                    f"GPT-2 SS IIA Val Loss {args.layer_intervened}": total_val_loss
+                    f"Llama3b SS IIA Val Loss {args.layer_intervened}": total_val_loss
                     / total_val_samples_processed,
                 }
             )
@@ -539,9 +539,9 @@ def test(
         if wndb == True:
             wandb.log(
                 {
-                    f"GPT-2 SS IIA Test Acc {args.layer_intervened}": matches_test
+                    f"Llama3b SS IIA Test Acc {args.layer_intervened}": matches_test
                     / total_test_samples_processed,
-                    f"GPT-2 SS IIA Test Loss {args.layer_intervened}": total_test_loss
+                    f"Llama3b SS IIA Test Loss {args.layer_intervened}": total_test_loss
                     / total_test_samples_processed,
                 }
             )
@@ -599,7 +599,7 @@ if __name__ == "__main__":
     parser.add_argument(
         "-svd",
         "--saved_model_path",
-        default="gpt2/models/saved_model.pth",
+        default="Llama3b/models/saved_model.pth",
         help="path to the saved model",
     )
     parser.add_argument(
@@ -628,7 +628,7 @@ if __name__ == "__main__":
     )
 
     args = parser.parse_args()
-    args.model = "gpt2"
+    args.model = "Llama3b"
     if args.wndb == "True":
         wandb.init(project="sae_concept_eraser")
         wandb.run.name = f"{args.method}-{args.intervention_divided_data}_intervened-e{args.epochs}-b{args.batch_size}-{args.notes}"
@@ -756,14 +756,14 @@ if __name__ == "__main__":
                     data = json.load(f)
 
                 data[
-                    f"[GPT2-{args.intervention_divided_data}-{args.method}-{args.learning_rate}-{args.batch_size}-{args.layer_intervened}] Number of elements in l4_mask > 0.5"
+                    f"[Llama3b-{args.intervention_divided_data}-{args.method}-{args.learning_rate}-{args.batch_size}-{args.layer_intervened}] Number of elements in l4_mask > 0.5"
                 ] = num_elements_greater_than_0_5
                 data[
-                    f"[GPT2-{args.intervention_divided_data}-{args.method}-{args.learning_rate}-{args.batch_size}-{args.layer_intervened}] num elements in l4 masks = 0"
+                    f"[Llama3b-{args.intervention_divided_data}-{args.method}-{args.learning_rate}-{args.batch_size}-{args.layer_intervened}] num elements in l4 masks = 0"
                 ] = num_elements_equal_to_0
 
                 data[
-                    f"[GPT2-{args.intervention_divided_data}-{args.method}-{args.learning_rate}-{args.batch_size}-{args.layer_intervened}] num elements in l4 mask < 0"
+                    f"[Llama3b-{args.intervention_divided_data}-{args.method}-{args.learning_rate}-{args.batch_size}-{args.layer_intervened}] num elements in l4 mask < 0"
                 ] = num_elements_less_than_0
 
                 with open("masking_stats.json", "w") as f:
@@ -773,15 +773,15 @@ if __name__ == "__main__":
 
                 data = {}
                 data[
-                    f"[GPT2-{args.intervention_divided_data}-{args.method}-{args.learning_rate}-{args.batch_size}-{args.layer_intervened}] Number of elements in l4_mask > 0.5"
+                    f"[Llama3b-{args.intervention_divided_data}-{args.method}-{args.learning_rate}-{args.batch_size}-{args.layer_intervened}] Number of elements in l4_mask > 0.5"
                 ] = num_elements_greater_than_0_5
 
                 data[
-                    f"[GPT2-{args.intervention_divided_data}-{args.method}-{args.learning_rate}-{args.batch_size}-{args.layer_intervened}] num elements in l4 masks = 0"
+                    f"[Llama3b-{args.intervention_divided_data}-{args.method}-{args.learning_rate}-{args.batch_size}-{args.layer_intervened}] num elements in l4 masks = 0"
                 ] = num_elements_equal_to_0
 
                 data[
-                    f"[GPT2-{args.intervention_divided_data}-{args.method}-{args.learning_rate}-{args.batch_size}-{args.layer_intervened}] num elements in l4 mask < 0"
+                    f"[Llama3b-{args.intervention_divided_data}-{args.method}-{args.learning_rate}-{args.batch_size}-{args.layer_intervened}] num elements in l4 mask < 0"
                 ] = num_elements_less_than_0
 
                 with open("masking_stats.json", "w") as f:
