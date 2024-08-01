@@ -60,7 +60,7 @@ def final_data(country_data, continent_data):
         city = data[0].split()[-8]
         if city in overlapping_cities:
             for data1 in country_data:
-                city1 = data[0].split()[-8]
+                city1 = data1[0].split()[-8]
                 if city1 in overlapping_cities:
                     new_country_data.append([[data[0], data[1]], [data1[0], data1[1]]])
                 else:
@@ -72,7 +72,7 @@ def final_data(country_data, continent_data):
         city = data[0].split()[-8]
         if city in overlapping_cities:
             for data1 in continent_data:
-                city1 = data[0].split()[-8]
+                city1 = data1[0].split()[-8]
                 if city1 in overlapping_cities:
                     new_continent_data.append(
                         [[data[0], data[1]], [data1[0], data1[1]]]

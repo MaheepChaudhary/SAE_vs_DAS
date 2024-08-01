@@ -346,8 +346,8 @@ def calculate_accuracy(
             intervened_base_output, predicted_text_ = training_model(
                 source_ids, base_ids, temperature
             )
-            #  ground_truth_token_id = source_label_ids
-            ground_truth_token_id = base_label_ids
+            ground_truth_token_id = source_label_ids
+            #ground_truth_token_id = base_label_ids
             ground_truth_one_hot = F.one_hot(
                 ground_truth_token_id["input_ids"],
                 num_classes=model.tokenizer.vocab_size,
