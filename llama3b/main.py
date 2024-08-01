@@ -1,12 +1,10 @@
-from eval_gpt2 import *
 from imports import *
-from models import *
-from ravel_data_prep import *
+from model import *
 
 
-def config(learning_rate, token_length):
+def config(learning_rate, token_length, DEVICE):
 
-    model = LanguageModel("openai-community/gpt2", device_map=DEVICE)
+    model = LanguageModel("meta-llama/Meta-Llama-3-8b", device_map=DEVICE)
 
     intervened_token_idx = -8
     intervention_token_length = token_length
@@ -640,7 +638,11 @@ if __name__ == "__main__":
     (
         model,
         intervened_token_idx,
-    ) = config(learning_rate=args.learning_rate, token_length=args.token_length_allowed)
+    ) = config(
+        learning_rate=args.learning_rate,
+        token_length=args.token_length_allowed,
+        DEVICE=DEVICE,
+    )
     # model.to(DEVICE)
     training_model = my_model(
         model=model,
@@ -733,16 +735,20 @@ if __name__ == "__main__":
             # Create a boolean mask where the condition is true
             mask_greater_than_0_5 = l4_mask_cpu > 0
             mask_equal_to_0 = l4_mask_cpu == 0
-
+            mask_less_than_0 = l4_mask_cpu < 0
             # Sum the mask to get the number of elements satisfying the conditions
             num_elements_greater_than_0_5 = mask_greater_than_0_5.sum().item()
             num_elements_equal_to_0 = mask_equal_to_0.sum().item()
+            num_elements_less_than_0 = mask_less_than_0.sum().item()
 
             print(
                 f"Number of elements in l4_mask greater than 0.5: {num_elements_greater_than_0_5}"
             )
             print(
                 f"Number of elements in l4_mask equal to 0: {num_elements_equal_to_0}"
+            )
+            print(
+                f"Number of elements in l4_mask less than 0: {num_elements_less_than_0}"
             )
 
             try:
@@ -756,6 +762,10 @@ if __name__ == "__main__":
                     f"[GPT2-{args.intervention_divided_data}-{args.method}-{args.learning_rate}-{args.batch_size}-{args.layer_intervened}] num elements in l4 masks = 0"
                 ] = num_elements_equal_to_0
 
+                data[
+                    f"[GPT2-{args.intervention_divided_data}-{args.method}-{args.learning_rate}-{args.batch_size}-{args.layer_intervened}] num elements in l4 mask < 0"
+                ] = num_elements_less_than_0
+
                 with open("masking_stats.json", "w") as f:
                     json.dump(data, f)
 
@@ -765,9 +775,14 @@ if __name__ == "__main__":
                 data[
                     f"[GPT2-{args.intervention_divided_data}-{args.method}-{args.learning_rate}-{args.batch_size}-{args.layer_intervened}] Number of elements in l4_mask > 0.5"
                 ] = num_elements_greater_than_0_5
+
                 data[
                     f"[GPT2-{args.intervention_divided_data}-{args.method}-{args.learning_rate}-{args.batch_size}-{args.layer_intervened}] num elements in l4 masks = 0"
                 ] = num_elements_equal_to_0
+
+                data[
+                    f"[GPT2-{args.intervention_divided_data}-{args.method}-{args.learning_rate}-{args.batch_size}-{args.layer_intervened}] num elements in l4 mask < 0"
+                ] = num_elements_less_than_0
 
                 with open("masking_stats.json", "w") as f:
                     json.dump(data, f)
