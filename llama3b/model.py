@@ -1,7 +1,5 @@
-from eval_gpt2 import *
 from huggingface_hub import hf_hub_download
 from imports import *
-from ravel_data_prep import *
 from transformer_lens.hook_points import HookedRootModule, HookPoint
 
 
@@ -81,28 +79,31 @@ class my_model(nn.Module):
             with self.model.trace() as tracer:
 
                 with tracer.invoke(source_ids) as runner:
-                    vector_source = self.model.transformer.h[
+                    vector_source = self.model.model.layers[
                         self.layer_intervened
                     ].output[0]
 
                 with tracer.invoke(base_ids) as runner_:
                     intermediate_output = (
-                        self.model.transformer.h[self.layer_intervened]
+                        self.model.model.layers[self.layer_intervened]
                         .output[0]
                         .clone()
                     )
                     intermediate_output = (1 - l4_mask_sigmoid) * intermediate_output[
                         :, self.intervened_token_idx, :
                     ] + l4_mask_sigmoid * vector_source[:, self.intervened_token_idx, :]
+                    print(f"intermedidate shape {intermediate_output.squeeze(1).shape}")
+                    print(f"Vector source shape: {vector_source[:, self.intervened_token_idx, :].shape}")
+                    print(f"Shape:[{self.batch_size, 768}]")
                     assert (
                         intermediate_output.squeeze(1).shape
                         == vector_source[:, self.intervened_token_idx, :].shape
-                        == torch.Size([self.batch_size, 768])
+                        == torch.Size([self.batch_size, 4096])
                     )
-                    self.model.transformer.h[self.layer_intervened].output[0][
+                    self.model.model.layers[self.layer_intervened].output[0][
                         :, self.intervened_token_idx, :
                     ] = intermediate_output.squeeze(1)
-                    # self.model.transformer.h[self.layer_intervened].output[0][:,self.intervened_token_idx,:] = vector_source[:,self.intervened_token_idx,:]
+                    # self.model.model.layers[self.layer_intervened].output[0][:,self.intervened_token_idx,:] = vector_source[:,self.intervened_token_idx,:]
 
                     intervened_base_predicted = self.model.lm_head.output.argmax(
                         dim=-1
