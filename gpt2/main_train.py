@@ -733,10 +733,12 @@ if __name__ == "__main__":
             # Create a boolean mask where the condition is true
             mask_greater_than_0_5 = l4_mask_cpu > 0
             mask_equal_to_0 = l4_mask_cpu == 0
+            mask_less_than_0 = l4_mask_cpu < 0
 
             # Sum the mask to get the number of elements satisfying the conditions
             num_elements_greater_than_0_5 = mask_greater_than_0_5.sum().item()
             num_elements_equal_to_0 = mask_equal_to_0.sum().item()
+            num_elements_less_than_0 = mask_less_than_0.sum().item()
 
             print(
                 f"Number of elements in l4_mask greater than 0.5: {num_elements_greater_than_0_5}"
@@ -756,6 +758,10 @@ if __name__ == "__main__":
                     f"[GPT2-{args.intervention_divided_data}-{args.method}-{args.learning_rate}-{args.batch_size}-{args.layer_intervened}] num elements in l4 masks = 0"
                 ] = num_elements_equal_to_0
 
+                data[
+                    f"[GPT2-{args.intervention_divided_data}-{args.method}-{args.learning_rate}-{args.batch_size}-{args.layer_intervened}] num elements in l4 masks < 0"
+                ] = num_elements_less_than_0
+
                 with open("masking_stats.json", "w") as f:
                     json.dump(data, f)
 
@@ -768,6 +774,10 @@ if __name__ == "__main__":
                 data[
                     f"[GPT2-{args.intervention_divided_data}-{args.method}-{args.learning_rate}-{args.batch_size}-{args.layer_intervened}] num elements in l4 masks = 0"
                 ] = num_elements_equal_to_0
+
+                data[
+                    f"[GPT2-{args.intervention_divided_data}-{args.method}-{args.learning_rate}-{args.batch_size}-{args.layer_intervened}] num elements in l4 masks < 0"
+                ] = num_elements_less_than_0
 
                 with open("masking_stats.json", "w") as f:
                     json.dump(data, f)
