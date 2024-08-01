@@ -1,5 +1,6 @@
 from imports import *
 
+
 def analyse(model, data, attribute):
     new_data = []
     for sample_no in tqdm(range(len(data))):
@@ -7,8 +8,8 @@ def analyse(model, data, attribute):
         if len(model.tokenizer.tokenize(sample[0])) == 61 and attribute == "continent":
             with model.trace(sample[0]) as tracer:
                 output = model.lm_head.output[0].save()
-        
-            prediction = model.tokenizer.decode(output.argmax(dim = -1)[-1]).split()[0]
+
+            prediction = model.tokenizer.decode(output.argmax(dim=-1)[-1]).split()[0]
             city = sample[0].split()[-8]
             if prediction == sample[1].split()[0]:
                 new_data.append([sample[0], sample[1]])
@@ -17,19 +18,17 @@ def analyse(model, data, attribute):
 
             with model.trace(sample[0]) as tracer:
                 output = model.lm_head.output[0].save()
-        
-            prediction = model.tokenizer.decode(output.argmax(dim = -1)[-1]).split()[0]
+
+            prediction = model.tokenizer.decode(output.argmax(dim=-1)[-1]).split()[0]
             city = sample[0].split()[-8]
             if prediction == sample[1].split()[0]:
                 new_data.append([sample[0], sample[1]])
 
         else:
             continue
-    
+
     with open(f"comfy_{attribute}.json", "w") as f:
         json.dump(new_data, f)
-
-
 
 
 def overlap_measure(country_data, continent_data):
@@ -69,51 +68,48 @@ def final_data(country_data, continent_data):
         else:
             continue
 
-
     for data in continent_data:
         city = data[0].split()[-8]
         if city in overlapping_cities:
             for data1 in continent_data:
                 city1 = data[0].split()[-8]
                 if city1 in overlapping_cities:
-                    new_continent_data.append([[data[0], data[1]], [data1[0], data1[1]]])
+                    new_continent_data.append(
+                        [[data[0], data[1]], [data1[0], data1[1]]]
+                    )
                 else:
                     continue
         else:
             continue
 
-    with open("final_data_country.json","w") as f:
+    with open("final_data_country.json", "w") as f:
         json.dump(new_country_data, f)
 
     with open("final_data_continent.json", "w") as f:
         json.dump(new_continent_data, f)
 
-if __name__ == "__main__":  
+
+if __name__ == "__main__":
 
     try:
-        model = LanguageModel("openai-community/gpt2", device_map="cuda:1")
+        model = LanguageModel("meta-llama/Meta-Llama-3-8b", device_map="cuda:1")
     except:
-        model = LanguageModel("openai-community/gpt2", device_map="mps")
+        model = LanguageModel("meta-llama/Meta-Llama-3-8b", device_map="mps")
     print(model)
-    
+
     with open("vanilla_data/continent_data.json", "r") as f:
         continent_data = json.load(f)
 
-
     with open("vanilla_data/country_data.json", "r") as f:
-       country_data = json.load(f)
+        country_data = json.load(f)
 
-
-    analyse(model, continent_data,"continent")
+    analyse(model, continent_data, "continent")
     analyse(model, country_data, "country")
 
-
-
-    with open("comfy_continent.json","r") as f:
+    with open("comfy_continent.json", "r") as f:
         continent_data = json.load(f)
 
     with open("comfy_country.json", "r") as f:
         country_data = json.load(f)
 
-    
-    final_data(continent_data = continent_data, country_data = country_data)
+    final_data(continent_data=continent_data, country_data=country_data)
