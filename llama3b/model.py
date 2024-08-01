@@ -90,11 +90,6 @@ class my_model(nn.Module):
                     intermediate_output = (1 - l4_mask_sigmoid) * intermediate_output[
                         :, self.intervened_token_idx, :
                     ] + l4_mask_sigmoid * vector_source[:, self.intervened_token_idx, :]
-                    print(f"intermedidate shape {intermediate_output.squeeze(1).shape}")
-                    print(
-                        f"Vector source shape: {vector_source[:, self.intervened_token_idx, :].shape}"
-                    )
-                    print(f"Shape:[{self.batch_size, 768}]")
                     assert (
                         intermediate_output.squeeze(1).shape
                         == vector_source[:, self.intervened_token_idx, :].shape
