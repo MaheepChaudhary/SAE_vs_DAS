@@ -746,6 +746,9 @@ if __name__ == "__main__":
             print(
                 f"Number of elements in l4_mask equal to 0: {num_elements_equal_to_0}"
             )
+            print(
+                f"Number of elements in l4 mask less than 0: {num_elements_less_than_0}"
+            )
 
             try:
                 with open("masking_stats.json", "r") as f:
