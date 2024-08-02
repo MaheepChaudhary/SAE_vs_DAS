@@ -91,10 +91,9 @@ def final_data(country_data, continent_data):
 
 if __name__ == "__main__":
 
-    try:
-        model = LanguageModel("google/gemma-2b", device_map="cuda:1")
-    except:
-        model = LanguageModel("google/gemma-2b", device_map="mps")
+    model = LanguageModel(
+        "google/gemma-2b", device_map="cuda:1" if torch.cuda.is_available() else "mps"
+    )
     print(model)
 
     with open("ravel/processed_data/continent_data.json", "r") as f:
