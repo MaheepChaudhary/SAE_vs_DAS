@@ -58,18 +58,18 @@ class my_model(nn.Module):
         #
         if method == "neuron masking":
             # neuron_dim = (1,self.token_length_allowed, 768)
-            neuron_dim = (1, 4096)
+            neuron_dim = (1, 2048)
             self.l4_mask = t.nn.Parameter(
                 t.zeros(neuron_dim, device=DEVICE), requires_grad=True
             )
             self.l4_mask = self.l4_mask.to(DEVICE)
 
         elif method == "das masking":
-            das_dim = (1, 4096)
+            das_dim = (1, 2048)
             self.l4_mask = t.nn.Parameter(
                 t.zeros(das_dim, device=DEVICE), requires_grad=True
             )
-            rotate_layer = RotateLayer(4096)
+            rotate_layer = RotateLayer(2048)
             self.rotate_layer = t.nn.utils.parametrizations.orthogonal(rotate_layer)
 
     def forward(self, source_ids, base_ids, temperature):
@@ -87,13 +87,14 @@ class my_model(nn.Module):
                     intermediate_output = (
                         self.model.model.layers[self.layer_intervened].output[0].clone()
                     )
+                    print(intermediate_output.shape)
                     intermediate_output = (1 - l4_mask_sigmoid) * intermediate_output[
                         :, self.intervened_token_idx, :
                     ] + l4_mask_sigmoid * vector_source[:, self.intervened_token_idx, :]
                     assert (
                         intermediate_output.squeeze(1).shape
                         == vector_source[:, self.intervened_token_idx, :].shape
-                        == torch.Size([self.batch_size, 4096])
+                        == torch.Size([self.batch_size, 2048])
                     )
                     self.model.model.layers[self.layer_intervened].output[0][
                         :, self.intervened_token_idx, :
@@ -136,7 +137,7 @@ class my_model(nn.Module):
                     assert (
                         vector_source[0][:, self.intervened_token_idx, :].shape
                         == intermediate_output[:, self.intervened_token_idx, :].shape
-                        == torch.Size([self.batch_size, 4096])
+                        == torch.Size([self.batch_size, 2048])
                     )
                     vector_source_rotated = self.rotate_layer(
                         vector_source[0][:, self.intervened_token_idx, :]
@@ -148,9 +149,9 @@ class my_model(nn.Module):
                     assert (
                         intermediate_output_rotated.shape
                         == vector_source_rotated.shape
-                        == torch.Size([self.batch_size, 4096])
+                        == torch.Size([self.batch_size, 2048])
                     )
-                    assert l4_mask_sigmoid.shape == torch.Size([1, 4096])
+                    assert l4_mask_sigmoid.shape == torch.Size([1, 2048])
                     masked_intermediate_output_rotated = (
                         1 - l4_mask_sigmoid
                     ) * intermediate_output_rotated
@@ -160,7 +161,7 @@ class my_model(nn.Module):
                     assert (
                         masked_intermediate_output_rotated.shape
                         == masked_vector_source_rotated.shape
-                        == torch.Size([self.batch_size, 4096])
+                        == torch.Size([self.batch_size, 2048])
                     )
 
                     iia_vector_rotated = (
@@ -168,7 +169,7 @@ class my_model(nn.Module):
                         + masked_vector_source_rotated
                     )
                     assert iia_vector_rotated.shape == torch.Size(
-                        [self.batch_size, 4096]
+                        [self.batch_size, 2048]
                     )
                     # TODO: first add them then unrotate.
 
@@ -182,13 +183,13 @@ class my_model(nn.Module):
                     # iia_vector = masked_intermediate_output_unrotated + masked_vector_source_unrotated
 
                     # intermediate_output = (1 - self.l4_mask) * intermediate_output[:,self.intervened_token_idx,:].unsqueeze(0) + self.l4_mask * vector_source[0][:,self.intervened_token_idx,:].unsqueeze(0)
-                    iia_vector = iia_vector.reshape(-1, 1, 4096)
+                    iia_vector = iia_vector.reshape(-1, 1, 2048)
                     assert (
                         (iia_vector).shape
                         == vector_source[0][:, self.intervened_token_idx, :]
                         .unsqueeze(1)
                         .shape
-                        == torch.Size([self.batch_size, 1, 4096])
+                        == torch.Size([self.batch_size, 1, 2048])
                     )
                     # Create a new tuple with the modified intermediate_output
                     # modified_output = (intermediate_output,) + self.model.transformer.h[self.layer_intervened].output[1:]
@@ -197,7 +198,7 @@ class my_model(nn.Module):
                         .output[0][:, self.intervened_token_idx, :]
                         .shape
                         == iia_vector.squeeze(1).shape
-                        == torch.Size([self.batch_size, 4096])
+                        == torch.Size([self.batch_size, 2048])
                     )
                     self.model.transformer.h[self.layer_intervened].output[0][
                         :, self.intervened_token_idx, :
