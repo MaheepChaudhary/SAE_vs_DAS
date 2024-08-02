@@ -247,9 +247,9 @@ def train(
         if wndb == "True":
             wandb.log(
                 {
-                    f"Gemma Token Sub-Space Intervention Accuracy {args.layer_intervened}": matches
+                    f"Gemma Training Accuracy {args.layer_intervened}": matches
                     / total_samples_processed,
-                    f"Gemma Token Sub-Space Intervention Loss {args.layer_intervened}": total_loss
+                    f"Gemma Training Loss {args.layer_intervened}": total_loss
                     / total_samples_processed,
                 }
             )
