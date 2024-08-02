@@ -94,13 +94,13 @@ if __name__ == "__main__":
     try:
         model = LanguageModel("google/gemma-2b", device_map="cuda:1")
     except:
-        model = LanguageModel("google/gemma-2b/Meta-Llama-3-8b", device_map="mps")
+        model = LanguageModel("google/gemma-2b", device_map="mps")
     print(model)
 
-    with open("vanilla_data/continent_data.json", "r") as f:
+    with open("ravel/processed_data/continent_data.json", "r") as f:
         continent_data = json.load(f)
 
-    with open("vanilla_data/country_data.json", "r") as f:
+    with open("ravel/processed_data/country_data.json", "r") as f:
         country_data = json.load(f)
 
     analyse(model, continent_data, "continent")
