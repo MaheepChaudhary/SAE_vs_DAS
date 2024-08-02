@@ -219,6 +219,8 @@ def train(
             )
             ground_truth_one_hot = ground_truth_one_hot.to(dtype=torch.long)
             last_token_output = intervened_base_output[:, -1, :]
+            print(ground_truth_one_hot.shape)
+            print(last_token_output.shape)
             assert ground_truth_one_hot.squeeze(1).shape == last_token_output.shape
             ground_truth_indices = torch.argmax(ground_truth_one_hot.squeeze(1), dim=1)
             ground_truth_indices = ground_truth_indices.to(dtype=torch.long)
@@ -247,9 +249,9 @@ def train(
         if wndb == "True":
             wandb.log(
                 {
-                    f"Gemma Token Sub-Space Intervention Accuracy {args.layer_intervened}": matches
+                    f"Gemma Training Accuracy {args.layer_intervened}": matches
                     / total_samples_processed,
-                    f"Gemma Token Sub-Space Intervention Loss {args.layer_intervened}": total_loss
+                    f"Gemma Training Loss {args.layer_intervened}": total_loss
                     / total_samples_processed,
                 }
             )
