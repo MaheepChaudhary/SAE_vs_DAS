@@ -217,7 +217,7 @@ def train(
             tokenizer = AutoTokenizer.from_pretrained("meta-llama/Meta-Llama-3-8b")
             vocab_size = tokenizer.vocab_size
             ground_truth_one_hot = F.one_hot(
-                ground_truth_token_id["input_ids"].to(device_name), num_classes=vocab_size
+                    ground_truth_token_id["input_ids"][:,1].to(device_name), num_classes=vocab_size
             )
             ground_truth_one_hot = ground_truth_one_hot.to(dtype=torch.long)
             last_token_output = intervened_base_output[:, -1, :]
