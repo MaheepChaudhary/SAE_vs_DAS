@@ -1,7 +1,8 @@
 from eval_gpt2 import *
-from imports import *
 from models import *
 from ravel_data_prep import *
+
+from imports import *
 
 
 def config(learning_rate, token_length):
@@ -221,6 +222,8 @@ def train(
             )
             ground_truth_one_hot = ground_truth_one_hot.to(dtype=torch.long)
             last_token_output = intervened_base_output[:, -1, :]
+            print(ground_truth_one_hot)
+            print(last_token_output.argmax(dim=1))
             assert ground_truth_one_hot.squeeze(1).shape == last_token_output.shape
             ground_truth_indices = torch.argmax(ground_truth_one_hot.squeeze(1), dim=1)
             ground_truth_indices = ground_truth_indices.to(dtype=torch.long)
@@ -347,7 +350,7 @@ def calculate_accuracy(
                 source_ids, base_ids, temperature
             )
             ground_truth_token_id = source_label_ids
-            #ground_truth_token_id = base_label_ids
+            # ground_truth_token_id = base_label_ids
             ground_truth_one_hot = F.one_hot(
                 ground_truth_token_id["input_ids"],
                 num_classes=model.tokenizer.vocab_size,
