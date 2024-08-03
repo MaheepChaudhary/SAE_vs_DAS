@@ -175,8 +175,7 @@ def train(
         # for sample_no in tqdm(range(len(data))):
         i = 0
         matches = 0
-        print(np.array(train_data).shape[0])
-        for sample_no in range(np.array(train_data).shape[0]):
+        for sample_no in tqdm(range(np.array(train_data).shape[0])):
 
             samples = train_data[sample_no]
             assert np.array(samples).shape == (batch_size, 2, 2)
@@ -215,12 +214,10 @@ def train(
             # ground_truth_token_id = base_label_ids
             vocab_size = model.tokenizer.vocab_size
             ground_truth_one_hot = F.one_hot(
-                ground_truth_token_id["input_ids"], num_classes=vocab_size
+                    ground_truth_token_id["input_ids"][:,1], num_classes=vocab_size
             )
             ground_truth_one_hot = ground_truth_one_hot.to(dtype=torch.long)
             last_token_output = intervened_base_output[:, -1, :]
-            print(ground_truth_one_hot.shape)
-            print(last_token_output.shape)
             assert ground_truth_one_hot.squeeze(1).shape == last_token_output.shape
             ground_truth_indices = torch.argmax(ground_truth_one_hot.squeeze(1), dim=1)
             ground_truth_indices = ground_truth_indices.to(dtype=torch.long)
