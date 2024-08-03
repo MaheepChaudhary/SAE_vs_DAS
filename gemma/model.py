@@ -87,7 +87,6 @@ class my_model(nn.Module):
                     intermediate_output = (
                         self.model.model.layers[self.layer_intervened].output[0].clone()
                     )
-                    print(intermediate_output.shape)
                     intermediate_output = (1 - l4_mask_sigmoid) * intermediate_output[
                         :, self.intervened_token_idx, :
                     ] + l4_mask_sigmoid * vector_source[:, self.intervened_token_idx, :]
