@@ -213,7 +213,8 @@ def train(
             )
             ground_truth_token_id = source_label_ids
             # ground_truth_token_id = base_label_ids
-            vocab_size = model.tokenizer.vocab_size
+            #vocab_size = model.tokenizer.vocab_size
+            vocab_size = 128256
             ground_truth_one_hot = F.one_hot(
                 ground_truth_token_id["input_ids"][:, 1], num_classes=vocab_size
             )
