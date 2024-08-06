@@ -439,14 +439,13 @@ class my_model(nn.Module):
                         .output[0]
                         .clone()
                     )
-                    encoded_base, base_info = self.sae_apollo.encode(base)
-                    encoded_source, source_info = self.sae_apollo.encode(source[0])
+                    print(self.sae_apollo)
+                    encoded_base= self.sae_apollo.saes.blocks-2-hook_resid_pre.encoder(base)
+                    encoded_source= self.sae_apollo.saes.blocks-2-hook_residual_pre.encoder(source[0])
 
                     # Clone the tensors to avoid in-place operations
                     encoded_base_modified = encoded_base.clone()
                     encoded_source_modified = encoded_source.clone()
-
-                    assert base_info == source_info
 
                     # Apply the mask in a non-inplace way
                     modified_base = encoded_base_modified[
@@ -467,7 +466,7 @@ class my_model(nn.Module):
                         modified_base + modified_source
                     )
 
-                    iia_vector = self.sae_apollo.decode(new_acts, base_info)
+                    iia_vector = self.sae_apollo.decoder(new_acts)
 
                     # Use a copy to avoid in-place modification
                     h_layer_output_copy = (
