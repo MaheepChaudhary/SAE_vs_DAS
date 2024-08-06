@@ -1,0 +1,4 @@
+[submodule "e2e_sae"]
+    path = gpt2/e2e_sae
+    url  = https://github.com/ApolloResearch/e2e_sae.git
+
