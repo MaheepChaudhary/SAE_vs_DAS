@@ -19,6 +19,11 @@ from e2e_sae import SAETransformer
 
 model = SAETransformer.from_wandb("sparsify/gpt2/xomqkliv")
 
-print(model.saes)
+print(model)
+
+encoder = model.saes["blocks-2-hook_resid_pre"].encoder
+
+print(encoder)
+
 # or, if stored locally
 # model = SAETransformer.from_local_path("/path/to/checkpoint/dir")

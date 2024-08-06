@@ -440,8 +440,12 @@ class my_model(nn.Module):
                         .clone()
                     )
                     print(self.sae_apollo)
-                    encoded_base= self.sae_apollo.saes.blocks-2-hook_resid_pre.encoder(base)
-                    encoded_source= self.sae_apollo.saes.blocks-2-hook_residual_pre.encoder(source[0])
+                    encoded_base = self.sae_apollo.saes[
+                        "blocks-2-hook_resid_pre"
+                    ].encoder(base)
+                    encoded_source = self.sae_apollo.saes[
+                        "blocks-2-hook_resid_pre"
+                    ].encoder(source[0])
 
                     # Clone the tensors to avoid in-place operations
                     encoded_base_modified = encoded_base.clone()
@@ -466,7 +470,9 @@ class my_model(nn.Module):
                         modified_base + modified_source
                     )
 
-                    iia_vector = self.sae_apollo.decoder(new_acts)
+                    iia_vector = self.sae_apollo.saes[
+                        "blocks-2-hook_resid_pre"
+                    ].decoder(new_acts)
 
                     # Use a copy to avoid in-place modification
                     h_layer_output_copy = (
