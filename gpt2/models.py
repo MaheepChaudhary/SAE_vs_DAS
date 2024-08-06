@@ -196,12 +196,6 @@ class my_model(nn.Module):
             for params in self.autoencoder.parameters():
                 params.requires_grad = False
 
-        elif method == "sae masking apollo":
-            sae_dim = (1,1,46080)
-            self.l4_mask = t.nn.Parameter(t.zeros(sae_dim), requires_grad=True)
-
-            self.sae_apollo =        
-
         elif method == "sae masking neel":
             sae_dim = (1, 24576)
             self.l4_mask = t.nn.Parameter(t.zeros(sae_dim), requires_grad=True)
@@ -214,13 +208,12 @@ class my_model(nn.Module):
                 params.requires_grad = False
 
         elif method == "sae masking apollo":
-            sae_dim = (1, 24576)
+            sae_dim = (1, 46080)
             self.l4_mask = t.nn.Parameter(t.zeros(sae_dim), requires_grad=True)
             self.sae_apollo = SAETransformer.from_wandb("sparsify/gpt2/xomqkliv")
 
             for params in self.sae_apollo.parameters():
                 params.requires_grad = False
-
 
         elif method == "neuron masking":
             # neuron_dim = (1,self.token_length_allowed, 768)
@@ -408,7 +401,9 @@ class my_model(nn.Module):
                     encoded_source = self.sae_neel.encode(source)
                     summed = (1 - l4_mask_sigmoid) * encoded_base[
                         :, self.intervened_token_idx, :
-                    ] + l4_mask_sigmoid * encoded_source[:, self.intervened_token_idx, :]
+                    ] + l4_mask_sigmoid * encoded_source[
+                        :, self.intervened_token_idx, :
+                    ]
                     decoded_vector = self.sae_neel.decode(summed)
 
                     self.model.transformer.h[self.layer_intervened].output[0][
@@ -454,13 +449,13 @@ class my_model(nn.Module):
                     assert base_info == source_info
 
                     # Apply the mask in a non-inplace way
-                    modified_base = (
-                        encoded_base_modified[:, self.intervened_token_idx, :]
-                        * (1 - l4_mask_sigmoid)
-                        )
-                    modified_source = encoded_source_modified[
+                    modified_base = encoded_base_modified[
                         :, self.intervened_token_idx, :
-                    ] * l4_mask_sigmoid
+                    ] * (1 - l4_mask_sigmoid)
+                    modified_source = (
+                        encoded_source_modified[:, self.intervened_token_idx, :]
+                        * l4_mask_sigmoid
+                    )
 
                     # Assign the modified tensors to the correct indices
                     encoded_base_modified = encoded_base_modified.clone()
@@ -504,7 +499,6 @@ class my_model(nn.Module):
 
             return intervened_base_output, predicted_text
 
-
         elif self.method == "sae masking openai":
 
             with self.model.trace() as tracer:
@@ -529,13 +523,13 @@ class my_model(nn.Module):
                     assert base_info == source_info
 
                     # Apply the mask in a non-inplace way
-                    modified_base = (
-                        encoded_base_modified[:, self.intervened_token_idx, :]
-                        * (1 - l4_mask_sigmoid)
-                        )
-                    modified_source = encoded_source_modified[
+                    modified_base = encoded_base_modified[
                         :, self.intervened_token_idx, :
-                    ] * l4_mask_sigmoid
+                    ] * (1 - l4_mask_sigmoid)
+                    modified_source = (
+                        encoded_source_modified[:, self.intervened_token_idx, :]
+                        * l4_mask_sigmoid
+                    )
 
                     # Assign the modified tensors to the correct indices
                     encoded_base_modified = encoded_base_modified.clone()
