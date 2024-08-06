@@ -196,6 +196,12 @@ class my_model(nn.Module):
             for params in self.autoencoder.parameters():
                 params.requires_grad = False
 
+        elif method == "sae masking apollo":
+            sae_dim = (1,1,46080)
+            self.l4_mask = t.nn.Parameter(t.zeros(sae_dim), requires_grad=True)
+
+            self.sae_apollo =        
+
         elif method == "sae masking neel":
             sae_dim = (1, 24576)
             self.l4_mask = t.nn.Parameter(t.zeros(sae_dim), requires_grad=True)
@@ -206,6 +212,15 @@ class my_model(nn.Module):
             )
             for params in self.sae_neel.parameters():
                 params.requires_grad = False
+
+        elif method == "sae masking apollo":
+            sae_dim = (1, 24576)
+            self.l4_mask = t.nn.Parameter(t.zeros(sae_dim), requires_grad=True)
+            self.sae_apollo = SAETransformer.from_wandb("sparsify/gpt2/xomqkliv")
+
+            for params in self.sae_apollo.parameters():
+                params.requires_grad = False
+
 
         elif method == "neuron masking":
             # neuron_dim = (1,self.token_length_allowed, 768)
@@ -414,6 +429,81 @@ class my_model(nn.Module):
                 )
 
             return intervened_base_output, predicted_text
+
+        elif self.method == "sae masking apollo":
+
+            with self.model.trace() as tracer:
+
+                with tracer.invoke(source_ids) as runner:
+                    source = self.model.transformer.h[self.layer_intervened].output
+
+                with tracer.invoke(base_ids) as runner_:
+
+                    base = (
+                        self.model.transformer.h[self.layer_intervened]
+                        .output[0]
+                        .clone()
+                    )
+                    encoded_base, base_info = self.sae_apollo.encode(base)
+                    encoded_source, source_info = self.sae_apollo.encode(source[0])
+
+                    # Clone the tensors to avoid in-place operations
+                    encoded_base_modified = encoded_base.clone()
+                    encoded_source_modified = encoded_source.clone()
+
+                    assert base_info == source_info
+
+                    # Apply the mask in a non-inplace way
+                    modified_base = (
+                        encoded_base_modified[:, self.intervened_token_idx, :]
+                        * (1 - l4_mask_sigmoid)
+                        )
+                    modified_source = encoded_source_modified[
+                        :, self.intervened_token_idx, :
+                    ] * l4_mask_sigmoid
+
+                    # Assign the modified tensors to the correct indices
+                    encoded_base_modified = encoded_base_modified.clone()
+                    encoded_source_modified = encoded_source_modified.clone()
+
+                    # Combine the modified tensors
+                    new_acts = encoded_base_modified.clone()
+                    new_acts[:, self.intervened_token_idx, :] = (
+                        modified_base + modified_source
+                    )
+
+                    iia_vector = self.sae_apollo.decode(new_acts, base_info)
+
+                    # Use a copy to avoid in-place modification
+                    h_layer_output_copy = (
+                        self.model.transformer.h[self.layer_intervened]
+                        .output[0]
+                        .clone()
+                    )
+                    h_layer_output_copy[:, self.intervened_token_idx, :] = iia_vector[
+                        :, self.intervened_token_idx, :
+                    ]
+
+                    # Update the model's output with the modified copy
+                    self.model.transformer.h[self.layer_intervened].output[0][
+                        :, :, :
+                    ] = h_layer_output_copy
+
+                    intervened_base_predicted = self.model.lm_head.output.argmax(
+                        dim=-1
+                    ).save()
+                    intervened_base_output = self.model.lm_head.output.save()
+
+            predicted_text = []
+            for index in range(intervened_base_output.shape[0]):
+                predicted_text.append(
+                    self.model.tokenizer.decode(
+                        intervened_base_output[index].argmax(dim=-1)
+                    ).split()[-1]
+                )
+
+            return intervened_base_output, predicted_text
+
 
         elif self.method == "sae masking openai":
 
