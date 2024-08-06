@@ -19,6 +19,6 @@ from e2e_sae import SAETransformer
 
 model = SAETransformer.from_wandb("sparsify/gpt2/xomqkliv")
 
-print(model.saes)
+print(model)
 # or, if stored locally
 # model = SAETransformer.from_local_path("/path/to/checkpoint/dir")
