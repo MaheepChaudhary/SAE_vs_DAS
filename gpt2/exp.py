@@ -15,7 +15,7 @@
 # print(f"len of country_data", len(country_data))
 #
 
-from e2e_sae.e2e_sae import SAETransformer
+from e2e_sae import SAETransformer
 
 model = SAETransformer.from_wandb("sparsify/gpt2/xomqkliv")
 
