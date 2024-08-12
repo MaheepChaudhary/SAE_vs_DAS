@@ -182,7 +182,6 @@ class my_model(nn.Module):
         self.batch_size = batch_size
 
         self.DEVICE = DEVICE
-        print(model)
 
         if method == "sae masking openai":
             sae_dim = (1, 1, 32768)
@@ -439,7 +438,6 @@ class my_model(nn.Module):
                         .output[0]
                         .clone()
                     )
-                    print(self.sae_apollo)
                     encoded_base = self.sae_apollo.saes[
                         "blocks-2-hook_resid_pre"
                     ].encoder(base)
