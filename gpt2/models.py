@@ -209,7 +209,7 @@ class my_model(nn.Module):
         elif method == "sae masking apollo":
             sae_dim = (1, 46080)
             self.l4_mask = t.nn.Parameter(t.zeros(sae_dim), requires_grad=True)
-            self.sae_apollo = SAETransformer.from_wandb("sparsify/gpt2/xomqkliv")
+            self.sae_apollo = SAETransformer.from_wandb("sparsify/gpt2/e26jflpq")
 
             for params in self.sae_apollo.parameters():
                 params.requires_grad = False
