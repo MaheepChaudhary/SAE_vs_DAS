@@ -178,7 +178,6 @@ def train(
         # for sample_no in tqdm(range(len(data))):
         i = 0
         matches = 0
-        print(np.array(train_data).shape[0])
         for sample_no in range(np.array(train_data).shape[0]):
 
             samples = train_data[sample_no]
@@ -222,8 +221,6 @@ def train(
             )
             ground_truth_one_hot = ground_truth_one_hot.to(dtype=torch.long)
             last_token_output = intervened_base_output[:, -1, :]
-            print(ground_truth_one_hot)
-            print(last_token_output.argmax(dim=1))
             assert ground_truth_one_hot.squeeze(1).shape == last_token_output.shape
             ground_truth_indices = torch.argmax(ground_truth_one_hot.squeeze(1), dim=1)
             ground_truth_indices = ground_truth_indices.to(dtype=torch.long)
