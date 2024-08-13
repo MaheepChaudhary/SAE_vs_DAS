@@ -359,6 +359,7 @@ def calculate_accuracy(
     DEVICE,
     temperature,
 ):
+    training_model.eval()
     correct_predictions = 0
     total_predictions = 0
     total_samples_processed = 0
@@ -434,6 +435,7 @@ def val(
     DEVICE,
     wndb,
 ):
+    training_model.eval()
     with torch.no_grad():
         matches_val = 0
         total_val_samples_processed = 0
@@ -615,7 +617,7 @@ def test(
             matches_test += len(matches_arr)
             total_test_samples_processed += batch_size
 
-        if wndb == True:
+        if wndb == "True":
             wandb.log(
                 {
                     f"GPT-2 SS IIA Test Acc {args.layer_intervened}": matches_test
