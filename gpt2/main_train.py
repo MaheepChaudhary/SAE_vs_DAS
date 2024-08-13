@@ -117,23 +117,23 @@ def train_data_processing(task, intervention_divided_data, batch_size):
         random.shuffle(country_batch_data)
         random.shuffle(continent_batch_data)
 
-        train_country_data = country_batch_data[0 : 0.7 * (len(country_batch_data))]
+        train_country_data = country_batch_data[0 : int(0.7 * len(country_batch_data))]
         train_continent_data = continent_batch_data[
-            0 : 0.7 * (len(continent_batch_data))
+            0 : int(0.7 * len(continent_batch_data))
         ]
 
         val_country_data = country_batch_data[
-            0.7 * (len(country_batch_data)) : 0.8 * (len(country_batch_data))
+            int(0.7 * len(country_batch_data)) : int(0.8 * len(country_batch_data))
         ]
         val_continent_data = continent_batch_data[
-            0.7 * len(continent_batch_data) : 0.8 * len(continent_batch_data)
+            int(0.7 * len(continent_batch_data)) : int(0.8 * len(continent_batch_data))
         ]
 
         test_country_data = country_batch_data[
-            0.8 * (len(country_batch_data)) : len(country_batch_data)
+            int(0.8 * len(country_batch_data)) : len(country_batch_data)
         ]
         test_continent_data = continent_batch_data[
-            0.8 * len(continent_batch_data) : len(continent_batch_data)
+            int(0.8 * len(continent_batch_data)) : len(continent_batch_data)
         ]
 
     elif task == "total_iia_train":
@@ -302,17 +302,17 @@ def train(
             f"Epoch: {epoch}, Accuracy: {matches / total_samples_processed:.4f}, Loss: {total_loss / total_samples_processed:.4f}"
         )
         val(
-            training_model=training_model,
-            val_country_data=val_country_data,
-            val_continent_data=val_continent_data,
-            model=model,
-            val_data=val_data,
-            loss_fn=loss_fn,
-            batch_size=batch_size,
-            token_length_allowed=token_length_allowed,
-            attribute=attribute,
+            training_model = training_model,
+            val_country_data = val_country_data,
+            val_continent_data = val_continent_data,
+            model = model,
+            val_data = val_data,
+            loss_fn = loss_fn,
+            batch_size = batch_size,
+            token_length_allowed = token_length_allowed,
+            attribute = attribute,
             temperature=temperature,
-            DEVICE=DEVICE,
+            DEVICE = DEVICE,
             wndb=wndb,
         )
         continent_acc = calculate_accuracy(
@@ -335,9 +335,7 @@ def train(
             DEVICE,
             temperature,
         )
-        print(
-            f"Train Continent Accuracy: {continent_acc}, Train Country Accuracy: {country_acc}"
-        )
+        print(f"Train Continent Accuracy: {continent_acc}, Train Country Accuracy: {country_acc}")
         if wndb == "True":
             wandb.log(
                 {
@@ -534,7 +532,8 @@ def val(
                     f"Val Continent Accuracy {args.layer_intervened}": continent_acc,
                     f"Val Country Accuracy {args.layer_intervened}": country_acc,
                 }
-            )
+                )
+           
 
 
 def test(
@@ -549,8 +548,7 @@ def test(
     batch_size,
     temperature_end,
     DEVICE,
-    wndb,
-):
+    wndb):
 
     training_model.eval()
 
@@ -647,18 +645,14 @@ def test(
             DEVICE,
             temperature,
         )
-        print(
-            f"Test Continent Accuracy: {continent_acc}, Test Country Accuracy: {country_acc}"
-        )
+        print(f"Test Continent Accuracy: {continent_acc}, Test Country Accuracy: {country_acc}")
         if wndb == "True":
             wandb.log(
                 {
                     f"Test Continent Accuracy {args.layer_intervened}": continent_acc,
                     f"Test Country Accuracy {args.layer_intervened}": country_acc,
-                }
-            )
-
-
+                })
+ 
 if __name__ == "__main__":
 
     parser = argparse.ArgumentParser()
@@ -813,8 +807,8 @@ if __name__ == "__main__":
             train(
                 train_continent_data=train_continent_data,
                 train_country_data=train_country_data,
-                val_continent_data=val_continent_data,
-                val_country_data=val_country_data,
+                val_continent_data = val_continent_data,
+                val_country_data = val_country_data,
                 training_model=training_model,
                 model=model,
                 train_data=train_data,
@@ -832,8 +826,10 @@ if __name__ == "__main__":
         elif args.task == "train":
 
             train(
-                continent_data=train_continent_data,
-                country_data=train_country_data,
+                train_continent_data=train_continent_data,
+                train_country_data=train_country_data,
+                val_country_data = val_country_data,
+                val_continent_data = val_continent_data,
                 training_model=training_model,
                 model=model,
                 train_data=train_data,
@@ -911,18 +907,17 @@ if __name__ == "__main__":
                 f"models/saved_model_{args.intervention_divided_data}_{args.method}_{args.model}_e{args.epochs}_lr{args.learning_rate}_layer{args.layer_intervened}.pth",
             )
 
-            # model_path = args.saved_model_path
+           # model_path = args.saved_model_path
             test(
-                training_model=training_model,
-                model=model,
-                test_data=test_data,
-                test_country_data=test_country_data,
-                test_continent_data=test_continent_data,
-                loss_fn=loss_fn,
-                attribute=attribute,
-                token_length_allowed=args.token_length_allowed,
-                batch_size=batch_size,
-                temperature_end=temperature_end,
-                DEVICE=DEVICE,
-                wndb=args.wndb,
-            )
+                training_model = training_model,
+                model = model,
+                test_data = test_data,
+                test_country_data = test_country_data,
+                test_continent_data = test_continent_data,
+                loss_fn = loss_fn,
+                token_length_allowed = args.token_length_allowed,
+                batch_size = batch_size,
+                temperature_end = temperature_end,
+                DEVICE = DEVICE,
+                attribute = args.attribute,
+                wndb=args.wndb)
