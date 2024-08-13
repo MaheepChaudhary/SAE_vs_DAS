@@ -540,7 +540,7 @@ def test(
     model,
     test_data,
     test_country_data,
-    test_continent_data
+    test_continent_data,
     loss_fn,
     attribute,
     token_length_allowed,
@@ -548,6 +548,7 @@ def test(
     temperature_end,
     DEVICE,
     wndb):
+
     training_model.eval()
 
     total_test_samples_processed = 0
@@ -915,5 +916,5 @@ if __name__ == "__main__":
                 batch_size = batch_size,
                 temperature_end = temperature_end,
                 DEVICE = DEVICE,
-                wndb=args.wndb,
-           )
+                attribute = args.attribute,
+                wndb=args.wndb)
