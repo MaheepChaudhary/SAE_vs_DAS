@@ -338,7 +338,7 @@ def train(
         )
 
         val(
-            training_model=eval_model,
+            eval_model=eval_model,
             val_country_data=val_country_data,
             val_continent_data=val_continent_data,
             model=model,
@@ -483,7 +483,7 @@ def val(
     DEVICE,
     wndb,
 ):
-    training_model.eval()
+    eval_model.eval()
     with torch.no_grad():
         matches_val = 0
         total_val_samples_processed = 0
