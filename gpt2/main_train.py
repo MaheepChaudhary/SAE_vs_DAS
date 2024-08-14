@@ -210,6 +210,19 @@ def train(
 ):
     training_model.train()
 
+    def sanity_data_check(train_data, train_continent_data, train_country_data):
+
+        for element_no in tqdm(range(len(train_data))):
+            element = train_data[element_no]
+            if (
+                element not in train_continent_data
+                and element not in train_country_data
+            ):
+                print(f"Nope")
+        print("Finsihed")
+
+    sanity_data_check(train_data, train_continent_data, train_country_data)
+
     temp_idx = 0
 
     for epoch in tqdm(range(epochs)):
@@ -302,23 +315,27 @@ def train(
             f"Epoch: {epoch}, Accuracy: {matches / total_samples_processed:.4f}, Loss: {total_loss / total_samples_processed:.4f}"
         )
         torch.save(
-                training_model.state_dict(),
-                f"models/saved_model_{args.intervention_divided_data}_{args.method}_{args.model}_e{epoch}_lr{args.learning_rate}_layer{args.layer_intervened}.pth",
-            )
+            training_model.state_dict(),
+            f"models/saved_model_{args.intervention_divided_data}_{args.method}_{args.model}_e{epoch}_lr{args.learning_rate}_layer{args.layer_intervened}.pth",
+        )
 
         eval_model = my_model(
-                        model=model,
-                        DEVICE=DEVICE,
-                        method=args.method,
-                        token_length_allowed=args.token_length_allowed,
-                        expansion_factor=args.expansion_factor,
-                        layer_intervened=layer_intervened,
-                        intervened_token_idx=intervened_token_idx,
-                        batch_size=args.batch_size
-                        )
+            model=model,
+            DEVICE=DEVICE,
+            method=args.method,
+            token_length_allowed=args.token_length_allowed,
+            expansion_factor=args.expansion_factor,
+            layer_intervened=layer_intervened,
+            intervened_token_idx=intervened_token_idx,
+            batch_size=args.batch_size,
+        )
 
         # Load the state_dict from the saved file
-        eval_model.load_state_dict(torch.load(f"models/saved_model_{args.intervention_divided_data}_{args.method}_{args.model}_e{epoch}_lr{args.learning_rate}_layer{args.layer_intervened}.pth"))
+        eval_model.load_state_dict(
+            torch.load(
+                f"models/saved_model_{args.intervention_divided_data}_{args.method}_{args.model}_e{epoch}_lr{args.learning_rate}_layer{args.layer_intervened}.pth"
+            )
+        )
 
         val(
             training_model=eval_model,
@@ -354,6 +371,16 @@ def train(
             DEVICE,
             temperature,
         )
+        all_data_acc = calculate_accuracy(
+            eval_model,
+            model,
+            train_data,
+            token_length_allowed,
+            attribute,
+            batch_size,
+            DEVICE,
+            temperature,
+        )
         print(
             f"Train Continent Accuracy: {continent_acc}, Train Country Accuracy: {country_acc}"
         )
@@ -362,6 +389,7 @@ def train(
                 {
                     f"Train Continent Accuracy {args.layer_intervened}": continent_acc,
                     f"Train Country Accuracy {args.layer_intervened}": country_acc,
+                    f"Train Accuracy {args.layer_intervened}": all_data_acc,
                 }
             )
         # Log accuracy and loss to wandb
@@ -934,19 +962,22 @@ if __name__ == "__main__":
             #     f"models/saved_model_{args.intervention_divided_data}_{args.method}_{args.model}_e{args.epochs}_lr{args.learning_rate}_layer{args.layer_intervened}.pth",
             # )
             eval_model = my_model(
-                        model=model,
-                        DEVICE=DEVICE,
-                        method=args.method,
-                        token_length_allowed=args.token_length_allowed,
-                        expansion_factor=args.expansion_factor,
-                        layer_intervened=layer_intervened,
-                        intervened_token_idx=intervened_token_idx,
-                        batch_size=args.batch_size
-                        )
+                model=model,
+                DEVICE=DEVICE,
+                method=args.method,
+                token_length_allowed=args.token_length_allowed,
+                expansion_factor=args.expansion_factor,
+                layer_intervened=layer_intervened,
+                intervened_token_idx=intervened_token_idx,
+                batch_size=args.batch_size,
+            )
 
             # Load the state_dict from the saved file
-            eval_model.load_state_dict(torch.load(f"models/saved_model_{args.intervention_divided_data}_{args.method}_{args.model}_e{args.epochs-1}_lr{args.learning_rate}_layer{args.layer_intervened}.pth"))
-
+            eval_model.load_state_dict(
+                torch.load(
+                    f"models/saved_model_{args.intervention_divided_data}_{args.method}_{args.model}_e{args.epochs-1}_lr{args.learning_rate}_layer{args.layer_intervened}.pth"
+                )
+            )
 
             # model_path = args.saved_model_path
             test(
