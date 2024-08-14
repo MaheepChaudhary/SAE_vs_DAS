@@ -291,12 +291,9 @@ def train(
             # Calculate accuracy
             predicted_text = [word.split()[0] for word in predicted_text]
             source_label = [word.split()[0] for word in source_label]
-            matches_arr = [
-                i
-                for i in range(len(predicted_text))
-                if predicted_text[i] == source_label[i]
-            ]
-            matches += len(matches_arr)
+            for i in range(len(predicted_text)):
+                if predicted_text[i] == source_label[i]:
+                    matches+=1
             total_samples_processed += batch_size
             temp_idx += 1
             i += 1
@@ -457,13 +454,10 @@ def calculate_accuracy(
         # Calculate accuracyk
         cal_predicted_text = [word.split()[0] for word in cal_predicted_text_]
         # source_label = [word.split()[0] for word in base_label]
-        source_label = [word.split()[0] for word in cal_source_label_]
-        matches_arr = [
-            i
-            for i in range(len(cal_predicted_text))
-            if cal_predicted_text[i] == source_label[i]
-        ]
-        cal_matches += len(matches_arr)
+        cal_source_label = [word.split()[0] for word in cal_source_label_]
+            for i in range(len(cal_predicted_text)):
+                if cal_predicted_text[i] == cal_source_label[i]:
+                    cal_matches+=1       
         cal_total_samples_processed += batch_size
         break
     return cal_matches / cal_total_samples_processed
