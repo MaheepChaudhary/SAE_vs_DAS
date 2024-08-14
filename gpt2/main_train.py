@@ -368,16 +368,16 @@ def train(
             DEVICE,
             temperature,
         )
-        all_data_acc = calculate_accuracy(
-            eval_model,
-            model,
-            train_data,
-            token_length_allowed,
-            attribute,
-            batch_size,
-            DEVICE,
-            temperature,
-        )
+        # all_data_acc = calculate_accuracy(
+        #     eval_model,
+        #     model,
+        #     train_data,
+        #     token_length_allowed,
+        #     attribute,
+        #     batch_size,
+        #     DEVICE,
+        #     temperature,
+        # )
         print(
             f"Train Continent Accuracy: {continent_acc}, Train Country Accuracy: {country_acc}"
         )
@@ -386,7 +386,7 @@ def train(
                 {
                     f"Train Continent Accuracy {args.layer_intervened}": continent_acc,
                     f"Train Country Accuracy {args.layer_intervened}": country_acc,
-                    f"Train Accuracy {args.layer_intervened}": all_data_acc,
+                    # f"Train Accuracy {args.layer_intervened}": all_data_acc,
                 }
             )
         # Log accuracy and loss to wandb
