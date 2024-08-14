@@ -477,107 +477,104 @@ def val(
     wndb,
 ):
     eval_model.eval()
-    with torch.no_grad():
-        matches_val = 0
-        total_val_samples_processed = 0
-        total_val_loss = 0
+    matches_val = 0
+    total_val_samples_processed = 0
+    total_val_loss = 0
 
-        correct_val = {i: [] for i in range(0, 12)}
-        for val_sample_no in range(np.array(val_data).shape[0]):
-            val_samples = val_data[val_sample_no]
-            assert np.array(val_samples).shape == (batch_size, 2, 2)
-            # Data Processing
-            (
-                val_proceed,
-                val_base_ids,
-                val_source_ids,
-                base_label_ids,
-                val_source_label_ids,
-                val_source_label_,
-                base_label,
-            ) = data_processing(
-                model=model,
-                samples=val_samples,
-                token_length_allowed=token_length_allowed,
-                attribute=attribute,
-                DEVICE=DEVICE,
-                batch_size=batch_size,
-            )
-
-            if not val_proceed:
-                continue
-
-            val_intervened_base_output, val_predicted_text_ = eval_model(
-                val_source_ids, val_base_ids, val_temperature
-            )
-
-            val_ground_truth_token_id = val_source_label_ids
-            vocab_size = model.tokenizer.vocab_size
-            val_ground_truth_one_hot = F.one_hot(
-                val_ground_truth_token_id["input_ids"], num_classes=vocab_size
-            )
-            val_ground_truth_one_hot = val_ground_truth_one_hot.to(dtype=torch.long)
-            val_last_token_output = val_intervened_base_output[:, -1, :]
-            assert (
-                val_ground_truth_one_hot.squeeze(1).shape == val_last_token_output.shape
-            )
-            val_ground_truth_indices = torch.argmax(
-                val_ground_truth_one_hot.squeeze(1), dim=1
-            )
-            val_ground_truth_indices = val_ground_truth_indices.to(dtype=torch.long)
-            loss = loss_fn(val_last_token_output, val_ground_truth_indices)
-            total_val_loss += loss.item()
-
-            # Calculate accuracy
-            val_predicted_text = [word.split()[0] for word in val_predicted_text_]
-            val_source_label = [word.split()[0] for word in val_source_label_]
-
-            total_val_samples_processed += batch_size
-            for i in range(len(val_predicted_text)):
-                if val_predicted_text[i] == val_source_label[i]:
-                    matches_val += 1
-
-        if wndb == "True":
-            wandb.log(
-                {
-                    f"GPT-2 SS IIA Val {args.layer_intervened}": matches_val
-                    / total_val_samples_processed,
-                    f"GPT-2 SS IIA Val Loss {args.layer_intervened}": total_val_loss
-                    / total_val_samples_processed,
-                }
-            )
-        print(
-            f"Validation Accuracy: {matches_val / total_val_samples_processed:.4f}, Validation Loss: {total_val_loss / total_val_samples_processed:.4f}"
+    correct_val = {i: [] for i in range(0, 12)}
+    for val_sample_no in range(np.array(val_data).shape[0]):
+        val_samples = val_data[val_sample_no]
+        assert np.array(val_samples).shape == (batch_size, 2, 2)
+        # Data Processing
+        (
+            val_proceed,
+            val_base_ids,
+            val_source_ids,
+            base_label_ids,
+            val_source_label_ids,
+            val_source_label_,
+            base_label,
+        ) = data_processing(
+            model=model,
+            samples=val_samples,
+            token_length_allowed=token_length_allowed,
+            attribute=attribute,
+            DEVICE=DEVICE,
+            batch_size=batch_size,
         )
 
-        continent_acc = calculate_accuracy(
-            eval_model,
-            model,
-            val_continent_data,
-            token_length_allowed,
-            attribute,
-            batch_size,
-            DEVICE,
-            val_temperature,
+        if not val_proceed:
+            continue
+
+        val_intervened_base_output, val_predicted_text_ = eval_model(
+            val_source_ids, val_base_ids, val_temperature
         )
-        country_acc = calculate_accuracy(
-            eval_model,
-            model,
-            val_country_data,
-            token_length_allowed,
-            attribute,
-            batch_size,
-            DEVICE,
-            val_temperature,
+
+        val_ground_truth_token_id = val_source_label_ids
+        vocab_size = model.tokenizer.vocab_size
+        val_ground_truth_one_hot = F.one_hot(
+            val_ground_truth_token_id["input_ids"], num_classes=vocab_size
         )
-        print(f"Continent Accuracy: {continent_acc}, Country Accuracy: {country_acc}")
-        if wndb == "True":
-            wandb.log(
-                {
-                    f"Val Continent Accuracy {args.layer_intervened}": continent_acc,
-                    f"Val Country Accuracy {args.layer_intervened}": country_acc,
-                }
-            )
+        val_ground_truth_one_hot = val_ground_truth_one_hot.to(dtype=torch.long)
+        val_last_token_output = val_intervened_base_output[:, -1, :]
+        assert val_ground_truth_one_hot.squeeze(1).shape == val_last_token_output.shape
+        val_ground_truth_indices = torch.argmax(
+            val_ground_truth_one_hot.squeeze(1), dim=1
+        )
+        val_ground_truth_indices = val_ground_truth_indices.to(dtype=torch.long)
+        loss = loss_fn(val_last_token_output, val_ground_truth_indices)
+        total_val_loss += loss.item()
+
+        # Calculate accuracy
+        val_predicted_text = [word.split()[0] for word in val_predicted_text_]
+        val_source_label = [word.split()[0] for word in val_source_label_]
+
+        total_val_samples_processed += batch_size
+        for i in range(len(val_predicted_text)):
+            if val_predicted_text[i] == val_source_label[i]:
+                matches_val += 1
+
+    if wndb == "True":
+        wandb.log(
+            {
+                f"GPT-2 SS IIA Val {args.layer_intervened}": matches_val
+                / total_val_samples_processed,
+                f"GPT-2 SS IIA Val Loss {args.layer_intervened}": total_val_loss
+                / total_val_samples_processed,
+            }
+        )
+    print(
+        f"Validation Accuracy: {matches_val / total_val_samples_processed:.4f}, Validation Loss: {total_val_loss / total_val_samples_processed:.4f}"
+    )
+
+    continent_acc = calculate_accuracy(
+        eval_model,
+        model,
+        val_continent_data,
+        token_length_allowed,
+        attribute,
+        batch_size,
+        DEVICE,
+        val_temperature,
+    )
+    country_acc = calculate_accuracy(
+        eval_model,
+        model,
+        val_country_data,
+        token_length_allowed,
+        attribute,
+        batch_size,
+        DEVICE,
+        val_temperature,
+    )
+    print(f"Continent Accuracy: {continent_acc}, Country Accuracy: {country_acc}")
+    if wndb == "True":
+        wandb.log(
+            {
+                f"Val Continent Accuracy {args.layer_intervened}": continent_acc,
+                f"Val Country Accuracy {args.layer_intervened}": country_acc,
+            }
+        )
 
 
 def test(
@@ -600,108 +597,106 @@ def test(
     total_test_samples_processed = 0
     total_test_loss = 0.0
 
-    with torch.no_grad():
-        matches_test = 0
-        total_test_samples_processed = 0
-        total_test_loss = 0
+    matches_test = 0
+    total_test_samples_processed = 0
+    total_test_loss = 0
 
-        correct_test = {i: [] for i in range(0, 12)}
-        for test_sample_no in range(np.array(test_data).shape[0]):
-            test_samples = test_data[test_sample_no]
-            assert np.array(test_samples).shape == (batch_size, 2, 2)
-            # Data Processing
-            (
-                proceed,
-                test_base_ids,
-                test_source_ids,
-                test_base_label_ids,
-                test_source_label_ids,
-                test_source_label_,
-                test_base_label,
-            ) = data_processing(
-                model=model,
-                samples=test_samples,
-                token_length_allowed=token_length_allowed,
-                attribute=attribute,
-                DEVICE=DEVICE,
-                batch_size=batch_size,
-            )
-
-            if not proceed:
-                continue
-
-            test_temperature = temperature_end
-
-            test_intervened_base_output, test_predicted_text_ = eval_model(
-                test_source_ids, test_base_ids, test_temperature
-            )
-
-            test_ground_truth_token_id = test_source_label_ids
-            vocab_size = model.tokenizer.vocab_size
-            test_ground_truth_one_hot = F.one_hot(
-                test_ground_truth_token_id["input_ids"], num_classes=vocab_size
-            )
-            test_ground_truth_one_hot = test_ground_truth_one_hot.to(dtype=torch.long)
-            test_last_token_output = test_intervened_base_output[:, -1, :]
-            assert (
-                test_ground_truth_one_hot.squeeze(1).shape
-                == test_last_token_output.shape
-            )
-            test_ground_truth_indices = torch.argmax(
-                test_ground_truth_one_hot.squeeze(1), dim=1
-            )
-            test_ground_truth_indices = test_ground_truth_indices.to(dtype=torch.long)
-            test_loss = loss_fn(test_last_token_output, test_ground_truth_indices)
-            total_test_loss += test_loss.item()
-
-            # Calculate accuracy
-            test_predicted_text = [word.split()[0] for word in test_predicted_text_]
-            test_source_label = [word.split()[0] for word in test_source_label_]
-            total_test_samples_processed += batch_size
-            for i in range(len(test_predicted_text)):
-                if test_predicted_text[i] == test_source_label[i]:
-                    matches_test += 1
-
-        if wndb == "True":
-            wandb.log(
-                {
-                    f"GPT-2 SS IIA Test Acc {args.layer_intervened}": matches_test
-                    / total_test_samples_processed,
-                    f"GPT-2 SS IIA Test Loss {args.layer_intervened}": total_test_loss
-                    / total_test_samples_processed,
-                }
-            )
-
-        continent_acc = calculate_accuracy(
-            eval_model,
-            model,
-            test_continent_data,
-            token_length_allowed,
-            attribute,
-            batch_size,
-            DEVICE,
-            temperature_end,
+    correct_test = {i: [] for i in range(0, 12)}
+    for test_sample_no in range(np.array(test_data).shape[0]):
+        test_samples = test_data[test_sample_no]
+        assert np.array(test_samples).shape == (batch_size, 2, 2)
+        # Data Processing
+        (
+            proceed,
+            test_base_ids,
+            test_source_ids,
+            test_base_label_ids,
+            test_source_label_ids,
+            test_source_label_,
+            test_base_label,
+        ) = data_processing(
+            model=model,
+            samples=test_samples,
+            token_length_allowed=token_length_allowed,
+            attribute=attribute,
+            DEVICE=DEVICE,
+            batch_size=batch_size,
         )
-        country_acc = calculate_accuracy(
-            eval_model,
-            model,
-            test_country_data,
-            token_length_allowed,
-            attribute,
-            batch_size,
-            DEVICE,
-            temperature_end,
+
+        if not proceed:
+            continue
+
+        test_temperature = temperature_end
+
+        test_intervened_base_output, test_predicted_text_ = eval_model(
+            test_source_ids, test_base_ids, test_temperature
         )
-        print(
-            f"Test Continent Accuracy: {continent_acc}, Test Country Accuracy: {country_acc}"
+
+        test_ground_truth_token_id = test_source_label_ids
+        vocab_size = model.tokenizer.vocab_size
+        test_ground_truth_one_hot = F.one_hot(
+            test_ground_truth_token_id["input_ids"], num_classes=vocab_size
         )
-        if wndb == "True":
-            wandb.log(
-                {
-                    f"Test Continent Accuracy {args.layer_intervened}": continent_acc,
-                    f"Test Country Accuracy {args.layer_intervened}": country_acc,
-                }
-            )
+        test_ground_truth_one_hot = test_ground_truth_one_hot.to(dtype=torch.long)
+        test_last_token_output = test_intervened_base_output[:, -1, :]
+        assert (
+            test_ground_truth_one_hot.squeeze(1).shape == test_last_token_output.shape
+        )
+        test_ground_truth_indices = torch.argmax(
+            test_ground_truth_one_hot.squeeze(1), dim=1
+        )
+        test_ground_truth_indices = test_ground_truth_indices.to(dtype=torch.long)
+        test_loss = loss_fn(test_last_token_output, test_ground_truth_indices)
+        total_test_loss += test_loss.item()
+
+        # Calculate accuracy
+        test_predicted_text = [word.split()[0] for word in test_predicted_text_]
+        test_source_label = [word.split()[0] for word in test_source_label_]
+        total_test_samples_processed += batch_size
+        for i in range(len(test_predicted_text)):
+            if test_predicted_text[i] == test_source_label[i]:
+                matches_test += 1
+
+    if wndb == "True":
+        wandb.log(
+            {
+                f"GPT-2 SS IIA Test Acc {args.layer_intervened}": matches_test
+                / total_test_samples_processed,
+                f"GPT-2 SS IIA Test Loss {args.layer_intervened}": total_test_loss
+                / total_test_samples_processed,
+            }
+        )
+
+    continent_acc = calculate_accuracy(
+        eval_model,
+        model,
+        test_continent_data,
+        token_length_allowed,
+        attribute,
+        batch_size,
+        DEVICE,
+        temperature_end,
+    )
+    country_acc = calculate_accuracy(
+        eval_model,
+        model,
+        test_country_data,
+        token_length_allowed,
+        attribute,
+        batch_size,
+        DEVICE,
+        temperature_end,
+    )
+    print(
+        f"Test Continent Accuracy: {continent_acc}, Test Country Accuracy: {country_acc}"
+    )
+    if wndb == "True":
+        wandb.log(
+            {
+                f"Test Continent Accuracy {args.layer_intervened}": continent_acc,
+                f"Test Country Accuracy {args.layer_intervened}": country_acc,
+            }
+        )
 
 
 if __name__ == "__main__":
