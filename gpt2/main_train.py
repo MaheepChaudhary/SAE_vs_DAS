@@ -399,7 +399,7 @@ def train(
 
 
 def calculate_accuracy(
-    training_model,
+    eval_model,
     model,
     data,
     token_length_allowed,
@@ -408,70 +408,69 @@ def calculate_accuracy(
     DEVICE,
     temperature,
 ):
-    training_model.eval()
+    eval_model.eval()
     correct_predictions = 0
     total_predictions = 0
     total_samples_processed = 0
     matches = 0
-    with t.no_grad():
-        for sample_no in range(np.array(data).shape[0]):
-            samples = data[sample_no]
-            assert np.array(samples).shape == (batch_size, 2, 2)
-            # samples = train_data[i*batch_size:(i+1)*batch_size]
-            # Data Processing
-            (
-                proceed,
-                base_ids,
-                source_ids,
-                base_label_ids,
-                source_label_ids,
-                source_label_,
-                base_label,
-            ) = data_processing(
-                model=model,
-                samples=samples,
-                token_length_allowed=token_length_allowed,
-                attribute=attribute,
-                DEVICE=DEVICE,
-                batch_size=batch_size,
-            )
+    for sample_no in range(np.array(data).shape[0]):
+        samples = data[sample_no]
+        assert np.array(samples).shape == (batch_size, 2, 2)
+        # samples = train_data[i*batch_size:(i+1)*batch_size]
+        # Data Processing
+        (
+            proceed,
+            base_ids,
+            source_ids,
+            base_label_ids,
+            source_label_ids,
+            source_label_,
+            base_label,
+        ) = data_processing(
+            model=model,
+            samples=samples,
+            token_length_allowed=token_length_allowed,
+            attribute=attribute,
+            DEVICE=DEVICE,
+            batch_size=batch_size,
+        )
 
-            if not proceed:
-                continue
-            intervened_base_output, predicted_text_ = training_model(
-                source_ids, base_ids, temperature
-            )
-            ground_truth_token_id = source_label_ids
-            # ground_truth_token_id = base_label_ids
-            ground_truth_one_hot = F.one_hot(
-                ground_truth_token_id["input_ids"],
-                num_classes=model.tokenizer.vocab_size,
-            )
-            # print(ground_truth_one_hot.shape)
-            ground_truth_one_hot = ground_truth_one_hot.to(dtype=torch.long)
-            last_token_output = intervened_base_output[:, -1, :]
-            assert ground_truth_one_hot.squeeze(1).shape == last_token_output.shape
-            ground_truth_indices = torch.argmax(ground_truth_one_hot.squeeze(1), dim=1)
-            ground_truth_indices = ground_truth_indices.to(dtype=torch.long)
-            loss = loss_fn(last_token_output, ground_truth_indices)
+        if not proceed:
+            continue
+        intervened_base_output, predicted_text_ = eval_model(
+            source_ids, base_ids, temperature
+        )
+        ground_truth_token_id = source_label_ids
+        # ground_truth_token_id = base_label_ids
+        ground_truth_one_hot = F.one_hot(
+            ground_truth_token_id["input_ids"],
+            num_classes=model.tokenizer.vocab_size,
+        )
+        # print(ground_truth_one_hot.shape)
+        ground_truth_one_hot = ground_truth_one_hot.to(dtype=torch.long)
+        last_token_output = intervened_base_output[:, -1, :]
+        assert ground_truth_one_hot.squeeze(1).shape == last_token_output.shape
+        ground_truth_indices = torch.argmax(ground_truth_one_hot.squeeze(1), dim=1)
+        ground_truth_indices = ground_truth_indices.to(dtype=torch.long)
+        loss = loss_fn(last_token_output, ground_truth_indices)
 
-            # Calculate accuracyk
-            predicted_text = [word.split()[0] for word in predicted_text_]
-            # source_label = [word.split()[0] for word in base_label]
-            source_label = [word.split()[0] for word in source_label_]
-            matches_arr = [
-                i
-                for i in range(len(predicted_text))
-                if predicted_text[i] == source_label[i]
-            ]
-            matches += len(matches_arr)
-            total_samples_processed += batch_size
-            break
+        # Calculate accuracyk
+        predicted_text = [word.split()[0] for word in predicted_text_]
+        # source_label = [word.split()[0] for word in base_label]
+        source_label = [word.split()[0] for word in source_label_]
+        matches_arr = [
+            i
+            for i in range(len(predicted_text))
+            if predicted_text[i] == source_label[i]
+        ]
+        matches += len(matches_arr)
+        total_samples_processed += batch_size
+        break
     return matches / total_samples_processed
 
 
 def val(
-    training_model,
+    eval_model,
     model,
     val_data,
     val_continent_data,
@@ -515,7 +514,7 @@ def val(
             if not proceed:
                 continue
 
-            intervened_base_output, predicted_text = training_model(
+            intervened_base_output, predicted_text = eval_model(
                 source_ids, base_ids, temperature
             )
 
@@ -557,7 +556,7 @@ def val(
         )
 
         continent_acc = calculate_accuracy(
-            training_model,
+            eval_model,
             model,
             val_continent_data,
             token_length_allowed,
@@ -567,7 +566,7 @@ def val(
             temperature,
         )
         country_acc = calculate_accuracy(
-            training_model,
+            eval_model,
             model,
             val_country_data,
             token_length_allowed,
@@ -587,7 +586,7 @@ def val(
 
 
 def test(
-    training_model,
+    eval_model,
     model,
     test_data,
     test_country_data,
@@ -638,7 +637,7 @@ def test(
 
             temperature = temperature_end
 
-            intervened_base_output, predicted_text = training_model(
+            intervened_base_output, predicted_text = eval_model(
                 source_ids, base_ids, temperature
             )
 
@@ -677,7 +676,7 @@ def test(
             )
 
         continent_acc = calculate_accuracy(
-            training_model,
+            eval_model,
             model,
             test_continent_data,
             token_length_allowed,
@@ -687,7 +686,7 @@ def test(
             temperature,
         )
         country_acc = calculate_accuracy(
-            training_model,
+            eval_model,
             model,
             test_country_data,
             token_length_allowed,
