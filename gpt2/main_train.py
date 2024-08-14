@@ -303,7 +303,7 @@ def train(
         )
         torch.save(
                 training_model.state_dict(),
-                f"models/saved_model_{args.intervention_divided_data}_{args.method}_{args.model}_e{args.epoch}_lr{args.learning_rate}_layer{args.layer_intervened}.pth",
+                f"models/saved_model_{args.intervention_divided_data}_{args.method}_{args.model}_e{epoch}_lr{args.learning_rate}_layer{args.layer_intervened}.pth",
             )
 
         eval_model = my_model(
@@ -929,10 +929,24 @@ if __name__ == "__main__":
                     json.dump(data, f)
 
             # Save the model
-            torch.save(
-                training_model.state_dict(),
-                f"models/saved_model_{args.intervention_divided_data}_{args.method}_{args.model}_e{args.epochs}_lr{args.learning_rate}_layer{args.layer_intervened}.pth",
-            )
+            # torch.save(
+            #     training_model.state_dict(),
+            #     f"models/saved_model_{args.intervention_divided_data}_{args.method}_{args.model}_e{args.epochs}_lr{args.learning_rate}_layer{args.layer_intervened}.pth",
+            # )
+            eval_model = my_model(
+                        model=model,
+                        DEVICE=DEVICE,
+                        method=args.method,
+                        token_length_allowed=args.token_length_allowed,
+                        expansion_factor=args.expansion_factor,
+                        layer_intervened=layer_intervened,
+                        intervened_token_idx=intervened_token_idx,
+                        batch_size=args.batch_size
+                        )
+
+            # Load the state_dict from the saved file
+            eval_model.load_state_dict(torch.load(f"models/saved_model_{args.intervention_divided_data}_{args.method}_{args.model}_e{args.epochs}_lr{args.learning_rate}_layer{args.layer_intervened}.pth"))
+
 
             # model_path = args.saved_model_path
             test(
