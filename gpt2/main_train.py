@@ -344,7 +344,7 @@ def train(
             batch_size=batch_size,
             token_length_allowed=token_length_allowed,
             attribute=attribute,
-            temperature=temperature,
+            val_temperature=temperature,
             DEVICE=DEVICE,
             wndb=wndb,
         )
@@ -972,7 +972,7 @@ if __name__ == "__main__":
 
             # model_path = args.saved_model_path
             test(
-                training_model=eval_model,
+                eval_model=eval_model,
                 model=model,
                 test_data=test_data,
                 test_country_data=test_country_data,
