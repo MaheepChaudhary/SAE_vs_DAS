@@ -401,34 +401,34 @@ def train(
 def calculate_accuracy(
     eval_model,
     model,
-    data,
+    cal_data,
     token_length_allowed,
     attribute,
     batch_size,
     DEVICE,
-    temperature,
+    cal_temperature,
 ):
     eval_model.eval()
     correct_predictions = 0
     total_predictions = 0
-    total_samples_processed = 0
-    matches = 0
-    for sample_no in range(np.array(data).shape[0]):
-        samples = data[sample_no]
-        assert np.array(samples).shape == (batch_size, 2, 2)
+    cal_total_samples_processed = 0
+    cal_matches = 0
+    for cal_sample_no in range(np.array(cal_data).shape[0]):
+        cal_samples = cal_data[cal_sample_no]
+        assert np.array(cal_samples).shape == (batch_size, 2, 2)
         # samples = train_data[i*batch_size:(i+1)*batch_size]
         # Data Processing
         (
             proceed,
-            base_ids,
-            source_ids,
+            cal_base_ids,
+            cal_source_ids,
             base_label_ids,
-            source_label_ids,
-            source_label_,
+            cal_source_label_ids,
+            cal_source_label_,
             base_label,
         ) = data_processing(
             model=model,
-            samples=samples,
+            samples=cal_samples,
             token_length_allowed=token_length_allowed,
             attribute=attribute,
             DEVICE=DEVICE,
@@ -437,36 +437,36 @@ def calculate_accuracy(
 
         if not proceed:
             continue
-        intervened_base_output, predicted_text_ = eval_model(
-            source_ids, base_ids, temperature
+        cal_intervened_base_output, cal_predicted_text_ = eval_model(
+            cal_source_ids, cal_base_ids, cal_temperature
         )
-        ground_truth_token_id = source_label_ids
+        cal_ground_truth_token_id = cal_source_label_ids
         # ground_truth_token_id = base_label_ids
-        ground_truth_one_hot = F.one_hot(
-            ground_truth_token_id["input_ids"],
+        cal_ground_truth_one_hot = F.one_hot(
+            cal_ground_truth_token_id["input_ids"],
             num_classes=model.tokenizer.vocab_size,
         )
         # print(ground_truth_one_hot.shape)
-        ground_truth_one_hot = ground_truth_one_hot.to(dtype=torch.long)
-        last_token_output = intervened_base_output[:, -1, :]
-        assert ground_truth_one_hot.squeeze(1).shape == last_token_output.shape
-        ground_truth_indices = torch.argmax(ground_truth_one_hot.squeeze(1), dim=1)
-        ground_truth_indices = ground_truth_indices.to(dtype=torch.long)
-        loss = loss_fn(last_token_output, ground_truth_indices)
+        ground_truth_one_hot = cal_ground_truth_one_hot.to(dtype=torch.long)
+        cal_last_token_output = cal_intervened_base_output[:, -1, :]
+        assert ground_truth_one_hot.squeeze(1).shape == cal_last_token_output.shape
+        cal_ground_truth_indices = torch.argmax(ground_truth_one_hot.squeeze(1), dim=1)
+        cal_ground_truth_indices = cal_ground_truth_indices.to(dtype=torch.long)
+        loss = loss_fn(cal_last_token_output, cal_ground_truth_indices)
 
         # Calculate accuracyk
-        predicted_text = [word.split()[0] for word in predicted_text_]
+        cal_predicted_text = [word.split()[0] for word in cal_predicted_text_]
         # source_label = [word.split()[0] for word in base_label]
-        source_label = [word.split()[0] for word in source_label_]
+        source_label = [word.split()[0] for word in cal_source_label_]
         matches_arr = [
             i
-            for i in range(len(predicted_text))
-            if predicted_text[i] == source_label[i]
+            for i in range(len(cal_predicted_text))
+            if cal_predicted_text[i] == source_label[i]
         ]
-        matches += len(matches_arr)
-        total_samples_processed += batch_size
+        cal_matches += len(matches_arr)
+        cal_total_samples_processed += batch_size
         break
-    return matches / total_samples_processed
+    return cal_matches / cal_total_samples_processed
 
 
 def val(
