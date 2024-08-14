@@ -3,7 +3,7 @@ from imports import *
 from models import *
 from ravel_data_prep import *
 
-random.seed(10)
+random.seed(2)
 
 
 def config(learning_rate, token_length):
@@ -114,6 +114,8 @@ def train_data_processing(task, intervention_divided_data, batch_size):
             continent_batch_data = data1_batch_data
             country_batch_data = data2_batch_data
 
+        random.shuffle(country_batch_data)
+        random.shuffle(continent_batch_data)
 
         train_country_data = country_batch_data[0 : int(0.7 * len(country_batch_data))]
         train_continent_data = continent_batch_data[
@@ -291,7 +293,7 @@ def train(
             source_label = [word.split()[0] for word in source_label]
             for i in range(len(predicted_text)):
                 if predicted_text[i] == source_label[i]:
-                    matches+=1
+                    matches += 1
             total_samples_processed += batch_size
             temp_idx += 1
             i += 1
@@ -377,7 +379,7 @@ def train(
             temperature,
         )
         print(
-                f"Train Continent Accuracy: {continent_acc}, Train Country Accuracy: {country_acc}, All data acc: {all_data_acc}"
+            f"Train Continent Accuracy: {continent_acc}, Train Country Accuracy: {country_acc}"
         )
         if wndb == "True":
             wandb.log(
@@ -455,9 +457,10 @@ def calculate_accuracy(
         cal_source_label = [word.split()[0] for word in cal_source_label_]
         for i in range(len(cal_predicted_text)):
             if cal_predicted_text[i] == cal_source_label[i]:
-                cal_matches+=1       
+                cal_matches += 1
         cal_total_samples_processed += batch_size
     return cal_matches / cal_total_samples_processed
+
 
 def val(
     eval_model,
@@ -480,57 +483,59 @@ def val(
         total_val_loss = 0
 
         correct_val = {i: [] for i in range(0, 12)}
-        for sample_no in range(np.array(val_data).shape[0]):
-            samples = val_data[sample_no]
-            assert np.array(samples).shape == (batch_size, 2, 2)
+        for val_sample_no in range(np.array(val_data).shape[0]):
+            val_samples = val_data[val_sample_no]
+            assert np.array(val_samples).shape == (batch_size, 2, 2)
             # Data Processing
             (
-                proceed,
-                base_ids,
-                source_ids,
+                val_proceed,
+                val_base_ids,
+                val_source_ids,
                 base_label_ids,
-                source_label_ids,
-                source_label,
+                val_source_label_ids,
+                val_source_label,
                 base_label,
             ) = data_processing(
                 model=model,
-                samples=samples,
+                samples=val_samples,
                 token_length_allowed=token_length_allowed,
                 attribute=attribute,
                 DEVICE=DEVICE,
                 batch_size=batch_size,
             )
 
-            if not proceed:
+            if not val_proceed:
                 continue
 
-            intervened_base_output, predicted_text = eval_model(
-                source_ids, base_ids, temperature
+            val_intervened_base_output, val_predicted_text_ = eval_model(
+                val_source_ids, val_base_ids, temperature
             )
 
-            ground_truth_token_id = source_label_ids
+            val_ground_truth_token_id = val_source_label_ids
             vocab_size = model.tokenizer.vocab_size
-            ground_truth_one_hot = F.one_hot(
-                ground_truth_token_id["input_ids"], num_classes=vocab_size
+            val_ground_truth_one_hot = F.one_hot(
+                val_ground_truth_token_id["input_ids"], num_classes=vocab_size
             )
-            ground_truth_one_hot = ground_truth_one_hot.to(dtype=torch.long)
-            last_token_output = intervened_base_output[:, -1, :]
-            assert ground_truth_one_hot.squeeze(1).shape == last_token_output.shape
-            ground_truth_indices = torch.argmax(ground_truth_one_hot.squeeze(1), dim=1)
-            ground_truth_indices = ground_truth_indices.to(dtype=torch.long)
-            loss = loss_fn(last_token_output, ground_truth_indices)
+            val_ground_truth_one_hot = val_ground_truth_one_hot.to(dtype=torch.long)
+            val_last_token_output = val_intervened_base_output[:, -1, :]
+            assert (
+                val_ground_truth_one_hot.squeeze(1).shape == val_last_token_output.shape
+            )
+            val_ground_truth_indices = torch.argmax(
+                val_ground_truth_one_hot.squeeze(1), dim=1
+            )
+            val_ground_truth_indices = val_ground_truth_indices.to(dtype=torch.long)
+            loss = loss_fn(val_last_token_output, val_ground_truth_indices)
             total_val_loss += loss.item()
 
             # Calculate accuracy
-            predicted_text = [word.split()[0] for word in predicted_text]
-            source_label = [word.split()[0] for word in source_label]
-            matches_arr = [
-                i
-                for i in range(len(predicted_text))
-                if predicted_text[i] == source_label[i]
-            ]
-            matches_val += len(matches_arr)
+            val_predicted_text = [word.split()[0] for word in val_predicted_text_]
+            val_source_label = [word.split()[0] for word in val_source_label]
+
             total_val_samples_processed += batch_size
+            for i in range(len(val_predicted_text)):
+                if val_predicted_text[i] == val_source_label[i]:
+                    matches_val += 1
 
         if wndb == "True":
             wandb.log(
