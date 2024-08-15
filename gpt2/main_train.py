@@ -967,7 +967,7 @@ if __name__ == "__main__":
             eval_model.load_state_dict(
                 torch.load(
                     f"models/saved_model_{args.intervention_divided_data}_{args.method}_{args.model}_e{args.epochs-1}_lr{args.learning_rate}_layer{args.layer_intervened}.pth"
-                )
+                ), strict = False
             )
 
             # model_path = args.saved_model_path
