@@ -191,13 +191,17 @@ class my_model(nn.Module):
             self.autoencoder = sparse_autoencoder.Autoencoder.from_state_dict(
                 state_dict
             )
-            self.l4_mask = t.nn.Parameter(t.zeros(open_sae_dim, device = DEVICE), requires_grad=True)
+            self.l4_mask = t.nn.Parameter(
+                t.zeros(open_sae_dim, device=DEVICE), requires_grad=True
+            )
             for params in self.autoencoder.parameters():
                 params.requires_grad = False
 
         elif method == "sae masking neel":
             neel_sae_dim = (1, 24576)
-            self.l4_mask = t.nn.Parameter(t.zeros(neel_sae_dim, device = DEVICE), requires_grad=True)
+            self.l4_mask = t.nn.Parameter(
+                t.zeros(neel_sae_dim, device=DEVICE), requires_grad=True
+            )
 
             self.sae_neel, cfg_dict, sparsity = SAE.from_pretrained(
                 release="gpt2-small-res-jb",  # see other options in sae_lens/pretrained_saes.yaml
@@ -208,8 +212,10 @@ class my_model(nn.Module):
 
         elif method == "sae masking apollo":
             apollo_sae_dim = (1, 46080)
-            self.l4_mask = t.nn.Parameter(t.zeros(apollo_sae_dim, device = DEVICE), requires_grad=True)
-            self.sae_apollo = SAETransformer.from_wandb("sparsify/gpt2/bst0prdd")
+            self.l4_mask = t.nn.Parameter(
+                t.zeros(apollo_sae_dim, device=DEVICE), requires_grad=True
+            )
+            self.sae_apollo = SAETransformer.from_wandb("sparsify/gpt2/e26jflpq")
 
             for params in self.sae_apollo.parameters():
                 params.requires_grad = False
