@@ -316,58 +316,58 @@ def train(
             f"models/saved_model_{args.intervention_divided_data}_{args.method}_{args.model}_e{epoch}_lr{args.learning_rate}_layer{args.layer_intervened}.pth",
         )
 
-        eval_model = my_model(
-            model=model,
-            DEVICE=DEVICE,
-            method=args.method,
-            token_length_allowed=args.token_length_allowed,
-            expansion_factor=args.expansion_factor,
-            layer_intervened=layer_intervened,
-            intervened_token_idx=intervened_token_idx,
-            batch_size=args.batch_size,
-        )
-
-        # Load the state_dict from the saved file
-        eval_model.load_state_dict(
-            torch.load(
-                f"models/saved_model_{args.intervention_divided_data}_{args.method}_{args.model}_e{epoch}_lr{args.learning_rate}_layer{args.layer_intervened}.pth"
-            ), strict = False
-        )
-
-        val(
-            eval_model=eval_model,
-            val_country_data=val_country_data,
-            val_continent_data=val_continent_data,
-            model=model,
-            val_data=val_data,
-            loss_fn=loss_fn,
-            batch_size=batch_size,
-            token_length_allowed=token_length_allowed,
-            attribute=attribute,
-            val_temperature=temperature,
-            DEVICE=DEVICE,
-            wndb=wndb,
-        )
-        continent_acc = calculate_accuracy(
-            eval_model,
-            model,
-            train_continent_data,
-            token_length_allowed,
-            attribute,
-            batch_size,
-            DEVICE,
-            temperature,
-        )
-        country_acc = calculate_accuracy(
-            eval_model,
-            model,
-            train_country_data,
-            token_length_allowed,
-            attribute,
-            batch_size,
-            DEVICE,
-            temperature,
-        )
+        # eval_model = my_model(
+        #     model=model,
+        #     DEVICE=DEVICE,
+        #     method=args.method,
+        #     token_length_allowed=args.token_length_allowed,
+        #     expansion_factor=args.expansion_factor,
+        #     layer_intervened=layer_intervened,
+        #     intervened_token_idx=intervened_token_idx,
+        #     batch_size=args.batch_size,
+        # )
+        #
+        # # Load the state_dict from the saved file
+        # eval_model.load_state_dict(
+        #     torch.load(
+        #         f"models/saved_model_{args.intervention_divided_data}_{args.method}_{args.model}_e{epoch}_lr{args.learning_rate}_layer{args.layer_intervened}.pth"
+        #     ), strict = False
+        # )
+        #
+        # val(
+        #     eval_model=eval_model,
+        #     val_country_data=val_country_data,
+        #     val_continent_data=val_continent_data,
+        #     model=model,
+        #     val_data=val_data,
+        #     loss_fn=loss_fn,
+        #     batch_size=batch_size,
+        #     token_length_allowed=token_length_allowed,
+        #     attribute=attribute,
+        #     val_temperature=temperature,
+        #     DEVICE=DEVICE,
+        #     wndb=wndb,
+        # )
+        # continent_acc = calculate_accuracy(
+        #     eval_model,
+        #     model,
+        #     train_continent_data,
+        #     token_length_allowed,
+        #     attribute,
+        #     batch_size,
+        #     DEVICE,
+        #     temperature,
+        # )
+        # country_acc = calculate_accuracy(
+        #     eval_model,
+        #     model,
+        #     train_country_data,
+        #     token_length_allowed,
+        #     attribute,
+        #     batch_size,
+        #     DEVICE,
+        #     temperature,
+        # )
         # all_data_acc = calculate_accuracy(
         #     eval_model,
         #     model,
@@ -378,17 +378,17 @@ def train(
         #     DEVICE,
         #     temperature,
         # )
-        print(
-            f"Train Continent Accuracy: {continent_acc}, Train Country Accuracy: {country_acc}"
-        )
-        if wndb == "True":
-            wandb.log(
-                {
-                    f"Train Continent Accuracy {args.layer_intervened}": continent_acc,
-                    f"Train Country Accuracy {args.layer_intervened}": country_acc,
-                    # f"Train Accuracy {args.layer_intervened}": all_data_acc,
-                }
-            )
+        # print(
+        #     f"Train Continent Accuracy: {continent_acc}, Train Country Accuracy: {country_acc}"
+        # )
+        # if wndb == "True":
+        #     wandb.log(
+        #         {
+        #             f"Train Continent Accuracy {args.layer_intervened}": continent_acc,
+        #             f"Train Country Accuracy {args.layer_intervened}": country_acc,
+        #             # f"Train Accuracy {args.layer_intervened}": all_data_acc,
+        #         }
+        #     )
         # Log accuracy and loss to wandb
         # epoch_accuracy = matches / total_samples_processed
 
@@ -967,7 +967,8 @@ if __name__ == "__main__":
             eval_model.load_state_dict(
                 torch.load(
                     f"models/saved_model_{args.intervention_divided_data}_{args.method}_{args.model}_e{args.epochs-1}_lr{args.learning_rate}_layer{args.layer_intervened}.pth"
-                ), strict = False
+                ),
+                strict=False,
             )
 
             # model_path = args.saved_model_path
