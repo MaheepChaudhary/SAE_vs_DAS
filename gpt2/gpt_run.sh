@@ -20,6 +20,6 @@
 
 
 echo "Running sae masking apollo script"
-python3.11 main_train.py -a country -tla 61 -method "sae masking apollo" -e 20 -t train -idd "country" -bs 16 -wb "True" -n "t(10-0.1)_lr0.001_layer-2-e2e+ds" -lr "0.001" -lid 2 
-python3.11 main_train.py -a continent -tla 61 -method "sae masking apollo" -e 20 -t train -idd "continent" -bs 16 -wb "True" -n "t(10-0.1)_lr00.01_layer-2-e2e+ds" -lr "0.001" -lid 2 
+python3.11 main_train.py -a country -tla 61 -method "sae masking apollo" -e 20 -t train -idd "country" -bs 16 -wb "True" -n "t(10-0.1)_lr0.001_layer-1" -lr "0.001" -lid 1
+python3.11 main_train.py -a continent -tla 61 -method "sae masking apollo" -e 20 -t train -idd "continent" -bs 16 -wb "True" -n "t(10-0.1)_lr00.01_layer-1" -lr "0.001" -lid 1
 
