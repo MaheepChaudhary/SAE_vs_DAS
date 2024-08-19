@@ -215,7 +215,7 @@ class my_model(nn.Module):
             self.l4_mask = t.nn.Parameter(
                 t.zeros(apollo_sae_dim, device=DEVICE), requires_grad=True
             )
-            self.sae_apollo = SAETransformer.from_wandb("sparsify/gpt2/bst0prdd")
+            self.sae_apollo = SAETransformer.from_wandb("sparsify/gpt2/e26jflpq")
 
             for params in self.sae_apollo.parameters():
                 params.requires_grad = False
