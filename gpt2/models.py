@@ -1,8 +1,9 @@
-from eval_gpt2 import *
 from huggingface_hub import hf_hub_download
+from transformer_lens.hook_points import HookedRootModule, HookPoint
+
+from eval_gpt2 import *
 from imports import *
 from ravel_data_prep import *
-from transformer_lens.hook_points import HookedRootModule, HookPoint
 
 # torch.autograd.set_detect_anomaly(True)
 DTYPES = {"fp32": torch.float32, "fp16": torch.float16, "bf16": torch.bfloat16}
@@ -242,7 +243,7 @@ class my_model(nn.Module):
 
     def forward(self, source_ids, base_ids, temperature):
         l4_mask_sigmoid = t.sigmoid(self.l4_mask / temperature)
-        #l4_mask_sigmoid = self.l4_mask
+        # l4_mask_sigmoid = self.l4_mask
         if self.method == "neuron masking":
             with self.model.trace() as tracer:
 
@@ -608,6 +609,75 @@ class my_model(nn.Module):
             )
 
             return intervened_base_output, predicted_text
+
+
+class eval_sae(nn.Module):
+    def __init__(
+        self,
+        model,
+        DEVICE,
+        method,
+        expansion_factor,
+        token_length_allowed,
+        layer_intervened,
+        intervened_token_idx,
+        batch_size,
+    ) -> None:
+        super(my_model, self).__init__()
+
+        self.model = model
+        self.layer_intervened = t.tensor(layer_intervened, dtype=t.int32, device=DEVICE)
+        self.intervened_token_idx = t.tensor(
+            intervened_token_idx, dtype=t.int32, device=DEVICE
+        )
+        self.intervened_token_idx = intervened_token_idx
+        self.expansion_factor = expansion_factor
+        self.token_length_allowed = token_length_allowed
+        self.method = method
+        self.batch_size = batch_size
+
+        self.DEVICE = DEVICE
+
+        if method == "sae masking openai":
+            state_dict = t.load(
+                f"openai_sae/downloaded_saes/{self.layer_intervened}.pt"
+            )
+            self.autoencoder = sparse_autoencoder.Autoencoder.from_state_dict(
+                state_dict
+            )
+            for params in self.autoencoder.parameters():
+                params.requires_grad = False
+
+        elif method == "sae masking neel":
+
+            self.autoencoder, cfg_dict, sparsity = SAE.from_pretrained(
+                release="gpt2-small-res-jb",  # see other options in sae_lens/pretrained_saes.yaml
+                sae_id=f"blocks.{self.layer_intervened+1}.hook_resid_pre",  # won't always be a hook point
+            )
+            for params in self.sae_neel.parameters():
+                params.requires_grad = False
+
+        elif method == "sae masking apollo":
+            self.autoencoder = SAETransformer.from_wandb("sparsify/gpt2/e26jflpq")
+
+            for params in self.sae_apollo.parameters():
+                params.requires_grad = False
+
+    def forward(self, x):  # where x is a tokenized sentence
+
+        with self.model.trace(x) as tracer:
+            output_layer0 = self.model.transformer.h[0].output.save()
+            output_layer1 = self.model.transformer.h[1].output.save()
+            output_layer2 = self.model.transformer.h[2].output.save()
+            output_layer3 = self.model.transformer.h[3].output.save()
+            output_layer4 = self.model.transformer.h[4].output.save()
+            output_layer5 = self.model.transformer.h[5].output.save()
+            output_layer6 = self.model.transformer.h[6].output.save()
+            output_layer7 = self.model.transformer.h[7].output.save()
+            output_layer8 = self.model.transformer.h[8].output.save()
+            output_layer9 = self.model.transformer.h[9].output.save()
+            output_layer10 = self.model.transformer.h[10].output.save()
+            output_layer11 = self.model.transformer.h[11].output.save()
 
 
 if __name__ == "__main__":
