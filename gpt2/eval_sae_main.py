@@ -19,6 +19,7 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser()
 
     parser.add_argument("-d", "--device", default="cuda:1")
+    parser.add_argument("-met", "-method", required=True)
 
     args = parser.parse_args()
 

@@ -650,7 +650,7 @@ class eval_sae(nn.Module):
 
         elif method == "sae masking neel":
 
-            self.autoencoder, cfg_dict, sparsity = SAE.from_pretrained(
+            self.sae_neel, cfg_dict, sparsity = SAE.from_pretrained(
                 release="gpt2-small-res-jb",  # see other options in sae_lens/pretrained_saes.yaml
                 sae_id=f"blocks.{self.layer_intervened+1}.hook_resid_pre",  # won't always be a hook point
             )
@@ -658,26 +658,33 @@ class eval_sae(nn.Module):
                 params.requires_grad = False
 
         elif method == "sae masking apollo":
-            self.autoencoder = SAETransformer.from_wandb("sparsify/gpt2/e26jflpq")
+            self.apollo_sae = SAETransformer.from_wandb("sparsify/gpt2/e26jflpq")
 
             for params in self.sae_apollo.parameters():
                 params.requires_grad = False
 
     def forward(self, x):  # where x is a tokenized sentence
 
-        with self.model.trace(x) as tracer:
-            output_layer0 = self.model.transformer.h[0].output.save()
-            output_layer1 = self.model.transformer.h[1].output.save()
-            output_layer2 = self.model.transformer.h[2].output.save()
-            output_layer3 = self.model.transformer.h[3].output.save()
-            output_layer4 = self.model.transformer.h[4].output.save()
-            output_layer5 = self.model.transformer.h[5].output.save()
-            output_layer6 = self.model.transformer.h[6].output.save()
-            output_layer7 = self.model.transformer.h[7].output.save()
-            output_layer8 = self.model.transformer.h[8].output.save()
-            output_layer9 = self.model.transformer.h[9].output.save()
-            output_layer10 = self.model.transformer.h[10].output.save()
-            output_layer11 = self.model.transformer.h[11].output.save()
+        if self.method == "sae masking neel":
+            with self.model.trace(x) as tracer:
+                output_layer0 = self.model.transformer.h[0].output.save()
+                eout0 = self.sae_neel.encode(output_layer0)
+                dout0 = self.sae_neel.decode(eout0)
+                loss0 = (dout0.float() - output_layer0.float()).pow(2).sum(-1).mean(0)
+
+                output_layer1 = self.model.transformer.h[1].output.save()
+                output_layer2 = self.model.transformer.h[2].output.save()
+                output_layer3 = self.model.transformer.h[3].output.save()
+                output_layer4 = self.model.transformer.h[4].output.save()
+                output_layer5 = self.model.transformer.h[5].output.save()
+                output_layer6 = self.model.transformer.h[6].output.save()
+                output_layer7 = self.model.transformer.h[7].output.save()
+                output_layer8 = self.model.transformer.h[8].output.save()
+                output_layer9 = self.model.transformer.h[9].output.save()
+                output_layer10 = self.model.transformer.h[10].output.save()
+                output_layer11 = self.model.transformer.h[11].output.save()
+
+        return loss0
 
 
 if __name__ == "__main__":
