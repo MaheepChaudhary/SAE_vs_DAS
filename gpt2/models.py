@@ -642,10 +642,8 @@ class eval_sae(nn.Module):
             state_dict = t.load(
                 f"openai_sae/downloaded_saes/{self.layer_intervened}.pt"
             )
-            self.autoencoder = sparse_autoencoder.Autoencoder.from_state_dict(
-                state_dict
-            )
-            for params in self.autoencoder.parameters():
+            self.sae_openai = sparse_autoencoder.Autoencoder.from_state_dict(state_dict)
+            for params in self.sae_openai.parameters():
                 params.requires_grad = False
 
         elif method == "sae masking neel":
@@ -730,20 +728,90 @@ class eval_sae(nn.Module):
                 loss11 = (
                     (dout11.float() - output_layer11.float()).pow(2).sum(-1).mean(0)
                 )
-        return (
-            loss0,
-            loss1,
-            loss2,
-            loss3,
-            loss4,
-            loss5,
-            loss6,
-            loss7,
-            loss8,
-            loss9,
-            loss10,
-            loss11,
-        )
+
+        elif self.method == "sae masking openai":
+            with self.model.trace(x) as tracer:
+                output_layer0 = self.model.transformer.h[0].output.save()
+                eout0, info = self.sae_openai.encode(output_layer0)
+                dout0 = self.sae_openai.decode(eout0, info)
+                loss0 = (dout0.float() - output_layer0.float()).pow(2).sum(-1).mean(0)
+
+                output_layer1 = self.model.transformer.h[1].output.save()
+                eout1, info1 = self.sae_openai.encode(output_layer1)
+                dout1 = self.sae_openai.decode(eout1, info1)
+                loss1 = (dout1.float() - output_layer1.float()).pow(2).sum(-1).mean(0)
+
+                output_layer2 = self.model.transformer.h[2].output.save()
+                eout2, info2 = self.sae_openai.encode(output_layer2)
+                dout2 = self.sae_openai.decode(eout2, info2)
+                loss2 = (dout2.float() - output_layer2.float()).pow(2).sum(-1).mean(0)
+
+                output_layer3 = self.model.transformer.h[3].output.save()
+                eout3, info3 = self.sae_openai.encode(output_layer3)
+                dout3 = self.sae_openai.decode(eout3, info3)
+                loss3 = (dout3.float() - output_layer3.float()).pow(2).sum(-1).mean(0)
+
+                output_layer4 = self.model.transformer.h[4].output.save()
+                eout4, info4 = self.sae_openai.encode(output_layer4)
+                dout4 = self.sae_openai.decode(eout4, info4)
+                loss4 = (dout4.float() - output_layer4.float()).pow(2).sum(-1).mean(0)
+
+                output_layer5 = self.model.transformer.h[5].output.save()
+                eout5, info5 = self.sae_openai.encode(output_layer5)
+                dout5 = self.sae_openai.decode(eout5, info5)
+                loss5 = (dout5.float() - output_layer5.float()).pow(2).sum(-1).mean(0)
+
+                output_layer6 = self.model.transformer.h[6].output.save()
+                eout6, info6 = self.sae_openai.encode(output_layer6)
+                dout6 = self.sae_openai.decode(eout6, info6)
+                loss6 = (dout6.float() - output_layer6.float()).pow(2).sum(-1).mean(0)
+
+                output_layer7 = self.model.transformer.h[7].output.save()
+                eout7, info7 = self.sae_openai.encode(output_layer7)
+                dout7 = self.sae_openai.decode(eout7, info7)
+                loss7 = (dout7.float() - output_layer7.float()).pow(2).sum(-1).mean(0)
+
+                output_layer8 = self.model.transformer.h[8].output.save()
+                eout8, info8 = self.sae_openai.encode(output_layer8)
+                dout8 = self.sae_openai.decode(eout8, info8)
+                loss8 = (dout8.float() - output_layer8.float()).pow(2).sum(-1).mean(0)
+
+                output_layer9 = self.model.transformer.h[9].output.save()
+                eout9, info9 = self.sae_openai.encode(output_layer9)
+                dout9 = self.sae_openai.decode(eout9, info9)
+                loss9 = (dout9.float() - output_layer9.float()).pow(2).sum(-1).mean(0)
+
+                output_layer10 = self.model.transformer.h[10].output.save()
+                eout10, info10 = self.sae_openai.encode(output_layer10)
+                dout10 = self.sae_openai.decode(eout10, info10)
+                loss10 = (
+                    (dout10.float() - output_layer10.float()).pow(2).sum(-1).mean(0)
+                )
+
+                output_layer11 = self.model.transformer.h[11].output.save()
+                eout11, info11 = self.sae_openai.encode(output_layer11)
+                dout11 = self.sae_openai.decode(eout11, info11)
+                loss11 = (
+                    (dout11.float() - output_layer11.float()).pow(2).sum(-1).mean(0)
+                )
+
+        elif method == "sae masking apollo":
+            pass
+
+    return (
+        loss0,
+        loss1,
+        loss2,
+        loss3,
+        loss4,
+        loss5,
+        loss6,
+        loss7,
+        loss8,
+        loss9,
+        loss10,
+        loss11,
+    )
 
 
 if __name__ == "__main__":
