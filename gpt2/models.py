@@ -448,10 +448,10 @@ class my_model(nn.Module):
                         .clone()
                     )
                     encoded_base = self.sae_apollo.saes[
-                        "blocks-2-hook_resid_pre"
+                        "blocks-6-hook_resid_pre"
                     ].encoder(base)
                     encoded_source = self.sae_apollo.saes[
-                        "blocks-2-hook_resid_pre"
+                        "blocks-6-hook_resid_pre"
                     ].encoder(source[0])
 
                     # Clone the tensors to avoid in-place operations
