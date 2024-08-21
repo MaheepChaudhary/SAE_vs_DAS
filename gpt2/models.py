@@ -635,11 +635,88 @@ class eval_sae(nn.Module):
         self.DEVICE = DEVICE
 
         if method == "sae masking openai":
-            state_dict = t.load(
-                f"openai_sae/downloaded_saes/{self.layer_intervened}.pt"
+            state_dict0 = t.load(f"openai_sae/downloaded_saes/0.pt")
+            self.sae_openai0 = sparse_autoencoder.Autoencoder.from_state_dict(
+                state_dict0
             )
-            self.sae_openai = sparse_autoencoder.Autoencoder.from_state_dict(state_dict)
-            for params in self.sae_openai.parameters():
+            for params in self.sae_openai0.parameters():
+                params.requires_grad = False
+
+            state_dict1 = t.load(f"openai_sae/downloaded_saes/1.pt")
+            self.sae_openai1 = sparse_autoencoder.Autoencoder.from_state_dict(
+                state_dict1
+            )
+            for params in self.sae_openai1.parameters():
+                params.requires_grad = False
+
+            state_dict2 = t.load(f"openai_sae/downloaded_saes/2.pt")
+            self.sae_openai2 = sparse_autoencoder.Autoencoder.from_state_dict(
+                state_dict2
+            )
+            for params in self.sae_openai2.parameters():
+                params.requires_grad = False
+
+            state_dict3 = t.load(f"openai_sae/downloaded_saes/3.pt")
+            self.sae_openai3 = sparse_autoencoder.Autoencoder.from_state_dict(
+                state_dict3
+            )
+            for params in self.sae_openai3.parameters():
+                params.requires_grad = False
+
+            state_dict4 = t.load(f"openai_sae/downloaded_saes/4.pt")
+            self.sae_openai4 = sparse_autoencoder.Autoencoder.from_state_dict(
+                state_dict4
+            )
+            for params in self.sae_openai4.parameters():
+                params.requires_grad = False
+
+            state_dict5 = t.load(f"openai_sae/downloaded_saes/5.pt")
+            self.sae_openai5 = sparse_autoencoder.Autoencoder.from_state_dict(
+                state_dict5
+            )
+            for params in self.sae_openai5.parameters():
+                params.requires_grad = False
+
+            state_dict6 = t.load(f"openai_sae/downloaded_saes/6.pt")
+            self.sae_openai6 = sparse_autoencoder.Autoencoder.from_state_dict(
+                state_dict6
+            )
+            for params in self.sae_openai6.parameters():
+                params.requires_grad = False
+
+            state_dict7 = t.load(f"openai_sae/downloaded_saes/7.pt")
+            self.sae_openai7 = sparse_autoencoder.Autoencoder.from_state_dict(
+                state_dict7
+            )
+            for params in self.sae_openai7.parameters():
+                params.requires_grad = False
+
+            state_dict8 = t.load(f"openai_sae/downloaded_saes/8.pt")
+            self.sae_openai8 = sparse_autoencoder.Autoencoder.from_state_dict(
+                state_dict8
+            )
+            for params in self.sae_openai8.parameters():
+                params.requires_grad = False
+
+            state_dict9 = t.load(f"openai_sae/downloaded_saes/9.pt")
+            self.sae_openai9 = sparse_autoencoder.Autoencoder.from_state_dict(
+                state_dict9
+            )
+            for params in self.sae_openai9.parameters():
+                params.requires_grad = False
+
+            state_dict10 = t.load(f"openai_sae/downloaded_saes/10.pt")
+            self.sae_openai10 = sparse_autoencoder.Autoencoder.from_state_dict(
+                state_dict10
+            )
+            for params in self.sae_openai10.parameters():
+                params.requires_grad = False
+
+            state_dict11 = t.load(f"openai_sae/downloaded_saes/11.pt")
+            self.sae_openai11 = sparse_autoencoder.Autoencoder.from_state_dict(
+                state_dict11
+            )
+            for params in self.sae_openai11.parameters():
                 params.requires_grad = False
 
         elif method == "sae masking neel":
@@ -880,8 +957,8 @@ class eval_sae(nn.Module):
         elif self.method == "sae masking openai":
             with self.model.trace(x) as tracer:
                 output_layer0 = self.model.transformer.h[0].output[0].save()
-                eout0, info = self.sae_openai.encode(output_layer0)
-                dout0 = self.sae_openai.decode(eout0, info)
+                eout0, info = self.sae_openai0.encode(output_layer0)
+                dout0 = self.sae_openai0.decode(eout0, info)
                 loss0 = (
                     (dout0.float() - output_layer0.float())
                     .pow(2)
@@ -891,8 +968,8 @@ class eval_sae(nn.Module):
                 )
 
                 output_layer1 = self.model.transformer.h[1].output[0].save()
-                eout1, info1 = self.sae_openai.encode(output_layer1)
-                dout1 = self.sae_openai.decode(eout1, info1)
+                eout1, info1 = self.sae_openai1.encode(output_layer1)
+                dout1 = self.sae_openai1.decode(eout1, info1)
                 loss1 = (
                     (dout1.float() - output_layer1.float())
                     .pow(2)
@@ -902,8 +979,8 @@ class eval_sae(nn.Module):
                 )
 
                 output_layer2 = self.model.transformer.h[2].output[0].save()
-                eout2, info2 = self.sae_openai.encode(output_layer2)
-                dout2 = self.sae_openai.decode(eout2, info2)
+                eout2, info2 = self.sae_openai2.encode(output_layer2)
+                dout2 = self.sae_openai2.decode(eout2, info2)
                 loss2 = (
                     (dout2.float() - output_layer2.float())
                     .pow(2)
@@ -913,8 +990,8 @@ class eval_sae(nn.Module):
                 )
 
                 output_layer3 = self.model.transformer.h[3].output[0].save()
-                eout3, info3 = self.sae_openai.encode(output_layer3)
-                dout3 = self.sae_openai.decode(eout3, info3)
+                eout3, info3 = self.sae_openai3.encode(output_layer3)
+                dout3 = self.sae_openai3.decode(eout3, info3)
                 loss3 = (
                     (dout3.float() - output_layer3.float())
                     .pow(2)
@@ -924,8 +1001,8 @@ class eval_sae(nn.Module):
                 )
 
                 output_layer4 = self.model.transformer.h[4].output[0].save()
-                eout4, info4 = self.sae_openai.encode(output_layer4)
-                dout4 = self.sae_openai.decode(eout4, info4)
+                eout4, info4 = self.sae_openai4.encode(output_layer4)
+                dout4 = self.sae_openai4.decode(eout4, info4)
                 loss4 = (
                     (dout4.float() - output_layer4.float())
                     .pow(2)
@@ -935,8 +1012,8 @@ class eval_sae(nn.Module):
                 )
 
                 output_layer5 = self.model.transformer.h[5].output[0].save()
-                eout5, info5 = self.sae_openai.encode(output_layer5)
-                dout5 = self.sae_openai.decode(eout5, info5)
+                eout5, info5 = self.sae_openai5.encode(output_layer5)
+                dout5 = self.sae_openai5.decode(eout5, info5)
                 loss5 = (
                     (dout5.float() - output_layer5.float())
                     .pow(2)
@@ -946,8 +1023,8 @@ class eval_sae(nn.Module):
                 )
 
                 output_layer6 = self.model.transformer.h[6].output[0].save()
-                eout6, info6 = self.sae_openai.encode(output_layer6)
-                dout6 = self.sae_openai.decode(eout6, info6)
+                eout6, info6 = self.sae_openai6.encode(output_layer6)
+                dout6 = self.sae_openai6.decode(eout6, info6)
                 loss6 = (
                     (dout6.float() - output_layer6.float())
                     .pow(2)
@@ -957,8 +1034,8 @@ class eval_sae(nn.Module):
                 )
 
                 output_layer7 = self.model.transformer.h[7].output[0].save()
-                eout7, info7 = self.sae_openai.encode(output_layer7)
-                dout7 = self.sae_openai.decode(eout7, info7)
+                eout7, info7 = self.sae_openai7.encode(output_layer7)
+                dout7 = self.sae_openai7.decode(eout7, info7)
                 loss7 = (
                     (dout7.float() - output_layer7.float())
                     .pow(2)
@@ -968,8 +1045,8 @@ class eval_sae(nn.Module):
                 )
 
                 output_layer8 = self.model.transformer.h[8].output[0].save()
-                eout8, info8 = self.sae_openai.encode(output_layer8)
-                dout8 = self.sae_openai.decode(eout8, info8)
+                eout8, info8 = self.sae_openai8.encode(output_layer8)
+                dout8 = self.sae_openai8.decode(eout8, info8)
                 loss8 = (
                     (dout8.float() - output_layer8.float())
                     .pow(2)
@@ -979,8 +1056,8 @@ class eval_sae(nn.Module):
                 )
 
                 output_layer9 = self.model.transformer.h[9].output[0].save()
-                eout9, info9 = self.sae_openai.encode(output_layer9)
-                dout9 = self.sae_openai.decode(eout9, info9)
+                eout9, info9 = self.sae_openai9.encode(output_layer9)
+                dout9 = self.sae_openai9.decode(eout9, info9)
                 loss9 = (
                     (dout9.float() - output_layer9.float())
                     .pow(2)
@@ -990,8 +1067,8 @@ class eval_sae(nn.Module):
                 )
 
                 output_layer10 = self.model.transformer.h[10].output[0].save()
-                eout10, info10 = self.sae_openai.encode(output_layer10)
-                dout10 = self.sae_openai.decode(eout10, info10)
+                eout10, info10 = self.sae_openai10.encode(output_layer10)
+                dout10 = self.sae_openai10.decode(eout10, info10)
                 loss10 = (
                     (dout10.float() - output_layer10.float())
                     .pow(2)
@@ -1001,8 +1078,8 @@ class eval_sae(nn.Module):
                 )
 
                 output_layer11 = self.model.transformer.h[11].output[0].save()
-                eout11, info11 = self.sae_openai.encode(output_layer11)
-                dout11 = self.sae_openai.decode(eout11, info11)
+                eout11, info11 = self.sae_openai11.encode(output_layer11)
+                dout11 = self.sae_openai11.decode(eout11, info11)
                 loss11 = (
                     (dout11.float() - output_layer11.float())
                     .pow(2)
