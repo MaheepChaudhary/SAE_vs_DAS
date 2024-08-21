@@ -114,17 +114,15 @@ if __name__ == "__main__":
 
         torch.cuda.empty_cache()
 
-        print(
-            loss0_arr,
-            loss1_arr,
-            loss2_arr,
-            loss3_arr,
-            loss4_arr,
-            loss5_arr,
-            loss6_arr,
-            loss7_arr,
-            loss8_arr,
-            loss9_arr,
-            loss10_arr,
-            loss11_arr,
-        )
+        mean0 = sum(loss0_arr) / len(loss0_arr)
+        mean1 = sum(loss1_arr) / len(loss1_arr)
+        mean2 = sum(loss2_arr) / len(loss2_arr)
+        mean3 = sum(loss3_arr) / len(loss3_arr)
+        mean4 = sum(loss4_arr) / len(loss4_arr)
+        mean5 = sum(loss5_arr) / len(loss5_arr)
+        mean6 = sum(loss6_arr) / len(loss6_arr)
+        mean7 = sum(loss7_arr) / len(loss7_arr)
+        mean8 = sum(loss8_arr) / len(loss8_arr)
+        mean9 = sum(loss9_arr) / len(loss9_arr)
+        mean10 = sum(loss10_arr) / len(loss10_arr)
+        mean11 = sum(loss11_arr) / len(loss11_arr)
