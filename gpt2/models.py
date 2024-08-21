@@ -673,18 +673,77 @@ class eval_sae(nn.Module):
                 loss0 = (dout0.float() - output_layer0.float()).pow(2).sum(-1).mean(0)
 
                 output_layer1 = self.model.transformer.h[1].output.save()
-                output_layer2 = self.model.transformer.h[2].output.save()
-                output_layer3 = self.model.transformer.h[3].output.save()
-                output_layer4 = self.model.transformer.h[4].output.save()
-                output_layer5 = self.model.transformer.h[5].output.save()
-                output_layer6 = self.model.transformer.h[6].output.save()
-                output_layer7 = self.model.transformer.h[7].output.save()
-                output_layer8 = self.model.transformer.h[8].output.save()
-                output_layer9 = self.model.transformer.h[9].output.save()
-                output_layer10 = self.model.transformer.h[10].output.save()
-                output_layer11 = self.model.transformer.h[11].output.save()
+                eout1 = self.sae_neel.encode(output_layer1)
+                dout1 = self.sae_neel.decode(eout1)
+                loss1 = (dout1.float() - output_layer1.float()).pow(2).sum(-1).mean(0)
 
-        return loss0
+                output_layer2 = self.model.transformer.h[2].output.save()
+                eout2 = self.sae_neel.encode(output_layer2)
+                dout2 = self.sae_neel.decode(eout2)
+                loss2 = (dout2.float() - output_layer2.float()).pow(2).sum(-1).mean(0)
+
+                output_layer3 = self.model.transformer.h[3].output.save()
+                eout3 = self.sae_neel.encode(output_layer3)
+                dout3 = self.sae_neel.decode(eout3)
+                loss3 = (dout3.float() - output_layer3.float()).pow(2).sum(-1).mean(0)
+
+                output_layer4 = self.model.transformer.h[4].output.save()
+                eout4 = self.sae_neel.encode(output_layer4)
+                dout4 = self.sae_neel.decode(eout4)
+                loss4 = (dout4.float() - output_layer4.float()).pow(2).sum(-1).mean(0)
+
+                output_layer5 = self.model.transformer.h[5].output.save()
+                eout5 = self.sae_neel.encode(output_layer5)
+                dout5 = self.sae_neel.decode(eout5)
+                loss5 = (dout5.float() - output_layer5.float()).pow(2).sum(-1).mean(0)
+
+                output_layer6 = self.model.transformer.h[6].output.save()
+                eout6 = self.sae_neel.encode(output_layer6)
+                dout6 = self.sae_neel.decode(eout6)
+                loss6 = (dout6.float() - output_layer6.float()).pow(2).sum(-1).mean(0)
+
+                output_layer7 = self.model.transformer.h[7].output.save()
+                eout7 = self.sae_neel.encode(output_layer7)
+                dout7 = self.sae_neel.decode(eout7)
+                loss7 = (dout7.float() - output_layer7.float()).pow(2).sum(-1).mean(0)
+
+                output_layer8 = self.model.transformer.h[8].output.save()
+                eout8 = self.sae_neel.encode(output_layer8)
+                dout8 = self.sae_neel.decode(eout8)
+                loss8 = (dout8.float() - output_layer8.float()).pow(2).sum(-1).mean(0)
+
+                output_layer9 = self.model.transformer.h[9].output.save()
+                eout9 = self.sae_neel.encode(output_layer9)
+                dout9 = self.sae_neel.decode(eout9)
+                loss9 = (dout9.float() - output_layer9.float()).pow(2).sum(-1).mean(0)
+
+                output_layer10 = self.model.transformer.h[10].output.save()
+                eout10 = self.sae_neel.encode(output_layer10)
+                dout10 = self.sae_neel.decode(eout10)
+                loss10 = (
+                    (dout10.float() - output_layer10.float()).pow(2).sum(-1).mean(0)
+                )
+
+                output_layer11 = self.model.transformer.h[11].output.save()
+                eout11 = self.sae_neel.encode(output_layer11)
+                dout11 = self.sae_neel.decode(eout11)
+                loss11 = (
+                    (dout11.float() - output_layer11.float()).pow(2).sum(-1).mean(0)
+                )
+        return (
+            loss0,
+            loss1,
+            loss2,
+            loss3,
+            loss4,
+            loss5,
+            loss6,
+            loss7,
+            loss8,
+            loss9,
+            loss10,
+            loss11,
+        )
 
 
 if __name__ == "__main__":
