@@ -112,7 +112,7 @@ if __name__ == "__main__":
             loss10_arr.append(loss10.mean(0).item())
             loss11_arr.append(loss11.mean(0).item())
 
-        torch.cuda.empty_cache()
+            torch.cuda.empty_cache()
 
         mean0 = sum(loss0_arr) / len(loss0_arr)
         mean1 = sum(loss1_arr) / len(loss1_arr)
