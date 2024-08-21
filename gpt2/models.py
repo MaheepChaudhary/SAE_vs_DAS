@@ -824,7 +824,6 @@ class eval_sae(nn.Module):
                 output_layer0 = self.model.transformer.h[0].output[0].clone().save()
                 eout0 = self.sae_neel0.encode(output_layer0)
                 dout0 = self.sae_neel0.decode(eout0)
-                print(dout0)
                 loss0 = (
                     (dout0.float() - output_layer0.float())
                     .pow(2)
