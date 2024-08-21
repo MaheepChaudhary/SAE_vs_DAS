@@ -78,50 +78,53 @@ if __name__ == "__main__":
         loss11_arr,
     ) = ([], [], [], [], [], [], [], [], [], [], [], [])
 
-    for i in tqdm(range(indices)):
+    with torch.no_grad():
+        for i in tqdm(range(indices)):
 
-        samples = t_sent["input_ids"][i : (i + 1) * 16]
-        s_labels = t_label["input_ids"][i : (i + 1) * 16]
+            samples = t_sent["input_ids"][i : (i + 1) * 16]
+            s_labels = t_label["input_ids"][i : (i + 1) * 16]
 
-        (
-            loss0,
-            loss1,
-            loss2,
-            loss3,
-            loss4,
-            loss5,
-            loss6,
-            loss7,
-            loss8,
-            loss9,
-            loss10,
-            loss11,
-        ) = model_sae_eval(samples)
+            (
+                loss0,
+                loss1,
+                loss2,
+                loss3,
+                loss4,
+                loss5,
+                loss6,
+                loss7,
+                loss8,
+                loss9,
+                loss10,
+                loss11,
+            ) = model_sae_eval(samples)
 
-        loss0_arr.append(loss0.mean(0).item())
-        loss1_arr.append(loss1.mean(0).item())
-        loss2_arr.append(loss2.mean(0).item())
-        loss3_arr.append(loss3.mean(0).item())
-        loss4_arr.append(loss4.mean(0).item())
-        loss5_arr.append(loss5.mean(0).item())
-        loss6_arr.append(loss6.mean(0).item())
-        loss7_arr.append(loss7.mean(0).item())
-        loss8_arr.append(loss8.mean(0).item())
-        loss9_arr.append(loss9.mean(0).item())
-        loss10_arr.append(loss10.mean(0).item())
-        loss11_arr.append(loss11.mean(0).item())
+            loss0_arr.append(loss0.mean(0).item())
+            loss1_arr.append(loss1.mean(0).item())
+            loss2_arr.append(loss2.mean(0).item())
+            loss3_arr.append(loss3.mean(0).item())
+            loss4_arr.append(loss4.mean(0).item())
+            loss5_arr.append(loss5.mean(0).item())
+            loss6_arr.append(loss6.mean(0).item())
+            loss7_arr.append(loss7.mean(0).item())
+            loss8_arr.append(loss8.mean(0).item())
+            loss9_arr.append(loss9.mean(0).item())
+            loss10_arr.append(loss10.mean(0).item())
+            loss11_arr.append(loss11.mean(0).item())
 
-    print(
-        loss0_arr,
-        loss1_arr,
-        loss2_arr,
-        loss3_arr,
-        loss4_arr,
-        loss5_arr,
-        loss6_arr,
-        loss7_arr,
-        loss8_arr,
-        loss9_arr,
-        loss10_arr,
-        loss11_arr,
-    )
+        torch.cuda.empty_cache()
+
+        print(
+            loss0_arr,
+            loss1_arr,
+            loss2_arr,
+            loss3_arr,
+            loss4_arr,
+            loss5_arr,
+            loss6_arr,
+            loss7_arr,
+            loss8_arr,
+            loss9_arr,
+            loss10_arr,
+            loss11_arr,
+        )
