@@ -438,7 +438,11 @@ class my_model(nn.Module):
             with self.model.trace() as tracer:
 
                 with tracer.invoke(source_ids) as runner:
-                    source = self.model.transformer.h[self.layer_intervened].output[0]
+                    source = (
+                        self.model.transformer.h[self.layer_intervened]
+                        .output[0]
+                        .clone()
+                    )
 
                 with tracer.invoke(base_ids) as runner_:
 
@@ -452,7 +456,7 @@ class my_model(nn.Module):
                     ].encoder(base)
                     encoded_source = self.sae_apollo.saes[
                         "blocks-6-hook_resid_pre"
-                    ].encoder(source[0])
+                    ].encoder(source)
 
                     # Clone the tensors to avoid in-place operations
                     encoded_base_modified = encoded_base.clone()
