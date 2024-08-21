@@ -216,7 +216,7 @@ class my_model(nn.Module):
             self.l4_mask = t.nn.Parameter(
                 t.zeros(apollo_sae_dim, device=DEVICE), requires_grad=True
             )
-            self.sae_apollo = SAETransformer.from_wandb("sparsify/gpt2/e26jflpq")
+            self.sae_apollo = SAETransformer.from_wandb("sparsify/gpt2/2lzle2f0")
 
             for params in self.sae_apollo.parameters():
                 params.requires_grad = False
@@ -1079,7 +1079,7 @@ class eval_sae(nn.Module):
 
                 output_layer11 = self.model.transformer.h[11].output[0].save()
                 eout11, info11 = self.sae_openai11.encode(output_layer11)
-                dout11 = self.sae_openai11.decode(eout11, info11)
+                dout11 = self.sae_openai.decode(eout11, info11)
                 loss11 = (
                     (dout11.float() - output_layer11.float())
                     .pow(2)
