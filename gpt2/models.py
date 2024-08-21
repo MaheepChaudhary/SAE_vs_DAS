@@ -617,22 +617,16 @@ class eval_sae(nn.Module):
         model,
         DEVICE,
         method,
-        expansion_factor,
-        token_length_allowed,
-        layer_intervened,
         intervened_token_idx,
         batch_size,
     ) -> None:
-        super(my_model, self).__init__()
+        super(eval_sae, self).__init__()
 
         self.model = model
-        self.layer_intervened = t.tensor(layer_intervened, dtype=t.int32, device=DEVICE)
         self.intervened_token_idx = t.tensor(
             intervened_token_idx, dtype=t.int32, device=DEVICE
         )
         self.intervened_token_idx = intervened_token_idx
-        self.expansion_factor = expansion_factor
-        self.token_length_allowed = token_length_allowed
         self.method = method
         self.batch_size = batch_size
 
@@ -648,11 +642,94 @@ class eval_sae(nn.Module):
 
         elif method == "sae masking neel":
 
-            self.sae_neel, cfg_dict, sparsity = SAE.from_pretrained(
+            self.sae_neel0, cfg_dict, sparsity = SAE.from_pretrained(
                 release="gpt2-small-res-jb",  # see other options in sae_lens/pretrained_saes.yaml
-                sae_id=f"blocks.{self.layer_intervened+1}.hook_resid_pre",  # won't always be a hook point
+                sae_id=f"blocks.1.hook_resid_pre",  # won't always be a hook point
             )
-            for params in self.sae_neel.parameters():
+            for params in self.sae_neel0.parameters():
+                params.requires_grad = False
+
+            self.sae_neel1, cfg_dict, sparsity = SAE.from_pretrained(
+                release="gpt2-small-res-jb",  # see other options in sae_lens/pretrained_saes.yaml
+                sae_id=f"blocks.2.hook_resid_pre",  # won't always be a hook point
+            )
+            for params in self.sae_neel1.parameters():
+                params.requires_grad = False
+
+            self.sae_neel2, cfg_dict, sparsity = SAE.from_pretrained(
+                release="gpt2-small-res-jb",  # see other options in sae_lens/pretrained_saes.yaml
+                sae_id=f"blocks.3.hook_resid_pre",  # won't always be a hook point
+            )
+
+            self.sae_neel3, cfg_dict, sparsity = SAE.from_pretrained(
+                release="gpt2-small-res-jb",  # see other options in sae_lens/pretrained_saes.yaml
+                sae_id=f"blocks.4.hook_resid_pre",  # won't always be a hook point
+            )
+
+            self.sae_neel4, cfg_dict, sparsity = SAE.from_pretrained(
+                release="gpt2-small-res-jb",  # see other options in sae_lens/pretrained_saes.yaml
+                sae_id=f"blocks.5.hook_resid_pre",  # won't always be a hook point
+            )
+
+            self.sae_neel5, cfg_dict, sparsity = SAE.from_pretrained(
+                release="gpt2-small-res-jb",  # see other options in sae_lens/pretrained_saes.yaml
+                sae_id=f"blocks.6.hook_resid_pre",  # won't always be a hook point
+            )
+            for params in self.sae_neel2.parameters():
+                params.requires_grad = False
+
+            for params in self.sae_neel3.parameters():
+                params.requires_grad = False
+
+            for params in self.sae_neel4.parameters():
+                params.requires_grad = False
+
+            for params in self.sae_neel5.parameters():
+                params.requires_grad = False
+
+            self.sae_neel6, cfg_dict, sparsity = SAE.from_pretrained(
+                release="gpt2-small-res-jb",  # see other options in sae_lens/pretrained_saes.yaml
+                sae_id=f"blocks.7.hook_resid_pre",  # won't always be a hook point
+            )
+            for params in self.sae_neel6.parameters():
+                params.requires_grad = False
+
+            self.sae_neel7, cfg_dict, sparsity = SAE.from_pretrained(
+                release="gpt2-small-res-jb",  # see other options in sae_lens/pretrained_saes.yaml
+                sae_id=f"blocks.8.hook_resid_pre",  # won't always be a hook point
+            )
+
+            self.sae_neel8, cfg_dict, sparsity = SAE.from_pretrained(
+                release="gpt2-small-res-jb",  # see other options in sae_lens/pretrained_saes.yaml
+                sae_id=f"blocks.9.hook_resid_pre",  # won't always be a hook point
+            )
+
+            self.sae_neel9, cfg_dict, sparsity = SAE.from_pretrained(
+                release="gpt2-small-res-jb",  # see other options in sae_lens/pretrained_saes.yaml
+                sae_id=f"blocks.10.hook_resid_pre",  # won't always be a hook point
+            )
+
+            self.sae_neel10, cfg_dict, sparsity = SAE.from_pretrained(
+                release="gpt2-small-res-jb",  # see other options in sae_lens/pretrained_saes.yaml
+                sae_id=f"blocks.11.hook_resid_pre",  # won't always be a hook point
+            )
+            for params in self.sae_neel7.parameters():
+                params.requires_grad = False
+
+            for params in self.sae_neel8.parameters():
+                params.requires_grad = False
+
+            for params in self.sae_neel9.parameters():
+                params.requires_grad = False
+
+            for params in self.sae_neel10.parameters():
+                params.requires_grad = False
+
+            self.sae_neel11, cfg_dict, sparsity = SAE.from_pretrained(
+                release="gpt2-small-res-jb",  # see other options in sae_lens/pretrained_saes.yaml
+                sae_id=f"blocks.11.hook_resid_post",  # won't always be a hook point
+            )
+            for params in self.sae_neel11.parameters():
                 params.requires_grad = False
 
         elif method == "sae masking apollo":
@@ -666,65 +743,65 @@ class eval_sae(nn.Module):
         if self.method == "sae masking neel":
             with self.model.trace(x) as tracer:
                 output_layer0 = self.model.transformer.h[0].output.save()
-                eout0 = self.sae_neel.encode(output_layer0)
-                dout0 = self.sae_neel.decode(eout0)
+                eout0 = self.sae_neel0.encode(output_layer0)
+                dout0 = self.sae_neel0.decode(eout0)
                 loss0 = (dout0.float() - output_layer0.float()).pow(2).sum(-1).mean(0)
 
                 output_layer1 = self.model.transformer.h[1].output.save()
-                eout1 = self.sae_neel.encode(output_layer1)
-                dout1 = self.sae_neel.decode(eout1)
+                eout1 = self.sae_neel1.encode(output_layer1)
+                dout1 = self.sae_neel1.decode(eout1)
                 loss1 = (dout1.float() - output_layer1.float()).pow(2).sum(-1).mean(0)
 
                 output_layer2 = self.model.transformer.h[2].output.save()
-                eout2 = self.sae_neel.encode(output_layer2)
-                dout2 = self.sae_neel.decode(eout2)
+                eout2 = self.sae_neel2.encode(output_layer2)
+                dout2 = self.sae_neel2.decode(eout2)
                 loss2 = (dout2.float() - output_layer2.float()).pow(2).sum(-1).mean(0)
 
                 output_layer3 = self.model.transformer.h[3].output.save()
-                eout3 = self.sae_neel.encode(output_layer3)
-                dout3 = self.sae_neel.decode(eout3)
+                eout3 = self.sae_neel3.encode(output_layer3)
+                dout3 = self.sae_neel3.decode(eout3)
                 loss3 = (dout3.float() - output_layer3.float()).pow(2).sum(-1).mean(0)
 
                 output_layer4 = self.model.transformer.h[4].output.save()
-                eout4 = self.sae_neel.encode(output_layer4)
-                dout4 = self.sae_neel.decode(eout4)
+                eout4 = self.sae_neel4.encode(output_layer4)
+                dout4 = self.sae_neel4.decode(eout4)
                 loss4 = (dout4.float() - output_layer4.float()).pow(2).sum(-1).mean(0)
 
                 output_layer5 = self.model.transformer.h[5].output.save()
-                eout5 = self.sae_neel.encode(output_layer5)
-                dout5 = self.sae_neel.decode(eout5)
+                eout5 = self.sae_neel5.encode(output_layer5)
+                dout5 = self.sae_neel5.decode(eout5)
                 loss5 = (dout5.float() - output_layer5.float()).pow(2).sum(-1).mean(0)
 
                 output_layer6 = self.model.transformer.h[6].output.save()
-                eout6 = self.sae_neel.encode(output_layer6)
-                dout6 = self.sae_neel.decode(eout6)
+                eout6 = self.sae_neel6.encode(output_layer6)
+                dout6 = self.sae_neel6.decode(eout6)
                 loss6 = (dout6.float() - output_layer6.float()).pow(2).sum(-1).mean(0)
 
                 output_layer7 = self.model.transformer.h[7].output.save()
-                eout7 = self.sae_neel.encode(output_layer7)
-                dout7 = self.sae_neel.decode(eout7)
+                eout7 = self.sae_neel7.encode(output_layer7)
+                dout7 = self.sae_neel7.decode(eout7)
                 loss7 = (dout7.float() - output_layer7.float()).pow(2).sum(-1).mean(0)
 
                 output_layer8 = self.model.transformer.h[8].output.save()
-                eout8 = self.sae_neel.encode(output_layer8)
-                dout8 = self.sae_neel.decode(eout8)
+                eout8 = self.sae_neel8.encode(output_layer8)
+                dout8 = self.sae_neel8.decode(eout8)
                 loss8 = (dout8.float() - output_layer8.float()).pow(2).sum(-1).mean(0)
 
                 output_layer9 = self.model.transformer.h[9].output.save()
-                eout9 = self.sae_neel.encode(output_layer9)
-                dout9 = self.sae_neel.decode(eout9)
+                eout9 = self.sae_neel9.encode(output_layer9)
+                dout9 = self.sae_neel9.decode(eout9)
                 loss9 = (dout9.float() - output_layer9.float()).pow(2).sum(-1).mean(0)
 
                 output_layer10 = self.model.transformer.h[10].output.save()
-                eout10 = self.sae_neel.encode(output_layer10)
-                dout10 = self.sae_neel.decode(eout10)
+                eout10 = self.sae_neel10.encode(output_layer10)
+                dout10 = self.sae_neel10.decode(eout10)
                 loss10 = (
                     (dout10.float() - output_layer10.float()).pow(2).sum(-1).mean(0)
                 )
 
                 output_layer11 = self.model.transformer.h[11].output.save()
-                eout11 = self.sae_neel.encode(output_layer11)
-                dout11 = self.sae_neel.decode(eout11)
+                eout11 = self.sae_neel11.encode(output_layer11)
+                dout11 = self.sae_neel11.decode(eout11)
                 loss11 = (
                     (dout11.float() - output_layer11.float()).pow(2).sum(-1).mean(0)
                 )
@@ -795,23 +872,86 @@ class eval_sae(nn.Module):
                     (dout11.float() - output_layer11.float()).pow(2).sum(-1).mean(0)
                 )
 
-        elif method == "sae masking apollo":
-            pass
+        elif self.method == "sae masking apollo":
+            with self.model.trace(x) as tracer:
+                output_layer0 = self.model.transformer.h[0].output.save()
+                eout0, info = self.apollo_sae.encode(output_layer0)
+                dout0 = self.apollo_sae.decode(eout0, info)
+                loss0 = (dout0.float() - output_layer0.float()).pow(2).sum(-1).mean(0)
 
-    return (
-        loss0,
-        loss1,
-        loss2,
-        loss3,
-        loss4,
-        loss5,
-        loss6,
-        loss7,
-        loss8,
-        loss9,
-        loss10,
-        loss11,
-    )
+                output_layer1 = self.model.transformer.h[1].output.save()
+                eout1, info1 = self.apollo_sae.encode(output_layer1)
+                dout1 = self.apollo_sae.decode(eout1, info1)
+                loss1 = (dout1.float() - output_layer1.float()).pow(2).sum(-1).mean(0)
+
+                output_layer2 = self.model.transformer.h[2].output.save()
+                eout2, info2 = self.apollo_sae.encode(output_layer2)
+                dout2 = self.apollo_sae.decode(eout2, info2)
+                loss2 = (dout2.float() - output_layer2.float()).pow(2).sum(-1).mean(0)
+
+                output_layer3 = self.model.transformer.h[3].output.save()
+                eout3, info3 = self.apollo_sae.encode(output_layer3)
+                dout3 = self.apollo_sae.decode(eout3, info3)
+                loss3 = (dout3.float() - output_layer3.float()).pow(2).sum(-1).mean(0)
+
+                output_layer4 = self.model.transformer.h[4].output.save()
+                eout4, info4 = self.apollo_sae.encode(output_layer4)
+                dout4 = self.apollo_sae.decode(eout4, info4)
+                loss4 = (dout4.float() - output_layer4.float()).pow(2).sum(-1).mean(0)
+
+                output_layer5 = self.model.transformer.h[5].output.save()
+                eout5, info5 = self.apollo_sae.encode(output_layer5)
+                dout5 = self.apollo_sae.decode(eout5, info5)
+                loss5 = (dout5.float() - output_layer5.float()).pow(2).sum(-1).mean(0)
+
+                output_layer6 = self.model.transformer.h[6].output.save()
+                eout6, info6 = self.apollo_sae.encode(output_layer6)
+                dout6 = self.apollo_sae.decode(eout6, info6)
+                loss6 = (dout6.float() - output_layer6.float()).pow(2).sum(-1).mean(0)
+
+                output_layer7 = self.model.transformer.h[7].output.save()
+                eout7, info7 = self.apollo_sae.encode(output_layer7)
+                dout7 = self.apollo_sae.decode(eout7, info7)
+                loss7 = (dout7.float() - output_layer7.float()).pow(2).sum(-1).mean(0)
+
+                output_layer8 = self.model.transformer.h[8].output.save()
+                eout8, info8 = self.apollo_sae.encode(output_layer8)
+                dout8 = self.apollo_sae.decode(eout8, info8)
+                loss8 = (dout8.float() - output_layer8.float()).pow(2).sum(-1).mean(0)
+
+                output_layer9 = self.model.transformer.h[9].output.save()
+                eout9, info9 = self.apollo_sae.encode(output_layer9)
+                dout9 = self.apollo_sae.decode(eout9, info9)
+                loss9 = (dout9.float() - output_layer9.float()).pow(2).sum(-1).mean(0)
+
+                output_layer10 = self.model.transformer.h[10].output.save()
+                eout10, info10 = self.apollo_sae.encode(output_layer10)
+                dout10 = self.apollo_sae.decode(eout10, info10)
+                loss10 = (
+                    (dout10.float() - output_layer10.float()).pow(2).sum(-1).mean(0)
+                )
+
+                output_layer11 = self.model.transformer.h[11].output.save()
+                eout11, info11 = self.apollo_sae.encode(output_layer11)
+                dout11 = self.apollo_sae.decode(eout11, info11)
+                loss11 = (
+                    (dout11.float() - output_layer11.float()).pow(2).sum(-1).mean(0)
+                )
+
+        return (
+            loss0,
+            loss1,
+            loss2,
+            loss3,
+            loss4,
+            loss5,
+            loss6,
+            loss7,
+            loss8,
+            loss9,
+            loss10,
+            loss11,
+        )
 
 
 if __name__ == "__main__":
