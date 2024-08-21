@@ -206,7 +206,7 @@ class my_model(nn.Module):
 
             self.sae_neel, cfg_dict, sparsity = SAE.from_pretrained(
                 release="gpt2-small-res-jb",  # see other options in sae_lens/pretrained_saes.yaml
-                sae_id=f"blocks.{self.layer_intervened+1}.hook_resid_pre",  # won't always be a hook point
+                sae_id=f"blocks.{self.layer_intervened}.hook_resid_post",  # won't always be a hook point
             )
             for params in self.sae_neel.parameters():
                 params.requires_grad = False
