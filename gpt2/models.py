@@ -482,7 +482,7 @@ class my_model(nn.Module):
                     )
 
                     iia_vector = self.sae_apollo.saes[
-                        "blocks-2-hook_resid_pre"
+                        "blocks-6-hook_resid_pre"
                     ].decoder(new_acts)
 
                     # Use a copy to avoid in-place modification
