@@ -496,7 +496,7 @@ class my_model(nn.Module):
                     ]
 
                     # Update the model's output with the modified copy
-                    self.model.transformer.h[self.layer_intervened].output[0][0][
+                    self.model.transformer.h[self.layer_intervened].output[0][
                         :, :, :
                     ] = h_layer_output_copy
 
