@@ -816,7 +816,7 @@ class eval_sae(nn.Module):
                 params.requires_grad = False
 
         elif method == "sae masking apollo":
-            self.apollo_sae = SAETransformer.from_wandb("sparsify/gpt2/e26jflpq")
+            self.apollo_sae = SAETransformer.from_wandb("sparsify/gpt2/tvj2owza")
 
             for params in self.sae_apollo.parameters():
                 params.requires_grad = False
