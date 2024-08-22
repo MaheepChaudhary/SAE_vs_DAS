@@ -216,7 +216,7 @@ class my_model(nn.Module):
             self.l4_mask = t.nn.Parameter(
                 t.zeros(apollo_sae_dim, device=DEVICE), requires_grad=True
             )
-            self.sae_apollo = SAETransformer.from_wandb("sparsify/gpt2/2lzle2f0")
+            self.sae_apollo = SAETransformer.from_wandb("sparsify/gpt2/u50mksr8")
 
             for params in self.sae_apollo.parameters():
                 params.requires_grad = False
@@ -452,10 +452,10 @@ class my_model(nn.Module):
                         .clone()
                     )
                     encoded_base = self.sae_apollo.saes[
-                        "blocks-6-hook_resid_pre"
+                        "blocks-10-hook_resid_pre"
                     ].encoder(base)
                     encoded_source = self.sae_apollo.saes[
-                        "blocks-6-hook_resid_pre"
+                        "blocks-10-hook_resid_pre"
                     ].encoder(source)
 
                     # Clone the tensors to avoid in-place operations
@@ -482,7 +482,7 @@ class my_model(nn.Module):
                     )
 
                     iia_vector = self.sae_apollo.saes[
-                        "blocks-6-hook_resid_pre"
+                        "blocks-10-hook_resid_pre"
                     ].decoder(new_acts)
 
                     # Use a copy to avoid in-place modification
@@ -816,7 +816,7 @@ class eval_sae(nn.Module):
                 params.requires_grad = False
 
         elif method == "sae masking apollo":
-            self.apollo_sae = SAETransformer.from_wandb("sparsify/gpt2/tvj2owza")
+            self.apollo_sae = SAETransformer.from_wandb("sparsify/gpt2/e26jflpq")
 
             for params in self.sae_apollo.parameters():
                 params.requires_grad = False
