@@ -816,7 +816,16 @@ class eval_sae(nn.Module):
                 params.requires_grad = False
 
         elif method == "sae masking apollo":
-            self.apollo_sae = SAETransformer.from_wandb("sparsify/gpt2/e26jflpq")
+            self.apollo_sae_l2_e2eds = SAETransformer.from_wandb(
+                "sparsify/gpt2/e26jflpq"
+            )
+            self.apollo_sae_l2 = SAETransformer.from_wandb("sparsify/gpt2/bst0prdd")
+            self.apollo_sae_l6_e2eds = SAETransformer.from_wandb("sparsify/gpt2/")
+            self.apollo_sae_l6 = SAETransformer.from_wandb("sparsify/gpt2/bst0prdd")
+            self.apollo_sae_l10_e2eds = SAETransformer.from_wandb(
+                "sparsify/gpt2/e26jflpq"
+            )
+            self.apollo_sae_l10 = SAETransformer.from_wandb("sparsify/gpt2/bst0prdd")
 
             for params in self.sae_apollo.parameters():
                 params.requires_grad = False
@@ -826,8 +835,10 @@ class eval_sae(nn.Module):
         if self.method == "sae masking neel":
             with self.model.trace(x) as tracer:
                 output_layer0 = self.model.transformer.h[0].output[0].clone().save()
+                print(f"The input to SAE shape: {output_layer0}")
                 eout0 = self.sae_neel0.encode(output_layer0)
                 dout0 = self.sae_neel0.decode(eout0)
+                print(f"The output of SAE shape is: {dout0.shape}")
                 loss0 = (
                     (dout0.float() - output_layer0.float())
                     .pow(2)
@@ -960,8 +971,10 @@ class eval_sae(nn.Module):
         elif self.method == "sae masking openai":
             with self.model.trace(x) as tracer:
                 output_layer0 = self.model.transformer.h[0].output[0].save()
+                print(f"openai: the input of the shape of SAE is {output_layer0}")
                 eout0, info = self.sae_openai0.encode(output_layer0)
                 dout0 = self.sae_openai0.decode(eout0, info)
+                print(f"openai: The output of the SAE is {dout0.shape}")
                 loss0 = (
                     (dout0.float() - output_layer0.float())
                     .pow(2)
