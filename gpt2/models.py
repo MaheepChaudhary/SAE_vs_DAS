@@ -1095,7 +1095,7 @@ class eval_sae(nn.Module):
 
                 output_layer11 = self.model.transformer.h[11].output[0].save()
                 eout11, info11 = self.sae_openai11.encode(output_layer11)
-                dout11 = self.sae_openai.decode(eout11, info11)
+                dout11 = self.sae_openai11.decode(eout11, info11)
                 loss11 = (
                     (dout11.float() - output_layer11.float())
                     .pow(2)
