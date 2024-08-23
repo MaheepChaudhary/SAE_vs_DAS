@@ -81,8 +81,8 @@ if __name__ == "__main__":
     with torch.no_grad():
         for i in tqdm(range(indices)):
 
-            samples = t_sent["input_ids"][i : (i + 1) * 16]
-            s_labels = t_label["input_ids"][i : (i + 1) * 16]
+            samples = t_sent["input_ids"][i * 16 : (i + 1) * 16]
+            s_labels = t_label["input_ids"][i * 16 : (i + 1) * 16]
 
             (
                 loss0,
