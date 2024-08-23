@@ -1208,21 +1208,24 @@ class eval_sae(nn.Module):
                     .mean(0)
                     .save()
                 )
-            zeros = torch.zeros(loss1.shape)
-            return (
-                zeros,
-                loss1,
-                zeros,
-                loss1_e2eds,
-                zeros,
-                loss5,
-                zeros,
-                loss5_e2eds,
-                zeros,
-                loss9,
-                zeros,
-                loss9_e2eds,
-            )
+                zeros = torch.zeros(loss1.shape)
+                loss0 = loss2 = loss3 = loss4 = loss6 = loss7 = loss8 = loss10 = (
+                    loss11
+                ) = zeros
+        return (
+            loss0,
+            loss1,
+            loss2,
+            loss3,
+            loss4,
+            loss5,
+            loss6,
+            loss7,
+            loss8,
+            loss9,
+            loss10,
+            loss11,
+        )
 
 
 if __name__ == "__main__":
