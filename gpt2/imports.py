@@ -7,6 +7,7 @@ from pathlib import Path
 from pprint import pprint
 
 import einops
+import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 import plotly.express as px
@@ -17,16 +18,16 @@ import torch.nn as nn
 import torch.nn.functional as F
 import torch.optim as optim
 from datasets import load_dataset
-from e2e_sae import SAETransformer
 from jaxtyping import Float
 from nnsight import LanguageModel
-from openai_sae import sparse_autoencoder
 from sae_lens import SAE
 from tqdm import tqdm
 from transformer_lens import ActivationCache, HookedTransformer, utils
 from transformers import AutoTokenizer, GPT2LMHeadModel, GPT2Tokenizer
 
 import wandb
+from e2e_sae import SAETransformer
+from openai_sae import sparse_autoencoder
 
 os.environ["CUDA_LAUNCH_BLOCKING"] = "1"
 
