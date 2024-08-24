@@ -829,17 +829,17 @@ class eval_sae(nn.Module):
             )
             self.apollo_sae_l10 = SAETransformer.from_wandb("sparsify/gpt2/vnfh4vpi")
 
-            for params in self.sae_apollo_l2_e2eds.parameters():
+            for params in self.apollo_sae_l2_e2eds.parameters():
                 params.requires_grad = False
-            for params in self.sae_apollo_l2.parameters():
+            for params in self.apollo_sae_l2.parameters():
                 params.requires_grad = False
-            for params in self.sae_apollo_l6_e2eds.parameters():
+            for params in self.apollo_sae_l6_e2eds.parameters():
                 params.requires_grad = False
-            for params in self.sae_apollo_l6.parameters():
+            for params in self.apollo_sae_l6.parameters():
                 params.requires_grad = False
-            for params in self.sae_apollo_l10_e2eds.parameters():
+            for params in self.apollo_sae_l10_e2eds.parameters():
                 params.requires_grad = False
-            for params in self.sae_apollo_l10.parameters():
+            for params in self.apollo_sae_l10.parameters():
                 params.requires_grad = False
 
     def forward(self, x):  # where x is a tokenized sentence
@@ -1116,10 +1116,10 @@ class eval_sae(nn.Module):
             with self.model.trace(x) as tracer:
 
                 output_layer1 = self.model.transformer.h[1].output[0].save()
-                eout1 = self.sae_apollo_sae_l2.saes["blocks-2-hook_resid_pre"].encoder(
+                eout1 = self.apollo_sae_l2.saes["blocks-2-hook_resid_pre"].encoder(
                     output_layer1
                 )
-                dout1 = self.sae_apollo_sae_l2.saes["blocks-2-hook-resid-pre"].decoder(
+                dout1 = self.apollo_sae_l2.saes["blocks-2-hook_resid_pre"].decoder(
                     eout1
                 )
                 loss1 = (
@@ -1131,11 +1131,11 @@ class eval_sae(nn.Module):
                 )
 
                 output_layer1_e2eds = self.model.transformer.h[1].output[0].save()
-                eout1_e2eds = self.sae_apollo_sae_l2_e2eds.saes[
+                eout1_e2eds = self.apollo_sae_l2_e2eds.saes[
                     "blocks-2-hook_resid_pre"
                 ].encoder(output_layer1_e2eds)
-                dout1_e2eds = self.sae_apollo_sae_l2_e2eds.saes[
-                    "blocks-2-hook-resid-pre"
+                dout1_e2eds = self.apollo_sae_l2_e2eds.saes[
+                    "blocks-2-hook_resid_pre"
                 ].decoder(eout1_e2eds)
                 loss1_e2eds = (
                     (dout1_e2eds.float() - output_layer1_e2eds.float())
@@ -1146,10 +1146,10 @@ class eval_sae(nn.Module):
                 )
 
                 output_layer5 = self.model.transformer.h[5].output[0].save()
-                eout5 = self.sae_apollo_sae_l6.saes["blocks-6-hook_resid_pre"].encoder(
+                eout5 = self.apollo_sae_l6.saes["blocks-6-hook_resid_pre"].encoder(
                     output_layer5
                 )
-                dout5 = self.sae_apollo_sae_l6.saes["blocks-6-hook-resid-pre"].decoder(
+                dout5 = self.apollo_sae_l6.saes["blocks-6-hook_resid_pre"].decoder(
                     eout5
                 )
                 loss5 = (
@@ -1161,11 +1161,11 @@ class eval_sae(nn.Module):
                 )
 
                 output_layer5_e2eds = self.model.transformer.h[5].output[0].save()
-                eout5_e2eds = self.sae_apollo_sae_l6_e2eds.saes[
+                eout5_e2eds = self.apollo_sae_l6_e2eds.saes[
                     "blocks-6-hook_resid_pre"
                 ].encoder(output_layer5_e2eds)
-                dout5_e2eds = self.sae_apollo_sae_l6_e2eds.saes[
-                    "blocks-6-hook-resid-pre"
+                dout5_e2eds = self.apollo_sae_l6_e2eds.saes[
+                    "blocks-6-hook_resid_pre"
                 ].decoder(eout5_e2eds)
                 loss5_e2eds = (
                     (dout5_e2eds.float() - output_layer5_e2eds.float())
@@ -1176,11 +1176,11 @@ class eval_sae(nn.Module):
                 )
 
                 output_layer9 = self.model.transformer.h[9].output[0].save()
-                eout9 = self.sae_apollo_sae_l10.saes[
+                eout9 = self.apollo_sae_l10.saes[
                     "blocks-10-hook_resid_pre"
                 ].encoder(output_layer9)
-                dout9 = self.sae_apollo_sae_l10.saes[
-                    "blocks-10-hook-resid-pre"
+                dout9 = self.apollo_sae_l10.saes[
+                    "blocks-10-hook_resid_pre"
                 ].decoder(eout9)
                 loss9 = (
                     (dout9.float() - output_layer9.float())
@@ -1191,11 +1191,11 @@ class eval_sae(nn.Module):
                 )
 
                 output_layer9_e2eds = self.model.transformer.h[9].output[0].save()
-                eout9_e2eds = self.sae_apollo_sae_l10_e2eds.saes[
+                eout9_e2eds = self.apollo_sae_l10_e2eds.saes[
                     "blocks-10-hook_resid_pre"
                 ].encoder(output_layer9_e2eds)
-                dout9_e2eds = self.sae_apollo_sae_l10_e2eds.saes[
-                    "blocks-10-hook-resid-pre"
+                dout9_e2eds = self.apollo_sae_l10_e2eds.saes[
+                    "blocks-10-hook_resid_pre"
                 ].decoder(eout9_e2eds)
                 loss9_e2eds = (
                     (dout9_e2eds.float() - output_layer9_e2eds.float())
@@ -1205,7 +1205,10 @@ class eval_sae(nn.Module):
                     .save()
                 )
                 zeros = torch.zeros(loss1.shape)
-                loss0 = loss2 = loss3 = loss4 = loss6 = loss7 = loss8 = loss10 = (
+                loss0 = loss1_e2eds 
+                loss4 = loss5_e2eds
+                loss8 = loss9_e2eds
+                loss2 = loss3 = loss6 = loss7 = loss10 = (
                     loss11
                 ) = zeros
         return (
