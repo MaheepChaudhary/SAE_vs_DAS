@@ -727,36 +727,36 @@ class eval_sae(nn.Module):
 
             self.sae_neel0, cfg_dict, sparsity = SAE.from_pretrained(
                 release="gpt2-small-res-jb",  # see other options in sae_lens/pretrained_saes.yaml
-                sae_id=f"blocks.1.hook_resid_pre",  # won't always be a hook point
+                sae_id=f"blocks.0.hook_resid_pre",  # won't always be a hook point
             )
             for params in self.sae_neel0.parameters():
                 params.requires_grad = False
 
             self.sae_neel1, cfg_dict, sparsity = SAE.from_pretrained(
                 release="gpt2-small-res-jb",  # see other options in sae_lens/pretrained_saes.yaml
-                sae_id=f"blocks.2.hook_resid_pre",  # won't always be a hook point
+                sae_id=f"blocks.1.hook_resid_pre",  # won't always be a hook point
             )
             for params in self.sae_neel1.parameters():
                 params.requires_grad = False
 
             self.sae_neel2, cfg_dict, sparsity = SAE.from_pretrained(
                 release="gpt2-small-res-jb",  # see other options in sae_lens/pretrained_saes.yaml
-                sae_id=f"blocks.3.hook_resid_pre",  # won't always be a hook point
+                sae_id=f"blocks.2.hook_resid_pre",  # won't always be a hook point
             )
 
             self.sae_neel3, cfg_dict, sparsity = SAE.from_pretrained(
                 release="gpt2-small-res-jb",  # see other options in sae_lens/pretrained_saes.yaml
-                sae_id=f"blocks.4.hook_resid_pre",  # won't always be a hook point
+                sae_id=f"blocks.3.hook_resid_pre",  # won't always be a hook point
             )
 
             self.sae_neel4, cfg_dict, sparsity = SAE.from_pretrained(
                 release="gpt2-small-res-jb",  # see other options in sae_lens/pretrained_saes.yaml
-                sae_id=f"blocks.5.hook_resid_pre",  # won't always be a hook point
+                sae_id=f"blocks.4.hook_resid_pre",  # won't always be a hook point
             )
 
             self.sae_neel5, cfg_dict, sparsity = SAE.from_pretrained(
                 release="gpt2-small-res-jb",  # see other options in sae_lens/pretrained_saes.yaml
-                sae_id=f"blocks.6.hook_resid_pre",  # won't always be a hook point
+                sae_id=f"blocks.5.hook_resid_pre",  # won't always be a hook point
             )
             for params in self.sae_neel2.parameters():
                 params.requires_grad = False
@@ -772,29 +772,29 @@ class eval_sae(nn.Module):
 
             self.sae_neel6, cfg_dict, sparsity = SAE.from_pretrained(
                 release="gpt2-small-res-jb",  # see other options in sae_lens/pretrained_saes.yaml
-                sae_id=f"blocks.7.hook_resid_pre",  # won't always be a hook point
+                sae_id=f"blocks.6.hook_resid_pre",  # won't always be a hook point
             )
             for params in self.sae_neel6.parameters():
                 params.requires_grad = False
 
             self.sae_neel7, cfg_dict, sparsity = SAE.from_pretrained(
                 release="gpt2-small-res-jb",  # see other options in sae_lens/pretrained_saes.yaml
-                sae_id=f"blocks.8.hook_resid_pre",  # won't always be a hook point
+                sae_id=f"blocks.7.hook_resid_pre",  # won't always be a hook point
             )
 
             self.sae_neel8, cfg_dict, sparsity = SAE.from_pretrained(
                 release="gpt2-small-res-jb",  # see other options in sae_lens/pretrained_saes.yaml
-                sae_id=f"blocks.9.hook_resid_pre",  # won't always be a hook point
+                sae_id=f"blocks.8.hook_resid_pre",  # won't always be a hook point
             )
 
             self.sae_neel9, cfg_dict, sparsity = SAE.from_pretrained(
                 release="gpt2-small-res-jb",  # see other options in sae_lens/pretrained_saes.yaml
-                sae_id=f"blocks.10.hook_resid_pre",  # won't always be a hook point
+                sae_id=f"blocks.9.hook_resid_pre",  # won't always be a hook point
             )
 
             self.sae_neel10, cfg_dict, sparsity = SAE.from_pretrained(
                 release="gpt2-small-res-jb",  # see other options in sae_lens/pretrained_saes.yaml
-                sae_id=f"blocks.11.hook_resid_pre",  # won't always be a hook point
+                sae_id=f"blocks.10.hook_resid_pre",  # won't always be a hook point
             )
             for params in self.sae_neel7.parameters():
                 params.requires_grad = False
@@ -810,7 +810,7 @@ class eval_sae(nn.Module):
 
             self.sae_neel11, cfg_dict, sparsity = SAE.from_pretrained(
                 release="gpt2-small-res-jb",  # see other options in sae_lens/pretrained_saes.yaml
-                sae_id=f"blocks.11.hook_resid_post",  # won't always be a hook point
+                sae_id=f"blocks.11.hook_resid_pre",  # won't always be a hook point
             )
             for params in self.sae_neel11.parameters():
                 params.requires_grad = False
