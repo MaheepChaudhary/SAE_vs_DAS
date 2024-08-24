@@ -727,36 +727,36 @@ class eval_sae(nn.Module):
 
             self.sae_neel0, cfg_dict, sparsity = SAE.from_pretrained(
                 release="gpt2-small-res-jb",  # see other options in sae_lens/pretrained_saes.yaml
-                sae_id=f"blocks.0.hook_resid_pre",  # won't always be a hook point
+                sae_id=f"blocks.1.hook_resid_pre",  # won't always be a hook point
             )
             for params in self.sae_neel0.parameters():
                 params.requires_grad = False
 
             self.sae_neel1, cfg_dict, sparsity = SAE.from_pretrained(
                 release="gpt2-small-res-jb",  # see other options in sae_lens/pretrained_saes.yaml
-                sae_id=f"blocks.1.hook_resid_pre",  # won't always be a hook point
+                sae_id=f"blocks.2.hook_resid_pre",  # won't always be a hook point
             )
             for params in self.sae_neel1.parameters():
                 params.requires_grad = False
 
             self.sae_neel2, cfg_dict, sparsity = SAE.from_pretrained(
                 release="gpt2-small-res-jb",  # see other options in sae_lens/pretrained_saes.yaml
-                sae_id=f"blocks.2.hook_resid_pre",  # won't always be a hook point
+                sae_id=f"blocks.3.hook_resid_pre",  # won't always be a hook point
             )
 
             self.sae_neel3, cfg_dict, sparsity = SAE.from_pretrained(
                 release="gpt2-small-res-jb",  # see other options in sae_lens/pretrained_saes.yaml
-                sae_id=f"blocks.3.hook_resid_pre",  # won't always be a hook point
+                sae_id=f"blocks.4.hook_resid_pre",  # won't always be a hook point
             )
 
             self.sae_neel4, cfg_dict, sparsity = SAE.from_pretrained(
                 release="gpt2-small-res-jb",  # see other options in sae_lens/pretrained_saes.yaml
-                sae_id=f"blocks.4.hook_resid_pre",  # won't always be a hook point
+                sae_id=f"blocks.5.hook_resid_pre",  # won't always be a hook point
             )
 
             self.sae_neel5, cfg_dict, sparsity = SAE.from_pretrained(
                 release="gpt2-small-res-jb",  # see other options in sae_lens/pretrained_saes.yaml
-                sae_id=f"blocks.5.hook_resid_pre",  # won't always be a hook point
+                sae_id=f"blocks.6.hook_resid_pre",  # won't always be a hook point
             )
             for params in self.sae_neel2.parameters():
                 params.requires_grad = False
@@ -772,29 +772,29 @@ class eval_sae(nn.Module):
 
             self.sae_neel6, cfg_dict, sparsity = SAE.from_pretrained(
                 release="gpt2-small-res-jb",  # see other options in sae_lens/pretrained_saes.yaml
-                sae_id=f"blocks.6.hook_resid_pre",  # won't always be a hook point
+                sae_id=f"blocks.7.hook_resid_pre",  # won't always be a hook point
             )
             for params in self.sae_neel6.parameters():
                 params.requires_grad = False
 
             self.sae_neel7, cfg_dict, sparsity = SAE.from_pretrained(
                 release="gpt2-small-res-jb",  # see other options in sae_lens/pretrained_saes.yaml
-                sae_id=f"blocks.7.hook_resid_pre",  # won't always be a hook point
+                sae_id=f"blocks.8.hook_resid_pre",  # won't always be a hook point
             )
 
             self.sae_neel8, cfg_dict, sparsity = SAE.from_pretrained(
                 release="gpt2-small-res-jb",  # see other options in sae_lens/pretrained_saes.yaml
-                sae_id=f"blocks.8.hook_resid_pre",  # won't always be a hook point
+                sae_id=f"blocks.9.hook_resid_pre",  # won't always be a hook point
             )
 
             self.sae_neel9, cfg_dict, sparsity = SAE.from_pretrained(
                 release="gpt2-small-res-jb",  # see other options in sae_lens/pretrained_saes.yaml
-                sae_id=f"blocks.9.hook_resid_pre",  # won't always be a hook point
+                sae_id=f"blocks.10.hook_resid_pre",  # won't always be a hook point
             )
 
             self.sae_neel10, cfg_dict, sparsity = SAE.from_pretrained(
                 release="gpt2-small-res-jb",  # see other options in sae_lens/pretrained_saes.yaml
-                sae_id=f"blocks.10.hook_resid_pre",  # won't always be a hook point
+                sae_id=f"blocks.11.hook_resid_pre",  # won't always be a hook point
             )
             for params in self.sae_neel7.parameters():
                 params.requires_grad = False
@@ -810,7 +810,7 @@ class eval_sae(nn.Module):
 
             self.sae_neel11, cfg_dict, sparsity = SAE.from_pretrained(
                 release="gpt2-small-res-jb",  # see other options in sae_lens/pretrained_saes.yaml
-                sae_id=f"blocks.11.hook_resid_pre",  # won't always be a hook point
+                sae_id=f"blocks.11.hook_resid_post",  # won't always be a hook point
             )
             for params in self.sae_neel11.parameters():
                 params.requires_grad = False
@@ -1176,12 +1176,12 @@ class eval_sae(nn.Module):
                 )
 
                 output_layer9 = self.model.transformer.h[9].output[0].save()
-                eout9 = self.apollo_sae_l10.saes[
-                    "blocks-10-hook_resid_pre"
-                ].encoder(output_layer9)
-                dout9 = self.apollo_sae_l10.saes[
-                    "blocks-10-hook_resid_pre"
-                ].decoder(eout9)
+                eout9 = self.apollo_sae_l10.saes["blocks-10-hook_resid_pre"].encoder(
+                    output_layer9
+                )
+                dout9 = self.apollo_sae_l10.saes["blocks-10-hook_resid_pre"].decoder(
+                    eout9
+                )
                 loss9 = (
                     (dout9.float() - output_layer9.float())
                     .pow(2)
@@ -1205,12 +1205,10 @@ class eval_sae(nn.Module):
                     .save()
                 )
                 zeros = torch.zeros(loss1.shape)
-                loss0 = loss1_e2eds 
+                loss0 = loss1_e2eds
                 loss4 = loss5_e2eds
                 loss8 = loss9_e2eds
-                loss2 = loss3 = loss6 = loss7 = loss10 = (
-                    loss11
-                ) = zeros
+                loss2 = loss3 = loss6 = loss7 = loss10 = loss11 = zeros
         return (
             loss0,
             loss1,
