@@ -1,29 +1,42 @@
-# import copy
-# import json
-#
-# from e2e_sae.e2e_sae import SAETransformer
-#
-# with open("final_data_continent.json", "r") as f:
-#     continent_data = json.load(f)
-#
-#
-# with open("final_data_country.json", "r") as f:
-#     country_data = json.load(f)
-#
-#
-# print(f"len of continent_data", len(continent_data))
-# print(f"len of country_data", len(country_data))
-#
+import matplotlib.pyplot as plt
+import numpy as np
 
-from e2e_sae import SAETransformer
+from imports import *
 
-model = SAETransformer.from_wandb("sparsify/gpt2/xomqkliv")
+# Define the indices
+x = list(range(12))
 
-print(model)
+# Define the first variable with 12 values
+y1 = [3, 5, 2, 6, 7, 8, 5, 4, 7, 8, 5, 6]
 
-encoder = model.saes["blocks-2-hook_resid_pre"].encoder
+# Define the second variable with values at indices 2, 6, and 10
+# Use np.nan for the indices with no values
+y2 = [
+    np.nan,
+    np.nan,
+    10,
+    np.nan,
+    np.nan,
+    np.nan,
+    15,
+    np.nan,
+    np.nan,
+    np.nan,
+    12,
+    np.nan,
+]
 
-print(encoder)
+# Plot the first variable
+plt.plot(x, y1, label="y1 (12 values)", marker="o")
 
-# or, if stored locally
-# model = SAETransformer.from_local_path("/path/to/checkpoint/dir")
+# Plot the second variable
+plt.plot(x, y2, label="y2 (3 values)", marker="o")
+
+# Add labels and legend
+plt.xlabel("Index")
+plt.ylabel("Value")
+plt.title("Line Graph with Different Data Points")
+plt.legend()
+
+# Show the plot
+plt.show()

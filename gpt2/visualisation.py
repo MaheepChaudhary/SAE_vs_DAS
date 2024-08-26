@@ -3,45 +3,13 @@ from imports import *
 # making the graph for continent
 
 
-def graph(
-    neuron_masking,
-    das_masking,
-    sae_neel,
-    sae_openai,
-    sae_apollo_e2eds,
-    sae_apollo,
-    method,
-):
-
-    data = {}
-    data = {
-        "Layer": list(range(12)),
-        "neuron_masking": neuron_masking,
-        "das_masking": das_masking,
-        "sae_neel": sae_neel,
-        "sae_openai": sae_openai,
-        "sae_apollo_e2eds": sae_apollo_e2eds,
-        "sae_apollo": sae_apollo,
-    }
-
-    df = pd.DataFrame(data)
-    df.plot(
-        x="Layer",
-        y=[
-            "neuron_masking",
-            "das_masking",
-            "sae_neel",
-            "sae_openai",
-            "sae_apollo_e2eds",
-            "sae_apollo",
-        ],
-    )
-
-    plt.title(f"Accuracy for {method}")
-    plt.xlabel("Layer")
-    plt.ylabel("Accuracy")
-    plt.legend()
-    plt.show()
+# def filter_non_zero_values(layer_list):
+#     """
+#     Filter out zero values from the layer list and return the filtered list
+#     along with the indices of the non-zero values.
+#     """
+#     filtered_values = [value for value in layer_list if value != 0]
+#     indices = [index for index, value in enumerate(layer_list) if value != 0]
 
 
 neuron_masking_continent = [
@@ -100,8 +68,37 @@ sae_openai_masking_continent = [
     0.67,
     0.68,
 ]
-sae_apollo_e2eds_masking_continent = [0, 0.57, 0, 0, 0, 0.39, 0, 0, 0, 0.64, 0, 0]
-sae_apollo_masking_continent = [0, 0.53, 0, 0, 0, 0.39, 0, 0, 0, 0.72, 0, 0]
+sae_apollo_e2eds_masking_continent = [
+    0.57,
+    0.39,
+    0.64,
+]
+sae_apollo_masking_continent = [
+    0.53,
+    0.39,
+    0.72,
+]
+
+layer = list(range(12))
+plt.plot(layer, neuron_masking_continent, label="Neuron", marker="o")
+plt.plot(layer, das_masking_continent, label="DAS", marker="o")
+plt.plot(layer, sae_neel_masking_continent, label="Bloom SAE", marker="o")
+plt.plot(layer, sae_openai_masking_continent, label="OpenAI SAE", marker="o")
+layer_for_apollo = [1, 5, 9]
+plt.plot(
+    layer_for_apollo,
+    sae_apollo_e2eds_masking_continent,
+    label="Apollo e2eds SAE",
+    marker="o",
+)
+plt.plot(layer_for_apollo, sae_apollo_masking_continent, label="Apollo SAE", marker="o")
+
+plt.title("Accuracy for continent-intervened")
+plt.xlabel("Layer")
+plt.ylabel("Accuracy")
+plt.legend()
+plt.show()
+
 
 neuron_masking_country = [
     0.74,
@@ -159,34 +156,33 @@ sae_openai_masking_country = [
     0.55,
     0.56,
 ]
-sae_apollo_e2eds_masking_country = [0, 0.59, 0, 0, 0, 0.44, 0, 0, 0, 0.6, 0, 0]
-sae_apollo_masking_country = [0, 0.54, 0, 0, 0, 0.44, 0, 0, 0, 0.57, 0, 0]
+sae_apollo_e2eds_masking_country = [
+    0.59,
+    0.44,
+    0.6,
+]
+sae_apollo_masking_country = [
+    0.54,
+    0.44,
+    0.57,
+]
 
-
-print(len(neuron_masking_continent))
-print(len(das_masking_continent))
-print(len(sae_neel_masking_continent))
-print(len(sae_openai_masking_continent))
-print(len(sae_apollo_e2eds_masking_continent))
-print(len(sae_apollo_masking_continent))
-
-
-graph(
-    neuron_masking_continent,
-    das_masking_continent,
-    sae_neel_masking_continent,
-    sae_openai_masking_continent,
-    sae_apollo_e2eds_masking_continent,
-    sae_apollo_masking_continent,
-    "continent",
-)
-
-graph(
-    neuron_masking_country,
-    das_masking_country,
-    sae_neel_masking_country,
-    sae_openai_masking_country,
+layer = list(range(12))
+plt.plot(layer, neuron_masking_country, label="Neuron", marker="o")
+plt.plot(layer, das_masking_country, label="DAS", marker="o")
+plt.plot(layer, sae_neel_masking_country, label="Bloom SAE", marker="o")
+plt.plot(layer, sae_openai_masking_country, label="OpenAI SAE", marker="o")
+layer_for_apollo = [1, 5, 9]
+plt.plot(
+    layer_for_apollo,
     sae_apollo_e2eds_masking_country,
-    sae_apollo_masking_country,
-    "country",
+    label="Apollo e2eds SAE",
+    marker="o",
 )
+plt.plot(layer_for_apollo, sae_apollo_masking_country, label="Apollo SAE", marker="o")
+
+plt.title("Accuracy for country-intervened")
+plt.xlabel("Layer")
+plt.ylabel("Accuracy")
+plt.legend()
+plt.show()
