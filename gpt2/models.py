@@ -847,8 +847,14 @@ class eval_sae(nn.Module):
         if self.method == "sae masking neel":
             with self.model.trace(x) as tracer:
                 output_layer0 = self.model.transformer.h[0].output[0].clone().save()
+                print("Input")
+                print(output_layer0)
+                print()
                 eout0 = self.sae_neel0.encode(output_layer0)
                 dout0 = self.sae_neel0.decode(eout0)
+                print("Output:")
+                print(dout0)
+                print()
                 loss0 = (
                     (dout0.float() - output_layer0.float())
                     .pow(2)
