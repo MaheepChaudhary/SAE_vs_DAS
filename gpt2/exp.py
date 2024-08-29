@@ -72,6 +72,7 @@ headers = [
     "Apollo SAE Country",
 ]
 t_latex_final_list = transpose_list(latex_final_list)
+print(t_latex_final_list)
 latex_code = create_latex_table(t_latex_final_list, headers)
 pprint(latex_code)
 # Output the batches
