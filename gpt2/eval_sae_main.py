@@ -5,7 +5,6 @@ from ravel_data_prep import *
 
 random.seed(2)
 os.environ["TOKENIZERS_PARALLELISM"] = "false"
-DEVICE = "mps"
 
 
 def config(DEVICE):
@@ -14,55 +13,32 @@ def config(DEVICE):
     return model, intervened_token_idx
 
 
-if __name__ == "__main__":
+def create_latex_table(data, headers):
+    # Begin the LaTeX table environment
+    latex_code = "\\begin{table}[h!]\n"
+    latex_code += "\\centering\n"
+    latex_code += "\\begin{tabular}{|" + " | ".join(["c"] * len(headers)) + "|}\n"
+    latex_code += "\\hline\n"
 
-    parser = argparse.ArgumentParser()
+    # Add headers
+    latex_code += " & ".join(headers) + " \\\\\n"
+    latex_code += "\\hline\n"
 
-    parser.add_argument("-d", "--device", default="cuda:1")
-    parser.add_argument("-met", "--method", required=True)
-    parser.add_argument("-bs", "--batch_size", required=True)
-    args = parser.parse_args()
+    # Add table data
+    for row in data:
+        latex_code += " & ".join(map(str, row)) + " \\\\\n"
+        latex_code += "\\hline\n"
 
-    model, intervened_token_idx = config(args.device)
+    # End the LaTeX table environment
+    latex_code += "\\end{tabular}\n"
+    latex_code += "\\caption{Your caption here}\n"
+    latex_code += "\\label{table:your_label}\n"
+    latex_code += "\\end{table}"
 
-    model_sae_eval = eval_sae(
-        model=model,
-        DEVICE=args.device,
-        method=args.method,
-        intervened_token_idx=intervened_token_idx,
-        batch_size=args.batch_size,
-    )
+    return latex_code
 
-    # TODO: Insert the tokenizaton and batching fucntion for the data
-    with open("comfy_continent.json", "r") as f:
-        contdata = json.load(f)
 
-    with open("comfy_country.json", "r") as f1:
-        countdata = json.load(f1)
-
-    contsent = [sent[0] for sent in contdata]
-    contlabel = [label[1] for label in contdata]
-
-    countsent = [s[0] for s in countdata]
-    countlabel = [l[1] for l in countdata]
-
-    all_sent = contsent + countsent
-    all_label = contlabel + countlabel
-
-    model.tokenizer.padding_side = "left"
-
-    t_sent = model.tokenizer(all_sent, return_tensors="pt", padding=True).to(
-        args.device
-    )
-    t_label = model.tokenizer(all_label, return_tensors="pt", padding=True).to(
-        args.device
-    )
-
-    # print(f"len of t_sent is {len(t_sent['input_ids'])}")
-    # print(f"len of label is {len(t_label)}")
-    # print(t_sent)
-    indices = int(len(t_sent["input_ids"]) / 16)
-    print(indices)
+def loss(sent, label, model, intervened_token_idx, indices):
     (
         loss0_arr,
         loss1_arr,
@@ -81,8 +57,8 @@ if __name__ == "__main__":
     with torch.no_grad():
         for i in tqdm(range(indices)):
 
-            samples = t_sent["input_ids"][i * 16 : (i + 1) * 16]
-            s_labels = t_label["input_ids"][i * 16 : (i + 1) * 16]
+            samples = sent["input_ids"][i * 16 : (i + 1) * 16]
+            s_labels = label["input_ids"][i * 16 : (i + 1) * 16]
 
             (
                 loss0,
@@ -139,3 +115,53 @@ if __name__ == "__main__":
         print(mean9)
         print(mean10)
         print(mean11)
+
+
+if __name__ == "__main__":
+
+    parser = argparse.ArgumentParser()
+
+    parser.add_argument("-d", "--device", default="cuda:1")
+    parser.add_argument("-met", "--method", required=True)
+    parser.add_argument("-bs", "--batch_size", required=True)
+    args = parser.parse_args()
+
+    model, intervened_token_idx = config(args.device)
+
+    model_sae_eval = eval_sae(
+        model=model,
+        DEVICE=args.device,
+        method=args.method,
+        intervened_token_idx=intervened_token_idx,
+        batch_size=args.batch_size,
+    )
+
+    # TODO: Cimpute the loss for country and continent separately
+    # TODO: Complete the reconstruction loss for the word to be intervened upon
+    # TODO: Find also the accuracy while intervening using the city for the reconstructed city vector by the SAE.
+
+    with open("comfy_continent.json", "r") as f:
+        contdata = json.load(f)
+
+    with open("comfy_country.json", "r") as f1:
+        countdata = json.load(f1)
+
+    contsent = [sent[0] for sent in contdata]
+    contlabel = [label[1] for label in contdata]
+
+    countsent = [s[0] for s in countdata]
+    countlabel = [l[1] for l in countdata]
+
+    t_contsent = model.tokenizer(contsent, return_tensors="pt").to(args.device)
+    t_contlabel = model.tokenizer(contlabel, return_tensors="pt").to(args.device)
+
+    cont_indices = int(len(t_contsent["input_ids"]) / 16)
+    print(f"Continent Indices: {cont_indices}")
+
+    loss(
+        sent=t_contsent,
+        label=t_contlabel,
+        model=model_sae_eval,
+        intervened_token_idx=-8,
+        indices=cont_indices,
+    )
