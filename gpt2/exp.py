@@ -1,42 +1,22 @@
-import matplotlib.pyplot as plt
-import numpy as np
+def read_file_in_batches(filename, batch_size=11):
+    latex_final_list = []
 
-from imports import *
+    # Read the entire file and split into lines
+    with open(filename, "r") as file:
+        lines = [line.strip() for line in file.readlines()]
 
-# Define the indices
-x = list(range(12))
+    # Process lines in batches
+    for i in range(0, len(lines), batch_size):
+        batch = lines[i : i + batch_size]
+        latex_final_list.append(batch)
 
-# Define the first variable with 12 values
-y1 = [3, 5, 2, 6, 7, 8, 5, 4, 7, 8, 5, 6]
+    return latex_final_list
 
-# Define the second variable with values at indices 2, 6, and 10
-# Use np.nan for the indices with no values
-y2 = [
-    np.nan,
-    np.nan,
-    10,
-    np.nan,
-    np.nan,
-    np.nan,
-    15,
-    np.nan,
-    np.nan,
-    np.nan,
-    12,
-    np.nan,
-]
 
-# Plot the first variable
-plt.plot(x, y1, label="y1 (12 values)", marker="o")
+# Example usage
+filename = "latex_table.txt"
+latex_final_list = read_file_in_batches(filename)
 
-# Plot the second variable
-plt.plot(x, y2, label="y2 (3 values)", marker="o")
-
-# Add labels and legend
-plt.xlabel("Index")
-plt.ylabel("Value")
-plt.title("Line Graph with Different Data Points")
-plt.legend()
-
-# Show the plot
-plt.show()
+# Output the batches
+for idx, batch in enumerate(latex_final_list):
+    print(f"Batch {idx + 1}: {batch}")
