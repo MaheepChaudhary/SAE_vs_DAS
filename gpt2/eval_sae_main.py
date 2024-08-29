@@ -5,13 +5,119 @@ from ravel_data_prep import *
 
 random.seed(2)
 os.environ["TOKENIZERS_PARALLELISM"] = "false"
-DEVICE = "mps"
 
 
 def config(DEVICE):
     model = LanguageModel("openai-community/gpt2", device_map=DEVICE)
     intervened_token_idx = -8
     return model, intervened_token_idx
+
+
+# TODO: Make the code here to make the table automatically in latex using python.
+
+
+def create_latex_table(data, headers):
+    # Begin the LaTeX table environment
+    latex_code = "\\begin{table}[h!]\n"
+    latex_code += "\\centering\n"
+    latex_code += "\\begin{tabular}{|" + " | ".join(["c"] * len(headers)) + "|}\n"
+    latex_code += "\\hline\n"
+
+    # Add headers
+    latex_code += " & ".join(headers) + " \\\\\n"
+    latex_code += "\\hline\n"
+
+    # Add table data
+    for row in data:
+        latex_code += " & ".join(map(str, row)) + " \\\\\n"
+        latex_code += "\\hline\n"
+
+    # End the LaTeX table environment
+    latex_code += "\\end{tabular}\n"
+    latex_code += "\\caption{Your caption here}\n"
+    latex_code += "\\label{table:your_label}\n"
+    latex_code += "\\end{table}"
+
+    return latex_code
+
+
+def loss(sent, label, model, intervened_token_idx):
+    (
+        loss0_arr,
+        loss1_arr,
+        loss2_arr,
+        loss3_arr,
+        loss4_arr,
+        loss5_arr,
+        loss6_arr,
+        loss7_arr,
+        loss8_arr,
+        loss9_arr,
+        loss10_arr,
+        loss11_arr,
+    ) = ([], [], [], [], [], [], [], [], [], [], [], [])
+
+    with torch.no_grad():
+        for i in tqdm(range(indices)):
+
+            samples = sent["input_ids"][i * 16 : (i + 1) * 16]
+            s_labels = label["input_ids"][i * 16 : (i + 1) * 16]
+
+            (
+                loss0,
+                loss1,
+                loss2,
+                loss3,
+                loss4,
+                loss5,
+                loss6,
+                loss7,
+                loss8,
+                loss9,
+                loss10,
+                loss11,
+            ) = model_sae_eval(samples)
+
+            loss0_arr.append(loss0.mean(0).item())
+            loss1_arr.append(loss1.mean(0).item())
+            loss2_arr.append(loss2.mean(0).item())
+            loss3_arr.append(loss3.mean(0).item())
+            loss4_arr.append(loss4.mean(0).item())
+            loss5_arr.append(loss5.mean(0).item())
+            loss6_arr.append(loss6.mean(0).item())
+            loss7_arr.append(loss7.mean(0).item())
+            loss8_arr.append(loss8.mean(0).item())
+            loss9_arr.append(loss9.mean(0).item())
+            loss10_arr.append(loss10.mean(0).item())
+            loss11_arr.append(loss11.mean(0).item())
+
+            torch.cuda.empty_cache()
+
+        mean0 = sum(loss0_arr) / len(loss0_arr)
+        mean1 = sum(loss1_arr) / len(loss1_arr)
+        mean2 = sum(loss2_arr) / len(loss2_arr)
+        mean3 = sum(loss3_arr) / len(loss3_arr)
+        mean4 = sum(loss4_arr) / len(loss4_arr)
+        mean5 = sum(loss5_arr) / len(loss5_arr)
+        mean6 = sum(loss6_arr) / len(loss6_arr)
+        mean7 = sum(loss7_arr) / len(loss7_arr)
+        mean8 = sum(loss8_arr) / len(loss8_arr)
+        mean9 = sum(loss9_arr) / len(loss9_arr)
+        mean10 = sum(loss10_arr) / len(loss10_arr)
+        mean11 = sum(loss11_arr) / len(loss11_arr)
+
+        print(mean0)
+        print(mean1)
+        print(mean2)
+        print(mean3)
+        print(mean4)
+        print(mean5)
+        print(mean6)
+        print(mean7)
+        print(mean8)
+        print(mean9)
+        print(mean10)
+        print(mean11)
 
 
 if __name__ == "__main__":
@@ -33,7 +139,10 @@ if __name__ == "__main__":
         batch_size=args.batch_size,
     )
 
-    # TODO: Insert the tokenizaton and batching fucntion for the data
+    # TODO: Cimpute the loss for country and continent separately
+    # TODO: Complete the reconstruction loss for the word to be intervened upon
+    # TODO: Find also the accuracy while intervening using the city for the reconstructed city vector by the SAE.
+
     with open("comfy_continent.json", "r") as f:
         contdata = json.load(f)
 
@@ -46,21 +155,6 @@ if __name__ == "__main__":
     countsent = [s[0] for s in countdata]
     countlabel = [l[1] for l in countdata]
 
-    all_sent = contsent + countsent
-    all_label = contlabel + countlabel
-
-    model.tokenizer.padding_side = "left"
-
-    t_sent = model.tokenizer(all_sent, return_tensors="pt", padding=True).to(
-        args.device
-    )
-    t_label = model.tokenizer(all_label, return_tensors="pt", padding=True).to(
-        args.device
-    )
-
-    # print(f"len of t_sent is {len(t_sent['input_ids'])}")
-    # print(f"len of label is {len(t_label)}")
-    # print(t_sent)
     indices = int(len(t_sent["input_ids"]) / 16)
     print(indices)
     (
