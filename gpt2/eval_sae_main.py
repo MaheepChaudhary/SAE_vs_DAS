@@ -38,7 +38,7 @@ def create_latex_table(data, headers):
     return latex_code
 
 
-def loss(sent, label, model, intervened_token_idx, indices):
+def loss(sent, model, intervened_token_idx, indices):
     (
         loss0_arr,
         loss1_arr,
@@ -153,14 +153,12 @@ if __name__ == "__main__":
     countlabel = [l[1] for l in countdata]
 
     t_contsent = model.tokenizer(contsent, return_tensors="pt").to(args.device)
-    t_contlabel = model.tokenizer(contlabel, return_tensors="pt").to(args.device)
 
     cont_indices = int(len(t_contsent["input_ids"]) / 16)
     print(f"Continent Indices: {cont_indices}")
 
     loss(
         sent=t_contsent,
-        label=t_contlabel,
         model=model_sae_eval,
         intervened_token_idx=-8,
         indices=cont_indices,
