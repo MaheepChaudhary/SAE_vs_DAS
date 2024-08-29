@@ -74,6 +74,7 @@ def loss(sent, model, intervened_token_idx, indices):
                 loss11,
             ) = model(samples)
 
+
             loss0_arr.append(loss0.mean(0).item())
             loss1_arr.append(loss1.mean(0).item())
             loss2_arr.append(loss2.mean(0).item())
@@ -103,18 +104,18 @@ def loss(sent, model, intervened_token_idx, indices):
         mean11 = sum(loss11_arr) / len(loss11_arr)
 
         return (
-            mean0,
-            mean1,
-            mean2,
-            mean3,
-            mean4,
-            mean5,
-            mean6,
-            mean7,
-            mean8,
-            mean9,
-            mean10,
-            mean11,
+            round(mean0,2),
+            round(mean1,2),
+            round(mean2,2),
+            round(mean3,2),
+            round(mean4,2),
+            round(mean5,2),
+            round(mean6,2),
+            round(mean7,2),
+            round(mean8,2),
+            round(mean9,2),
+            round(mean10,2),
+            round(mean11,2),
         )
 
 
