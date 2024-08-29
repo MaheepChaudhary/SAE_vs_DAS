@@ -26,7 +26,7 @@ def create_latex_table(data, headers):
     return latex_code
 
 
-def read_file_in_batches(filename, batch_size=10):
+def read_file_in_batches(filename, batch_size=12):
     latex_final_list = [
         [
             "Layer 0",
@@ -72,8 +72,8 @@ headers = [
     "Apollo SAE Country",
 ]
 t_latex_final_list = transpose_list(latex_final_list)
-print(latex_final_list)
-print(t_latex_final_list)
+pprint(latex_final_list)
+pprint(t_latex_final_list)
 latex_code = create_latex_table(t_latex_final_list, headers)
 pprint(latex_code)
 # Output the batches

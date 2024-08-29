@@ -1210,18 +1210,18 @@ class eval_sae(nn.Module):
                 loss8 = loss9_e2eds
                 loss2 = loss3 = loss6 = loss7 = loss10 = loss11 = zeros
         return (
-            loss0,
-            loss1,
-            loss2,
-            loss3,
-            loss4,
-            loss5,
-            loss6,
-            loss7,
-            loss8,
-            loss9,
-            loss10,
-            loss11,
+            round(loss0, 2),
+            round(loss1, 2),
+            round(loss2, 2),
+            round(loss3, 2),
+            round(loss4, 2),
+            round(loss5, 2),
+            round(loss6, 2),
+            round(loss7, 2),
+            round(loss8, 2),
+            round(loss9, 2),
+            round(loss10, 2),
+            round(loss11, 2),
         )
 
 
