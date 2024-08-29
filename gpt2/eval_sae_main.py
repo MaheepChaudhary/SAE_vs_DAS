@@ -72,7 +72,7 @@ def loss(sent, model, intervened_token_idx, indices):
                 loss9,
                 loss10,
                 loss11,
-            ) = model_sae_eval(samples)
+            ) = model(samples)
 
             loss0_arr.append(loss0.mean(0).item())
             loss1_arr.append(loss1.mean(0).item())
@@ -166,11 +166,11 @@ if __name__ == "__main__":
     t_countsent = model.tokenizer(countsent, return_tensors="pt").to(args.device)
 
     count_indices = int(len(t_countsent["input_ids"]) / 16)
-    print(f"Country Indices: {cont_indices}")
+    print(f"Country Indices: {count_indices}")
 
     loss(
         sent=t_countsent,
         model=model_sae_eval,
         intervened_token_idx=-8,
-        indices=cont_indices,
+        indices=count_indices,
     )
