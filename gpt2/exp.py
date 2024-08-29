@@ -63,6 +63,7 @@ def transpose_list(input_list):
 filename = "latex_table.txt"
 latex_final_list = read_file_in_batches(filename)
 headers = [
+    "Layers",
     "Bloom SAE Continent",
     "Bloom SAE Country",
     "OpenAI SAE Continent",
