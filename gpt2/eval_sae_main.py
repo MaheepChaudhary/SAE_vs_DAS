@@ -58,7 +58,6 @@ def loss(sent, model, intervened_token_idx, indices):
         for i in tqdm(range(indices)):
 
             samples = sent["input_ids"][i * 16 : (i + 1) * 16]
-            s_labels = label["input_ids"][i * 16 : (i + 1) * 16]
 
             (
                 loss0,
@@ -159,6 +158,18 @@ if __name__ == "__main__":
 
     loss(
         sent=t_contsent,
+        model=model_sae_eval,
+        intervened_token_idx=-8,
+        indices=cont_indices,
+    )
+
+    t_countsent = model.tokenizer(countsent, return_tensors="pt").to(args.device)
+
+    count_indices = int(len(t_countsent["input_ids"]) / 16)
+    print(f"Country Indices: {cont_indices}")
+
+    loss(
+        sent=t_countsent,
         model=model_sae_eval,
         intervened_token_idx=-8,
         indices=cont_indices,

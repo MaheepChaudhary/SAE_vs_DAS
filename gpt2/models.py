@@ -852,7 +852,7 @@ class eval_sae(nn.Module):
                 loss0 = (
                     (dout0.float() - output_layer0.float())
                     .pow(2)
-                    .mean(-1)
+                    .sum(-1)
                     .mean(0)
                     .save()
                 )
@@ -863,7 +863,7 @@ class eval_sae(nn.Module):
                 loss1 = (
                     (dout1.float() - output_layer1.float())
                     .pow(2)
-                    .mean(-1)
+                    .sum(-1)
                     .mean(0)
                     .save()
                 )
@@ -874,7 +874,7 @@ class eval_sae(nn.Module):
                 loss2 = (
                     (dout2.float() - output_layer2.float())
                     .pow(2)
-                    .mean(-1)
+                    .sum(-1)
                     .mean(0)
                     .save()
                 )
@@ -885,7 +885,7 @@ class eval_sae(nn.Module):
                 loss3 = (
                     (dout3.float() - output_layer3.float())
                     .pow(2)
-                    .mean(-1)
+                    .sum(-1)
                     .mean(0)
                     .save()
                 )
@@ -896,7 +896,7 @@ class eval_sae(nn.Module):
                 loss4 = (
                     (dout4.float() - output_layer4.float())
                     .pow(2)
-                    .mean(-1)
+                    .sum(-1)
                     .mean(0)
                     .save()
                 )
@@ -907,7 +907,7 @@ class eval_sae(nn.Module):
                 loss5 = (
                     (dout5.float() - output_layer5.float())
                     .pow(2)
-                    .mean(-1)
+                    .sum(-1)
                     .mean(0)
                     .save()
                 )
@@ -918,7 +918,7 @@ class eval_sae(nn.Module):
                 loss6 = (
                     (dout6.float() - output_layer6.float())
                     .pow(2)
-                    .mean(-1)
+                    .sum(-1)
                     .mean(0)
                     .save()
                 )
@@ -929,7 +929,7 @@ class eval_sae(nn.Module):
                 loss7 = (
                     (dout7.float() - output_layer7.float())
                     .pow(2)
-                    .mean(-1)
+                    .sum(-1)
                     .mean(0)
                     .save()
                 )
@@ -940,7 +940,7 @@ class eval_sae(nn.Module):
                 loss8 = (
                     (dout8.float() - output_layer8.float())
                     .pow(2)
-                    .mean(-1)
+                    .sum(-1)
                     .mean(0)
                     .save()
                 )
@@ -951,7 +951,7 @@ class eval_sae(nn.Module):
                 loss9 = (
                     (dout9.float() - output_layer9.float())
                     .pow(2)
-                    .mean(-1)
+                    .sum(-1)
                     .mean(0)
                     .save()
                 )
@@ -962,7 +962,7 @@ class eval_sae(nn.Module):
                 loss10 = (
                     (dout10.float() - output_layer10.float())
                     .pow(2)
-                    .mean(-1)
+                    .sum(-1)
                     .mean(0)
                     .save()
                 )
@@ -973,16 +973,10 @@ class eval_sae(nn.Module):
                 loss11 = (
                     (dout11.float() - output_layer11.float())
                     .pow(2)
-                    .mean(-1)
+                    .sum(-1)
                     .mean(0)
                     .save()
                 )
-            print("Input")
-            print(output_layer0)
-            print()
-            print("Output:")
-            print(dout0)
-            print()
 
         elif self.method == "sae masking openai":
             with self.model.trace(x) as tracer:
@@ -992,7 +986,7 @@ class eval_sae(nn.Module):
                 loss0 = (
                     (dout0.float() - output_layer0.float())
                     .pow(2)
-                    .mean(-1)
+                    .sum(-1)
                     .mean(0)
                     .save()
                 )
@@ -1003,7 +997,7 @@ class eval_sae(nn.Module):
                 loss1 = (
                     (dout1.float() - output_layer1.float())
                     .pow(2)
-                    .mean(-1)
+                    .sum(-1)
                     .mean(0)
                     .save()
                 )
@@ -1014,7 +1008,7 @@ class eval_sae(nn.Module):
                 loss2 = (
                     (dout2.float() - output_layer2.float())
                     .pow(2)
-                    .mean(-1)
+                    .sum(-1)
                     .mean(0)
                     .save()
                 )
@@ -1025,7 +1019,7 @@ class eval_sae(nn.Module):
                 loss3 = (
                     (dout3.float() - output_layer3.float())
                     .pow(2)
-                    .mean(-1)
+                    .sum(-1)
                     .mean(0)
                     .save()
                 )
@@ -1036,7 +1030,7 @@ class eval_sae(nn.Module):
                 loss4 = (
                     (dout4.float() - output_layer4.float())
                     .pow(2)
-                    .mean(-1)
+                    .sum(-1)
                     .mean(0)
                     .save()
                 )
@@ -1047,7 +1041,7 @@ class eval_sae(nn.Module):
                 loss5 = (
                     (dout5.float() - output_layer5.float())
                     .pow(2)
-                    .mean(-1)
+                    .sum(-1)
                     .mean(0)
                     .save()
                 )
@@ -1058,7 +1052,7 @@ class eval_sae(nn.Module):
                 loss6 = (
                     (dout6.float() - output_layer6.float())
                     .pow(2)
-                    .mean(-1)
+                    .sum(-1)
                     .mean(0)
                     .save()
                 )
@@ -1069,7 +1063,7 @@ class eval_sae(nn.Module):
                 loss7 = (
                     (dout7.float() - output_layer7.float())
                     .pow(2)
-                    .mean(-1)
+                    .sum(-1)
                     .mean(0)
                     .save()
                 )
@@ -1080,7 +1074,7 @@ class eval_sae(nn.Module):
                 loss8 = (
                     (dout8.float() - output_layer8.float())
                     .pow(2)
-                    .mean(-1)
+                    .sum(-1)
                     .mean(0)
                     .save()
                 )
@@ -1091,7 +1085,7 @@ class eval_sae(nn.Module):
                 loss9 = (
                     (dout9.float() - output_layer9.float())
                     .pow(2)
-                    .mean(-1)
+                    .sum(-1)
                     .mean(0)
                     .save()
                 )
@@ -1102,7 +1096,7 @@ class eval_sae(nn.Module):
                 loss10 = (
                     (dout10.float() - output_layer10.float())
                     .pow(2)
-                    .mean(-1)
+                    .sum(-1)
                     .mean(0)
                     .save()
                 )
@@ -1113,7 +1107,7 @@ class eval_sae(nn.Module):
                 loss11 = (
                     (dout11.float() - output_layer11.float())
                     .pow(2)
-                    .mean(-1)
+                    .sum(-1)
                     .mean(0)
                     .save()
                 )
@@ -1131,7 +1125,7 @@ class eval_sae(nn.Module):
                 loss1 = (
                     (dout1.float() - output_layer1.float())
                     .pow(2)
-                    .mean(-1)
+                    .sum(-1)
                     .mean(0)
                     .save()
                 )
@@ -1146,7 +1140,7 @@ class eval_sae(nn.Module):
                 loss1_e2eds = (
                     (dout1_e2eds.float() - output_layer1_e2eds.float())
                     .pow(2)
-                    .mean(-1)
+                    .sum(-1)
                     .mean(0)
                     .save()
                 )
@@ -1161,7 +1155,7 @@ class eval_sae(nn.Module):
                 loss5 = (
                     (dout5.float() - output_layer5.float())
                     .pow(2)
-                    .mean(-1)
+                    .sum(-1)
                     .mean(0)
                     .save()
                 )
@@ -1176,7 +1170,7 @@ class eval_sae(nn.Module):
                 loss5_e2eds = (
                     (dout5_e2eds.float() - output_layer5_e2eds.float())
                     .pow(2)
-                    .mean(-1)
+                    .sum(-1)
                     .mean(0)
                     .save()
                 )
@@ -1191,7 +1185,7 @@ class eval_sae(nn.Module):
                 loss9 = (
                     (dout9.float() - output_layer9.float())
                     .pow(2)
-                    .mean(-1)
+                    .sum(-1)
                     .mean(0)
                     .save()
                 )
@@ -1206,7 +1200,7 @@ class eval_sae(nn.Module):
                 loss9_e2eds = (
                     (dout9_e2eds.float() - output_layer9_e2eds.float())
                     .pow(2)
-                    .mean(-1)
+                    .sum(-1)
                     .mean(0)
                     .save()
                 )
