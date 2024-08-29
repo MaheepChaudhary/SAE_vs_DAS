@@ -26,7 +26,7 @@ def create_latex_table(data, headers):
     return latex_code
 
 
-def read_file_in_batches(filename, batch_size=11):
+def read_file_in_batches(filename, batch_size=10):
     latex_final_list = [
         [
             "Layer 0",
