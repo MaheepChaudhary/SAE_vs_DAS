@@ -181,25 +181,24 @@ if __name__ == "__main__":
     t_countsent = model.tokenizer(countsent, return_tensors="pt").to(args.device)
 
     if args.method == "sae masking neel":
-        latexbloomlist_country = []
-        latexbloomlist_country.append(
-            ["Layer 0", loss0],
-            ["Layer 1", loss1],
-            ["Layer 2", loss2],
-            ["Layer 3", loss3],
-            ["Layer 4", loss4],
-            ["Layer 5", loss5],
-            ["Layer 6", loss6],
-            ["Layer 7", loss7],
-            ["Layer 8", loss8],
-            ["Layer 9", loss9],
-            ["Layer 10", loss10],
-            ["Layer 11", loss11],
+        latexbloomlist_country = (
+           [loss0,
+            loss1,
+            loss2,
+                loss3,
+                loss4,
+                loss5,
+                loss6,
+                loss7,
+                oss8,
+                [9", loss9,
+                [10", loss10,
+                [11", loss11,
+            
         )
     elif args.method == "sae masking openai":
-        latexopenailist_country = []
-        latexopenailist_country.append(
-            [loss0],
+        latexopenailist_country = (
+            [[loss0],
             [loss1],
             [loss2],
             [loss3],
@@ -211,11 +210,11 @@ if __name__ == "__main__":
             [loss9],
             [loss10],
             [loss11],
+        ]
         )
     elif args.method == "sae masking apollo":
-        latexapollolist_country = []
-        latexapollolist_country.append(
-            [loss0],
+        latexapollolist_country = (
+            [[loss0],
             [loss1],
             [loss2],
             [loss3],
@@ -226,7 +225,7 @@ if __name__ == "__main__":
             [loss8],
             [loss9],
             [loss10],
-            [loss11],
+            [loss11],]
         )
 
     t_countsent = model.tokenizer(countsent, return_tensors="pt").to(args.device)
@@ -255,73 +254,59 @@ if __name__ == "__main__":
     )
 
     if args.method == "sae masking neel":
-        latexbloomlist_continent = []
-        latexbloomlist_continent.append(
-            ["Layer 0", count_loss0],
-            ["Layer 1", count_loss1],
-            ["Layer 2", count_loss2],
-            ["Layer 3", count_loss3],
-            ["Layer 4", count_loss4],
-            ["Layer 5", count_loss5],
-            ["Layer 6", count_loss6],
-            ["Layer 7", count_loss7],
-            ["Layer 8", count_loss8],
-            ["Layer 9", count_loss9],
-            ["Layer 10", count_loss10],
-            ["Layer 11", count_loss11],
+        latexbloomlist_continent = (
+            [count_loss0, count_loss1, count_loss2,  count_loss3, count_loss4, count_loss5, count_loss, count_loss7, count_loss8, count_loss9, count_loss10, count_loss11]
         )
         with open("latex_table.txt", "w") as f:
             for item in latexbloomlist_country:
-                f.write("f{item}\n")
+                f.write(f"{item}\n")
 
         with open("latex_table.txt", "a") as f:
             for item in latexbloomlist_continent:
-                f.write("f{item}\n")
+                f.write(f"{item}\n")
 
     elif args.method == "sae masking openai":
-        latexopenailist_continent = []
-        latexopenailist_continent.append(
-            [count_loss0],
-            [count_loss1],
-            [count_loss2],
-            [count_loss3],
-            [count_loss4],
-            [count_loss5],
-            [count_loss6],
-            [count_loss7],
-            [count_loss8],
-            [count_loss9],
-            [count_loss10],
-            [count_loss11],
-        )
+        latexopenailist_continent= (
+            [count_loss0,
+            count_loss1,
+            count_loss2,
+            count_loss3,
+            count_loss4,
+            count_loss5,
+            count_loss6,
+            count_loss7,
+            count_loss8,
+            count_loss9,
+            count_loss10,
+            count_loss11,]
+            ) 
         with open("latex_table.txt", "a") as f:
             for item in latexopenailist_country:
-                f.write("f{item}\n")
+                f.write(f"{item}\n")
 
         with open("latex_table.txt", "a") as f:
             for item in latexopenailist_continent:
-                f.write("f{item}\n")
+                f.write(f"{item}\n")
 
     elif args.method == "sae masking apollo":
-        latexapollolist_continent = []
-        latexapollolist_continent.append(
-            [count_loss0],
-            [count_loss1],
-            [count_loss2],
-            [count_loss3],
-            [count_loss4],
-            [count_loss5],
-            [count_loss6],
-            [count_loss7],
-            [count_loss8],
-            [count_loss9],
-            [count_loss10],
-            [count_loss11],
+        latexapollolist_continent = (
+            [count_loss0,
+            count_loss1,
+            count_loss2,
+            count_loss3,
+            count_loss4,
+            count_loss5,
+            count_loss6,
+            ount_loss7,
+            count_loss8,
+            ount_loss9,
+            count_loss10,
+            count_loss11,
         )
         with open("latex_table.txt", "a") as f:
             for item in latexapollolist_country:
-                f.write("f{item}\n")
+                f.write(f"{item}\n")
 
         with open("latex_table.txt", "a") as f:
             for item in latexapollolist_continent:
-                f.write("f{item}\n")
+                f.write(f"{item}\n")
