@@ -102,18 +102,20 @@ def loss(sent, model, intervened_token_idx, indices):
         mean10 = sum(loss10_arr) / len(loss10_arr)
         mean11 = sum(loss11_arr) / len(loss11_arr)
 
-        print(mean0)
-        print(mean1)
-        print(mean2)
-        print(mean3)
-        print(mean4)
-        print(mean5)
-        print(mean6)
-        print(mean7)
-        print(mean8)
-        print(mean9)
-        print(mean10)
-        print(mean11)
+        return (
+            mean0,
+            mean1,
+            mean2,
+            mean3,
+            mean4,
+            mean5,
+            mean6,
+            mean7,
+            mean8,
+            mean9,
+            mean10,
+            mean11,
+        )
 
 
 if __name__ == "__main__":
@@ -135,10 +137,10 @@ if __name__ == "__main__":
         batch_size=args.batch_size,
     )
 
-    # TODO: Cimpute the loss for country and continent separately
     # TODO: Complete the reconstruction loss for the word to be intervened upon
     # TODO: Find also the accuracy while intervening using the city for the reconstructed city vector by the SAE.
 
+    latexlist = []
     with open("comfy_continent.json", "r") as f:
         contdata = json.load(f)
 
@@ -156,7 +158,20 @@ if __name__ == "__main__":
     cont_indices = int(len(t_contsent["input_ids"]) / 16)
     print(f"Continent Indices: {cont_indices}")
 
-    loss(
+    (
+        loss0,
+        loss1,
+        loss2,
+        loss3,
+        loss4,
+        loss5,
+        loss6,
+        loss7,
+        loss8,
+        loss9,
+        loss10,
+        loss11,
+    ) = loss(
         sent=t_contsent,
         model=model_sae_eval,
         intervened_token_idx=-8,
@@ -165,12 +180,137 @@ if __name__ == "__main__":
 
     t_countsent = model.tokenizer(countsent, return_tensors="pt").to(args.device)
 
+    if args.method == "sae masking neel":
+        latexbloomlist_country = []
+        latexbloomlist_country.append(
+            ["Layer 0", loss0],
+            ["Layer 1", loss1],
+            ["Layer 2", loss2],
+            ["Layer 3", loss3],
+            ["Layer 4", loss4],
+            ["Layer 5", loss5],
+            ["Layer 6", loss6],
+            ["Layer 7", loss7],
+            ["Layer 8", loss8],
+            ["Layer 9", loss9],
+            ["Layer 10", loss10],
+            ["Layer 11", loss11],
+        )
+    elif args.method == "sae masking openai":
+        latexopenailist_country = []
+        latexopenailist_country.append(
+            [loss0],
+            [loss1],
+            [loss2],
+            [loss3],
+            [loss4],
+            [loss5],
+            [loss6],
+            [loss7],
+            [loss8],
+            [loss9],
+            [loss10],
+            [loss11],
+        )
+    elif args.method == "sae masking apollo":
+        latexapollolist_country = []
+        latexapollolist_country.append(
+            [loss0],
+            [loss1],
+            [loss2],
+            [loss3],
+            [loss4],
+            [loss5],
+            [loss6],
+            [loss7],
+            [loss8],
+            [loss9],
+            [loss10],
+            [loss11],
+        )
+
+    t_countsent = model.tokenizer(countsent, return_tensors="pt").to(args.device)
+
     count_indices = int(len(t_countsent["input_ids"]) / 16)
     print(f"Country Indices: {count_indices}")
 
-    loss(
+    (
+        count_loss0,
+        count_loss1,
+        count_loss2,
+        count_loss3,
+        count_loss4,
+        count_loss5,
+        count_loss6,
+        count_loss7,
+        count_loss8,
+        count_loss9,
+        count_loss10,
+        count_loss11,
+    ) = loss(
         sent=t_countsent,
         model=model_sae_eval,
         intervened_token_idx=-8,
         indices=count_indices,
     )
+    if args.method == "sae masking neel":
+        latexbloomlist_continent = []
+        latexbloomlist_continent.append(
+            ["Layer 0", count_loss0],
+            ["Layer 1", count_loss1],
+            ["Layer 2", count_loss2],
+            ["Layer 3", count_loss3],
+            ["Layer 4", count_loss4],
+            ["Layer 5", count_loss5],
+            ["Layer 6", count_loss6],
+            ["Layer 7", count_loss7],
+            ["Layer 8", count_loss8],
+            ["Layer 9", count_loss9],
+            ["Layer 10", count_loss10],
+            ["Layer 11", count_loss11],
+        )
+
+    elif args.method == "sae masking openai":
+        latexopenailist_continent = []
+        latexopenailist_continent.append(
+            [count_loss0],
+            [count_loss1],
+            [count_loss2],
+            [count_loss3],
+            [count_loss4],
+            [count_loss5],
+            [count_loss6],
+            [count_loss7],
+            [count_loss8],
+            [count_loss9],
+            [count_loss10],
+            [count_loss11],
+        )
+
+    elif args.method == "sae masking apollo":
+        latexapollolist_continent = []
+        latexapollolist_continent.append(
+            [count_loss0],
+            [count_loss1],
+            [count_loss2],
+            [count_loss3],
+            [count_loss4],
+            [count_loss5],
+            [count_loss6],
+            [count_loss7],
+            [count_loss8],
+            [count_loss9],
+            [count_loss10],
+            [count_loss11],
+        )
+
+    header = ["Bloom SAE", "OpenAI SAE", "Apollo SAE"]
+    data = (
+        latexbloomlist_country
+        + latexopenailist_country
+        + latexapollolist_country
+        + latexbloomlist_continent
+        + latexopenailist_continent
+        + latexapollolist_continent
+    )
+    create_latex_table(data, header)
