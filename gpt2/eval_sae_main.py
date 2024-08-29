@@ -253,6 +253,7 @@ if __name__ == "__main__":
         intervened_token_idx=-8,
         indices=count_indices,
     )
+
     if args.method == "sae masking neel":
         latexbloomlist_continent = []
         latexbloomlist_continent.append(
@@ -269,6 +270,13 @@ if __name__ == "__main__":
             ["Layer 10", count_loss10],
             ["Layer 11", count_loss11],
         )
+        with open("latex_table.txt", "w") as f:
+            for item in latexbloomlist_country:
+                f.write("f{item}\n")
+
+        with open("latex_table.txt", "a") as f:
+            for item in latexbloomlist_continent:
+                f.write("f{item}\n")
 
     elif args.method == "sae masking openai":
         latexopenailist_continent = []
@@ -286,6 +294,13 @@ if __name__ == "__main__":
             [count_loss10],
             [count_loss11],
         )
+        with open("latex_table.txt", "a") as f:
+            for item in latexopenailist_country:
+                f.write("f{item}\n")
+
+        with open("latex_table.txt", "a") as f:
+            for item in latexopenailist_continent:
+                f.write("f{item}\n")
 
     elif args.method == "sae masking apollo":
         latexapollolist_continent = []
@@ -303,14 +318,10 @@ if __name__ == "__main__":
             [count_loss10],
             [count_loss11],
         )
+        with open("latex_table.txt", "a") as f:
+            for item in latexapollolist_country:
+                f.write("f{item}\n")
 
-    header = ["Bloom SAE", "OpenAI SAE", "Apollo SAE"]
-    data = (
-        latexbloomlist_country
-        + latexopenailist_country
-        + latexapollolist_country
-        + latexbloomlist_continent
-        + latexopenailist_continent
-        + latexapollolist_continent
-    )
-    create_latex_table(data, header)
+        with open("latex_table.txt", "a") as f:
+            for item in latexapollolist_continent:
+                f.write("f{item}\n")
