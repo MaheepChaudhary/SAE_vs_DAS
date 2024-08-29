@@ -1,3 +1,6 @@
+from pprint import pprint
+
+
 def create_latex_table(data, headers):
     # Begin the LaTeX table environment
     latex_code = "\\begin{table}[h!]\n"
@@ -63,6 +66,7 @@ headers = [
     "Apollo SAE Continent",
     "Apollo SAE Country",
 ]
-create_latex_table(latex_final_list, headers)
 
+latex_code = create_latex_table(latex_final_list, headers)
+pprint(latex_code)
 # Output the batches
