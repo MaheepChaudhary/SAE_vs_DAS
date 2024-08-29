@@ -55,6 +55,10 @@ def read_file_in_batches(filename, batch_size=11):
     return latex_final_list
 
 
+def transpose_list(input_list):
+    return list(map(list, zip(*input_list)))
+
+
 # Example usage
 filename = "latex_table.txt"
 latex_final_list = read_file_in_batches(filename)
@@ -66,7 +70,7 @@ headers = [
     "Apollo SAE Continent",
     "Apollo SAE Country",
 ]
-
-latex_code = create_latex_table(latex_final_list, headers)
+t_latex_final_list = transpose_list(latex_final_list)
+latex_code = create_latex_table(t_latex_final_list, headers)
 pprint(latex_code)
 # Output the batches
