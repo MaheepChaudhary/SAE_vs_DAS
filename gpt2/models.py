@@ -1235,17 +1235,220 @@ class eval_sae(nn.Module):
 
 class eval_sae_acc(eval_sae):
 
-    def __init__(self,
-                model,
-                DEVICE,
-                method,
-                intervened_token_idx,
-                batch_size):
-        super().__init__(model,
-                        DEVICE,
-                        method,
-                        intervened_token_idx,
-                        batch_size)
+    def __init__(self, model, DEVICE, method, intervened_token_idx, batch_size) -> None:
+        self.model = model
+        self.intervened_token_idx = t.tensor(
+            intervened_token_idx, dtype=t.int32, device=DEVICE
+        )
+        self.intervened_token_idx = intervened_token_idx
+        self.method = method
+        self.batch_size = batch_size
+
+        self.DEVICE = DEVICE
+
+        if method == "sae masking openai":
+            state_dict0 = t.load(f"openai_sae/downloaded_saes/0.pt")
+            self.sae_openai0 = sparse_autoencoder.Autoencoder.from_state_dict(
+                state_dict0
+            )
+            for params in self.sae_openai0.parameters():
+                params.requires_grad = False
+
+            state_dict1 = t.load(f"openai_sae/downloaded_saes/1.pt")
+            self.sae_openai1 = sparse_autoencoder.Autoencoder.from_state_dict(
+                state_dict1
+            )
+            for params in self.sae_openai1.parameters():
+                params.requires_grad = False
+
+            state_dict2 = t.load(f"openai_sae/downloaded_saes/2.pt")
+            self.sae_openai2 = sparse_autoencoder.Autoencoder.from_state_dict(
+                state_dict2
+            )
+            for params in self.sae_openai2.parameters():
+                params.requires_grad = False
+
+            state_dict3 = t.load(f"openai_sae/downloaded_saes/3.pt")
+            self.sae_openai3 = sparse_autoencoder.Autoencoder.from_state_dict(
+                state_dict3
+            )
+            for params in self.sae_openai3.parameters():
+                params.requires_grad = False
+
+            state_dict4 = t.load(f"openai_sae/downloaded_saes/4.pt")
+            self.sae_openai4 = sparse_autoencoder.Autoencoder.from_state_dict(
+                state_dict4
+            )
+            for params in self.sae_openai4.parameters():
+                params.requires_grad = False
+
+            state_dict5 = t.load(f"openai_sae/downloaded_saes/5.pt")
+            self.sae_openai5 = sparse_autoencoder.Autoencoder.from_state_dict(
+                state_dict5
+            )
+            for params in self.sae_openai5.parameters():
+                params.requires_grad = False
+
+            state_dict6 = t.load(f"openai_sae/downloaded_saes/6.pt")
+            self.sae_openai6 = sparse_autoencoder.Autoencoder.from_state_dict(
+                state_dict6
+            )
+            for params in self.sae_openai6.parameters():
+                params.requires_grad = False
+
+            state_dict7 = t.load(f"openai_sae/downloaded_saes/7.pt")
+            self.sae_openai7 = sparse_autoencoder.Autoencoder.from_state_dict(
+                state_dict7
+            )
+            for params in self.sae_openai7.parameters():
+                params.requires_grad = False
+
+            state_dict8 = t.load(f"openai_sae/downloaded_saes/8.pt")
+            self.sae_openai8 = sparse_autoencoder.Autoencoder.from_state_dict(
+                state_dict8
+            )
+            for params in self.sae_openai8.parameters():
+                params.requires_grad = False
+
+            state_dict9 = t.load(f"openai_sae/downloaded_saes/9.pt")
+            self.sae_openai9 = sparse_autoencoder.Autoencoder.from_state_dict(
+                state_dict9
+            )
+            for params in self.sae_openai9.parameters():
+                params.requires_grad = False
+
+            state_dict10 = t.load(f"openai_sae/downloaded_saes/10.pt")
+            self.sae_openai10 = sparse_autoencoder.Autoencoder.from_state_dict(
+                state_dict10
+            )
+            for params in self.sae_openai10.parameters():
+                params.requires_grad = False
+
+            state_dict11 = t.load(f"openai_sae/downloaded_saes/11.pt")
+            self.sae_openai11 = sparse_autoencoder.Autoencoder.from_state_dict(
+                state_dict11
+            )
+            for params in self.sae_openai11.parameters():
+                params.requires_grad = False
+
+        elif method == "sae masking neel":
+
+            self.sae_neel0, cfg_dict, sparsity = SAE.from_pretrained(
+                release="gpt2-small-res-jb",  # see other options in sae_lens/pretrained_saes.yaml
+                sae_id=f"blocks.1.hook_resid_pre",  # won't always be a hook point
+            )
+            for params in self.sae_neel0.parameters():
+                params.requires_grad = False
+
+            self.sae_neel1, cfg_dict, sparsity = SAE.from_pretrained(
+                release="gpt2-small-res-jb",  # see other options in sae_lens/pretrained_saes.yaml
+                sae_id=f"blocks.2.hook_resid_pre",  # won't always be a hook point
+            )
+            for params in self.sae_neel1.parameters():
+                params.requires_grad = False
+
+            self.sae_neel2, cfg_dict, sparsity = SAE.from_pretrained(
+                release="gpt2-small-res-jb",  # see other options in sae_lens/pretrained_saes.yaml
+                sae_id=f"blocks.3.hook_resid_pre",  # won't always be a hook point
+            )
+
+            self.sae_neel3, cfg_dict, sparsity = SAE.from_pretrained(
+                release="gpt2-small-res-jb",  # see other options in sae_lens/pretrained_saes.yaml
+                sae_id=f"blocks.4.hook_resid_pre",  # won't always be a hook point
+            )
+
+            self.sae_neel4, cfg_dict, sparsity = SAE.from_pretrained(
+                release="gpt2-small-res-jb",  # see other options in sae_lens/pretrained_saes.yaml
+                sae_id=f"blocks.5.hook_resid_pre",  # won't always be a hook point
+            )
+
+            self.sae_neel5, cfg_dict, sparsity = SAE.from_pretrained(
+                release="gpt2-small-res-jb",  # see other options in sae_lens/pretrained_saes.yaml
+                sae_id=f"blocks.6.hook_resid_pre",  # won't always be a hook point
+            )
+            for params in self.sae_neel2.parameters():
+                params.requires_grad = False
+
+            for params in self.sae_neel3.parameters():
+                params.requires_grad = False
+
+            for params in self.sae_neel4.parameters():
+                params.requires_grad = False
+
+            for params in self.sae_neel5.parameters():
+                params.requires_grad = False
+
+            self.sae_neel6, cfg_dict, sparsity = SAE.from_pretrained(
+                release="gpt2-small-res-jb",  # see other options in sae_lens/pretrained_saes.yaml
+                sae_id=f"blocks.7.hook_resid_pre",  # won't always be a hook point
+            )
+            for params in self.sae_neel6.parameters():
+                params.requires_grad = False
+
+            self.sae_neel7, cfg_dict, sparsity = SAE.from_pretrained(
+                release="gpt2-small-res-jb",  # see other options in sae_lens/pretrained_saes.yaml
+                sae_id=f"blocks.8.hook_resid_pre",  # won't always be a hook point
+            )
+
+            self.sae_neel8, cfg_dict, sparsity = SAE.from_pretrained(
+                release="gpt2-small-res-jb",  # see other options in sae_lens/pretrained_saes.yaml
+                sae_id=f"blocks.9.hook_resid_pre",  # won't always be a hook point
+            )
+
+            self.sae_neel9, cfg_dict, sparsity = SAE.from_pretrained(
+                release="gpt2-small-res-jb",  # see other options in sae_lens/pretrained_saes.yaml
+                sae_id=f"blocks.10.hook_resid_pre",  # won't always be a hook point
+            )
+
+            self.sae_neel10, cfg_dict, sparsity = SAE.from_pretrained(
+                release="gpt2-small-res-jb",  # see other options in sae_lens/pretrained_saes.yaml
+                sae_id=f"blocks.11.hook_resid_pre",  # won't always be a hook point
+            )
+            for params in self.sae_neel7.parameters():
+                params.requires_grad = False
+
+            for params in self.sae_neel8.parameters():
+                params.requires_grad = False
+
+            for params in self.sae_neel9.parameters():
+                params.requires_grad = False
+
+            for params in self.sae_neel10.parameters():
+                params.requires_grad = False
+
+            self.sae_neel11, cfg_dict, sparsity = SAE.from_pretrained(
+                release="gpt2-small-res-jb",  # see other options in sae_lens/pretrained_saes.yaml
+                sae_id=f"blocks.11.hook_resid_post",  # won't always be a hook point
+            )
+            for params in self.sae_neel11.parameters():
+                params.requires_grad = False
+
+        elif method == "sae masking apollo":
+            self.apollo_sae_l2_e2eds = SAETransformer.from_wandb(
+                "sparsify/gpt2/e26jflpq"
+            )
+            self.apollo_sae_l2 = SAETransformer.from_wandb("sparsify/gpt2/bst0prdd")
+            self.apollo_sae_l6_e2eds = SAETransformer.from_wandb(
+                "sparsify/gpt2/2lzle2f0"
+            )
+            self.apollo_sae_l6 = SAETransformer.from_wandb("sparsify/gpt2/tvj2owza")
+            self.apollo_sae_l10_e2eds = SAETransformer.from_wandb(
+                "sparsify/gpt2/u50mksr8"
+            )
+            self.apollo_sae_l10 = SAETransformer.from_wandb("sparsify/gpt2/vnfh4vpi")
+
+            for params in self.apollo_sae_l2_e2eds.parameters():
+                params.requires_grad = False
+            for params in self.apollo_sae_l2.parameters():
+                params.requires_grad = False
+            for params in self.apollo_sae_l6_e2eds.parameters():
+                params.requires_grad = False
+            for params in self.apollo_sae_l6.parameters():
+                params.requires_grad = False
+            for params in self.apollo_sae_l10_e2eds.parameters():
+                params.requires_grad = False
+            for params in self.apollo_sae_l10.parameters():
+                params.requires_grad = False
 
 
     def forward(self, x):
