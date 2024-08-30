@@ -437,6 +437,9 @@ if __name__ == "__main__":
             indices=count_indices,
             method=args.method,
         )
+        
+        assert len(acc_list_count) == len(acc_list_cont) == 12
+        
         with open("latex_table_acc.txt", "w") as f:
             for item in acc_list_count:
                 f.write(f"{item}\n")
@@ -468,6 +471,9 @@ if __name__ == "__main__":
             indices=count_indices,
             method=args.method,
         )
+
+        assert len(acc_list_count) == len(acc_list_cont) == 12
+
         with open("latex_table_acc.txt", "a") as f:
             for item in acc_list_count:
                 f.write(f"{item}\n")
@@ -499,6 +505,8 @@ if __name__ == "__main__":
             indices=count_indices,
             method=args.method,
         )
+        
+        assert len(acc_list_count) == len(acc_list_cont) == 12
         
         with open("latex_table_acc.txt", "a") as f:
             for item in acc_list_count:
