@@ -367,7 +367,11 @@ if __name__ == "__main__":
                     f.write(f"{item}\n")
 
     elif args.method == "acc sae masking neel":
-        model_sae_acc = eval_sae_acc()
+        model_sae_acc = eval_sae_acc(model=model,
+                                    DEVICE=args.device,
+                                    method=args.method,
+                                    intervened_token_idx=intervened_token_idx,
+                                    batch_size=args.batch_size)
         acc_list_count = accuracy(
             sent=t_countsent,
             label = t_countlabel,
