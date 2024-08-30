@@ -128,7 +128,6 @@ def accuracy(sent, label, model_, intervened_token_idx, indices):
 
                 samples = sent["input_ids"][i * 16 : (i + 1) * 16]
                 labels = label["input_ids"][i * 16 : (i + 1) * 16]
-                print(samples)
                 output_list = model_(samples)
                 ground_truth_token_id = labels
                 vocab_size = model.tokenizer.vocab_size
