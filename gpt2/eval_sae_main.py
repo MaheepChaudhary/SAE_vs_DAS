@@ -142,7 +142,7 @@ def accuracy(sent, label, model_, intervened_token_idx, indices, method):
             ground_truth_token_id = labels
             if method == "acc sae masking neel":
 
-                for layer in range(12):
+                for layer in range(11,12):
                     total_val_samples_processed = 0;  matches = 0
                     predicted_text_ = output_list[f"Predicted_L{layer}"][1]
                     
@@ -164,7 +164,7 @@ def accuracy(sent, label, model_, intervened_token_idx, indices, method):
                 torch.cuda.empty_cache()
             elif method == "acc sae masking openai":
                 
-                for layer in range(12):
+                for layer in range(11,12):
                     total_val_samples_processed = 0;  matches = 0
                     predicted_text_ = output_list[f"Predicted_L{layer}"][1]
                     
