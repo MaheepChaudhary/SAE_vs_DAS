@@ -243,6 +243,9 @@ if __name__ == "__main__":
 
     count_indices = int(len(countsent) / 16)
     print(f"Continent Indices: {count_indices}")
+    
+    cont_indices = int(len(contsent) / 16)
+    print(f"Continent Indices: {cont_indices}")
 
     if args.method == "sae masking neel" or args.method == "sae masking openai" or args.method == "sae masking apollo":
         model_sae_eval = eval_sae(
@@ -444,7 +447,7 @@ if __name__ == "__main__":
             label = contlabel,
             model_=model_sae_acc,
             intervened_token_idx=-8,
-            indices=count_indices,
+            indices=cont_indices,
             method=args.method,
         )
         
@@ -478,7 +481,7 @@ if __name__ == "__main__":
             label = contlabel,
             model_=model_sae_acc,
             intervened_token_idx=-8,
-            indices=count_indices,
+            indices=cont_indices,
             method=args.method,
         )
 
@@ -512,7 +515,7 @@ if __name__ == "__main__":
             label = contlabel,
             model_=model_sae_acc,
             intervened_token_idx=-8,
-            indices=count_indices,
+            indices=cont_indices,
             method=args.method,
         )
         
