@@ -1556,12 +1556,8 @@ class eval_sae_acc(nn.Module):
                     output_layer = (
                         self.model.transformer.h[layer].output[0].clone().save()
                     )
-                    eout = sae.saes[f"blocks-{layer}-hook_resid_pre"](
-                        output_layer
-                    ).encoder(output_layer)
-                    dout = sae.saes[f"blocks-{layer}-hook_resid_pre"](
-                        eout
-                    ).decoder(eout)
+                    eout = sae.saes[f"blocks-{layer}-hook_resid_pre"].encoder(output_layer)
+                    dout = sae.saes[f"blocks-{layer}-hook_resid_pre"].decoder(eout)
                     self.model.transformer.h[layer].output[0][:, -8, :] = dout[:, -8, :]
                     intervened_base_output = self.model.lm_head.output.save()
 
