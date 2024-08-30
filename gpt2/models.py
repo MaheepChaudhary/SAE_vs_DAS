@@ -1541,12 +1541,12 @@ class eval_sae_acc(nn.Module):
         elif self.method == "acc sae masking apollo":
 
             layers_and_encoders = [
-                (2, self.apollo_sae_l2_e2eds),
-                (2, self.apollo_sae_l2),
-                (6, self.apollo_sae_l6_e2eds),
-                (6, self.apollo_sae_l6),
-                (10, self.apollo_sae_l10_e2eds),
-                (10, self.apollo_sae_l10),
+                (0, self.apollo_sae_l2_e2eds),
+                (1, self.apollo_sae_l2),
+                (2, self.apollo_sae_l6_e2eds),
+                (3, self.apollo_sae_l6),
+                (4, self.apollo_sae_l10_e2eds),
+                (5, self.apollo_sae_l10),
             ]
 
             output_dict = {}

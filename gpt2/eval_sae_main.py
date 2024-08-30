@@ -117,7 +117,7 @@ def loss(sent, model, intervened_token_idx, indices):
             round(mean11, 2),
         )
 
-def accuracy(sent, label, model_, intervened_token_idx, indices):
+def accuracy(sent, label, model_, intervened_token_idx, indices, method):
     
     with torch.no_grad():
         acc_list = []
@@ -129,21 +129,38 @@ def accuracy(sent, label, model_, intervened_token_idx, indices):
             labels = label[i * 16 : (i + 1) * 16]
             output_list = model_(samples)
             ground_truth_token_id = labels
-            for layer in range(12):
-                total_val_samples_processed = 0;  matches = 0
-                predicted_text_ = output_list[f"Predicted_L{layer}"][1]
-                
-                # Calculate accuracy
-                predicted_text = [word.split()[0] for word in predicted_text_]
-                source_label = [word.split()[0] for word in labels]
+            if method == "acc sae masking neel" or method == "acc sae masking openai":
+                for layer in range(12):
+                    total_val_samples_processed = 0;  matches = 0
+                    predicted_text_ = output_list[f"Predicted_L{layer}"][1]
+                    
+                    # Calculate accuracy
+                    predicted_text = [word.split()[0] for word in predicted_text_]
+                    source_label = [word.split()[0] for word in labels]
 
-                total_val_samples_processed += batch_size
-                for i in range(len(predicted_text)):
-                    if predicted_text[i] == source_label[i]:
-                        matches += 1
-                
-                acc_list.append(matches / total_val_samples_processed)
-                torch.cuda.empty_cache()
+                    total_val_samples_processed += batch_size
+                    for i in range(len(predicted_text)):
+                        if predicted_text[i] == source_label[i]:
+                            matches += 1
+                    
+                    acc_list.append(matches / total_val_samples_processed)
+                    torch.cuda.empty_cache()
+            elif method == "acc sae masking apollo":
+                for layer in range(6):
+                    total_val_samples_processed = 0;  matches = 0
+                    predicted_text_ = output_list[f"Predicted_L{layer}"][1]
+                    
+                    # Calculate accuracy
+                    predicted_text = [word.split()[0] for word in predicted_text_]
+                    source_label = [word.split()[0] for word in labels]
+
+                    total_val_samples_processed += batch_size
+                    for i in range(len(predicted_text)):
+                        if predicted_text[i] == source_label[i]:
+                            matches += 1
+                    
+                    acc_list.append(matches / total_val_samples_processed)
+                    torch.cuda.empty_cache()
     return acc_list
                 
 
@@ -429,20 +446,22 @@ if __name__ == "__main__":
                                     args.method, 
                                     intervened_token_idx, 
                                     batch_size)
-        acc_list_count = accuracy(
+        acc_list_count_ = accuracy(
             sent=t_countsent,
             label = countlabel,
             model_=model_sae_acc,
             intervened_token_idx=-8,
             indices=count_indices,
         )
-        acc_list_cont= accuracy(
+        acc_list_count = acc_list_count_ + [0,0,0,0,0,0]
+        acc_list_cont_ = accuracy(
             sent=t_contsent,
             label = contlabel,
             model_=model_sae_acc,
             intervened_token_idx=-8,
             indices=count_indices,
         )
+        acc_list_cont = acc_list_cont_ + [0,0,0,0,0,0]
         with open("latex_table_acc.txt", "a") as f:
             for item in acc_list_count:
                 f.write(f"{item}\n")
