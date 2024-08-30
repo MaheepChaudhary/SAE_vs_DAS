@@ -1,3 +1,4 @@
+import numpy as np
 from pprint import pprint
 
 
@@ -72,8 +73,8 @@ headers = [
     "Apollo SAE Country",
 ]
 t_latex_final_list = transpose_list(latex_final_list)
-pprint(latex_final_list)
+pprint(np.array(latex_final_list).shape)
 pprint(t_latex_final_list)
-latex_code = create_latex_table(latex_final_list, headers)
+latex_code = create_latex_table(t_latex_final_list, headers)
 pprint(latex_code)
 # Output the batches
