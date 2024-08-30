@@ -194,6 +194,7 @@ def accuracy(sent, label, model_, intervened_token_idx, indices, method):
                     acc_dict[f"Layer{layer}"].append(matches / total_val_samples_processed)
                     torch.cuda.empty_cache()
         acc_list = [sum(acc_dict[f"Layer{i}"])/len(acc_dict[f"Layer{i}"]) for i in range(12)]
+        print(acc_list)
     return acc_list
                 
 
