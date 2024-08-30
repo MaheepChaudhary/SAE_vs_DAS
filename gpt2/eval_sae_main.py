@@ -380,14 +380,14 @@ if __name__ == "__main__":
         acc_list_count = accuracy(
             sent=t_countsent,
             label = t_countlabel,
-            model_=model,
+            model_=model_sae_acc,
             intervened_token_idx=-8,
             indices=count_indices,
         )
         acc_list_cont= accuracy(
             sent=t_contsent,
             label = t_contlabel,
-            model_=model,
+            model_=model_sae_acc,
             intervened_token_idx=-8,
             indices=count_indices,
         )
@@ -409,14 +409,14 @@ if __name__ == "__main__":
         acc_list_count = accuracy(
             sent=t_countsent,
             label = t_countlabel,
-            model_=model,
+            model_=model_sae_acc,
             intervened_token_idx=-8,
             indices=count_indices,
         )
         acc_list_cont= accuracy(
             sent=t_contsent,
             label = t_contlabel,
-            model_=model,
+            model_=model_sae_acc,
             intervened_token_idx=-8,
             indices=count_indices,
         )
