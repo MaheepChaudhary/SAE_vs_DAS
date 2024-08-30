@@ -1479,7 +1479,7 @@ class eval_sae_acc(nn.Module):
                         self.model.transformer.h[layer].output[0].clone().save()
                     )
                     eout = sae.encode(output_layer)
-                    dout = sae.decode(eout)
+                    dout = sae.decode(eout).save()
                     self.model.transformer.h[layer].output[0][:, -8, :] = dout[:, -8, :]
                     intervened_base_output = self.model.lm_head.output.save()
 

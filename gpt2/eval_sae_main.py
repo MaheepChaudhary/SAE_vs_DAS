@@ -128,12 +128,12 @@ def accuracy(sent, label, model_, intervened_token_idx, indices):
 
                 samples = sent["input_ids"][i * 16 : (i + 1) * 16]
                 labels = label["input_ids"][i * 16 : (i + 1) * 16]
-                
+                print(samples)
                 output_list = model_(samples)
                 ground_truth_token_id = labels
                 vocab_size = model.tokenizer.vocab_size
                 ground_truth_one_hot = F.one_hot(
-                    ground_truth_token_id["input_ids"], num_classes=vocab_size
+                    ground_truth_token_id, num_classes=vocab_size
                 )
                 
                 _, predicted_text_ = output_list[f"Predicted_L{layer}"]
@@ -146,7 +146,7 @@ def accuracy(sent, label, model_, intervened_token_idx, indices):
                 for i in range(len(predicted_text)):
                     if predicted_text[i] == source_label[i]:
                         matches_val += 1
-
+                
                 torch.cuda.empty_cache()
                 
             acc_list.append(matches_val / total_val_samples_processed)
