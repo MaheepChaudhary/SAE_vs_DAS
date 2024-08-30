@@ -142,7 +142,7 @@ def accuracy(sent, label, model_, intervened_token_idx, indices, method):
             ground_truth_token_id = labels
             if method == "acc sae masking neel":
 
-                for layer in range(11,12):
+                for layer in range(12):
                     total_val_samples_processed = 0;  matches = 0
                     predicted_text_ = output_list[f"Predicted_L{layer}"][1]
                     
@@ -176,6 +176,11 @@ def accuracy(sent, label, model_, intervened_token_idx, indices, method):
                         total_val_samples_processed += 1
                         if predicted_text[i] == source_label[i]:
                             matches += 1
+                        else:
+                            print(f"Predicted: {predicted_text[i]}")
+                            print(f"Ground label: {source_label[i]}")
+                            print()
+                    
                     
                     acc_dict[f"Layer{layer}"].append(matches / total_val_samples_processed)
                     
