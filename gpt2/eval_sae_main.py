@@ -122,6 +122,7 @@ def accuracy(sent, label, model_, intervened_token_idx, indices):
     with torch.no_grad():
         acc_list = []
         for layer in range(12):
+            total_val_samples_processed = 0
             for i in tqdm(range(indices)):
                 
                 batch_size = 16
