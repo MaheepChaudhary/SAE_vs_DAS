@@ -121,16 +121,16 @@ def accuracy(sent, label, model_, intervened_token_idx, indices):
     
     with torch.no_grad():
         acc_list = []
-        for layer in range(12):
-            total_val_samples_processed = 0;  matches = 0
-            for i in tqdm(range(indices)):
-                
-                batch_size = 16
+        for i in range(indices):
+            
+            batch_size = 16
 
-                samples = sent["input_ids"][i * 16 : (i + 1) * 16]
-                labels = label[i * 16 : (i + 1) * 16]
-                output_list = model_(samples)
-                ground_truth_token_id = labels
+            samples = sent["input_ids"][i * 16 : (i + 1) * 16]
+            labels = label[i * 16 : (i + 1) * 16]
+            output_list = model_(samples)
+            ground_truth_token_id = labels
+            for layer in range(12):
+                total_val_samples_processed = 0;  matches = 0
                 predicted_text_ = output_list[f"Predicted_L{layer}"][1]
                 
                 # Calculate accuracy
@@ -142,9 +142,8 @@ def accuracy(sent, label, model_, intervened_token_idx, indices):
                     if predicted_text[i] == source_label[i]:
                         matches += 1
                 
+                acc_list.append(matches / total_val_samples_processed)
                 torch.cuda.empty_cache()
-                
-            acc_list.append(matches / total_val_samples_processed)
     return acc_list
                 
 
