@@ -1247,7 +1247,7 @@ class eval_sae_acc(nn.Module):
 
         self.DEVICE = DEVICE
 
-        if method == "sae masking openai":
+        if method == "acc sae masking openai":
             state_dict0 = t.load(f"openai_sae/downloaded_saes/0.pt")
             self.sae_openai0 = sparse_autoencoder.Autoencoder.from_state_dict(
                 state_dict0
@@ -1332,7 +1332,7 @@ class eval_sae_acc(nn.Module):
             for params in self.sae_openai11.parameters():
                 params.requires_grad = False
 
-        elif method == "sae masking neel":
+        elif method == "acc sae masking neel":
 
             self.sae_neel0, cfg_dict, sparsity = SAE.from_pretrained(
                 release="gpt2-small-res-jb",  # see other options in sae_lens/pretrained_saes.yaml
@@ -1424,7 +1424,7 @@ class eval_sae_acc(nn.Module):
             for params in self.sae_neel11.parameters():
                 params.requires_grad = False
 
-        elif method == "sae masking apollo":
+        elif method == "acc sae masking apollo":
             self.apollo_sae_l2_e2eds = SAETransformer.from_wandb(
                 "sparsify/gpt2/e26jflpq"
             )
