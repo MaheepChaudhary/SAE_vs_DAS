@@ -191,7 +191,7 @@ def accuracy(sent, label, model_, intervened_token_idx, indices, method):
                         if predicted_text[i] == source_label[i]:
                             matches += 1
                     
-                    acc_dict.append(matches / total_val_samples_processed)
+                    acc_dict[f"Layer{layer}"].append(matches / total_val_samples_processed)
                     torch.cuda.empty_cache()
         acc_list = [sum(acc_dict[f"Layer{i}"])/len(acc_dict[f"Layer{i}"]) for i in range(12)]
     return acc_list
@@ -483,7 +483,7 @@ if __name__ == "__main__":
                                     args.method, 
                                     intervened_token_idx, 
                                     batch_size)
-        acc_list_count_ = accuracy(
+        acc_list_count = accuracy(
             sent=t_countsent,
             label = countlabel,
             model_=model_sae_acc,
@@ -491,8 +491,7 @@ if __name__ == "__main__":
             indices=count_indices,
             method=args.method,
         )
-        acc_list_count = acc_list_count_ + [0,0,0,0,0,0]
-        acc_list_cont_ = accuracy(
+        acc_list_cont = accuracy(
             sent=t_contsent,
             label = contlabel,
             model_=model_sae_acc,
@@ -500,7 +499,7 @@ if __name__ == "__main__":
             indices=count_indices,
             method=args.method,
         )
-        acc_list_cont = acc_list_cont_ + [0,0,0,0,0,0]
+        
         with open("latex_table_acc.txt", "a") as f:
             for item in acc_list_count:
                 f.write(f"{item}\n")
