@@ -118,6 +118,7 @@ def loss(sent, model, intervened_token_idx, indices):
         )
 
 def accuracy(sent, label, model_, intervened_token_idx, indices):
+    
     with torch.no_grad():
         acc_list = []
         for layer in range(12):
@@ -162,6 +163,7 @@ if __name__ == "__main__":
     args = parser.parse_args()
 
     model, intervened_token_idx = config(args.device)
+    batch_size = 16
 
     # TODO: Find also the accuracy while intervening using the city for the reconstructed city vector by the SAE.
 
@@ -378,14 +380,14 @@ if __name__ == "__main__":
         acc_list_count = accuracy(
             sent=t_countsent,
             label = t_countlabel,
-            model_=model_sae_acc,
+            model_=model,
             intervened_token_idx=-8,
             indices=count_indices,
         )
         acc_list_cont= accuracy(
             sent=t_contsent,
             label = t_contlabel,
-            model_=model_sae_acc,
+            model_=model,
             intervened_token_idx=-8,
             indices=count_indices,
         )
@@ -399,18 +401,22 @@ if __name__ == "__main__":
         
 
     elif args.method == "acc sae masking openai":
-        model_sae_acc = eval_sae_acc()
+        model_sae_acc = eval_sae_acc(model, 
+                            args.device, 
+                            args.method, 
+                            intervened_token_idx, 
+                            batch_size)
         acc_list_count = accuracy(
             sent=t_countsent,
             label = t_countlabel,
-            model_=model_sae_acc,
+            model_=model,
             intervened_token_idx=-8,
             indices=count_indices,
         )
         acc_list_cont= accuracy(
             sent=t_contsent,
             label = t_contlabel,
-            model_=model_sae_acc,
+            model_=model,
             intervened_token_idx=-8,
             indices=count_indices,
         )
@@ -424,7 +430,11 @@ if __name__ == "__main__":
         
 
     elif args.method == "acc sae masking apollo":
-        model_sae_acc = eval_sae_acc()
+        model_sae_acc = eval_sae_acc(model, 
+                                    args.device, 
+                                    args.method, 
+                                    intervened_token_idx, 
+                                    batch_size)
         acc_list_count = accuracy(
             sent=t_countsent,
             label = t_countlabel,
