@@ -1233,5 +1233,139 @@ class eval_sae(nn.Module):
         )
 
 
+class eval_sae_acc(eval_sae):
+
+    def __init__(self):
+        super().__init__()
+
+    def forward(self, x):
+
+        if self.method == "acc sae masking neel":
+
+            layers_and_encoders = [
+                (0, self.sae_neel0),
+                (1, self.sae_neel1),
+                (2, self.sae_neel2),
+                (3, self.sae_neel3),
+                (4, self.sae_neel4),
+                (5, self.sae_neel5),
+                (6, self.sae_neel6),
+                (7, self.sae_neel7),
+                (8, self.sae_neel8),
+                (9, self.sae_neel9),
+                (10, self.sae_neel10),
+                (11, self.sae_neel11),
+            ]
+
+            output_dict = {}
+
+            for layer, sae in layers_and_encoders:
+                with self.model.trace(x) as tracer:
+                    output_layer = (
+                        self.model.transformer.h[layer].output[0].clone().save()
+                    )
+                    eout = sae.encode(output_layer)
+                    dout = sae.decode(eout).save()
+                    self.model.transformer.h[layer].output[0] = dout
+                    intervened_base_output = self.model.lm_head.output.save()
+
+                predicted_text = []
+                for index in range(intervened_base_output.shape[0]):
+                    predicted_text.append(
+                        self.model.tokenizer.decode(
+                            intervened_base_output[index].argmax(dim=-1)
+                        ).split()[-1]
+                    )
+
+                output_dict[f"Predicted_L{layer}"] = [
+                    intervened_base_output,
+                    predicted_text,
+                ]
+
+        elif self.method == "acc sae masking openai":
+
+            layers_and_encoders = [
+                (0, self.sae_openai0),
+                (1, self.sae_openai1),
+                (2, self.sae_openai2),
+                (3, self.sae_openai3),
+                (4, self.sae_openai4),
+                (5, self.sae_openai5),
+                (6, self.sae_openai6),
+                (7, self.sae_openai7),
+                (8, self.sae_openai8),
+                (9, self.sae_openai9),
+                (10, self.sae_openai10),
+                (11, self.sae_openai11),
+            ]
+
+            output_dict = {}
+
+            for layer, sae in layers_and_encoders:
+                with self.model.trace(x) as tracer:
+                    output_layer = (
+                        self.model.transformer.h[layer].output[0].clone().save()
+                    )
+                    eout = sae.encode(output_layer)
+                    dout = sae.decode(eout).save()
+                    self.model.transformer.h[layer].output[0] = dout
+                    intervened_base_output = self.model.lm_head.output.save()
+
+                predicted_text = []
+                for index in range(intervened_base_output.shape[0]):
+                    predicted_text.append(
+                        self.model.tokenizer.decode(
+                            intervened_base_output[index].argmax(dim=-1)
+                        ).split()[-1]
+                    )
+
+                output_dict[f"Predicted_L{layer}"] = [
+                    intervened_base_output,
+                    predicted_text,
+                ]
+
+        elif self.method == "acc sae masking apollo":
+
+            layers_and_encoders = [
+                (2, self.apollo_sae_l2_e2eds),
+                (2, self.apollo_sae_l2),
+                (6, self.apollo_sae_l6_e2eds),
+                (6, self.apollo_sae_l6),
+                (10, self.apollo_sae_l10_e2eds),
+                (10, self.apollo_sae_l10),
+            ]
+
+            output_dict = {}
+
+            for layer, sae in layers_and_encoders:
+                with self.model.trace(x) as tracer:
+                    output_layer = (
+                        self.model.transformer.h[layer].output[0].clone().save()
+                    )
+                    eout = sae.encode.saes[f"blocks-{layer}-hook_resid_pre"](
+                        output_layer
+                    )
+                    dout = sae.decode.saes[f"blocks-{layer}-hook_resid_pre"](
+                        eout
+                    ).save()
+                    self.model.transformer.h[layer].output[0] = dout
+                    intervened_base_output = self.model.lm_head.output.save()
+
+                predicted_text = []
+                for index in range(intervened_base_output.shape[0]):
+                    predicted_text.append(
+                        self.model.tokenizer.decode(
+                            intervened_base_output[index].argmax(dim=-1)
+                        ).split()[-1]
+                    )
+
+                output_dict[f"Predicted_L{layer}"] = [
+                    intervened_base_output,
+                    predicted_text,
+                ]
+
+        return output_dict
+
+
 if __name__ == "__main__":
     my_model = my_model()
