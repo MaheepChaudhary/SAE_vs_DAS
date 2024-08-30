@@ -1541,17 +1541,17 @@ class eval_sae_acc(nn.Module):
         elif self.method == "acc sae masking apollo":
 
             layers_and_encoders = [
-                (0, self.apollo_sae_l2_e2eds),
-                (1, self.apollo_sae_l2),
-                (2, self.apollo_sae_l6_e2eds),
-                (3, self.apollo_sae_l6),
-                (4, self.apollo_sae_l10_e2eds),
-                (5, self.apollo_sae_l10),
+                (2, 0, self.apollo_sae_l2_e2eds),
+                (2, 1, self.apollo_sae_l2),
+                (6, 2, self.apollo_sae_l6_e2eds),
+                (6, 3, self.apollo_sae_l6),
+                (10, 4, self.apollo_sae_l10_e2eds),
+                (10, 5, self.apollo_sae_l10),
             ]
 
             output_dict = {}
 
-            for layer, sae in layers_and_encoders:
+            for layer, layer_, sae in layers_and_encoders:
                 with self.model.trace(x) as tracer:
                     output_layer = (
                         self.model.transformer.h[layer].output[0].clone().save()
@@ -1569,7 +1569,7 @@ class eval_sae_acc(nn.Module):
                         ).split()[-1]
                     )
 
-                output_dict[f"Predicted_L{layer}"] = [
+                output_dict[f"Predicted_L{layer_}"] = [
                     intervened_base_output,
                     predicted_text,
                 ]
