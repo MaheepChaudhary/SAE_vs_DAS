@@ -343,7 +343,6 @@ class my_model(nn.Module):
                     assert iia_vector_rotated.shape == torch.Size(
                         [self.batch_size, 768]
                     )
-                    # TODO: first add them then unrotate.
 
                     # masked_intermediate_output_unrotated = torch.matmul(masked_intermediate_output_rotated,self.rotate_layer.weight.T)
                     # masked_vector_source_unrotated = torch.matmul(masked_vector_source_rotated,self.rotate_layer.weight.T)
@@ -850,7 +849,7 @@ class eval_sae(nn.Module):
                 eout0 = self.sae_neel0.encode(output_layer0)
                 dout0 = self.sae_neel0.decode(eout0).save()
                 loss0 = (
-                    (dout0.float() - output_layer0.float())
+                    (dout0[:, -8, :].float() - output_layer0[:, -8, :].float())
                     .pow(2)
                     .sum(-1)
                     .mean(0)
@@ -1210,20 +1209,19 @@ class eval_sae(nn.Module):
                 loss8 = loss9_e2eds
                 loss2 = loss3 = loss6 = loss7 = loss10 = loss11 = zeros
         return (
-            loss0, 
-            loss1, 
-            loss2, 
-            loss3, 
-            loss4, 
-            loss5, 
-            loss6, 
-            loss7, 
-            loss8, 
-            loss9, 
-            loss10, 
-            loss11, 
+            loss0,
+            loss1,
+            loss2,
+            loss3,
+            loss4,
+            loss5,
+            loss6,
+            loss7,
+            loss8,
+            loss9,
+            loss10,
+            loss11,
         )
-
 
 
 if __name__ == "__main__":
