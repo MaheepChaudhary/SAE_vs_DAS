@@ -860,7 +860,7 @@ class eval_sae(nn.Module):
                 eout1 = self.sae_neel1.encode(output_layer1)
                 dout1 = self.sae_neel1.decode(eout1)
                 loss1 = (
-                    (dout1.float() - output_layer1.float())
+                    (dout1[:, -8, :].float() - output_layer1[:, -8, :].float())
                     .pow(2)
                     .sum(-1)
                     .mean(0)
@@ -871,7 +871,7 @@ class eval_sae(nn.Module):
                 eout2 = self.sae_neel2.encode(output_layer2)
                 dout2 = self.sae_neel2.decode(eout2)
                 loss2 = (
-                    (dout2.float() - output_layer2.float())
+                    (dout2[:, -8, :].float() - output_layer2[:, -8, :].float())
                     .pow(2)
                     .sum(-1)
                     .mean(0)
@@ -882,7 +882,7 @@ class eval_sae(nn.Module):
                 eout3 = self.sae_neel3.encode(output_layer3)
                 dout3 = self.sae_neel3.decode(eout3)
                 loss3 = (
-                    (dout3.float() - output_layer3.float())
+                    (dout3[:, -8, :].float() - output_layer3[:, -8, :].float())
                     .pow(2)
                     .sum(-1)
                     .mean(0)
@@ -893,7 +893,7 @@ class eval_sae(nn.Module):
                 eout4 = self.sae_neel4.encode(output_layer4)
                 dout4 = self.sae_neel4.decode(eout4)
                 loss4 = (
-                    (dout4.float() - output_layer4.float())
+                    (dout4[:, -8, :].float() - output_layer4[:, -8, :].float())
                     .pow(2)
                     .sum(-1)
                     .mean(0)
@@ -904,7 +904,7 @@ class eval_sae(nn.Module):
                 eout5 = self.sae_neel5.encode(output_layer5)
                 dout5 = self.sae_neel5.decode(eout5)
                 loss5 = (
-                    (dout5.float() - output_layer5.float())
+                    (dout5[:, -8, :].float() - output_layer5[:, -8, :].float())
                     .pow(2)
                     .sum(-1)
                     .mean(0)
@@ -915,7 +915,7 @@ class eval_sae(nn.Module):
                 eout6 = self.sae_neel6.encode(output_layer6)
                 dout6 = self.sae_neel6.decode(eout6)
                 loss6 = (
-                    (dout6.float() - output_layer6.float())
+                    (dout6[:, -8, :].float() - output_layer6[:, -8, :].float())
                     .pow(2)
                     .sum(-1)
                     .mean(0)
@@ -926,7 +926,7 @@ class eval_sae(nn.Module):
                 eout7 = self.sae_neel7.encode(output_layer7)
                 dout7 = self.sae_neel7.decode(eout7)
                 loss7 = (
-                    (dout7.float() - output_layer7.float())
+                    (dout7[:, -8, :].float() - output_layer7[:, -8, :].float())
                     .pow(2)
                     .sum(-1)
                     .mean(0)
@@ -937,7 +937,7 @@ class eval_sae(nn.Module):
                 eout8 = self.sae_neel8.encode(output_layer8)
                 dout8 = self.sae_neel8.decode(eout8)
                 loss8 = (
-                    (dout8.float() - output_layer8.float())
+                    (dout8[:, -8, :].float() - output_layer8[:, -8, :].float())
                     .pow(2)
                     .sum(-1)
                     .mean(0)
@@ -948,7 +948,7 @@ class eval_sae(nn.Module):
                 eout9 = self.sae_neel9.encode(output_layer9)
                 dout9 = self.sae_neel9.decode(eout9)
                 loss9 = (
-                    (dout9.float() - output_layer9.float())
+                    (dout9[:, -8, :].float() - output_layer9[:, -8, :].float())
                     .pow(2)
                     .sum(-1)
                     .mean(0)
@@ -959,7 +959,7 @@ class eval_sae(nn.Module):
                 eout10 = self.sae_neel10.encode(output_layer10)
                 dout10 = self.sae_neel10.decode(eout10)
                 loss10 = (
-                    (dout10.float() - output_layer10.float())
+                    (dout10[:, -8, :].float() - output_layer10[:, -8, :].float())
                     .pow(2)
                     .sum(-1)
                     .mean(0)
@@ -970,7 +970,7 @@ class eval_sae(nn.Module):
                 eout11 = self.sae_neel11.encode(output_layer11)
                 dout11 = self.sae_neel11.decode(eout11)
                 loss11 = (
-                    (dout11.float() - output_layer11.float())
+                    (dout11[:, -8, :].float() - output_layer11[:, -8, :].float())
                     .pow(2)
                     .sum(-1)
                     .mean(0)
@@ -983,7 +983,7 @@ class eval_sae(nn.Module):
                 eout0, info = self.sae_openai0.encode(output_layer0)
                 dout0 = self.sae_openai0.decode(eout0, info)
                 loss0 = (
-                    (dout0.float() - output_layer0.float())
+                    (dout0[:, -8, :].float() - output_layer0[:, -8, :].float())
                     .pow(2)
                     .sum(-1)
                     .mean(0)
@@ -994,7 +994,7 @@ class eval_sae(nn.Module):
                 eout1, info1 = self.sae_openai1.encode(output_layer1)
                 dout1 = self.sae_openai1.decode(eout1, info1)
                 loss1 = (
-                    (dout1.float() - output_layer1.float())
+                    (dout1[:, -8, :].float() - output_layer1[:, -8, :].float())
                     .pow(2)
                     .sum(-1)
                     .mean(0)
@@ -1005,7 +1005,7 @@ class eval_sae(nn.Module):
                 eout2, info2 = self.sae_openai2.encode(output_layer2)
                 dout2 = self.sae_openai2.decode(eout2, info2)
                 loss2 = (
-                    (dout2.float() - output_layer2.float())
+                    (dout2[:, -8, :].float() - output_layer2[:, -8, :].float())
                     .pow(2)
                     .sum(-1)
                     .mean(0)
@@ -1016,7 +1016,7 @@ class eval_sae(nn.Module):
                 eout3, info3 = self.sae_openai3.encode(output_layer3)
                 dout3 = self.sae_openai3.decode(eout3, info3)
                 loss3 = (
-                    (dout3.float() - output_layer3.float())
+                    (dout3[:, -8, :].float() - output_layer3[:, -8, :].float())
                     .pow(2)
                     .sum(-1)
                     .mean(0)
@@ -1027,7 +1027,7 @@ class eval_sae(nn.Module):
                 eout4, info4 = self.sae_openai4.encode(output_layer4)
                 dout4 = self.sae_openai4.decode(eout4, info4)
                 loss4 = (
-                    (dout4.float() - output_layer4.float())
+                    (dout4[:, -8, :].float() - output_layer4[:, -8, :].float())
                     .pow(2)
                     .sum(-1)
                     .mean(0)
@@ -1038,7 +1038,7 @@ class eval_sae(nn.Module):
                 eout5, info5 = self.sae_openai5.encode(output_layer5)
                 dout5 = self.sae_openai5.decode(eout5, info5)
                 loss5 = (
-                    (dout5.float() - output_layer5.float())
+                    (dout5[:, -8, :].float() - output_layer5[:, -8, :].float())
                     .pow(2)
                     .sum(-1)
                     .mean(0)
@@ -1049,7 +1049,7 @@ class eval_sae(nn.Module):
                 eout6, info6 = self.sae_openai6.encode(output_layer6)
                 dout6 = self.sae_openai6.decode(eout6, info6)
                 loss6 = (
-                    (dout6.float() - output_layer6.float())
+                    (dout6[:, -8, :].float() - output_layer6[:, -8, :].float())
                     .pow(2)
                     .sum(-1)
                     .mean(0)
@@ -1060,7 +1060,7 @@ class eval_sae(nn.Module):
                 eout7, info7 = self.sae_openai7.encode(output_layer7)
                 dout7 = self.sae_openai7.decode(eout7, info7)
                 loss7 = (
-                    (dout7.float() - output_layer7.float())
+                    (dout7[:, -8, :].float() - output_layer7[:, -8, :].float())
                     .pow(2)
                     .sum(-1)
                     .mean(0)
@@ -1071,7 +1071,7 @@ class eval_sae(nn.Module):
                 eout8, info8 = self.sae_openai8.encode(output_layer8)
                 dout8 = self.sae_openai8.decode(eout8, info8)
                 loss8 = (
-                    (dout8.float() - output_layer8.float())
+                    (dout8[:, -8, :].float() - output_layer8[:, -8, :].float())
                     .pow(2)
                     .sum(-1)
                     .mean(0)
@@ -1082,7 +1082,7 @@ class eval_sae(nn.Module):
                 eout9, info9 = self.sae_openai9.encode(output_layer9)
                 dout9 = self.sae_openai9.decode(eout9, info9)
                 loss9 = (
-                    (dout9.float() - output_layer9.float())
+                    (dout9[:, -8, :].float() - output_layer9[:, -8, :].float())
                     .pow(2)
                     .sum(-1)
                     .mean(0)
@@ -1093,7 +1093,7 @@ class eval_sae(nn.Module):
                 eout10, info10 = self.sae_openai10.encode(output_layer10)
                 dout10 = self.sae_openai10.decode(eout10, info10)
                 loss10 = (
-                    (dout10.float() - output_layer10.float())
+                    (dout10[:, -8, :].float() - output_layer10[:, -8, :].float())
                     .pow(2)
                     .sum(-1)
                     .mean(0)
@@ -1104,7 +1104,7 @@ class eval_sae(nn.Module):
                 eout11, info11 = self.sae_openai11.encode(output_layer11)
                 dout11 = self.sae_openai11.decode(eout11, info11)
                 loss11 = (
-                    (dout11.float() - output_layer11.float())
+                    (dout11[:, -8, :].float() - output_layer11[:, -8, :].float())
                     .pow(2)
                     .sum(-1)
                     .mean(0)
