@@ -1235,8 +1235,20 @@ class eval_sae(nn.Module):
 
 class eval_sae_acc(eval_sae):
 
-    def __init__(self):
-        super().__init__()
+    def __init__(self,
+                 model,
+                 DEVICE,
+                 method,
+                 intervened_token_idx,
+                 batch_size):
+     
+:
+        super().__init__(model,
+                        DEVICE,
+                        method,
+                        intervened_token_idx,
+                        batch_size)
+     
 
     def forward(self, x):
 
@@ -1266,7 +1278,7 @@ class eval_sae_acc(eval_sae):
                     )
                     eout = sae.encode(output_layer)
                     dout = sae.decode(eout).save()
-                    self.model.transformer.h[layer].output[0] = dout
+                    self.model.transformer.h[layer].output[0][:, -8, :] = dout[:, -8, :]
                     intervened_base_output = self.model.lm_head.output.save()
 
                 predicted_text = []
@@ -1308,7 +1320,7 @@ class eval_sae_acc(eval_sae):
                     )
                     eout = sae.encode(output_layer)
                     dout = sae.decode(eout).save()
-                    self.model.transformer.h[layer].output[0] = dout
+                    self.model.transformer.h[layer].output[0][:, -8, :] = dout[:, -8, :]
                     intervened_base_output = self.model.lm_head.output.save()
 
                 predicted_text = []
@@ -1348,7 +1360,7 @@ class eval_sae_acc(eval_sae):
                     dout = sae.decode.saes[f"blocks-{layer}-hook_resid_pre"](
                         eout
                     ).save()
-                    self.model.transformer.h[layer].output[0] = dout
+                    self.model.transformer.h[layer].output[0][:, -8, :] = dout[:, -8, :]
                     intervened_base_output = self.model.lm_head.output.save()
 
                 predicted_text = []

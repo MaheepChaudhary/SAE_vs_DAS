@@ -117,6 +117,40 @@ def loss(sent, model, intervened_token_idx, indices):
             round(mean11, 2),
         )
 
+def eval_sae_acc(sent, label, model, intervened_token_idx, indices):
+    with torch.no_grad():
+        acc_list = []
+        for layer in range(12):
+            for i in tqdm(range(indices)):
+                
+                batch_size = 16
+
+                samples = sent["input_ids"][i * 16 : (i + 1) * 16]
+                labels = label["input_ids"][i * 16 : (i + 1) * 16]
+                
+                output_dir = model(samples)
+                ground_truth_token_id = labels
+                vocab_size = model.tokenizer.vocab_size
+                ground_truth_one_hot = F.one_hot(
+                    ground_truth_token_id["input_ids"], num_classes=vocab_size
+                )
+                
+                _, predicted_text_ = output_dir[f"Predicted_L{layer}"]
+                
+                # Calculate accuracy
+                predicted_text = [word.split()[0] for word in predicted_text_]
+                source_label = [word.split()[0] for word in labels]
+
+                total_val_samples_processed += batch_size
+                for i in range(len(predicted_text)):
+                    if predicted_text[i] == source_label[i]:
+                        matches_val += 1
+
+                torch.cuda.empty_cache()
+                
+            acc_list.append(matches_val / total_val_samples_processed)
+    return acc_list
+                
 
 if __name__ == "__main__":
 
@@ -147,12 +181,13 @@ if __name__ == "__main__":
         countdata = json.load(f1)
 
     contsent = [sent[0] for sent in contdata]
-    contlabel = [label[1] for label in contdata]
+    contlabel = [" " + label[1] for label in contdata]
 
     countsent = [s[0] for s in countdata]
-    countlabel = [l[1] for l in countdata]
+    countlabel = [" " + l[1] for l in countdata]
 
     t_contsent = model.tokenizer(contsent, return_tensors="pt").to(args.device)
+    t_contlabel = model.tokenizer(contlabel, return_tensors="pt").to(args.device)
 
     cont_indices = int(len(t_contsent["input_ids"]) / 16)
     print(f"Continent Indices: {cont_indices}")
@@ -178,6 +213,15 @@ if __name__ == "__main__":
     )
 
     t_countsent = model.tokenizer(countsent, return_tensors="pt").to(args.device)
+    t_countlabel = model.tokenizer(countlabel, return_tensors="pt").to(args.device)
+
+    eval_acc = eval_sae_acc(
+        model=model,
+        DEVICE=args.device,
+        method=args.method,
+        intervened_token_idx=intervened_token_idx,
+        batch_size=args.batch_size,
+    )
 
     if args.method == "sae masking neel":
         latexbloomlist_country = [
@@ -318,3 +362,75 @@ if __name__ == "__main__":
         with open("latex_table.txt", "a") as f:
             for item in latexapollolist_continent:
                 f.write(f"{item}\n")
+
+    elif args.method == "acc sae masking neel":
+        acc_list_count = eval_sae_acc(
+            sent=t_countsent,
+            label = t_countlabel,
+            model=model_sae_eval,
+            intervened_token_idx=-8,
+            indices=count_indices,
+        )
+        acc_list_cont= eval_sae_acc(
+            sent=t_contsent,
+            label = t_contlabel,
+            model=model_sae_eval,
+            intervened_token_idx=-8,
+            indices=count_indices,
+        )
+        with open("latex_table_acc.txt", "w") as f:
+            for item in acc_list_count:
+                f.write(f"{item}\n")
+
+        with open("latex_table_acc.txt", "a") as f:
+            for item in acc_list_cont:
+                f.write(f"{item}\n")
+        
+
+    elif args.method == "acc sae masking openai":
+        acc_list_count = eval_sae_acc(
+            sent=t_countsent,
+            label = t_countlabel,
+            model=model_sae_eval,
+            intervened_token_idx=-8,
+            indices=count_indices,
+        )
+        acc_list_cont= eval_sae_acc(
+            sent=t_contsent,
+            label = t_contlabel,
+            model=model_sae_eval,
+            intervened_token_idx=-8,
+            indices=count_indices,
+        )
+        with open("latex_table_acc.txt", "a") as f:
+            for item in acc_list_count:
+                f.write(f"{item}\n")
+
+        with open("latex_table_acc.txt", "a") as f:
+            for item in acc_list_cont:
+                f.write(f"{item}\n")
+        
+
+    elif args.method == "acc sae masking apollo":
+        acc_list_count = eval_sae_acc(
+            sent=t_countsent,
+            label = t_countlabel,
+            model=model_sae_eval,
+            intervened_token_idx=-8,
+            indices=count_indices,
+        )
+        acc_list_cont= eval_sae_acc(
+            sent=t_contsent,
+            label = t_contlabel,
+            model=model_sae_eval,
+            intervened_token_idx=-8,
+            indices=count_indices,
+        )
+        with open("latex_table_acc.txt", "a") as f:
+            for item in acc_list_count:
+                f.write(f"{item}\n")
+
+        with open("latex_table_acc.txt", "a") as f:
+            for item in acc_list_cont:
+                f.write(f"{item}\n")
+    
