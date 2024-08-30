@@ -1236,6 +1236,7 @@ class eval_sae(nn.Module):
 class eval_sae_acc(nn.Module):
 
     def __init__(self, model, DEVICE, method, intervened_token_idx, batch_size) -> None:
+        super(eval_sae_acc, self).__init__()
         self.model = model
         self.intervened_token_idx = t.tensor(
             intervened_token_idx, dtype=t.int32, device=DEVICE
