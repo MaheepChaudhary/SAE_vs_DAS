@@ -60,7 +60,7 @@ def transpose_list(input_list):
 
 
 # Example usage
-filename = "latex_table.txt"
+filename = "latex_table_acc.txt"
 latex_final_list = read_file_in_batches(filename)
 headers = [
     "Layers",
