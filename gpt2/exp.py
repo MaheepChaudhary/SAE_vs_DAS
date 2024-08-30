@@ -65,12 +65,12 @@ filename = "latex_table_acc.txt"
 latex_final_list = read_file_in_batches(filename)
 headers = [
     "Layers",
-    "Bloom SAE Continent",
     "Bloom SAE Country",
-    "OpenAI SAE Continent",
+    "Bloom SAE Continent",
     "OpenAI SAE Country",
-    "Apollo SAE Continent",
+    "OpenAI SAE Continent",
     "Apollo SAE Country",
+    "Apollo SAE Continent",
 ]
 t_latex_final_list = transpose_list(latex_final_list)
 pprint(np.array(latex_final_list).shape)
