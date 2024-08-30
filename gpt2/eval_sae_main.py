@@ -182,6 +182,7 @@ if __name__ == "__main__":
 
     contsent = [sent[0] for sent in contdata]
     contlabel = [" " + label[1] for label in contdata]
+    print(contlabel)
 
     countsent = [s[0] for s in countdata]
     countlabel = [" " + l[1] for l in countdata]
