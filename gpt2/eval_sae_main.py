@@ -163,14 +163,6 @@ if __name__ == "__main__":
 
     model, intervened_token_idx = config(args.device)
 
-    model_sae_eval = eval_sae(
-        model=model,
-        DEVICE=args.device,
-        method=args.method,
-        intervened_token_idx=intervened_token_idx,
-        batch_size=args.batch_size,
-    )
-
     # TODO: Find also the accuracy while intervening using the city for the reconstructed city vector by the SAE.
 
     latexlist = []
@@ -193,39 +185,17 @@ if __name__ == "__main__":
     cont_indices = int(len(t_contsent["input_ids"]) / 16)
     print(f"Continent Indices: {cont_indices}")
 
-    # (
-    #     loss0,
-    #     loss1,
-    #     loss2,
-    #     loss3,
-    #     loss4,
-    #     loss5,
-    #     loss6,
-    #     loss7,
-    #     loss8,
-    #     loss9,
-    #     loss10,
-    #     loss11,
-    # ) = loss(
-    #     sent=t_contsent,
-    #     model=model_sae_eval,
-    #     intervened_token_idx=-8,
-    #     indices=cont_indices,
-    # )
-
-    t_countsent = model.tokenizer(countsent, return_tensors="pt").to(args.device)
-    t_countlabel = model.tokenizer(countlabel, return_tensors="pt").to(args.device)
-
-    eval_acc = eval_sae_acc(
+    if args.method == "sae masking neel" or args.method == "sae masking openai" or args.method == "sae masking apollo":
+        model_sae_eval = eval_sae(
         model=model,
         DEVICE=args.device,
         method=args.method,
         intervened_token_idx=intervened_token_idx,
-        batch_size=args.batch_size,
-    )
-
-    if args.method == "sae masking neel":
-        latexbloomlist_country = [
+        batch_size=args.batch_size
+        )
+        
+        
+        (
             loss0,
             loss1,
             loss2,
@@ -238,65 +208,76 @@ if __name__ == "__main__":
             loss9,
             loss10,
             loss11,
-        ]
-    elif args.method == "sae masking openai":
-        latexopenailist_country = [
-            loss0,
-            loss1,
-            loss2,
-            loss3,
-            loss4,
-            loss5,
-            loss6,
-            loss7,
-            loss8,
-            loss9,
-            loss10,
-            loss11,
-        ]
-    elif args.method == "sae masking apollo":
-        latexapollolist_country = [
-            loss0,
-            loss1,
-            loss2,
-            loss3,
-            loss4,
-            loss5,
-            loss6,
-            loss7,
-            loss8,
-            loss9,
-            loss10,
-            loss11,
-        ]
+        ) = loss(
+            sent=t_contsent,
+            model=model_sae_eval,
+            intervened_token_idx=-8,
+            indices=cont_indices,
+        )
 
-    t_countsent = model.tokenizer(countsent, return_tensors="pt").to(args.device)
+        t_countsent = model.tokenizer(countsent, return_tensors="pt").to(args.device)
+        t_countlabel = model.tokenizer(countlabel, return_tensors="pt").to(args.device)
 
-    count_indices = int(len(t_countsent["input_ids"]) / 16)
-    print(f"Country Indices: {count_indices}")
+        eval_acc = eval_sae_acc(
+            model=model,
+            DEVICE=args.device,
+            method=args.method,
+            intervened_token_idx=intervened_token_idx,
+            batch_size=args.batch_size,
+        )
 
-    (
-        count_loss0,
-        count_loss1,
-        count_loss2,
-        count_loss3,
-        count_loss4,
-        count_loss5,
-        count_loss6,
-        count_loss7,
-        count_loss8,
-        count_loss9,
-        count_loss10,
-        count_loss11,
-    ) = loss(
-        sent=t_countsent,
-        model=model_sae_eval,
-        intervened_token_idx=-8,
-        indices=count_indices,
-    )
+        if args.method == "sae masking neel":
+            latexbloomlist_country = [
+                loss0,
+                loss1,
+                loss2,
+                loss3,
+                loss4,
+                loss5,
+                loss6,
+                loss7,
+                loss8,
+                loss9,
+                loss10,
+                loss11,
+            ]
+        elif args.method == "sae masking openai":
+            latexopenailist_country = [
+                loss0,
+                loss1,
+                loss2,
+                loss3,
+                loss4,
+                loss5,
+                loss6,
+                loss7,
+                loss8,
+                loss9,
+                loss10,
+                loss11,
+            ]
+        elif args.method == "sae masking apollo":
+            latexapollolist_country = [
+                loss0,
+                loss1,
+                loss2,
+                loss3,
+                loss4,
+                loss5,
+                loss6,
+                loss7,
+                loss8,
+                loss9,
+                loss10,
+                loss11,
+            ]
 
-    if args.method == "sae masking neel":
-        latexbloomlist_continent = [
+        t_countsent = model.tokenizer(countsent, return_tensors="pt").to(args.device)
+
+        count_indices = int(len(t_countsent["input_ids"]) / 16)
+        print(f"Country Indices: {count_indices}")
+
+        (
             count_loss0,
             count_loss1,
             count_loss2,
@@ -309,60 +290,81 @@ if __name__ == "__main__":
             count_loss9,
             count_loss10,
             count_loss11,
-        ]
-        with open("latex_table.txt", "w") as f:
-            for item in latexbloomlist_country:
-                f.write(f"{item}\n")
+        ) = loss(
+            sent=t_countsent,
+            model=model_sae_eval,
+            intervened_token_idx=-8,
+            indices=count_indices,
+        )
 
-        with open("latex_table.txt", "a") as f:
-            for item in latexbloomlist_continent:
-                f.write(f"{item}\n")
+        if args.method == "sae masking neel":
+            latexbloomlist_continent = [
+                count_loss0,
+                count_loss1,
+                count_loss2,
+                count_loss3,
+                count_loss4,
+                count_loss5,
+                count_loss6,
+                count_loss7,
+                count_loss8,
+                count_loss9,
+                count_loss10,
+                count_loss11,
+            ]
+            with open("latex_table.txt", "w") as f:
+                for item in latexbloomlist_country:
+                    f.write(f"{item}\n")
 
-    elif args.method == "sae masking openai":
-        latexopenailist_continent = [
-            count_loss0,
-            count_loss1,
-            count_loss2,
-            count_loss3,
-            count_loss4,
-            count_loss5,
-            count_loss6,
-            count_loss7,
-            count_loss8,
-            count_loss9,
-            count_loss10,
-            count_loss11,
-        ]
-        with open("latex_table.txt", "a") as f:
-            for item in latexopenailist_country:
-                f.write(f"{item}\n")
+            with open("latex_table.txt", "a") as f:
+                for item in latexbloomlist_continent:
+                    f.write(f"{item}\n")
 
-        with open("latex_table.txt", "a") as f:
-            for item in latexopenailist_continent:
-                f.write(f"{item}\n")
+        elif args.method == "sae masking openai":
+            latexopenailist_continent = [
+                count_loss0,
+                count_loss1,
+                count_loss2,
+                count_loss3,
+                count_loss4,
+                count_loss5,
+                count_loss6,
+                count_loss7,
+                count_loss8,
+                count_loss9,
+                count_loss10,
+                count_loss11,
+            ]
+            with open("latex_table.txt", "a") as f:
+                for item in latexopenailist_country:
+                    f.write(f"{item}\n")
 
-    elif args.method == "sae masking apollo":
-        latexapollolist_continent = [
-            count_loss0,
-            count_loss1,
-            count_loss2,
-            count_loss3,
-            count_loss4,
-            count_loss5,
-            count_loss6,
-            count_loss7,
-            count_loss8,
-            count_loss9,
-            count_loss10,
-            count_loss11,
-        ]
-        with open("latex_table.txt", "a") as f:
-            for item in latexapollolist_country:
-                f.write(f"{item}\n")
+            with open("latex_table.txt", "a") as f:
+                for item in latexopenailist_continent:
+                    f.write(f"{item}\n")
 
-        with open("latex_table.txt", "a") as f:
-            for item in latexapollolist_continent:
-                f.write(f"{item}\n")
+        elif args.method == "sae masking apollo":
+            latexapollolist_continent = [
+                count_loss0,
+                count_loss1,
+                count_loss2,
+                count_loss3,
+                count_loss4,
+                count_loss5,
+                count_loss6,
+                count_loss7,
+                count_loss8,
+                count_loss9,
+                count_loss10,
+                count_loss11,
+            ]
+            with open("latex_table.txt", "a") as f:
+                for item in latexapollolist_country:
+                    f.write(f"{item}\n")
+
+            with open("latex_table.txt", "a") as f:
+                for item in latexapollolist_continent:
+                    f.write(f"{item}\n")
 
     elif args.method == "acc sae masking neel":
         model_sae_acc = eval_sae_acc()
