@@ -241,7 +241,7 @@ if __name__ == "__main__":
     t_countsent = model.tokenizer(countsent, return_tensors="pt").to(args.device)
     t_countlabel = model.tokenizer(countlabel, return_tensors="pt").to(args.device)
 
-    count_indices = int(len(t_countsent["input_ids"]) / 16)
+    count_indices = int(len(countsent) / 16)
     print(f"Continent Indices: {count_indices}")
 
     if args.method == "sae masking neel" or args.method == "sae masking openai" or args.method == "sae masking apollo":
