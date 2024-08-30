@@ -128,14 +128,14 @@ def accuracy(sent, label, model, intervened_token_idx, indices):
                 samples = sent["input_ids"][i * 16 : (i + 1) * 16]
                 labels = label["input_ids"][i * 16 : (i + 1) * 16]
                 
-                output_dir = model(samples)
+                output_list = model(samples)
                 ground_truth_token_id = labels
                 vocab_size = model.tokenizer.vocab_size
                 ground_truth_one_hot = F.one_hot(
                     ground_truth_token_id["input_ids"], num_classes=vocab_size
                 )
                 
-                _, predicted_text_ = output_dir[f"Predicted_L{layer}"]
+                _, predicted_text_ = output_list[f"Predicted_L{layer}"]
                 
                 # Calculate accuracy
                 predicted_text = [word.split()[0] for word in predicted_text_]
