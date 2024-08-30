@@ -193,25 +193,25 @@ if __name__ == "__main__":
     cont_indices = int(len(t_contsent["input_ids"]) / 16)
     print(f"Continent Indices: {cont_indices}")
 
-    (
-        loss0,
-        loss1,
-        loss2,
-        loss3,
-        loss4,
-        loss5,
-        loss6,
-        loss7,
-        loss8,
-        loss9,
-        loss10,
-        loss11,
-    ) = loss(
-        sent=t_contsent,
-        model=model_sae_eval,
-        intervened_token_idx=-8,
-        indices=cont_indices,
-    )
+    # (
+    #     loss0,
+    #     loss1,
+    #     loss2,
+    #     loss3,
+    #     loss4,
+    #     loss5,
+    #     loss6,
+    #     loss7,
+    #     loss8,
+    #     loss9,
+    #     loss10,
+    #     loss11,
+    # ) = loss(
+    #     sent=t_contsent,
+    #     model=model_sae_eval,
+    #     intervened_token_idx=-8,
+    #     indices=cont_indices,
+    # )
 
     t_countsent = model.tokenizer(countsent, return_tensors="pt").to(args.device)
     t_countlabel = model.tokenizer(countlabel, return_tensors="pt").to(args.device)
