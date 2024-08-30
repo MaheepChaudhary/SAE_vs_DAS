@@ -1122,7 +1122,7 @@ class eval_sae(nn.Module):
                     eout1
                 )
                 loss1 = (
-                    (dout1.float() - output_layer1.float())
+                    (dout1[:, -8, :].float() - output_layer1[:, -8, :].float())
                     .pow(2)
                     .sum(-1)
                     .mean(0)
@@ -1137,7 +1137,10 @@ class eval_sae(nn.Module):
                     "blocks-2-hook_resid_pre"
                 ].decoder(eout1_e2eds)
                 loss1_e2eds = (
-                    (dout1_e2eds.float() - output_layer1_e2eds.float())
+                    (
+                        dout1_e2eds[:, -8, :].float()
+                        - output_layer1_e2eds[:, -8, :].float()
+                    )
                     .pow(2)
                     .sum(-1)
                     .mean(0)
@@ -1152,7 +1155,7 @@ class eval_sae(nn.Module):
                     eout5
                 )
                 loss5 = (
-                    (dout5.float() - output_layer5.float())
+                    (dout5[:, -8, :].float() - output_layer5[:, -8, :].float())
                     .pow(2)
                     .sum(-1)
                     .mean(0)
@@ -1167,7 +1170,10 @@ class eval_sae(nn.Module):
                     "blocks-6-hook_resid_pre"
                 ].decoder(eout5_e2eds)
                 loss5_e2eds = (
-                    (dout5_e2eds.float() - output_layer5_e2eds.float())
+                    (
+                        dout5_e2eds[:, -8, :].float()
+                        - output_layer5_e2eds[:, -8, :].float()
+                    )
                     .pow(2)
                     .sum(-1)
                     .mean(0)
@@ -1182,7 +1188,7 @@ class eval_sae(nn.Module):
                     eout9
                 )
                 loss9 = (
-                    (dout9.float() - output_layer9.float())
+                    (dout9[:, -8, :].float() - output_layer9[:, -8, :].float())
                     .pow(2)
                     .sum(-1)
                     .mean(0)
@@ -1197,7 +1203,10 @@ class eval_sae(nn.Module):
                     "blocks-10-hook_resid_pre"
                 ].decoder(eout9_e2eds)
                 loss9_e2eds = (
-                    (dout9_e2eds.float() - output_layer9_e2eds.float())
+                    (
+                        dout9_e2eds[:, -8, :].float()
+                        - output_layer9_e2eds[:, -8, :].float()
+                    )
                     .pow(2)
                     .sum(-1)
                     .mean(0)
