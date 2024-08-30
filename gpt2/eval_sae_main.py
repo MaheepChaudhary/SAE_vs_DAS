@@ -117,7 +117,7 @@ def loss(sent, model, intervened_token_idx, indices):
             round(mean11, 2),
         )
 
-def eval_sae_acc(sent, label, model, intervened_token_idx, indices):
+def accuracy(sent, label, model, intervened_token_idx, indices):
     with torch.no_grad():
         acc_list = []
         for layer in range(12):
@@ -365,17 +365,18 @@ if __name__ == "__main__":
                 f.write(f"{item}\n")
 
     elif args.method == "acc sae masking neel":
-        acc_list_count = eval_sae_acc(
+        model_sae_acc = eval_sae_acc()
+        acc_list_count = accuracy(
             sent=t_countsent,
             label = t_countlabel,
-            model=model_sae_eval,
+            model=model_sae_acc,
             intervened_token_idx=-8,
             indices=count_indices,
         )
-        acc_list_cont= eval_sae_acc(
+        acc_list_cont= accuracy(
             sent=t_contsent,
             label = t_contlabel,
-            model=model_sae_eval,
+            model=model_sae_acc,
             intervened_token_idx=-8,
             indices=count_indices,
         )
@@ -389,17 +390,18 @@ if __name__ == "__main__":
         
 
     elif args.method == "acc sae masking openai":
-        acc_list_count = eval_sae_acc(
+        model_sae_acc = eval_sae_acc()
+        acc_list_count = accuracy(
             sent=t_countsent,
             label = t_countlabel,
-            model=model_sae_eval,
+            model=model_sae_acc,
             intervened_token_idx=-8,
             indices=count_indices,
         )
-        acc_list_cont= eval_sae_acc(
+        acc_list_cont= accuracy(
             sent=t_contsent,
             label = t_contlabel,
-            model=model_sae_eval,
+            model=model_sae_acc,
             intervened_token_idx=-8,
             indices=count_indices,
         )
@@ -413,17 +415,18 @@ if __name__ == "__main__":
         
 
     elif args.method == "acc sae masking apollo":
-        acc_list_count = eval_sae_acc(
+        model_sae_acc = eval_sae_acc()
+        acc_list_count = accuracy(
             sent=t_countsent,
             label = t_countlabel,
-            model=model_sae_eval,
+            model=model_sae_acc,
             intervened_token_idx=-8,
             indices=count_indices,
         )
-        acc_list_cont= eval_sae_acc(
+        acc_list_cont= accuracy(
             sent=t_contsent,
             label = t_contlabel,
-            model=model_sae_eval,
+            model=model_sae_acc,
             intervened_token_idx=-8,
             indices=count_indices,
         )
