@@ -181,9 +181,12 @@ if __name__ == "__main__":
 
     t_contsent = model.tokenizer(contsent, return_tensors="pt").to(args.device)
     t_contlabel = model.tokenizer(contlabel, return_tensors="pt").to(args.device)
+    
+    t_countsent = model.tokenizer(countsent, return_tensors="pt").to(args.device)
+    t_countlabel = model.tokenizer(countlabel, return_tensors="pt").to(args.device)
 
-    cont_indices = int(len(t_contsent["input_ids"]) / 16)
-    print(f"Continent Indices: {cont_indices}")
+    count_indices = int(len(t_countsent["input_ids"]) / 16)
+    print(f"Continent Indices: {count_indices}")
 
     if args.method == "sae masking neel" or args.method == "sae masking openai" or args.method == "sae masking apollo":
         model_sae_eval = eval_sae(
