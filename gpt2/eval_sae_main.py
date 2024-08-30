@@ -127,7 +127,7 @@ def accuracy(sent, label, model_, intervened_token_idx, indices):
                 batch_size = 16
 
                 samples = sent["input_ids"][i * 16 : (i + 1) * 16]
-                labels = label["input_ids"][i * 16 : (i + 1) * 16]
+                labels = label[i * 16 : (i + 1) * 16]
                 output_list = model_(samples)
                 ground_truth_token_id = labels
                 vocab_size = model.tokenizer.vocab_size
@@ -378,14 +378,14 @@ if __name__ == "__main__":
                                     batch_size=args.batch_size)
         acc_list_count = accuracy(
             sent=t_countsent,
-            label = t_countlabel,
+            label = countlabel,
             model_=model_sae_acc,
             intervened_token_idx=-8,
             indices=count_indices,
         )
         acc_list_cont= accuracy(
             sent=t_contsent,
-            label = t_contlabel,
+            label = contlabel,
             model_=model_sae_acc,
             intervened_token_idx=-8,
             indices=count_indices,
@@ -407,14 +407,14 @@ if __name__ == "__main__":
                             batch_size)
         acc_list_count = accuracy(
             sent=t_countsent,
-            label = t_countlabel,
+            label = countlabel,
             model_=model_sae_acc,
             intervened_token_idx=-8,
             indices=count_indices,
         )
         acc_list_cont= accuracy(
             sent=t_contsent,
-            label = t_contlabel,
+            label = contlabel,
             model_=model_sae_acc,
             intervened_token_idx=-8,
             indices=count_indices,
@@ -436,14 +436,14 @@ if __name__ == "__main__":
                                     batch_size)
         acc_list_count = accuracy(
             sent=t_countsent,
-            label = t_countlabel,
+            label = countlabel,
             model_=model_sae_acc,
             intervened_token_idx=-8,
             indices=count_indices,
         )
         acc_list_cont= accuracy(
             sent=t_contsent,
-            label = t_contlabel,
+            label = contlabel,
             model_=model_sae_acc,
             intervened_token_idx=-8,
             indices=count_indices,
