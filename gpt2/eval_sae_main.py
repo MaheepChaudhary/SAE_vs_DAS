@@ -117,7 +117,7 @@ def loss(sent, model, intervened_token_idx, indices):
             round(mean11, 2),
         )
 
-def accuracy(sent, label, model, intervened_token_idx, indices):
+def accuracy(sent, label, model_, intervened_token_idx, indices):
     with torch.no_grad():
         acc_list = []
         for layer in range(12):
@@ -128,7 +128,7 @@ def accuracy(sent, label, model, intervened_token_idx, indices):
                 samples = sent["input_ids"][i * 16 : (i + 1) * 16]
                 labels = label["input_ids"][i * 16 : (i + 1) * 16]
                 
-                output_list = model(samples)
+                output_list = model_(samples)
                 ground_truth_token_id = labels
                 vocab_size = model.tokenizer.vocab_size
                 ground_truth_one_hot = F.one_hot(
@@ -378,14 +378,14 @@ if __name__ == "__main__":
         acc_list_count = accuracy(
             sent=t_countsent,
             label = t_countlabel,
-            model=model_sae_acc,
+            model_=model_sae_acc,
             intervened_token_idx=-8,
             indices=count_indices,
         )
         acc_list_cont= accuracy(
             sent=t_contsent,
             label = t_contlabel,
-            model=model_sae_acc,
+            model_=model_sae_acc,
             intervened_token_idx=-8,
             indices=count_indices,
         )
@@ -403,14 +403,14 @@ if __name__ == "__main__":
         acc_list_count = accuracy(
             sent=t_countsent,
             label = t_countlabel,
-            model=model_sae_acc,
+            model_=model_sae_acc,
             intervened_token_idx=-8,
             indices=count_indices,
         )
         acc_list_cont= accuracy(
             sent=t_contsent,
             label = t_contlabel,
-            model=model_sae_acc,
+            model_=model_sae_acc,
             intervened_token_idx=-8,
             indices=count_indices,
         )
@@ -428,14 +428,14 @@ if __name__ == "__main__":
         acc_list_count = accuracy(
             sent=t_countsent,
             label = t_countlabel,
-            model=model_sae_acc,
+            model_=model_sae_acc,
             intervened_token_idx=-8,
             indices=count_indices,
         )
         acc_list_cont= accuracy(
             sent=t_contsent,
             label = t_contlabel,
-            model=model_sae_acc,
+            model_=model_sae_acc,
             intervened_token_idx=-8,
             indices=count_indices,
         )
