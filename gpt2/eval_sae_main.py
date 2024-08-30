@@ -141,7 +141,7 @@ def accuracy(sent, label, model_, intervened_token_idx, indices, method):
             output_list = model_(samples)
             ground_truth_token_id = labels
             if method == "acc sae masking neel":
-                
+
                 for layer in range(11,12):
                     total_val_samples_processed = 0;  matches = 0
                     predicted_text_ = output_list[f"Predicted_L{layer}"][1]
@@ -150,8 +150,8 @@ def accuracy(sent, label, model_, intervened_token_idx, indices, method):
                     predicted_text = [word.split()[0] for word in predicted_text_]
                     source_label = [word.split()[0] for word in labels]
 
-                    total_val_samples_processed += batch_size
                     for i in range(len(predicted_text)):
+                        total_val_samples_processed += 1
                         if predicted_text[i] == source_label[i]:
                             matches += 1
                         else:
@@ -172,8 +172,8 @@ def accuracy(sent, label, model_, intervened_token_idx, indices, method):
                     predicted_text = [word.split()[0] for word in predicted_text_]
                     source_label = [word.split()[0] for word in labels]
 
-                    total_val_samples_processed += batch_size
                     for i in range(len(predicted_text)):
+                        total_val_samples_processed += 1
                         if predicted_text[i] == source_label[i]:
                             matches += 1
                     
@@ -190,8 +190,8 @@ def accuracy(sent, label, model_, intervened_token_idx, indices, method):
                     predicted_text = [word.split()[0] for word in predicted_text_]
                     source_label = [word.split()[0] for word in labels]
 
-                    total_val_samples_processed += batch_size
                     for i in range(len(predicted_text)):
+                        total_val_samples_processed += 1
                         if predicted_text[i] == source_label[i]:
                             matches += 1
                     
