@@ -442,12 +442,12 @@ if __name__ == "__main__":
         assert len(acc_list_count) == len(acc_list_cont) == 12
         
         with open("latex_table_acc.txt", "w") as f:
-            for item in acc_list_count:
-                f.write(f"{item}\n")
+            for _item in acc_list_count:
+                f.write(f"{_item}\n")
 
         with open("latex_table_acc.txt", "a") as f:
-            for item in acc_list_cont:
-                f.write(f"{item}\n")
+            for item___ in acc_list_cont:
+                f.write(f"{item___}\n")
         
 
     elif args.method == "acc sae masking openai":
@@ -476,12 +476,12 @@ if __name__ == "__main__":
         assert len(acc_list_count) == len(acc_list_cont) == 12
 
         with open("latex_table_acc.txt", "a") as f:
-            for item in acc_list_count:
-                f.write(f"{item}\n")
+            for item__ in acc_list_count:
+                f.write(f"{item__}\n")
 
         with open("latex_table_acc.txt", "a") as f:
-            for item in acc_list_cont:
-                f.write(f"{item}\n")
+            for item_ in acc_list_cont:
+                f.write(f"{item_}\n")
         
 
     elif args.method == "acc sae masking apollo":
@@ -510,10 +510,10 @@ if __name__ == "__main__":
         assert len(acc_list_count) == len(acc_list_cont) == 12
         
         with open("latex_table_acc.txt", "a") as f:
-            for item in acc_list_count:
-                f.write(f"{item}\n")
+            for itemacc_list_count in acc_list_count:
+                f.write(f"{itemacc_list_count}\n")
 
         with open("latex_table_acc.txt", "a") as f:
-            for item in acc_list_cont:
-                f.write(f"{item}\n")
+            for itemacc_list_cont in acc_list_cont:
+                f.write(f"{itemacc_list_cont}\n")
     
