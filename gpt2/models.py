@@ -1233,7 +1233,7 @@ class eval_sae(nn.Module):
         )
 
 
-class eval_sae_acc(eval_sae):
+class eval_sae_acc(nn.Module):
 
     def __init__(self, model, DEVICE, method, intervened_token_idx, batch_size) -> None:
         self.model = model
