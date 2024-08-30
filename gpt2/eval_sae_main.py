@@ -134,7 +134,7 @@ def accuracy(sent, label, model_, intervened_token_idx, indices):
                 ground_truth_one_hot = F.one_hot(
                     ground_truth_token_id, num_classes=vocab_size
                 )
-                
+                print(output_list[f"Predicted_L{layer}"])
                 _, predicted_text_ = output_list[f"Predicted_L{layer}"]
                 
                 # Calculate accuracy
