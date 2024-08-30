@@ -394,6 +394,7 @@ if __name__ == "__main__":
             model_=model_sae_acc,
             intervened_token_idx=-8,
             indices=count_indices,
+            method=args.method,
         )
         acc_list_cont= accuracy(
             sent=t_contsent,
@@ -401,6 +402,7 @@ if __name__ == "__main__":
             model_=model_sae_acc,
             intervened_token_idx=-8,
             indices=count_indices,
+            method=args.method,
         )
         with open("latex_table_acc.txt", "w") as f:
             for item in acc_list_count:
@@ -423,6 +425,7 @@ if __name__ == "__main__":
             model_=model_sae_acc,
             intervened_token_idx=-8,
             indices=count_indices,
+            method=args.method,
         )
         acc_list_cont= accuracy(
             sent=t_contsent,
@@ -430,6 +433,7 @@ if __name__ == "__main__":
             model_=model_sae_acc,
             intervened_token_idx=-8,
             indices=count_indices,
+            method=args.method,
         )
         with open("latex_table_acc.txt", "a") as f:
             for item in acc_list_count:
@@ -452,6 +456,7 @@ if __name__ == "__main__":
             model_=model_sae_acc,
             intervened_token_idx=-8,
             indices=count_indices,
+            method=args.method,
         )
         acc_list_count = acc_list_count_ + [0,0,0,0,0,0]
         acc_list_cont_ = accuracy(
@@ -460,6 +465,7 @@ if __name__ == "__main__":
             model_=model_sae_acc,
             intervened_token_idx=-8,
             indices=count_indices,
+            method=args.method,
         )
         acc_list_cont = acc_list_cont_ + [0,0,0,0,0,0]
         with open("latex_table_acc.txt", "a") as f:
