@@ -1236,19 +1236,17 @@ class eval_sae(nn.Module):
 class eval_sae_acc(eval_sae):
 
     def __init__(self,
-                 model,
-                 DEVICE,
-                 method,
-                 intervened_token_idx,
-                 batch_size):
-     
-:
+                model,
+                DEVICE,
+                method,
+                intervened_token_idx,
+                batch_size):
         super().__init__(model,
                         DEVICE,
                         method,
                         intervened_token_idx,
                         batch_size)
-     
+
 
     def forward(self, x):
 
