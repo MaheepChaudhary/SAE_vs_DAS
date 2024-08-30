@@ -422,7 +422,7 @@ if __name__ == "__main__":
                                     method=args.method,
                                     intervened_token_idx=intervened_token_idx,
                                     batch_size=args.batch_size)
-        acc_list_count = accuracy(
+        acc_list_count_neel = accuracy(
             sent=t_countsent,
             label = countlabel,
             model_=model_sae_acc,
@@ -430,7 +430,7 @@ if __name__ == "__main__":
             indices=count_indices,
             method=args.method,
         )
-        acc_list_cont= accuracy(
+        acc_list_cont_neel= accuracy(
             sent=t_contsent,
             label = contlabel,
             model_=model_sae_acc,
@@ -439,14 +439,14 @@ if __name__ == "__main__":
             method=args.method,
         )
         
-        assert len(acc_list_count) == len(acc_list_cont) == 12
+        assert len(acc_list_count_neel) == len(acc_list_cont_neel) == 12
         
         with open("latex_table_acc.txt", "w") as f:
-            for _item in acc_list_count:
+            for _item in acc_list_count_neel:
                 f.write(f"{_item}\n")
 
         with open("latex_table_acc.txt", "a") as f:
-            for item___ in acc_list_cont:
+            for item___ in acc_list_cont_neel:
                 f.write(f"{item___}\n")
         
 
@@ -456,7 +456,7 @@ if __name__ == "__main__":
                             args.method, 
                             intervened_token_idx, 
                             batch_size)
-        acc_list_count = accuracy(
+        acc_list_count_openai = accuracy(
             sent=t_countsent,
             label = countlabel,
             model_=model_sae_acc,
@@ -464,7 +464,7 @@ if __name__ == "__main__":
             indices=count_indices,
             method=args.method,
         )
-        acc_list_cont= accuracy(
+        acc_list_cont_openai = accuracy(
             sent=t_contsent,
             label = contlabel,
             model_=model_sae_acc,
@@ -473,14 +473,14 @@ if __name__ == "__main__":
             method=args.method,
         )
 
-        assert len(acc_list_count) == len(acc_list_cont) == 12
+        assert len(acc_list_count_openai) == len(acc_list_cont_openai) == 12
 
         with open("latex_table_acc.txt", "a") as f:
-            for item__ in acc_list_count:
+            for item__ in acc_list_count_openai:
                 f.write(f"{item__}\n")
 
         with open("latex_table_acc.txt", "a") as f:
-            for item_ in acc_list_cont:
+            for item_ in acc_list_cont_openai:
                 f.write(f"{item_}\n")
         
 
@@ -490,7 +490,7 @@ if __name__ == "__main__":
                                     args.method, 
                                     intervened_token_idx, 
                                     batch_size)
-        acc_list_count = accuracy(
+        acc_list_count_apollo = accuracy(
             sent=t_countsent,
             label = countlabel,
             model_=model_sae_acc,
@@ -498,7 +498,7 @@ if __name__ == "__main__":
             indices=count_indices,
             method=args.method,
         )
-        acc_list_cont = accuracy(
+        acc_list_cont_apollo = accuracy(
             sent=t_contsent,
             label = contlabel,
             model_=model_sae_acc,
@@ -507,13 +507,13 @@ if __name__ == "__main__":
             method=args.method,
         )
         
-        assert len(acc_list_count) == len(acc_list_cont) == 12
+        assert len(acc_list_count_apollo) == len(acc_list_cont_apollo) == 12
         
         with open("latex_table_acc.txt", "a") as f:
-            for itemacc_list_count in acc_list_count:
+            for itemacc_list_count in acc_list_count_apollo:
                 f.write(f"{itemacc_list_count}\n")
 
         with open("latex_table_acc.txt", "a") as f:
-            for itemacc_list_cont in acc_list_cont:
+            for itemacc_list_cont in acc_list_cont_apollo:
                 f.write(f"{itemacc_list_cont}\n")
     
