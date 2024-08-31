@@ -156,7 +156,7 @@ def accuracy(sent, label, model_, intervened_token_idx, indices, method):
                         total_neel_samples_processed += 1
                         if predicted_text_neel[i] == source_label_neel[i]:
                             matches_neel += 1
-                        else:
+                        elif predicted_text_neel[i] != source_label_neel[i]:
                             print(f"Predicted: {predicted_text_neel[i]}")
                             print(f"Ground label: {source_label_neel[i]}")
                             print()
