@@ -154,7 +154,6 @@ def accuracy(sent, label, model_, intervened_token_idx, indices, method):
                     for i in range(len(predicted_text_neel)):
                         total_neel_samples_processed += 1
                         if predicted_text_neel[i] == source_label_neel[i]:
-                            print("I am running this")
                             matches_neel += 1
                     value_neel = matches_neel/len(predicted_text_neel)
                     acc_dict[f"Layer{layer}"].append(value_neel)
