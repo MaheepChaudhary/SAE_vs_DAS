@@ -143,7 +143,7 @@ def accuracy(sent, label, model_, intervened_token_idx, indices, method):
             if method == "acc sae masking neel":
 
                 for layer in range(11,12):
-                    total_val_samples_processed = 0;  matches = 0
+                    total_neel_samples_processed = 0;  matches = 0
                     predicted_text_ = output_list[f"Predicted_L{layer}"][1]
                     
                     # Calculate accuracy
@@ -151,7 +151,7 @@ def accuracy(sent, label, model_, intervened_token_idx, indices, method):
                     source_label = [word.split()[0] for word in labels]
 
                     for i in range(len(predicted_text)):
-                        total_val_samples_processed += 1
+                        total_neel_samples_processed += 1
                         if predicted_text[i] == source_label[i]:
                             matches += 1
                         else:
@@ -159,13 +159,13 @@ def accuracy(sent, label, model_, intervened_token_idx, indices, method):
                             print(f"Ground label: {source_label[i]}")
                             print()
                     
-                    acc_dict[f"Layer{layer}"].append(matches / total_val_samples_processed)
+                    acc_dict[f"Layer{layer}"].append(matches / total_neel_samples_processed)
                     
                 torch.cuda.empty_cache()
             elif method == "acc sae masking openai":
                 
                 for layer in range(11,12):
-                    total_val_samples_processed = 0;  matches = 0
+                    total_openai_samples_processed = 0;  matches = 0
                     predicted_text_ = output_list[f"Predicted_L{layer}"][1]
                     
                     # Calculate accuracy
@@ -173,7 +173,7 @@ def accuracy(sent, label, model_, intervened_token_idx, indices, method):
                     source_label = [word.split()[0] for word in labels]
 
                     for i in range(len(predicted_text)):
-                        total_val_samples_processed += 1
+                        total_openai_samples_processed += 1
                         if predicted_text[i] == source_label[i]:
                             matches += 1
                         else:
@@ -182,13 +182,13 @@ def accuracy(sent, label, model_, intervened_token_idx, indices, method):
                             print()
                     
                     
-                    acc_dict[f"Layer{layer}"].append(matches / total_val_samples_processed)
+                    acc_dict[f"Layer{layer}"].append(matches / total_openai_samples_processed)
                     
                 torch.cuda.empty_cache()
             
             elif method == "acc sae masking apollo":
                 for layer in range(6):
-                    total_val_samples_processed = 0;  matches = 0
+                    total_apollo_samples_processed = 0;  matches = 0
                     predicted_text_ = output_list[f"Predicted_L{layer}"][1]
                     
                     # Calculate accuracy
@@ -196,11 +196,11 @@ def accuracy(sent, label, model_, intervened_token_idx, indices, method):
                     source_label = [word.split()[0] for word in labels]
 
                     for i in range(len(predicted_text)):
-                        total_val_samples_processed += 1
+                        total_apollo_samples_processed += 1
                         if predicted_text[i] == source_label[i]:
                             matches += 1
                     
-                    acc_dict[f"Layer{layer}"].append(matches / total_val_samples_processed)
+                    acc_dict[f"Layer{layer}"].append(matches / total_apollo_samples_processed)
                     torch.cuda.empty_cache()
         acc_list = [sum(acc_dict[f"Layer{i}"])/len(acc_dict[f"Layer{i}"]) for i in range(12)]
         print(acc_list)
@@ -218,8 +218,6 @@ if __name__ == "__main__":
 
     model, intervened_token_idx = config(args.device)
     batch_size = 16
-
-    # TODO: Find also the accuracy while intervening using the city for the reconstructed city vector by the SAE.
 
     latexlist = []
     with open("comfy_continent.json", "r") as f:
