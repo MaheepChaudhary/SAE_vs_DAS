@@ -151,7 +151,7 @@ def accuracy(sent, label, model_, intervened_token_idx, indices, method):
                     predicted_text_neel = [word.split()[0] for word in predicted_text_neel_]
                     source_label_neel = [word.split()[0] for word in labels]
 
-                    for i in range(len(predicted_text)):
+                    for i in range(len(predicted_text_neel)):
                         total_neel_samples_processed += 1
                         if predicted_text_neel[i] == source_label_neel[i]:
                             matches_neel += 1
