@@ -132,6 +132,7 @@ def accuracy(sent, label, model_, intervened_token_idx, indices, method):
                     "Layer9": [0],
                     "Layer10": [0],
                     "Layer11": [0]}
+        
         for i in tqdm(range(indices)):
             
             batch_size = 16
@@ -142,30 +143,28 @@ def accuracy(sent, label, model_, intervened_token_idx, indices, method):
             ground_truth_token_id = labels
             if method == "acc sae masking neel":
 
-                for layer in range(11,12):
-                    total_val_samples_processed = 0;  matches = 0
-                    predicted_text_ = output_list[f"Predicted_L{layer}"][1]
+                for layer in range(12):
+                    total_neel_samples_processed = 0 
+                    matches_neel = 0
+                    predicted_text_neel_ = output_list[f"Predicted_L{layer}"][1]
                     
                     # Calculate accuracy
-                    predicted_text = [word.split()[0] for word in predicted_text_]
-                    source_label = [word.split()[0] for word in labels]
-
-                    for i in range(len(predicted_text)):
-                        total_val_samples_processed += 1
-                        if predicted_text[i] == source_label[i]:
-                            matches += 1
-                        else:
-                            print(f"Predicted: {predicted_text[i]}")
-                            print(f"Ground label: {source_label[i]}")
-                            print()
-                    
-                    acc_dict[f"Layer{layer}"].append(matches / total_val_samples_processed)
+                    predicted_text_neel = [word.split()[0] for word in predicted_text_neel_]
+                    source_label_neel = [word.split()[0] for word in labels]
+                    for i in range(len(predicted_text_neel)):
+                        total_neel_samples_processed += 1
+                        if predicted_text_neel[i] == source_label_neel[i]:
+                            print("I am running this")
+                            matches_neel += 1
+                    value_neel = matches_neel/len(predicted_text_neel)
+                    acc_dict[f"Layer{layer}"].append(value_neel)
                     
                 torch.cuda.empty_cache()
             elif method == "acc sae masking openai":
                 
                 for layer in range(12):
-                    total_val_samples_processed = 0;  matches = 0
+                    total_openai_samples_processed = 0
+                    matches_openai = 0
                     predicted_text_ = output_list[f"Predicted_L{layer}"][1]
                     
                     # Calculate accuracy
@@ -173,17 +172,23 @@ def accuracy(sent, label, model_, intervened_token_idx, indices, method):
                     source_label = [word.split()[0] for word in labels]
 
                     for i in range(len(predicted_text)):
-                        total_val_samples_processed += 1
+                        total_openai_samples_processed += 1
                         if predicted_text[i] == source_label[i]:
-                            matches += 1
+                            matches_openai += 1
+                        else:
+                            print(f"Predicted: {predicted_text[i]}")
+                            print(f"Ground label: {source_label[i]}")
+                            print()
                     
-                    acc_dict[f"Layer{layer}"].append(matches / total_val_samples_processed)
+                    
+                    acc_dict[f"Layer{layer}"].append(matches_openai / total_openai_samples_processed)
                     
                 torch.cuda.empty_cache()
             
             elif method == "acc sae masking apollo":
                 for layer in range(6):
-                    total_val_samples_processed = 0;  matches = 0
+                    total_apollo_samples_processed = 0
+                    matches_apollo = 0
                     predicted_text_ = output_list[f"Predicted_L{layer}"][1]
                     
                     # Calculate accuracy
@@ -191,13 +196,22 @@ def accuracy(sent, label, model_, intervened_token_idx, indices, method):
                     source_label = [word.split()[0] for word in labels]
 
                     for i in range(len(predicted_text)):
-                        total_val_samples_processed += 1
+                        total_apollo_samples_processed += 1
                         if predicted_text[i] == source_label[i]:
-                            matches += 1
+                            matches_apollo += 1
                     
-                    acc_dict[f"Layer{layer}"].append(matches / total_val_samples_processed)
+                    acc_dict[f"Layer{layer}"].append(matches_apollo / total_apollo_samples_processed)
                     torch.cuda.empty_cache()
-        acc_list = [sum(acc_dict[f"Layer{i}"])/len(acc_dict[f"Layer{i}"]) for i in range(12)]
+                    
+                acc_dict[f"Layer6"].append(0)
+                acc_dict[f"Layer7"].append(0)
+                acc_dict[f"Layer8"].append(0)
+                acc_dict[f"Layer9"].append(0)
+                acc_dict[f"Layer10"].append(0)
+                acc_dict[f"Layer11"].append(0)
+                
+        print(acc_dict)
+        acc_list = [(sum(acc_dict[f"Layer{i}"])/(len(acc_dict[f"Layer{i}"]) - 1)) for i in range(12)]
         print(acc_list)
     return acc_list
                 
@@ -213,8 +227,6 @@ if __name__ == "__main__":
 
     model, intervened_token_idx = config(args.device)
     batch_size = 16
-
-    # TODO: Find also the accuracy while intervening using the city for the reconstructed city vector by the SAE.
 
     latexlist = []
     with open("comfy_continent.json", "r") as f:
@@ -236,8 +248,11 @@ if __name__ == "__main__":
     t_countsent = model.tokenizer(countsent, return_tensors="pt").to(args.device)
     t_countlabel = model.tokenizer(countlabel, return_tensors="pt").to(args.device)
 
-    count_indices = int(len(t_countsent["input_ids"]) / 16)
+    count_indices = int(len(countsent) / 16)
     print(f"Continent Indices: {count_indices}")
+    
+    cont_indices = int(len(contsent) / 16)
+    print(f"Continent Indices: {cont_indices}")
 
     if args.method == "sae masking neel" or args.method == "sae masking openai" or args.method == "sae masking apollo":
         model_sae_eval = eval_sae(
@@ -439,7 +454,7 @@ if __name__ == "__main__":
             label = contlabel,
             model_=model_sae_acc,
             intervened_token_idx=-8,
-            indices=count_indices,
+            indices=cont_indices,
             method=args.method,
         )
         
@@ -473,7 +488,7 @@ if __name__ == "__main__":
             label = contlabel,
             model_=model_sae_acc,
             intervened_token_idx=-8,
-            indices=count_indices,
+            indices=cont_indices,
             method=args.method,
         )
 
@@ -507,7 +522,7 @@ if __name__ == "__main__":
             label = contlabel,
             model_=model_sae_acc,
             intervened_token_idx=-8,
-            indices=count_indices,
+            indices=cont_indices,
             method=args.method,
         )
         
