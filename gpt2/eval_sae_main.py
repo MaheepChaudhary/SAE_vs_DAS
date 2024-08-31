@@ -132,6 +132,7 @@ def accuracy(sent, label, model_, intervened_token_idx, indices, method):
                     "Layer9": [0],
                     "Layer10": [0],
                     "Layer11": [0]}
+        
         for i in tqdm(range(indices)):
             
             batch_size = 16
@@ -160,7 +161,8 @@ def accuracy(sent, label, model_, intervened_token_idx, indices, method):
                             print(f"Ground label: {source_label_neel[i]}")
                             print()
                     
-                    acc_dict[f"Layer{layer}"].append(matches_neel / total_neel_samples_processed)
+                    # acc_dict[f"Layer{layer}"].append(matches_neel / total_neel_samples_processed)
+                    acc_dict[f"Layer{layer}"].append(matches_neel / len(predicted_text_neel))
                     
                 torch.cuda.empty_cache()
             elif method == "acc sae masking openai":
