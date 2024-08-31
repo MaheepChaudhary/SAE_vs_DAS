@@ -143,20 +143,21 @@ def accuracy(sent, label, model_, intervened_token_idx, indices, method):
             if method == "acc sae masking neel":
 
                 for layer in range(11,12):
-                    total_neel_samples_processed = 0;  matches_neel = 0
-                    predicted_text_ = output_list[f"Predicted_L{layer}"][1]
+                    total_neel_samples_processed = 0 
+                    matches_neel = 0
+                    predicted_text_neel_ = output_list[f"Predicted_L{layer}"][1]
                     
                     # Calculate accuracy
-                    predicted_text = [word.split()[0] for word in predicted_text_]
-                    source_label = [word.split()[0] for word in labels]
+                    predicted_text_neel = [word.split()[0] for word in predicted_text_neel_]
+                    source_label_neel = [word.split()[0] for word in labels]
 
                     for i in range(len(predicted_text)):
                         total_neel_samples_processed += 1
-                        if predicted_text[i] == source_label[i]:
+                        if predicted_text_neel[i] == source_label_neel[i]:
                             matches_neel += 1
                         else:
-                            print(f"Predicted: {predicted_text[i]}")
-                            print(f"Ground label: {source_label[i]}")
+                            print(f"Predicted: {predicted_text_neel[i]}")
+                            print(f"Ground label: {source_label_neel[i]}")
                             print()
                     
                     acc_dict[f"Layer{layer}"].append(matches_neel / total_neel_samples_processed)
@@ -165,7 +166,8 @@ def accuracy(sent, label, model_, intervened_token_idx, indices, method):
             elif method == "acc sae masking openai":
                 
                 for layer in range(11,12):
-                    total_openai_samples_processed = 0;  matches_openai = 0
+                    total_openai_samples_processed = 0
+                    matches_openai = 0
                     predicted_text_ = output_list[f"Predicted_L{layer}"][1]
                     
                     # Calculate accuracy
@@ -188,7 +190,8 @@ def accuracy(sent, label, model_, intervened_token_idx, indices, method):
             
             elif method == "acc sae masking apollo":
                 for layer in range(6):
-                    total_apollo_samples_processed = 0;  matches_apollo = 0
+                    total_apollo_samples_processed = 0
+                    matches_apollo = 0
                     predicted_text_ = output_list[f"Predicted_L{layer}"][1]
                     
                     # Calculate accuracy
