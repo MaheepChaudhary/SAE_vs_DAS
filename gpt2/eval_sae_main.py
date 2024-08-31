@@ -143,7 +143,7 @@ def accuracy(sent, label, model_, intervened_token_idx, indices, method):
             if method == "acc sae masking neel":
 
                 for layer in range(11,12):
-                    total_neel_samples_processed = 0;  matches = 0
+                    total_neel_samples_processed = 0;  matches_neel = 0
                     predicted_text_ = output_list[f"Predicted_L{layer}"][1]
                     
                     # Calculate accuracy
@@ -153,19 +153,19 @@ def accuracy(sent, label, model_, intervened_token_idx, indices, method):
                     for i in range(len(predicted_text)):
                         total_neel_samples_processed += 1
                         if predicted_text[i] == source_label[i]:
-                            matches += 1
+                            matches_neel += 1
                         else:
                             print(f"Predicted: {predicted_text[i]}")
                             print(f"Ground label: {source_label[i]}")
                             print()
                     
-                    acc_dict[f"Layer{layer}"].append(matches / total_neel_samples_processed)
+                    acc_dict[f"Layer{layer}"].append(matches_neel / total_neel_samples_processed)
                     
                 torch.cuda.empty_cache()
             elif method == "acc sae masking openai":
                 
                 for layer in range(11,12):
-                    total_openai_samples_processed = 0;  matches = 0
+                    total_openai_samples_processed = 0;  matches_openai = 0
                     predicted_text_ = output_list[f"Predicted_L{layer}"][1]
                     
                     # Calculate accuracy
@@ -175,20 +175,20 @@ def accuracy(sent, label, model_, intervened_token_idx, indices, method):
                     for i in range(len(predicted_text)):
                         total_openai_samples_processed += 1
                         if predicted_text[i] == source_label[i]:
-                            matches += 1
+                            matches_openai += 1
                         else:
                             print(f"Predicted: {predicted_text[i]}")
                             print(f"Ground label: {source_label[i]}")
                             print()
                     
                     
-                    acc_dict[f"Layer{layer}"].append(matches / total_openai_samples_processed)
+                    acc_dict[f"Layer{layer}"].append(matches_openai / total_openai_samples_processed)
                     
                 torch.cuda.empty_cache()
             
             elif method == "acc sae masking apollo":
                 for layer in range(6):
-                    total_apollo_samples_processed = 0;  matches = 0
+                    total_apollo_samples_processed = 0;  matches_apollo = 0
                     predicted_text_ = output_list[f"Predicted_L{layer}"][1]
                     
                     # Calculate accuracy
@@ -198,9 +198,9 @@ def accuracy(sent, label, model_, intervened_token_idx, indices, method):
                     for i in range(len(predicted_text)):
                         total_apollo_samples_processed += 1
                         if predicted_text[i] == source_label[i]:
-                            matches += 1
+                            matches_apollo += 1
                     
-                    acc_dict[f"Layer{layer}"].append(matches / total_apollo_samples_processed)
+                    acc_dict[f"Layer{layer}"].append(matches_apollo / total_apollo_samples_processed)
                     torch.cuda.empty_cache()
         acc_list = [sum(acc_dict[f"Layer{i}"])/len(acc_dict[f"Layer{i}"]) for i in range(12)]
         print(acc_list)
