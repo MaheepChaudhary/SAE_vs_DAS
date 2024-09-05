@@ -148,3 +148,6 @@ gemma/wandb/run-20240802_123133-sx1jp98f/files/wandb-summary.json
 gemma/wandb/run-20240802_123133-sx1jp98f/logs/debug-internal.log
 gemma/wandb/run-20240802_123133-sx1jp98f/logs/debug.log
 gpt2/wandb/*
+gpt2/wandb/debug-internal.log
+gpt2/wandb/debug.log
+gpt2/wandb/latest-run
