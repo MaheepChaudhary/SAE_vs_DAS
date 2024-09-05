@@ -1,4 +1,4 @@
-from imports import *
+from matplotlib import pyplot as plt
 
 # making the graph for continent
 
@@ -93,9 +93,9 @@ plt.plot(
 )
 plt.plot(layer_for_apollo, sae_apollo_masking_continent, label="Apollo SAE", marker="o")
 
-plt.title("Accuracy for continent-intervened")
+plt.title("Disentangle Score for continent-intervened")
 plt.xlabel("Layer")
-plt.ylabel("Accuracy")
+plt.ylabel("Disentangle Score")
 plt.legend()
 plt.show()
 
@@ -181,8 +181,8 @@ plt.plot(
 )
 plt.plot(layer_for_apollo, sae_apollo_masking_country, label="Apollo SAE", marker="o")
 
-plt.title("Accuracy for country-intervened")
+plt.title("Disentangle Score for country-intervened")
 plt.xlabel("Layer")
-plt.ylabel("Accuracy")
+plt.ylabel("Disentangle Score")
 plt.legend()
 plt.show()

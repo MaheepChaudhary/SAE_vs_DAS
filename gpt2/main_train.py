@@ -93,6 +93,15 @@ def train_data_processing(task, intervention_divided_data, batch_size):
             new_data1[sample_no][1][0] = sample[1][0]
             new_data1[sample_no][1][1] = sample[0][1]
 
+        c = 0
+        all_data_ = data2 +new_data1
+        for data in all_data_:
+            assert np.array(data).shape == (2, 2)
+            intervention_label = data[1][1]
+            if intervention_label == data[0][1]:
+                c+=1
+        print(f"Baseline Accuracy: {c/len(all_data_)}")
+
         data1_num_batches = np.array(new_data1).shape[0] // batch_size
         data2_num_batches = np.array(data2).shape[0] // batch_size
         data1_batch_data = [
