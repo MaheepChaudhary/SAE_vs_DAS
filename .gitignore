@@ -151,3 +151,7 @@ gpt2/wandb/*
 gpt2/wandb/debug-internal.log
 gpt2/wandb/debug.log
 gpt2/wandb/latest-run
+ravel/*
+gpt2/wandb/debug-internal.log
+gpt2/wandb/debug.log
+gpt2/wandb/latest-run
