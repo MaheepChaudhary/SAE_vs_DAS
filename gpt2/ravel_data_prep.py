@@ -52,7 +52,7 @@ if __name__ == "__main__":
     
     parser = argparse.ArgumentParser()
     
-    parser.add_argument("-p", "--path_json", default = "data/ravel_city_entity_attributes.json", help='Prompting for Ravel Data')
+    parser.add_argument("-p", "--path_json", default = "ravel/data/ravel_city_entity_attributes.json", help='Prompting for Ravel Data')
     
     args = parser.parse_args()
     

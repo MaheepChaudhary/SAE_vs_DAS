@@ -1,27 +1,29 @@
-from Pythia.config import epochs, lr
-from imports import *
-from model import *
+import logging
 from dataprocessing import *
-from visualization import *
+import torch
+import torch.nn.functional as F
+import torch.optim as optim
+import argparse
+from torch import nn
+import csv
+from collections import Counter
+from tqdm import tqdm
+from model import *
+
+logging.basicConfig(filename='mnist/log.log', level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 
 input = nn.init.orthogonal_(torch.empty(5,5))
 output = torch.eye(5)
 
 # print(input)
 
-# model = Model()
+model = mnistmodel()
 
 sum_arr = []
 sum_arr_epoch = {}
 
 
-# Create a CSV file and write the header
-with open(f'stats/log{name}.csv', 'w', newline='') as file:
-    writer = csv.writer(file)
-    writer.writerow(['Epoch', 'Training Loss', 'Training Accuracy'])
-
-
-def train(epochs = epochs, lr = lr):
+def train(epochs, lr):
 
     model = Model()
     
@@ -57,13 +59,17 @@ def mnist_train(train_loader,
                 accuracies,
                 mnist_model,
                 optimizer,
-                epochs = epochs, 
-                lr = lr):
+                epochs, 
+                lr,
+                device = "mps",
+                ):
     
     epoch_loss = []
     epoch_accuracy = []
 
     for epoch in tqdm(range(epochs)):
+        train_losses = []
+        accuracies = []
         for batch_idx, (data, target) in enumerate(train_loader):
             data = data.to(device)
             target = target.to(device)
@@ -76,23 +82,10 @@ def mnist_train(train_loader,
             loss = F.nll_loss(predicted_output, target)
             loss.backward()
             optimizer.step()
-            if batch_idx % log_interval == 0:
-                # print('Train Epoch: {} [{}/{} ({:.0f}%)]\tLoss: {:.6f}'.format(
-                    # epoch, batch_idx * len(data), len(train_loader.dataset),
-                    # 100. * batch_idx / len(train_loader), loss.item()))
-                train_losses.append(loss.clone().detach().cpu().item())
-                accuracies.append(accuracy)
-                train_counter.append(
-                (batch_idx*64) + ((epoch-1)*len(train_loader.dataset)))
-        epoch_loss.append(sum(train_losses)/len(train_losses))
-        epoch_accuracy.append((sum(accuracies)/len(accuracies)).item())
-        print(f'Epoch: {epoch} Loss: {epoch_loss[-1]}, Accuracy: {epoch_accuracy[-1]}')
-        print('-------------------')
+            train_losses.append(loss.clone().detach().cpu().item())
+            accuracies.append(accuracy)
+        logging.info(f'Epoch: {epoch} Loss: {sum(train_losses)/len(train_losses)}, Accuracy: {sum(accuracies)/len(accuracies)}')
         
-
-        with open(f'stats/log{name}.csv', 'a', newline='') as file:
-            writer = csv.writer(file)
-            writer.writerow([epoch, epoch_loss[-1], str(epoch_accuracy[-1]*100)+"%"])
 
     return epoch_loss, epoch_accuracy
 
@@ -143,8 +136,8 @@ def dasmat_train(train_loader,
                 accuracies,
                 model,
                 optimizer,
-                epochs = epochs, 
-                lr = lr):
+                epochs, 
+                lr):
     
     epoch_loss = 0
     epoch_accuracy = 0
@@ -211,8 +204,8 @@ def sparse_model(train_loader,
                 model,
                 optimizer,
                 train,
-                epochs = epochs, 
-                lr = lr):
+                epochs, 
+                lr):
     
     epoch_loss = 0
     epoch_accuracy = 0
@@ -276,7 +269,9 @@ def count_classes(dataset):
     label_counts = Counter(labels)
     return label_counts
 
-def eval(model, train):
+def eval(
+    model,
+    device = "mps"):
 
     model.eval()  # Set the model to evaluation mode
 
@@ -290,20 +285,16 @@ def eval(model, train):
         for data, target in test_loader:
             data = data.to(device)
             target = target.to(device)
-            if train == "sae":
-                l1_loss, l2_loss, loss_aggregate, acts, predicted_output = model(data)
-            else:
-                predicted_output = model(data)
-            # pred = outputs.data.max(1, keepdim=True)[1]
-            pred = predicted_output.argmax(dim=1)
-            # correct += pred.eq(target.data.view_as(pred)).sum()
-            accuracy_per_class[target.item()]+=pred.eq(target.data.view_as(pred)).sum()
-    accuracy_per_class = [i.item() for i in accuracy_per_class]
-    counted_classes = count_classes(test_loader.dataset)
-    normalized_accuracy_per_class = [accuracy_per_class[i]/counted_classes[i] for i in range(10)]
-    print(accuracy_per_class)
-    print(normalized_accuracy_per_class)
-    return normalized_accuracy_per_class
+            model.to(device)
+            predicted_output = model(data)
+            output = predicted_output.argmax(dim=1)
+            correct = torch.sum((output == target).float())
+            accuracy = correct.clone().detach().cpu()/len(target)
+            accuracies.append(accuracy)
+            logging.info(" ")
+    logging.info(f'Evalution Accuracy: {sum(accuracies)/len(accuracies)}')
+    logging.info(" ")
+    return sum(accuracies)/len(accuracies)
 
 
 
@@ -311,7 +302,7 @@ def eval(model, train):
 parser = argparse.ArgumentParser()
 parser.add_argument('-e', '--epochs', type=int, default=1000)
 parser.add_argument('--lr', type=float, default=0.01)
-parser.add_argument('-t', '--train', type=str, default='true')
+parser.add_argument('-t', '--train', type=str, required=True)
 parser.add_argument("-a", "--description", type=str)
 parser.add_argument("-m", "--model_path", type=str, default='mnist_models/2_0133.pt')
 args = parser.parse_args()
@@ -336,8 +327,9 @@ if __name__ == '__main__':
         print(model)
         model.train()
         # model = MNISTModel()
+        momentum = 0.9
         optimizer = optim.SGD(model.parameters(), 
-                              lr=lr, 
+                              args.lr, 
                               momentum=momentum)
 
         
@@ -354,13 +346,7 @@ if __name__ == '__main__':
                                         args.lr
                                         )
 
-        torch.save(model.state_dict(), f'mnist_models/{name}.pt')
-        visualization(train_losses_, acc, args.description)
-
-        # model.load_state_dict(torch.load("mnist_models/model.pth"))
-
         accuracy = eval(model)
-        visualization_each_class(accuracy, args.description)
 
     elif args.train == 'dasmat':
 

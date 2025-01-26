@@ -1,5 +1,11 @@
-from imports import *
-from Pythia.config import *
+import torch
+import torch.nn as nn
+import torch.nn.functional as F
+import torch.optim as optim
+import einops
+import torch.nn.utils.parametrizations as torch_parametrizations
+from dataclasses import dataclass
+from torch import Tensor
 
 class Model(nn.Module):
     def __init__(self):
@@ -153,7 +159,7 @@ class AutoEncoderConfig:
 We are doing this for the image domain so we will not be considering the n_instances shape
 '''
 
-
+'''
 class AutoEncoder(nn.Module):
     W_enc: Float[Tensor, "n_input_ae n_hidden_ae"]
     W_dec: Float[Tensor, "n_hidden_ae n_input_ae"]
@@ -220,9 +226,8 @@ class AutoEncoder(nn.Module):
 
     @t.no_grad()
     def normalize_decoder(self) -> None:
-        '''
-        Normalizes the decoder weights to have unit norm. If using tied weights, we we assume W_enc is used for both.
-        '''
+    
+        # Normalizes the decoder weights to have unit norm. If using tied weights, we we assume W_enc is used for both.
         if self.cfg.tied_weights:
             self.W_enc.data = self.W_enc.data / self.W_enc.data.norm(dim=1, keepdim=True)
         else:
@@ -343,7 +348,7 @@ class mask_sparse_encoder(nn.Module):
         x = self.fc2(h_reconstructed)
         x = self.fc3(x)
         return l1_loss, l2_loss, loss, acts, F.log_softmax(x, dim = 1)
-    
+'''
 
 
 
@@ -361,10 +366,10 @@ if __name__ == '__main__':
     matrix of the input to an orthogonal matrix such that it becomes 
     exactly equal to the input variable passed. 
     '''
-    ae_cfg = AutoEncoderConfig(n_instances = batch_size_train,
-                                l1_coeff = 0.2,
-                                tied_weights = False
-                                )
+    # ae_cfg = AutoEncoderConfig(n_instances,
+    #                             l1_coeff = 0.2,
+    #                             tied_weights = False
+    #                             )
 
     # model = Model()
     # print(model)
@@ -372,9 +377,9 @@ if __name__ == '__main__':
     # print(mnist_model)
 
     # model = dasmat("models/Mon_Apr_29_00:26:24_2024.pt")
-    model = sparse_encoder("mnist_models/2_0133.pt", ae_cfg)
-    for p in model.parameters():
-        if p.requires_grad:
-            print(p.name, p.data)
+    # model = sparse_encoder("mnist_models/2_0133.pt", ae_cfg)
+    # for p in model.parameters():
+    #     if p.requires_grad:
+    #         print(p.name, p.data)
     # print(model)
 

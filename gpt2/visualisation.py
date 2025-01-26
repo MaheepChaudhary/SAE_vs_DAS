@@ -80,7 +80,7 @@ sae_apollo_masking_continent = [
     0.72,
 ]
 
-baseline = [0.565625] * len(sae_openai_masking_continent)
+baseline = [0.6775] * len(sae_openai_masking_continent)
 
 layer = list(range(12))
 plt.plot(layer, das_masking_continent, label="DAS", marker="o", color = "green")
@@ -98,7 +98,7 @@ plt.plot(
 )
 plt.plot(layer_for_apollo, sae_apollo_masking_continent, label="Apollo SAE", marker="o", color = "pink")
 
-plt.title("Disentangle Score for country-intervened")
+plt.title("Disentangle Score for continent-intervened")
 plt.xlabel("Layer")
 plt.ylabel("Disentangle Score")
 plt.legend()

@@ -2,8 +2,6 @@ from imports import *
 from ravel_data_prep import *
 from eval_gpt2 import *
 
-
-
 def safe_split(word):
     try:
         a = word.split()[0]

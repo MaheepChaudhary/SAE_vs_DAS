@@ -1,6 +1,7 @@
-from imports import *
-from Pythia.config import *
-
+import torch
+import torchvision
+batch_size_train = 64
+batch_size_test = 1
 
 def data_loader():
     train_loader = torch.utils.data.DataLoader(
